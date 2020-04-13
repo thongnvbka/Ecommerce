@@ -1,0 +1,103 @@
+﻿@model WalletMeta
+
+<div id="routeWalletModal" class="modal modal-dialog modal-w50 fade" role="dialog">
+    <div class="modal-body">
+        <!-- ko if: isLoading() -->
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+        <!-- /ko -->
+        <!-- ko ifnot: isLoading() -->
+        <!-- ko if: items().length == 0 -->
+        <p class="color-red">@*Bao hàng chưa được điều vận*@Untransferred package</p>
+        <!-- /ko -->
+        <ul class="timeline">
+            <!-- ko foreach: items -->
+            <!-- ko if: $index() == 0 -->
+            <li class="time-label">
+                <span data-bind="text: moment(dispatcherCreated).format('DD/MM/YY')" class="bg-green"></span>
+            </li>
+            <li>
+                <i class="fa fa-envelope bg-green"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> <span data-bind="text: moment(walletCreated).fromNow(), attr: { title: moment(walletCreated).format('DD/MM/YYYY HH:mm')}"></span></span>
+                    <h3 class="timeline-header"><a data-bind="text: walletCode, click: $parent.showWalletDetail.bind($data, walletId)" href="javascript:;"></a> <b data-bind="text: walletCreatedWarehouseName"></b>
+                    </h3>
+                    <div class="timeline-body">
+                        <p class="mb5">Weight: <b data-bind="text: formatNumberic(walletWeight, 'N2')"></b>(kg)
+                        </p>
+                        <p class="mb5">Size: <b data-bind="text: walletSize"></b>(cm)
+                        </p>
+                        <p class="mb5">Weight converted: <b data-bind="text: formatNumberic(walletWeightConverted, 'N2')"></b>(kg)
+                        </p>
+                        <p class="mb5">Staff: <b data-bind="text: walletUserFullName"></b> (<span data-bind="text: walletUserName"></span>)
+                        </p>
+                        <p class="mb5">Note: <b data-bind="text: walletNote"></b>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <!-- /ko -->
+            <!-- ko if: firstDay -->
+            <li class="time-label">
+                <span data-bind="text: moment(dispatcherCreated).format('DD/MM/YY'), attr: {class: dispatcherDetailStatus == 0 ? 'bg-yellow' : dispatcherDetailStatus == 1 ? 'bg-aqua' : 'bg-green'}" class="bg-red"></span>
+            </li>
+            <!-- /ko -->
+            <li>
+                <i data-bind="attr: {class: dispatcherDetailStatus == 0 ? 'fa fa-exchange bg-yellow' : dispatcherDetailStatus == 1 ? 'fa fa-exchange bg-aqua' : 'fa fa-exchange bg-green'}" class="fa fa-envelope bg-success"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> <span data-bind="text: moment(dispatcherCreated).fromNow(), attr: { title: moment(dispatcherCreated).format('DD/MM/YYYY HH:mm')}"></span></span>
+                    <h3 class="timeline-header"><a data-bind="text: 'D' + dispatcherCode" href="javascript:;"></a> <b data-bind="text: transportPartnerName"></b>
+                    </h3>
+                    <div class="timeline-body">
+                        <p class="mb5"><i class="fa fa-user"></i> <span data-bind="text: dispatcherCreatedUserFullName"></span> (<span data-bind="text: dispatcherCreatedUserName"></span>)
+                        </p>
+                        <p class="mb5"><i class="fa fa-truck"></i> <span data-bind="text: transportMethodName"></span>
+                        </p>
+                        <!-- ko if: entrepotName !== null -->
+                        <p class="mb5"><i class="fa fa-map-marker"></i> <span data-bind="text: entrepotName"></span>
+                        </p>
+                        <!-- /ko -->
+                        <p class="mb5"> Status  
+                            <!-- ko if: dispatcherDetailStatus == 0 -->
+                            <span class="label label-warning">Waiting for stock arrival</span>
+                            <!-- /ko -->
+                            <!-- ko if: dispatcherDetailStatus == 1 -->
+                            <span class="label label-info">Stock being transported</span>
+                            <!-- /ko -->
+                            <!-- ko if: dispatcherDetailStatus == 2 -->
+                            <span class="label label-success">Completed</span>
+                            <!-- /ko -->
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <!-- ko if: $index() == ($parent.items().length - 1) -->
+            <li class="time-label">
+                <span data-bind="attr: {class: dispatcherDetailStatus < 2 ? 'bg-yellow' : 'bg-green'}" class="bg-green">
+                    <!-- ko if: dispatcherDetailStatus < 2 -->
+                    @*Chờ nhập kho*@Waiting to be put in stock
+                    <!-- /ko -->
+                    <!-- ko if: dispatcherDetailStatus == 2 -->
+                    @*Đã nhập kho*@In stock now
+                    <!-- /ko -->
+                </span>
+            </li>
+            <li>
+                <i data-bind="attr: {class: dispatcherDetailStatus < 2 ? 'fa fa-cubes bg-yellow' : 'fa fa-cubes bg-green'}" class="fa fa-envelope bg-success"></i>
+                <div class="timeline-item">
+                    <!-- ko if: dispatcherDetailStatus == 1 -->
+                    <span class="time"><i class="fa fa-clock-o"></i> <span data-bind="text: moment(walletPartnerUpdate).fromNow(), attr: { title: moment(walletPartnerUpdate).format('DD/MM/YYYY HH:mm')}"></span></span>
+                    <!-- /ko -->
+                    <h3 class="timeline-header"><b data-bind="text: walletTargetWarehouseName"></b>
+                    </h3>
+                </div>
+            </li>
+            <!-- /ko -->
+            <!-- /ko -->
+        </ul>
+        <!-- /ko -->
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+    var source = (byte)OrderType.Source;
+}
+
+<script type="text/html" id="lading-code-list">
+    <tr>
+        <td colspan="9" class="text-left bg-info">
+            <b>Orders: <a data-bind="click: function() {orderTypeViewModel.showViewOrder(Id, Code); }" href="javascript:;"><strong data-bind="text: ReturnCode(Code)"></strong></a> <span data-bind="text: CustomerName + '(' + CustomerEmail + ')'"></span> - Package number : <span data-bind="text: PackageNo"></span></b>            
+        </td>
+        <td class="text-left bg-info"></td>
+    </tr>
+    <!-- ko foreach: Packages -->
+    <tr>
+        <td data-bind="text: $index()+1" class="text-center"></td>
+        <td data-bind="text: Note" class="text-left"></td>
+        <td data-bind="text: 'P' + Code" class="text-center"></td>
+        <td data-bind="text: TransportCode" class="text-center"></td>
+        <td data-bind="text: moment(Created).format('DD/MM/YYYY')" class="text-center"></td>
+        <td class="text-center">
+            <!-- ko if: ForcastDate != null -->
+            <span data-bind="text: moment(ForcastDate).format('DD/MM/YYYY')"></span>
+            <!-- /ko -->
+        </td>
+        <td class="text-center">
+            <!-- ko if: (Length != null && Length != '') -->
+            <span data-bind="text: Length + 'x' + Width + 'x' + Height"></span>
+            <!-- /ko -->
+        </td>
+        <td data-bind="text: Weight" class="text-right"></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.orderPackage[Status].Name, css: statusApp.orderPackage[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            @if (CheckPermision(EnumAction.Update, EnumPage.OrderLadingCode))
+            {
+                <a data-bind="click: function() {orderTypeViewModel.showEditOrder($parent.Id, $parent.Code); }, attr: { href: '/Purchase/Order#' + ReturnCode($parent.Code) }" class="btn btn-info btn-xs"><i class="fa fa-edit"></i>View</a>
+            }
+        </td>
+    </tr>
+    <!-- /ko -->
+</script>

@@ -1,0 +1,57 @@
+﻿@model  ModelView<Library.DbContext.Entities.ComplainType, ComplainTypeViewModel>
+
+<div class="box">
+    @*<div class="box-header">
+            <h3 class="box-title">Hover Data Table</h3>
+        </div>*@
+    <!-- /.box-header -->
+    <div class="box-body  no-padding">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center w-40">#</th>
+                        <th class="text-center w-200">Type of complaint</th>
+                        <th class="text-center w-100">Type of parent complaint </th>@*"Loại khiếu nại cha" là cái gì??*@
+                        <th class="text-center w-200">Note</th>
+                        <th class="text-center w-50">Chronological order</th>
+                        <th class="text-center w-200"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">There are no records</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+                        foreach (var m in Model.Items)
+                        {
+                            <tr>
+                                <td class="text-center">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                                <td>@m.Name</td>
+                                <td>@m.ParentName</td>
+                                <td>@m.Description</td>
+                                <td class="text-center">@m.Index</td>
+                                <td class="text-center">
+
+                                    <a href="@Url.Action("EditComplainType", new {id = m.Id})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>Edit</a>
+
+                                    <a href="javascript:;" data-url="@Url.Action("DeleteComplainType", new {id = m.Id})" data-name="@m.Name" class="btn btn-sm btn-danger delete-item"><i class="fa fa-times"></i> Delete  </a>
+                                </td>
+                                
+                            </tr>
+                            idx += 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+         
+    </div>
+    <!-- /.box-body -->
+    @Html.Partial("_Paging", Model.PageInfo)
+</div>

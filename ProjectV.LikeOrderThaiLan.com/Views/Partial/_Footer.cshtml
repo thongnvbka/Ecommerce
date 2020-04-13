@@ -1,0 +1,119 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<footer>
+
+    <section class="footer-support">
+        <div class="footer-support-pay">
+            <div class="footer-support-pay-box">
+
+                <img src="/Content/images/icon-home/pay4_icon.png" alt="" />
+                <img src="/Content/images/icon-home/PAY10.jpg" width="93" height="32" alt="" />
+            </div>
+            <div class="footer-support-pay-box">
+
+                <img src="/Content/images/icon-home/pay2_icon.png" alt="" />
+                <img src="/Content/images/icon-home/pay5_icon.png" alt="" />
+            </div>
+            <div class="footer-support-pay-box">
+
+                <img src="/Content/images/icon-home/pay3_icon.png" alt="" />
+                <img src="/Content/images/icon-home/pay6_icon.png" alt="" />
+            </div>
+        </div>
+        <div class="footer-support-yunshu">
+            <img src="/Content/images/icon-home/yunshu_icon.png" alt="" />
+        </div>
+    </section>
+    <section class="footer-hr"></section>
+    <section class="footer-about">
+        <div class="footer-about-logo" style="width: 50%; height: 90px;">
+            <img src="~/Images/icon_likeorder_200x200---2.png" alt="" />
+
+        </div>
+        <div class="footer-about-main" style="width: 50%; height: 90px;">
+            <ul>
+                <li><a href="/@culture">@Resource.Home_Partner</a></li>
+                <li><a href="/@culture/Home/TermsOfService">@Resource.Home_Juridical</a></li>
+                <li><a href="/@culture/Home/TermsOfService">@Resource.Home_PrivacyPolicy</a></li>
+                <li><a href="/@culture/Home/TermsOfService">@Resource.Home_ServiceAgreement</a></li>
+                <li><a href="/@culture/Home/FAQ">@Resource.Home_Introduce</a></li>
+            </ul>
+
+        </div>
+        @*@if (CustomerState.Email != null)
+            {*@
+            <br />
+            <div class="rs" style="width: 42%; padding: 0 10px; box-sizing: border-box;">
+                <span>
+                    @Resource.Home_Address :<span class="red-color">The R20 Space Building, 5 Floors, 195 Soi Sabaijai,  Samsen Nok, Huai Khwang, Bangkok 10310, Thailand</span><br />
+                </span>
+                <span class="rs red-color bold" style="text-align: center;margin-left: -40px;">Hotline</span>
+
+                <div style="width: 50%;float: left">
+                    <p style="color: green">IDLine: likeorderthailand</p>
+                    <p style="color: green">Email: Sales@likeorder.com</p> 
+                </div>
+
+                <div style="width: 50%; float: left">
+                    <p style="color: green">Mobilephone: +66 63 232 4816</p>
+                    <p style="color: green">Tell: 02 276 4220</p> 
+                </div>
+
+
+                <span class="rs red-color bold" style="text-align: center;margin-left: -40px;">บัญชีสำหรับการโอนเงิน</span>
+
+                <div style="width: 50%;float: left">
+                    <p style="color: green">ไทยพาณิชย์: 407-8-52305-2</p>
+                    <p style="color: green">กรุงเทพ: 055-0-65876-9</p>
+                </div>
+                <div style="width: 50%;float: left">
+                    <p style="color: green">กสิกรไทย: 025-1-28798-8 </p>
+                    <p style="color: green">LIKE ORDER (THAILAND) CO.LTD</p>
+                </div>
+            </div>
+            <div class="rs" style="width: 58%">
+                <p class="footer-about-p" style="width: 100%; float: left; ">
+                    @Resource.Home_FooterContent
+                </p>
+                <div style="width: 50%;float: left;/* padding-right: 30px; */padding-top: 50px;box-sizing: border-box;">
+                    <img src="/Content/images/icon-home/PAY10.jpg" alt="" style="width: 292px;height: 100px;">
+                </div>
+               
+                <div class="fb-page" data-href="https://www.facebook.com/LikeOrderThailand"
+                     @*data-tabs="timeline"*@ data-small-header="true"
+                     data-adapt-container-width="true"
+                     data-hide-cover="false" data-show-facepile="true" style="float: right;width: 50%">
+                    <blockquote cite="https://www.facebook.com/LikeOrderThailand" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/LikeOrderThailand">Like order</a>
+                    </blockquote>
+                </div>
+            </div>
+
+            @*}*@
+        @*else
+        {
+            <p class="footer-about-p" style="width: 49%; float: left; text-align: justify;">
+                @Resource.Home_FooterContent
+            </p>
+             
+            <div style="width: 50%; float: left;">
+                <div style="width: 50%; float: left;  padding-right: 30px;  padding-top: 50px; box-sizing: border-box;  padding-left: 20px;">
+                    <img src="/Content/images/icon-home/PAY10.jpg" alt="" style="width: 302px;height: 100px;">
+                </div>
+              
+                <div class="fb-page" data-href="https://www.facebook.com/LikeOrderThailand" data-small-header="true"
+                     data-adapt-container-width="true"
+                     data-hide-cover="false" data-show-facepile="true" style="float: right;width: 47%">
+                    <blockquote cite="https://www.facebook.com/LikeOrderThailand" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/LikeOrderThailand">Like order</a>
+                    </blockquote>
+                </div>
+            </div>
+        }*@
+
+        <p class="rs" style="text-align: center; margin-top: 40px;">
+            Copyright &copy;2017 LikeOrder
+        </p>
+    </section>
+</footer>

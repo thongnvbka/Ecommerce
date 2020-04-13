@@ -1,0 +1,70 @@
+﻿.wysiwyg-container{
+    background: white;
+}
+/*
+.wysiwyg-container .wysiwyg-toolbar-top{
+    border-top: 4px solid #444;
+    box-shadow: 0 2px 1px #ccc;
+}
+*/
+.wysiwyg-container .wysiwyg-toolbar-icon:hover{
+    background: #eee;
+}
+
+/* popup */
+.wysiwyg-popup{
+    border-radius: 0 !important;
+    border: 1px solid #aaa;
+    border-top: 4px solid #444 !important;
+}
+
+.wysiwyg-popup .arrow{
+    height: 10px;
+}
+
+.wysiwyg-popup .arrow-up{
+    border-bottom: 10px solid #444;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.wysiwyg-popuphover .arrow-up{
+    top: -20px;
+}
+
+.wysiwyg-popup .arrow-down{
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #444;
+}
+
+.wysiwyg-popup .btn{
+    border-radius: 0;
+}
+
+.wysiwyg-toolbar-form .wysiwyg-toolbar-icon{
+    padding: 6px 12px;
+    border-radius: 0 !important;
+}
+
+/* Plugins */
+.wysiwyg-plugin-list a{
+    display: block;
+    width: 100%; text-decoration: none;
+    color: #333; padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.wysiwyg-plugin-list a:hover{
+    background: #fafafa;
+}
+
+.wysiwyg-plugin-list a:last-child{
+    border-bottom: none;
+}
+
+/* editor */
+.wysiwyg-editor a {
+    text-decoration: underline;
+    color: blue;
+}

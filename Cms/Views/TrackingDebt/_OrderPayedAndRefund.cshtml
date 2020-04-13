@@ -1,0 +1,28 @@
+﻿<div id="orderPayedAndRefundModal" class="modal fade modal-dialog" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save" id="orderPayedAndRefundForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">
+                <i class="fa fa-money"></i>
+                <span data-bind="text: mode() === 0 ? 'Single refund' : 'Single payment'"></span> "<b data-bind="text: ReturnCode(orderCode())"></b>"
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="amount">Amount (Currency)<span class="color-red">*</span>:</label>
+                <input data-bind="value: amount" type="text" class="form-control decimal text-right" id="amount" placeholder="Enter the amount">
+            </div>
+            <div class="form-group">
+                <label for="note">Note <span class="color-red">*</span>:</label>
+                <textarea data-bind="value: note" class="form-control" rows="5" id="note"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="disable: isLoading" type="submit" class="btn btn-primary">
+                <i data-bind="css: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'" class="fa fa-save"></i> <span data-bind="text: mode() === 0 ? 'Refund' : 'Collect money'"></span>
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,54 @@
+﻿<script type="text/html" id="orderList">
+
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1"></td>
+        <td>
+            <div class="rs content-code">
+                <img data-bind="attr: { src:ImagePath }" alt="" style="width: 50px; height: 50px;">
+                <span>
+                    <span class="code-order rs"><a data-bind="text:'ORD' + code, attr: {href: '/' + window.culture + '/CMS/Order/DetailOrder?orderId=' + id}" target="_blank"></a> </span>
+                    <p class="rs" data-bind="text: moment(created).format('DD/MM/YYYY hh:mm:ss')"></p>
+                </span>
+            </div>
+        </td>
+        <td>
+            <a class="code-order rs link-shop" data-bind="text:substring(ShopLink,ShopLink.indexOf('?')), attr: { href:ShopLink }" target="_blank"></a>
+            <p class="rs number-product detail-count" data-bind="text:ProductCount, attr:{idata: id}"></p>
+        </td>
+        <td class="td-text-money">
+            <span data-bind="text: formatNumberic(Math.round(TotalExchange), 'N0')"></span><br />
+        </td>
+        <td class="td-text-center">
+            <span data-bind="text: statusApp.orderView[Status].Name, css: statusApp.orderView[Status].Class">Chờ báo giá</span>
+        </td>
+        <td class="td-text-money">
+            <!-- ko if: (Status == @((byte)Common.Emums.OrderStatus.Lost) || Status == @((byte)Common.Emums.OrderStatus.Cancel)) -->
+            <span>--</span>
+            <!-- /ko -->
+            <!-- ko if: (Status < @((byte)Common.Emums.OrderStatus.Cancel)) -->
+            <!-- ko if: TotalMiss > 1 -->
+            <span data-bind="text: formatNumberic(Math.round(TotalMiss), 'N0')"></span>
+            <!-- /ko -->
+            <!-- /ko -->
+        </td>
+        <td class="option-order">
+            <!-- ko if: (Status >= @((byte)Common.Emums.OrderStatus.New) && Status <= @((byte)Common.Emums.OrderStatus.WaitDeposit)) -->
+            <span>|</span><a data-bind="click: orderPopupModel.showMessagerCancel.bind($data, id)" href="javascript:;" class="cancel-order">@Resource.Order_OperationDestroy</a>
+            <!-- /ko -->
+            <!-- ko if: (Status == @((byte)Common.Emums.OrderStatus.WaitDeposit)) -->
+            <span>|</span> <a data-bind="click: orderPopupModel.showMessagerDeposit.bind($data, id)" class="deposit-all-order popup-deposit">@Resource.Order_OperationDeposit</a>
+            @*<a href="javascript:void(0)" class="deposit-all-order popup-deposit" style="color:red">@Resource.Order_OperationDeposit</a>*@
+            
+            <!-- /ko -->
+            <!-- ko if: (Status >= @((byte)Common.Emums.OrderStatus.WaitOrder)) -->
+                <!-- ko if: (IsComplain == 0) -->
+                    <span>|</span> <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/CreateTicket/' + id}" class="ticket-order" target="_blank">@Resource.DetaiOrder_Ticket</a>
+                <!-- /ko -->
+                <!-- ko if: (IsComplain != 0) -->
+                    <span>|</span> <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket/' + id}" class="ticket-order" target="_blank">@Resource.DetaiOrder_Ticket</a>
+                <!-- /ko -->
+            <!-- /ko -->
+            
+        </td>
+    </tr>
+</script>

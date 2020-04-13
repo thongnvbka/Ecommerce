@@ -1,0 +1,379 @@
+/* reset */
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+    margin: 0;
+    padding: 0;
+}
+
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+    font-weight: normal;
+}
+
+html, body, fieldset, img, iframe, abbr {
+    border: 0;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: normal;
+}
+
+[hidefocus], summary {
+    outline: 0;
+}
+
+li {
+    list-style: none;
+    margin: 2px 0px 0px 0px;
+}
+
+h1, h2, h3, h4, h5, h6, small {
+    font-size: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+sup, sub {
+    font-size: 83%;
+    font-family: 'Roboto', sans-serif;
+}
+
+pre, code, kbd, samp {
+    font-family: 'Roboto', sans-serif;
+}
+
+q:before, q:after {
+    content: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+label, summary {
+    cursor: default;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, em, strong, b {
+    font-weight: bold;
+}
+
+del, ins, u, s, a, a:hover {
+    text-decoration: none;
+}
+
+body, textarea, input, button, select, keygen, legend {
+    font: 12px/1.14 arial,\5b8b\4f53;
+    color: #333;
+    outline: 0;
+}
+
+body, html {
+    background: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: #333;
+    font-family: 'Roboto', sans-serif; 
+}
+
+a:hover {
+    color: #333; 
+}
+
+.clearFix {
+    zoom: 1;
+}
+
+    .clearFix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+/*public*/
+.zhezhao {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: 99999999;
+    display: none;
+}
+
+    .zhezhao::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 1px;
+        margin-right: -1px;
+        vertical-align: middle;
+    }
+    /*
+    .zhezhao::after {
+        content: "×";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: white;
+        line-height: 25px;
+        color: black;
+        display: block;
+        cursor: pointer;
+    }*/
+
+    .zhezhao > img {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+    }
+
+.user-l dl dd a:hover, .user-l dl dd .cl_on {
+    color: #dd2727;
+}
+
+.del-box {
+    display: inline-block;
+}
+
+.del-box-top {
+    text-align: center;
+    color: white;
+    border-radius: 5px 5px 0 0;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #dd2727;
+}
+
+.del-box-content {
+    background-color: white;
+    padding: 30px 70px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.del-box-btn button {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.del-box-btn {
+    padding-bottom: 10px;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+
+#del_s {
+    float: right;
+    margin-right: 20px;
+    padding: 4px 8px;
+    color: white;
+    margin-right: 20px;
+    background-color: #dd2727;
+}
+
+#del_c {
+    float: left;
+    margin-left: 20px;
+    background-color: #ececec;
+    color: #999999;
+}
+
+.lete-toolbar {
+    position: fixed;
+    right: 0;
+    z-index: 99999999999999;
+    top: 0;
+    height: 100%;
+    padding-top: 100px;
+    width: 35px;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+    .lete-toolbar a {
+        position: relative;
+        color: white;
+        display: block;
+        margin: 10px 0;
+    }
+
+        .lete-toolbar a img {
+            vertical-align: middle;
+        }
+
+        .lete-toolbar a span {
+            position: absolute;
+            left: -80px;
+            line-height: 35px;
+            text-align: center;
+            top: 0;
+            display: none;
+            width: 80px;
+            height: 35px;
+            background-color: black;
+        }
+
+        .lete-toolbar a:hover {
+            background-color: #dd2727;
+        }
+
+            .lete-toolbar a:hover .saoma {
+                display: block;
+            }
+
+            .lete-toolbar a:hover span {
+                display: block;
+            }
+
+.cart {
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+    .cart l {
+        display: inline-block;
+        padding: 10px;
+        padding-top: 0;
+        color: white;
+    }
+
+.lete-toolbar-bottpm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.kefu l {
+    display: inline-block;
+    padding: 10px;
+    padding-top: 0;
+    color: #f7df5b;
+}
+
+.saoma {
+    position: absolute;
+    width: 170px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 22px 22px 22px 16px;
+    text-align: center;
+    z-index: 999999999;
+    left: -170px;
+    top: -160px;
+    background-image: url('../../images/icon-css/celan_weixin_bd.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    display: none;
+}
+
+    .saoma img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .saoma p {
+        margin-top: 5px;
+        font-size: 14px;
+        color: white;
+    }
+
+        .saoma p label {
+            color: #f5f900;
+        }
+
+.zichan-chongzhi-history-btn {
+    overflow: hidden;
+    margin: 15px 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .zichan-chongzhi-history-btn p {
+        float: right;
+        line-height: 22px;
+        color: #1a66b3;
+    }
+
+    .zichan-chongzhi-history-btn a {
+        border: none;
+        border-radius: 4px;
+        display: inline-block;
+        font-weight: bold;
+        padding: 5px 7px;
+    }
+
+.zichan-chongzhi-history-btn-shouwei {
+    color: #1A66B3;
+    background-color: white;
+    border: 1px solid #d5d5d5 !important;
+}
+
+.zichan-chongzhi-history-btn-num {
+    color: #1A66B3;
+    background-color: white;
+    border: 1px solid #d5d5d5 !important;
+}
+
+    .zichan-chongzhi-history-btn-num.lete-active {
+        color: white;
+        background-color: #cc3300;
+    }
+
+.zichan-chongzhi-history-btn-dis {
+    color: #878787;
+    background-color: white;
+    border: 1px solid #d5d5d5 !important;
+}
+/**8tab content user request*/
+
+/*.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {*/
+/*border: 1px solid #003eff;*/
+/*background: #007fff;*/
+/*font-weight: normal;
+    background-color: #e92d27;
+    color: #ffffff;
+}*/
+
+/*.ui-icon-background,
+    .ui-state-active .ui-icon-background {*/
+/*border: #003eff;*/
+/*background-color: #ffffff;
+    }
+
+    .ui-state-active a,
+    .ui-state-active a:link,
+    .ui-state-active a:visited {
+        color: #ffffff;
+        text-decoration: none;
+    }*/

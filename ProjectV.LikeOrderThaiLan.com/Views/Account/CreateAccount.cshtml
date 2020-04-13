@@ -1,0 +1,130 @@
+﻿@model CustomerRegisterMeta
+@{
+    ViewBag.Title = Resource.Home_Register + " | LikeOrder.com";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/@culture" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Generator" content="LETE v1.0">
+    <link href="~/Content/css/css-login/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/css-login/header_footer.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="/icon_likeorder_16x16.ico" type="image/x-icon" />
+    <style>
+        .login-content-box {
+            width: 285px !important;
+        }
+
+            .login-content-box span {
+                width: 100% !important;
+                float: left !important;
+                margin-top: 10px !important;
+            }
+    </style>
+</head>
+<body>
+    <section class="login-logo">
+        <a href="/@culture">
+            <img src="~/Images/logo_likeorder_home.png" alt="logo" />
+        </a>
+    </section>
+    <section class="login-content" style="min-height: 700px;">
+        <div class="login-content-max" style="text-align: right;">
+            <form action="@Url.Action("CreateAccount", "Account")" method="post" class="login-content-box" style="margin-top: 10px !important;">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.ProvinceId)
+                @Html.HiddenFor(x => x.ProvinceName)
+                @Html.HiddenFor(x => x.DistrictId)
+                @Html.HiddenFor(x => x.DistrictName)
+                @Html.HiddenFor(x => x.WardId)
+                @Html.HiddenFor(x => x.WardsName)
+                @Html.HiddenFor(x => x.Address)
+
+                <div style="text-align: center;">
+                    <span>@Resource.CreateAccountNewFromCMS</span>
+                </div>
+                <label>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </label>
+
+                @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control placeholder-no-fix"},
+                                    {"placeholder", Resource.RequestsPayment_Name},
+                                    {"readonly", "readonly"}
+                                })
+
+                @Html.ValidationMessageFor(x => x.FullName)
+                <br>
+
+                <label>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                </label>
+
+                @Html.TextBoxFor(x => x.Phone, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control placeholder-no-fix"},
+                                    {"placeholder", Resource.Home_RegisterNumber },
+                                    {"readonly", "readonly"}
+                                })
+
+                @Html.ValidationMessageFor(x => x.Phone)
+                <br>
+
+                <label>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </label>
+
+                @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control placeholder-no-fix"},
+                                    {"placeholder", Resource.Home_Email},
+                                    {"type", "email"},
+                                    {"readonly", "readonly"}
+                                })
+
+                @Html.ValidationMessageFor(x => x.Email)
+                <br>
+
+                <label>
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                </label>
+
+                @Html.PasswordFor(x => x.Password, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix"},
+                                    {"placeholder", Resource.Home_Pass}, 
+                                    {"type", "password"}
+                                })
+
+                @Html.ValidationMessageFor(x => x.Password)
+                <br>
+
+                <label>
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                </label>
+
+                @Html.PasswordFor(x => x.ConfirmPassword, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix"},
+                                    {"placeholder",  Resource.Home_PassAgain },
+                                    {"type", "password"}
+                                })
+
+                @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                <br>
+
+                <button type="submit" class="btn btn-login-form">@Resource.CreateAccountNewFromCMS</button>
+                @Html.ValidationMessage("CustomError")
+            </form>
+        </div>
+    </section>
+    @Html.Partial("~/Views/Partial/_FooterLogin.cshtml")
+</body>
+</html>

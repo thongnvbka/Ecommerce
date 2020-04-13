@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+
+    <link href="~/ContentMrk/css/default.min.vs.1.5.5.css" rel="stylesheet" />
+    <link href="~/ContentMrk/css/font-awesome.css" rel="stylesheet" />
+    <script src="~/ContentMrk/js/default.js"></script>
+    <link href="~/ContentMrk/css/live-chat.css" rel="stylesheet" />
+    <script src="~/ContentMrk/swiper3/js/swiper.js"></script>
+    @RenderSection("styles", false)
+    <script src="/ContentMrk/js/add-new-shop.js"></script>
+    <link rel="shortcut icon" href="/icon_likeorder_16x16.ico" type="image/x-icon" />
+
+
+    @*<script>
+            (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-92003907-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>*@
+</head>
+<body>
+
+    <div id="container">
+        <div id="header" class="index header">
+            <div class="container">
+                <div class="col-sm-4 col-md-2 hidden-xs hidden-md hidden-sm no-padding main-logo">
+                    <a id="logo" href="/">
+                        <img src="/Content/images/icon-home/logo-_likeorder_262x79.png" width="190" />
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-5 col-md-5 col-lg-2 hidden-lg no-padding btn-menu">
+                    <button type="button" class="btn-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"></button>
+                    <a class="small-logo hidden-lg" href="/">
+                        <img src="/Content/images/icon-home/logo-_likeorder_262x79.png" width="190" />
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-7 col-md-7 col-lg-10 text-right no-padding">
+                    <ul class="main-menu hidden-sm hidden-xs hidden-md ">
+
+                        <li>
+                            <a class="menu-item @ViewBag.ActivePriceList" href="/th">หน้าแรก</a>
+                        </li>
+                        <li>
+                            <a class="menu-item" href="/th/Home/FAQ">คู่มือการสั่งซื้อสินค้า </a>
+                        </li>
+                        <li>
+                            <a class="menu-item" href="/th/Home/FAQ/#dvdathang">อัตราค่าบริการ</a>
+                        </li>
+                        
+                    </ul>
+                    <ul class="user-menu">
+                        <li>
+                            <a class="menu-item hidden-xs" href="/th/Home/Guide"><strong>แนะนำ</strong></a>
+                        </li>
+                        <li>
+                            <a class="btn-registration event-Bizweb-Free-Trial-form-open" href="/th/Account/Register">ข้อมูลการสมัคร</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="menu-item" href="javascripts:;">อัตราค่าบริการ</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="javascripts:;">สต็อคอินเตอร์เฟซ</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="javascripts:;">คุณสมบัติที่โดดเด่น</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="javascripts:;">โปรโมชั่น</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div id="wrapper" class="clearfix">
+            @RenderBody()
+        </div>
+        <div id="footer" class="footer">
+            <div class="container-fluid">
+                <div class="row footer-copyright hidden-md hidden-xs visible-sm">
+                    <hr style="margin-bottom:0;margin-top:0;border-bottom: solid thin #36353d;border-top:none" />
+                    <div class="container">
+                        <div class="col-sm-12" style="padding-top: 12px; text-align:center">
+                            <span>© Copyright 2016 - 2017</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="scroll-top" src="~/ContentMrk/images/totop.png" style="display:none;cursor :pointer; position : fixed;bottom : 90px;right : 33px;z-index : 99999;" alt="BACK TO TOP" />
+
+
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 882155439;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/882155439/?guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

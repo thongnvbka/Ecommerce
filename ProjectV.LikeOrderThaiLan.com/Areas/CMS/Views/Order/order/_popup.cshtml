@@ -1,0 +1,180 @@
+﻿<input type="hidden" id="hfMoneyMiss" value="0" />
+<input type="hidden" id="hfOrderId" value="0" />
+<input type="hidden" id="hfTypeDeposit" value="0" />
+<!--popup passConfirm-->
+<div id="dialog_deposit_ok" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff; border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_deposit_ok')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p style="margin-bottom: 10px; line-height: 1.6em">
+                    เพื่อความปลอดภัยได้แก่บัญชีของคุณลูกค้า. <br />
+                    <span style="color: red; font-weight: bold">
+                        กรุณากรอกรหัสผ่านอีกรอบเพื่อมัดจำให้ออเดอร์นี้.
+                    </span>
+                </p>
+                <p>
+                    <input type="password" name="Password" id="Password" placeholder="@Resource.Claim_PassLogin" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"/>
+                    <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </p>
+            </div>
+            <div class="del-box-btn">
+                <button id="depossitOption" data-bind="click: orderPopupModel.updateBalanceConfig" class="close-box bg-dialog-green btn-right">ตกลง</button>
+                <button id="del_c" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_deposit_ok')">@Resource.Order_OperationDestroy </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--popup dialog_cancel_order-->
+<div id="dialog_cancel_order" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff; border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_cancel_order')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p id="mess_cancel_order"></p>
+            </div>
+            <div class="del-box-btn">
+                <button id="depossitOption" class="close-box  bg-dialog-green btn-right">ตกลง</button>
+                <button id="del_c" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_cancel_order')">@Resource.Order_OperationDestroy </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--popup dialog_cancel-->
+<div id="dialog_cancel" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_cancel')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p id="mess_cancel"></p>
+            </div>
+            <div class="del-box-btn">
+                <button id="btnCancel" class="close-box  bg-dialog-green btn-right" data-bind="click: orderPopupModel.cancelOrderConfig">ตกลง</button>
+                <button id="del_c" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_cancel')">@Resource.Order_OperationDestroy </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--popup dialog_confirm_deposit-->
+    <div id="dialog_confirm_deposit" class="login zhezhao">
+        <div style="display: inline-block; vertical-align: middle;">
+            <div class="del-box">
+                <div class="del-box-top bg-dialog-red">
+                    @Resource.Home_Notification
+                    <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_confirm_deposit')">
+                        <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                    </button>
+                </div>
+                <div class="del-box-content" style="padding: 15px !important; min-height: 80px;">
+                    <p style="width: 570px !important"> คุณมันใจไหมว่าอยากมัดจำ ให้แก่ออเดอร์นี้ </p>
+                    <input type="radio" name="option" value="1" class="select-deposit" />
+                </div>
+                <div class="del-box-btn" style="float: left;width: 100%;padding-top: 20px;">
+                    <button id="btnDeposit" data-bind="click: orderPopupModel.depositConfig" class="close-box  bg-dialog-green btn-right">ตกลง</button>
+                    <button id="del_c" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_confirm_deposit')">@Resource.Order_OperationDestroy </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--popup dialog_deposit_not_ok-->
+<div id="dialog_deposit_not_ok" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_deposit_not_ok')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p id="mess_deposit">จำนวนเงินคงเหลือในกระเป๋าเงินของลูกค้าไม่พอเพื่อมัดจำให้แก่ออเดอร์นี้
+กรุณาเติมเงินและทำใหม่</p>
+            </div>
+            <div class="del-box-btn">
+                <button id="btnCancel" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_deposit_not_ok')" class="close-box bg-dialog-green btn-right">ตกลง</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--popup dialog_success-->
+<div id="dialog_success" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_success')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p id="mess_success"></p>
+            </div>
+            <div class="del-box-btn">
+                <button id="btnCancel" class="close-box bg-dialog-green btn-right" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_success')">ตกลง</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--popup dialog_success-->
+<div id="dialog_confirm_success" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_confirm_success')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p>คุณมันใจไหมว่าอยากชำระ <b><span class="success-money"></span></b> ให้แก่ออเดอร์นี้?</p>
+            </div>
+            <div class="del-box-btn">
+                <button id="btnConfirmSuccess" data-bind="click: orderPopupModel.depositConfig" class="close-box  bg-dialog-green btn-right">ตกลง</button>
+                <button id="del_c" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_confirm_success')">@Resource.Order_OperationDestroy </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--popup dialog_success-->
+<div id="dialog_success_not_ok" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top bg-dialog-red">
+                @Resource.Home_Notification
+                <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_success_not_ok')">
+                    <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                </button>
+            </div>
+            <div class="del-box-content">
+                <p>จำนวนเงินคงเหลือในกระเป๋าเงินของลูกค้าไม่พอเพื่อมัดจำให้แก่ออเดอร์นี้
+กรุณาเติมเงินและทำใหม่!</p>
+            </div>
+            <div class="del-box-btn">
+                <button id="btnConfirmSuccess" data-bind="click: orderPopupModel.closeDialog.bind($data,'dialog_success_not_ok')" class="close-box  bg-dialog-green btn-right">ตกลง</button>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@section HeadSection {
+	<link href="~/Content/swiper3/ans-swiper.min.css" rel="stylesheet" />
+	<link href="~/Content/swiper3/sample-swiper.min.css" rel="stylesheet" />
+}
+
+@section BodyInits {
+}
+
+@section BodyScripts {
+	<script src="~/Content/swiper3/ans-swiper.min.js"></script>
+}
+
+<style>
+	.swiper-slide {
+		background-position: center;
+		background-size: cover;
+	}
+</style>
+
+<div class="swiper-container" data-effect="fade">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide" style="background-image:url(/Files/01.jpg)">
+			<h1>Header 1</h1>
+			<p>Test description 1</p>
+		</div>
+		<div class="swiper-slide" style="background-image:url(/Files/02.jpg)">
+			<h1>Header 2</h1>
+			<p>Test description 2</p>
+		</div>
+		<div class="swiper-slide" style="background-image:url(/Files/03.jpg)">
+			<h1>Header 3</h1>
+			<p>Test description 3</p>
+		</div>
+		<div class="swiper-slide" style="background-image:url(/Files/04.jpg)">
+			<h1>Header 4</h1>
+			<p>Test description 4</p>
+		</div>
+		<div class="swiper-slide" style="background-image:url(/Files/05.jpg)">
+			<h1>Header 5</h1>
+			<p>Test description 5</p>
+		</div>
+	</div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+	<div class="swiper-pagination"></div>
+</div>
+
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<img class="img-responsive" src="/Files/v01.jpg" />
+		</div>
+		<div class="swiper-slide">
+			<img class="img-responsive" src="/Files/v02.jpg" />
+		</div>
+		<div class="swiper-slide">
+			<img class="img-responsive" src="/Files/v03.jpg" />
+		</div>
+		<div class="swiper-slide">
+			<img class="img-responsive" src="/Files/v04.jpg" />
+		</div>
+	</div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+	<div class="swiper-pagination"></div>
+</div>

@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "StorageRequirements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/css/css-home/cart.css" rel="stylesheet" />
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="dingdan">
+                <ul class="zichan-nav" id="buyOrder">
+                    <li data-id="zijin" class="lete-active"> <font class="">Danh sách yêu cầu nhập/xuất kho   </li>
+                    <li class="create-new"><a href="@Url.Action("CreateStorageRequirements","Warehouse")"><i class="fa fa-plus"></i> Tạo yêu cầu nhập kho</a></li>
+                </ul>
+                <div class="search-top-storage">
+                    <div class="status">
+                        <select>
+                            <option value="0">Tất cả trạng thái</option>
+                            <option value="1">Đang tạo</option>
+                            <option value="2">Đã sẵn sàng</option>
+                            <option value="3">Đã giao hàng</option>
+                            <option value="4">Đang vận chuyển</option>
+                            <option value="5">Đã nhận hàng</option>
+                            <option value="6">Đang kiểm hàng</option>
+                            <option value="7">Chuẩn bị nhập kho</option>
+                            <option value="8">Đang nhập kho</option>
+                            <option value="9">Đã hoàn thành</option>
+                            <option value="10">Kho báo huỷ</option>
+                            <option value="11">Đã nhập một phần</option>
+                        </select>
+                    </div>
+
+                    <div class="input-warehouse">
+                        <select>
+                            <option value="1">Kho nhập</option>
+                            <option value="2">Shop 1</option>
+                            <option value="3">Bạch Đằng - HCM</option>
+                            <option value="4">Hải Châu - Đà Nẵng</option>
+                            <option value="5">Vĩnh Lộc - HCM</option>
+                            <option value="6">Quang Minh - Hà Nội</option>
+                            <option value="7">An Khánh - Hà Nội</option>
+                        </select>
+                    </div>
+
+                    <div class="out-warehouse">
+                        <select>
+                            <option value="1">Kho xuất</option>
+                            <option value="2">Shop 1</option>
+                            <option value="3">Bạch Đằng - HCM</option>
+                            <option value="4">Hải Châu - Đà Nẵng</option>
+                            <option value="5">Vĩnh Lộc - HCM</option>
+                            <option value="6">Quang Minh - Hà Nội</option>
+                            <option value="7">An Khánh - Hà Nội</option>
+                        </select>
+                    </div>
+
+                    <div class="search-input">
+                        <input type="text" class="form-control ng-pristine ng-valid" ng-model="search.condition.key" placeholder="Tìm mã yêu cầu">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="zichan-zijin zichan-box rs">
+                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>  @Resource.Code_Transition  </th>
+                                <th>  Trạng thái  </th>
+                                <th>  Mã vận đơn  </th>
+                                <th>  Ngày duyệt, dự kiến nhập kho  </th>
+                                <th>  Kho xuất, nhập  </th>
+                                <th>  Đã nhập  </th>
+                                <th>  Không nhập  </th>
+                                <th>  Số lượng  </th>
+                                <th>  Hành động  </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="code-order"><a href="javascript:;">BX459734DD59</a> </span>
+                                    <br />
+                                    01/08/2016 13:59
+                                </td>
+                                <td><span> Đã giao hàng</span> </td>
+                                <td> <span class="code-order"><a href="javascript:;">34DD59</a> </span></td>
+                                <td>
+                                    <span class="tooltip approval">
+                                        <i class="fa fa-check"></i>
+                                        <input-utc-time format="'dd/MM/yyyy HH:mm'">
+                                            01/08/2016 14:00
+                                        </input-utc-time>
+                                        <span class="tooltiptext">Ngày duyệt</span>
+                                    </span>
+                                    <br />
+                                    <span class="tooltip approval">
+                                        <i class="fa  fa-clock-o"></i>
+                                        <input-utc-time format="'dd/MM/yyyy HH:mm'">
+                                            05/08/2016 14:00
+                                        </input-utc-time>
+                                        <span class="tooltiptext2 tooltiptext">Ngày dự kiến nhập kho</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="tooltip approval">
+                                        <i class="fa fa-home"></i>
+                                        Shop 1
+                                        <span class="tooltiptext">Kho xuất</span>
+                                    </span>
+                                    <br />
+                                    <span class="tooltip approval">
+                                        <i class="fa  fa-truck"></i>
+                                        Vĩnh Lộc- HCM
+                                        <span class="tooltiptext">Kho nhập </span>
+                                    </span>
+                                </td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>10</td>
+                                <td>
+                                    <a class="chose btn"><i class="fa fa-check"></i><span>Duyệt</span></a>
+                                    <a class="cancel btn"><i class="fa fa-times"></i><span>Hủy</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 

@@ -1,0 +1,88 @@
+﻿@{
+    var increase = (byte)RechargeBillType.Increase;
+    var diminishe = (byte)RechargeBillType.Diminishe;
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<script type="text/html" id="recharge-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.typeRechargeBill[Type].Name, css: statusApp.typeRechargeBill[Type].Class"></span>
+        </td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewRechargeBillDetail" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center">
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+        </td>
+        <td class="text-center">
+            <!-- ko if: OrderType == @order-->
+            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, OrderId)" href="javascript:;">
+                <strong>
+                    <span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == @deposit-->
+            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, OrderId)" href="javascript:;">
+                <strong>
+                    <span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+        </td>
+        <td>
+            <span class="text-bold" data-bind="text: CustomerName"></span><br />
+            <span data-bind="text: '(' + CustomerEmail + ')'"></span>
+        </td>
+        <td data-bind="text: TreasureName"></td>
+        <td align="right" class="text-green">
+            <!-- ko if: Increase > 0 -->
+            <i class="fa fa-caret-up"></i> <span data-bind="text: formatNumberic(Increase, 'N2')"></span>
+            <!-- /ko -->
+        </td>
+        <td align="right" class="text-red">
+            <!-- ko if: Diminishe > 0 -->
+            <i class="fa fa-caret-down"></i> <span data-bind="text: formatNumberic(Diminishe, 'N2')"></span>
+            <!-- /ko -->
+        </td>
+
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusRechargeBill[Status].Name, css: statusApp.statusRechargeBill[Status].Class"></span>
+        </td>
+        <td class="text-center">
+
+            <div class="btn-group">
+
+                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                    Function <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    @if (CheckPermision(EnumAction.Approvel, EnumPage.RechargeBill))
+                    {
+                        <!-- ko if: Status != 1 -->
+                        <li><a data-bind="click: $parent.ApprovalRechargeBill" href="javascript:;"><i class="fa fa-download text-info"></i>Approve transaction </a></li>
+                        <!-- /ko -->
+                    }
+                    @if (CheckPermision(EnumAction.Approvel, EnumPage.RechargeBill))
+                    {
+                        <!-- ko if: Type == @increase -->
+                        <li><a data-bind="click: $parent.viewRechargeEditPlus" href="javascript:;"><i class="fa fa-edit text-primary"></i>Edit</a></li>
+                        <!-- /ko -->
+                        <!-- ko if: Type == @diminishe -->
+                        <li><a data-bind="click: $parent.viewRechargeEditMinus" href="javascript:;"><i class="fa fa-edit text-primary"></i>Edit</a></li>
+                        <!-- /ko -->
+                    }
+                    @if (CheckPermision(EnumAction.Approvel, EnumPage.RechargeBill))
+                    {
+                        <!-- ko if: Status != 1 -->
+                        <li><a data-bind="click: $parent.DeleteRechargeBill" href="javascript:;"><i class="fa fa-times-circle text-danger"></i> Delete  </a></li>
+                        <!-- /ko -->
+                    }
+                </ul>
+            </div>
+        </td>
+    </tr>
+</script>

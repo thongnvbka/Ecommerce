@@ -1,0 +1,99 @@
+﻿
+.ios-fancybox {
+    text-align: center !important;
+}
+
+.blur-function {
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+
+@media(max-width : 767px) {
+    .fancybox-skin {
+        padding: 15px 0 !important;
+    }
+}
+
+#livechat-compact-container, #livechat-eye-catcher {
+    z-index: 3000 !important;
+}
+
+#livechat-full {
+    right: 0px !important;
+}
+
+/*#livechat-full, #livechat-compact-container, #livechat-eye-catcher {
+        right: 20px !important;
+    }
+    #livechat-compact-container {
+        width: 270px !important;
+        height: 98px !important;
+    }
+    #livechat-eye-catcher {
+        bottom: 50px !important;
+        display : none !important;
+    }*/
+#livechat-eye-catcher a:first-child {
+    right: 8px !important;
+}
+
+#livechat-eye-catcher.fancybox-margin {
+    margin-right: 17px !important;
+    padding-right: 0 !important;
+}
+/*@media only screen and (device-width:768px){
+       .fancybox-opened{
+           top : unset !important;
+       }
+    }*/
+@media only screen and (max-width : 767px) {
+    .fancybox-inner {
+        overflow: hidden !important;
+    }
+
+    .registration-frame {
+        width: 90% !important;
+        display: inline-block;
+    }
+}
+
+
+
+
+#livechat-compact-container {
+    width: 270px !important;
+    height: 98px !important;
+}
+
+#livechat-full, #livechat-compact-container, #livechat-eye-catcher {
+    right: 20px !important;
+}
+
+
+.advertise-zone {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.advertise-content {
+    position: relative;
+}
+
+    .advertise-content i {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        cursor: pointer;
+        color: #d03317;
+        font-size: 20px;
+    }
+
+        .advertise-content i.active {
+            transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+        }

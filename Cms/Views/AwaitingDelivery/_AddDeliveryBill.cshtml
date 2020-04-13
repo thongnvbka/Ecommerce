@@ -1,0 +1,267 @@
+﻿<div id="addDeliveryBillModal" class="modal fade modal-dialog modal-p80" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save" id="addDeliveryBillForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <!-- ko if: id() > 0 -->
+                        <span>Goods delivery note "#<b data-bind="text: 'I'+code()" style="color: red"></b>"</span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: id() > 0 -->
+                        <span>CREATE GOODS DELIVERY NOTE</span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <!-- ko if: id() > 0-->
+                        <small class="pull-right"> Slip creation date :<span data-bind="text: moment(created()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <!-- ko if: customer() !== null -->
+                    <table data-bind="with: customer" class="table table-bordered">
+                        <thead>
+                        <tr class="bg-info">
+                            <th colspan="2">Customer information</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-right">Customer:</td>
+                            <td><b data-bind="text: fullName"></b></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">ID:</td>
+                            <td><b data-bind="text: code"></b></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">Email:</td>
+                            <td><b data-bind="text: email"></b></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">Phone:</td>
+                            <td><b data-bind="text: phone"></b></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">Address :</td>
+                            <td><b data-bind="text: address"></b></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">Level:</td>
+                            <td><b data-bind="text: levelName"></b></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- /ko -->
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="note" class="col-sm-2 control-label">Note:</label>
+                            <div class="col-sm-10">
+                                <textarea data-bind="value: note" id="note" class="form-control" rows="6" placeholder="Comment note"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="bg-info">
+                                <th colspan="2">Goods dispatch note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-right w200">Gross weight:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(totalWeight(), 'N2')"></b> (kg)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Actual weight:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(priceWeight())"></b> (Baht)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Wood fee:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(pricePacking())"></b> (Baht)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Finish order:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(totalOrder())"></b> (Baht)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Charges incurred:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(priceOther())"></b> (Baht)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Warehouse storage fee:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(priceStored())"></b> (Baht)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Shipping fee <span class="color-red">*</span>:</td>
+                                <td class="text-right">
+                                    <input data-bind="value: priceShip, valueUpdate: 'afterkeydown'" id="shipPrice" class="form-control decimal text-right" placeholder="Shipping fee from VN (Baht)"/>
+                                </td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <td class="text-right">Total:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(total())"></b> (Baht)</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <td class="text-right">Deposited amount:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(depositMoney())"></b> (Baht)</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <td class="text-right">Outstanding amount:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(debit())"></b> (Baht)</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <td class="text-right">previous debt:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(debitPre())"></b> (Baht)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Money must keep:</td>
+                                <td class="text-right"><b data-bind="text: formatNumberic(receivable())"></b> (Baht)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">@*Danh sách khách/đơn*@List of customer/bill</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    @*<!-- ko if: id() <= 0 || window.hasUpdate -->
+                                        <div class="row mb15">
+                                            <div class="col-sm-6 col-lg-4">
+                                                <div class="input-group">
+                                                    <input data-bind="attr: {placeholder: suggetionType() == 0 ? 'Nhập mã đơn...' : suggetionType() == 1 ? 'Nhập mã kiện...' : suggetionType() == 2  ? 'Nhập mã vận đơn...' :  suggetionType() == 3 ? 'Nhập Account...':'Tìm kiếm khác'}" id="suggetion" type="text" class="form-control">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="button"><i class="fa fa-plus"></i> <span>Thêm Orders</span></button>
+                                                    </span>
+                                                </div><!-- /input-group -->
+                                            </div>
+                                        </div>
+                                        <!-- /ko -->*@
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center">Package box ID</th>
+                                                        <th class="text-center">Transport code</th>
+                                                        <th class="text-center">Invoice </th>
+                                                        <th class="text-center">Package sack ID</th>
+                                                        <th class="text-center">Weight</th>
+                                                        <th class="text-center">Weight converted (kg)</th>
+                                                        <th class="text-center">Total (kg)</th>
+                                                        <th class="text-center">Finish (Baht)</th>
+                                                        <th class="text-center">Prepaid amount (Baht)</th>
+                                                        <th class="text-center">Shipping rate (by weight) (Baht)/<br />% Discount</th>
+                                                        <th class="text-center">Wooden packaging fee (Baht)</th>
+                                                        <th class="text-center">Incurred fee (Baht)</th>
+                                                        <th class="text-center">Warehouse storage fee (Baht)</th>
+                                                        <th class="text-center">Layout</th>
+                                                        <th class="text-center w50"></th>
+                                                    </tr>
+                                                </thead>
+                                                <!-- ko if: packages().length == 0 || isLoading() -->
+                                                <tbody>
+                                                <tr>
+                                                    <td colspan="16" class="text-center">
+                                                        <!-- ko if: isLoading() -->
+                                                        <i class="fa fa-spinner fa-pulse"></i> Loading data...
+                                                        <!-- /ko -->
+                                                        <!-- ko if: packages().length == 0 -->
+                                             No Package
+                                                        <!-- /ko -->
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: packages().length == 0 || isLoading() -->
+                                                <tbody data-bind="template: {name: 'addDeliveryBillPackageTemplate', foreach: packages}"></tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th colspan="5" class="text-right">Total: </th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'weight'), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'weightConverted'), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'weightActual'), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(_.filter(packages(), function(it){ return it.isFirst; }), 'priceOrder'))" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(_.filter(packages(), function(it){ return it.isFirst; }), 'priceDepositMoney'))" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'priceWeight'))" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'totalPriceWapperExchange'))" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'otherService'))" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(_.sumBy(packages(), 'priceStored'))" class="text-right"></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </tfoot>
+                                                <!-- /ko -->
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<a class="btn btn-primary pull-left"><i class="fa fa-print"></i>Print </a>*@
+            <!-- ko if: id() <= 0 || window.hasUpdate -->
+            <button data-bind="disable: isSubmiting" class="btn btn-success" type="submit"><i data-bind="attr: {class: isSubmiting() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i> <span data-bind="text: id() > 0 ? 'Save' : 'Create goods delivery note'"></span></button>
+            <!-- /ko -->
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var hasUpdate = @Html.Raw(CheckPermision(EnumPage.ImportWarehouse, EnumAction.Update) ? "true": "false");
+    </script>
+    <script id="addDeliveryBillPackageTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: $index() + 1" class="text-center"></td>
+            <td data-bind="text: 'P'+code" class="text-center"></td>
+            <td data-bind="text: transportCode" class="text-center"></td>
+            <!-- ko if: isFirst -->
+            <td data-bind="text: ReturnCode(orderCode), attr: {rowspan: totalPackageNo}" class="text-center"></td>
+            <!-- /ko -->
+            <td data-bind="text: walletCode" class="text-center"></td>
+            <td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(weightConverted, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(weightActual, 'N2')" class="text-right"></td>
+            <!-- ko if: isFirst -->
+            <td data-bind="text: formatNumberic(priceOrder), attr: {rowspan: totalPackageNo}" class="text-right"></td>
+            <td data-bind="text: formatNumberic(priceDepositMoney), attr: {rowspan: totalPackageNo}" class="text-right"></td>
+            <!-- /ko -->
+            <td class="text-right">
+                <span data-bind="text: formatNumberic(priceWeight)"></span>
+                <br />
+                -<span data-bind="text: formatNumberic(vipShip, 'N2')"></span>%
+            </td>
+            <td data-bind="text: formatNumberic(totalPriceWapperExchange)" class="text-right"></td>
+            <td data-bind="text: formatNumberic(otherService)" class="text-right"></td>
+            <td data-bind="text: formatNumberic(priceStored)" class="text-right"></td>
+            <td data-bind="text: currentLayoutName" class="text-center"></td>
+            <td class="text-center">
+                <a data-bind="click: $parent.remove" href="javascript:;" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+    </script>
+}

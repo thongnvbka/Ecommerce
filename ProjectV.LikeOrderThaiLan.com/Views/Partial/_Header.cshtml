@@ -1,0 +1,64 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<section class="good-top">
+    <div class="good-top-content">
+        <div class="good-top-logo">
+            <a href="/@culture"> 
+                <img src="~/Content/images/icon-home/logo-_likeorder_262x79.png" width="200" alt="" /> 
+            </a>
+            <span>
+                @Html.Raw(Resource.Home_HeaderSologan)
+            </span>
+        </div>
+        <div class="good-top-search">
+            <form id="search_post">
+                <label class="search-lable-input">
+                    <img src="~/Content/images/icon-home/search_icon.png" alt="" />
+                    <input placeholder="@Resource.Home_SearchLink" type="text" name="textfield" id="inputLinkOrder" value="" autocomplete="off">
+                </label>
+                <a href="javascript:void(0)" type="submit" id="btnSend">@Resource.Header_OrderNow</a>
+
+                <label class="search-lable-radio" id="createOrder">
+                    <span></span><b>
+                       @Resource.Header_CreateOrder
+                    </b>
+                </label>
+                <label id="createDeposit" class="search-lable-radio">
+                    <span></span><b>
+                        @Resource.Home_CreateDeposit
+                    </b>
+                </label>
+                <p class="search-question">
+                    <a href=""><span>?</span>@Resource.Home_SologanShopping !</a>
+                </p>
+            </form>
+        </div>
+        <div class="good-top-txt">
+            <div class="btn adds-on rs">
+                <img src="~/Content/images/icon-home/google-play-store-4-5-10.png" alt="Công cụ đặt hàng" />
+                <a href="https://chrome.google.com/webstore/detail/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%ADlikeord/apjnchoiielmahpmdoaijdoodohjlfmd" target="_blank">
+                    <p>
+                       @Resource.Header_SetupExtenstion
+                    </p>
+                </a>
+            </div>
+          
+        </div>
+    </div>
+
+    @*<div class="nav-main rs">
+        <div class="container rs">
+            <ul class="list rs">
+                <li><a href="/">@Resource.Home_Home </a></li>
+                <li><a href="/@culture/Home/Guide">@Resource.Home_Introduce</a></li>
+                <li><a href="/@culture/Home/FAQ">@Resource.Title_Guide</a></li>
+                <li><a href="/@culture/Home/TermsOfService">@Resource.Home_TermsOfService </a></li>
+                <li><a href="/@culture/Home/FAQ">@Resource.PriceList_PriceList </a></li>
+                <li><a href="/">>@Resource.Home_Contact </a></li>
+                <li><a href="/">@Reso</a></li> 
+            </ul>
+        </div>
+    </div>*@
+</section>

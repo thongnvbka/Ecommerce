@@ -1,0 +1,273 @@
+﻿@{
+    var statusFinish = (byte)SourceStatus.Success;
+    var statusWat = (byte)SourceStatus.WaitingChoice;
+}
+
+<div id="@(Model == null ? "stockQuotesView" : Model)" class="modal fade modal-dialog modal-p80" tabindex="-1" data-backdrop="static" role="dialog">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <i class="fa fa-globe"></i> COURSE SEARCH CODES: <strong data-bind="text: 'SOU' + source().Code" style="color: red"></strong>
+                    <span data-bind="text: statusApp.source[source().Status == undefined ? 0 : source().Status].Name, css: statusApp.source[source().Status == undefined ? 0 : source().Status].Class"></span>
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <small data-bind="text: 'Start Date :' + moment(source().CreateDate).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                    <!-- ko if: source().Status !== @statusFinish-->
+                    <small class="pull-right">Date of completion: --/--/----</small>
+                    <!-- /ko -->
+                    <!-- ko if: source().Status == @statusFinish-->
+                    <small data-bind="text: 'Date of completion: ' + moment(source().UpdateDate).format('DD/MM/YYYY')" class="pull-right"></small>
+                    <!-- /ko -->
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Guest notes</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="callout callout-info" style="height: 125px;">
+                            @*<p data-bind="text: order().Note()"></p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Staff notes</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="callout callout-info">
+                            <p data-bind="text: source().UserNote"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-xs-4">
+                <strong class="strong-title"> Customer Information </strong>
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Full name :</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: source().CustomerName" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Phone:</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: source().CustomerPhone" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email:</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: source().CustomerEmail" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Address :</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: source().CustomerAddress" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div data-bind="with: viewBoxChat" id="divShowBoxChat" class="col-md-4 view-chat-box">
+                <div data-bind="template: { name: templateChatId }"></div>
+            </div>
+
+        </div>
+
+
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Details of the lookup voucher:</b>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                <th class="text-center"><i class="fa fa-cube"></i> Product name</th>
+                                <th class="text-center"><i class="fa fa-cube"></i> Bank</th>
+                                <th class="text-center"><i class="fa fa-exclamation-circle"></i>Property</th>
+                                <th class="text-center"><i class="fa fa-sticky-note-o"></i> Product Description</th>
+                                <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i> Order customer</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: listDetail">
+                            <tr>
+                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                <td class="text-center">
+                                    <img data-bind="attr: { src: ImagePath1}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                    <img data-bind="attr: { src: ImagePath2}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                    <img data-bind="attr: { src: ImagePath3}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                    <img data-bind="attr: { src: ImagePath4}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                </td>
+                                <td>
+                                    <a data-bind="text: Name, attr: { href: Link}" href="javascript:;" target="_blank"></a>
+                                </td>
+                                <td data-bind="text: CategoryName"></td>
+                                <td data-bind="text: Properties"></td>
+                                <td data-bind="text: Note"></td>
+                                <td data-bind="text: Quantity" class="text-right"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot data-bind="if: listDetail().length == 0">
+                            <tr>
+                                <td colspan="9">The source voucher has no product details</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Suppliers list:</b>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa fa-file-text-o"></i> Supplie name</th>
+                                <th class="text-center"><i class="fa fa-link"></i> Link</th>
+                                <th class="text-center"><i class="fa fa-exclamation-circle"></i>Describe</th>
+                                <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i>Quantity :</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-money"></i> Product price (CNY)</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-superscript"></i> Total (CNY)</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: listSupplier">
+                            <tr>
+                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                <td data-bind="text: Name" class="text-center"></td>
+                                <td>
+                                    <a data-bind="text: Link, attr: { href: Link}" href="javascript:;" target="_blank"></a>
+                                </td>
+                                <td data-bind="text: Description"></td>
+                                <td data-bind="text: formatNumberic(Quantity, 'N2')" class="text-right"></td>
+                                <td data-bind="text: formatNumberic(Price, 'N2')" class="text-right"></td>
+                                <td data-bind="text: formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot data-bind="if: listSupplier().length == 0">
+                            <tr>
+                                <td colspan="8">There are no list providers</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    <div class="row importwarehouse">
+        <div class="col-xs-12 table-responsive">
+            <div>
+                <b class="strong-title">Processing staff:</b>
+                <div class="form-horizontal">
+                    <div class="col-md-12">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Analyze the supplier</label>
+                                <div class="col-sm-10">
+                                    <p data-bind="text: source().AnalyticSupplier" class="control-label" style="text-align: left!important"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="timeline timeline-inverse">
+                    <li class="time-label">
+                        <span>
+                            <strong class="strong-title">Order history:</strong>
+                            <a data-bind="click: checkShowHistory" href="javascript:;" class="pull-right btn btn-info btn-xs ml15">
+                                <!-- ko ifnot: isShowHistory -->
+                               View <i class="fa fa-chevron-down"></i>
+                                <!-- /ko -->
+                                <!-- ko if: isShowHistory -->
+                               Close <i class="fa fa-chevron-up"></i>
+                                <!-- /ko -->
+                            </a>
+                        </span>
+                    </li>
+                    <!-- ko if: isShowHistory -->
+                    <!-- ko foreach: listHistory -->
+                    <li>
+                        <i data-bind="css: statusApp.order[Status].Ifa"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-calendar-check-o"></i> <span data-bind="text: moment(CreateDate).format('L LTS')"></span></span>
+                            <!-- ko if: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: CustomerName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                            <!-- ko ifnot: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: UserFullName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="modal-footer">
+    <div class="pull-left">
+        Order staff:
+        <!-- ko if: userOrder() !== null -->
+        <b><span data-bind="text: userOrder().FullName + '-' + userOrder().TitleName"></span></b><i>(<span data-bind="text: userOrder().Email"></span>)</i>
+        <!-- /ko-->
+        <!-- ko ifnot: userOrder() !== null -->
+        --
+        <!-- /ko-->
+    </div>
+    <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
+</div>
+</div>

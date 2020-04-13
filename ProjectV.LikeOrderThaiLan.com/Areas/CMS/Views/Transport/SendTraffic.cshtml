@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "SendTraffic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Content/css/css-home/upproduct.css" rel="stylesheet" />
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    <div class="user-r">
+        <div class="user-r-main clearFix">
+            <div class="feiyonggusuan">
+                <ul class="feiyonggusuan-nav">
+                    <li class="lete-active"> Gửi vận chuyển với dự kiến </li>
+                </ul>
+                <div class="feiyonggusuan-guonei feiyonggusuan-box">
+                    <div class="feiyonggusuan-guonei-msg">
+                        <p style="line-height:16px;"><font><font class="">Chi phí vận chuyển ước tính sản xuất chỉ như là một giá trị tham khảo và thay đổi tùy theo tình hình thực tế sau khi sự xuất hiện của sự chấp nhận chiếm ưu thế, phần lớn các trường hợp, sự khác biệt là không lớn. </p>
+                    </div>
+                    <div class="feiyonggusuan-guonei-add">
+                        <div class="feiyonggusuan-guonei-add-box clearFix">
+                            <div class="feiyonggusuan-guonei-add-box-l">
+                                <h1> + Ước tính cước vận chuyển Vận Chuyển </h1>
+                                <div class="feiyonggusuan-guonei-add-box-l-box">
+                                    <ul>
+                                        <li><span> Loại hình dịch vụ: </span><input type="radio" checked="checked" name="zhuanyundaigou" id="daigou" value="0"><label> mua sắm </label><input type="radio" name="zhuanyundaigou" id="zhuanyun" value="1"><label> Giao thông vận tải </label></li>
+                                        <li><span> Tổng số: </span><input type="text" name="" id="tatol" value=""> nhân dân tệ </li>
+                                        <li>
+                                            <span> trọng lượng: </span><input type="text" name="" id="weight" value=""> G  <a id="chankao">
+                                                 mục tài liệu tham khảo cân chung <label>
+
+                                                    <img src="~/Content/images/icon-service/weight_msg.png" />
+                                                    <p> Lời khuyên: Các thông tin trên chỉ mang tính tham khảo, xin vui lòng tham khảo các sản phẩm thực tế, "đã đến Lete" cân sau khi áp dụng. </p>
+                                                </label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="sel-address">
+                                                <div id="guojia" class="yunfei-search-form">
+                                                    <label>
+                                                        <input data-text="" type="text" id="address" value="" placeholder="请选择收货地区" readonly="readonly">
+                                                        <span> địa chỉ giao hàng </span>
+                                                    </label>
+                                                    <div class="yunfei-search-form-main">
+                                                        <!--<span class="yunfei-search-form-main-top1 lete-active" id="yunfei_tap1">国际、港澳台</span>-->
+                                                        <!--<span class="yunfei-search-form-main-top1" id="yunfei_tap2">国内</span>-->
+                                                        <div class="yunfei-search-form-main-content1" id="yunfei-content1">
+                                                            <span id="yunfei_tap11" class="yunfei-search-form-main-top11 lete-active"> khu vực nổi tiếng  </span>
+                                                            <span id="yunfei_tap12" class="yunfei-search-form-main-top11"> abcdef  </span>
+                                                            <span id="yunfei_tap13" class="yunfei-search-form-main-top11"> ghijklm  </span>
+                                                            <span id="yunfei_tap14" class="yunfei-search-form-main-top11"> nopqrs  </span>
+                                                            <span id="yunfei_tap15" class="yunfei-search-form-main-top11"> tuvwxyz </span>
+                                                            <div class="yunfei-search-form-main-content11" id="yunfei-content11">
+                                                                <a data-text="澳大利亚"> Úc Úc  </a>
+                                                                <a data-text="加拿大"> Canada Canada  </a>
+                                                                <a data-text="英国"> UK Vương quốc Anh  </a>
+                                  
+                                                                <a data-text="泰国"> Thái Lan Thái Lan </a>
+                                                            </div>
+                                                            <div class="yunfei-search-form-main-content11" id="yunfei-content12">
+                                                                <a data-text="阿富汗"> Afghanistan  </a>
+                                                                <a data-text="阿尔巴尼亚"> Albania Albania  </a>
+                                                                <a data-text="阿尔及利亚"> Algeria  </a>
+                                                                <a data-text="安道尔"> Andorra Andorra  </a>
+                                                                <a data-text="安哥拉"> Angola  </a>
+                                                  
+                                                                <a data-text="塞卜泰"> Ceuta Ceuta  </a>
+                                                                <a data-text="乍得"> Chad Chad  </a>
+                                                                <a data-text="智利"> Chilê Chilê  </a>
+                                                                <a data-text="哥伦比亚"> Colombia  </a>
+                                                                <a data-text="科摩罗"> Comoros Comoros  </a>
+                                                                <a data-text="刚果"> Congo Congo  </a>
+                                                        
+                                                            </div>
+                                                            <div class="yunfei-search-form-main-content11" id="yunfei-content13">
+                                                                <a data-text="加蓬"> Gabon Gabon  </a>
+                                                        
+                                                                <a data-text="缅甸"> Myanmar Myanmar </a>
+                                                            </div>
+                                                            <div class="yunfei-search-form-main-content11" id="yunfei-content14">
+                                                                <a data-text="纳米比亚"> Namibia Namibia  </a>
+                                                                <a data-text="瑙鲁"> Nauru Nauru  </a>
+                                                                <a data-text="尼泊尔"> Nepal Nepal  </a>
+                                                                <a data-text="荷兰"> Hà Lan Hà Lan  </a>
+                                                                <a data-text="新喀里多尼亚"> New Caledonia New Caledonia  </a>
+                                                                <a data-text="新西兰"> New Zealand New Zealand  </a>
+                                                                <a data-text="尼加拉瓜"> Nicaragua Nicaragua  </a>
+                                               
+                                                    
+                                                                <a data-text="瑞典"> Thụy Điển Thụy Điển  </a>
+                                                                <a data-text="瑞士"> Thụy Sĩ Thụy Sĩ  </a>
+                                                                <a data-text="叙利亚"> Syria Syria </a>
+                                                            </div>
+                                                            <div class="yunfei-search-form-main-content11" id="yunfei-content15">
+                                                                <a data-text="澳洲"> Úc  </a>
+                                                   
+                                                            </div>
+                                                        </div>
+                                                      
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><span></span><button id="begin"> tính </button><label id="tip_msg"></label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feiyonggusuan-guonei-add-box-r">
+                                <h1> + Các câu hỏi thường gặp (FAQ) </h1>
+                                <div class="feiyonggusuan-guonei-add-box-r-box">
+                                    <ul>
+                                        <li><a href="article.php?id=17"> Focus Parcel gì là những lợi ích? </a></li>
+                                        <li><a href="article.php?id=15"> Các phương thức vận tải trong các phương pháp tính trọng lượng thể tích </a></li>
+                                        <li><a href="article.php?id=16"> Quốc tế quá tải khi nó sẽ được trả lại? </a></li>
+                                        <li><a href="article.php?id=23"> Bang tham khảo ngưỡng thuế? </a></li>
+                                        <li><a href="article.php?id=14"> Hàng thanh toán? </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feiyonggusuan-list">
+                    <table id="ship_list" border="" cellspacing="" cellpadding="">
+                        <tbody>
+                            <tr>
+                                <th> Phương thức giao hàng </th>
+                                <th> Tính năng Giao thông vận tải </th>
+                                <th> ngày dự kiến ​​giao hàng </th>
+                                <th> Tổng số (¥) </th>
+                                <th> Lô hàng (¥) </th>
+                                <th> Lệ phí hải quan (¥) </th>
+                                <th> Phí dịch vụ (¥) </th>
+                                <th> Tổng giá (¥) </th>
+                            </tr>
+                            <tr>
+                                <td colspan="8" style="color: #dfdede;font-size: 26px;padding: 40px 0;"> không có dữ liệu </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="feiyonggusuan-msg">
+                    <p><span> * </span>  Ước tính chỉ để tham khảo một sự khác biệt không đáng kể, nhưng xin được tính phí với việc vận chuyển thực tế của hàng hóa tính bằng giá trị hơn. </p>
+                    <p><span> * </span>  Kênh Phần giao thông tồn tại hạn chế về vận chuyển chất lỏng, bột hoặc hàng hóa cồng kềnh, xin vui lòng liên hệ với dịch vụ khách hàng tư vấn xác minh. </p>
+                    <p><span> * </span>  Khi các gói đến kho Lete, bạn có thể sắp xếp để gửi vận chuyển. </p>
+                    <p><span> * </span>  Lete sẽ quấn tránh thuế hợp lý, nếu gói của bạn được đánh thuế ở mức thuế riêng của bạn, Lete dịch vụ khách hàng sẽ giúp toàn bộ giải phóng mặt bằng. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section scripts{
+    <script src="~/Content/js/create-delivery.js"></script>
+}

@@ -1,0 +1,240 @@
+﻿@if (CheckPermision(EnumPage.FundBill, EnumAction.View))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-money"></i> Fund management
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: active() == 'moneyfund' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('moneyfund')}" href="/accountant#moneyfund">
+                        <i class="fa fa-usd text-yellow"></i> Deposit/Disburse fund
+                        <span class="label label-danger pull-right" data-bind="text: totalFundBill"></span>
+                    </a>
+                </li>
+                @if (CheckPermision(EnumAction.View, EnumPage.OrderAccountant))
+                {
+                    <li data-bind="css: active() == 'accountantOrder' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('accountantOrder')}" href="/accountant#accountantOrder">
+                            <i class="fa fa-dollar"></i> @*@Resource.ThanhToanTienDatHang*@ Pay for orders
+                            <span class="label label-danger pull-right" data-bind="text: totalAccountantOrder"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+<!-- /.box -->
+@if (CheckPermision(EnumAction.View, EnumPage.RechargeBill, EnumPage.WithDrawal))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-money"></i> Customer e-wallet management
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.RechargeBill))
+                {
+                    <li data-bind="css: active() == 'recharge' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('recharge')}" href="/accountant#recharge">
+                            <i class="fa fa-usd text-yellow"></i> Add/deduct customer e-wallet 
+                            <span class="label label-danger pull-right" data-bind="text: totalRechargeBill"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.WithDrawal))
+                {
+                    <li data-bind="css: active() == 'withdrawal' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('withdrawal')}" href="/accountant#withdrawal">
+                            <i class="fa fa-usd text-yellow"></i>Process requests to withdraw e-wallet 
+                            <span class="label label-danger pull-right" data-bind="text: totalRequestMoney"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+<!-- /.box -->
+@if (CheckPermision(EnumAction.View, EnumPage.Debit))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-truck"></i>Receivable/Payable management 
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                
+                @if (CheckPermision(EnumAction.View, EnumPage.Debit))
+                {
+                    <li data-bind="css: active() == 'debit' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('debit')}" href="/accountant#debit">
+                            <i class="fa fa-circle-o text-yellow"></i> Receivable/Payable
+                            <span class="label label-danger pull-right" data-bind="text: totalDebit"></span>
+                        </a>
+                    </li>
+                    
+                }
+                @*<li data-bind="css: active() == 'debitOrder' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('debitOrder')}" href="javascript:;">
+                        <i class="fa fa-circle-o text-yellow"></i> Công nợ của Orders
+                        <span class="label label-danger pull-right" data-bind="text: totalDebitOrder"></span>
+                    </a>
+                </li>*@
+
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+@if (CheckPermision(EnumAction.View, EnumPage.AccountantSupportTicket, EnumPage.ExecuteClaimForRefund, EnumPage.AccountantFindCustomer))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-support"></i> Support
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.AccountantSupportTicket))
+                {
+                    <li data-bind="css: active() == 'ticket-support' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('ticket-support')}" href="/accountant#ticket-support">
+                            <i class="fa fa-circle-o text-yellow"></i>Complaint receipt support
+                            <span class="label label-danger pull-right" data-bind="text: totalComplain"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.ExecuteClaimForRefund))
+                {
+                    <li data-bind="css: active() == 'claimforrefund' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('claimforrefund')}" href="/accountant#claimforrefund">
+                            <i class="fa fa-circle-o text-yellow"></i>Process refund request
+                            <span class="label label-danger pull-right" data-bind="text: totalClaimForRefund"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.AccountantFindCustomer))
+                {
+                    <li data-bind="css: active() == 'customerfind' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customerfind')}" href="/accountant#customerfind">
+                            <i class="fa fa-user"></i>Browse customer information
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+@if (CheckPermision(EnumAction.View, EnumPage.AccountantReportFundBill, EnumPage.AccountantReportAll, EnumPage.AccountantReportMust))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-area-chart"></i> Financial report
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.AccountantReportFundBill))
+                {
+                    <li data-bind="css: active() == 'fund-report' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('fund-report')}" href="/accountant#fund-report">
+                            <i class="fa fa-inbox"></i>Fund accounting
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                <li data-bind="css: active() == 'fund-reportSituation' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('fund-reportSituation')}" href="/accountant#fund-reportSituation">
+                        <i class="fa fa-inbox"></i> Fund residue
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+                @if (CheckPermision(EnumAction.View, EnumPage.AccountantReportAll))
+                {
+                    <li data-bind="css: active() == 'recharge-report' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('recharge-report')}" href="/accountant#recharge-report">
+                            <i class="fa fa-inbox"></i> Statement of cash inflow/outflow 
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.AccountantReportMust))
+                {
+                    <li data-bind="css: active() == 'withdraw-report' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('withdraw-report')}" href="/accountant#withdraw-report">
+                            <i class="fa fa-clock-o"></i> @*@Resource.ThongKeCongNo*@ Receivables/Payables
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                <li data-bind="css: active() == 'reportAccountSituation' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportAccountSituation')}" href="/accountant#reportAccountSituation">
+                        <i class="fa fa-clock-o"></i> @*Thống kê thu/chi quỹ theo ngày*@Statement of daily cash inflow/outflow 
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportAccount' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportAccount')}" href="/accountant#reportAccount">
+                        <i class="fa fa-clock-o"></i> @*Thống kê nạp/trừ ví theo ngày*@Daily e-wallet deposit/withdrawal
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportOrderOffice' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportOrderOffice')}" href="/accountant#reportOrderOffice">
+                        <i class="fa fa-clock-o"></i>@*Doanh thu tính lương P.Đặt hàng*@Ordering department payroll calculation
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportBusinessOffice' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportBusinessOffice')}" href="/accountant#reportBusinessOffice">
+                        <i class="fa fa-clock-o"></i>@*Doanh thu tính lương P.Kinh doanh*@Sales department payroll calculation
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportGomContOffice' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportGomContOffice')}" href="/accountant#reportGomContOffice">
+                        <i class="fa fa-clock-o"></i>@*Doanh thu tính lương P.Gom cont*@Gom cont department payroll calculation
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}

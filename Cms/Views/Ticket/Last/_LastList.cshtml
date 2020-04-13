@@ -1,0 +1,96 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var incorrect = (byte)ComplainTypeService.CardError;
+    var success = (byte)ComplainStatus.Success;
+    var successTicket = (byte)ComplainStatus.Success;
+}
+<script type="text/html" id="last-list">
+    <tr data-bind="css: CssRead">
+        <td data-bind="text: (page-1)*pagesize + $index()+1 " class="text-center" > </td>
+        <td class="text-center" >
+            @if (CheckPermision(EnumAction.Approvel, EnumPage.TicketAssign, EnumPage.TicketLast))
+            {
+                  <!-- ko if: Status < @success-->
+                <a class="btn btn-primary btn-xs" data-bind="click: function() {$parent.assignedTicketLateModal($data); CheckRead();}" href="javscript:;">
+                    <i class="fa fa-user-plus" data-toggle="tooltip" data-placement="right" title="" data-original-title="Assign to staff"></i>
+                </a>
+                <!-- /ko -->
+            }
+            <!-- ko if: CountClaimForRefund !== 1-->
+            <a class="btn btn-info btn-xs" data-bind="click: function() {$parent.checkClaimForRefund($data); CheckRead();}" href="javscript:;">
+                <i class="fa fa-plus-square" data-toggle="tooltip" data-placement="right" title="" data-original-title="Refund processing"></i>
+            </a>
+            <!-- /ko -->
+        </td>
+        
+        <td class="text-center">
+            <ul class="tbl-list">
+                <li>
+                    <!-- ko if: OrderType == @order-->
+                    <a data-bind="click: function() {orderDetailViewModel.viewOrderDetail(OrderId); CheckRead();}, attr: { href: '/Ticket#' + ReturnCode(OrderCode) }" href="javascript:;">
+                        <span data-bind="text: ReturnCode(OrderCode)"></span>
+                    </a>
+                    <!-- /ko -->
+                    <!-- ko if: OrderType == @deposit-->
+                    <a data-bind="click: function() {depositDetailViewModel.showModalDialog(OrderId); CheckRead(); }, attr: { href: '/Ticket#' + ReturnCode(OrderCode) }" href="javascript:;">
+
+                        <span data-bind="text: ReturnCode(OrderCode)"></span>
+
+                    </a>
+                    <!-- /ko -->
+                </li>
+                <li>
+                    <a data-bind="click: function() { $parent.viewTicketDetail($data); CheckRead();}, attr: { href: '/Ticket/#TK' + Code }" href="javascript:;">
+                        <strong>
+                            <span data-bind="text: Code"></span>
+                        </strong>
+                    </a>
+                </li>
+            </ul>
+            
+        </td>
+        <td class="text-center" >
+            <span data-bind="text: statusApp.statusComplain[Status].Name,
+                  css: statusApp.statusComplain[Status].Class"></span>
+        </td>
+        <td class="mailbox-name" >
+            <span data-bind="click: CheckRead, editable: ContentInternal, editableOptions: {name: 'note', pk: Id, url: '', type: 'textarea', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not noted'}"></span>
+        </td>
+        <td class="mailbox-name" ><span data-bind="text: ContentInternalOrder"></span></td>
+        @*<td data-bind="foreach: $parent.listTypeService(TypeService)">
+                <span data-bind="text: Name"></span><br />
+            </td>*@
+
+        <td class="mailbox-subject" >
+            <p data-bind="text: CustomerName"></p>
+            <p data-bind="text: CustomerEmail"></p>
+            <p data-bind="text: CustomerPhone"></p>
+            <p data-bind="text: CustomerWarehouseName"></p>
+            <p data-bind="text: SystemName"></p>
+            <i class="fa fa-info-circle" data-bind="event: { click: $parent.viewContent.bind($data, Content) , mouseout:$parent.hideDiv }"></i>
+        </td>
+        <td class="mailbox-name" >
+            <p data-bind="text: 'Quotation: ' + $parent.stringName(CustomerCareFullName)"></p>
+            <p data-bind="text: 'Complaint handling: ' + $parent.stringName(UserName)"></p>
+            <p data-bind="text: 'Order now: ' + $parent.stringName(OrderFullName)"></p>
+            <p data-bind="text: 'Refund slip: ' + $parent.stringName(UserClaimName)"></p>
+        </td>
+
+        <td class="text-center" >
+            <!-- ko if: StatusClaimForRefund !== -1-->
+            <span data-bind="text: statusApp.statusClaimForRefund[StatusClaimForRefund].Name, css: statusApp.statusClaimForRefund[StatusClaimForRefund].Class"></span>
+            <p data-bind="text: @*moment(LastUpdateDate).locale('vi').startOf().fromNow()*@moment(LastUpdateDate).format('DD/MM/YYYY HH:mm')"></p>
+            <p><b class="text-right decimal" data-bind="text: formatNumberic(RealTotalRefund,'N0')"></b>VND</p>
+            <!-- /ko -->
+        </td>
+
+        <td class="mailbox-date w-100" >
+            <p data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')" data-toggle="tooltip" data-placement="top" title="Create date"></p>
+            <p data-bind="text: moment(ReceiveDate).format('DD/MM/YYYY HH:mm')" data-toggle="tooltip" data-placement="top" title="Processing-request start date"></p>
+            <!-- ko if: Status == @successTicket-->
+            <p data-bind="text: moment(LastUpdateDate).format('DD/MM/YYYY HH:mm')" data-toggle="tooltip" data-placement="top" title="Completed date"></p>
+            <!-- /ko -->
+        </td>
+    </tr>
+    </script>

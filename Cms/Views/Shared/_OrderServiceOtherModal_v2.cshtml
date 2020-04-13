@@ -1,0 +1,55 @@
+﻿<div class="modal fade modal-dialog modal-sm" id="orderServiceOtherModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="fa fa-money"></i> Package incurred expenses</h4>
+    </div>
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th class="text-center w50">Numerical order</th>
+                    <th class="text-center">Type of fee</th>
+                    <th class="text-center">Code order</th>
+                    <th class="text-center">Amount (CNY)</th>
+                    <th class="text-center">Note</th>
+                    <th class="text-center w50"></th>
+                </tr>
+                <tr class="bg-info">
+                    <th></th>
+                    <th>
+                        <select data-bind="value: mode" class="form-control">
+                            <option value="0">Shipping fee</option>
+                            <option value="1">Forklift fee</option>
+                        </select>
+                    </th>
+                    <th><input data-bind="value: orderCode" class="form-control" /></th>
+                    <th><input data-bind="value: value" class="form-control decimal text-right" /></th>
+                    <th><textarea data-bind="value: note" class="form-control" rows="4"></textarea></th>
+                    <th class="text-center">
+                        <button data-bind="click: save, disable: isLoading" class="btn btn-sm btn-primary">
+                            <i data-bind="css: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-plus'" class="fa fa-plus"></i> Add
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: items">
+                <tr>
+                    <td data-bind="text: $index() + 1" class="text-center"></td>
+                    <td data-bind="text: mode === 0 ? 'Shipping fee' : 'Forklift fee'"></td>
+                    <td data-bind="text: orderCode"></td>
+                    <td data-bind="text: formatNumberic(value)"></td>
+                    <td data-bind="text: note"></td>
+                    <td class="text-center"><a data-bind="click: $parent.remove" class="btn btn-xs btn-danger" href="javascript:;"><i class="fa fa-times"></i> Delete  </a></td>
+                </tr>
+            </tbody>
+            @*<tfoot>
+        <tr>
+            <td class="text-center" colspan="5">
+                <a data-bind="click: add" href="javascript:;" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> @Resource.ThemPhiPhatSinh</a>
+            </td>
+        </tr>
+    </tfoot>*@
+        </table>
+    </div>
+</div>

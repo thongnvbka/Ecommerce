@@ -1,0 +1,121 @@
+﻿<div id="requestAcoutingLoseModalBinding">
+    <div id="requestAcoutingLoseModal" class="modal fade modal-dialog modal-p80" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><i class="fa fa-file-o"></i> @*@Resource.CacYeuCauXuLyKiemDemSai*@Miscount handling request "<b data-bind="text: ReturnCode(orderCode())"></b>"</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center w-35">#</th>
+                        <th class="text-center w-60"><i class="fa fa-image"></i>Image</th>
+                        <th class="text-center w-200"><i class="fa fa-cube"></i> Product name</th>
+                        <th class="text-center w-150"><i class="fa fa-exclamation-circle"></i>Property</th>
+                        <th class="text-center w-120" style="color: blue"><i class="fa fa-cubes"></i> Quantity</th>
+                        <th class="text-center w-140" style="color: blue"><i class="fa fa-money"></i> Price (CNY)</th>
+                        <th class="text-center w-140" style="color: red"><i class="fa fa-cubes"></i> Deviation quantity (more/less) </th>
+                        <th class="text-center w-140" style="color: red"><i class="fa fa-money"></i> Deviation value of money  (CNY)</th>
+                        <th class="text-center w150"><i class="fa fa-cube"></i> Wrong type</th>
+                        <th class="text-left w-140"><i class="fa fa-file"></i> Note</th>
+                        <th class="text-center w-140"><i class="fa fa-user"></i> Warehouse staff in charge </th>
+                        <th class="text-center w50"></th>
+                    </tr>
+                </thead>
+
+                <!-- ko if: isLoading() || items().length == 0 -->
+                <tbody>
+                    <tr>
+                        <td colspan="11" class="text-center">
+                            <!-- ko if: isLoading() -->
+                            <span><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> Loading data</span>
+                            <!-- /ko -->
+                            <!-- ko if: isLoading() == false && items().length == 0 -->
+                            <span>No request</span>
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- /ko -->
+                <!-- ko ifnot: isLoading() || items().length == 0 -->
+                <tbody data-bind="foreach: items">
+                    <tr>
+                        <td data-bind="text: $index()+1" class="text-center"></td>
+                        <td class="text-center">
+                            <a data-bind="click: $parent.viewImage2" href="javascript:;">
+                                <img data-bind="attr: { src: image}" style="width: 40px; height: 40px;" alt="Ảnh sản phẩm">
+                            </a>
+                        </td>
+                        <td>
+                            <a data-bind="text: name, attr: { href: link}" target="_blank"></a><br>
+                        </td>
+                        <!-- ko if: properties !== '' -->
+                        <td data-bind="foreach: JSON.parse(properties)">
+                            <span data-bind="text: Label"></span>: <span data-bind="text: Text">
+                            </span><br>
+                        </td>
+                        <!-- /ko -->
+                        <!-- ko ifnot: properties !== '' -->
+                        <td></td>
+                        <!-- /ko -->
+
+                        <td data-bind="text: formatNumberic(quantity)" class="text-right"></td>
+                        <td data-bind="text: formatNumberic(price, 'N2')" class="text-right"></td>
+                        <td data-bind="text: formatNumberic(quantityLose)" class="text-right"></td>
+                        <td data-bind="text: formatNumberic(totalPriceLose, 'N2')" class="text-right"></td>
+
+                        <td class="text-center">
+                            <!-- ko if: mode == 0 -->
+                            <span class="label label-danger">Product missing</span>
+                            <!-- /ko -->
+                            <!-- ko ifnot: mode == 0 -->
+                            <span class="label label-warning">Wrong product</span>
+                            <!-- ko if: images().length > 0-->
+                            <br />
+                            <a data-bind="click: $parent.viewImage" href="javascript:;">Image</a>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </td>
+                        <td data-bind="text: notePrivate" class="text-left"></td>
+                        <td class="text-center">
+                            <a data-bind="text: userFullName" href="javascript:;"></a>
+                        </td>
+                        <td class="text-center">
+                            <!-- ko ifnot: mode == 0 -->
+                            <a data-bind="click: $parent.showUpdate" class="btn btn-sm btn-primary" href="javascript:;">Update</a>
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- /ko -->
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+
+    <div id="requestAcoutingLoseUpdateModal" class="modal fade modal-dialog" tabindex="-1" data-backdrop="static" role="dialog">
+        <form data-bind="submit: updateQuantityLose">
+            @Html.AntiForgeryToken()
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-user"></i> Update the number of customers</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="acceptQuantityLose">Deviation number</label>
+                    <input data-bind="value: quantityLoseRecived" type="text" class="form-control text-right integer" id="acceptQuantityLose">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bind="disable: isLoadingRecived" class="btn btn-success" type="submit">
+                    <i data-bind="attr: {class: isLoadingRecived() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i>
+                    <span>Update</span>
+                </button>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,419 @@
+﻿<form id="orderViewAdd">
+    @Html.AntiForgeryToken()
+    <div id="orderAddModal" class="modal fade modal-dialog modal-p90" tabindex="-1" data-backdrop="static" role="dialog">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-globe"></i> Order code: <strong data-bind="text: 'ORD'" style="color: red"></strong>
+                        <span data-bind="text: statusApp.order[0].Name, css: statusApp.order[0].Class"></span>
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <small data-bind="text: 'Innitiated date :' + moment(new Date()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                        <small class="pull-right">Date of completion: --/--/----</small>
+                    </h2>
+                </div>
+            </div>
+            <div class="row importwarehouse">
+                <div class="col-md-3">
+                    <strong class="strong-title"> Customer Information </strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Customer :</label>
+                                <div class="col-sm-8">
+                                    <select data-bind="value: CustomerId" class="form-control customer-search-add-order" style="width: 100%;"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Full name :</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: CustomerName" disabled="disabled" name="CustomerName" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Phone:</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: CustomerPhone" disabled="disabled" name="CustomerPhone" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Email:</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: CustomerEmail" disabled="disabled" name="CustomerEmail" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Address :</label>
+                                <div class="col-sm-8">
+                                    <textarea data-bind="value: CustomerAddress" disabled="disabled" name="CustomerAddress" type="text" class="form-control" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <strong class="strong-title">Receiver Information</strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Full name :<span class="color-red">*</span></label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: ContactName" name="ContactName" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Phone:<span class="color-red">*</span></label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: ContactPhone" name="ContactPhone" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Email:</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: ContactEmail" name="ContactEmail" type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Address :<span class="color-red">*</span></label>
+                                <div class="col-sm-8">
+                                    <textarea data-bind="value: ContactAddress" name="ContactAddress" class="form-control" rows="2" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <strong class="strong-title">More information</strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Website:<span class="color-red">*</span></label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: WebsiteName" name="WebsiteName" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Shop:<span class="color-red">*</span></label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <select data-bind="value: ShopId" class="form-control shop-search" style="width: 100%;"></select>
+                                        <a data-bind="click: showAddShop" href="javascript:;" class="input-group-addon btn-success"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Exchange rate:</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: ExchangeRate" disabled="disabled" name="ExchangeRate" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="box-order">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Note client</h3>
+                        </div>
+                        <div class="box-body">
+                            <div>
+                                <textarea data-bind="value: Note" autocomplete="off" class="form-control no-border-fix" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-order">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Staff Notes</h3>
+                        </div>
+                        <div class="box-body">
+                            <div>
+                                <textarea data-bind="value: UserNote" autocomplete="off" class="form-control no-border-fix" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row importwarehouse">
+                <div class="col-xs-12 table-responsive">
+                    <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                    <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                        <b class="strong-title">Detail package: <a data-bind="click: showAddDetail" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add new</a></b>
+                        <br />
+                        <br />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                    <th class="text-center"><i class="fa fa-cube"></i> Product's name</th>
+                                    <th class="text-center"><i class="fa fa-exclamation-circle"></i>Properties</th>
+                                    <th class="text-center"><i class="fa fa-sticky-note-o"></i>  Customer Notes</th>
+                                    <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i> Customer set</th>
+                                    <th class="text-center" style="color: red"><i class="fa fa-money"></i> Price (CNY)</th>
+                                    <th class="text-center" style="color: red"><i class="fa fa-superscript"></i> Total (CNY)</th>
+                                    <th class="text-center"><i class="fa fa-file"></i> Note</th>
+                                    <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                    <th class="text-center"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: listDetail">
+                                <tr>
+                                    <td data-bind="text: $index()+1" class="text-center"></td>
+                                    <td class="text-center">
+                                        <img data-bind="attr: { src: Image}" style="width: 40px; height: 40px;" alt="" />
+                                    </td>
+                                    <td>
+                                        <a data-bind="text: Name, attr: { href: Link}" href="javascript:;" target="_blank"></a>
+                                    </td>
+                                    <td>
+                                        Màu sắc: <span data-bind="text: Color"></span><br />
+                                        Size: <span data-bind="text: Size"></span>
+                                    </td>
+                                    <td data-bind="text: Note"></td>
+                                    <td data-bind="text: Quantity" class="text-center"></td>
+                                    <td data-bind="text: Price" class="text-center"></td>
+                                    <td data-bind="text: TotalPrice" class="text-right"></td>
+                                    <td data-bind="text: UserNote" class="text-center"></td>
+                                    <td class="text-center">
+                                        <span data-bind="text: statusApp.orderDetail[Status].Name, css: statusApp.orderDetail[Status].Class"></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a data-bind="click: $parent.showEditDetail" href="javascript:;" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                        <a data-bind="click: $parent.removeDetail" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot data-bind="if: listDetail().length == 0">
+                                <tr>
+                                    <td colspan="11">Order does not have a line item</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <span><strong class="strong-title">Order Staff processed:</strong></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <table class="table-view">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <b>China warehouse</b>
+                                                    <select class="form-control select-view mb10" style="width: 100%;" data-bind="options: listWarehouseOrder, optionsText: 'Name', optionsValue: 'Id', value: WarehouseId, optionsCaption: '-- Select warehouse --', "></select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <table class="table-view">
+                                        <tbody>
+                                            <tr>
+                                                <td>Temporary cash (CNY)</td>
+                                                <td data-bind="text: @*order().TotalPrice*@" colspan="2"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: saveOrder" type="button" class="btn btn-success"><i class="fa fa-plus"></i> Add order</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+
+        <div id="shopAdd" class="modal fade modal-dialog modal-p50" tabindex="-1" role="dialog">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-danger">Add shop new</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        Shop name<span class="color-red">*</span>
+                        <input data-bind="value: ShopName" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                        Link shop<span class="color-red">*</span>
+                        <input data-bind="value: ShopLink" class="text-right form-control decimal" required />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bind="click: submitShop, enable: isSubmit" type="button" class="btn btn-primary">
+                    <!-- ko if: isSubmit()-->
+                    <i class="fa fa-check"></i>
+                    <!-- /ko -->
+                    <!-- ko if: !isSubmit()-->
+                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                    <!-- /ko -->
+                    Confirm
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+        <div id="detailAdd" class="modal fade modal-dialog modal-p50" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-danger">Add shop new</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> Product name<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailName" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Link Product<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailLink" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Note</label>
+                                    <div class="col-sm-9">
+                                        <textarea data-bind="value: DetailNote" type="text" class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Image</label>
+                                    <div class="col-sm-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                                            <span class="btn btn-primary btn-file btn-flat">
+                                                <!-- ko if: isUpload()-->
+                                                <i class="fa fa-file-image-o"></i>
+                                                <!-- /ko -->
+                                                <!-- ko if: !isUpload()-->
+                                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                                <!-- /ko -->
+                                                Goods image
+                                                <input class="flieuploadImg" name="" type="file">
+                                            </span>
+                                            <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                        </div>
+                                        <br />
+
+                                        <div id="effect-4" class="effects clearfix">
+                                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                                <!-- ko if: DetailImage() !== '' -->
+                                                <img data-bind="attr: { src: DetailImage}" style="width: 100%; height: 60px;" alt="" /><br />
+                                                <div class="overlay">
+                                                    <a data-bind="click: DetailImage.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                    <a class="close-overlay hidden">x</a>
+                                                </div>
+                                                <!-- /ko -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Bank<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <div id="category_tree_order_detail"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Product price <span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input data-bind="value: DetailPrice" type="text" class="text-right form-control decimal">
+                                            <span class="input-group-addon">CNY</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Quantity <span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailQuantity" type="text" class="text-right form-control decimal">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Color</label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailColor" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Size</label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailSize" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bind="click: saveDetail, enable: isSubmit" type="button" class="btn btn-primary">
+                    <!-- ko if: isSubmit()-->
+                    <i class="fa fa-check"></i>
+                    <!-- /ko -->
+                    <!-- ko if: !isSubmit()-->
+                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                    <!-- /ko -->
+                    Confirm
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</form>
+<style>
+    .btn-success {
+        background-color: #00a65a !important;
+        border-color: #008d4c !important;
+        color: white !important;
+    }
+
+        .btn-success.focus {
+            color: #fff;
+            background-color: #449d44 !important;
+            border-color: #255625 !important;
+        }
+
+        .btn-success:hover {
+            color: #fff;
+            background-color: #449d44 !important;
+            border-color: #398439 !important;
+        }
+</style>

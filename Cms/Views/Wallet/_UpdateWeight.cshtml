@@ -1,0 +1,73 @@
+﻿@model WalletUpdateInfoMeta
+
+<div id="updateWalletWeightModal" class="modal fade modal-dialog modal-sm" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save" id="updateWalletWeightForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Update package weight "B<span data-bind="text: walletCode"></span>"</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="length">Length <span class="color-red">*</span>:</label>
+                        @Html.TextBoxFor(x => x.Length, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control text-right decimal"},
+                            {"data-bind", "value: length"},
+                        })
+                        @Html.ValidationMessageFor(model => model.Length)
+                    </div>
+                    <div class="form-group">
+                        <label for="Width">Width <span class="color-red">*</span>:</label>
+                        @Html.TextBoxFor(x => x.Width, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control text-right decimal"},
+                            {"data-bind", "value: width"},
+                        })
+                        @Html.ValidationMessageFor(model => model.Width)
+                    </div>
+                    <div class="form-group">
+                        <label for="Height">Height (cm) <span class="color-red">*</span>:</label>
+                        @Html.TextBoxFor(x => x.Height, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control text-right decimal"},
+                            {"data-bind", "value: height"},
+                        })
+                        @Html.ValidationMessageFor(model => model.Height)
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Weight converted: </label>
+                        <p class="form-control-static text-right"><span data-bind="text: formatNumberic(widthConverted(), 'N2')"></span> (kg)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="Weight">Net weight  <span class="color-red">*</span>:</label>
+                        @Html.TextBoxFor(x => x.Weight, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control text-right decimal"},
+                            {"data-bind", "value: weight"},
+                        })
+                        @Html.ValidationMessageFor(model => model.Weight)
+                    </div>
+                    <div class="form-group">
+                        <label for="Note">Note <span class="color-red">*</span>:</label>
+                        @Html.TextAreaFor(x => x.Note, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control text-right decimal"},
+                            {"data-bind", "value: note"},
+                            {"rows", "5"},
+                        })
+                        @Html.ValidationMessageFor(model => model.Note)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="disable: isLoading" type="submit" class="btn btn-primary"><i data-bind="css: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'" class="fa fa-save"></i>Save</button>
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>

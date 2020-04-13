@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@section styles
+{
+    <style>
+        .daigou-top {
+            min-width: 1280px;
+            box-sizing: border-box;
+            background-color: #dd2727;
+        }
+
+        .daigou-top-box {
+            width: 1280px;
+            margin: auto;
+            overflow: hidden;
+            padding: 22px 0;
+            box-sizing: border-box;
+        }
+
+            .daigou-top-box ul {
+                float: right;
+                box-sizing: border-box;
+            }
+
+                .daigou-top-box ul li {
+                    cursor: pointer;
+                    position: relative;
+                    margin-left: 60px;
+                    float: left;
+                    box-sizing: border-box;
+                    text-align: center;
+                    color: white;
+                }
+
+                    .daigou-top-box ul li label {
+                        padding: 0 2px;
+                        font-size: 10px;
+                        position: absolute;
+                        top: 8px;
+                        left: 38px;
+                        background-color: rgba(0,0,0,0.5);
+                        display: block;
+                        color: white;
+                        border-radius: 15px;
+                        height: 16px;
+                        line-height: 16px;
+                        text-align: center;
+                        min-width: 16px;
+                    }
+
+                    .daigou-top-box ul li span {
+                        margin-top: 10px;
+                        display: inline-block;
+                        height: 35px;
+                        background-image: url('/Content/images/img-more/daigou_icon1.png');
+                        background-repeat: no-repeat;
+                        background-position-y: 0px;
+                        margin-bottom: 10px;
+                    }
+
+        .daigou-banner {
+            margin-top: 3px;
+            min-width: 1280px;
+            height: 412px;
+            box-sizing: border-box;
+            background-image: url('/Content/images/img-more/daigou_banner.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .daigou-banner-box {
+            width: 1280px;
+            padding-top: 64px;
+            box-sizing: border-box;
+            margin: auto;
+            height: 100%;
+            text-align: center;
+        }
+
+            .daigou-banner-box h1 {
+                font-size: 36px;
+                color: white;
+                text-shadow: 0 3px 5px #999999;
+            }
+
+            .daigou-banner-box h2 {
+                font-size: 16px;
+                color: white;
+                margin-top: 29px;
+                margin-bottom: 17px;
+            }
+
+            .daigou-banner-box form input[type="text"] {
+                width: 615px;
+                height: 48px;
+                display: inline-block;
+                padding-left: 14px;
+                box-sizing: border-box;
+                border: none;
+                outline: none;
+            }
+
+            .daigou-banner-box form input[type="submit"] {
+                width: 113px;
+                height: 48px;
+                color: white;
+                outline: none;
+                border: none;
+                background-color: #fd7f00;
+                display: inline-block;
+                box-sizing: border-box;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .daigou-banner-box form {
+                display: inline-block;
+                border: 6px solid rgba(0,0,0,0.1);
+                border-radius: 5px;
+            }
+
+            .daigou-banner-box p {
+                font-size: 14px;
+                color: white;
+                margin-top: 14px;
+                margin-bottom: 22px;
+            }
+
+                .daigou-banner-box p a {
+                    font-size: 14px;
+                    color: white;
+                    text-decoration: underline;
+                    margin-left: 17px;
+                }
+
+            .daigou-banner-box > a {
+                display: inline-block;
+                width: 220px;
+                font-size: 14px;
+                color: white;
+                border-radius: 5px;
+                text-align: center;
+                padding: 12px 0;
+            }
+
+                .daigou-banner-box > a:first-of-type {
+                    background-color: #dd2727;
+                }
+
+                .daigou-banner-box > a:last-of-type {
+                    background-color: #c19494;
+                    margin-left: 23px;
+                }
+
+         
+        .how-daigou-box-top {
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .daigou-how {
+            width: 1280px;
+            margin: auto;
+            margin-top: 100px;
+            padding-bottom: 70px;
+            border-top: 2px solid #EDEDEE;
+        }
+
+        .daigou-riping {
+            min-width: 1280px;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+            padding: 60px 0;
+        }
+
+        .daigou-riping-box {
+            width: 1280px;
+            margin: auto;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    </style>
+}
+@section Header
+{
+    <div class="daigou-top" style="margin-top: 0 !important">
+        <div class="daigou-top-box">
+            <a href="/@culture">
+                <img src="/Images/logo.png" width="175" alt="">
+            </a>
+            <ul class="clearFix">
+                <li onclick="window.location.href = '/@culture'">
+                    <span style="width: 33px; background-position-x: -114px;"></span>
+                    <p>Trang chủ</p>
+                </li>
+                <li onclick="window.location.href = '/@culture/Product/Cart'">
+                    <span style="width: 33px; background-position-x: -171px;"></span>
+                    <p>Giỏ hàng</p>
+                    <label>2</label>
+                </li>
+                <li class="to-how-daigou">
+                    <span style="width: 27px; background-position-x: 0px;"></span>
+                    <p>Hướng dẫn </p>
+                </li>
+                <li class="to-tese">
+                    <span style="width: 28px; background-position-x: -231px;"></span>
+                    <p>An toàn </p>
+                </li>
+                <li class="to-gongju">
+                    <span style="width: 30px; background-position-x: -288px;"></span>
+                    <p>Ước tính chi phí</p>
+                </li>
+                <li class="to-riping">
+                    <span style="width: 35px; background-position-x: -55px;"></span>
+                    <p>Comment</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+<div class="daigou-banner">
+    <div class="daigou-banner-box">
+        <h1>全球最受欢迎的海外华人淘宝代购网站</h1>
+        <h2>Now超过8943452个包裹由Lete代购中国商品寄运至海外各个地区</h2>
+        <form>
+            <input placeholder="Nhập tên sản phẩm" type="text" 
+                   name="textfield" id="" value=""><input type="submit" value="Tìm kiếm">
+        </form>
+        <p>
+            Trang web phổ biến：<a href="http://www.taobao.com/" target="_blank">Taobao.com</a> <a href="http://www.tmall.com/" target="_blank">Tmall.com</a>
+            <a href="http://www.Alibaba.com/" target="_blank">Alibaba.com</a>
+         
+        </p>
+        <a href="http://www.lete.com/user.php?act=register">立即前往领100元红包</a>
+        <a href="http://p.qiao.baidu.com/cps/chat?siteId=9786428&amp;userId=21859448" target="_blank">咨询在线客服</a>
+    </div>
+</div>
+ 
+ 
+<section class="zhuanyun-how" id="how_zhuanyun">
+  
+    
+    <ul class="zhuanyun-how-nav clearFix">
+        <li data-id="1" class="lete-active">
+            <span></span>
+            <a>获取地址</a>
+            <label></label>
+        </li>
+        <li data-id="2" class="">
+            <span></span>
+            <a>审核清单</a>
+            <label></label>
+        </li>
+        <li data-id="3" class="">
+            <span></span>
+            <a>物品入仓</a>
+            <label></label>
+        </li>
+        <li data-id="4" class="">
+            <span></span>
+            <a>支付运费</a>
+            <label></label>
+        </li>
+        <li data-id="5" class="">
+            <span></span>
+            <a>发往海外</a>
+            <label></label>
+        </li>
+        <li data-id="6" class="">
+            <span></span>
+            <a>确认收货</a>
+        </li>
+    </ul>
+    <div class="zhuanyun-how-img">
+        <img data-id="1" class="lete-active" src="/Content/images/img-more/CreateDeposit1.png" alt="" />
+        <img data-id="2" src="~/Content/images/img-more/CreateDeposit2.png" class="" alt="" />
+        <img data-id="3" src="~/Content/images/img-more/CreateDeposit3.png" class="" alt="" />
+        <img data-id="4" src="~/Content/images/img-more/CreateDeposit4.png" class="" alt="" />
+        <img data-id="5" src="~/Content/images/img-more/CreateDeposit1.png" class="" alt="" />
+        <img data-id="6" src="~/Content/images/img-more/CreateDeposit1.png" class="" alt="" />
+    </div>
+</section>
+@section scripts
+{
+     
+
+}

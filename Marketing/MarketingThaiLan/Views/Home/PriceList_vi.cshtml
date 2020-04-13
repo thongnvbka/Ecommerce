@@ -1,0 +1,761 @@
+﻿
+@{
+    ViewBag.Title = "Bảng giá";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+{
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+    <style type="text/css">
+        #header {
+            border-bottom: 1px solid #ebebeb;
+            background: #fff;
+        }
+
+        .price-banner h2 {
+            margin-top: 30px !important;
+        }
+
+        .price-banner .desc {
+            margin-bottom: 15px !important;
+        }
+    </style>
+}
+
+<div id="home-price">
+    <div class="price-banner hidden-xs hidden-sm">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <h2 style="margin-top : 16px !important;margin-bottom : 4px;">Dùng thử Eziwebshop miễn phí 03 tháng dùng thử</h2>
+                <p class="desc" style="color : #484848;">Lựa chọn gói giải pháp phù hợp với nhu cầu của bạn</p>
+            </div>
+        </div>
+    </div>
+    <div class="price-detail hidden-xs hidden-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12" style="padding-left : 0 !important;padding-right : 0 !important;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td width="20%"></td>
+                                <td width="20%">
+                                    <div class="package-price bronze" style="position: relative; padding-top: 25px;">
+                                        <span class="title">eBronze</span>
+                                        <span class="price">7.990 baht</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> Dùng thử </a>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="package-price gold" style="position: relative; padding-top: 25px;">
+                                        <i class="icon-gold-crown" style="display: inline-block;"></i>
+                                        <span class="title" style="font-size: 48px; margin-top: 21px; margin-bottom: 5px;">eGold</span>
+                                        <span class="price">14.790 baht</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> Dùng thử </a>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="package-price platinum" style="position: relative; padding-top: 25px;">
+                                        <span class="title">ePlatinum</span>
+                                        <span class="price">9.900.000 đ</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> Dùng thử </a>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="package-price diamond" style="position: relative; padding-top: 25px;">
+                                        <i class="icon-diamond" style="display: inline-block;"></i>
+                                        <span class="title">eDiamond</span>
+                                        <span class="price">11.990.000 đ</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> Dùng thử </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    Thời gian sử dụng
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Thời gian sử dụng của website.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><strong>1</strong> năm</td>
+                                <td><strong>2</strong> năm</td>
+                                <td><strong>3</strong> năm</td>
+                                <td><div><strong>5</strong> năm</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Thời gian tặng thêm
+                                </td>
+                                <td>
+                                    <i class="icon-price-new-line"></i>
+                                </td>
+                                <td><strong>9</strong> Tháng</td>
+                                <td><strong>12</strong> Tháng</td>
+                                <td><strong>24</strong> Tháng</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Sản phẩm
+                                </td>
+                                <td>100</td>
+                                <td>Không giới hạn</td>
+                                <td>Không giới hạn</td>
+                                <td>Không giới hạn</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Băng thông
+                                </td>
+                                <td>2 GB</td>
+                                <td>Không giới hạn</td>
+                                <td>Không giới hạn</td>
+                                <td>Không giới hạn</td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    Chứng chỉ bảo mật SSL
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Giúp các giao dịch và dữ liệu trên website được an toàn, bảo mật. Miễn phí theo thời gian sử dụng của gói bao gồm cả thời gian khuyến mại.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td>Miễn phí</td>
+                                <td>Miễn phí</td>
+                                <td>Miễn phí</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Dung lượng
+                                </td>
+                                <td>200 MB</td>
+                                <td>1 GB</td>
+                                <td>2 GB</td>
+                                <td>5 GB</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email tên miền
+                                </td>
+                                <td>
+                                    <i class="icon-price-new-line">
+                                    </i>
+                                </td>
+                                <td>5 email</td>
+                                <td>5 email</td>
+                                <td>10 email</td>
+                            </tr>
+                            <tr>
+                                <td class="divider" colspan="5">
+                                    Kênh bán hàng
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip"><a class="has-link" href="@Url.Action("DesignWebsite","Marketing")">Website bán hàng</a></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="sell-sapo has-tooltip">
+                                    <a href="/" class="has-link">
+                                        Bán hàng tại điểm bán
+                                    </a>
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Tích hợp bán hàng trực tiếp với Shop cửa hàng của bạn
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    <a href="/" class="has-link">Bán hàng trên Facebook </a>
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Quản lý comment/ inbox tập trung, hỗ trợ bán hàng trên Facebook. Miễn phí tích hợp với tài khoản cửa hàng Facebook của bạn.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    <a href="/" class="has-link">Bán hàng trên website <span> khác</span></a>
+                                    <a class="icon-tooltip-info bottom-padding">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Kênh bán hàng mới, giúp bạn đưa thông tin sản phẩm của mình lên một hoặc nhiều website khác thông qua đoạn mã nhúng đơn giản
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="divider advertise-item" colspan="5">
+                                    <p>Ứng dụng hỗ trợ quảng cáo</p>
+                                </td>
+                            </tr>
+                            <tr class="hidden-row advertise-row">
+                                <td class="has-tooltip">
+                                    App email marketing
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Tích hợp nhiều công cụ gửi email marketing lớn như email chimp, giúp bạn truyền tải thông tin khuyến mại, hàng mới... đến tập khách hàng tiềm năng qua email
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row advertise-row">
+                                <td class="has-tooltip">
+                                    App SMS marketing
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Tích hợp với công cụ gửi tin nhắn hàng loạt giúp bạn tiết kiệm thời gian khi gửi tin nhắn
+                                                quảng cáo, tin nhắn chăm sóc khách hàng tới khách hàng mục tiêu
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="divider intergrate-item" colspan="5">
+                                    <p>Công cụ tích hợp</p>
+                                </td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    Báo cáo
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Bộ các báo cáo doanh số chi tiết và đầy đủ hỗ trợ việc quản lý và thực hiện kế hoạch marketing
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    Chat live
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Tích hợp ứng dụng hỗ trợ chat trực tiếp với khách hàng ngay trên website
+                                                không cần cài đặt tài khoản yahoo hay skype
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    Responsive
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Giao diện tối ưu cho mọi thiết bị desktop, tablet, mobile
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    Thanh toán trực tuyến
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Tích hợp sẵn tính năng thanh toán online nhanh chóng tiện lợi
+                                                với hầu hết ngân hàng tại Thailand
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    Tích hợp vận chuyển
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Eziwebshop đã tích hợp sẵn với nhiều đơn vị vận chuyển lớn tại Thailand... bạn chỉ cần lựa chọn đơn vị vận chuyển và sử dụng thao tác đơn giản và tiết kiệm thời gian.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td>
+                                    Đa ngôn ngữ
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                    Hoặc
+                                    <img src="~/Content/images/Price/ico_enflag_new.png">
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                    và
+                                    <img src="~/Content/images/Price/ico_enflag_new.png">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price-detail-mobile hidden-md visible-sm visible-xs">
+        <h1>Dùng thử Eziwebshop miễn phí 15 ngày</h1>
+        <p class="desc">Lựa chọn gói giải pháp phù hợp với nhu cầu của bạn</p>
+        <div class="container">
+            <div class="col-sm-12 col-xs-12">
+                <div class="package-detail">
+                    <ul>
+                        <li class="package bronze">
+                            <div class="package-price text-center">
+                                <span class="title">eBronze</span>
+                                <span class="price">3.200.000đ</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> Dùng thử </a>
+                            </div>
+                            <div class="view-detail-package">Chi tiết gói dịch vụ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top : 1px solid #d8d8d8;">Sử dụng <strong>1</strong> năm</span>
+                                <span>100 sản phẩm</span>
+                                <span>2 GB băng thông </span>
+                                <span>200 MB dung lượng</span>
+                                <span class="divider">Kênh bán hàng</span>
+                                <span><a href="/" class="has-link">Website bán hàng</a></span>
+                                <span><a href="/" class="has-link">Bán hàng tại điểm bán Sapo</a></span>
+                                <span class="divider">Ứng dụng hỗ trợ quảng cáo</span>
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">Công cụ tích hợp</span>
+                                <span>Chat live</span>
+                                <span>Responsive</span>
+                                <span>Thanh toán trực tuyến</span>
+                                <span style="border-bottom:none;">
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="package gold">
+                            <div class="package-price text-center">
+                                <i class="icon-star"></i>
+                                <span class="title">eGold</span>
+                                <span class="price">5.760.000đ</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> Dùng thử </a>
+                            </div>
+                            <div class="view-detail-package">Chi tiết gói dịch vụ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top:1px solid #d8d8d8">Sử dụng <strong>2</strong> năm</span>
+                                <span>Thời gian tặng thêm <strong>9</strong> tháng</span>
+                                <span>Sản phẩm và băng thông không giới hạn</span>
+                                <span>Hỗ trợ SSL</span>
+                                <span>1 GB dung lượng</span>
+                                <span>5 email tên miền</span>
+                                <span class="divider">Kênh bán hàng</span>
+                                <span><a href="@Url.Action("DesignWebsite","Marketing")" class="has-link">Website bán hàng</a></span>
+                                <span><a href="/" class="has-link">Bán hàng tại điểm bán Sapo</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên Facebook</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên Zalo</a></span>
+                                <span>Bán hàng trên Lazada</span>
+                                <span>Bán hàng trên Adayroi</span>
+                                <span><a href="https://apps.bizweb.vn/sendo" target="_blank" rel="nofollow" class="has-link">Bán hàng trên Sendo</a></span>
+                                <span class="divider">Ứng dụng hỗ trợ quảng cáo</span>
+                                <span>Bài PR trên doanhnhan.net</span>
+                                <span>Combo Basic - 3 App tạo khuyến mại </span>
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">Công cụ tích hợp</span>
+                                <span>Báo cáo</span>
+                                <span>Chat live</span>
+                                <span>Responsive</span>
+                                <span>Thanh toán trực tuyến</span>
+                                <span>Tích hợp vận chuyển</span>
+                                <span style="border-bottom:none;">
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="package platinum">
+                            <div class="package-price text-center">
+                                <span class="title">ePlatinum</span>
+                                <span class="price">9.900.000đ</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> Dùng thử </a>
+                            </div>
+                            <div class="view-detail-package">Chi tiết gói dịch vụ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top:1px solid #d8d8d8">Sử dụng <strong>3</strong> năm</span>
+                                <span>Thời gian tặng thêm <strong>12</strong> tháng</span>
+                                <span>Sản phẩm và băng thông không giới hạn</span>
+                                <span>Hỗ trợ SSL</span>
+                                <span>2 GB dung lượng</span>
+                                <span>5 email tên miền</span>
+                                <span class="divider">Kênh bán hàng</span>
+                                <span><a href="/" class="has-link">Website bán hàng</a></span>
+                                <span><a href="/" class="has-link">Bán hàng tại điểm bán Sapo</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên Facebook</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên website khác</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên Zalo</a></span>
+                                <span>Bán hàng trên Lazada</span>
+                                <span>Bán hàng trên Adayroi</span>
+                                <span><a href="https://apps.bizweb.vn/sendo" target="_blank" rel="nofollow" class="has-link">Bán hàng trên Sendo</a></span>
+                                <span class="divider">Ứng dụng hỗ trợ quảng cáo</span>
+                                <span>Bài PR trên doanhnhan.net</span>
+                                <span>Combo Basic - 3 App tạo khuyến mại </span>
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">Công cụ tích hợp</span>
+                                <span>Báo cáo</span>
+                                <span>Chat live</span>
+                                <span>Responsive</span>
+                                <span>Thanh toán trực tuyến</span>
+                                <span>Tích hợp vận chuyển</span>
+                                <span style="border-bottom:none;">
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                    Hoặc
+                                    <img src="~/Content/images/Price/ico_enflag_new.png">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="package diamond">
+                            <div class="package-price text-center">
+                                <span class="title">eDiamond</span>
+                                <span class="price">11.990.000đ</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> Dùng thử </a>
+                            </div>
+                            <div class="view-detail-package">Chi tiết gói dịch vụ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top:1px solid #d8d8d8">Sử dụng <strong>5</strong> năm</span>
+                                <span>Thời gian tặng thêm <strong>24</strong> tháng</span>
+                                <span>Sản phẩm và băng thông không giới hạn </span>
+                                <span>Hỗ trợ SSL</span>
+                                <span>5 GB dung lượng</span>
+                                <span>10 email tên miền</span>
+                                <span class="divider">Kênh bán hàng</span>
+                                <span><a href="/" class="has-link">Website bán hàng</a></span>
+                                <span><a href="/" class="has-link">Bán hàng tại điểm bán Sapo</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên Facebook</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên website khác</a></span>
+                                <span><a href="/" class="has-link">Bán hàng trên Zalo</a></span>
+                                <span>Bán hàng trên Lazada</span>
+                                <span>Bán hàng trên Adayroi</span>
+                                <span><a href="https://apps.bizweb.vn/sendo" target="_blank" rel="nofollow" class="has-link">Bán hàng trên Sendo</a></span>
+                                <span class="divider">Ứng dụng hỗ trợ quảng cáo</span>
+                                <span>Bài PR trên doanhnhan.net</span>
+                                <span>Combo Basic - 3 App tạo khuyến mại </span>
+                                <span>Combo Advance - 2 App tạo khuyến mại nâng cao</span>
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">Công cụ tích hợp</span>
+                                <span>Báo cáo</span>
+                                <span>Chat live</span>
+                                <span>Responsive</span>
+                                <span>Thanh toán trực tuyến</span>
+                                <span>Tích hợp vận chuyển</span>
+                                <span style="border-bottom:none;">
+                                    <img src="~/Content/images/Price/ico_vnflag_new.png">
+                                    và
+                                    <img src="~/Content/images/Price/ico_enflag_new.png">
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price-register-block">
+        <div class="container">
+            <h2>Bạn chưa chọn được gói dịch vụ phù hợp</h2>
+            <p class="sub-title">Hãy dùng thử website trước, Eziwebshop sẽ tư vấn cho bạn gói dịch vụ phù hợp sau</p>
+            <a class="btn-registration" href="/Marketing/IndexPromotion">Nhận miễn phí & Dùng thử</a>
+            <img src="~/Content/images/arrow-up.png" class="arrow-up">
+        </div>
+    </div>
+    <div class="price-plus">
+        <div class="container">
+            <div class="price-plus-detail">
+                <div class="detail-left col-md-6 col-sm-12 col-xs-12">
+                    <p class="header-row">Gói giải pháp bán hàng cho doanh nghiệp lớn</p>
+                    <p class="sub-header">NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ MẠNH MẼ</p>
+                    <p class="image-row"><img src="~/Content/images/price/bw-plus.png"></p>
+                </div>
+                <div class="detail-right col-md-6 col-xs-12 col-sm-12 ">
+                    <ul>
+                        <li>
+                            <div>
+                                <span><img src="~/Content/images/banner/icon-item.png"></span>
+                                <span class="our-detail">Băng thông và dung lượng <strong>không giới hạn</strong></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span><img src="~/Content/images/banner/icon-item.png"></span>
+                                <span class="our-detail">Bảo mật an toàn <strong>tuyệt đối</strong> &amp; cơ chế hỗ trợ <strong>ưu tiên</strong></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span><img src="~/Content/images/banner/icon-item.png"></span>
+                                <span class="our-detail">Cung cấp giải pháp thương mại điện tử <strong>tổng thể</strong></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="find-more"><a href="@Url.Action("AboutUs","Home")">Click để tìm hiểu thêm về Eziwebshop Plus</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="price-faq">
+        <div class="container">
+            <div class="col-md-12">
+                <h3>Một số câu hỏi thường gặp</h3>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">1.Tôi có được dùng thử miễn phí 03 tháng không?</h4>
+                                <p class="answer">
+                                    Tất cả khách hàng khi đăng ký dùng thử đều được sử dụng hoàn toàn miễn phí trong vòng 03 tháng, website có đầy đủ các tính năng không giới hạn. Có thể vào quản trị để tự thay đổi thông tin, up sản phẩm khác, hay thêm các bài viết lên website....
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">2.Tôi có thể đổi tên miền khác đuôi .eziwebshop.com được không?</h4>
+                                <p class="answer">
+                                    Khi đăng ký dùng thử website bạn sẽ được sở hữu website dưới dạng tên miền con (sub domain) VD: http://sample.eziwebshop.net. Khi website đi vào sử dụng bạn có thể cấu hình trỏ tên miền riêng về Bizweb. Để sử dụng tên miền riêng, bạn chỉ cần thực hiện 2 thao tác: <br>
+                                    1. Cấu hình trỏ tên miền về địa chỉ IP của chúng tôi<br>
+                                    2. Truy cập vào quản trị website của bạn, vào Cấu hình &gt;&gt; Tên miền &gt;&gt; Thêm tên miền &gt;&gt; Dùng làm tên miền chính
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">3.Sau khi sử dụng dịch vụ Eziwebshop tôi có được bảo trì nâng cấp không?</h4>
+                                <p class="answer">
+                                    Eziwebshop luôn có các đợt nâng cấp trong năm và khi bạn đang sử dụng dịch vụ của Eziwebshop bạn sẽ luôn được cập nhật toàn bộ các tính năng mới trong quá trình nâng cấp này, đội ngũ hỗ trợ của Eziwebshop cũng sẽ luôn tận tình hỗ trợ bạn trong suốt thời gian sử dụng dịch vụ.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">4.Làm sao để đăng nhập vào quản trị website khi đăng ký dùng thử xong?</h4>
+                                <p class="answer">
+                                    Để đăng nhập vào quản trị website, các bạn sử dụng đường link như sau lên trình duyệt: http://customershop.eziwebshop.com/admin và ấn Enter để truy cập vào trang đăng nhập quản trị. Tài khoản đăng nhập là email đăng ký, và mật khẩu là mật khẩu khi tiến hành đăng ký dùng thử.
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">5.Tôi có thể nâng cấp gói dịch vụ của mình khi đang sử dụng dịch vụ không?</h4>
+                                <p class="answer">
+                                    Trong thời gian sử dụng website, đáp ứng theo nhu cầu cần thiết quý khách hoàn toàn có thể nâng cấp lên gói dịch vụ cao hơn trong bất kỳ thời gian nào, không áp dụng nâng cấp với các gói dịch vụ ngang bằng hoặc thấp hơn.
+                                </p>
+                            </li>
+                            @*<li>
+                                    <h4 class="price-faq-question" aria-haspopup="true">6.Nếu tôi vẫn cần tư vấn hỗ trợ?</h4>
+                                    <p class="answer">
+                                        Các chuyên viên tư vấn của chúng tôi luôn luôn sẵn sàng hỗ trợ bạn. Hãy liên lạc với chúng tôi theo số tổng đài: 19006750 (từ 8h00 đến 22h00 hàng ngày) để được hỗ trợ nhanh nhất. Ngoài thời gian trên vui lòng gửi email cho chúng tôi theo địa chỉ: support@bizweb.vn. Chúng tôi sẽ nhanh chóng hỗ trợ cho bạn.
+                                    </p>
+                                </li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="customer-review">
+            <div id="top-price-comments">
+                <div class="container">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="text-center">
+                            <h3 class="h3-scale">Chúng tôi đã xử lý hơn <strong>3 triệu</strong> đơn hàng mang lại doanh thu trên <strong>16,300 tỷ</strong> cho khách hàng</h3>
+                            <p class="desc">Hãy lắng nghe xem cảm nhận của khách hàng để biết lý do vì sao chúng tôi được tin tưởng</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 text-center">
+                            <div class="swiper-container swiper-container-horizontal">
+                                <div class="swiper-wrapper" style="transform: translate3d(-1110px, 0, 0); transition-duration: 0;">
+                                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2" style="width: 555px;">
+                                        <div class="thumbnail">
+                                            <img src="https://www.bizweb.vn/Upload/CustomerComments/2016/11/21/27b1c2a0ade891afbed357b87fc7f5a9.jpg" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <p>Ngôi nhà Chích Bông đã thử nghiệm nhiều giải pháp website khác nhau, bao gồm cả tự thiết kế website. Tuy nhiên, đều gặp phải các vấn đề về hệ thống, bảo mật, bảo trì. Bizweb đã giúp khắc phục các vấn đề trên, giúp mình yên tâm tập trung vào công việc kinh doanh hơn.</p>
+                                            </div>
+                                            <div class="customer-name">
+                                                <span>Chị: Quyên Blue</span>
+                                                - <a class="text-aqua" href="http://shop.chichbong.com" target="_blank" rel="nofollow">shop.chichbong.com</a> -
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 555px;">
+                                        <div class="thumbnail">
+                                            <img src="https://www.bizweb.vn/Upload/CustomerComments/2016/11/21/fd4ce2057c4dee435f6afb877f663a17.jpg" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <p>Tôi hài lòng với Bizweb. Nhờ website mà Beemart thu hút được rất nhiều khách hàng. Tôi đánh giá cao đội ngũ chăm sóc khách hàng luôn tận tình và luôn tư vấn cho tôi những tính năng mới, thuận tiện cho việc bán hàng online.</p>
+                                            </div>
+                                            <div class="customer-name">
+                                                <span>Tống Ngọc Ánh</span>
+                                                - <a class="text-aqua" href="http://www.beemart.vn" target="_blank" rel="nofollow">www.beemart.vn</a> -
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 555px;">
+                                        <div class="thumbnail">
+                                            <img src="https://www.bizweb.vn/Upload/CustomerComments/2016/11/21/c2b785982130b1db02cc08dd87aa2532.jpg" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <p>
+                                                    Là đối tác lâu năm của Bizweb, tôi thấy Bizweb có phong cách làm việc chuyên nghiệp, đội ngũ nhân viên hỗ trợ nhiệt tình. Kangaroohanoi.vn đã chuyển sang phiên bản Bizweb mới, giao diện bắt mắt và nhiều tính năng hiện đại hơn.
+                                                </p>
+                                            </div>
+                                            <div class="customer-name">
+                                                <span>Chị Ngô Tuyết Nhung</span>
+                                                - <a class="text-aqua" href="http://www.kangaroohanoi.vn" target="_blank" rel="nofollow">www.kangaroohanoi.vn</a> -
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" style="width: 555px;">
+                                        <div class="thumbnail">
+                                            <img src="https://www.bizweb.vn/Upload/CustomerComments/2016/11/21/27b1c2a0ade891afbed357b87fc7f5a9.jpg" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <p>Ngôi nhà Chích Bông đã thử nghiệm nhiều giải pháp website khác nhau, bao gồm cả tự thiết kế website. Tuy nhiên, đều gặp phải các vấn đề về hệ thống, bảo mật, bảo trì. Bizweb đã giúp khắc phục các vấn đề trên, giúp mình yên tâm tập trung vào công việc kinh doanh hơn.</p>
+                                            </div>
+                                            <div class="customer-name">
+                                                <span>Chị: Quyên Blue</span>
+                                                - <a class="text-aqua" href="http://shop.chichbong.com" target="_blank" rel="nofollow">shop.chichbong.com</a> -
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="width: 555px;">
+                                        <div class="thumbnail">
+                                            <img src="https://www.bizweb.vn/Upload/CustomerComments/2016/11/21/fd4ce2057c4dee435f6afb877f663a17.jpg" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <p>Tôi hài lòng với Bizweb. Nhờ website mà Beemart thu hút được rất nhiều khách hàng. Tôi đánh giá cao đội ngũ chăm sóc khách hàng luôn tận tình và luôn tư vấn cho tôi những tính năng mới, thuận tiện cho việc bán hàng online.</p>
+                                            </div>
+                                            <div class="customer-name">
+                                                <span>Tống Ngọc Ánh</span>
+                                                - <a class="text-aqua" href="http://www.beemart.vn" target="_blank" rel="nofollow">www.beemart.vn</a> -
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var commentSwiper = new Swiper('#top-price-comments .swiper-container', {
+                    autoplay: 8000,
+                    autoplayDisableOnInteraction: false,
+                    slidesPerView: 1,
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    paginationClickable: true,
+                    loop: true
+                })
+            </script>
+        </div>*@
+    <div class="index-registration quick-registration new-registration">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+                <h3 class="text-large text-center">Hơn 23,000 doanh nghiệp và chủ shop đang bán hàng như thế nào?</h3>
+                <span>
+                    Đăng ký dùng thử miễn phí 15 ngày để khám phá
+                </span>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <input style="font-weight : 300;" id="site_name_bottom" class="input-site-name hidden-xs" type="text" value="" placeholder="Nhập tên cửa hàng/doanh nghiệp của bạn" onkeypress="return onInputStoreName(event, this)">
+                <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;">Dùng thử miễn phí</a>
+            </div>
+        </div>
+    </div>
+</div>

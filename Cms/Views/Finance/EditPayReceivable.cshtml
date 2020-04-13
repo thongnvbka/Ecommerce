@@ -1,0 +1,33 @@
+﻿@model PayReceivablesMeta
+@{
+    ViewBag.Title = string.Format("Update e-wallet information \"{0}\"", Model.Name);
+}
+<script>
+    var payReceivableJsTree = @Html.Raw(ViewBag.payReceivableJsTree);
+</script>
+<section class="content-header">
+    <h1>
+        Update debt settlement information
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("AccountingPayReceivable")">List of debt obligations</a></li>
+        <li class="active">Update statement</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("EditPayReceivable")" method="post" class="form-horizontal" id="submitForm">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_UpdatePayReceivable", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("AccountingPayReceivable")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <button type="button" class="btn btn-info pull-right" onclick="submitForm()"><i class="fa fa-plus"></i> Update statement</button>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- /.content -->
+

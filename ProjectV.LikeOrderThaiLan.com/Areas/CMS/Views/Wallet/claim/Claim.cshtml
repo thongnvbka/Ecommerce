@@ -1,0 +1,156 @@
+﻿<script type="text/html" id="templateClaim">
+    <div class="rs" id="claim">
+
+        <ul class="jifen-nav">
+            <li data-id="mingxi" class="lete-active"> @Resource.Dashboard_Payment </li>
+        </ul>
+        <div class="zy-main-content-msg-r rs" style="width: 100%; border-bottom: 1px solid #eee;">
+            <div class="zy-main-content-msg-r-box">
+                <div class="zy-main-content-msg-r-l">
+
+                    @Resource.RequestsPayment_AmountMoney (<span class="red-color"> * </span>) :
+                </div>
+                <div class="zy-main-content-msg-r-r input-money-number">
+                    @*<input class="decimal" type="text" placeholder="@Resource.RequestsPayment_AmountMoney"
+                        style="float: left; text-align: left !important" name="AdvanceMoney" id="AdvanceMoney" />*@
+                    <input type="text" name="AdvanceMoney" id="AdvanceMoney" value="" class="decimal"
+                           placeholder="@Resource.RequestsPayment_AmountMoney" style="float: left;" maxlength="@string.Format("{0:#,###}", ViewBag.BalanceAvalible).ToString().Length" autocomplete="off">
+
+                    <p style="float: left; width: 400px; margin-left: 15px;">
+                        (@Resource.RequestsPayment_MoneyMax @string.Format("{0:0,0}", ViewBag.BalanceAvalible) @Resource.Currency )
+                    </p>
+                
+                </div>
+            </div>
+            <div class="zy-main-content-msg-r-box">
+                <div class="zy-main-content-msg-r-l">
+
+                    @Resource.RequestsPayment_Name (<span class="red-color"> * </span>) :
+                </div>
+                <div class="zy-main-content-msg-r-r">
+                    <input type="text" name="CardName" id="CardName" value="" placeholder="@Resource.RequestsPayment_GiveName" autocomplete="off">
+                </div>
+            </div>
+            <div class="zy-main-content-msg-r-box">
+                <div class="zy-main-content-msg-r-l">
+
+                    @Resource.RequestsPayment_CardId (<span class="red-color"> * </span>) :
+                </div>
+                <div class="zy-main-content-msg-r-r">
+                    <input type="text" name="CardId" id="CardId" value="" placeholder="@Resource.RequestsPayment_BankId" autocomplete="off">
+                </div>
+            </div>
+            <div class="zy-main-content-msg-r-box">
+                <div class="zy-main-content-msg-r-l">
+
+                    @Resource.RequestsPayment_Bank (<span class="red-color"> * </span>) :
+                </div>
+                <div class="zy-main-content-msg-r-r">
+                    <input type="text" name="CardBank" id="CardBank" value="" placeholder="@Resource.RequestsPayment_BranchBank" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="zy-main-content-msg-r-box">
+                <div class="zy-main-content-msg-r-l">
+
+                    Nhập chi nhánh ngân hàng (<span class="red-color"> * </span>) :
+                </div>
+                <div class="zy-main-content-msg-r-r">
+                    <input type="text" name="CardBranch" id="CardBranch" value="" placeholder="@Resource.RequestsPayment_BranchBank" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="zy-main-content-msg-r-box" style="margin-bottom: 20px;">
+                <div class="zy-main-content-msg-r-l">
+                    &nbsp;
+                </div>
+                <div class="zy-main-content-msg-r-r">
+                    <button id="btnCommand" style="width: 120px;"> @Resource.Dashboard_Payment </button><span id="tip_msg"></span>
+                </div>
+            </div>
+
+            <div class="zy-main-content-msg-r-box" style="margin-bottom: 20px;">
+                @Html.Raw(Resource.RequestsPayment_Note)
+            </div>
+        </div>
+        <div class="zichan-zijin zichan-box rs" style="padding-right: 15px; box-sizing: border-box;">
+            <form class="rs">
+                <div data-bind="if: listData().length > 0" class="mg-t-15 rs">
+                    <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li data-bind="if: pageStart">
+                            <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                        </li>
+                        <li data-bind="if: pageNext">
+                            <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                        </li>
+                        <!-- ko foreach: listPage -->
+                        <li data-bind="css: Page === page ? 'active' :''  ">
+                            <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                        </li>
+                        <!-- /ko -->
+                        <li data-bind="if: pagePrev">
+                            <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                        </li>
+                        <li data-bind="if: pageEnd">
+                            <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <div data-bind="css: isRendingPage() === true? '' : 'display-none'" class="rs loading-acc">
+                <table border="1" cellspacing="1" cellpadding="1">
+                    <thead>
+                        <tr>
+                            <th class="text-center w-35">#</th>
+                            <th>Mã phiếu</th>
+                            <th> @Resource.RequestsPayment_CreateDate</th>
+                            <th> @Resource.Account_InforAccountHolders</th>
+                            <th> @Resource.Account_InforCardNumber</th>
+                            <th> @Resource.RequestsPayment_AmountRequest</th>
+                            <th> @Resource.Order_Status </th>
+                            <th> @Resource.Note </th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="template: { name: 'ListClaim', foreach: listData }"></tbody>
+
+                    <tfoot data-bind="if: listData().length == 0" class="dingdan-content-non">
+                        <tr>
+                            <td colspan="80">@Resource.RequestsPayment_NoData</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div data-bind="css: isRendingPage() === true? 'display-none' : ''" class="rs loading-acc">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+            <form class="rs">
+                <div data-bind="if: listData().length > 0" class="mg-t-15 rs">
+                    <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li data-bind="if: pageStart">
+                            <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                        </li>
+                        <li data-bind="if: pageNext">
+                            <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                        </li>
+                        <!-- ko foreach: listPage -->
+                        <li data-bind="css: Page === page ? 'active' :''  ">
+                            <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                        </li>
+                        <!-- /ko -->
+                        <li data-bind="if: pagePrev">
+                            <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                        </li>
+                        <li data-bind="if: pageEnd">
+                            <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>

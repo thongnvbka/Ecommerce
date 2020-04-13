@@ -1,0 +1,1075 @@
+﻿@{
+    ViewBag.Title = Resource.Home_Home;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@section styles
+{
+    <style type="text/css">
+        .daigou-top {
+            min-width: 1280px;
+            box-sizing: border-box;
+            background-color: #dd2727;
+        }
+
+        .daigou-top-box {
+            width: 1280px;
+            margin: auto;
+            overflow: hidden;
+            padding: 22px 0;
+            box-sizing: border-box;
+        }
+
+            .daigou-top-box ul {
+                float: right;
+                box-sizing: border-box;
+            }
+
+                .daigou-top-box ul li {
+                    cursor: pointer;
+                    position: relative;
+                    margin-left: 60px;
+                    float: left;
+                    box-sizing: border-box;
+                    text-align: center;
+                    color: white;
+                }
+
+                    .daigou-top-box ul li label {
+                        padding: 0 2px;
+                        font-size: 10px;
+                        position: absolute;
+                        top: 8px;
+                        left: 38px;
+                        background-color: rgba(0,0,0,0.5);
+                        display: block;
+                        color: white;
+                        border-radius: 15px;
+                        height: 16px;
+                        line-height: 16px;
+                        text-align: center;
+                        min-width: 16px;
+                    }
+
+                    .daigou-top-box ul li span {
+                        margin-top: 10px;
+                        display: inline-block;
+                        height: 35px;
+                        background-image: url('../../Content/images/img-more/daigou_icon1.png');
+                        background-repeat: no-repeat;
+                        background-position-y: 0px;
+                        margin-bottom: 10px;
+                    }
+
+        .daigou-banner {
+            margin-top: 3px;
+            min-width: 1280px;
+            height: 412px;
+            box-sizing: border-box;
+            /*background-image: url('../../Content/images/img-more/daigou_banner.png');*/
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .daigou-banner-box {
+            width: 1280px;
+            padding-top: 64px;
+            box-sizing: border-box;
+            margin: auto;
+            height: 100%;
+            text-align: center;
+        }
+
+            .daigou-banner-box h1 {
+                font-size: 36px;
+                /*color: white;*/
+                text-shadow: 0 3px 5px #999999;
+            }
+
+            .daigou-banner-box h2 {
+                font-size: 16px;
+                /*color: white;*/
+                margin-top: 29px;
+                margin-bottom: 17px;
+            }
+
+            .daigou-banner-box form input[type="text"] {
+                width: 615px;
+                height: 48px;
+                display: inline-block;
+                padding-left: 14px;
+                box-sizing: border-box;
+                border: none;
+                outline: none;
+            }
+
+            .daigou-banner-box form input[type="submit"], .daigou-banner-box form input[type="button"] {
+                width: 113px;
+                height: 48px;
+                color: white;
+                outline: none;
+                border: none;
+                background-color: #fd7f00;
+                display: inline-block;
+                box-sizing: border-box;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .daigou-banner-box form {
+                display: inline-block;
+                border: 6px solid rgba(0,0,0,0.1);
+                border-radius: 5px;
+            }
+
+            .daigou-banner-box p {
+                font-size: 14px;
+                /*color: white;*/
+                margin-top: 14px;
+                margin-bottom: 22px;
+            }
+
+                .daigou-banner-box p a {
+                    font-size: 14px;
+                    /*color: white;*/
+                    text-decoration: underline;
+                    margin-left: 17px;
+                }
+
+            .daigou-banner-box > a {
+                display: inline-block;
+                width: 220px;
+                font-size: 14px;
+                color: white;
+                border-radius: 5px;
+                text-align: center;
+                padding: 12px 0;
+            }
+
+                .daigou-banner-box > a:first-of-type {
+                    background-color: #dd2727;
+                }
+
+                .daigou-banner-box > a:last-of-type {
+                    background-color: #c19494;
+                    margin-left: 23px;
+                }
+
+        .zhuanyun-how-title {
+            margin-top: -25px;
+            text-align: center;
+            font-size: 39px;
+        }
+
+            .zhuanyun-how-title span {
+                padding: 0 10px;
+                background-color: white;
+            }
+
+            .zhuanyun-how-title label {
+                font-size: 14px;
+                text-decoration: underline;
+                padding: 0 10px;
+                background-color: white;
+                cursor: pointer;
+                color: blue;
+            }
+
+        .how-daigou-box {
+            margin: auto;
+            box-sizing: border-box;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .how-daigou-box-top {
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .how-daigou-box-bot {
+        }
+
+        .how-daigou-box-bot-l {
+            position: absolute;
+            top: 330px;
+            opacity: 0.7;
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 0.8s;
+            -moz-transition: all 0.8s; /* Firefox 4 */
+            -webkit-transition: all 0.8s; /* Safari 和 Chrome */
+            -o-transition: all 0.8s; /* Opera */
+            left: 20px;
+        }
+
+            .how-daigou-box-bot-l:hover {
+                -moz-transform: scale(0.8,0.8);
+                -webkit-transform: scale(0.8,0.8);
+                -o-transform: scale(0.8,0.8);
+            }
+
+        .how-daigou-box-bot-r:hover {
+            -moz-transform: scale(0.8,0.8);
+            -webkit-transform: scale(0.8,0.8);
+            -o-transform: scale(0.8,0.8);
+        }
+
+        .how-daigou-box-bot-r {
+            position: absolute;
+            top: 330px;
+            transition: all 0.8s;
+            -moz-transition: all 0.8s; /* Firefox 4 */
+            -webkit-transition: all 0.8s; /* Safari 和 Chrome */
+            -o-transition: all 0.8s; /* Opera */
+            opacity: 0.7;
+            z-index: 9999;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .how-daigou-box-bot-box {
+            display: none;
+            position: relative;
+        }
+
+            .how-daigou-box-bot-box.lete-active {
+                display: block;
+            }
+
+            .how-daigou-box-bot-box > img {
+                display: none;
+                height: auto;
+                width: 100%;
+            }
+
+                .how-daigou-box-bot-box > img.lete-active {
+                    display: block;
+                }
+
+        .how-daigou-box-bot-box-bot {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+            .how-daigou-box-bot-box-bot span {
+                display: inline-block;
+                height: 70px;
+                width: 70px;
+                text-align: center;
+                opacity: 0.8;
+                cursor: pointer;
+                line-height: 70px;
+                border-radius: 50%;
+                vertical-align: middle;
+                background-color: #ededed;
+            }
+
+            .how-daigou-box-bot-box-bot img {
+                vertical-align: middle;
+                margin: 0 10px;
+            }
+
+            .how-daigou-box-bot-box-bot span.lete-active {
+                background-color: #ec7a07;
+                color: white;
+            }
+
+        .zhuanyun-how-nav {
+            height: 54px;
+        }
+
+            .zhuanyun-how-nav li {
+                float: left;
+                padding: 10px 0;
+                cursor: pointer;
+                position: relative;
+                width: 16.66%;
+                text-align: center;
+                border-top: 1px solid #e1e1e1;
+                border-bottom: 1px solid #e1e1e1;
+                border-right: 1px solid #e1e1e1;
+                box-sizing: border-box;
+            }
+
+                .zhuanyun-how-nav li:hover {
+                    background-color: #fafafa;
+                }
+
+                    .zhuanyun-how-nav li:hover label {
+                        background-position: -7px 0;
+                    }
+
+                .zhuanyun-how-nav li span {
+                    vertical-align: middle;
+                    background-image: url('../../Content/images/icon-css/how_zhuanyun.png');
+                    display: inline-block;
+                    height: 32px;
+                    background-position-y: -47px;
+                    background-repeat: no-repeat;
+                }
+
+                .zhuanyun-how-nav li.lete-active span {
+                    background-position-y: -0px;
+                }
+
+                .zhuanyun-how-nav li.lete-active a {
+                    color: white;
+                }
+
+                .zhuanyun-how-nav li.lete-active {
+                    background-color: #dd2727;
+                }
+
+                .zhuanyun-how-nav li a {
+                    vertical-align: middle;
+                    color: #999999;
+                    font-size: 12px;
+                    margin-left: 5px;
+                }
+
+                .zhuanyun-how-nav li label {
+                    display: block;
+                    width: 7px;
+                    height: 17px;
+                    background-image: url('../../Content/images/icon-css/liucheng_jiao_icon.png');
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                    position: absolute;
+                    top: 18.5px;
+                    right: -7px;
+                    z-index: 10;
+                }
+
+                .zhuanyun-how-nav li.lete-active label {
+                    background-position: -14px 0;
+                }
+
+                .zhuanyun-how-nav li:nth-of-type(1) {
+                    border-left: 1px solid #e1e1e1;
+                }
+
+                    .zhuanyun-how-nav li:nth-of-type(1) span {
+                        width: 26px;
+                        background-position-x: 0;
+                    }
+
+                .zhuanyun-how-nav li:nth-of-type(2) span {
+                    width: 30px;
+                    background-position-x: -125px;
+                }
+
+                .zhuanyun-how-nav li:nth-of-type(3) span {
+                    width: 30px;
+                    background-position-x: -60px;
+                }
+
+                .zhuanyun-how-nav li:nth-of-type(4) span {
+                    width: 30px;
+                    background-position-x: -186px;
+                }
+
+                .zhuanyun-how-nav li:nth-of-type(5) span {
+                    width: 28px;
+                    background-position-x: -247px;
+                }
+
+                .zhuanyun-how-nav li:nth-of-type(6) span {
+                    width: 31px;
+                    background-position-x: -310px;
+                }
+
+        .zhuanyun-how-img {
+            margin-top: 23px;
+        }
+
+            .zhuanyun-how-img img {
+                display: none;
+            }
+
+                .zhuanyun-how-img img.lete-active {
+                    display: block;
+                }
+
+        .daigou-how {
+            width: 1280px;
+            margin: auto;
+            margin-top: 100px;
+            padding-bottom: 70px;
+            border-top: 2px solid #EDEDEE;
+        }
+
+        .daigou-riping {
+            min-width: 1280px;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+            padding: 60px 0;
+        }
+
+        .daigou-riping-box {
+            width: 1280px;
+            margin: auto;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+            .daigou-riping-box h1 {
+                font-size: 28px;
+            }
+
+            .daigou-riping-box h2 {
+                font-size: 16px;
+                margin-top: 14px;
+                font-weight: 100;
+                margin-bottom: 40px;
+            }
+
+            .daigou-riping-box h3 {
+                font-size: 16px;
+                font-weight: 100;
+                color: #999999;
+            }
+
+                .daigou-riping-box h3 span {
+                    display: inline-block;
+                    width: 20px;
+                    height: 16px;
+                    background-image: url('../../Content/images/img-more/daigou_icon1.png');
+                    background-position: -353px 0;
+                    margin-right: 9px;
+                }
+
+        .lt-riping-box {
+            float: left;
+            border: 1px solid #efefef;
+            box-sizing: border-box;
+            width: calc(25% - 12px);
+            margin-right: 16px;
+        }
+
+            .lt-riping-box:nth-of-type(4) {
+                margin-right: 0;
+            }
+
+            .lt-riping-box:nth-of-type(8) {
+                margin-right: 0;
+            }
+
+        .lt-riping-box-img img {
+            width: 100%;
+            display: none;
+            height: auto;
+        }
+
+            .lt-riping-box-img img.lete-active {
+                display: inline-block;
+            }
+
+        .lt-riping-box-img {
+            text-align: center;
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lt-riping-box-msg {
+            padding: 0 16px;
+        }
+
+        .lt-riping-box-msg-top {
+            margin-top: 14px;
+            overflow: hidden;
+        }
+
+            .lt-riping-box-msg-top label {
+                color: #999999;
+                vertical-align: middle;
+            }
+
+            .lt-riping-box-msg-top span {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background-image: url('../../Content/images/icon-css/icon.png');
+                background-position: 0 0;
+                vertical-align: middle;
+            }
+
+            .lt-riping-box-msg-top p {
+                float: right;
+                color: #999999;
+            }
+
+                .lt-riping-box-msg-top p l {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    background-image: url('../../Content/images/icon-css/icon.png');
+                    background-position: -125px 0;
+                    vertical-align: middle;
+                    margin-right: 5px;
+                }
+
+        .lt-riping-box-msg-mid {
+            margin-top: 22px;
+        }
+
+            .lt-riping-box-msg-mid img {
+                vertical-align: middle;
+                margin-right: 6px;
+                width: 30px;
+                height: 30px;
+                border-radius: 100%;
+            }
+
+        .lt-riping-box-msg-mid-text {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+            .lt-riping-box-msg-mid-text h1 {
+                color: #666666;
+                font-weight: 100;
+                margin-bottom: 6px;
+            }
+
+            .lt-riping-box-msg-mid-text p {
+                color: #999999;
+            }
+
+        .lt-riping-box-msg-bottom {
+            margin-top: 13px;
+            overflow: hidden;
+            margin-bottom: -30px;
+            min-height: 70px;
+        }
+
+            .lt-riping-box-msg-bottom img {
+                float: left;
+                margin-right: 5px;
+            }
+
+            .lt-riping-box-msg-bottom p {
+                line-height: 22px;
+            }
+
+        .lt-riping-box-hr {
+            margin: 0 15px;
+            border-top: 1px solid #EFEFEF;
+            margin-top: 27px;
+            margin-bottom: 40px;
+        }
+
+        .lt-riping-box-img-point {
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+            .lt-riping-box-img-point li {
+                width: 9px;
+                height: 9px;
+                border-radius: 9px;
+                display: inline-block;
+                background-color: white;
+                margin-right: 8px;
+                cursor: pointer;
+            }
+
+                .lt-riping-box-img-point li.lete-active {
+                    background-color: #dd2727;
+                }
+
+        .riping-box {
+            text-align: left;
+            margin-top: 47px;
+        }
+
+        .daigou-riping-bot {
+            padding-top: 48px;
+        }
+
+            .daigou-riping-bot a {
+                display: inline-block;
+                font-size: 12px;
+                color: white;
+                background-color: #cf0000;
+                padding: 14px 100px;
+                border-radius: 5px;
+            }
+
+        .daigou-tese {
+            min-width: 1280px;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .daigou-tese-box {
+            width: 1280px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .daigou-tese h1 {
+            font-size: 28px;
+        }
+
+        .daigou-tese h2 {
+            font-size: 16px;
+            margin-top: 14px;
+            font-weight: 100;
+            margin-bottom: 40px;
+        }
+
+        .daigou-tese h3 {
+            font-size: 16px;
+            font-weight: 100;
+            border-bottom: 1px solid #f2f2f2;
+            color: #999999;
+            padding-bottom: 50px;
+        }
+
+            .daigou-tese h3 span {
+                display: inline-block;
+                width: 20px;
+                height: 16px;
+                background-image: url('../../Content/images/img-more/daigou_icon1.png');
+                background-position: -332px 0;
+                margin-right: 9px;
+            }
+
+        .daigou-tese-box-list-l {
+            float: left;
+            width: 124px;
+            box-sizing: border-box;
+        }
+
+            .daigou-tese-box-list-l span {
+                background-image: url('../../Content/images/icon-css/daigou_baozhang.png');
+                display: inline-block;
+                width: 124px;
+                height: 114px;
+            }
+
+        .daigou-tese-box-list-r {
+            float: left;
+            width: 1156px;
+            padding-left: 30px;
+            box-sizing: border-box;
+        }
+
+            .daigou-tese-box-list-r label {
+                font-size: 27px;
+                font-weight: bold;
+                color: black;
+                display: inline-block;
+                margin-bottom: 22px;
+            }
+
+            .daigou-tese-box-list-r p {
+                font-size: 12px;
+                color: #999999;
+                line-height: 22px;
+            }
+
+        .daigou-tese-box-list {
+            text-align: left;
+            padding-bottom: 50px;
+            padding-top: 18px;
+            border-bottom: 1px dashed #f2f2f2;
+        }
+
+        .daigou-tese-bot {
+            text-align: center;
+        }
+
+            .daigou-tese-bot a {
+                display: inline-block;
+                font-size: 12px;
+                color: white;
+                background-color: #cf0000;
+                padding: 14px 100px;
+                border-radius: 5px;
+            }
+
+        .daigou-gongju {
+            min-width: 1280px;
+            box-sizing: border-box;
+            padding: 50px 0;
+            background-color: #f8f8f8;
+        }
+
+        .daigou-gongju-box {
+            width: 1280px;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        .gongju-content {
+            margin-top: 40px;
+            border-top: 2px solid #f2f2f2 overflow: hidden;
+        }
+
+            .gongju-content .zhuanyun-how-title span {
+                background-color: #f8f8f8;
+            }
+
+            .gongju-content .zhuanyun-how-title {
+                margin-bottom: 50px;
+            }
+
+        .gongju-content-box {
+            float: left;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 20%;
+            box-sizing: border-box;
+        }
+
+            .gongju-content-box p {
+                font-size: 14px;
+                color: #727272;
+                font-weight: bold;
+                line-height: 30px;
+            }
+
+            .gongju-content-box a {
+                color: #979797;
+            }
+
+                .gongju-content-box a:hover {
+                    color: #0078B6;
+                }
+
+        footer {
+            margin-top: 0;
+        }
+
+        p a.search-link:hover {
+            color: red;
+            font-weight: bold;
+        }
+
+        form.search-pr > button {
+            color: #fff;
+            font-weight: bold;
+            height: 50px;
+            outline: none;
+            border: none;
+            background-color: #fd7f00;
+            display: inline-block;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+
+}
+@section Header
+{
+    <div class="daigou-top" style="margin-top: 0 !important">
+        <div class="daigou-top-box">
+            <a href="/@culture">
+                <img src="~/Content/images/icon-home/logo-_likeorder_262x79.png" @*width="175"*@ alt="" />
+            </a>
+            <ul class="clearFix">
+                <li onclick="window.location.href = '/@culture'">
+                    <span style="width: 33px; background-position-x: -114px;"></span>
+                    <p>
+                        @Resource.Home_Home
+                    </p>
+                </li>
+                <li onclick="window.location.href = '/@culture/Product/Cart'">
+                    <span style="width: 33px; background-position-x: -171px;"></span>
+                    <p>
+                        @Resource.Home_Cart
+                    </p>
+                    <label>@ViewBag.CountOrderNotifi</label>
+                </li>
+                <li class="to-how-daigou" onclick="window.location.href = '/@culture/Home/FAQ'">
+                    <span style="width: 27px; background-position-x: 0px;"></span>
+                    <p>@Resource.Home_Guide </p>
+                </li>
+                <li class="to-tese" onclick="window.location.href = '/@culture/Home/FAQ'">
+                    <span style="width: 28px; background-position-x: -231px;"></span>
+                    <p>ความลับ </p>  <!--Bảo mật-->
+                </li>
+                <li class="to-gongju" onclick="window.location.href = '/@culture/Home/FAQ/#dvdathang'">
+                    <span style="width: 30px; background-position-x: -288px;"></span>
+                    <p> @Resource.PriceList_PriceList </p>
+                </li>
+                <li class="to-riping">
+                    <span style="width: 35px; background-position-x: -55px;"></span>
+                    <p>Comment</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+<div class="daigou-banner">
+    <div class="daigou-banner-box">
+        <h1>
+            @*Giao dịch dễ dàng nhập hàng nhanh chóng*@
+            การสั่งซื้อสินค้าที่ง่ายที่สุด! นำเข้าสินค้าอย่างรวดเร็ว !
+        </h1>
+        <h2>
+
+            ยอดการสั่งซื้อสินค้า มากกว่า <span>1,065,098</span> สินค้า ต่อ1วัน ที่ Likeorder
+            มีบริการการสั่งซื้อสินค้าที่สะดวกรวดเร็ว และ มีการขนส่งที่ดีเยี่ยม อีกทั้งยัง ถูกกว่า และ ปลอดภัยกว่า
+
+
+            @*กว่า <span>1065,098 </span> สินค้าได้ดำเนินการธุรกรรมต่อวันที่ Likeorder
+                ธุรกรรมด้วยความรวดเร็ว
+                ขนส่งอย่างรวจเร็วกว่า ถูกกว่า และปลอดภัยกว่า*@
+        </h2>
+        <form class="search-pr">
+            <input placeholder="@Resource.Home_SearchLink" type="text" id="txtKeyword" value="" autocomplete="off">
+
+            <button id="btnSearchTaobao" style="display: none" onclick="searchWbw('TAOBAO.COM')">ค้นหาที่ Taobao.com</button>
+            <button id="btnSearch1688" style="display: none" onclick="searchWbw('1688.COM')">ค้นหาที่ 1688.com</button>
+            <button id="btnSearchTmall" style="display: none" onclick="searchWbw('TMALL.COM')"> ค้นหาที่ Tmall.com</button>
+        </form>
+        <p>
+            ลิ้งค์เว็บไซต์สินค้ายอดนิยม：
+            <a href="javascript:;" class="red-color bold search-link" id="linkSearchTaobao">Taobao.com</a>
+            <a href="javascript:;" class="search-link" id="linkSearchTmall">Tmall.com</a>
+            <a href="javascript:;" class="search-link" id="linkSearch1688">1688.com</a>
+        </p>
+
+        @if (CustomerState.Email != null)
+        {
+            <a href="@Url.Action("CreateOrder", "Order",new {Area="CMS"})" target="_blank"> @Resource.Header_CreateOrder </a>
+            <a href="@Url.Action("CreateDeposit", "Order",new {Area="CMS"})" target="_blank"> @Resource.Home_CreateDeposit </a>
+        }
+        else
+        {
+            <a href="@Url.Action("Register", "Account")" target="_blank">
+                @Resource.Home_Register
+        </a>
+            <a href="@Url.Action("Login", "Account")" target="_blank">@Resource.Home_Login </a>
+        }
+    </div>
+</div>
+
+<div class="daigou-how">
+    <div class="zhuanyun-how-title">
+        <span>@Resource.Introduce_AboutUs</span>
+    </div>
+    <div class="how-daigou-box">
+        <div class="how-daigou-box-top">
+            <ul class="zhuanyun-how-nav clearFix">
+                <li data-id="1" class="lete-active">
+                    <span></span>
+                    <a>@Resource.Header_CreateOrder </a>
+                    <label></label>
+                </li>
+
+                <li data-id="2">
+                    <span></span>
+                    <a>
+                        ซื้อสินค้า
+                        @*Mua hàng*@
+                    </a>
+                    <label></label>
+                </li>
+
+                <li data-id="3">
+                    <span></span>
+                    <a>@Resource.StepByStep_Order</a>
+                    <label></label>
+                </li>
+
+                <li data-id="4">
+                    <span></span>
+                    <a>
+                        @Resource.TransactionHistory_Payment
+                    </a>
+                    <label></label>
+                </li>
+                <li data-id="5">
+                    <span></span>
+                    <a>@Resource.Home_CreateDeposit</a>
+                    <label></label>
+                </li>
+                <li data-id="6">
+                    <span></span>
+                    <a> @Resource.DetaiOrder_Ticket</a>
+                </li>
+            </ul>
+        </div>
+        <div class="how-daigou-box-bot">
+            <img class="how-daigou-box-bot-l" src="/Content/images/img-more/ic-arrow-left.png" alt="">
+            <img class="how-daigou-box-bot-r" src="/Content/images/img-more/ic-arrow-right.png" alt="" />
+
+            <div class="how-daigou-box-bot-box lete-active" data-id="1">
+                <img data-id="1" class="lete-active" src="~/Content/images/icon-css/1111_1.1.png" alt="" />
+                <img data-id="2" src="~/Content/images/icon-css/1111_1.2.png" alt="" />
+                <div class="how-daigou-box-bot-box-bot">
+                    <span class="lete-active" data-id="1">Copy link</span>
+                    <img src="~/Content/images/icon-css/1111_jiao.png" alt="" />
+                    <span data-id="2">Detail</span>
+                </div>
+            </div>
+
+            <div class="how-daigou-box-bot-box" data-id="2">
+                <img data-id="1" class="lete-active" src="~/Content/images/icon-css/1111_3.1.png" alt="" />
+            </div>
+
+            <div class="how-daigou-box-bot-box" data-id="3">
+                <img data-id="1" class="lete-active" src="~/Content/images/icon-css/1111_2.1.png" />
+                <img data-id="2" src="~/Content/images/icon-css/1111_2.2.png" />
+                <div class="how-daigou-box-bot-box-bot">
+                    <span class="lete-active" data-id="1">Select Products</span>
+                    <img src="~/Content/images/icon-css/1111_jiao.png" />
+                    <span data-id="2">Deposit order</span>
+                </div>
+            </div>
+
+            <div class="how-daigou-box-bot-box" data-id="4">
+                <img data-id="1" class="lete-active" src="~/Content/images/icon-css/1111_4.1.png" alt="" />
+            </div>
+
+            <div class="how-daigou-box-bot-box" data-id="5">
+                <img data-id="1" class="lete-active" src="~/Content/images/icon-css/1111_5.1.png" alt="" />
+            </div>
+
+            <div class="how-daigou-box-bot-box" data-id="6">
+                <img data-id="1" class="lete-active" src="~/Content/images/icon-css/1111_6.1.png" alt="" />
+                <img data-id="2" src="~/Content/images/icon-css/1111_6.2.png" alt="" />
+                <div class="how-daigou-box-bot-box-bot">
+                    <span class="lete-active" data-id="1">List Order</span>
+                    <img src="~/Content/images/icon-css/1111_jiao.png" alt="" />
+                    <span data-id="2">Complain</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".zhuanyun-how-nav").on("click", "li", function () {
+                var id = $(this).attr("data-id");
+                $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+                $(this).addClass("lete-active");
+                $(".how-daigou-box-bot-box").removeClass("lete-active");
+                $(".how-daigou-box-bot-box[data-id='" + id + "']").addClass("lete-active")
+            })
+            $(".how-daigou-box-bot-box").on("click", "span", function () {
+                var id = $(this).attr("data-id");
+                $(this).parents(".how-daigou-box-bot-box").find("span").removeClass("lete-active");
+                $(this).addClass("lete-active");
+                $(this).parents(".how-daigou-box-bot-box").find("img").removeClass("lete-active");
+                $(this).parents(".how-daigou-box-bot-box").find("img[data-id='" + id + "']").addClass("lete-active");
+            })
+            $(".how-daigou-box-bot-l").on("click", function () {
+                var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+                if (id <= 1) {
+                    id = 6
+                } else {
+                    id -= 1
+                }
+                $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+                $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+                $(".how-daigou-box-bot-box").removeClass("lete-active");
+                $(".how-daigou-box-bot-box[data-id='" + id + "']").addClass("lete-active")
+            })
+            $(".how-daigou-box-bot-r").on("click", function () {
+                var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+                if (id >= 6) {
+                    id = 1
+                } else {
+                    id += 1
+                }
+                $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+                $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+                $(".how-daigou-box-bot-box").removeClass("lete-active");
+                $(".how-daigou-box-bot-box[data-id='" + id + "']").addClass("lete-active")
+            })
+            $(".lt-riping-box-img").on("click", "li", function () {
+                var id = $(this).attr("data-id");
+                var parent = $(this).parents(".lt-riping-box-img");
+                parent.find("img").removeClass("lete-active");
+                parent.find("img[data-id='" + id + "']").addClass("lete-active");
+                parent.find("li").removeClass("lete-active");
+                $(this).addClass("lete-active");
+            })
+            $(".to-how-daigou").on("click", function () {
+                $("body,html").animate({ scrollTop: $(".daigou-how").offset().top - 50 }, 1000)
+            })
+            $(".to-tese").on("click", function () {
+                $("body,html").animate({ scrollTop: $(".daigou-tese").offset().top }, 1000)
+            })
+            $(".to-riping").on("click", function () {
+                $("body,html").animate({ scrollTop: $(".daigou-riping").offset().top }, 1000)
+            })
+            $(".to-gongju").on("click", function () {
+                $("body,html").animate({ scrollTop: $(".daigou-gongju").offset().top }, 1000)
+            })
+        })
+    </script>
+
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //clear
+            var obj = $(this).find('form.search-pr>button');
+            obj.hide();
+            //$("p>a#linkSearchTaobao").addClass("red-color bold");
+            $("form.search-pr>button#btnSearchTaobao").show();
+            //search tmall
+            $("p>a.search-link").click(function () {
+                $("p>a.search-link").removeClass('red-color bold');
+                obj.hide();
+                $(this).addClass('red-color bold');
+            });
+
+            $("p>a#linkSearchTmall").click(function () {
+                //$("form.search-pr>button").hide();
+                $("form.search-pr>button#btnSearchTmall").show();
+            });
+            ////search taobao
+            $("p>a#linkSearchTaobao").click(function () {
+
+                $("form.search-pr>button#btnSearchTaobao").show();
+            });
+            ////search 1699
+            $("p>a#linkSearch1688").click(function () {
+                $("form.search-pr>button#btnSearch1688").show();
+            });
+        });
+
+        function searchWbw(web) {
+            var obj = {
+                keyword: $('#txtKeyword').val(),
+                web: web
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SearchIndex", "Home")',
+                data: obj,
+                success: function (data) {
+                    if (data.length > 0) {
+                        window.location.href = data;
+                    }
+                }
+            });
+
+        }
+    </script>
+}

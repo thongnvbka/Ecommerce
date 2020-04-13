@@ -1,0 +1,33 @@
+﻿<script type="text/html" id="exportwarehouse-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewExportWarehouseDetailModal" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center">
+            <i class="fa fa-clock-o"></i><span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.exportwarehouseType[Type].Name, css: statusApp.exportwarehouseType[Type].Class"></span>
+        </td>
+        <td>
+            <span>Number of package(s)/container(s): <strong data-bind="text: WalletNumber"></strong></span><br />
+            <span>Gross weight: <strong data-bind="text: TotalWeight"></strong></span><br />
+            <span>Total Volume: <strong data-bind="text: TotalVolume"></strong></span>
+        </td>
+        <td class="text-center" data-bind="text: WarehouseName">China warehouse</td>
+        <td class="text-center">
+            <a><strong data-bind="text: UserFullName">Nguyễn Văn An</strong></a>
+        </td>
+        @*<td class="text-center">
+            <a href="#"><strong>---</strong></a>
+        </td>*@
+        <td class="text-center">
+            <span data-bind="text: statusApp.exportwarehouse[Status].Name, css: statusApp.exportwarehouse[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <a href="#" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+            <a href="#" class="btn btn-sm btn-danger btn-xs"><i class="fa fa-trash"></i> Delete </a>
+        </td>
+    </tr>
+</script>

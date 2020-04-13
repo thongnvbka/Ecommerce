@@ -1,0 +1,288 @@
+﻿@model OrderAcountingMeta
+
+@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+}
+
+<div id="acountingModal" class="modal modal-dialog modal-p50 fade" role="dialog">
+    <form data-bind="submit: save" id="acountingForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <!-- ko if: mode() == 0 -->
+                        <span>Requires processing of missing product</span>
+                        <!-- /ko -->
+                        <!-- ko if: mode() == 1 -->
+                        <span>Requested to handle the wrong product</span>
+                        <!-- /ko -->
+                        <!-- ko if: mode() == 2 -->
+                        <span>Request for payment</span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 data-bind="click: changeIsShowInfo" class="form-section section-hover mt0 mb10 bold500 border-green">Product link information <i data-bind="attr: {class: isShowInfo() ? 'fa fa-chevron-up pull-right' : 'fa fa-chevron-down pull-right' }" class="fa fa-chevron-down pull-right" aria-hidden="true"></i></h4>
+                            <div data-bind="visible: isShowInfo">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Order code:</label>
+                                            <div class="col-sm-8">
+                                                <p data-bind="text: ReturnCode(orderCode()) " class="form-control-static"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Customer :</label>
+                                            <div class="col-sm-8">
+                                                <p data-bind="text: customerName" class="form-control-static"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Phone:</label>
+                                            <div class="col-sm-8">
+                                                <p data-bind="text: customerPhone" class="form-control-static"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Shop Name:</label>
+                                            <div class="col-sm-8">
+                                                <p class="form-control-static">
+                                                    <a data-bind="text: shopName, attr: {href: shopLink, title: shopName}"></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a data-bind="attr: {href: link, title: name}" target="_blank">
+                                                        <img data-bind="attr: {src: image, alt: name}" style="width: 50px;" class="media-object" />
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a data-bind="text: name, attr: {href: link, title: name}" target="_blank"></a></h4>
+                                                    <!-- ko if: properties().length > 0 -->
+                                                    <p class="form-control-static">
+                                                        <!-- ko foreach: properties -->
+                                                        <span data-bind="text: Label"></span>: <b data-bind="text: Text"></b>
+                                                        <!-- /ko -->
+                                                    </p>
+                                                    <!-- /ko -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Price (Yuan):</label>
+                                            <div class="col-sm-2">
+                                                <p data-bind="text: formatNumberic(price(), 'N2')" class="form-control-static text-right"></p>
+                                            </div>
+                                            <label class="col-sm-4 control-label">Price (Baht):</label>
+                                            <div class="col-sm-2">
+                                                <p class="form-control-static text-right"><span data-bind="text: formatNumberic(exchangePrice(), 'N2')"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Exchange Rate (Yuan / Baht):</label>
+                                            <div class="col-sm-2">
+                                                <p data-bind="text: formatNumberic(exchangeRate(), 'N2')" class="form-control-static  text-right"></p>
+                                            </div>
+                                            <label class="col-sm-4 control-label">Number :</label>
+                                            <div class="col-sm-2">
+                                                <p class="form-control-static  text-right"><span data-bind="text: formatNumberic(quantity(), 'N0')"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Money(Yuan):</label>
+                                            <div class="col-sm-2">
+                                                <p data-bind="text: formatNumberic(totalPrice(), 'N2')" class="form-control-static  text-right"></p>
+                                            </div>
+                                            <label class="col-sm-4 control-label">Money(Baht):</label>
+                                            <div class="col-sm-2">
+                                                <p class="form-control-static text-right"><span data-bind="text: formatNumberic(totalExchange(), 'N2')"></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Note:</label>
+                                            <div class="col-sm-10">
+                                                <p data-bind="text: note" class="form-control-static"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Information required</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">The number of false  <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-2">
+                                            @Html.TextBoxFor(x => x.QuantityLose, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control text-right"},
+                                                {"data-bind", "value: quantityLose"},
+                                            })
+                                            @Html.ValidationMessageFor(model => model.QuantityLose)
+                                        </div>
+                                        <label class="col-sm-2 control-label">Value (Yuan):</label>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static text-right"><span data-bind="text: formatNumberic(totalPriceLose(), 'N2')"></span></p>
+                                        </div>
+                                        <label class="col-sm-2 control-label">Value (Currency):</label>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static text-right"><span data-bind="text: formatNumberic(totalExchangeLose(), 'N2')"></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Note <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextAreaFor(x => x.Note, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: notePrivate"},
+                                                {"rows", "5"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.Note)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="btn btn-primary btn-file">
+                                <span class="fileinput-new"><i data-bind="attr: {class: isUploading() ? 'fa fa-spinner fa-pulse' : 'fa fa-plus'}" class="fa fa-plus"></i> Add a photo for the wrong tally</span>
+                                <input id="addImageForAcounting" name="" type="file">
+                            </span>
+                            <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- ko if: images().length == 0 -->
+                <div class="col-xs-12">
+                    <div class="alert alert-warning" role="alert">There are no images available for tallying</div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: images().length > 0 -->
+                <!-- ko foreach: images -->
+                <div class="col-xs-6 col-md-3">
+                    <div class="thumbnail">
+                        <a data-bind="click: $parent.showImage.bind($data)" title="See image details" href="javascript:;">
+                            <img data-bind="attr: {src: '/images/'+$data+'_171x180_0'}" src="" alt="">
+                        </a>
+                        <a data-bind="click: $parent.remove" href="javascript::" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Delete</a>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<a class="btn btn-primary pull-left"><i class="fa fa-print"></i> Print </a>*@
+            <!-- ko if: id() <= 0 || window.hasUpdate -->
+            <button data-bind="disable: isLoading" class="btn btn-success" type="submit"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i> <span data-bind="text: id() > 0 ? 'Save' : 'Create request'"></span></button>
+            <!-- /ko -->
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="acountingPackageTemplate" type="text/template">
+        <!-- ko if: isFirst() -->
+        <tr class="bg-info">
+            <th colspan="14">Invoice: <span data-bind="text: ReturnCode(orderCode)"></span> - <span data-bind="text: customerName"></span>(<span data-bind="text: customerUserName"></span>) - Number of package(s) : <span data-bind="text: formatNumberic(packageNoInWallet,'N0')"></span>/<span data-bind="text: formatNumberic(orderPackageNo,'N0')"></span></th>
+        </tr>
+        <!-- /ko -->
+        <tr>
+            <td data-bind="text: $index()+1" class="text-center"></td>
+            <td class="text-center"><a data-bind="text: 'P'+packageCode, click: $parent.showDetailPackage.bind($data, packageId)" href="javascript:;"></a></td>
+
+            <td class="text-center">
+                <a data-bind="click: function() {orderTypeViewModel.showViewOrder(orderId, orderCode); }" href="javascript:;"><span data-bind="text: ReturnCode(orderCode)"></span></a>
+            </td>
+
+            <td data-bind="text: transportCode" class="text-center"></td>
+            <td>
+                <!-- ko if: window.hasUpdate -->
+                <input data-bind="value: weight, valueUpdate: 'keyup'" class="text-right form-control decimal" type="text" />
+                <!-- /ko -->
+                <!-- ko ifnot: window.hasUpdate -->
+                <div data-bind="text: formatNumberic(cacheWeight, 'N2')" class="text-right"></div>
+                <!-- /ko -->
+            </td>
+            <td>
+                <!-- ko if: window.hasUpdate -->
+                <input data-bind="value: length, valueUpdate: 'keyup'" class="text-right form-control decimal" type="text" />
+                <!-- /ko -->
+                <!-- ko ifnot: window.hasUpdate -->
+                <div data-bind="text: formatNumberic(cacheLength, 'N2')" class="text-right"></div>
+                <!-- /ko -->
+            </td>
+            <td>
+                <!-- ko if: window.hasUpdate -->
+                <input data-bind="value: width, valueUpdate: 'keyup'" class="text-right form-control decimal" type="text" />
+                <!-- /ko -->
+                <!-- ko ifnot: window.hasUpdate -->
+                <div data-bind="text: formatNumberic(cacheWidth, 'N2')" class="text-right"></div>
+                <!-- /ko -->
+            </td>
+            <td>
+                <!-- ko if: window.hasUpdate -->
+                <input data-bind="value: height, valueUpdate: 'keyup'" class="text-right form-control decimal" type="text" />
+                <!-- /ko -->
+                <!-- ko ifnot: window.hasUpdate -->
+                <div data-bind="text: formatNumberic(cacheHeight, 'N2')" class="text-right"></div>
+                <!-- /ko -->
+            </td>
+            <td data-bind="text: convertedWeight" class="text-right"></td>
+            <td data-bind="text: actualWeight" class="text-right"></td>
+            <td>
+                <div data-bind="attr: {'data-index': $index(), 'id': 'jstree' + $index(), 'data-id': 'jstree' + $index(), class: 'jstree'}"></div>
+            </td>
+            <td>
+                <!-- ko if: window.hasUpdate -->
+                <textArea data-bind="value: note" class="form-control"></textArea>
+                <!-- /ko -->
+                <!-- ko ifnot: window.hasUpdate -->
+                <span data-bind="text: note"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-center">
+                <span data-bind="if: status == 1" class="label label-success">Noraml</span>
+                <span data-bind="if: status == 0" class="label label-danger">Broken</span>
+            </td>
+            <td class="text-center">
+                <a data-bind="click: $parent.removeItem" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+            </td>
+        </tr>
+    </script>
+}

@@ -1,0 +1,40 @@
+﻿@using Library.DbContext.Results
+
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var orderNoCodes = ViewBag.OrderNoCode as List<OrderRiskResult>;
+    int index = 1;
+}
+
+
+<h1>Overtime orders have no transport code</h1>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Code orders</th>
+        <th>Customer name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Last Update</th>
+    </tr>
+    </thead>
+        <tbody>
+        @foreach (var o in orderNoCodes)
+        {
+            <tr>
+                <td class="text-center">@index</td>
+                <td><a href="/Purchase/Order#@("ORD" + o.Code)" target="_blank"></a> @("ORD" + o.Code)</td>
+                <td>@o.CustomerName</td>
+                <td>@o.CustomerPhone</td>
+                <td>@o.CustomerEmail</td>
+                <td>@o.LastUpdate.ToString("g")</td>
+            </tr>
+            index += 1;
+        }
+        </tbody>
+</table>
+

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = Resource.Deposit_ListDeposit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    <div data-bind="template: { name: templateId }">
+    </div>
+</section>
+
+@Html.Partial("~/Areas/CMS/Views/Order/deposit/_DepositList.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/deposit/_status.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/deposit/_Deposit.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/deposit/_popup.cshtml")
+@section scripts{
+
+    <script src="~/Areas/CMS/Scripts/models/order/depositDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/deposit/depositStatusItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/deposit/depositItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/deposit/depositPopupModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/deposit/depositViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+
+}

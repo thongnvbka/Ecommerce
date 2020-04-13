@@ -1,0 +1,34 @@
+﻿<script type="text/html" id="ListTicket">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1"></td>
+        <td>
+            <div class="rs content-code">
+                <span>
+                    <span class="code-order rs">
+                        
+                            <a data-bind="text:code, attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket?ticketId=' + id}" target="_blank"> </a>
+                       
+                            
+                    </span>
+                    <p data-bind="text: moment(createDate).format('DD/MM/YYYY   hh:mm:ss')"></p>
+                </span>
+            </div>
+        </td>
+        <td>
+            <!-- ko if: OrderType ==  @((byte)Common.Emums.OrderType.Order) -->
+                <span class="code-order"><a data-bind="text:'ORD' + orderCode, attr: {href: '/' + window.culture + '/CMS/Order/DetailOrder?orderId=' + orderId}" target="_blank"></a> </span>
+            <!-- /ko -->
+            <!-- ko if: OrderType ==  @((byte)Common.Emums.OrderType.Deposit) -->
+                <span class="code-order"><a data-bind="text:'DEP' + orderCode, attr: {href: '/' + window.culture + '/CMS/Order/DetailDeposit?depositId=' + orderId}" target="_blank"></a> </span>
+            <!-- /ko -->
+        </td>
+        @*<td data-bind="foreach: $parent.listTypeService(TypeService)">
+                <span data-bind="text: Name"></span><br />
+            </td>*@
+        <td class="text-left p10" data-bind="text: substring(content,40)" style="text-align: justify;"></td>
+        <td class="text-left p10" data-bind="text: substring(lastReply,40)" style="text-align: justify;"></td>
+        <td>
+            <label data-bind="text: statusApp.complainView[Status].Name, css: statusApp.complainView[Status].Class"></label>
+        </td>
+    </tr>
+</script>

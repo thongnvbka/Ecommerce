@@ -1,0 +1,41 @@
+﻿@model CustumerTypeMeta
+@{
+    ViewBag.Title = "Add new customer group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Add new customer group
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("Type")">List of customer groups</a></li>
+        <li class="active">Add new customer group</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("CreateCustomerType")" method="post" class="form-horizontal" id="submitForm">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_Update", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("Type")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i>Back to list</a>
+                <button type="button" class="btn btn-info pull-right" onclick="submitForm()"><i class="fa fa-plus"></i>Add customer group</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        })
+    </script>
+}
+<!-- /.content -->

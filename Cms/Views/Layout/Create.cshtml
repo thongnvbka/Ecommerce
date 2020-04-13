@@ -1,0 +1,31 @@
+﻿@model LayoutMeta
+
+@{
+    ViewBag.Title = "Add new layout";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Add new layout
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Warehouse Toolbar Setting Warehouse</a></li>
+        <li><a href="@Url.Action("Index")">List layout</a></li>
+        <li class="active">Add new layout</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("Create")" method="post" class="form-horizontal" id="frmSubmit">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_Update", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("Index")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <button type="button" class="btn btn-info pull-right" id="btnSubmit"><i class="fa fa-plus"></i> Add layout</button>
+            </div>
+        </form>
+    </div>
+</section>

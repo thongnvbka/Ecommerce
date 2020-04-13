@@ -1,0 +1,91 @@
+﻿@model Library.ViewModels.Items.ShopItem
+@if (Model != null)
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Shop detail </h4>
+    </div>
+    <div class="modal-body">
+        <!-- Table row -->
+        <div class="row importwarehouse">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Horizontal Form -->
+                    <div class="box box-danger">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal" id="inforNoti">
+                            <div class="col-md-12">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Shop name :</label>
+                                        <div class="col-sm-9">
+                                            <span class="lblName">Shop name</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Website: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblWebsite">Shops that sell goods on websites</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Url: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblUrl">Url</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Branch: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblCategory">Business category:</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Note: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblNote">Note:</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">The order was successfully transacted : </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblOrder">@Model.TotalOrder</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Total: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblTotalMoney">@string.Format("{0:#,###} VND", Model.TotalMoney)</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Total money bargain: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblMoneyBargain">@string.Format("{0:#,###.00} ¥", Model.TotalBargain)</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Total bargain converted: </label>
+                                        <div class="col-sm-9">
+                                            <span class="lblMoneyBargainVn">@string.Format("{0:#,###} VND", Model.TotalBargainVn)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
+    </div>
+
+}
+
+
+

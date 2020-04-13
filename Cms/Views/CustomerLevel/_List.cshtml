@@ -1,0 +1,63 @@
+﻿@model  Common.Items.ModelView<Library.DbContext.Entities.CustomerLevel, string>
+@using System.Globalization
+<div class="box-body">
+    <table id="dt_basic" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="width: 20px;">
+                    #
+                </th>
+                <th class="text-center">Level</th>
+                <th class="text-center">Note</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">The money level</th>
+                <th class="text-center">Update day</th>
+                <th class="text-center w-100">Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Items.Count <= 0)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Record</td>
+                </tr>
+            }
+            else
+            {
+                var idx = 1;
+                foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                        <td>
+                            <input type="hidden" class="item-id" value="@item.Id" />
+                            <a href="@Url.Action("Edit", "CustomerLevel", new { @id = item.Id })">@item.Name</a>
+                        </td>
+                        <td>@item.Description</td>
+                        <td>
+                            @if (item.Status)
+                            {
+                                <text>Active</text>
+                            }
+                            else
+                            {
+                                <text>Pause</text>
+                            }
+                           
+                        </td>
+                        <td class="text-center">
+                            @string.Format(CultureInfo.GetCultureInfo("en-US"),"{0:#,###}",item.EndMoney)
+                        </td>
+                        <td class="text-right">@string.Format("{0:dd/MM/yyyy}", item.CreateDate)</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "CustomerLevel", new { @id = item.Id })" class="btn btn-sm btn-primary" title="Edit cấp độ"><i class="fa fa-edit"></i>Edit</a>
+                        </td>
+                    </tr>
+                    idx += 1;
+                }
+            }
+            @Html.Partial("_Paging", Model.PageInfo)
+        </tbody>
+    </table>
+</div>
+<!-- /.box-body -->

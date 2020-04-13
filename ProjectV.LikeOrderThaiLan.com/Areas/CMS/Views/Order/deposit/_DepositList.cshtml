@@ -1,0 +1,49 @@
+﻿<script type="text/html" id="depositList">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1"></td>
+        <td>
+            <div class="rs content-code">
+                <span>
+                    <span class="code-order rs"><a data-bind="text: 'DEP' + code, attr: {href: '/' + window.culture + '/CMS/Order/DetailDeposit?depositId=' + Id}" target="_blank"></a>  </span>
+                    <p class="rs" data-bind="text: moment(CreateDate).format('DD/MM/YYYY   hh:mm:ss')"></p>
+                </span>
+            </div>
+        </td>
+        <td class="td-text-right" data-bind="text: PacketNumber">
+        </td>
+        <td class="td-text-money">
+            <span class="code-order" data-bind="text: formatNumberic(TotalWeight, 'N2')"></span>
+        </td>
+        <td class="td-text-money">
+            <!-- ko if: Status ==  @((byte)Common.Emums.DepositStatus.Cancel) -->
+            <span>0</span>
+            <!-- /ko -->
+            <!-- ko if: Status !=  @((byte)Common.Emums.DepositStatus.Cancel) -->
+                <!-- ko if: ProvisionalMoney > 1 -->
+                    <span data-bind="text: formatNumberic(Math.round(ProvisionalMoney), 'N0')"></span>
+                <!-- /ko -->
+            <!-- /ko -->
+        </td>
+        <td class="td-text-center">
+            <!-- ko if: (Status <= @((byte)Common.Emums.DepositStatus.Cancel) ) -->
+                <span  data-bind="text: statusApp.depositView[Status].Name, css: statusApp.depositView[Status].Class"></span>
+            <!-- /ko -->
+        </td>
+        <td class="option-order">
+            <!-- ko if: (Status <= @((byte)Common.Emums.DepositStatus.WaitOrder) ) -->
+                <span>|</span> <a data-bind="click: depositPopupModel.showMessagerCancel.bind($data, Id,10, 0)" href="javascript:;" class="cancel-order">@Resource.Order_OperationDestroy</a>
+            <!-- /ko -->
+            <!-- ko if: (Status == @((byte)Common.Emums.DepositStatus.WaitOrder) ) -->
+                <span>|</span> <a data-bind="click: depositPopupModel.showMessagerCancel.bind($data, Id, 4, 1)" href="javascript:;" class="deposit-all-order popup-deposit">Kết đơn</a>
+            <!-- /ko -->
+            <!-- ko if: (Status >= @((byte)Common.Emums.DepositStatus.Order)) -->
+                <!-- ko if: (IsComplain == 0) -->
+                <span>|</span> <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/CreateTicket/' + Id}" class="ticket-order" target="_blank">@Resource.DetaiOrder_Ticket</a>
+                <!-- /ko -->
+                <!-- ko if: (IsComplain != 0) -->
+                <span>|</span> <a data-bind="attr: {href: '/' + window.culture + '/tai-khoan/chi-tiet-khieu-nai-' + Id}" class="ticket-order" target="_blank">@Resource.DetaiOrder_Ticket</a>
+                <!-- /ko -->
+            <!-- /ko -->
+        </td>
+    </tr>
+</script>

@@ -1,0 +1,76 @@
+﻿<div id="addPackageLoseModal" class="modal fade modal-dialog modal-p50" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save" id="addPackageLoseForm" class="form-horizontal">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <!-- ko if: id() <= 0 -->
+                        <i class="fa fa-plus"></i>
+                        <span>Search for passwords</span>
+                        <!-- /ko -->
+                        <!-- ko if: id() > 0 -->
+                        <i class="fa fa-dashcube "></i>
+                        <span>Update the event password<b data-bind="text: 'P'+ packageCode()"></b>"</span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="note" class="col-sm-2 control-label">Transport code</label>
+                        <div class="col-sm-10">
+                            <input data-bind="value: tranportCode" id="tranportCode" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="note" class="col-sm-2 control-label">Describe <span class="color-red">*</span></label>
+                        <div class="col-sm-10">
+                            <textarea data-bind="value: note" id="note" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <span class="btn btn-primary btn-file">
+                                    <span class="fileinput-new"><i data-bind="attr: {class: isUploading() ? 'fa fa-spinner fa-pulse' : 'fa fa-plus'}" class="fa fa-plus"></i> Add encrypted picture</span>
+                                    <input id="addImageForPackageLose" name="" type="file">
+                                </span>
+                                <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- ko if: images().length == 0 -->
+                <div class="col-xs-12">
+                    <div class="alert alert-warning" role="alert">No digital photos yet</div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: images().length > 0 -->
+                <!-- ko foreach: images -->
+                <div class="col-xs-6 col-md-3">
+                    <div class="thumbnail">
+                        <a data-bind="click: $parent.showImage.bind($data)" title="View picture with more details" href="javascript:;">
+                            <img data-bind="attr: {src: '/images/'+$data+'_171x180_0'}" src="" alt="">
+                        </a>
+                        <a data-bind="click: $parent.remove" href="javascript::" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Delete  </a>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="disable: isLoading" class="btn btn-success" type="submit"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i> 
+            <span data-bind="text: id() > 0 ? 'Save' : 'Add package '"></span></button>
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>

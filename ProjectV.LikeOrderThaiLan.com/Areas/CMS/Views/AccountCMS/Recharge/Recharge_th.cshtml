@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+@using System.Globalization
+@model Library.DbContext.Entities.Customer
+ 
+<ul class="zichan-nav">
+    <li data-id="chongzhi" class="lete-active"> เติมเงิน</li>
+</ul>
+<div class="zichan-msg">
+    @if (Model != null)
+    {
+        <span>   จำนวนเงินทั้งหมดที่คุณมี:  <a> @string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:#,###}", Model.BalanceAvalible) @Resource.Currency</a></span>
+    }
+</div>
+
+<div class="zichan-chongzhi zichan-box">
+
+    <div class="zichan-chongzhi-box">
+        <h1>  1. เลือกวิธีการชำระเงิน </h1>
+        <div class="zichan-chongzhi-way">
+            <img src="~/Content/images/icon-rechange/deposit-direct.jpg" onclick="tabRechangeMoney(event, 'chuyenkhoan')" class="tablinks" alt="">
+            <img src="~/Content/images/icon-rechange/transfer-banks.jpg" onclick="tabRechangeMoney(event, 'naptientructiep')" class="tablinks" id="defaultOpen" alt="">
+
+
+        </div>
+        <div class="zichan-chongzhi-main" style="background: #fff;">
+            <div class="zichan-chongzhi-main-guojixinyongka tabcontent" id="naptientructiep">
+                <p style="font-weight: 600; ">  กรุณาโอนเงินเข้าบัญชีข้างล่าง (ชื่อบัญชี: <span class="red-color">LIKE ORDER (THAILAND) CO.,LTD</span>)</p>
+                <div class="rs mg-t-15">
+                    <div class="img-banks"> <i><img src="~/Content/images/icon-home/banks1.jpg" height="50" alt="banks1" /></i></div>
+                    <div class="number-banks">
+                        <p>
+                            ธนาคารกสิกรไทย เลขที่บัญชี: <span class="red-color">025-1-28798-8</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="rs mg-t-15">
+                    <div class="img-banks"> <i><img src="~/Content/images/icon-home/banks2.jpg" height="50" alt="banks1" /></i></div>
+                    <div class="number-banks">
+                        <p>
+                            ธนาคารไทยพาณิชย์ เลขที่บัญชี: <span class="red-color">407-8-52305-2</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="rs mg-t-15" style="margin-bottom: 10px">
+                    <div class="img-banks"> <i><img src="~/Content/images/icon-home/banks3.jpg" height="50" alt="banks1" /></i></div>
+                    <div class="number-banks">
+                        <p>ธนาคารกรุงเทพ เลขที่บัญชี: <span class="red-color">055-0-65876-9</span></p>
+                    </div>
+                </div>
+                
+                <div class="rs mg-t-15" style="margin-bottom: 10px">
+                    <div class="img-banks"> <i><img src="~/Content/images/icon-home/banks4.png" height="50" alt="banks1" /></i></div>
+                    <div class="number-banks">
+                        <p>ธนาคารกรุงไทย เลขที่บัญชี: <span class="red-color">091-0-31544-2</span></p>
+                    </div>
+                </div>
+
+                <p style="color: #fff;opacity: 0;">------------------------ </p>
+
+                <img src="/Content/images/icon-rechange/zhifu._daojiao_icon.png" alt="">
+            </div>
+            <div class="zichan-chongzhi-main-paypal tabcontent" id="chuyenkhoan" style="display: none;">
+                <p>
+                    เมื่อโอนเงิน กรุณาเขียนชัดเจนไว้ว่า: <span style="font-weight: 600;">  เติมเงิน{ อีเมล-เบอร์โทร}</span>
+                    ในนั้น อีเมลคื่ออีเมลเข้าสู่ระบบของลูกค้า เบอร์โทรเป็นเบอร์ที่ลูกค้ากำลังใช้ค่ะ
+                </p>
+                <div class="rs mg-t-15">
+                    <p>
+                        อาคาร TheR20 Space อาคารสำนักงานชั้น 5 เลขที่ 195 ซอยสบายใจ แขวงสามเสนนอก เขตห้วยขวาง กรุงเทพมหานคร
+                        The R20 Space Building, 5 Floors, 195 Soi Sabaijai,  Samsen Nok, Huai Khwang, Bangkok 10310, Thailand
+                    </p>
+                </div>
+
+                <p> เราจะเช็คบัญชีอย่างต่อเนื่องเพื่อเติมเงินให้ลูกค้าทันที่ ลูกค้าจะได้เติมเงินเข้าระบบเร็วขึ้นถ้าโอนเงินเข้าระบบธนาคารเดียวกันกับทางเรา</p>
+                <img src="/Content/images/icon-rechange/zhifu._daojiao_icon.png" alt="">
+            </div>
+            
+        </div>
+    </div>
+</div>

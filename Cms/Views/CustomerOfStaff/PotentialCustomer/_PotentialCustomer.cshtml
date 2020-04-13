@@ -1,0 +1,155 @@
+﻿<script type="text/html" id="PotentialCustomer">
+    <div class="box box-primary">
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                        <label>Keyword</label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Search by Account ID, Account Name, Full Name, Phone, Email, .."></i>
+                        <input class="form-control" id="SearchInfo_Keyword" name="SearchInfo.Keyword" placeholder="Customer ID, Account Name, Full Name, Phone, Email ..." type="text" data-bind="value: SearchCustomerModal().Keyword">
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label>Sex</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: lisSexPotentialCustomer, optionsText: 'Text', optionsValue: 'Value', value: SearchCustomerModal().GenderId"></select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label>Customer Type</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listCustomerStypePotentialCustomer, optionsText: 'Text', optionsValue: 'Value', value: SearchCustomerModal().CustomerType"></select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label>System</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listSystemPotentialCustomer, optionsText: 'Text', optionsValue: 'Value', value: SearchCustomerModal().SystemId"></select>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <!-- Date and time range -->
+                        <label>Date</label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> Date
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label>User</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listUser, optionsText: 'Text', optionsValue: 'Value', value: SearchCustomerModal().UserId"></select>
+                    </section>
+                    <section class="col-md-12 form-group">
+                        <button data-bind="click: clickSearch" class="btn btn-danger search-list"><i class="fa fa-search"></i> Search</button>
+                        <button data-bind="click: ExcelReport" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Export</button>
+                    </section>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Customer list (Potential)</h3>
+                    @if (CheckPermision(EnumAction.Add, EnumPage.PotentialCustomer))
+                    {
+                        <a data-bind="click: viewAddPotentialCustomer" href="javascript:;" type="submit" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+                    }
+                </div>
+                <div class="box-body">
+                    <div class="tabbable page-tabs">
+                        @*<ul data-bind="foreach : listSystemRender" class="nav nav-tabs">
+                                <li data-bind="css: Class">
+                                    <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab2(Value)}" data-toggle="tab">
+                                        <span data-bind="text: Text"></span>
+                                        <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                    </a>
+                                </li>
+                            </ul>*@
+                        <ul data-bind="foreach : listSystemRender" class="nav nav-tabs">
+                            <li data-bind="css: Class">
+                                <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab2(Value)}" data-toggle="tab">
+                                    <span data-bind="text: Text"></span>
+                                    <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- First tab -->
+                            <div class="tab-pane active fade in" id="all-tasks">
+                                <div data-bind="css: isRending() == true? 'display-none' : ''">
+                                    <div class="spinner">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                        <div class="rect5"></div>
+                                    </div>
+                                </div>
+                                <!-- Tasks table -->
+                                <div data-bind="css: isRending() == true? '' : 'display-none'" class="display-none">
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center w40">#</th>
+                                                    <th class="text-center w-80">Code</th>
+                                                    <th class="text-center w-100">Avartar</th>
+                                                    <th class="text-center w-120">FullName</th>
+                                                    <th class="text-center w-80">Birthday</th>
+                                                    <th class="text-center w-80">Phone</th>
+                                                    <th class="text-center w-150">Phone</th>
+                                                    <th class="text-center w-200">User</th>
+                                                    <th class="text-center w-150">Customer Type</th>
+                                                    <th class="text-center w-110">Status</th>
+                                                    <th class="text-center w-140">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="template: { name: 'PotentialCustomer-list', foreach: listAllPotentialCustomer }"></tbody>
+                                            <tfoot data-bind="if: listAllPotentialCustomer().length == 0">
+                                                <tr>
+                                                    <td colspan="10">No Data</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- /tasks table -->
+                                    <div data-bind="if: listAllPotentialCustomer().length > 0" class="mt15">
+                                        <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li data-bind="if: pageStart">
+                                                <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                            </li>
+                                            <li data-bind="if: pageNext">
+                                                <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <!-- ko foreach: listPage -->
+                                            <li data-bind="css: Page == page ? 'active' :''  ">
+                                                <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                            </li>
+                                            <!-- /ko -->
+                                            <li data-bind="if: pagePrev">
+                                                <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <li data-bind="if: pageEnd">
+                                                <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /first tab -->
+
+                        </div>
+                    </div>
+                    <!-- /page tabs -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+
+    @Html.Partial("~/Views/CustomerOfStaff/PotentialCustomer/_PotentialCustomerAddOrEdit.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/PotentialCustomer/_PotentialCustomerDetail.cshtml")
+</script>

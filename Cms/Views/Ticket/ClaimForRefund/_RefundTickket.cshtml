@@ -1,0 +1,354 @@
+﻿<!-- =============== Modal xử lý Refund của khiếu nại ===================== -->
+<style>
+    input.decimal:focus {
+        text-align: left !important;
+    }
+</style>
+
+@model string
+@{
+    var statusFinish = (byte)ComplainStatus.Success;
+    var isOrder = CheckOfficeType(UserState.OfficeId.Value, OfficeType.Order);
+}
+<div id="refundMoneyFixModal" class="modal fade modal-dialog modal-p80" tabindex="-1" data-backdrop="static" role="dialog">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <span class="hidden" id="complainID" data-bind="text: claimForRefund().TicketId()"></span>
+                    <i class="fa fa-file-code-o"></i> Create refund note in response to complaint: <strong data-bind="text: claimForRefund().TicketCode()" style="color: red"></strong>
+                    @*<span class="label label-success" data-bind="text: statusApp.statusComplain[complainModel().Status()].Name,
+                        css: statusApp.statusComplain[complainModel().Status()].Class"></span>*@
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <button type="button" class="btn btn-default pull-right ml15" data-dismiss="modal"><b>x</b></button>
+                    <small data-bind="text: 'Start Date :' + moment(complainModel().CreateDate()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                    <!-- ko if: complainModel().Status !== @statusFinish-->
+                    <small class="pull-right">Date of completion: --/--/----</small>
+                    <!-- /ko -->
+                    <!-- ko if: complainModel().Status == @statusFinish-->
+                    <small data-bind="text: 'Date of completion: ' + moment(complainModel().LastUpdateDate()).format('DD/MM/YYYY')" class="pull-right"></small>
+                    <!-- /ko -->
+                </h2>
+            </div>
+        </div>
+        
+        <div class="row importwarehouse">
+            <div class="col-md-4">
+                <strong class="strong-title"> Customer Information </strong>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th rowspan="4" style="width: 130px;">
+                                <img data-bind="attr: { src: avatar }" style="width: 120px; height: 120px;" />
+                            </th>
+                            <th class="w-40"><i class="fa fa-user"></i></th>
+                            <td>
+                                <span class="label label-danger"></span>
+                                <span data-bind="text: complainModel().CustomerName"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-envelope-o"></i></th>
+                            <td data-bind="text: customerEmail"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-phone"></i></th>
+                            <td data-bind="text: customerPhone"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-map-marker"></i></th>
+                            <td data-bind="text: customerAddress"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row col-md-3">
+                <div class="col-sm-12 invoice-col">
+                    <div class="form-group">
+                        <b class="strong-title">Ticket information: </b>
+                        <div>
+                            <table class="table">
+                                <tr>
+                                    <th>Ticket ID: </th>
+                                    <td data-bind="text: complainModel().Code"></td>
+                                </tr>
+                                <tr>
+                                    <th>Ticket creation date: </th>
+                                    <td data-bind="text: moment(complainModel().CreateDate()).format('DD/MM/YYYY')"></td>
+                                </tr>
+                                <tr>
+                                    <th>Customer Service staff: </th>
+                                    <td data-bind="text: claimForRefund().SupportFullName"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-3">
+                <div class="col-sm-12 invoice-col">
+                    <div class="form-group">
+                        <b class="strong-title">Order information: </b>
+                        <div>
+                            <table class="table">
+                                <tr>
+                                    <th>Order code: </th>
+                                    <td data-bind="text: order().Code"></td>
+                                </tr>
+                                <tr>
+                                    <th>Order created date: </th>
+                                    <td data-bind="text: moment(order().Created()).format('DD/MM/YYYY')"></td>
+                                </tr>
+                                <tr>
+                                    <th>Order staff: </th>
+                                    <td data-bind="text: order().UserFullName"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <strong class="strong-title">Refund</strong>
+                <div>
+                    Exchange rate: <span data-bind="text: '1 CNY = ' + formatNumberic(order().ExchangeRate(), 'N2') + ' Baht'"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Select a product to be refunded: </b>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                <th class="text-center"><i class="fa fa-cube"></i> Product name</th>
+                                <th class="text-center"><i class="fa fa-cube"></i> Product characteristics</th>
+                                <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i> Order customer</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-money"></i> Product price (CNY)</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-superscript"></i> Total (CNY)</th>
+                                <th class="text-center"><i class="fa fa-file"></i> Number KN</th>
+                                <th class="text-right"><i class="fa fa-file"></i>Estimated refund amount (CNY)</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: listClaimForRefund">
+                            <tr>
+                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                <td class="text-center">
+                                    <img data-bind="attr: { src: Image}" style="width: 50px;">
+                                    @*<img data-bind="attr: { src: Image2}" style="width: 50px;">
+                                        <img data-bind="attr: { src: Image3}" style="width: 50px;">
+                                        <img data-bind="attr: { src: Image4}" style="width: 50px;">*@
+                                </td>
+                                <td>
+                                    <a data-bind="text: Name, attr: { href: Link}" href="javascript:;" target="_blank"></a>
+                                <td class="text-center"><span data-bind="text: Size!=null?Size:''"></span> - <span data-bind="text: Color!=null?Color:''"></span></td>
+                                <td data-bind="text: Quantity" class="text-center"></td>
+                                <td data-bind="text: Price" class="text-center"></td>
+                                <td data-bind="text: TotalPrice" class="text-center"></td>
+                                <td class="text-center"><input data-bind="value: QuantityFailed, valueUpdate: 'keyup', text: QuantityFailed " class="order-hide text-right form-control decimal" /></td>
+                                <td class="text-right" data-bind="text: TotalQuantityFailed"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot data-bind="if: listClaimForRefund().length == 0">
+                            <tr>
+                                <td colspan="9">Order does not have transactional details</td>
+                            </tr>
+                        </tfoot>
+                        <tfoot class="text-right" data-bind="if: listClaimForRefund().length != 0">
+                            <tr>
+                                <!-- ko if: claimForRefund().MoneyRefund() != null--> 
+                                <td colspan="8" data-bind="text: formatNumbericCN(_.sumBy(listClaimForRefund(), function(o) { return  Globalize.parseFloat(o.QuantityFailed()==''?0:o.QuantityFailed()); }),'N0') + ' (SP)'">
+                                </td>
+                                <td data-bind="text: totalClaim() + ' (CNY)'"></td>
+                                <!-- /ko -->
+                            </tr>
+                            
+                        </tfoot>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><b class="pull-right">Type of complaint:</b></td>
+                                <td colspan="3">
+                                    @*<div id="complain_tree"></div>*@
+                                    <select class="form-control select-view" style="width: 100%;"
+                                            data-bind="options: listTicketType, optionsText: 'Text',optionsValue: 'Value', value: complainModel().TypeServiceClose"></select>
+                                </td>
+                                <td><b class="pull-right">Other amount:</b> </td>
+                                <td class="text-center" colspan="1">
+                                    <input data-bind="value: claimForRefund().MoneyOther, valueUpdate: 'blur', event: { blur: minusMoneyOtherCreate}" class="order-hide text-right form-control decimal" />
+
+                                </td>
+                                <td><span class="pull-left">Baht</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Ordering staff's note</h3>
+                    </div>
+                    <div class="box-body">
+                        <textarea disabled data-bind="value: claimForRefund().NoteOrderer" style="width:100%;" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Customer Service staff's note</h3>
+                    </div>
+                    <div class="box-body">
+                        <textarea class="order-hide" data-bind="value: claimForRefund().NoteSupporter" style="width:100%;" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Accounting staff's note</h3>
+                    </div>
+                    <div class="box-body">
+                        <textarea disabled class="order-hide" data-bind="value: claimForRefund().NoteAccountanter" style="width:100%;" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Internal notes</h3>
+                    </div>
+                    <div class="box-body">
+                        <textarea class="order-hide" data-bind="value: complainModel().ContentInternal, text: complainModel().ContentInternal()=='null' ? '--' : complainModel().ContentInternal()" disabled style="width:100%;" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Refund calculation: </b>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Estimated refund amount (Baht)</th>
+                                <th class="text-center">Estimated deposit regained from supplier (shop) (CNY)</th>
+                                <th class="text-center">Actual deposit regained (CNY)</th>
+                                <th class="text-center text-blue">Custumer Service refund request (Baht)</th>
+                                <th class="text-center text-green">Claimed refund amount (Baht)</th>
+                                <th class="text-center text-red">Actual amount refunded (Baht)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><span data-bind="text: claimForRefund().MoneyRefund()"></span></td>
+                                <td class="text-center"><input disabled data-bind="value: claimForRefund().MoneyOrderRefund, text: claimForRefund().MoneyOrderRefund" class="text-right form-control decimal" /></td>
+                                <td class="text-center"><input disabled data-bind="value: claimForRefund().MoneyOrderRefundDicker, text: claimForRefund().MoneyOrderRefundDicker" class="text-right form-control decimal" /></td>
+                                <td class="text-center"><input disabled data-bind="value: claimForRefund().SupporterMoneyRequest, valueUpdate: 'keyup', event: { keyup: minusClaimForRefundOld}" class="order-hide text-right form-control decimal" /></td>
+                                <td class="text-center"><input disabled data-bind="value: claimForRefund().CurrencyDiscount, valueUpdate: 'keyup', event: { keyup: minusClaimForRefundOld}" class="order-hide text-right form-control decimal" /></td>
+                                <td class="text-center" data-bind="text: claimForRefund().RealTotalRefund()"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-3">
+                    <h4>Order information</h4>
+                    <p>
+                        Cost of goods sold: <b data-bind="text: order().TotalPrice"></b>(CNY)
+                    </p>
+                    <p>
+                        Total: <b data-bind="text: order().Total"></b>(Baht)
+                    </p>
+
+                    <p>
+                        Total customer paid: <b data-bind="text: order().TotalPayed"></b>(Baht)
+                    </p>
+                    <p>
+                        Exchange rate: <b data-bind="text: '1 CNY = ' + formatNumberic(order().ExchangeRate(), 'N2') + ' Baht'"></b>
+                    </p>
+
+                </div>
+                <div class="col-xs-3">
+                    <h4>Discount (%) by VIP level</h4>
+                    <p>
+                        VIP level: <b data-bind="text: vipName"></b>
+                    </p>
+                    <p>
+                        Deposit: <b data-bind="text: order().DepositPercent"></b>%
+                    </p>
+                    <p>
+                        Service rate: <b data-bind="text: 'vinegar ' + vipOrder()"></b>%
+                    </p>
+                    <p>
+                        Shipping rate (by weight): <b data-bind="text: 'vinegar ' + vipShip()"></b>%
+                    </p>
+                </div>
+                <div class="col-xs-3">
+                    <h4>Service fee</h4>
+                    <div data-bind="foreach: listOrderService">
+                        <p>
+                            <span data-bind="text: ServiceName"></span>:
+                            @{
+                                if (isOrder)
+                                {
+                                    <b data-bind="text: formatNumbericCN(TotalPrice, 'N2')"></b>
+                                }
+                                else
+                                {
+                                    <b data-bind="text: formatNumberic(TotalPrice, 'N2')"></b>
+                                }
+                            }
+                            Baht
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success order-hide" data-bind="click: btnClickRefundTicketModal" @*data-dismiss="modal"*@>
+            Create refund request 
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    </div>
+</div>
+
+

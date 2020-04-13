@@ -1,0 +1,13 @@
+﻿@model List<Library.ViewModels.Items.OrderPackageWalletItem>
+@if (Model != null && Model.Any())
+{
+    <div>
+        @foreach (var item in Model)
+        {
+            <div style="width: 180px; font-size: 12px;border-bottom: 1px dashed #a8a8a8; padding: 5px 0px;">
+                @string.Format("P{0}",item.PackageCode) &nbsp; &nbsp; @string.Format("{0}", (item.Status == 1 ? Resource.BinhThuong : Resource.HongVo))
+                @*@string.Format("P{0}",item.PackageCode) &nbsp; &nbsp; @string.Format("{0}", (item.Status == 1 ? "Bình thường" : "Hỏng vỡ"))*@
+            </div>
+        }
+    </div>
+}

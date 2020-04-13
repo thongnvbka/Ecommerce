@@ -1,0 +1,72 @@
+﻿@model OrderServiceOtherMeta
+@{
+    var list = new List<SelectListItem>();
+    list.Add(new SelectListItem { Value = "0", Text = "Transport fee Shop" });
+    list.Add(new SelectListItem { Value = "1", Text = "Forklift fee" });
+}
+<div id="addServiceOtherModal" class="modal fade modal-dialog modal-sm" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: saveServiceOther" id="updatePackageWeightForm" class="form-horizontal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Add new services arise</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="OrderCode">Single code <span class="color-red">*</span>:</label>
+                        <div class="col-sm-9">
+                            <suggetion-order-input-components params="value: { callback: chooseOrder, pageSize: 4, url: '/ServiceOther/OrderSuggettion' }"></suggetion-order-input-components>
+                        </div>
+
+                        @*@Html.TextBoxFor(x => x.OrderCode, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"},
+                                {"data-bind", "value: orderCode"},
+                            })
+                            @Html.ValidationMessageFor(model => model.OrderCode)*@
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="Value">Value of money required <span class="color-red">*</span>:</label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(x => x.Value, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control text-right decimal"},
+                                {"data-bind", "value: value"},
+                            })
+                            @Html.ValidationMessageFor(model => model.Value)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="Note">Note <span class="color-red">*</span>:</label>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(x => x.Note, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"},
+                                {"data-bind", "value: note"},
+                                {"placeholder","Note" }
+                            })
+                            @Html.ValidationMessageFor(model => model.Note)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Height" class="col-sm-3 control-label">Incurred expenses:</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(x => x.Mode, list, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"},
+                                {"data-bind", "value: mode"},
+                            })
+                            @Html.ValidationMessageFor(model => model.Mode)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="disable: isLoading" type="submit" class="btn btn-primary"><i data-bind="css: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'" class="fa fa-save"></i> Save</button>
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>

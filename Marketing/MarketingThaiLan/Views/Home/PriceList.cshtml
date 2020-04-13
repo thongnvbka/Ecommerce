@@ -1,0 +1,635 @@
+﻿
+@{
+    ViewBag.Title = "อัตราค่าใช้จ่าย";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+{
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+    <style type="text/css">
+        #header {
+            border-bottom: 1px solid #ebebeb;
+            background: #fff;
+        }
+
+        .price-banner h2 {
+            margin-top: 30px !important;
+        }
+
+        .price-banner .desc {
+            margin-bottom: 15px !important;
+        }
+    </style>
+}
+
+<div id="home-price">
+    <div class="price-banner hidden-xs hidden-sm">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <h2 style="margin-top : 16px !important;margin-bottom : 4px;">ทดลองใช้ Eziwebshop ฟรีภายใน 03 เดือน</h2>
+                <p class="desc" style="color : #484848;">เลือกโซลูชั่นที่เหมาะสำหรับความต้องการของคุณ</p>
+            </div>
+        </div>
+    </div>
+    <div class="price-detail hidden-xs hidden-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12" style="padding-left : 0 !important;padding-right : 0 !important;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td width="20%"></td>
+                                <td width="20%">
+                                    <div class="package-price bronze" style="position: relative; padding-top: 25px;">
+                                        <span class="title">eBronze</span>
+                                        <span class="price">790 bath</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> ทดลองใช้ </a>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="package-price gold" style="position: relative; padding-top: 25px;">
+                                        <i class="icon-gold-crown" style="display: inline-block;"></i>
+                                        <span class="title" style="font-size: 48px; margin-top: 21px; margin-bottom: 5px;">eGold</span>
+                                        <span class="price">1.380 bath</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> ทดลองใช้  </a>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="package-price platinum" style="position: relative; padding-top: 25px;">
+                                        <span class="title">ePlatinum</span>
+                                        <span class="price">3.870 bath</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> ทดลองใช้  </a>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="package-price diamond" style="position: relative; padding-top: 25px;">
+                                        <i class="icon-diamond" style="display: inline-block;"></i>
+                                        <span class="title">eDiamond</span>
+                                        <span class="price">7.990 bath</span>
+                                        <a href="/Marketing/IndexPromotion" class="package-try event-Bizweb-Free-Trial-form-open"> ทดลองใช้  </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    ระยะเวลาใช้
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                ระยะเวลาใช้ของเว็บไซต์.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><strong>1</strong> ปี</td>
+                                <td><strong>2</strong> ปี</td>
+                                <td><strong>3</strong> ปี</td>
+                                <td><div><strong>5</strong> ปี</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ระยะเวลาที่ได้เพิ่ม
+                                </td>
+                                <td>
+                                    <i class="icon-price-new-line"></i>
+                                </td>
+                                <td><strong>9</strong> เดือน</td>
+                                <td><strong>12</strong> เดือน</td>
+                                <td><strong>24</strong> เดือน</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    จำนวนสินค้า
+                                </td>
+                                <td>100</td>
+                                <td>ไม่ จำกัด</td>
+                                <td>ไม่ จำกัด</td>
+                                <td>ไม่ จำกัด</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    แบนด์วิดธ์
+                                </td>
+                                <td>2 GB</td>
+                                <td>ไม่ จำกัด</td>
+                                <td>ไม่ จำกัด</td>
+                                <td>ไม่ จำกัด</td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    รับรองความปลอดภัย SSL
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                               รับรองความปลอดภัย SSL
+                                                </span> 
+                                        </div> 
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td>Free</td>
+                                <td>Free</td>
+                                <td>Free</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ความจุ
+                                </td>
+                                <td>200 MB</td>
+                                <td>1 GB</td>
+                                <td>2 GB</td>
+                                <td>5 GB</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    โดเมนอีเมล์
+                                </td>
+                                <td>
+                                    <i class="icon-price-new-line">
+                                    </i>
+                                </td>
+                                <td>5 Email</td>
+                                <td>5 Email</td>
+                                <td>10 Email</td>
+                            </tr>
+                            <tr>
+                                <td class="divider" colspan="5">
+                                    ช่องทางขาย
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip"><a class="has-link" href="@Url.Action("DesignWebsite","Marketing")">เว็บไซต์ขาย</a></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="sell-sapo has-tooltip">
+                                    <a href="/" class="has-link">
+                                        ขายสินค้าที่จุดขาย
+                                    </a>
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                บูรณาโดยโตรงกับร้าค้าของคุณ
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    <a href="/" class="has-link">ขายสินค้าในเพจบุก </a>
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                จัดการ ดูแลตอมเม้น / อินบ็อส ช่วยเหลือการขายที่เพจบุก
+                                                บูรณาฟรีกับบัญชีของร้านค้าเพจบุกของคุณ.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="has-tooltip">
+                                    <a href="/" class="has-link">ขายสินค้าบนเว็บไซต์อื่น</a>
+                                    <a class="icon-tooltip-info bottom-padding">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                ช่องทางขายใหม่ ช่วยคุณส่งข้อมูลสินค้าของตัวเองเข้าไปหนึ่งหรือหลายเว็บไซต์อื่นๆผ่านembed codeง่ายๆ
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="divider advertise-item" colspan="5">
+                                    <p>แอพ (App) ที่ช่วยเหลือการโฆษณา</p>
+                                </td>
+                            </tr>
+                            <tr class="hidden-row advertise-row">
+                                <td class="has-tooltip">
+                                    App email marketing
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                ช่องทางขายใหม่ ช่วยคุณส่งข้อมูลสินค้าของตัวเองเข้าไปหนึ่งหรือหลายเว็บไซต์อื่นๆผ่านembed codeง่ายๆ
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row advertise-row">
+                                <td class="has-tooltip">
+                                    App SMS marketing
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                ช่องทางขายใหม่ ช่วยคุณส่งข้อมูลสินค้าของตัวเองเข้าไปหนึ่งหรือหลายเว็บไซต์อื่นๆผ่านembed codeง่ายๆ
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="divider intergrate-item" colspan="5">
+                                    <p>เครื่องมือบูรณา</p>
+                                </td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    รายการ
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                ชุดรายงานรายละเอียดยดขายและพร้อมช่วยเหลือการจัดการดูแลและการดำเนินแผนการตลาด
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    Chat live
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                บูรณาแอพช่วยเหลือการคุยกันโดยโตรงกับลูกค้าบนเว็บไซต์ ไม่ต้องสมัครบัณชีที่ yahoo หรือ skype
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    การตอบสนอง
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                อินเตอร์เฟซใช้ได้สำหรับทุกอุปกรณ์ desktop, tablet, mobile
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    ชำระเงินออนไลน์
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                บูรณาฟังก์ชันชำระเงินออนไลน์เร็วและงานสุดกับทุกธนาคารของเมืองไทย
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td class="has-tooltip">
+                                    บูรณาการขนส่ง
+                                    <a class="icon-tooltip-info">
+                                        <i class="icon-price-info"></i>
+                                        <div class="tooltip-box">
+                                            <span class="tooltip-text">
+                                                Eziwebshop กำลังเป็นคู่ค้ากับหลาบบริษัทขนส่งใหญ่ของเมืองไทย ช่วยให้งานจัดการออเดอร์ ส่งของให้ลูกค้าของคุณสดวกกว่า ทำให้คุณได้ประหยัดเวลามากขึ้น.
+                                            </span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><i class="icon-price-new-line"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                                <td><i class="icon-price-check"></i></td>
+                            </tr>
+                            <tr class="hidden-row intergrate-row">
+                                <td>
+                                    หลายภาษา
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/price/thai.png" alt="" width="29" height="22" />
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/price/thai.png" alt="" width="29" height="22" />
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/price/thai.png" alt="" width="29" height="22" />
+
+                                    หรือ
+                                    <img src="~/Content/images/Price/ico_enflag_new.png" alt="">
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/price/thai.png" alt="" width="29" height="22" />
+                                    &
+                                    <img src="~/Content/images/Price/ico_enflag_new.png">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price-detail-mobile hidden-md visible-sm visible-xs">
+        <h1>ทดลองใช้  Eziwebshop Free 30 วัน</h1>
+        <p class="desc">เลือกแพคเกจโซลูชั่นเหมอะสำหรับความต้องการของคุณ</p>
+        <div class="container">
+            <div class="col-sm-12 col-xs-12">
+                <div class="package-detail">
+                    <ul>
+                        <li class="package bronze">
+                            <div class="package-price text-center">
+                                <span class="title">eBronze</span>
+                                <span class="price">790 bath</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> ทดลองใช้  </a>
+                            </div>
+                            <div class="view-detail-package">ดูรายละเอียดแพคเกจ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top : 1px solid #d8d8d8;">ระยะเวลาใช้ <strong>1</strong> ปี</span>
+                                <span>100 สินค้า</span>
+                                <span>2 GB แบนด์วิชท์ </span>
+                                <span>200 MB ความจุ</span>
+                                <span class="divider">ช่องทางขาย</span>
+                                <span><a href="/" class="has-link">เว็บไซต์ขาย</a></span> 
+                                <span class="divider">แอพ (App) ที่ช่วยเหลือการโฆษณา</span>
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">เครื่องมือบูรณา</span>
+                                <span>Chat live</span>
+                                <span>การตอบสนอง</span>
+                                <span>ชำระเงินออนไลน์</span>
+                                <span style="border-bottom:none;">
+                                    <img src="/Content/images/price/thai.png" alt="" width="29" height="22">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="package gold">
+                            <div class="package-price text-center">
+                                <i class="icon-star"></i>
+                                <span class="title">eGold</span>
+                                <span class="price">1.380 bath</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> ทดลองใช้  </a>
+                            </div>
+                            <div class="view-detail-package">ดูรายละเอียดแพคเกจ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top:1px solid #d8d8d8">ระยะเวลาใช้ <strong>2</strong> ปี</span>
+                                <span>ระยะเวลาที่ได้เพิ่ม <strong>9</strong> เดือน</span>
+                                <span>สินค้า & แบนด์วิชท์ ไม่ จำกัด</span>
+                                <span>รับรองความปลอดภัย SSL</span>
+                                <span>1 GB ความจุ</span>
+                                <span>5 โดเมนอีเมล์</span>
+                                <span class="divider">ช่องทางขาย</span>
+                                <span><a href="@Url.Action("DesignWebsite","Marketing")" class="has-link">เว็บไซต์ขาย</a></span> 
+                                <span><a href="/" class="has-link">ขายสินค้าในเพจบุก</a></span> 
+                                <span class="divider">แอพ (App) ที่ช่วยเหลือการโฆษณา</span> 
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">เครื่องมือบูรณา</span>
+                                <span>รายการ</span>
+                                <span>Chat live</span>
+                                <span>การตอบสนอง</span>
+                                <span>ชำระเงินออนไลน์</span>
+                                <span>บูรณาการขนส่ง</span>
+                                <span style="border-bottom:none;">
+                                    <img src="/Content/images/price/thai.png" alt="" width="29" height="22">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="package platinum">
+                            <div class="package-price text-center">
+                                <span class="title">ePlatinum</span>
+                                <span class="price">3.870 bath</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> ทดลองใช้  </a>
+                            </div>
+                            <div class="view-detail-package">ดูรายละเอียดแพคเกจ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top:1px solid #d8d8d8">ระยะเวลาใช้ <strong>3</strong> ปี</span>
+                                <span>ระยะเวลาที่ได้เพิ่ม <strong>12</strong> เดือน</span>
+                                <span>สินค้า & แบนด์วิชท์ ไม่ จำกัด</span>
+                                <span>รับรองความปลอดภัย SSL</span>
+                                <span>2 GB ความจุ</span>
+                                <span>5 โดเมนอีเมล์</span>
+                                <span class="divider">ช่องทางขาย</span> 
+                                <span><a href="/" class="has-link">ขายสินค้าในเพจบุก</a></span>
+                                <span><a href="/" class="has-link">ขายสินค้าบนเว็บไซต์อื่น</a></span>  
+                                <span class="divider">แอพ (App) ที่ช่วยเหลือการโฆษณา</span> 
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">เครื่องมือบูรณา</span>
+                                <span>รายการ</span>
+                                <span>Chat live</span>
+                                <span>การตอบสนอง</span>
+                                <span>ชำระเงินออนไลน์</span>
+                                <span>บูรณาการขนส่ง</span>
+                                <span style="border-bottom:none;">
+                                    <img src="/Content/images/price/thai.png" alt="" width="29" height="22">
+                                    หรือ
+                                    <img src="~/Content/images/Price/ico_enflag_new.png">
+                                </span>
+                            </div>
+                        </li>
+                        <li class="package diamond">
+                            <div class="package-price text-center">
+                                <span class="title">eDiamond</span>
+                                <span class="price">7.990 bath</span>
+                                <a onclick="openCreateStorePopup(this, null, false, 'banggia');" href="javascript:;" class="package-try"> ทดลองใช้  </a>
+                            </div>
+                            <div class="view-detail-package">ดูรายละเอียดแพคเกจ <i class="icon-show-detail"></i></div>
+                            <div class="detail-package text-center">
+                                <span style="border-top:1px solid #d8d8d8">ระยะเวลาใช้ <strong>5</strong> ปี</span>
+                                <span>ระยะเวลาที่ได้เพิ่ม <strong>24</strong> เดือน</span>
+                                <span>สินค้า & แบนด์วิชท์ ไม่ จำกัด </span>
+                                <span>รับรองความปลอดภัย SSL</span>
+                                <span>5 GB ความจุ</span>
+                                <span>10 โดเมนอีเมล์</span>
+                                <span class="divider">ช่องทางขาย</span> 
+                                <span><a href="/" class="has-link">ขายสินค้าในเพจบุก</a></span>
+                                <span><a href="/" class="has-link">ขายสินค้าบนเว็บไซต์อื่น</a></span> 
+                                <span class="divider">แอพ (App) ที่ช่วยเหลือการโฆษณา</span> 
+                                <span>App email marketing</span>
+                                <span>App SMS marketing</span>
+                                <span class="divider">เครื่องมือบูรณา</span>
+                                <span>รายการ</span>
+                                <span>Chat live</span>
+                                <span>การตอบสนอง</span>
+                                <span>ชำระเงินออนไลน์</span>
+                                <span>บูรณาการขนส่ง</span>
+                                <span style="border-bottom:none;">
+                                    <img src="/Content/images/price/thai.png" alt="" width="29" height="22">
+                                    &
+                                    <img src="~/Content/images/Price/ico_enflag_new.png" alt="">
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price-register-block">
+        <div class="container">
+            <h2>คุณยังเลือกเซอร์วิสแพ็คที่เหมาะสำหรับตัวเอง ?</h2>
+            <p class="sub-title">ลองใช้เว็บไซต์ก่อน Eziwebshopจะแนะนำคุณเซอร์วิสแพ็คที่เมาะที่สุด</p>
+            <a class="btn-registration" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">รับฟรีๆและทดลองใช้</a>
+            <img src="~/Content/images/arrow-up.png" class="arrow-up">
+        </div>
+    </div>
+    <div class="price-plus">
+        <div class="container">
+            <div class="price-plus-detail">
+                <div class="detail-left col-md-6 col-sm-12 col-xs-12">
+                    <p class="header-row">เซอร์วิสแพ็คโซลูชั่นขายสินค้าให้แก่บริษัทใหญ่</p>
+                    <p class="sub-header">แพลตฟอร์มอีคอมเมิร์ซที่มีประสิทธิภาพ</p>
+                    <p class="image-row">
+                        <img src="~/Content/images/theme/logo_color.png" alt="" width="200" />
+
+
+                    </p>
+                </div>
+                <div class="detail-right col-md-6 col-xs-12 col-sm-12 ">
+                    <ul>
+                        <li>
+                            <div>
+                                <span><img src="~/Content/images/banner/icon-item.png"></span>
+                                <span class="our-detail"><strong>แบนด์วิชท์และความจุ</strong></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span><img src="~/Content/images/banner/icon-item.png"></span>
+                                <span class="our-detail">รักษาความปลอดภัยของข้อมูลอย่างมันคง และกลไกการสนับสนุนจัดลำดับความสำคัญ</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span><img src="~/Content/images/banner/icon-item.png"></span>
+                                <span class="our-detail">ให้บริการรวบร่วมโซลูชั่นอีคอมเมิร์ซ</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="find-more"><a href="#">คลิกเพื่อทำความรู้จักมากขึ้นเกี่ยวกับEziwebshop Plus</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="price-faq">
+        <div class="container">
+            <div class="col-md-12">
+                <h3>บ้างคำถามที่ได้พบบ่อย</h3>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">1. ฉันจะได้ใช้ฟรีภายใน 03 เดือนไหม ?</h4>
+                                <p class="answer">
+                                    เมื่อสมัครโปรโมชั่นทดลองใช้เสร็จ ลูกค้าทั้งหมดจะได้มีสิทธิ์ใช้ฟรีเว็บไซต์มีฟังก์ชันเต็มๆไม่จำกัดภายใน 03 เดือน สามารถเข้าไปเปลี่ยนข้อมูล โหลดสินค้าอื่น หรือเพิ่มโพสต์บนเว็บไซต์....
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">2. ฉันสามารถเปลี่ยนชื่อโดเมนอื่นนอกจาก .eziwebshop.com ไหม ?</h4>
+                                <p class="answer">
+                                    เมื่อสมัครโปรโมชั่นทดลองใช้เสร็จ คุณลูกค้าจะได้ทางเรามอบให้เว็บไชต์ด้วยแบบชื่อโดเมนลูก (sub domain)
+                                    ยกตัวอย่าง
+                                    http://sample.eziwebshop.net
+                                    เมื่อเว็บไชต์ได้เริ่มใช้งาน คุณสามารถเลือกชื่อโดเมนของตัวเอง
+                                    เพื่อใช้ชื่อโดเมนของตัวเอง คุณแค่ต้องทำ 2 ขั้นต้อน: <br>
+                                    1. กำหนดลักษณะชื่อโดเมนกลับเข้า IP ของทางเรา<br>
+                                    2. เข้าสู่ช่อง การตั้งค่า  >> ชื่อโดเมน >> เพิ่มชื่อโดเมน >> ใช้ทำเป็นชื่อโดเมนหลัก
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">3.หลังจากที่ใช้บริการของ Eziwebshop เว็บของแันจะได้รับการอัพเกรดบำรุงรักษาหรือเปล่า?</h4>
+                                <p class="answer">
+                                    Eziwebshop มีหลายรอบอัพเกรดต่อปีเสมอ เมื่อคุณใช้บริการของ Eziwebshop คุณจะได้อัพเกรดทั้งหมดฟังก์ชันใหม่ในรอบอัพเกรดนั้น ทีมช่วยเหลือของ Eziwebshopจะช่วยคุณลูกค้าอย่างทุ่มเทในตลอดเวลาที่คุณลูกค้าใช้บริการของทางเรา.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">4. ทำยังไงให้เข้าสู่ระบบจัดการตั้งค่าเว็บไซต์ เมื่อฉันสมัครโปรโมชั่นทดลองใช้เสร็จ ?</h4>
+                                <p class="answer">
+                                    เพื่อการเข้าสู่ระบบเว็บไซต์ คุณต้องเข้าลิงค์นี้ก่อน
+                                    http://customershop.eziwebshop.com/admin
+                                    กด Enter เพื่อเข้าสู่ระบบ บัญชีเป็นอิเมล์เมื่อสมัคร และ รหัสผ่านเป้นรหัสผ่านเมื่อสมัคร.
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="price-faq-question" aria-haspopup="true">5.ฉันสามารถอัพเกรดเซอร์วิสแพ็คของตัวเองเมื่อกำลังใช้บริการไหม ?</h4>
+                                <p class="answer">
+                                    ในช่วงเวลาที่ใช้เว็บไซต์ ทางเราสามารถอัพเกรดเซอร์วิสแพ็คทุกเวลาตามความต้องการของคุณลูกค้า แต่ไม่สามารถอัพเกรดเซอร์วิสแพ็คที่เท่าเที่ยมกัน หรือ ต่ำกว่าเซอร์วิสแพ็คที่กำลังใช้.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-registration quick-registration new-registration">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+                <h3 class="text-large text-center">ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+                <span>
+                    สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้
+                </span>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+            </div>
+        </div>
+    </div>
+</div>

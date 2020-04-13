@@ -1,0 +1,81 @@
+﻿<script type="text/html" id="reportOrder">
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Order status over time.</h3>
+            <div class="box-tools pull-right">
+                <button data-bind="click: ExcelReportProfitOrder" class="btn btn-xs btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-12" style="padding: 10px 30px 20px 30px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="pull-left">
+                                <a data-bind="click: btnPre" class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
+                                <a data-bind="click: btnCalendar" class="btn btn-default">
+                                    <input type="text" class="form-control pull-right report-date" id="reportDate">
+                                    <!-- ko if: selectDateReport() == 'week' -->
+                                    <style>
+                                        .datepicker-days tr:hover {
+                                            background-color: #808080;
+                                        }
+                                    </style>
+                                    <!-- /ko -->
+                                    <i class="fa fa-calendar"></i>
+                                </a>                                
+                                <a data-bind="click: btnNext" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
+                                <a data-bind="click: btnToday, text: titleToday" class="btn btn-default"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 data-bind="text: reportTitle"></h3>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pull-right">
+                                <a data-bind="click: btnSelect.bind($data, 'day'), css: (selectDateReport() == 'day' ? 'btn btn-info' : 'btn btn-default')">Day</a>
+                                <a data-bind="click: btnSelect.bind($data, 'week'), css: (selectDateReport() == 'week' ? 'btn btn-info' : 'btn btn-default')">Week</a>
+                                <a data-bind="click: btnSelect.bind($data, 'month'), css: (selectDateReport() == 'month' ? 'btn btn-info' : 'btn btn-default')">Month</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pad">
+                        <div id="userProfitOrder" style="min-width: 100px; height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Profit bargain latches over time.</h3>
+            <div class="box-tools pull-right">
+                
+                <button data-bind="click: ExcelReportProfitOrderFinished" class="btn btn-xs btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pad">
+                        <div id="userProfitOrderFinished" style="min-width: 100px; height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</script>

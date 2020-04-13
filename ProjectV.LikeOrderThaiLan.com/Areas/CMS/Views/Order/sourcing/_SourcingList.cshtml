@@ -1,0 +1,28 @@
+﻿<script type="text/html" id="sourcingList">
+    <tr>
+        <td class="td-text-center" data-bind="text: (page-1)*pagesize + $index()+1"></td>
+        <td>
+            <div class="rs content-code">
+                <img data-bind="attr: { src: ImagePath }" alt="" width="50" height="50">
+                <span>
+                    <span class="code-order rs"><a data-bind="text:'SRC' + code, attr: {href: '/' + window.culture + '/CMS/Order/DetailSourcing?sourcingId=' + id}" target="_blank"></a> </span>
+                    <p class="rs" data-bind="text: moment(CreateDate).format('DD/MM/YYYY   hh:mm:ss')"></p>
+                </span>
+            </div>
+        </td>
+        <td class="td-text-right">
+            <span class="code-order" data-bind="text:Quantity"></span>
+        </td>
+        <td class="td-text-left">
+            <span data-bind="text:TypeServiceName"></span>
+        </td>
+        <td class="td-text-center">
+            <span data-bind="text: statusApp.source[Status].Name, css: statusApp.source[Status].Class"></span>
+        </td>
+        <td>
+            <!-- ko if: Status == 0 -->
+            <a href="javacript:void(0)" class="btn btn-danger btn-xs" style="color: #fff !important;">@Resource.Order_OperationDestroy</a>
+            <!-- /ko -->
+        </td>
+    </tr>
+</script>

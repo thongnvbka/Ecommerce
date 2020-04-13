@@ -1,0 +1,132 @@
+﻿@model  Common.Items.ModelView<Library.DbContext.Results.ProductResult, Library.ViewModels.ProductViewModel>
+
+@{
+    ViewBag.Title = "List of products";
+}
+
+@section Styles{
+    <link href="/Content/plugins/treegrid/css/jquery.treegrid.css" rel="stylesheet" />
+}
+
+<script>
+    var categoryTree = @Html.Raw(ViewBag.CategoryTree);
+</script>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+     List of products
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Manager</a></li>
+        <li class="active">List of products</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <form action="@Model.PageInfo.Url" id="searchForm" method="post" role="form">
+        <div class="box box-primary">
+
+            <div class="box-header with-border">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                          <label for="ddlGroup">Keyword search </label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can do a search by name, link, Property... of the product."></i>
+                        @Html.TextBoxFor(x => x.SearchInfo.Keyword, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control"},
+                            {"placeholder", "Product's name, link, Properties,..." }
+                        })
+                        @Html.HiddenFor(x => x.PageInfo.CurrentPage)
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label for="ddlPage" style="display:inherit">Categories</label>
+                        <div id="category_tree"></div>
+                        @Html.HiddenFor(x => x.SearchInfo.CategoryId)
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlWarehouse">Quantity</label>
+                        @Html.TextBoxFor(x => x.SearchInfo.Number, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control"},
+                            {"type", "number"},
+                            {"placeholder", "Number of reservations" }
+                        })
+                    </section>
+                    <section class="col-md-1 form-group mb0">
+                        <label for="ddlGroup" style="display:inherit">&nbsp;</label>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Search</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="row">
+                    <section class="col-md-12 form-group">
+                        <h3 class="box-title">List of products</h3>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-12 form-group" id="body-table">
+                        @Html.Partial("_List", Model)
+                    </section>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<!-- /.content -->
+
+@section Scripts{
+    <script src="/Content/plugins/treegrid/js/jquery.treegrid.min.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function pagging(currentPage) {
+            $("#PageInfo_CurrentPage").val(currentPage);
+            searchForm();
+        }
+
+        function searchForm() {
+            $("#searchForm").submit();
+        }
+
+        $(document).ready(function () {
+            var frm = $('#searchForm');
+            frm.submit(function (ev) {
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        $("#body-table").html(data);
+                    }
+                });
+
+                ev.preventDefault();
+            });
+
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+
+            $("#category_tree").dropdownjstree({
+                source: categoryTree,
+                dropdownLabel: 'All',
+                dropdownLabelClick: () => {
+                    $('#SearchInfo_CategoryId').val(-1);
+                },
+                selectNote: (node, selected) => {
+                    $('#SearchInfo_CategoryId').val(selected.node.id);
+                }
+            });
+
+        })
+    </script>
+}

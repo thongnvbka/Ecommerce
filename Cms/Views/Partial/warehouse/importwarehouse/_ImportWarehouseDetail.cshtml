@@ -1,0 +1,163 @@
+﻿<div id="importWarehouseDetailModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="importwarehouse">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>RECEIPT</strong>
+                                <span class="impornumber">Slip number: <strong data-bind="text: importModel().Code()"></strong></span>
+                                <small data-bind="text: 'Arrival date : ' + moment(importModel().Created()).format('DD/MM/YYYY')"></small>
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row importwarehouse">
+                        <!-- accepted payments column -->
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Carrier :</th>
+                                        <td data-bind="text: importModel().ShipperName()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone:</th>
+                                        <td data-bind="text: importModel().ShipperPhone()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td data-bind="text: importModel().ShipperAddress()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Consigned warehouse :</th>
+                                        <td data-bind="text: importModel().WarehouseName()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td data-bind="text: importModel().WarehouseAddress()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Transport code</th>
+                                        <th class="text-center" style="color: green">Weight</th>
+                                        <th class="text-center" style="color: blue">Weight converted</th>
+                                        <th class="text-center" style="color: red">Volume (m3)</th>
+                                        <th class="text-center">Warehouse area</th>
+                                        <th class="text-center">Stock status</th>
+                                        <th class="text-center" width="20%">Stock status - note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center"><strong>MVD0102012919</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center"><strong>MVD1242012002</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center"><strong>MVD0102211002</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td class="text-center"><strong>MVD01212012002</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row signature">
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>The person making the votes</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: importModel().UserFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Carrier</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: importModel().ShipperName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Storekeepers</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: importModel().WarehouseManagerFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Accountant</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: importModel().WarehouseAccountantFullName()"></span>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary"><i class="fa fa-print"></i>Print </a>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #importWarehouseDetailModal {
+        padding: 0px 10px !important;
+    }
+
+        #importWarehouseDetailModal .modal-lg {
+            width: 90% !important;
+        }
+</style>

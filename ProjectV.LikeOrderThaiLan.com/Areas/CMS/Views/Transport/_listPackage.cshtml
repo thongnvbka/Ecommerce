@@ -1,0 +1,50 @@
+﻿<script type="text/html" id="tab-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1"></td>
+        <td>
+            <div class="rs content-code">
+                <span>
+                    <span class="code-order rs code-package" data-bind="text: 'P' + Code, attr: {idata: Id}"></span><br />
+                    @*<p class="rs" data-bind="text: moment(Created).format('DD/MM/YYYY   h:mm:ss')"></p>*@
+                    <span class="code-package-icon rs" title="Mã vận đơn">
+                        <i class="fa fa-truck" aria-hidden="true"></i> <span data-bind="text: TransportCode"></span>
+                    </span>
+                </span>
+            </div>
+        </td>
+        <td>
+            <!-- ko if: OrderType == 1 -->
+            <span class="code-order">
+                <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailOrder?orderId=' + OrderId}" class="td-text-left link-shop"><span data-bind="text: 'ORD' + OrderCode"></span></a>
+            </span>
+            <!-- /ko -->
+            <!-- ko if: OrderType == 0 -->
+            <span class="code-order">
+                <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailDeposit?depositId=' + OrderId}" class="td-text-left link-shop"><span data-bind="text: 'DEP' + OrderCode"></span></a>
+            </span>
+            <!-- /ko -->
+            <!-- ko if: OrderType == 2 -->
+            <span class="code-order">
+                <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailSourcing?sourcingId=' + OrderId}" class="td-text-left link-shop"><span data-bind="text: 'SRC' + OrderCode"></span></a>
+            </span>
+            <!-- /ko -->
+        </td>
+        <td>
+            <span data-bind="text: (Weight === undefined || Weight===null) ? '--' : formatNumbericCN(Weight, 'N2')"> </span> 
+            <b data-content="น้ำหนักจริง" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor: pointer">&nbsp;(?)</b><br/>
+            @*<b data-content="Cân nặng thực" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b><br />*@
+            <span data-bind="text: (WeightActual === undefined || WeightActual===null) ? '--' : formatNumbericCN(WeightActual, 'N2')"></span>
+            <b data-content="น้ำหนักได้แปลงหน่วย" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+            @*<b data-content="Cân nặng quy đổi" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>*@
+        </td>
+        <td>
+            <span data-bind="text: (ActualMoney === undefined || ActualMoney===null) ? '--' : formatNumberic(Math.round(ActualMoney),'N4')"></span><b data-content="ค่าน้ำหนักได้แปลงหน่วย" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+        </td>
+        <td>
+            <span data-bind="text:CurrentWarehouseName"></span>
+        </td>
+        <td>
+            <span data-bind="text: statusApp.orderPackageView[Status].Name, css: statusApp.orderPackageView[Status].Class"></span>
+        </td>
+    </tr>
+</script>

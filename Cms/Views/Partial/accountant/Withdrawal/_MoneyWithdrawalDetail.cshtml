@@ -1,0 +1,123 @@
+﻿<div id="moneyWithdrawalDetailModal" class="modal fade modal-dialog modal-p60" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>TRANSACTION TRANSACTION REQUIRES EASY MONEY REMOVAL</strong>
+                        <span class="impornumber">Transaction code: <strong data-bind="text: withDrawalDetailModel().Code()"></strong></span>
+                        <small data-bind="text: 'Date of implementation: ' + moment(withDrawalDetailModel().CreateDate()).format('DD/MM/YYYY')"></small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Customer ID :</th>
+                                <td data-bind="text: withDrawalDetailModel().CustomerCode()"></td>
+                            </tr>
+                            <tr>
+                                <th>Customer name :</th>
+                                <td data-bind="text: withDrawalDetailModel().CustomerName()"></td>
+                            </tr>
+                            <tr>
+                                <th>Mail:</th>
+                                <td data-bind="text: withDrawalDetailModel().CustomerEmail()"></td>
+                            </tr>
+                            <tr>
+                                <th>Phone number:</th>
+                                <td data-bind="text: withDrawalDetailModel().CustomerPhone()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Acoount number:</th>
+                                <td><span data-bind="text: withDrawalDetailModel().CardId()"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Account name:</th>
+                                <td data-bind="text: withDrawalDetailModel().CardName()"></td>
+                            </tr>
+                            <tr>
+                                <th>Bank:</th>
+                                <td data-bind="text: withDrawalDetailModel().CardBank()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                            <h4><i class="icon fa fa-thumb-tack"></i>Staff notes!</h4>
+                            <span data-bind="text: withDrawalDetailModel().Note()"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="importwarehouse">
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">The requested withdrawal amount from wallet (Baht)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                
+                                <td class="text-center" style="color: red">
+                                    <i class="fa fa-caret-down"></i> <span data-bind="text: formatNumberic(withDrawalDetailModel().AdvanceMoney(), 'N2')"></span>
+                                </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+        </section>
+        <section class="importwarehouse">
+            <div class="row signature">
+                <div class="col-sm-4" align="center">
+                    <h5><strong>The person making the ticket</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: withDrawalDetailModel().UserName()"></span>
+                </div>
+
+                <div class="col-sm-4" align="center">
+                    <span><strong>Customer</strong></span>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: "></span>
+                </div>
+
+                <div class="col-sm-4" align="center">
+                    <h5><strong>Chief accountant</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name"></span>
+                </div>
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-primary"><i class="fa fa-print"></i>Print </a>
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+</div>

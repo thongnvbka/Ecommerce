@@ -1,0 +1,91 @@
+﻿
+@model ComplainTypeMeta
+<link href="~/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+<div class="hidden">
+    @Html.TextBoxFor(x => x.ParentId, new { })
+    @Html.TextBoxFor(x => x.ParentName)
+    @Html.TextBoxFor(x => x.IdPath)
+    @Html.TextBoxFor(x => x.NamePath)
+</div>
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Type of complaint <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Complaints type parent </label>
+    <div class="col-sm-8 col-md-3 col-lg-3">
+        <div id="complain_tree"></div>
+        @Html.ValidationMessageFor(x => x.ParentId)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">@*Số thứ tự hiển thị*@Display chronological order</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.Index, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+           
+        })
+        @Html.ValidationMessageFor(x => x.Index)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Describe</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextAreaFor(x => x.Description, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+</div>
+
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#complain_tree").dropdownjstree({
+                source: complainTypeJsTree,
+                dropdownLabel: 'Manage the type of complaint',
+                dropdownLabelClick: () => {
+                    $('#ParentId').val('');
+                    $('#ParentName').val('');
+                },
+                selectedNode: '@(Model == null || Model.ParentId == 0 ? "" : Model.ParentId.ToString())',
+                selectNote: (node, selected) => {
+                    $('#ParentId').val(selected.node.id);
+                    $('#ParentName').val(selected.node.text);
+                }
+            });
+            $('.hash-tag').tagsinput();
+
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        });
+
+        function submitForm() {
+            $("#submitForm").submit();
+        }
+    </script>
+}
+

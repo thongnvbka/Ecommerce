@@ -1,0 +1,31 @@
+﻿@model Library.ViewModels.TemplateEmailJob.OverDaysOrderViewModel1
+@{
+    int index = 1;
+
+    var orders = Model.Orders.Select(x => x.OrderCode).Distinct().ToList();
+
+}
+<h4>Overdue order @Model.Day @*chưa nhập kho*@has not been put to stock</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center w50">#</th>
+            <th class="text-center w50">Code order</th>
+            <th class="text-center">Package</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in orders)
+        {
+            var packages = string.Join(", ", Model.Orders.Where(x => x.OrderCode == o).Select(x => "P" + x.PackageCode));
+
+            <tr>
+                <td class="text-center">@index</td>
+                <td><a href="/Purchase/Order#@("ORD" + o)" target="_blank">@("ORD" + o)</a></td>
+                <td>@packages</td>
+            </tr>
+            index += 1;
+        }
+    </tbody>
+</table>

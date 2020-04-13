@@ -1,0 +1,133 @@
+﻿@{
+    var text = (byte)Common.Emums.CommentType.Text;
+    var image = (byte)Common.Emums.CommentType.Image;
+}
+
+<section class="chat-with-web" id="temDivBoxChat">
+    <div class="block-chatbox">
+        <div class="rs header-chat">
+            <a>
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                @Resource.Chat_TalkWithUs
+            </a>
+
+            <a class="show-hide-chatbox">
+                <i class="fa fa-angle-down" id="down-chatbox"></i>
+            </a>
+        </div>
+
+        <div class="content-chat">
+            <div data-bind="if: chatViewModel.listChat().length === 0">
+                <span> @Resource.Chat_NotMessager</span>
+            </div>
+            <div id="599406" data-bind="foreach: { data: chatViewModel.listChat, afterRender: chatViewModel.renderedHandler}">
+                <!-- ko if: UserId == null -->
+                <div class="info-user-chatbox">
+                    <img data-bind="attr: { src: AvatarCustomer }" alt="">
+
+                    <p class="show-name blue-green font-13 ">
+                        <span class="bold " data-bind="text: CustomerName">Hoài Thu</span> <br>
+                    </p>
+                    <p class="show-time font-11 text-right text-gray" data-bind="text: moment(CreateDate).format('L LTS')">
+                        11:10 05/10
+                    </p>
+                    <p class="show-content content-customer blue-green sub-link-sd break-word-sd">
+                        <div class="direct-chat-text row">
+                            <!-- ko foreach: ListObj -->
+                            <!-- ko if: CommentType == @text -->
+                            <span data-bind="text: Description"></span><br />
+                            <!-- /ko -->
+                            <!-- ko if: CommentType == @image -->
+                            <img alt="" data-bind="attr: { src: Description }" style="height: 40px;" class="chatImg" onclick="showImgChat(this)"><br />
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </p>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: UserId > 0 -->
+                <div class="info-user-chatbox">
+                    <div class="pull-right">
+
+                        <p class="show-name blue-green font-13 ">
+                            <img @*data-bind="attr: { src: AvatarUser }"*@ src="/Content/img/no-avatar.png" alt="">
+                            <span class="bold " data-bind="text: UserName">Hoài Thu</span> <br>
+                        </p>
+                    </div>
+
+                    <p class="show-time font-11 text-right text-gray pull-left" data-bind="text: moment(CreateDate).format('L LTS')">
+                        11:10 05/10
+                    </p>
+                    <p class="show-content content-customer blue-green sub-link-sd break-word-sd">
+                        <div class="direct-chat-text row">
+                            <!-- ko foreach: ListObj -->
+                            <!-- ko if: CommentType == @text -->
+                            <span data-bind="text: Description"></span><br />
+                            <!-- /ko -->
+                            <!-- ko if: CommentType == @image -->
+                            <img alt="" data-bind="attr: { src: Description }" style="height: 40px;" class="chatImg" onclick="showImgChat(this)"><br />
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </p>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="rs bottom-chat-box">
+            <form data-bind="submit: chatViewModel.submit" style="margin-left: 10px;">
+                <input data-bind="value: chatViewModel.text" name="" id="_contentMessage"
+                       class="form-control block-chatbox-area" cols="15" rows="2"
+                        placeholder="@Resource.Chat_InputContent" autocomplete="off"/>
+                <span class="input-group-btn" style="float: left;padding-left: 0 !important">
+                    <button id="_sendMessage" data-bind="enable: chatViewModel.isSend" type="submit"
+                            class="btn btn-primary btn-flat" style="float: left;">
+                        <!-- ko if: chatViewModel.isSend()-->
+                        <i class="fa fa-send"></i>
+                        <!-- /ko -->
+                        <!-- ko if: !chatViewModel.isSend()-->
+                        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                        <!-- /ko -->
+                        @Resource.Chat_Send
+                    </button>
+
+                    <span class="fileinput fileinput-new" data-provides="fileinput"
+                          data-bind="click: chatViewModel.addImage"
+                          style="padding-left: 0;width: 40px; float: left;">
+                        <span class="btn btn-primary btn-file btn-flat"
+                              style="float: right; height: 30px; padding-left: 10px; padding-right: 10px; 
+                                    padding-top: 0 !important; box-sizing: border-box; display: inline-block;
+                                    position: relative; width: 40px;
+                                    margin-left: 2px !important; margin-right: 0px !important;">
+
+                            <!-- ko if: chatViewModel.isUpload()-->
+                            <i class="fa fa-file-image-o" style="margin-left: -10px;"></i>
+                            <!-- /ko -->
+                            <!-- ko if: !chatViewModel.isUpload()-->
+                            <i class="fa fa-spinner fa-pulse fa-fw" style="margin-left: -10px;"></i>
+                            <!-- /ko -->
+                            <input class="flieuploadImg" name="" type="file" style="width: 10px !important; position: inherit !important; float: left !important;" title="ไม่มีไฟล์ไหนได้เลือก">
+                            <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                        </span>
+                    </span>
+                </span>
+            </form>
+        </div>
+    </div>
+
+    <div id="imgShowView">
+        <div id="showImgModal" class="modal">
+            <span class="close" onclick="document.getElementById('showImgModal').style.display = 'none'">&times;</span>
+            <img class="modal-content" id="imgShow" alt="">
+            <div id="caption"></div>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/jQueryFileUpload/vendor/jquery.ui.widget.js"></script>
+    <script src="/Content/plugins/jQueryFileUpload/jquery.iframe-transport.js"></script>
+    <script src="/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+
+}

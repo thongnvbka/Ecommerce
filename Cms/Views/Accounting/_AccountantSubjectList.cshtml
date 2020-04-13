@@ -1,0 +1,58 @@
+﻿
+@model ModelView<Library.DbContext.Entities.AccountantSubject, AccountantSubjectViewModel>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Type list feces accounting object</h3>
+
+        <a href="@Url.Action("CreateSubject")" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add new</a>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center w-40">#</th>
+                        <th class="text-center w-100">IDD</th>
+                        <th class="text-center w-350">Name of subject</th>
+                        <th class="text-center w-350">Note</th>
+                        <th class="text-center w-200">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+                    {
+                        <tr><td colspan="5">There are no records to display</td></tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+                        foreach (var x in Model.Items)
+                        {
+                            <tr>
+                                <td class="text-center w-40">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                                <td><strong>@x.Idd</strong></td>
+                                <td><strong>@x.SubjectName</strong></td>
+                                <td>@x.SubjectNote</td>
+                                <td class="text-center w-140">
+                                    @if (x.IsIdSystem == false)
+                                    {
+                                        <a href="@Url.Action("EditSubject", new {id = x.Id})" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="javascript:;" data-url="@Url.Action("DeleteSubject", new {id = x.Id})" data-name="@x.SubjectName" class="btn btn-sm btn-danger btn-xs delete-item"><i class="fa fa-trash"></i> Delete  </a>
+                                    }
+                                </td>
+                            </tr>
+                            idx++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+@Html.Partial("_Paging", Model.PageInfo)
+
+

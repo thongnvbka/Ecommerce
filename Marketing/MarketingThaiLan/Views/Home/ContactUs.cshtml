@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+}
+<div id="wrapper" class="clearfix">
+    <div style="clear:both;"></div>
+    <div class="contact-us">
+        <div class="bg-contact-us">
+            <div class="container">
+                <h3>
+                    Liên hệ
+                </h3>
+                <div class="breadcrumb">
+                    <a href="/">Trang chủ</a>
+                    <span>&nbsp;/&nbsp;</span>
+                    <span class="active">Liên hệ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 col-sm-12 col-sx-12">
+            <div class="company-info">
+
+                <h1>
+                    Đội ngũ hỗ trợ của Bizweb luôn sẵn sàng hỗ trợ bạn 24/7.
+                </h1>
+                <h4>
+                    Trụ sở:
+                </h4>
+                <div class="meta">
+                    <i class="fa fa-map-marker"></i>Tầng 4, Tòa nhà Hanoi Group, 442 Đội Cấn, Ba Đình, Hà Nội
+                </div>
+                <h4>
+                    Chi nhánh TP Hồ Chí Minh:
+                </h4>
+                <div class="meta">
+                    <i class="fa fa-map-marker"></i>Lầu 3, Tòa nhà Lữ Gia,  Số 70 Lữ Gia, P.5,  Q.11 - TP HCM
+                </div>
+                <div class="meta">
+                    <p style="padding-top : 18px;"><b>Email : </b> <a href="mailto:support@bizweb.vn">support@bizweb.vn</a></p>
+                    <p style="padding-top : 5px;"><b>Tổng đài hỗ trợ khách hàng </b>: 1900 6750</p>
+                    <p style="padding-top : 5px;"><b>Tư vấn dịch vụ </b>: 1900 6750 - Nhánh 1</p>
+                    <p style="padding-top : 5px;"><b>Chăm sóc khách hàng </b>: 1900 6750 - Nhánh 2</p>
+                    <p style="">Từ 8h00 – 22h00 các ngày từ thứ 2 đến Chủ nhật</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-map text-center">
+            <img src="/Content/images/Contact/img-contact-map.png">
+        </div>
+        <p style="text-align : center; color : red; font-size : 14px;"></p>
+
+    </div>
+    <script type="text/javascript">
+		setCapcha();
+		$('#reset').click(function () {
+			setCapcha();
+		});
+		function setCapcha() {
+			$('#imgCapcha').attr("src", "/Ajax/Capcha/ShowCaptchaImage?a=" + Math.random());
+		}
+		$('.button-reset').click(function () {
+		    //$('#login-div .subdomain .form-input').attr('placeholder', 'Đường dẫn website').val("").focus().blur();
+		    $('#UserContact').attr('placeholder', 'Tên của bạn').val("").focus().blur();
+		    $('#EmailContact').attr('placeholder', 'Email').val("").focus().blur();
+		    $('#PhoneContact').attr('placeholder', 'Điện thoại').val("").focus().blur();
+		    $('#Content').val(' ');
+		    $('#Capcha').val(' ');
+		});
+    </script>
+    <div class="index-registration quick-registration new-registration">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+                <h3 class="text-large text-center">Hơn 23,000 doanh nghiệp và chủ shop đang bán hàng như thế nào?</h3>
+                <span>
+                    Đăng ký dùng thử miễn phí 15 ngày để khám phá
+                </span>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <input style="font-weight : 300;" id="site_name_bottom" class="input-site-name hidden-xs" type="text" value="" placeholder="Nhập tên cửa hàng/doanh nghiệp của bạn" onkeypress="return onInputStoreName(event, this)">
+                <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Dùng thử miễn phí</a>
+            </div>
+        </div>
+    </div>
+    <style>
+        .bg-capcha {
+            margin: 0px;
+        }
+    </style>
+</div>
+

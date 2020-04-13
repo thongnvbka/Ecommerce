@@ -1,0 +1,60 @@
+﻿@model  ModelView<Library.DbContext.Entities.Category, CategoryViewModel>
+
+
+<table class="table table-bordered table-hover tree">
+    <thead>
+        <tr>
+            @*<th class="text-center">#</th>*@
+            <th class="text-center">Category Name</th>
+            <th class="text-center">Describe</th>
+            <th class="text-center w-100">Status</th>
+            <th class="text-center w-140"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Items.Any())
+            {
+            <tr>
+                <td colspan="6" class="text-center">No Record</td>
+            </tr>
+        }
+        else
+        {
+            var idx = 1;
+            foreach (var m in Model.Items)
+            {
+                <tr class="@("treegrid-" + m.Id) @(m.ParentId != 0 ? "treegrid-parent-" + m.ParentId.Value : "")">
+                    @*<td class="text-center w-50">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>*@
+                    <td>@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx). @m.Name</td>
+                    <td>@m.Description</td>
+                    <td class="text-center">
+                        @{
+                            if (@m.Status == (int)Common.Emums.CategoryStatus.Active)
+                            {
+                                <span class="label label-success">Activated</span>
+                            }
+                            else
+                            {
+                                <span class="label label-default"> Not Activated</span>
+                            }
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Edit", new {id = m.Id})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>Edit</a>
+                        <a href="javascript:;" data-url="@Url.Action("Delete", new {id = m.Id})" data-name="@m.Name" class="btn btn-danger btn-sm delete-item"><i class="fa fa-trash"></i> Delete </a>
+                    </td>
+                </tr>
+                idx += 1;
+            }
+        }
+    </tbody>
+</table>
+
+@Html.Partial("_Paging", Model.PageInfo)
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        $('.tree').treegrid();
+    </script>
+}

@@ -1,0 +1,85 @@
+﻿@model  ModelView<Library.DbContext.Entities.Title, TitleFilterViewModel>
+@{
+    var hasUpdate = CheckPermision(EnumPage.Title, EnumAction.Update);
+    var hasDelete = CheckPermision(EnumPage.Title, EnumAction.Delete);
+    var hasDeleteOrUPdate = hasUpdate || hasDelete;
+}
+<div class="box">
+    @*<div class="box-header">
+            <h3 class="box-title">Hover Data Table</h3>
+        </div>*@
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center w-40">#</th>
+                        <th class="text-center w-120">ID</th>
+                        <th class="text-center w-350">Name</th>
+                        <th class="text-center w-145">Status</th>
+                        <th class="text-center w-350">Describe</th>
+                        <th class="text-center w-200">Created Date</th>
+                        @if (hasDeleteOrUPdate)
+                        {
+                            <th class="text-center w-150"></th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+            {
+                        <tr>
+                            <td colspan="7" class="text-center">There are no records</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+                        foreach (var m in Model.Items)
+                        {
+                            <tr>
+                                <td>@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.TotalRecord + idx)</td>
+                                <td>@m.Code</td>
+                                <td>@m.Name</td>
+                                <td class="text-center">
+                                    @if (m.Status == 0)
+                                    {
+                                        <span class="label label-warning">New </span>
+                                    }
+                                    else if (m.Status == 1)
+                                    {
+                                        <span class="label label-success">Current </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-default">Old </span>
+                                    }
+                                </td>
+                                <td>@m.Description</td>
+                                <td class="text-right">@m.Created.ToString("g")</td>
+                                @if (hasDeleteOrUPdate)
+                                {
+                                    <td class="text-center">
+                                        @if (hasUpdate)
+                                        {
+                                            <a href="@Url.Action("Edit", new {id = m.Id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                        }
+                                        @if (hasDelete)
+                                        {
+                                            <a href="javascript:;" data-url="@Url.Action("Delete", new {id = m.Id})" data-name="@m.Name" class="btn btn-sm btn-danger delete-item"><i class="fa fa-times"></i> Delete  </a>
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                            idx += 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @Html.Partial("_Paging", Model.PageInfo)
+    </div>
+    <!-- /.box-body -->
+</div>

@@ -1,0 +1,45 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<footer>
+    <section class="footer-about">
+        <div class="footer-about-logo">
+            <img src="~/Images/icon_likeorder_200x200---2.png" alt="" /> 
+        </div>
+        <div class="footer-about-main">
+            <ul> 
+                <li><a href="/@culture">@Resource.Home_Partner</a></li>
+                <li><a href="/@culture/Home/TermsOfService">@Resource.Home_Juridical</a></li>
+                <li><a href="/@culture/TermsOfService">@Resource.Home_PrivacyPolicy</a></li>
+                <li><a href="/@culture/Home/TermsOfService">@Resource.Home_ServiceAgreement</a></li>
+                <li><a href="/@culture/Home/FAQ">@Resource.Home_Introduce</a></li>
+            </ul>
+         
+        </div> 
+        <p class="footer-about-p" style="width: 49%; float: left; text-align: justify;">
+            @Resource.Home_FooterContent
+        </p>
+
+        @*<div class="footer-about-img" style="float: right;">
+            <img src="/Content/images/icon-home/comodositeseal.png" alt="" />
+        </div>*@
+        <div style="width: 50%; float: left;">
+            <div style="width: 50%; float: left;  padding-right: 30px;  padding-top: 50px; box-sizing: border-box;  padding-left: 20px;">
+                <img src="/Content/images/icon-home/PAY10.jpg" alt="" style="width: 292px;height: 100px;">
+            </div>
+
+            <div class="fb-page" data-href="https://www.facebook.com/LikeOrderThailand" data-small-header="true"
+                 data-adapt-container-width="true"
+                 data-hide-cover="false" data-show-facepile="true" style="float: right;width: 47%">
+                <blockquote cite="https://www.facebook.com/LikeOrderThailand" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/LikeOrderThailand">Like order</a>
+                </blockquote>
+            </div>
+        </div>
+ 
+     
+        <p style="float: left;   width: 100%; text-align: center;">
+            Copyright &copy;2016 LikeOrder
+        </p> 
+    </section>
+</footer>

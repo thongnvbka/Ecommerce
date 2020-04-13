@@ -1,0 +1,309 @@
+﻿@{
+    ViewBag.Title = "WarehouseStatistics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="tab-static">
+                <ul class="nav-tabs tab">
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="tabStaticOrder(event, 'sevenDay')" id="defaultOpen">7 ngày</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="tabStaticOrder(event, 'lastWeek')">Tuần trước</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="tabStaticOrder(event, 'lastMonth')">Tháng trước</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="tabStaticOrder(event, 'threeMonth')">3 tháng</a></li>
+                </ul>
+
+                <div id="threeMonth" class="tabcontent">
+                    <div class="row statisticsFS">
+                        <div class="tab-content-fade">
+                            <div class="col-static1">
+                                <div class="dashboard-stat green-meadow">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">12.987</span>
+                                        </div>
+                                        <div class="desc">Đơn hàng lưu kho </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat blue-steel ">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">5005</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đang chờ xử lý
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat yellow-casablanca ">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">6087</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đơn hàng chưa giao
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat purple">
+                                    <div class="visual">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">2012</span>
+                                        </div>
+                                        <div class="desc">
+                                            Hoàn thành
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lastMonth" class="tabcontent">
+
+                    <div class="row statisticsFS">
+                        <div class="tab-content-fade">
+                            <div class="col-static1">
+                                <div class="dashboard-stat green-meadow">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">4387</span>
+                                        </div>
+                                        <div class="desc">Đơn hàng lưu kho </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat blue-steel ">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">1025</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đang chờ xử lý
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat yellow-casablanca ">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">679</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đơn hàng chưa giao
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat purple">
+                                    <div class="visual">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">709</span>
+                                        </div>
+                                        <div class="desc">
+                                            Hoàn thành
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lastWeek" class="tabcontent">
+                    <div class="row statisticsFS">
+                        <div class="tab-content-fade">
+                            <div class="col-static1">
+                                <div class="dashboard-stat green-meadow">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">2643</span>
+                                        </div>
+                                        <div class="desc">Đơn hàng lưu kho </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat blue-steel ">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">545</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đang chờ xử lý
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat yellow-casablanca ">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">234</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đơn hàng chưa giao
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat purple">
+                                    <div class="visual">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">312</span>
+                                        </div>
+                                        <div class="desc">
+                                            Hoàn thành
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sevenDay" class="tabcontent">
+                    <div class="row statisticsFS">
+                        <div class="tab-content-fade">
+                            <div class="col-static1">
+                                <div class="dashboard-stat green-meadow">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">1349</span>
+                                        </div>
+                                        <div class="desc">Đơn hàng lưu kho </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat blue-steel ">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">125</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đang chờ xử lý
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat yellow-casablanca ">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">549</span>
+                                        </div>
+                                        <div class="desc">
+                                            Đơn hàng chưa giao
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-static1">
+                                <div class="dashboard-stat purple">
+                                    <div class="visual">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="1349">89</span>
+                                        </div>
+                                        <div class="desc">
+                                            Hoàn thành
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-static rs">
+                <div id="container" style="width:100%; height:400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Content/js/tab.js"></script>
+    <script src="~/Content/js/analytics.js"></script>
+}

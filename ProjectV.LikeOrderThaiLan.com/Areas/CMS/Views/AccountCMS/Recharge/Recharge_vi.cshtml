@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+
+}
+@using System.Globalization
+@model Library.ViewModels.Items.CustomerInforItem
+
+<ul class="zichan-nav">
+    <li data-id="chongzhi" class="lete-active">  Nạp tiền </li>
+</ul>
+<div class="zichan-msg">
+    @if (Model != null)
+    {
+        <span>  Tổng số tiền mà bạn có:  <a> @string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:#,###}", Model.BalanceAvalible) @Resource.Currency</a></span>
+    }
+</div>
+
+
+<div class="zichan-chongzhi zichan-box">
+
+    <div class="zichan-chongzhi-box">
+        <h1>  Khách hàng có thể lựa chọn một trong hai hình thức nạp tiền vào tài khoản của chúng tôi như sau: </h1>
+        <div class="zichan-chongzhi-way">
+            <img src="~/Content/images/icon-rechange/deposit-direct.jpg" onclick="tabRechangeMoney(event, 'chuyenkhoan')" class="tablinks" id="defaultOpen" alt="">
+            <img src="~/Content/images/icon-rechange/transfer-banks.jpg" onclick="tabRechangeMoney(event, 'naptientructiep')" class="tablinks" alt="">
+        </div>
+        <div class="zichan-chongzhi-main" style="background: #fff;">
+            <div class="zichan-chongzhi-main-paypal tabcontent" id="chuyenkhoan">
+                <p class="bold">1. Nạp tiền trực tiếp</p>
+                <p>
+                    Quý khách có thể nạp tiền trực tiếp tại văn phòng.<br />
+                    Chi tiết liên hệ hotline:
+                    <span class="bold">090.722.9469</span>;
+                    <span class="bold">096.334.1688</span>;
+                    <span class="bold">096.585.1688</span>;
+                    <span class="bold">096.535.1688</span>  để được hỗ trợ
+                </p>
+                <img src="/Content/images/icon-rechange/zhifu._daojiao_icon.png" alt="">
+            </div>
+            <div class="zichan-chongzhi-main-guojixinyongka tabcontent" id="naptientructiep">
+                <p class="bold">2. Hình thức chuyển khoản </p>
+                <p class="bold">
+                    2.1 Khách sử dụng phương thức chuyển khoản ngân hàng
+                </p>
+                <p>
+
+                    Quý khách hàng chuyển khoản qua ngân hàng vào các tài khoản của chúng tôi.
+                </p>
+                <p>
+                    Danh sách các tài khoản chuyển tiền, Quý khách vui lòng liên hệ với số hotline của chúng tôi 090.722.9469; 096.334.1688; 096.585.1688; 096.535.1688 để được hỗ trợ
+                </p>
+
+                <p>
+                    Quy trình của khách hàng<br />
+                </p>
+                <p class="bold">
+                    Bước 1: Khách hàng chuyển tiền qua tài khoản ngân hàng.
+                </p>
+                <p class="bold">
+                    Bước 2: Khi chuyển tiền khách ghi chú nội dung chuyển tiền: “NAPTIEN {email đăng ký} {số điện thoại}”.
+                </p>
+                <p class="bold">
+                    - Email đăng ký: là địa chỉ email đăng nhập của Quý khách trên hệ thống của chúng tôi.<br />
+                    - Số điện thoại: là số điện thoại của Quý khách để sử dụng trong tình huống cần xác nhận giao dịch nạp tiền.
+                </p>
+                <p class="bold">
+                    2.2 Khách chuyển tiền qua ATM hoặc các hệ thống không có ghi chú
+                </p>
+                <p>
+                    Quy trình của khách
+                </p>
+                <p class="bold">
+                    Bước 1: Khách hàng thực hiện chuyển tiền.
+                </p>
+                <p class="bold">
+                    Bước 2: Quý khách sử dụng đúng số điện thoại đã đăng ký trên hệ thống của chúng tôi :
+                </p>
+                <p>
+                    Nhắn tin theo cú pháp “NAPTIEN {email đăng ký} {số điện thoại} {số tài khoản ngân hàng của Quý khách} {lệnh giao dịch chuyển tiền}” gửi tới số điện thoại của chúng tôi :01673652185
+                    Hoặc Quý khách có thể chụp ảnh biên lai chuyển tiền gửi về mail ketoannhkd@gmail.com tiêu đề “NẠP TIỀN QUA ATM_EMAIL” (lưu ý khách hàng gửi email bằng mail Quý khách đăng ký trên hệ thống)
+                    Sau khi  quý khách thực hiện thao tác nạp tiền như trên, trong thời gian hành chính (Từ 8h-17h30 các ngày thứ 2 đến thứ 7 hàng tuần) chúng tôi tiến hành xác thực thông tin nạp tiền. Số tiền sẽ được nạp vào tài khoản trong vòng 1h kể từ thời điểm tài khoản của chúng tôi nhận được tiền.
+                    Hiện nay, ngày thường và trong giờ hành chính tối đa 15 phút nạp xong (với những khoản tiền nạp ghi đầy đủ nội dung).<br />
+                    Ngày chủ nhật và ngoài giờ hành chính: vẫn nạp bình thường nhưng chậm hơn 1 chút.<br />
+                    Lưu ý: Trường hợp sau khi chuyển tiền Quý khách phát hiện nội dung chuyển tiền của Quý khách ghi không đầy đủ như yêu cầu (VD thiếu địa chỉ email của Quý khách). Quý khách vui lòng chụp lại biên lai chuyển tiền và gửi vào địa chỉ mail ketoannhkd@gmail.com hoặc gọi cho chúng tôi theo số hotline 090.722.9469; 096.334.1688; 096.585.1688; 096.535.1688 để được hỗ trợ.
+                </p>
+
+                <img src="/Content/images/icon-rechange/zhifu._daojiao_icon.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>

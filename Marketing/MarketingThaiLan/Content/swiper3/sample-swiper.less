@@ -1,0 +1,17 @@
+﻿.swiper-pagination(@size, @color, @opacity, @color-active, @opacity-active) {
+	.swiper-pagination-bullet {
+		width: @size;
+		height: @size;
+		background-color: @color;
+		opacity: @opacity;
+	}
+
+	.swiper-pagination-bullet-active {
+		background-color: @color-active;
+		opacity: @opacity-active;
+	}
+}
+
+.swiper-container {
+	.swiper-pagination(12pt, #fff, .2, #fff, .8);
+}

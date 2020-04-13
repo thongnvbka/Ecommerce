@@ -1,0 +1,103 @@
+﻿@model CategoryMeta
+<link href="~/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+<div class="hidden">
+    @Html.TextBoxFor(x => x.ParentId, new { @Value = "0" })
+    @Html.TextBoxFor(x => x.ParentName, new { @Value = "Parent category" })
+</div>
+<div class="form-group">
+    <label for="ParentId" class="col-sm-2 control-label">Parents Category</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        <div id="category_tree"></div>
+        @Html.ValidationMessageFor(x => x.ParentId)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Category Name<span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Status</label>
+    <div class="col-sm-8 col-md-3 col-lg-3">
+        @Html.DropDownListFor(x => x.Status, new List<SelectListItem>()
+                {
+                    new SelectItem() { Value = "0", Text = "Activated", Selected = true},
+                    new SelectItem() { Value = "1", Text = "Not Activated" }
+                }, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Status)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Describe</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextAreaFor(x => x.Description, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Tag <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.HashTag, new Dictionary<string, object>
+                {
+                    {"class", "form-control hash-tag"}
+                })
+        @Html.ValidationMessageFor(x => x.HashTag)
+    </div>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#category_tree").dropdownjstree({
+                source: categoryTree,
+                dropdownLabel: 'List product category',
+                dropdownLabelClick: () => {
+                    $('#ParentId').val(0);
+                    $('#ParentName').val('');
+                },
+                selectedNode: '@(Model == null || Model.ParentId == 0 ? "" : Model.ParentId.ToString())',
+                selectNote: (node, selected) => {
+                    $('#ParentId').val(selected.node.id);
+                    $('#ParentName').val(selected.node.text);
+                }
+            });
+
+            $('select').select2({
+                minimumResultsForSearch: -1
+            });
+
+            $('.hash-tag').tagsinput();
+
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        });
+
+        function submitForm() {
+            $("#submitForm").submit();
+        }
+    </script>
+}

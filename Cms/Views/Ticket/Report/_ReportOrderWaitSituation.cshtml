@@ -1,0 +1,53 @@
+﻿<script type="text/html" id="reportOrderWaitSituation">
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Statistical number orders of quotations by staffs.</h3>
+            <div class="box-tools pull-right">
+                <button data-bind="click: ExcelReportOrderWaitSituation" class="btn btn-xs btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="pull-right" style="padding: 10px 30px 0px 0px;">
+                    <select class="form-control" data-bind="value: contentChart">
+                        <option value="1">@*Thống kê Number orders of quotations theo nhân viên*@Number of quote requests created by staff </option>
+                        <option value="2">@*Thống kê Number orders of quotations theo thời gian*@Number of quote requests over time</option>
+                        <option value="3">@*Thống kê Number orders of quotations khách tạo trong ngày*@Number of quote requests created by customers today</option>
+                        <option value="4">@*Thống kê Number orders of quotations đặt hàng tạo trong ngày*@Number of quote orders created(today)</option>
+                    </select>
+                </div>
+                <div class="col-md-12" style="padding: 10px 30px 20px 30px;">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-5">
+                            <h3 class="text-center" data-bind="text: reportTitleTicket"></h3>
+                            <h3 class="padding-left-12 text-center">(<label data-bind="text: totalOrderWait"></label>&nbsp;@*đơn báo giá*@Quote request)</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group pull-right">
+                                <button type="button" class="btn btn-default pull-right" id="daterange-btnReport">
+                                    <span>
+                                        <i class="fa fa-calendar"></i> @*Ngày thống kê*@Date of report
+                                    </span>
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pad">
+                        <div id="userOrderWaitSituation" style="min-width: 100px; height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>

@@ -1,0 +1,85 @@
+﻿@{
+    var check = false.ToString().ToLower();
+    var order = (byte)Common.Emums.OrderType.Order;
+    var deposit = (byte)Common.Emums.OrderType.Deposit;
+}
+<script type="text/html" id="debitList">
+    <tr data-bind="attr: {idata: DebitId}">
+        <td class="w-40">
+            <a data-bind="click: $parent.showChil" class="btn btn-info btn-xs">
+                <i data-bind="css: 'chil' + DebitId" class="fa fa-chevron-circle-down"></i>
+                <i data-bind="css: 'chil' + DebitId" class="fa fa-chevron-circle-up" style="display:none"></i>
+            </a>
+        </td>
+        @*<td><i class="fa fa-chevron-up" imore="0"  style="cursor: pointer" data-bind="click: $parent.ShowMoreOrder.bind($data,OrderId,this)"></i></td>*@
+        <td data-bind="text: (page-1)*pagesize + $index()+1"> </td>
+        <td>
+            <strong>
+                <a data-bind="text: DebitCode"></a>
+            </strong>
+        </td>
+        <td class="text-center">
+            <!-- ko if: OrderType === @order-->
+            <a class="link-shop" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailOrder?orderId=' + OrderId}" target="_blank">
+                <strong>
+                    ORD<span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: OrderType === @deposit-->
+            <a href="javascript:;">
+                <strong>
+                    DPS<span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+        </td>
+        <td class="td-text-center"> <span data-bind="text: moment(Created).format('DD/MM/YYYY h:mm')"></span></td>
+        @*<td class="text-left"> <span data-bind="text: PayReceivableIName"></span></td>*@
+        <td class="td-text-money"> <span data-bind="text: formatNumberic(Money, 'N2')"></span> </td>
+    </tr>
+    <tr data-bind="css: 'chil' + DebitId" style="display:none; background-color:rgba(91, 192, 222, 0.25)">
+        <td colspan="10">
+            <table class="table table-bordered table-responsive" border="1" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th class="text-center w-35">#</th>
+                        <th class="text-center w-80">@Resource.Order_Exhibition</th>
+                        <th class="w-150">@Resource.Liabilities_DayTrading</th>
+                        <th class="w-150">@Resource.Liabilities_Clause</th>
+                        <th class="text-right text-red w-100">@Resource.Liabilities_AmountMoney (@Resource.Currency)</th>
+
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: ListDebitHistory">
+                    <tr>
+                        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+                        <td class="text-left">
+                            <!-- ko if: OrderType === @order-->
+                            <a href="javascript:;">
+                                <strong>
+                                    ORD<span data-bind="text: OrderCode"></span>
+                                </strong>
+                            </a>
+                            <!-- /ko -->
+                            <!-- ko if: OrderType === @deposit-->
+                            <a href="javascript:;">
+                                <strong>
+                                    DPS<span data-bind="text: OrderCode"></span>
+                                </strong>
+                            </a>
+                            <!-- /ko -->
+                        </td>
+                        <td class="td-text-center">
+                            <span data-bind="text: moment(Created).format('DD/MM/YYYY h:mm a')"></span><br />
+                        </td>
+                        <td class="text-left" data-bind="text: PayReceivableIName"></td>
+                        <td class="text-green td-text-money">
+                            <span class="" data-bind="text: formatNumberic(Money, 'N4')"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</script>

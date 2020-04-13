@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = Resource.Title_Guide;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@section styles{
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+
+    @Html.Partial("~/Views/Home/Guide/Guide_" + culture + ".cshtml")
+</section>
+ 

@@ -1,0 +1,349 @@
+﻿@{
+    ViewBag.Title = "DetailSourcing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    <ul class="zy-main-top" id="topTabDetailSourcing">
+        <li class="dg-caigourucang  tablinks lete-active tablinks" @*onclick="openTab(event, 'inforOrder')"*@ id="defaultOpen">
+            <span></span>
+            <a href="#">  Chi tiết yêu cầu tìm nguồn  </a>
+            <label></label>
+        </li>
+        <!-- ko if: (sourcingDetail().Status() == @((byte)Common.Emums.SourceStatus.Process) ) -->
+        <li class="dg-caigourucang tablinks lete-delete tablinks delete-order-detail" id="huy" style="float: right !important" data-bind="click: orderPopupModel.showMessagerCancel.bind($data,orderDetail().Id())">
+            <i class="fa fa-trash"></i>
+            <a> Hủy đơn </a>
+        </li>
+        <!-- /ko -->
+        <!-- ko if: (sourcingDetail().Status() == @((byte)Common.Emums.SourceStatus.Process) || sourcingDetail().Status() == @((byte)Common.Emums.SourceStatus.WaitingChoice) || sourcingDetail().Status() == @((byte)Common.Emums.SourceStatus.WaitProcess)) -->
+        <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important" data-bind="click: showMessagerCancel.bind($data,orderDetail().Id())">
+            <i class="fa fa-pencil-square-o"></i>
+            <a href="#"> Đặt cọc </a>
+        </li>
+        <!-- /ko -->
+    </ul>
+    <div class="zy-main-content" id="contentTabDetailSourcing">
+        <div class="zy-main-content-msg tabcontent" id="inforOrder">
+            <div class="zy-main-content-msg-l" style="border-right: 1px solid rgb(241, 241, 241); float:right;border-left:1px solid #f1f1f1;">
+                <h1>Thông tin đơn hàng</h1>
+                <span><strong> Mã đơn hàng:</strong> <span data-bind="text: 'SRC' + sourcingDetail().Code()"></span></span><!--ma don hang order-->
+                <span>
+                    <a href="javascript:void(0)" data-bind="text: statusApp.source[sourcingDetail().Status()].Name, css: statusApp.source[sourcingDetail().Status()].Class">Chờ đặt cọc</a> <!--trang thai don hang-->
+                </span>
+                <div class="zy-main-content-msg-l-hr"></div>
+                <span><strong> Đăng ngày:</strong> <span data-bind="text: moment(sourcingDetail().CreateDate()).format('DD/MM/YYYY  h:mm:ss')"></span></span><!--ngay tao-->
+                <div class="zy-main-content-msg-l-hr"></div>
+                <span><strong> Ngày cập nhật:</strong> <span data-bind="text: moment(sourcingDetail().UpdateDate()).format('DD/MM/YYYY  h:mm:ss')"></span></span><!--ngay tao-->
+                <div class="zy-main-content-msg-l-hr"></div>
+
+                <div class="rs">
+                    <div id="tab3" class="borderbox totalmoneyorder rs">
+                        <p style="margin-left:0 !important;padding-left:15px;">  Biểu phí  </p>
+                        <div class="progress" style="height: 2px;  width: 92%;  margin-left: 15px;">
+                            <span class="progress-bar" style="width: 40%;"></span>
+                        </div>
+
+                        <div class="full-border rs">
+                            <div class="total-tariff">
+                                <div style="clear:both"></div>
+                                <div class="rs">
+                                    <div class="money-order">
+                                        <ul>
+                                            <li><strong>Tiền hàng :</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="infor-money-order">
+                                        <div id="totalOrder" class="rs">
+                                            <ul>
+                                                <li>
+                                                    <span class="order-price"> 1,534,500</span> @Resource.Currency
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                                <div class="rs">
+                                    <div class="money-order">
+                                        <ul>
+                                            <li>
+                                                <strong>Phí vận chuyển :</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="infor-money-order">
+                                        <div id="totalOrder" class="rs">
+                                            <ul>
+                                                <li>
+                                                    <span class="order-price"> 1,534,500</span> @Resource.Currency
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                                <div class="rs">
+                                    <div class="money-order">
+                                        <ul>
+                                            <li><strong>Phí vận dịch vụ :</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="infor-money-order">
+                                        <div id="totalOrder" class="rs">
+                                            <ul>
+                                                <li>
+                                                    <span class="order-price"> 1,534,500</span> @Resource.Currency
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="allAccounting" class="rs">
+                    <div class="progress" style="height: 2px; width: 92%; margin-left: 15px;">
+                        <span class="progress-bar" style="width: 40%;"></span>
+                    </div>
+
+                    <div class="rs" style="padding-left: 15px;">
+                        <div style="clear: both"></div>
+                        <div class="rs">
+                            <div class="money-order">
+                                <ul>
+                                    <li><strong>Phí dịch vụ :</strong></li>
+                                </ul>
+                            </div>
+                            <div class="infor-money-order">
+                                <div id="totalOrder" class="rs">
+                                    <ul>
+                                        <li>
+                                            <span class="order-price"> 1,534,500</span> @Resource.Currency
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chatModal" class="x rs" style="display: table;position: static;float: left; margin-top: 20px;">
+                    @Html.Partial("~/Areas/CMS/Views/Chat/_Chat.cshtml")
+                </div>
+            </div>
+
+            <div class="zy-main-content-msg-r">
+                <div class="service-order">
+                    <div class="rs">
+                        <p style="margin-left:0 !important;">
+                            Dịch vụ đơn hàng
+                        </p>
+                        <div class="progress" style="height:2px;width:70%">
+                            <span class="progress-bar" style="width: 50%;"></span>
+                        </div>
+                        <div class="service">
+                            <label>Gói dịch vụ: <span data-bind="text: sourcingDetail().TypeServiceName"></span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-pr rs" style="padding-left:20px;box-sizing:border-box;margin-top:30px;margin-bottom:10px;">
+                    <div class="rs" style="height: 2px; width: 70%; box-sizing:border-box;">
+                        <p style="margin-left:0 !important;">
+                            Chi tiết yêu cầu
+                        </p>
+                        <div class="progress" style="height:2px;width:50%">
+                            <span class="progress-bar" style="width: 50%;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rs list-products" style="margin-top: 30px;">
+                    <div class="zichan-zijin zichan-box rs">
+                        <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;">  Sản phẩm  </th>
+                                    <th>  Ngành hàng  </th>
+                                    <th>  Thuộc tính  </th>
+                                    <th width="300">  Miêu tả  </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a target="_blank" data-bind="text: sourcingProduct().Name, attr: {href: sourcingProduct().Link }" class="code-order rs"></a>
+                                    </td>
+                                    <td>
+                                        <p data-bind="text: sourcingProduct().CategoryName">thể thao và dã ngoại</p>
+                                    </td>
+                                    <td>
+                                        <p class="rs number-product" data-bind="text: 'Số lượng: ' + sourcingProduct().Quantity"></p>
+                                        <p class="rs number-product" data-bind="text: 'Kích thước: ' + sourcingProduct().Size" ></p>
+                                        <p class="rs number-product" data-bind="text: 'Màu sắc: ' + sourcingProduct().Color"></p>
+                                    </td>
+                                    <td>
+                                        <span data-bind="text: sourcingProduct().Note"></span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4" class="list-img-sourcing">
+
+                                        <img data-bind="attr: {src: sourcingProduct().ImagePath1}" src="~/Content/images/icon-home/no.jpg" width="150" />
+                                        <img data-bind="attr: {src: sourcingProduct().ImagePath2}"  src="~/Content/images/icon-home/no.jpg" width="150" />
+                                        <img data-bind="attr: {src: sourcingProduct().ImagePath3}"  src="~/Content/images/icon-home/no.jpg" width="150" />
+                                        <img data-bind="attr: {src: sourcingProduct().ImagePath4}"  src="~/Content/images/icon-home/no.jpg" width="150" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="service-order">
+                    <div class="rs">
+                        <p style="margin-left:0 !important;">
+                            Kết quả tìm kiếm
+                        </p>
+                        <div class="progress" style="height:2px;width:70%">
+                            <span class="progress-bar" style="width: 50%;"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- ko if: listSourceSupplier.length > 0 -->
+                    <div class="zichan-zijin zichan-box rs" style="padding-left: 15px; padding-right: 15px;  box-sizing: border-box;">
+                        <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                            <thead>
+                                <tr>
+                                    <th class="th-cus-top">
+                                        <p class="ncc-p"><span class="supplier">NCC</span></p>
+                                        <p class="criteria">Tiêu chí</p>
+                                    </th>
+                                    <!-- ko foreach: listSourceSupplier -->
+                                        <th data-bind="text: Name"></th>
+                                    <!-- /ko -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="bold">Số lượng</td>
+                                    <!-- ko foreach: listSourceSupplier -->
+                                        <td data-bind="text: Quantity"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td class="bold">Giá</td>
+                                    <!-- ko foreach: listSourceSupplier -->
+                                        <td>
+                                            <p>
+                                                <b data-toggle="tooltip" title="" data-original-title="Quy đổi sang VNĐ">
+                                                    <span class="total-price" data-bind="text: formatNumbericCN(Math.round(TotalPrice), 'N0')"></span><sup>đ</sup>
+                                                </b>
+                                            </p>
+                                            <p><b data-toggle="tooltip" title="" class="price" data-value="36" data-original-title="Giá sản phẩm" data-bind="text: formatNumbericCN(Math.round(Price), 'N0')"></b> ¥</p>
+                                        </td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td class="bold">Tiền vận chuyển</td>
+                                    <!-- ko foreach: listSourceSupplier -->
+                                        <td>
+                                            <span class="total-price" data-bind="text: formatNumbericCN(Math.round(ShipMoney), 'N0')"></span><sup>đ</sup>
+                                        </td>
+                                    <!-- /ko -->
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">Phân tích NCC</td>
+                                    <td colspan="3" class="analyze">
+                                        <textarea class="col-lg-12 textarea-ptncc" cols="20" disabled="disabled" rows="2" data-bind="value: sourceDetailItem().AnalyticSupplier"></textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">Lựa chọn NCC</td>
+                                    <!-- ko foreach: listSourceSupplier -->
+                                        <td>
+                                            <label id="list-supplier">
+                                                <!-- ko if: Id == $parent.sourcingDetail().SourceSupplierId -->
+                                                    <input data-bind="event: {change: $root.updateSource}" type="radio" name="get-money" class="icheck-ok radio-custom" checked="checked" value="13" iship="0">
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: Id == $parent.sourcingDetail().SourceSupplierId -->
+                                                    <input data-bind="event: {change: $root.updateSource}" type="radio" name="get-money" class="icheck-ok radio-custom" value="13" iship="0">
+                                                <!-- /ko -->
+                                                <span class="radio-custom-dummy"></span>
+                                                <span class="inline-block bold" data-bind="text: Name"></span>
+                                            </label>
+                                        </td>
+                                    <!-- /ko -->
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="rs back-to-list">
+                            <a href="@Url.Action("Sourcing","Order",new { Area="CMS"})" class="btn"><i class="fa fa-arrow-left"></i>Trở về</a>
+                        </div>
+                    </div>
+                <!-- /ko -->
+                <!-- ko ifnot: listSourceSupplier.length == 0 -->
+                    <p> Đang chờ nhân viên thương lượng với shop</p>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+    <script src="~/Scripts/lodash.js"></script>
+    <script src="~/Content/js/tab-content.js"></script>
+    <script src="~/Content/js/chat-box.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jquery.dropdownjstree.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+
+    @*//file js knockoutjs ViewModel*@
+    @Html.Partial("~/Areas/CMS/Views/Order/sourcing/_status.cshtml")
+    <script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/sourcingProduct.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/sourcingDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/chat/chatViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/sourcing/detailSourcingViewModel.js"></script>
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+
+}

@@ -1,0 +1,389 @@
+﻿@{
+    ViewBag.Title = "สร้างออเดอร์ฝากเก็บสินค้า";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+
+@section styles{
+
+    <link href="~/Content/plugins/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/plugins/jstree/dist/themes/default/style.css" rel="stylesheet" />
+    <link href="~/Content/css/AdminLTE.css" rel="stylesheet" />
+
+    <link href="~/Content/css/css-home/upproduct.css" rel="stylesheet" />
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section id="depositAdd" class="create-new-order">
+    <h1>@Resource.Home_CreateDeposit</h1>
+    <span class="nh-divide rs"></span>
+    <ul class="zy-main-top" id="stepCreateOrder">
+        <li class="dg-caigourucang lete-active">
+            <span></span>
+            @*<a href="javascript:;" class="status-create-order">Tạo yêu cầu</a>*@
+            <a href="javascript:;" class="status-create-order"> @Resource.TaoYCKyGui</a>
+            <br />
+            <a class="time-create-order">@($"{DateTime.Now.Day} / {DateTime.Now.Month} / {DateTime.Now.Year} ") </a>
+            <label></label>
+        </li>
+        <li class="dg-tijiao  lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.Order_StatusWaitQuotes </a>
+            <br />
+            <a class="time-create-order">--/--/----</a>
+            <label></label>
+        </li>
+        <li class="dg-guojiyunfei lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.ChotDonHang</a>
+            @*<a href="javascript:;" class="status-create-order">Chốt đơn hàng</a>*@
+            <br />
+            <a class="time-create-order">--/--/----</a>
+            <label></label>
+        </li>
+        <li class="dg-fahaiwai lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.VanChuyenHang</a>
+            @*<a href="javascript:;" class="status-create-order">Vận chuyển hàng</a>*@
+            <br />
+            <a class="time-create-order">--/--/----</a>
+            <label></label>
+        </li>
+        <li class="dg-shouhuo lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.NhanHang</a>
+            @*<a href="javascript:;" class="status-create-order">Nhận hàng</a>*@
+            <br />
+            <a class="time-create-order">--/--/----</a>
+        </li>
+    </ul>
+
+    <div class="rs" id="listDeposit">
+        <form class="zichan-zijin zichan-box rs" id="listCreateDeposit">
+            <div class="rs" style="background-color: #fff !important;">
+                @Html.AntiForgeryToken()
+                <div class="rs select-storage" style="">
+                    <div class="rs" style="width: 45%;">
+                        <p style="padding-bottom: 10px !important">
+                            @Resource.CreateOrder_SelectService
+                        </p>
+                        <div class="progress" style="height: 2px; width: 50%; margin-left: 15px;">
+                            <span class="progress-bar" style="width: 40%;"></span>
+                        </div>
+                        <div data-bind="foreach: listService" class="check-service-deposit">
+                            <label>
+                                <input type="checkbox" class="icheck check" data-bind="checkedValue: ServiceId, checked: Checked, click: $parent.updateService" /><span data-bind="text: ServiceName"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="rs" style="width: 55%; min-width: 300px; padding-bottom: 20px;">
+                        <p style="padding-bottom: 10px !important">@Resource.LuaChonKhoKyGui</p> 
+                        <div class="progress" style="height: 2px; width: 96%; margin-left: 15px;">
+                            <span class="progress-bar" style="width: 40%;"></span>
+                        </div>
+                        <select data-bind="options:listWard, optionsText: 'Text', optionsValue: 'Value', value: WardId " style="width: 46% !important"></select>
+                        <select data-bind="options:listWardDelivery, optionsText: 'Text', optionsValue: 'Value', value: WardDeliveryId " style="width: 46% !important"></select>
+                    </div>
+
+                    <span class="nh-divide rs"></span>
+                </div>
+
+                <table class="table table-product table-create-new-pr" border="1" cellpadding="1" cellspacing="1" id="add-input">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">#</th>
+                            <th style="width: 150px;"> @Resource.CreateOrder_InforImage </th>
+                            <th style="width: 250px;"> @Resource.CreateOrder_InforProduct </th>
+                            <th style="width: 280px;"> @Resource.ThongSoHangHoa </th>
+                            <th style="width: 200px;"> @Resource.DetailDeposit_CodeVD </th>
+                            <th style="width: 200px;"> @Resource.DetaiOrder_NoteOrder </th>
+                            <th style="width: 40px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: {data: listDepositDetail, afterRender: renderedHandler}">
+                        <tr>
+                            <td class="text-center" data-bind="text: $index()+1"></td>
+                            <td>
+                                <img data-bind="attr: { src: Image }" width="100" height="80" alt="" /><br />
+                                <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: $parent.addImage">
+                                    <span class="btn btn-primary btn-file btn-flat" style="color: #fff;">
+                                        @*Tải ảnh*@
+                                        @Resource.CreateTicket_PhotoGoods
+                                        <input class="flieuploadImg" name="" type="file" style="width: 20px;">
+                                    </span>
+                                    <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                </div>
+                            </td>
+                            <td class="infor-order-deposit" style="text-align: left;">
+                                <div class="rs">
+                                    <input type="text" name="ProductName" placeholder="@Resource.CreateOrder_InputNameProduct" data-bind="value: ProductName, hasFocus: ProductNameFocus, css: ProductNameCss" autocomplete="off" /><br />
+                                </div>
+                                <div class="rs" style="height: 35px !important">
+
+                                    <div class="category_tree_deposit" data-bind="attr: { id: 'cate' + Id}"></div>
+                                </div>
+
+                                <div class="rs">
+                                    <input type="number" placeholder="@Resource.Deposit_NumberPackage" data-bind="value: PacketNumber, hasFocus: PacketNumberFocus, css: PacketNumberCss" min="0" /><br />
+                                </div>
+                            </td>
+
+                            <td class="infor-order-deposit infor-size-product" style="text-align: center;">
+                                <div class="rs">
+                                    <input type="number" data-bind="value: Quantity, hasFocus: QuantityFocus, css: QuantityCss" placeholder="ใส่จำนวน" min="0" /><br />
+                                </div><br />
+                                <div class="rs">
+                                    <input min="0" data-bind="value: Weight, hasFocus: WeightFocus, css: WeightCss" type="number" placeholder="@Resource.TongCanNang" />@*<span class="btn">KG</span>*@
+                                </div><br />
+                                <div class="rs">
+                                    <input class="decimal" data-bind="value: ShipTq, hasFocus: ShipTqFocus, css: ShipTqCss" type="text" placeholder="เรือจีน (CNY)" />@*<span class="btn">KG</span>*@
+                                </div><br />
+                                <div class="rs">
+                                    <input min="0" type="number" placeholder="@Resource.Dai" style="width: 70px" data-bind="value: Long" /><span class="text-center" style="margin-top: 3%; padding-left: 2%;">x</span>
+
+                                    <input min="0" type="number" placeholder="@Resource.Rong" style="width: 75px" data-bind="value: Wide" /><span class="text-center" style="margin-top: 3%; padding-left: 2%;">x</span>
+
+                                    <input min="0" type="number" placeholder="@Resource.Cao" style="width: 70px; float: right;" data-bind="value: High" />
+                                    @*<span class="btn">CM</span>*@
+                                </div><br />
+                            </td>
+                            <td style="text-align: left;" class="infor-order-deposit">
+                                <!-- ko foreach: ListContractCode -->
+                                <div class="rs">
+                                    <input type="text" placeholder="@Resource.DetailDeposit_CodeVD" data-bind="value: Code" autocomplete="off" />
+                                    <!-- ko if: $index() != 0 -->
+                                    <a id="contractCode" data-bind="click: $root.RemoveInput" style="margin-top: 6px; background: #fff; color: #dd2727; margin-left: -17px;">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                    <!-- /ko -->
+                                </div>
+                                <!-- /ko -->
+                                <div class="rs add-code-orderDeposit">
+                                    <a data-bind="click: $parent.AddInput" class="add-code-deposite">
+                                        <i class="fa fa-plus-circle vertical-common icon-upload-file" aria-hidden="true"></i>@*Thêm vận đơn*@ เพิ่มรหัสน้ำหนักบรรทุก
+                                    </a>
+                                </div>
+                            </td>
+                            <td style="text-align: center;" class="note-product-create-deposit">
+                                <div class="rs">
+                                    <textarea data-bind="value: Note" type="text" placeholder="บันทึก"></textarea>
+                                </div>
+                            </td>
+
+                            <td class="option-delete" style="padding: 0 !important;">
+
+                                <a class="btn btn-delete" data-bind="click: $parent.removeOrderDetail"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="10">
+                                @*<a data-bind="click: addDepositDetail" style="text-align: left">
+                                        <div style="width: 70px; height: 70px; border: 1px dashed #878787; margin-left: 38px; text-align: center; float: left">
+                                            <i class="fa fa-plus" style="font-size: 78px; color: #D5D5D5;"></i>
+                                        </div>
+                                        <span style="float: left; padding: 11px; font-size: 18px; line-height: 52px;">Thêm sản phẩm</span>
+                                    </a>*@
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="action-create-new rs">
+                    <div class="left-create-order send-request" id="btnSubmit" style="float: left;">
+                        <div class="rs back-to-list pull-left">
+                            <a class="btn" data-bind="click:backToList" style="margin-left: 0;"><i class="fa fa-arrow-left"></i> @Resource.TransactionHistory_ComeBack </a>
+                        </div>
+                    </div>
+                    @*<button data-bind="click: saveDeposit, enable: isSubmit" class="btn btn-add" type="button" style="float: right; margin-right: 0;">
+                            <!-- ko if: isSubmit()-->
+                            <i class="fa fa-check"></i>
+                            <!-- /ko -->
+                            <!-- ko if: !isSubmit()-->
+                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            <!-- /ko -->
+                            Tạo đơn kí gủi
+                        </button>*@
+                    <button data-bind="click: showMessagerStop" class="btn btn-add" type="button" style="float: right; margin-right: 0;">
+                        <!-- ko if: isSubmit()-->
+                        <i class="fa fa-check"></i>
+                        <!-- /ko -->
+                        <!-- ko if: !isSubmit()-->
+                        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                        <!-- /ko -->
+                        @Resource.Home_CreateDeposit
+                    </button>
+                    @*<a class="btn btn-add" data-bind="click: saveDeposit" style="float: right;">
+
+                            Tạo đơn kí gủi
+                        </a>*@
+                </div>
+            </div>
+        </form>
+    </div>
+    @*<div class="pkg-tips-small" id="js-name-tips" style="left: 520px; top: 400px;">
+            <span class="pkg-tips-arrow" style="height:7px;"></span>
+            <p>Quý khách vui lòng nhập đầy đủ thông tin tên sản phẩm</p>
+            <a href="javascript:void(0);" id="js-no-tips" class="no-tips" onclick="jQuery(this).parent().hide();"></a>
+        </div>*@
+    <!--popup dialog_stop_not_ok-->
+    <div id="dialog_stop_not_ok" class="login zhezhao">
+        <div style="display: inline-block; vertical-align: middle;">
+            <div class="del-box">
+                <div class="del-box-top bg-dialog-red">
+                    @Resource.Home_Notification
+                    <button style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff;border: none" class="close-box" data-bind="click: closeDialog.bind($data,'dialog_stop_not_ok')">
+                        <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                    </button>
+                </div>
+                <div class="del-box-content">
+                    <p id="mess_deposit">
+                        กรุณาติดต่อกับพนักงานเพื่อสร้างออเดอร์ LikeOrder.com ขอขอบพรุคุณทุกท่านที่ได้ใช้บริการของทางเรา
+                    </p>
+                </div>
+                <div class="del-box-btn">
+                    <button id="btnCancel" data-bind="click: closeDialog.bind($data,'dialog_stop_not_ok')" class="close-box bg-dialog-green btn-right">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--note huong dan tao don hang ky gui-->
+<section class="zhuanyun-how" id="how_zhuanyun">
+    <img class="how-daigou-box-bot-l" src="/Content/images/img-more/ic-arrow-left.png" alt="">
+    <img class="how-daigou-box-bot-r" src="/Content/images/img-more/ic-arrow-right.png" alt="">
+    <div class="zhuanyun-how-title">
+        <span>วิธีสร้างออเดอร์รับฝากขนส่ง</span> 
+    </div>
+    <ul class="zhuanyun-how-nav clearFix">
+        <li data-id="1" class="lete-active">
+            <span></span>
+            <a>@Resource.Home_CreateDeposit</a>
+            <label></label>
+        </li>
+        <li data-id="2" class="">
+            <span></span>
+            <a>การเลือกของโกดังสินค้าฝากขาย</a>
+            <label></label>
+        </li>
+        <li data-id="3" class="">
+            <span></span>
+            <a>@Resource.Sourcing_WaitingForProgressing</a>
+            <label></label>
+        </li>
+        <li data-id="4" class="">
+            <span></span>
+            <a>@Resource.Product_Deposit</a>
+            <label></label>
+        </li>
+        <li data-id="5" class="">
+            <span></span>
+            <a>ติดตามออเดอร์</a> 
+            <label></label>
+        </li>
+        <li data-id="6" class="">
+            <span></span>
+            <a>@Resource.Order_StatusComplete</a>
+        </li>
+    </ul>
+    <div class="zhuanyun-how-img">
+        <img data-id="1" class="lete-active" src="~/Content/images/img-more/CreateDeposit1.png" alt="" />
+        <img data-id="2" src="~/Content/images/img-more/CreateDeposit2.png" class="" alt="" />
+        <img data-id="3" src="~/Content/images/img-more/CreateDeposit3.png" class="" alt="" />
+        <img data-id="4" src="~/Content/images/img-more/CreateOrder4.png" class="" alt="" />
+        <img data-id="5" src="~/Content/images/img-more/CreateOrder5.png" class="" alt="" />
+        <img data-id="6" src="~/Content/images/img-more/CreateOrder6.png" class="" alt="" />
+    </div>
+</section>
+@section scripts{
+    <script src="~/Scripts/js.cookie.js"></script>
+    <script src="~/Scripts/lodash.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jquery.dropdownjstree.js"></script>
+    <script src="~/Content/bootstrap-toastr/toastr.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.extensions.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.numeric.extensions.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.mask.js"></script>
+    <script src="~/Content/plugins/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/knockout.x-editable.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/deposit/createDepositViewModel.js"></script>
+
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    <script src="~/Content/js/jquery.SuperSlide.2.1.1.js"></script>
+
+    <script type="text/javascript">
+        var listcategoryJsTree = @Html.Raw(ViewBag.ListCategory);
+        var listWard = @Html.Raw(ViewBag.ListWard);
+        var listService = @Html.Raw(ViewBag.listService);
+        var listWardDelivery = @Html.Raw(ViewBag.ListWardDelivery);
+        var warehouseId = @Html.Raw(ViewBag.WarehouseId);
+    </script>
+    <script type="text/javascript">
+        $("#zhuanyun_to_jiaocheng").on("click", function () {
+            $("body,html").animate({ scrollTop: $("#how_zhuanyun").offset().top - 50 }, 1000);
+        });
+        $(".zhuanyun-how-nav").on("click", "li", function () {
+            clearInterval(setInterval1);
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(this).addClass("lete-active");
+            var id = $(this).attr("data-id");
+            $(".zhuanyun-how-img").find("img").removeClass("lete-active");
+            $(".zhuanyun-how-img").find("img[data-id='" + id + "']").addClass("lete-active");
+        });
+        $(".zhuanyun-how-img").on("click", function () {
+            $("body,html").animate({ scrollTop: "0" }, 1000);
+        });
+
+        $(".how-daigou-box-bot-l").on("click", function () {
+            clearInterval(setInterval1);
+            var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+            if (id <= 1) {
+                id = 6;
+            } else {
+                id -= 1;
+            }
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+            $(".zhuanyun-how-img img").removeClass("lete-active");
+            $(".zhuanyun-how-img img[data-id='" + id + "']").addClass("lete-active");
+        });
+
+        var setInterval1 = setInterval(function () {
+            var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+            if (id >= 6) {
+                id = 1;
+            } else {
+                id += 1;
+            }
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+            $(".zhuanyun-how-img img").removeClass("lete-active");
+            $(".zhuanyun-how-img img[data-id='" + id + "']").addClass("lete-active");
+        }, 4000);
+
+        $(".how-daigou-box-bot-r").on("click", function () {
+            clearInterval(setInterval1);
+            var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+            if (id >= 6) {
+                id = 1;
+            } else {
+                id += 1;
+            }
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+            $(".zhuanyun-how-img img").removeClass("lete-active");
+            $(".zhuanyun-how-img img[data-id='" + id + "']").addClass("lete-active");
+        });
+    </script>
+}

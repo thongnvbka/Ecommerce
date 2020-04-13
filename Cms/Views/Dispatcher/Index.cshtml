@@ -1,0 +1,235 @@
+﻿@{
+    ViewBag.Title = "Manage slip tickets";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+
+<section class="content-header">
+    <h1>
+        Manage slip tickets
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Manage slip tickets</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        @*<div class="col-sm-3 col-md-2">
+                @Html.Partial("_WarehouseSidebar", EnumPage.Dispatcher)
+            </div>
+            <div class="col-sm-9 col-md-10">*@
+        <div class="col-sm-12">
+            <!-- Main content -->
+            <div id="dispatcher">
+                <div class="box box-success">
+                    <div class="box-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li data-bind="attr: {class: mode() == 2 ? 'active' : ''}" role="presentation"><a data-bind="click: changeMode.bind($data, 2)" href="#dispatcherTab" role="tab" data-toggle="tab">All<span data-bind="text: allNo" class="label label-primary"></span></a></li>
+                            <li data-bind="attr: {class: mode() == 0 ? 'active' : ''}" role="presentation"><a data-bind="click: changeMode.bind($data, 0)" href="#dispatcherTab" role="tab" data-toggle="tab">Warehouse creation <span data-bind="text: fromNo" class="label label-success"></span></a></li>
+                            <li data-bind="attr: {class: mode() == 1 ? 'active' : ''}" role="presentation"><a data-bind="click: changeMode.bind($data, 1)" href="#dispatcherTab" role="tab" data-toggle="tab">destination warehouse <span data-bind="text: toNo" class="label label-info"></span></a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="dispatcherTab">
+                                <div>
+                                    <div class="box-body pad table-responsive">
+                                        <form data-bind="submit: search.bind($data, 1)" id="searchForm" method="get" role="form" class="form-inline">
+                                            <!-- ko if: window['warehouses'] -->
+                                            <div class="form-group">
+                                                <select data-bind="value: warehouseIdPath, options: warehouses, optionsValue:'idPath', optionsText:'name', optionsCaption:'-- Select warehouse--'" class="form-control"></select>
+                                            </div>
+                                            <!-- /ko -->
+                                            <div class="form-group">
+                                                <select data-bind="value: status, options: states, optionsValue:'id', optionsText: 'name', optionsCaption:'-- Select status --'" class="form-control"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <button type="button" class="btn btn-default pull-right" id="Dispatcher-date-btn">
+                                                        <span>
+                                                            <i class="fa fa-calendar"></i> date created:
+                                                        </span>
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input data-bind="value: keyword" placeholder="Search ..." type="text" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-search'}" class="fa fa-search"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            @if (CheckPermision(EnumPage.Dispatcher, EnumAction.Add))
+                                            {
+                                                <div class="form-group pull-right">
+                                                    <a data-bind="click: addBill" href="javascript:;" role="button" class="btn btn-success"><i class="fa fa-plus"></i> Create ticket</a>
+                                                </div>
+                                            }
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12" id="body-table">
+                                        <div class="box">
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover tree">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center w50">#</th>
+                                                                <th class="text-center w50">Envelope code</th>
+                                                                <th class="text-center w50">Package number</th>
+                                                                <th class="text-center w50">types</th>
+                                                                <th class="text-center">Warehouse creation</th>
+                                                                <th class="text-center">Current warehouse</th>
+                                                                <th class="text-center">Destination warehouse</th>
+                                                                @*<th class="text-center w-300">Note</th>*@
+                                                                <th class="text-center">staffs create</th>
+                                                                <th class="text-center">Created Date:</th>
+                                                                <th class="text-center w50">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <!-- ko if: items().length == 0 -->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="13" class="text-center">There are no records</td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <!-- /ko -->
+                                                        <!-- ko ifnot: items().length == 0 -->
+                                                        <tbody data-bind="template: {name: 'dispatcherTemplate', foreach: items}"></tbody>
+                                                        <!-- /ko -->
+                                                    </table>
+                                                </div>
+                                                <div class="row mt15">
+                                                    <div class="col-sm-6">
+                                                        <div id="sumaryPagerDispatcher" class="henry-paging mt5"></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div id="pagerDispatcher"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.content -->
+        </div>
+    </div>
+</section>
+
+@Html.Partial("_DispatcherModal")
+@*@Html.Partial("~/Views/Package/_PackageDetail.cshtml")*@
+@Html.Partial("~/Views/Wallet/_WalletDetailModal.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+
+@section Styles{
+    <style>
+        #DispatcherAddModel, #walletDetailModal {
+            padding: 0 10px !important;
+        }
+
+            #DispatcherAddModel .modal-lg, #walletDetailModal .modal-lg {
+                width: 90% !important;
+            }
+
+        .ui-front {
+            z-index: 99999;
+        }
+
+        #DispatcherAddModel input.decimal:focus {
+            text-align: left !important;
+        }
+    </style>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        @if (ViewBag.Warehouses != null)
+        {
+        <text>
+        var warehouses = @Html.Raw(ViewBag.Warehouses);
+        </text>
+        }
+        var states = @Html.Raw(ViewBag.States);
+        var walletStates = @Html.Raw(ViewBag.WalletStates);
+    </script>
+    <script src="/Scripts/common/status.@cultureJs"></script>
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/order/depositDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/order/orderCommerceDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/wallet/walletDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/dispatcher/dispatcherAddModel.js"></script>
+    <script src="/Scripts/viewmodels/dispatcher/dispatcherModel.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="dispatcherTemplate" type="text/template">
+        <!-- ko if: isFirst -->
+        <tr class="bg-info">
+            <td colspan="11">
+                <i class="fa fa-barcode"></i> <a data-bind="text: 'D' + code, click: $parent.update" href="javascript:;"></a>,
+                <i class="fa fa-clock-o ml10"></i>: <b data-bind="text: moment(created).format('DD/MM/YYYY HH:mm')"></b>,
+                <span class="ml10">#</span>:<span data-bind="text: formatNumberic(walletNo, 'N0')"></span>,
+                @Resource.DoiTac: <b data-bind="text: transportPartnerName"></b>,
+                @Resource.TuKho: <b data-bind="text: fromWarehouseName"></b>,
+                @Resource.ToiKho: <b data-bind="text: toWarehouseName"></b>,
+                <i class="fa fa-user ml10"></i>: <a data-bind="text: userFullName" href="javascript:;"></a>
+                <span data-bind="text: $parent.statesGroupId[status +''] ? $parent.statesGroupId[status +''][0].name : ''" class="label label-default"></span>
+            </td>
+            @*<td class="text-center"><a data-bind="text: 'D' + code, click: $parent.update" href="javascript:;"></a></td>
+                <td data-bind="text: transportPartnerName"></td>
+                <td data-bind="text: transportMethodName"></td>
+                <td data-bind="text: formatNumberic(walletNo, 'N0')" class="text-right"></td>
+                <td data-bind="text: fromWarehouseName"></td>
+                <td data-bind="text: toWarehouseName"></td>
+                <td data-bind="text: note"></td>
+                <td class="text-center"><a data-bind="text: userFullName, attr: {title: userName }" href="javascript:;"></a></td>
+                <td data-bind="text: moment(created).format('DD/MM/YYYY HH:mm')" class="text-right"></td>
+                <td data-bind="text: totalWeight ? formatNumberic(totalWeight, 'N2') : '_'" class="text-right"></td>
+                <td data-bind="text: amount ? formatNumberic(amount, 'N0') : '_'" class="text-right"></td>
+                <td class="text-center">
+                    <span data-bind="text: $parent.statesGroupId[status +''] ? $parent.statesGroupId[status +''][0].name : ''" class="label label-default"></span>
+                </td>*@
+        </tr>
+        <!-- /ko -->
+        <tr>
+            <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+            <td class="text-center"><a data-bind="text: walletCode, click: $parent.showWalletDetail" href="javascript:;"></a></td>
+            <td data-bind="text: formatNumberic(walletPackageNo, 'N0')" class="text-right"></td>
+            <td class="text-center">
+                <!-- ko if: walletMode == 0 -->
+                <span class="label label-success">Bag</span>
+                <!-- /ko -->
+                <!-- ko if: walletMode == 1 -->
+                <span class="label label-info">Wood Package</span>
+                <!-- /ko -->
+            </td>
+            <td data-bind="text: walletCreatedWarehouseName"></td>
+            <td data-bind="text: walletCurrentWarehouseName"></td>
+            <td data-bind="text: walletTargetWarehouseName"></td>
+            @*<td data-bind="text: walletNote"></td>*@
+            <td class="text-center"><a data-bind="text: walletUserFullName, attr: {title: walletUserName }" href="javascript:;"></a></td>
+            <td data-bind="text: moment(walletCreated).format('DD/MM/YYYY HH:mm')" class="text-right"></td>
+            <td class="text-center">
+                <span data-bind="text: $parent.statesGroupId[walletStatus +''] ? $parent.statesGroupId[walletStatus +''][0].name : '', attr: {class: walletStatusClass}" class="label label-default"></span>
+            </td>
+        </tr>
+    </script>
+}

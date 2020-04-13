@@ -1,0 +1,98 @@
+﻿@using Library.ViewModels.VipLevel
+@{
+    var orders = ViewBag.Orders == null ? null : (List<Library.DbContext.Entities.Order>)ViewBag.Orders;
+    var codes = string.Join(", ", orders.Select(x => "#" + x.Code));
+    var vipLevel = (VipLevelViewModel)ViewBag.VipLevel;
+
+    ViewBag.Title = Resource.Title_DepositFromCart + codes; 
+}
+
+<div id="mini-cart" class="ch-box">
+    <div class="order_sum_container">
+        <form class="cf" onsubmit="return false;">
+            <h3 class="ch-main-title bgde5b01">Tổng số đơn hàng: <span>@orders.Count</span></h3>
+            <div class="order_sum"  style="width: 100%;float: left;">
+                <input type="hidden" name="num_cart_item" id="num_cart_item" value="1">
+
+                <div class="order_scrollable">
+                    <table class="order_scroll_table w100p">
+                        <thead>
+                            <tr class="head-title">
+                                <th class="name-product text-center">@Resource.Product_ShopName</th>
+                                <th class="qty text-center">@Resource.Product_Number </th>
+                                <th class="right_align text-center">@Resource.Order_TotalMoney <br /> (@Resource.Currency)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in orders)
+                            {
+                                <tr class="first_item ">
+                                    <td>@order.ShopName</td>
+                                    <td class="qty text-center">@order.ProductNo.ToString("N0", CultureInfo)</td>
+                                    <td class="price-pr text-center">@order.Total.ToString("N0", CultureInfo)</td>
+                                </tr>
+                            }
+                            <tr class="delivery-wrap">
+                                <td colspan="3">
+                                    <div class="dukienhangve">
+                                        <div class="delivery-options-title">@Resource.Product_DeliveryTime:</div>
+                                        <div class="shipping_options">
+                                            <div class="shippingOptionRow">
+                                                <label class="shippingOptionLabel">
+                                                    <span class="lead_date">- @Resource.Product_DeliveryTimeHN</span><br />
+                                                    @*<span class="lead_date">- Hàng về Hồ Chí Minh: Từ 7 - 12 ngày</span>*@
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ch-cart-conclusion bgE5EAE8">
+                    <table class="total_item">
+                        <tbody>
+                            @*<tr class="first_subtotal">
+                                <td class="subtotal sel-subtotal">Tổng tiền hàng</td>
+                                <td colspan="2" class="cost-right">@order.TotalExchange.ToString("N0") vnd</td>
+                            </tr>
+                            @foreach (var orderService in orderServices)
+                            {
+                                <tr>
+                                    <td class="subtotal highlight shipping_cost_free">@orderService.ServiceName</td>
+                                    @if (orderService.ServiceId < 2)
+                                    {
+                                        <td colspan="2" class="cost-right">@orderService.TotalPrice.ToString("N0") vnd</td>
+                                    }
+                                    @if (orderService.ServiceId > 1)
+                                    {
+                                        <td colspan="2" class="cost-right">_ vnd</td>
+                                    }
+                                </tr>
+                            }*@
+                            <tr class="total">
+                                <td class="total pt10 pb10">
+                                    <strong class="total-label">Thành tiền tạm tính</strong><br />
+                                    <span>(Chưa bao gồm phí vận chuyển)</span>
+                                </td>
+                                <td colspan="2" class="total right_align sel-total">
+                                    <strong class="total-price cost-right size1-2em">@orders.Sum(x=> x.Total).ToString("N0", CultureInfo) VND</strong>
+                                </td>
+                            </tr>
+                            <tr class="total">
+                                <td class="total pt10 pb10">
+                                    <strong class="total-label">Tiền đặt cọc</strong><br />
+                                    <span>(Đặt cọc <span class="right-total-level">@vipLevel.Deposit.ToString("N2", CultureInfo)</span> %)</span>
+                                </td>
+                                <td colspan="2" class="total right_align sel-total">
+                                    <strong class="total-price cost-right size1-2em"><span class="right-total-price">@((orders.Sum(x => x.TotalExchange) * vipLevel.Deposit / 100).ToString("N0", CultureInfo))</span> VND</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

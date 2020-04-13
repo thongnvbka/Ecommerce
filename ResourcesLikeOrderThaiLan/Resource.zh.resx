@@ -1,0 +1,2904 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>行動</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>所有</value>
+  </data>
+  <data name="Anh" xml:space="preserve">
+    <value>图像</value>
+  </data>
+  <data name="BangGiaShipHang" xml:space="preserve">
+    <value>运输费目录</value>
+  </data>
+  <data name="BanGiamDoc" xml:space="preserve">
+    <value>经理部门</value>
+  </data>
+  <data name="BaoHang" xml:space="preserve">
+    <value>包货</value>
+  </data>
+  <data name="BatBuoc" xml:space="preserve">
+    <value>必须</value>
+  </data>
+  <data name="BieuTuong" xml:space="preserve">
+    <value>象征</value>
+  </data>
+  <data name="BinhThuong" xml:space="preserve">
+    <value>平常</value>
+  </data>
+  <data name="BiXoa" xml:space="preserve">
+    <value>被除掉</value>
+  </data>
+  <data name="Btn_Add" xml:space="preserve">
+    <value>加</value>
+  </data>
+  <data name="Btn_Add_Customer_Potential" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Btn_Close" xml:space="preserve">
+    <value>關</value>
+  </data>
+  <data name="Btn_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Btn_Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Btn_Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="Btn_Export" xml:space="preserve">
+    <value>出口</value>
+  </data>
+  <data name="Btn_Official" xml:space="preserve">
+    <value>官方</value>
+  </data>
+  <data name="Btn_Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="CapNhatCanNang" xml:space="preserve">
+    <value>更新重量</value>
+  </data>
+  <data name="CapNhatDon" xml:space="preserve">
+    <value>更新单票</value>
+  </data>
+  <data name="CauHinhWebsiteChoNhanVien" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChamXuLy" xml:space="preserve">
+    <value>迟晚处理</value>
+  </data>
+  <data name="ChiTienQuy" xml:space="preserve">
+    <value>付明细款</value>
+  </data>
+  <data name="ChiTienVi" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChoBaoGia" xml:space="preserve">
+    <value>稍等报价</value>
+  </data>
+  <data name="ChoChuyenChinhThuc" xml:space="preserve">
+    <value>稍等转正</value>
+  </data>
+  <data name="ChoCSKHXuLy" xml:space="preserve">
+    <value>稍等客服处理</value>
+  </data>
+  <data name="ChoDatCoc" xml:space="preserve">
+    <value>稍等定金</value>
+  </data>
+  <data name="ChoDatHang" xml:space="preserve">
+    <value>等订货</value>
+  </data>
+  <data name="ChoDatHangXuLy" xml:space="preserve">
+    <value>稍等处理订货</value>
+  </data>
+  <data name="ChoDuyet" xml:space="preserve">
+    <value>稍等批准</value>
+  </data>
+  <data name="ChoDuyetGia" xml:space="preserve">
+    <value>稍等批准价格</value>
+  </data>
+  <data name="ChoGiaoHang" xml:space="preserve">
+    <value>稍等交货</value>
+  </data>
+  <data name="ChoKetDon" xml:space="preserve">
+    <value>等下单</value>
+  </data>
+  <data name="ChoKeToanThanhToan" xml:space="preserve">
+    <value>稍等会计清算</value>
+  </data>
+  <data name="ChoKeToanTT" xml:space="preserve">
+    <value>稍等会计清算</value>
+  </data>
+  <data name="ChoKeToanXuLy" xml:space="preserve">
+    <value>稍等会计处理</value>
+  </data>
+  <data name="ChoKhachChonNCC" xml:space="preserve">
+    <value>稍等客户选择供应商</value>
+  </data>
+  <data name="ChoKiemDem" xml:space="preserve">
+    <value>稍等检查</value>
+  </data>
+  <data name="ChoNhanHang" xml:space="preserve">
+    <value>稍等接货</value>
+  </data>
+  <data name="ChoPheDuyet" xml:space="preserve">
+    <value>稍等批准</value>
+  </data>
+  <data name="ChoThanhToan" xml:space="preserve">
+    <value>稍等付款</value>
+  </data>
+  <data name="ChoThu" xml:space="preserve">
+    <value>等收钱</value>
+  </data>
+  <data name="ChoTra" xml:space="preserve">
+    <value>稍等退钱</value>
+  </data>
+  <data name="ChoXacNhan" xml:space="preserve">
+    <value>稍等确认</value>
+  </data>
+  <data name="ChoXuLy" xml:space="preserve">
+    <value>稍等处理</value>
+  </data>
+  <data name="ChuaChonLyDo" xml:space="preserve">
+    <value>还没选择理由</value>
+  </data>
+  <data name="ChuaCoKho" xml:space="preserve">
+    <value>ไม่มีโกดัง</value>
+  </data>
+  <data name="ChuaCoMaVanDon" xml:space="preserve">
+    <value>没有运单号</value>
+  </data>
+  <data name="ChuaCoMVD" xml:space="preserve">
+    <value>没有运单号</value>
+  </data>
+  <data name="ChuaDuKienVeKho" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChuaHoanThanh" xml:space="preserve">
+    <value>未完成</value>
+  </data>
+  <data name="ChuaMacCa" xml:space="preserve">
+    <value>ยังไม่ต่อรอง</value>
+  </data>
+  <data name="ChuyenHangNhamKho" xml:space="preserve">
+    <value>转货错仓</value>
+  </data>
+  <data name="ChuyenMucNganhHang" xml:space="preserve">
+    <value>行业目录</value>
+  </data>
+  <data name="CongNoPhaiThu" xml:space="preserve">
+    <value>要收尾款</value>
+  </data>
+  <data name="CongNoPhaiTra" xml:space="preserve">
+    <value>要付剩款</value>
+  </data>
+  <data name="CongTyTuVanChuyen" xml:space="preserve">
+    <value>公司自运输</value>
+  </data>
+  <data name="CSKH" xml:space="preserve">
+    <value>客服</value>
+  </data>
+  <data name="Cu" xml:space="preserve">
+    <value>旧</value>
+  </data>
+  <data name="CungCap" xml:space="preserve">
+    <value>提应</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>币</value>
+  </data>
+  <data name="Customer_Address" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="Customer_Avartar" xml:space="preserve">
+    <value>頭像</value>
+  </data>
+  <data name="Customer_Code" xml:space="preserve">
+    <value>碼</value>
+  </data>
+  <data name="Customer_Detail_Potential" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Email" xml:space="preserve">
+    <value>電子郵件</value>
+  </data>
+  <data name="Customer_FullName" xml:space="preserve">
+    <value>全名</value>
+  </data>
+  <data name="Customer_List_Potential_Room" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Information_Search" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_List_Official" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_List_Official_User" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_List_Potential" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_List_Potential_User" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Management_Official" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Management_Potential" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Statistcal_OverTime" xml:space="preserve">
+    <value>Customer_Menu_Statistcal_OverTime</value>
+  </data>
+  <data name="Customer_Menu_Statistical" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Statistical_Receiving_Order" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Statistical_Sales" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Support" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Menu_Support_Complain" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Nickname" xml:space="preserve">
+    <value>暱稱</value>
+  </data>
+  <data name="Customer_Phone" xml:space="preserve">
+    <value>電話</value>
+  </data>
+  <data name="Customer_Sex" xml:space="preserve">
+    <value>性別</value>
+  </data>
+  <data name="Customer_System" xml:space="preserve">
+    <value>系統</value>
+  </data>
+  <data name="Customer_Type" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="Customer_User_Charge" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Worker" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DaCoKho" xml:space="preserve">
+    <value>มีโกดัง</value>
+  </data>
+  <data name="DaDuyet" xml:space="preserve">
+    <value>已批准</value>
+  </data>
+  <data name="DaHoanThanh" xml:space="preserve">
+    <value>已经完成</value>
+  </data>
+  <data name="DaHuy" xml:space="preserve">
+    <value>已经除掉</value>
+  </data>
+  <data name="DaKiemDem" xml:space="preserve">
+    <value>已经检查</value>
+  </data>
+  <data name="DaKyNhanChoXNKho" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DangBaoGia" xml:space="preserve">
+    <value>正在报价</value>
+  </data>
+  <data name="DangDatHang" xml:space="preserve">
+    <value>正在订货</value>
+  </data>
+  <data name="DangDieuChuyen" xml:space="preserve">
+    <value>正在调动</value>
+  </data>
+  <data name="DangDiGiaoHang" xml:space="preserve">
+    <value>正在交货</value>
+  </data>
+  <data name="DangDoiTien" xml:space="preserve">
+    <value>正在退款中</value>
+  </data>
+  <data name="DangGiaoHang" xml:space="preserve">
+    <value>正在交货</value>
+  </data>
+  <data name="DangLienHeShop" xml:space="preserve">
+    <value>正在跟商店联系</value>
+  </data>
+  <data name="DangMo" xml:space="preserve">
+    <value>正在打开</value>
+  </data>
+  <data name="DangSuDung" xml:space="preserve">
+    <value>正在使用</value>
+  </data>
+  <data name="DangTrenDuongVanChuyen" xml:space="preserve">
+    <value>在运输的路上</value>
+  </data>
+  <data name="DangTrongKhoTQ" xml:space="preserve">
+    <value>正在中国仓里</value>
+  </data>
+  <data name="DangVanChuyen" xml:space="preserve">
+    <value>正在运输</value>
+  </data>
+  <data name="DangXuLy" xml:space="preserve">
+    <value>正在处理</value>
+  </data>
+  <data name="DanhSachDonHang" xml:space="preserve">
+    <value>货单目录</value>
+  </data>
+  <data name="DanhSachNap_TruTienQuy" xml:space="preserve">
+    <value>支付明细</value>
+  </data>
+  <data name="DanhSachNap_TruTienVi" xml:space="preserve">
+    <value>支付钱包</value>
+  </data>
+  <data name="DanhSachQuy" xml:space="preserve">
+    <value>付款目录</value>
+  </data>
+  <data name="DanhSachShop" xml:space="preserve">
+    <value>商店目录</value>
+  </data>
+  <data name="DanhSachXuLyYeuCauRutTien" xml:space="preserve">
+    <value>处理要求取钱的目录</value>
+  </data>
+  <data name="Dasboard" xml:space="preserve">
+    <value>控制表</value>
+  </data>
+  <data name="DatDuocHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DatHang" xml:space="preserve">
+    <value>订单</value>
+  </data>
+  <data name="DatHangChoSanXuat" xml:space="preserve">
+    <value>货物要定做</value>
+  </data>
+  <data name="DatHangKiemTraLai" xml:space="preserve">
+    <value>重复检查订单</value>
+  </data>
+  <data name="DatHangPhanHoi" xml:space="preserve">
+    <value>订货反馈</value>
+  </data>
+  <data name="DatHangTiepNhan" xml:space="preserve">
+    <value>订货接受</value>
+  </data>
+  <data name="DatHangXong" xml:space="preserve">
+    <value>完成订货</value>
+  </data>
+  <data name="DaThanhToan" xml:space="preserve">
+    <value>已经付款</value>
+  </data>
+  <data name="DaTraHang" xml:space="preserve">
+    <value>已派送</value>
+  </data>
+  <data name="DaXacNhan" xml:space="preserve">
+    <value>已经缺人</value>
+  </data>
+  <data name="DaXuatGiao" xml:space="preserve">
+    <value>已交货</value>
+  </data>
+  <data name="DaXuLy" xml:space="preserve">
+    <value>已处理</value>
+  </data>
+  <data name="DCDonHang" xml:space="preserve">
+    <value>定金货单</value>
+  </data>
+  <data name="DCNgoaiGioHC" xml:space="preserve">
+    <value>下班中的订单额</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>部门</value>
+  </data>
+  <data name="DetailTicket_DiaChi" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="DetailTicket_DienThoai" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="DHGiaTriLon" xml:space="preserve">
+    <value>Đơn hàng giá trị lớn, cần thời gian mặc cả</value>
+  </data>
+  <data name="DHGuiYeuCauShop" xml:space="preserve">
+    <value>给商店发订单要求</value>
+  </data>
+  <data name="DHThuongMai" xml:space="preserve">
+    <value>贸易/商务货单</value>
+  </data>
+  <data name="DHXacNhanThongTin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DienVan" xml:space="preserve">
+    <value>调动</value>
+  </data>
+  <data name="DieuChuyenNoiBo" xml:space="preserve">
+    <value>调动内部</value>
+  </data>
+  <data name="DinhKhoanCongNo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DinhKhoanQuy" xml:space="preserve">
+    <value>定款目录</value>
+  </data>
+  <data name="DinhKhoanVi" xml:space="preserve">
+    <value />
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>區</value>
+  </data>
+  <data name="DoiKhachXacNhanPhiShip" xml:space="preserve">
+    <value>等客户确认运输费、危险货单</value>
+  </data>
+  <data name="DoiTacKho" xml:space="preserve">
+    <value>仓库伙伴</value>
+  </data>
+  <data name="DoiTraHang" xml:space="preserve">
+    <value>退换货</value>
+  </data>
+  <data name="DoiTuongKeToan" xml:space="preserve">
+    <value>会计对象</value>
+  </data>
+  <data name="DoiTuongKH" xml:space="preserve">
+    <value>客户对象</value>
+  </data>
+  <data name="DongBao" xml:space="preserve">
+    <value>装包</value>
+  </data>
+  <data name="DongKienGo" xml:space="preserve">
+    <value>装木箱</value>
+  </data>
+  <data name="DonHang" xml:space="preserve">
+    <value>货单</value>
+  </data>
+  <data name="DonHangChoBaoGia" xml:space="preserve">
+    <value>货单稍等报价</value>
+  </data>
+  <data name="DonHangCuaCSKH" xml:space="preserve">
+    <value>客服员的货单</value>
+  </data>
+  <data name="DonHangDangBaoGia" xml:space="preserve">
+    <value>货单正在报价</value>
+  </data>
+  <data name="DonHangKyGui" xml:space="preserve">
+    <value>寄售订单</value>
+  </data>
+  <data name="DonHangKyGuiChuaNhanXuLy" xml:space="preserve">
+    <value>寄售订单还没处理</value>
+  </data>
+  <data name="DonHangKyGuiTreXuLy" xml:space="preserve">
+    <value>迟晚处理的寄售订单</value>
+  </data>
+  <data name="DonHangLe" xml:space="preserve">
+    <value>零售订单</value>
+  </data>
+  <data name="DonHangOrder" xml:space="preserve">
+    <value>订单</value>
+  </data>
+  <data name="DonHangOrderChoBaoGia" xml:space="preserve">
+    <value>稍等报价的·购买订单</value>
+  </data>
+  <data name="DonHangOrderChoBaoGiaMoi" xml:space="preserve">
+    <value>稍等新报价购买订单</value>
+  </data>
+  <data name="DonHangOrderChuaNhanXuLy" xml:space="preserve">
+    <value>没处理过的订单</value>
+  </data>
+  <data name="DonHangOrderTreXuLy" xml:space="preserve">
+    <value>迟晚处理订单</value>
+  </data>
+  <data name="DonHangRuiRo" xml:space="preserve">
+    <value>危险货单</value>
+  </data>
+  <data name="DonHangTimNguon" xml:space="preserve">
+    <value>购买单</value>
+  </data>
+  <data name="DonHangTimNguonMoi" xml:space="preserve">
+    <value>新购买单</value>
+  </data>
+  <data name="DonHangTimNguonTreXuLy" xml:space="preserve">
+    <value>迟晚处理的购买单</value>
+  </data>
+  <data name="DonKyGui" xml:space="preserve">
+    <value>委托单</value>
+  </data>
+  <data name="DonNhieuLinkNhieuSP" xml:space="preserve">
+    <value>货单有很多链接、多种产品</value>
+  </data>
+  <data name="DonNhieuYeuCau" xml:space="preserve">
+    <value>Đơn nhiều yêu cầu ghi chú khó xử lý</value>
+  </data>
+  <data name="DonThayDoiGiaSoLuong" xml:space="preserve">
+    <value>Đơn thay đổi giá, thay đổi số lượng</value>
+  </data>
+  <data name="DonTimNguon" xml:space="preserve">
+    <value>购买单</value>
+  </data>
+  <data name="DuLieuJS" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DuLieuThongThuong" xml:space="preserve">
+    <value>通用数据</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>女</value>
+  </data>
+  <data name="GiamCuocDoiTraChoKhach" xml:space="preserve">
+    <value>掉客户退换产品的价</value>
+  </data>
+  <data name="GiamCuocVaPDVDoTraHangMuon" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GiaoHang" xml:space="preserve">
+    <value>交货</value>
+  </data>
+  <data name="GoiDienGiaoHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GoiHai" xml:space="preserve">
+    <value>套站2</value>
+  </data>
+  <data name="GoiKinhDoanh" xml:space="preserve">
+    <value>经营套餐</value>
+  </data>
+  <data name="GoiMot" xml:space="preserve">
+    <value>套站1</value>
+  </data>
+  <data name="GoiTieuDung" xml:space="preserve">
+    <value>销售套餐</value>
+  </data>
+  <data name="GuiKeToanXacNhan" xml:space="preserve">
+    <value>发送会计确认</value>
+  </data>
+  <data name="HangBiMat" xml:space="preserve">
+    <value>失踪货</value>
+  </data>
+  <data name="HangBiMatDaXuLy" xml:space="preserve">
+    <value>丢码货已经处理</value>
+  </data>
+  <data name="HangBiMatMa" xml:space="preserve">
+    <value>丢码货</value>
+  </data>
+  <data name="HangHoaVeCham" xml:space="preserve">
+    <value>迟晚货物</value>
+  </data>
+  <data name="HangHong" xml:space="preserve">
+    <value>受损的货物</value>
+  </data>
+  <data name="HangHongDoNgamNuoc" xml:space="preserve">
+    <value>雨淋</value>
+  </data>
+  <data name="HangVeSaiQuyCach" xml:space="preserve">
+    <value>有错误规格的产品</value>
+  </data>
+  <data name="HienTai" xml:space="preserve">
+    <value>正在</value>
+  </data>
+  <data name="HoanPhiDongKienGo" xml:space="preserve">
+    <value>退款木箱费</value>
+  </data>
+  <data name="HoanPhieu" xml:space="preserve">
+    <value>换票</value>
+  </data>
+  <data name="HoanTat" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="HoanTatThu" xml:space="preserve">
+    <value>完成收钱</value>
+  </data>
+  <data name="HoanTatTra" xml:space="preserve">
+    <value>完成退钱</value>
+  </data>
+  <data name="HoanThanh" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="HoanThanhDH" xml:space="preserve">
+    <value>完成货单</value>
+  </data>
+  <data name="HoanThanhDon" xml:space="preserve">
+    <value>完成订单</value>
+  </data>
+  <data name="HoanTienDH" xml:space="preserve">
+    <value>退款货单</value>
+  </data>
+  <data name="HoanTienDonHang" xml:space="preserve">
+    <value>退款货单</value>
+  </data>
+  <data name="HoanTienMacCa" xml:space="preserve">
+    <value>还尾钱</value>
+  </data>
+  <data name="HoanTienXuLyKNDH" xml:space="preserve">
+    <value>处理退款货单</value>
+  </data>
+  <data name="HoanTra" xml:space="preserve">
+    <value>退货</value>
+  </data>
+  <data name="Home_Login" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HongMat" xml:space="preserve">
+    <value>破坏/失踪</value>
+  </data>
+  <data name="HoTroGiaiQuyetKhieuNai" xml:space="preserve">
+    <value>支持解决投诉</value>
+  </data>
+  <data name="HoTroGiaiQuyetKN" xml:space="preserve">
+    <value>支持解决投诉</value>
+  </data>
+  <data name="Huy" xml:space="preserve">
+    <value>除掉</value>
+  </data>
+  <data name="HuyHoanBoi" xml:space="preserve">
+    <value>除掉赔偿钱</value>
+  </data>
+  <data name="Incompetent" xml:space="preserve">
+    <value>没有登录权限</value>
+  </data>
+  <data name="Indonesia" xml:space="preserve">
+    <value>印尼</value>
+  </data>
+  <data name="KeToan" xml:space="preserve">
+    <value>会计</value>
+  </data>
+  <data name="KeToanDaHoanTien" xml:space="preserve">
+    <value>会计已还钱</value>
+  </data>
+  <data name="KeToanDangThanhToan" xml:space="preserve">
+    <value>会计正在清算</value>
+  </data>
+  <data name="KeToanThanhToanTienDH" xml:space="preserve">
+    <value>会计清算货单钱</value>
+  </data>
+  <data name="KhachHangMacCa" xml:space="preserve">
+    <value>ลูกค้าต่อรอง</value>
+  </data>
+  <data name="KHChinhThuc" xml:space="preserve">
+    <value>正式客户</value>
+  </data>
+  <data name="KHChinhThucDangPhuTrach" xml:space="preserve">
+    <value>在负责的正式客户</value>
+  </data>
+  <data name="KhieuNaiHangLoiKyThuat" xml:space="preserve">
+    <value>投诉有技术错误的产品</value>
+  </data>
+  <data name="Kho" xml:space="preserve">
+    <value>仓库</value>
+  </data>
+  <data name="KhoMoiTao" xml:space="preserve">
+    <value>仓库刚创造 ？？</value>
+  </data>
+  <data name="KhongKichHoat" xml:space="preserve">
+    <value>无法激活</value>
+  </data>
+  <data name="KhongLienLacDuocVoiKhach" xml:space="preserve">
+    <value>联系不上客户</value>
+  </data>
+  <data name="KhongXuLyDuoc" xml:space="preserve">
+    <value>不能处理</value>
+  </data>
+  <data name="KhoTQNhanHang" xml:space="preserve">
+    <value>中国仓接货</value>
+  </data>
+  <data name="KHTiemNang" xml:space="preserve">
+    <value>潜在客户</value>
+  </data>
+  <data name="KHTiemNangDangPhuTrach" xml:space="preserve">
+    <value>正在负责的潜在客户</value>
+  </data>
+  <data name="KichHoat" xml:space="preserve">
+    <value>激活</value>
+  </data>
+  <data name="KiemDemHangHoa" xml:space="preserve">
+    <value>检查产品</value>
+  </data>
+  <data name="KiemDemSai" xml:space="preserve">
+    <value>检查错误</value>
+  </data>
+  <data name="KiemDemThieuHang" xml:space="preserve">
+    <value>检查缺货</value>
+  </data>
+  <data name="KiemSai" xml:space="preserve">
+    <value>检查错误</value>
+  </data>
+  <data name="KienHangChoXuatGiao" xml:space="preserve">
+    <value>稍等接货</value>
+  </data>
+  <data name="KienHangMatMa" xml:space="preserve">
+    <value>丢码件货</value>
+  </data>
+  <data name="KienHangMatThongTin" xml:space="preserve">
+    <value>件货失去信息</value>
+  </data>
+  <data name="KinhDoanh" xml:space="preserve">
+    <value>经营/销售</value>
+  </data>
+  <data name="KinhDoanhMacCa" xml:space="preserve">
+    <value>Seller ต่อรอง</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="LayoutKho" xml:space="preserve">
+    <value>LayoutKho</value>
+  </data>
+  <data name="LevelKhachHang" xml:space="preserve">
+    <value>客户等级</value>
+  </data>
+  <data name="LienQuan" xml:space="preserve">
+    <value>关系</value>
+  </data>
+  <data name="LoaiKhhieuNaiKhachHang" xml:space="preserve">
+    <value>投诉客户</value>
+  </data>
+  <data name="LuongDonNhieuTiepNhanMuon" xml:space="preserve">
+    <value>Lượng đơn nhiều, tiếp nhận muộn</value>
+  </data>
+  <data name="LyDoCaNhan" xml:space="preserve">
+    <value>Lý do cá nhân khách đồng ý</value>
+  </data>
+  <data name="LyDoDienMang" xml:space="preserve">
+    <value>Lý do điện, mạng, máy tính, tài khoản</value>
+  </data>
+  <data name="LyDoKhac" xml:space="preserve">
+    <value>Lý do khác ....</value>
+  </data>
+  <data name="LyDoKhac1" xml:space="preserve">
+    <value>其他理由</value>
+  </data>
+  <data name="MaAo" xml:space="preserve">
+    <value>虚拟码</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>男</value>
+  </data>
+  <data name="Mat" xml:space="preserve">
+    <value>失去/丢</value>
+  </data>
+  <data name="MatHangDoBiThu" xml:space="preserve">
+    <value>丢货被海管 收货</value>
+  </data>
+  <data name="MatHangDoShopDongKienChung" xml:space="preserve">
+    <value>由商店共同包装，所以丢货</value>
+  </data>
+  <data name="MatHangTrangKho" xml:space="preserve">
+    <value>仓里失踪货</value>
+  </data>
+  <data name="MatHangTrenDuongVanChuyen" xml:space="preserve">
+    <value>在运输上丢货</value>
+  </data>
+  <data name="MaTrungChoXuLy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Moi" xml:space="preserve">
+    <value>新</value>
+  </data>
+  <data name="MoiKhoiTao" xml:space="preserve">
+    <value>刚创造</value>
+  </data>
+  <data name="MoiTao" xml:space="preserve">
+    <value>新创造</value>
+  </data>
+  <data name="NapTienChoKhacTuNV" xml:space="preserve">
+    <value>交货员帮客户充钱</value>
+  </data>
+  <data name="NapTienQuy" xml:space="preserve">
+    <value>冲明细款</value>
+  </data>
+  <data name="NapTienVi" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Nguoidung" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="NhacNho" xml:space="preserve">
+    <value>提醒</value>
+  </data>
+  <data name="NhanHang" xml:space="preserve">
+    <value>接货</value>
+  </data>
+  <data name="NhanVien" xml:space="preserve">
+    <value>人员/员工</value>
+  </data>
+  <data name="NhanVienGiaoHang" xml:space="preserve">
+    <value>交货源</value>
+  </data>
+  <data name="NhapKhoTQ" xml:space="preserve">
+    <value>进中国仓</value>
+  </data>
+  <data name="NhapKhoVN" xml:space="preserve">
+    <value>进越南仓</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>系统公报</value>
+  </data>
+  <data name="No_Data" xml:space="preserve">
+    <value>沒有數據</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>件货</value>
+  </data>
+  <data name="PDVChuyenHangVeVN" xml:space="preserve">
+    <value>到越南的服务运费</value>
+  </data>
+  <data name="PDVDongKien" xml:space="preserve">
+    <value>包装服务费</value>
+  </data>
+  <data name="PDVGiaoHangTaiNha" xml:space="preserve">
+    <value>送上门费</value>
+  </data>
+  <data name="PDVKiemDem" xml:space="preserve">
+    <value>检查服务费</value>
+  </data>
+  <data name="PDVMuaHang" xml:space="preserve">
+    <value>购买服务费</value>
+  </data>
+  <data name="PDVPhatSinh" xml:space="preserve">
+    <value>萌芽费</value>
+  </data>
+  <data name="PDVVanChuyenNhanh" xml:space="preserve">
+    <value>快速空运费</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>百分号</value>
+  </data>
+  <data name="PhaiThu" xml:space="preserve">
+    <value>应收款</value>
+  </data>
+  <data name="PhaiThuTienDongKienDH" xml:space="preserve">
+    <value>收钱包装费</value>
+  </data>
+  <data name="PhaiThuTienNoPhieuXuatHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PhaiThuTienThieuDonHang" xml:space="preserve">
+    <value>缺定单要收钱</value>
+  </data>
+  <data name="PhaiThuTienVanChuyen" xml:space="preserve">
+    <value>另外费用在中国收</value>
+  </data>
+  <data name="PhaiThuTienVanChuyenHangVeVN" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PhaiThuTienVanChuyenTaiVN" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PhaiTra" xml:space="preserve">
+    <value>应付款</value>
+  </data>
+  <data name="PhaiTraDoHuyToanBoDonHang" xml:space="preserve">
+    <value>订单关闭的退款</value>
+  </data>
+  <data name="PhaiTraDoThieuLink" xml:space="preserve">
+    <value>链接关闭的退款</value>
+  </data>
+  <data name="Phanquyen_CapNhat" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Phanquyen_Duyet" xml:space="preserve">
+    <value>批准</value>
+  </data>
+  <data name="Phanquyen_ThemMoi" xml:space="preserve">
+    <value>加以</value>
+  </data>
+  <data name="Phanquyen_View" xml:space="preserve">
+    <value>看</value>
+  </data>
+  <data name="Phanquyen_Xoa" xml:space="preserve">
+    <value>除掉</value>
+  </data>
+  <data name="PhiDongBao" xml:space="preserve">
+    <value>包装费</value>
+  </data>
+  <data name="PhieuBaoGiaTimNguon" xml:space="preserve">
+    <value>报价单</value>
+  </data>
+  <data name="PhieuBaoGiaTimNguonChuaNhanXuLy" xml:space="preserve">
+    <value>报价单还没处理</value>
+  </data>
+  <data name="PhieuChuyenNoiBo" xml:space="preserve">
+    <value>内部转票</value>
+  </data>
+  <data name="PhieuDieuVan" xml:space="preserve">
+    <value>调动单</value>
+  </data>
+  <data name="PhieuGiaoHang" xml:space="preserve">
+    <value>交货单</value>
+  </data>
+  <data name="PhieuTheoDoiDoiTra" xml:space="preserve">
+    <value>监制退换票</value>
+  </data>
+  <data name="PhieuTheoDoiHoanTien" xml:space="preserve">
+    <value>监制退款票</value>
+  </data>
+  <data name="PhieuTimNguon" xml:space="preserve">
+    <value>购买票</value>
+  </data>
+  <data name="PhieuYeuCauHoanTien" xml:space="preserve">
+    <value>退款申请表</value>
+  </data>
+  <data name="PhiHangLe" xml:space="preserve">
+    <value>零售费</value>
+  </data>
+  <data name="PhiLuuKho" xml:space="preserve">
+    <value>留仓费</value>
+  </data>
+  <data name="PhiPhatSinh" xml:space="preserve">
+    <value>萌芽费·</value>
+  </data>
+  <data name="PhiShopVanChuyen" xml:space="preserve">
+    <value>运输费</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>产品</value>
+  </data>
+  <data name="Province" xml:space="preserve">
+    <value>省</value>
+  </data>
+  <data name="PutawayVN" xml:space="preserve">
+    <value>越南中转仓</value>
+  </data>
+  <data name="PutKhoTQ" xml:space="preserve">
+    <value>中国中专仓</value>
+  </data>
+  <data name="QuanLyMaVanDon" xml:space="preserve">
+    <value>提单编码管理</value>
+  </data>
+  <data name="Regency" xml:space="preserve">
+    <value>职位</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>权团</value>
+  </data>
+  <data name="SaiHang" xml:space="preserve">
+    <value>货品错误</value>
+  </data>
+  <data name="SaiLechPhiVanChuyen" xml:space="preserve">
+    <value>错误运输费</value>
+  </data>
+  <data name="Search_Customer_Keyword_Placeholder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Search_Customer_Keyword_Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Search_Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="Search_Keyword" xml:space="preserve">
+    <value>關鍵詞</value>
+  </data>
+  <data name="Search_Sex" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="Search_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Search_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="SelectOp" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="SettingNotifi" xml:space="preserve">
+    <value>公报设置</value>
+  </data>
+  <data name="SettingPage" xml:space="preserve">
+    <value>构型</value>
+  </data>
+  <data name="ShopCoNgayDuLienPhatHang" xml:space="preserve">
+    <value>商店有预计发货期</value>
+  </data>
+  <data name="ShopKhongGuiHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ShopKhongOnline" xml:space="preserve">
+    <value>商店不在线， 已经联系多次</value>
+  </data>
+  <data name="ShopPhatHang" xml:space="preserve">
+    <value>商店发货</value>
+  </data>
+  <data name="ShopTQPhatHang" xml:space="preserve">
+    <value>中国商店发货</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TamNgung" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="TatToanMuaHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ThaiDoPhucVuCuaNhanVien" xml:space="preserve">
+    <value>员工的服务态度</value>
+  </data>
+  <data name="ThaiLan" xml:space="preserve">
+    <value>泰国</value>
+  </data>
+  <data name="ThanhToan" xml:space="preserve">
+    <value>付款</value>
+  </data>
+  <data name="ThanhToanTienDatHang" xml:space="preserve">
+    <value>清算/付款交货钱</value>
+  </data>
+  <data name="ThaoTac" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="TheoDoiCongNoDH" xml:space="preserve">
+    <value>监制负债订单</value>
+  </data>
+  <data name="TheoDoiKhachHang" xml:space="preserve">
+    <value>监制客户</value>
+  </data>
+  <data name="TheoDoiKienHang" xml:space="preserve">
+    <value>监制件货</value>
+  </data>
+  <data name="TheoDoiPhiPhatSinh" xml:space="preserve">
+    <value>监制萌芽费</value>
+  </data>
+  <data name="TheoDoiTienPhaiThu" xml:space="preserve">
+    <value>要收款的监制</value>
+  </data>
+  <data name="ThieuSanPham" xml:space="preserve">
+    <value>缺少产品</value>
+  </data>
+  <data name="ThoiGianDatHangLau" xml:space="preserve">
+    <value>订货时间长</value>
+  </data>
+  <data name="ThongBao" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="ThongKeCongNo" xml:space="preserve">
+    <value>负债统计</value>
+  </data>
+  <data name="ThongKeDoanhSoNV" xml:space="preserve">
+    <value>员工销售额统计</value>
+  </data>
+  <data name="ThongKeKH" xml:space="preserve">
+    <value>客户统计</value>
+  </data>
+  <data name="ThongKeKHChamDH" xml:space="preserve">
+    <value>订货迟的客户统计</value>
+  </data>
+  <data name="ThongKeQuy" xml:space="preserve">
+    <value>明细统计</value>
+  </data>
+  <data name="ThongKeThuChi" xml:space="preserve">
+    <value>收支统计</value>
+  </data>
+  <data name="ThongKeTienMacCaDDH" xml:space="preserve">
+    <value>减价额统计</value>
+  </data>
+  <data name="ThongKeTinhHinhDonHang" xml:space="preserve">
+    <value>单票情况统计</value>
+  </data>
+  <data name="ThongKeTongTienDDH" xml:space="preserve">
+    <value>订单统计总钱</value>
+  </data>
+  <data name="ThongTinTaiKhoan" xml:space="preserve">
+    <value>账户信息</value>
+  </data>
+  <data name="ThuTienPhieuGiaoHang" xml:space="preserve">
+    <value>收钱交货单</value>
+  </data>
+  <data name="TichketReportTheoNgay" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TicketBiTreXuLy" xml:space="preserve">
+    <value>被处理迟晚的票</value>
+  </data>
+  <data name="TicketChuaNhanXuLy" xml:space="preserve">
+    <value>还没处理的票</value>
+  </data>
+  <data name="TicketCoNguoiHoTro" xml:space="preserve">
+    <value>有人协助的票</value>
+  </data>
+  <data name="TicketKhieuNai" xml:space="preserve">
+    <value>投诉票</value>
+  </data>
+  <data name="TicketToiCanXuLy" xml:space="preserve">
+    <value>我要处理票</value>
+  </data>
+  <data name="TicketTraCuuThongTinKH" xml:space="preserve">
+    <value>搜索客户资料/档案票</value>
+  </data>
+  <data name="TicketYeuCauHoanTien" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TienAlipay" xml:space="preserve">
+    <value>支付宝</value>
+  </data>
+  <data name="TienChuyenHangToiNha" xml:space="preserve">
+    <value>上门货费</value>
+  </data>
+  <data name="TienDongKienGo" xml:space="preserve">
+    <value>装木箱费</value>
+  </data>
+  <data name="TienHangChuyenVeVietNam" xml:space="preserve">
+    <value>向越南运输费</value>
+  </data>
+  <data name="TienHangHoa" xml:space="preserve">
+    <value>货款</value>
+  </data>
+  <data name="TienKhachThanhToan" xml:space="preserve">
+    <value>客户付款钱</value>
+  </data>
+  <data name="TienKiemDemHangHoa" xml:space="preserve">
+    <value>检查货物钱</value>
+  </data>
+  <data name="TienMuaHangHo" xml:space="preserve">
+    <value>代购货费</value>
+  </data>
+  <data name="TienMy" xml:space="preserve">
+    <value>美元</value>
+  </data>
+  <data name="TienShopChuyenHang" xml:space="preserve">
+    <value>商店转货钱</value>
+  </data>
+  <data name="TienThai" xml:space="preserve">
+    <value>泰币</value>
+  </data>
+  <data name="TienTrung" xml:space="preserve">
+    <value>人民币</value>
+  </data>
+  <data name="TienViet" xml:space="preserve">
+    <value>越盾</value>
+  </data>
+  <data name="TraCuuThongTinKH" xml:space="preserve">
+    <value>搜索客户资料/信息/档案</value>
+  </data>
+  <data name="TraCuuThongTinKhachHang" xml:space="preserve">
+    <value>搜索客户信息/资料</value>
+  </data>
+  <data name="TrangChu" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="TrenDuongVeVN" xml:space="preserve">
+    <value>在回越南路上</value>
+  </data>
+  <data name="TrongKho" xml:space="preserve">
+    <value>在仓里</value>
+  </data>
+  <data name="TrungMVD" xml:space="preserve">
+    <value>重码运单</value>
+  </data>
+  <data name="TrungQuoc" xml:space="preserve">
+    <value>中国</value>
+  </data>
+  <data name="TruSaiTienViDienTu" xml:space="preserve">
+    <value>错除电子钱包</value>
+  </data>
+  <data name="TTPhieuGiaoHang" xml:space="preserve">
+    <value>清算交货单</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Undefined</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="User_Object_Types_Required" xml:space="preserve">
+    <value>Object types required to select</value>
+  </data>
+  <data name="UuDaiKhachHang" xml:space="preserve">
+    <value>客户优惠</value>
+  </data>
+  <data name="VanChuyen" xml:space="preserve">
+    <value>运输</value>
+  </data>
+  <data name="VietNam" xml:space="preserve">
+    <value>越南</value>
+  </data>
+  <data name="ViTriChucVu" xml:space="preserve">
+    <value>职位单位</value>
+  </data>
+  <data name="VoHong" xml:space="preserve">
+    <value>碰损/破碎</value>
+  </data>
+  <data name="Ward" xml:space="preserve">
+    <value>Ward</value>
+  </data>
+  <data name="Warehouse_Order_GhiChu" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Warehouse_Order_MaDonHang" xml:space="preserve">
+    <value>货单编码</value>
+  </data>
+  <data name="Warehouse_Order_TacVu" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="Warehouse_Order_ThoiGian" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="Warehouse_Order_TrangThai" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Warehouse_Order_TuKhoaTimKiem" xml:space="preserve">
+    <value>查找字_</value>
+  </data>
+  <data name="XacNhanKienHang" xml:space="preserve">
+    <value>确认件货</value>
+  </data>
+  <data name="XacNhanPhieuXuatKho" xml:space="preserve">
+    <value>确认出仓票</value>
+  </data>
+  <data name="XuatKhoTQ" xml:space="preserve">
+    <value>出中国仓</value>
+  </data>
+  <data name="XuLyDonHang" xml:space="preserve">
+    <value>处理订单</value>
+  </data>
+  <data name="XuLyYeuCauHoanTien" xml:space="preserve">
+    <value>要求退款的处理</value>
+  </data>
+  <data name="YeuCauNhapKho_Package" xml:space="preserve">
+    <value>要求进仓（件）</value>
+  </data>
+  <data name="YeuCauNhapKho_packaging" xml:space="preserve">
+    <value>要求进仓（包）</value>
+  </data>
+  <data name="YeuCauXuatKho" xml:space="preserve">
+    <value>要求出仓</value>
+  </data>
+  <data name="YinhSaiCanNang" xml:space="preserve">
+    <value>算错重量</value>
+  </data>
+  <data name="DatCoToanBo" xml:space="preserve">
+    <value>定所有件货的价</value>
+  </data>
+  <data name="DepositNote" xml:space="preserve">
+    <value>LikeOrder.com 或者我们的自总机会按照您留下的电话号码跟您联系确认您的交货消息</value>
+  </data>
+  <data name="DHKhongTonTaiHoacBiXoa" xml:space="preserve">
+    <value>订单不存在或者被取消了</value>
+  </data>
+  <data name="ThemDiaChiKhac" xml:space="preserve">
+    <value>加以别的地址</value>
+  </data>
+  <data name="CapNhatSPThanhCong" xml:space="preserve">
+    <value>成功更新产品</value>
+  </data>
+  <data name="ChiTiet" xml:space="preserve">
+    <value>仔细</value>
+  </data>
+  <data name="ChotDonHang" xml:space="preserve">
+    <value>Chốt đơn hàng</value>
+  </data>
+  <data name="DatCocThanhCongDH" xml:space="preserve">
+    <value>成功定金订单</value>
+  </data>
+  <data name="DeDatCoc" xml:space="preserve">
+    <value>不能定金</value>
+  </data>
+  <data name="DeDCThanhCong" xml:space="preserve">
+    <value>才可以成功定金</value>
+  </data>
+  <data name="DinhDangDuLieuKhongDung" xml:space="preserve">
+    <value>不正确的数料</value>
+  </data>
+  <data name="GhiChuRieng" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="HongVo" xml:space="preserve">
+    <value>破碎</value>
+  </data>
+  <data name="KhongDuTienDatCoc" xml:space="preserve">
+    <value>您的账款不够钱不能定金</value>
+  </data>
+  <data name="LuaChonKhoKyGui" xml:space="preserve">
+    <value>Lựa chọn kho ký gửi hàng</value>
+  </data>
+  <data name="PhiNangXe" xml:space="preserve">
+    <value>叉车费</value>
+  </data>
+  <data name="ShipTQCao" xml:space="preserve">
+    <value>Ship Trung Quốc cao</value>
+  </data>
+  <data name="SoLuongNhoHonSLCuaShop" xml:space="preserve">
+    <value>你定的数量比商店规定最少的数量还低</value>
+  </data>
+  <data name="SoLuongSanPhamShopConLa" xml:space="preserve">
+    <value>Số lượng sản phẩm Shop còn là</value>
+  </data>
+  <data name="SPKhongTonTaiHoacBiXoa" xml:space="preserve">
+    <value>这品不存在或者被取消了</value>
+  </data>
+  <data name="TaoYCKyGui" xml:space="preserve">
+    <value>Tạo yêu cầu ký gửi</value>
+  </data>
+  <data name="ThanhToanLucDCDH" xml:space="preserve">
+    <value>定金款</value>
+  </data>
+  <data name="ThongSoHangHoa" xml:space="preserve">
+    <value>Thông số hàng hóa</value>
+  </data>
+  <data name="TKCuaBanConThieu" xml:space="preserve">
+    <value>您的账款</value>
+  </data>
+  <data name="TKCuaBanDangBiKhoa" xml:space="preserve">
+    <value>您现在的帐户被锁定了，不能进行交易</value>
+  </data>
+  <data name="TKCuaBanKhongDu" xml:space="preserve">
+    <value>您的账款</value>
+  </data>
+  <data name="TongCanNang" xml:space="preserve">
+    <value>Tổng cân nặng</value>
+  </data>
+  <data name="TruTienDCDonHang" xml:space="preserve">
+    <value>减少订单定金</value>
+  </data>
+  <data name="VanChuyenHang" xml:space="preserve">
+    <value>Vận chuyển hàng</value>
+  </data>
+  <data name="XoaSanPhamThanhCong" xml:space="preserve">
+    <value>成功取消产品·</value>
+  </data>
+  <data name="Cao" xml:space="preserve">
+    <value>Cao</value>
+  </data>
+  <data name="Dai" xml:space="preserve">
+    <value>Dài</value>
+  </data>
+  <data name="Rong" xml:space="preserve">
+    <value>Rộng </value>
+  </data>
+  <data name="CommentChoKN" xml:space="preserve">
+    <value>comment cho ticket</value>
+  </data>
+  <data name="CommentDonHang" xml:space="preserve">
+    <value>comment cho đơn hàng</value>
+  </data>
+  <data name="HoanTienDatCoc" xml:space="preserve">
+    <value>Hoàn tiền đặt cọc</value>
+  </data>
+  <data name="KHHuySuDungDV" xml:space="preserve">
+    <value>Khách hàng hủy sử dụng dịch vụ</value>
+  </data>
+  <data name="KHKhongTonTai" xml:space="preserve">
+    <value>Khách hàng không tồn tại hoặc đã bị xóa !</value>
+  </data>
+  <data name="LayDSTBThanhCong" xml:space="preserve">
+    <value>Lấy danh sách thông báo thành công</value>
+  </data>
+  <data name="LayThongTinLoi" xml:space="preserve">
+    <value>Lấy thông tin lỗi</value>
+  </data>
+  <data name="LayThongTinThanhCong" xml:space="preserve">
+    <value>Lấy thông tin thành công</value>
+  </data>
+  <data name="SoDuVDTBiTru" xml:space="preserve">
+    <value>Số dư ví điện tử của bạn bị trừ</value>
+  </data>
+  <data name="TTDatCocDonHang" xml:space="preserve">
+    <value>Thanh toán đặt cọc đơn hàng</value>
+  </data>
+  <data name="TTTienConThieu" xml:space="preserve">
+    <value>Thanh toán tiền còn thiếu</value>
+  </data>
+  <data name="YCRutTien" xml:space="preserve">
+    <value>Yêu cầu rút tiền, chuyến khoản qua tài khoản ngân hàng</value>
+  </data>
+  <data name="KhongTheLayThongTinDonHang" xml:space="preserve">
+    <value>Không thể lấy thông tin sản phẩm</value>
+  </data>
+  <data name="KhongTheThemDHKyGui" xml:space="preserve">
+    <value>Không thể thêm đơn hàng ký gửi</value>
+  </data>
+  <data name="KhongTheThemDonHang" xml:space="preserve">
+    <value>Không thể thêm đơn hàng</value>
+  </data>
+  <data name="ThanhToanTienTamTinhDKG" xml:space="preserve">
+    <value>Thanh toán tiền tạm tính đơn ký gửi</value>
+  </data>
+  <data name="ThemLinkThanhCong" xml:space="preserve">
+    <value>Thêm link thành công</value>
+  </data>
+  <data name="ThemThanhCongDHKG" xml:space="preserve">
+    <value>Thêm thành công đơn hàng ký gửi</value>
+  </data>
+  <data name="ThemThanhCongDonHang" xml:space="preserve">
+    <value>Thêm thành công đơn hàng</value>
+  </data>
+  <data name="TongSoSanPham" xml:space="preserve">
+    <value>Tổng tiền sản phẩm</value>
+  </data>
+  <data name="BanVuiLongNhapSoLuong" xml:space="preserve">
+    <value>Bạn vui lòng nhập lại số lượng</value>
+  </data>
+  <data name="ManagePackage_QuanLyKienHang" xml:space="preserve">
+    <value>管理件货</value>
+  </data>
+  <data name="SoLuongShopCon" xml:space="preserve">
+    <value>Số lượng sản phẩm Shop còn là</value>
+  </data>
+  <data name="Warehouse_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="Warehouse_Greeting" xml:space="preserve">
+    <value>欢迎光临ProjectV 管理系统</value>
+  </data>
+  <data name="Warehouse_Order_ChoDatHang" xml:space="preserve">
+    <value>稍等下单</value>
+  </data>
+  <data name="Warehouse_Order_ChoGiaoHang" xml:space="preserve">
+    <value>稍等交货</value>
+  </data>
+  <data name="Warehouse_Order_ChoKeToanThanhToan" xml:space="preserve">
+    <value>稍等会计清算</value>
+  </data>
+  <data name="Warehouse_Order_ChuyenDonChoNhanVien" xml:space="preserve">
+    <value>？？？</value>
+  </data>
+  <data name="Warehouse_Order_DangDatHang" xml:space="preserve">
+    <value>正在订单</value>
+  </data>
+  <data name="Warehouse_Order_DangGiaoHang" xml:space="preserve">
+    <value>正在交货</value>
+  </data>
+  <data name="Warehouse_Order_DatHangXong" xml:space="preserve">
+    <value>订单之后</value>
+  </data>
+  <data name="Warehouse_Order_GiaoDichDon" xml:space="preserve">
+    <value>交易单</value>
+  </data>
+  <data name="Warehouse_Order_HeThongYeuCau" xml:space="preserve">
+    <value>系统要求还没处理完的订单之一的登录权</value>
+  </data>
+  <data name="Warehouse_Order_HoanThanh" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Warehouse_Order_HoTro" xml:space="preserve">
+    <value>帮助部门</value>
+  </data>
+  <data name="Warehouse_Order_Huy" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Warehouse_Order_HuyDonHang" xml:space="preserve">
+    <value>除掉订单</value>
+  </data>
+  <data name="Warehouse_Order_KeToanDangThanhToan" xml:space="preserve">
+    <value>会计正在清算</value>
+  </data>
+  <data name="Warehouse_Order_KhacHang" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="Warehouse_Order_KhongCoQuyenTruyCap" xml:space="preserve">
+    <value>您没有登陆权限</value>
+  </data>
+  <data name="Warehouse_Order_ListOrder" xml:space="preserve">
+    <value>货单名录</value>
+  </data>
+  <data name="Warehouse_Order_NgayDatHang" xml:space="preserve">
+    <value>订单日期</value>
+  </data>
+  <data name="Warehouse_Order_NhanHang" xml:space="preserve">
+    <value>接货</value>
+  </data>
+  <data name="Warehouse_Order_NhanVienDatHang" xml:space="preserve">
+    <value>购买员</value>
+  </data>
+  <data name="Warehouse_Order_NhapNhieuHonMotKyTu" xml:space="preserve">
+    <value>请加入多一字</value>
+  </data>
+  <data name="Warehouse_Order_NullOrder" xml:space="preserve">
+    <value>没有找到结果</value>
+  </data>
+  <data name="Warehouse_Order_PhanDonChoNhanVien" xml:space="preserve">
+    <value>人员调配申请单</value>
+  </data>
+  <data name="Warehouse_Order_SeachText" xml:space="preserve">
+    <value>货单编码的正确寻找</value>
+  </data>
+  <data name="Warehouse_Order_ShopPhatHang" xml:space="preserve">
+    <value>货店发货</value>
+  </data>
+  <data name="Warehouse_Order_ThuocHeThong" xml:space="preserve">
+    <value>属于系统</value>
+  </data>
+  <data name="Warehouse_Order_TienHang" xml:space="preserve">
+    <value>金货</value>
+  </data>
+  <data name="Warehouse_Order_TimKiem" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Warehouse_Order_VanChuyen" xml:space="preserve">
+    <value>运输</value>
+  </data>
+  <data name="Warehouse_Title" xml:space="preserve">
+    <value>仓库管理</value>
+  </data>
+  <data name="Warehouse_Toolbar_CheckCode" xml:space="preserve">
+    <value>确认件货</value>
+  </data>
+  <data name="Warehouse_Toolbar_Deposit" xml:space="preserve">
+    <value>寄售订单</value>
+  </data>
+  <data name="Warehouse_Toolbar_DieuPhoiHang" xml:space="preserve">
+    <value>货品调度</value>
+  </data>
+  <data name="Warehouse_Toolbar_DoiTacKho" xml:space="preserve">
+    <value>仓库伙伴</value>
+  </data>
+  <data name="Warehouse_Toolbar_DongKienGo" xml:space="preserve">
+    <value>木箱包装</value>
+  </data>
+  <data name="Warehouse_Toolbar_GiaoHang" xml:space="preserve">
+    <value>接货</value>
+  </data>
+  <data name="Warehouse_Toolbar_KiemDemHangHoa" xml:space="preserve">
+    <value>清点货品</value>
+  </data>
+  <data name="Warehouse_Toolbar_KiemDemSai" xml:space="preserve">
+    <value>错误清点</value>
+  </data>
+  <data name="Warehouse_Toolbar_KienHangChoXuatPhat" xml:space="preserve">
+    <value>等接件货</value>
+  </data>
+  <data name="Warehouse_Toolbar_LayoutKho" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Warehouse_Toolbar_LeavesWarehouse" xml:space="preserve">
+    <value>出仓</value>
+  </data>
+  <data name="Warehouse_Toolbar_LossInformation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Warehouse_Toolbar_ManagerPacket" xml:space="preserve">
+    <value>货品管理</value>
+  </data>
+  <data name="Warehouse_Toolbar_Online" xml:space="preserve">
+    <value>在浅</value>
+  </data>
+  <data name="Warehouse_Toolbar_Order" xml:space="preserve">
+    <value>购买订单</value>
+  </data>
+  <data name="Warehouse_Toolbar_Package" xml:space="preserve">
+    <value>货品</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuDieuVan" xml:space="preserve">
+    <value>调动票</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuGiaoHang" xml:space="preserve">
+    <value>交货单</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuNhapBao" xml:space="preserve">
+    <value>进仓票（包）</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuNhapKien" xml:space="preserve">
+    <value>进仓票（件）</value>
+  </data>
+  <data name="Warehouse_Toolbar_ProcessingOrder" xml:space="preserve">
+    <value>处理订单</value>
+  </data>
+  <data name="Warehouse_Toolbar_PutAwayNhapKho" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Warehouse_Toolbar_QuanLyBaoHang" xml:space="preserve">
+    <value>货品管理</value>
+  </data>
+  <data name="Warehouse_Toolbar_QuanLyPhieuChuyen" xml:space="preserve">
+    <value>内转票</value>
+  </data>
+  <data name="Warehouse_Toolbar_RequestRefund" xml:space="preserve">
+    <value>退押票</value>
+  </data>
+  <data name="Warehouse_Toolbar_Setting" xml:space="preserve">
+    <value>构型</value>
+  </data>
+  <data name="Warehouse_Toolbar_SettingWarehouse" xml:space="preserve">
+    <value>仓库构型</value>
+  </data>
+  <data name="Warehouse_Toolbar_SupportTicket" xml:space="preserve">
+    <value>解决投诉的部门</value>
+  </data>
+  <data name="Warehouse_Toolbar_TakesCode" xml:space="preserve">
+    <value>没有运单号的件货</value>
+  </data>
+  <data name="Warehouse_Toolbar_TheoDoiDieuVan" xml:space="preserve">
+    <value>监制和调动</value>
+  </data>
+  <data name="Warehouse_Toolbar_TheoDoiPhatSinh" xml:space="preserve">
+    <value>萌芽费监制</value>
+  </data>
+  <data name="Warehouse_Toolbar_TrackingPackage" xml:space="preserve">
+    <value>货品监制</value>
+  </data>
+  <data name="Warehouse_Toolbar_TrackingRefund" xml:space="preserve">
+    <value>退押金监制</value>
+  </data>
+  <data name="Warehouse_Toolbar_TrackingRefunding" xml:space="preserve">
+    <value>换算监制</value>
+  </data>
+  <data name="Warehouse_Toolbar_TradeOrders" xml:space="preserve">
+    <value>外贸订单</value>
+  </data>
+  <data name="Warehouse_Toolbar_Warehousing" xml:space="preserve">
+    <value>进仓</value>
+  </data>
+  <data name="XemChiTiet" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="DetailOrder_Anh" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="DetailOrder_CanNangQuyDoi" xml:space="preserve">
+    <value>换算重量</value>
+  </data>
+  <data name="DetailOrder_CanNangThucTe" xml:space="preserve">
+    <value>实际重量</value>
+  </data>
+  <data name="DetailOrder_CanNangTinhTien" xml:space="preserve">
+    <value>付钱重量</value>
+  </data>
+  <data name="DetailOrder_ChiTietDonHang" xml:space="preserve">
+    <value>单货明细</value>
+  </data>
+  <data name="DetailOrder_CongTyThanhToan" xml:space="preserve">
+    <value>公司付款</value>
+  </data>
+  <data name="DetailOrder_DanhSachKienHang" xml:space="preserve">
+    <value>件货目录</value>
+  </data>
+  <data name="DetailOrder_DatDuoc" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailOrder_DichVuSuDung" xml:space="preserve">
+    <value>使用服务</value>
+  </data>
+  <data name="DetailOrder_Gui" xml:space="preserve">
+    <value>寄送</value>
+  </data>
+  <data name="DetailOrder_KhachConThanhToan" xml:space="preserve">
+    <value>客户还要支付的总钱</value>
+  </data>
+  <data name="DetailOrder_KhachDat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailOrder_KhachGhiChu" xml:space="preserve">
+    <value>客户的备注</value>
+  </data>
+  <data name="DetailOrder_KhachThanhToan" xml:space="preserve">
+    <value>客户付款</value>
+  </data>
+  <data name="DetailOrder_KhoHangVe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailOrder_LíchuDonHang" xml:space="preserve">
+    <value>订单历史</value>
+  </data>
+  <data name="DetailOrder_LíchuThaoTac" xml:space="preserve">
+    <value>操作历史</value>
+  </data>
+  <data name="DetailOrder_MaHopdong" xml:space="preserve">
+    <value>合同号</value>
+  </data>
+  <data name="DetailOrder_MaVanDon" xml:space="preserve">
+    <value>提单号</value>
+  </data>
+  <data name="DetailOrder_NgayDuKienVeKho" xml:space="preserve">
+    <value>预算进仓日期</value>
+  </data>
+  <data name="DetailOrder_NhanVienDatHangXuLy" xml:space="preserve">
+    <value>订单人员处理</value>
+  </data>
+  <data name="DetailOrder_PhiShip" xml:space="preserve">
+    <value>运输费</value>
+  </data>
+  <data name="DetailOrder_TenSanPham" xml:space="preserve">
+    <value>产品名称</value>
+  </data>
+  <data name="DetailOrder_ThanhTien" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="DetailOrder_ThongTinKien" xml:space="preserve">
+    <value>件货参数</value>
+  </data>
+  <data name="DetailOrder_ThongTinThem" xml:space="preserve">
+    <value>加以信息</value>
+  </data>
+  <data name="DetailOrder_ThuocTinh" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="DetailOrder_TienHang" xml:space="preserve">
+    <value>货钱</value>
+  </data>
+  <data name="DetailOrder_TienMacCa" xml:space="preserve">
+    <value>压价钱</value>
+  </data>
+  <data name="DetailOrder_TongTien" xml:space="preserve">
+    <value>总前</value>
+  </data>
+  <data name="DetailOrder_TongTienDichVu" xml:space="preserve">
+    <value>总服务费</value>
+  </data>
+  <data name="DetailOrder_TongTienTamTinh" xml:space="preserve">
+    <value>暂数总前钱</value>
+  </data>
+  <data name="DetailOrder_TongTienthanhToan" xml:space="preserve">
+    <value>实际总钱</value>
+  </data>
+  <data name="DetailOrder_Total" xml:space="preserve">
+    <value>总钱：（货钱+运输费）</value>
+  </data>
+  <data name="DetailPackage_CanNangChuyenDoi" xml:space="preserve">
+    <value>换算重量</value>
+  </data>
+  <data name="DetailPackage_CapDoKhachHang" xml:space="preserve">
+    <value>客户等级</value>
+  </data>
+  <data name="DetailPackage_InPhieu" xml:space="preserve">
+    <value>印票</value>
+  </data>
+  <data name="DetailPackage_KhoTiepNhan" xml:space="preserve">
+    <value>接受仓库</value>
+  </data>
+  <data name="DetailPackage_KhoTLTiepNhan" xml:space="preserve">
+    <value>接受泰国仓库</value>
+  </data>
+  <data name="DetailPackage_KichThuoc" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="DetailPackage_KienTrongKho" xml:space="preserve">
+    <value>仓库里的货品</value>
+  </data>
+  <data name="DetailPackage_LSGhiChu" xml:space="preserve">
+    <value>记录/备注历史</value>
+  </data>
+  <data name="DetailPackage_LSTrangThai" xml:space="preserve">
+    <value>状态历史</value>
+  </data>
+  <data name="DetailPackage_NgayTaoKien" xml:space="preserve">
+    <value>订单日期</value>
+  </data>
+  <data name="DetailPackage_NhanVien" xml:space="preserve">
+    <value>人员</value>
+  </data>
+  <data name="DetailPackage_NoiDung" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="DetailPackage_TaiKhoan" xml:space="preserve">
+    <value>账户</value>
+  </data>
+  <data name="DetailPackage_ThongTinKho" xml:space="preserve">
+    <value>仓库信息</value>
+  </data>
+  <data name="DetailPackage_ThongTinKien" xml:space="preserve">
+    <value>件货参数</value>
+  </data>
+  <data name="DetailPackage_ThuocDonHang" xml:space="preserve">
+    <value>属于订单</value>
+  </data>
+  <data name="DetailTicket_Dong" xml:space="preserve">
+    <value>关团</value>
+  </data>
+  <data name="DetailTicket_GhiChuNoiBo" xml:space="preserve">
+    <value>内部备注</value>
+  </data>
+  <data name="DetailTicket_GuiThongTin" xml:space="preserve">
+    <value>给予信息</value>
+  </data>
+  <data name="DetailTicket_HoTen" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="DetailTicket_LichSuHoTroKhachHang" xml:space="preserve">
+    <value>客服历史</value>
+  </data>
+  <data name="DetailTicket_LoaiKhieuNai" xml:space="preserve">
+    <value>投诉型</value>
+  </data>
+  <data name="DetailTicket_MaKhachHang" xml:space="preserve">
+    <value>客户编码</value>
+  </data>
+  <data name="DetailTicket_NgayHoanTat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailTicket_NhanVienCSKH" xml:space="preserve">
+    <value>客服员</value>
+  </data>
+  <data name="DetailTicket_NhanVienPhuTrach" xml:space="preserve">
+    <value>负责元</value>
+  </data>
+  <data name="DetailTicket_PhuTrachCSKH" xml:space="preserve">
+    <value>客服员</value>
+  </data>
+  <data name="DetailTicket_Them" xml:space="preserve">
+    <value>加以</value>
+  </data>
+  <data name="DetailTicket_ThemThanhVienHoTro" xml:space="preserve">
+    <value>加以帮助成员</value>
+  </data>
+  <data name="DetailTicket_ThôngTinKhieuNai" xml:space="preserve">
+    <value>投诉仔细信息</value>
+  </data>
+  <data name="DetailTicket_TraoDoiNoiBo" xml:space="preserve">
+    <value>内部交换</value>
+  </data>
+  <data name="DetailTicket_TraoDoiVoiKhach" xml:space="preserve">
+    <value>交换客户</value>
+  </data>
+  <data name="FormRefunds_ChietKhauVIP" xml:space="preserve">
+    <value>等级折扣</value>
+  </data>
+  <data name="FormRefunds_CSKHYeuCauTraKhach" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormRefunds_CuocCanNang" xml:space="preserve">
+    <value>重量钱</value>
+  </data>
+  <data name="FormRefunds_DatCoc" xml:space="preserve">
+    <value>定金</value>
+  </data>
+  <data name="FormRefunds_DuKienHoanTien" xml:space="preserve">
+    <value>换钱预计</value>
+  </data>
+  <data name="FormRefunds_KeToanXuLy" xml:space="preserve">
+    <value>客服的信息</value>
+  </data>
+  <data name="FormRefunds_NgayTaoDon" xml:space="preserve">
+    <value>订单日期</value>
+  </data>
+  <data name="FormRefunds_NhanVienCSKHGhiChu" xml:space="preserve">
+    <value>客服员备注</value>
+  </data>
+  <data name="FormRefunds_NhanVienDatHangGhiChu" xml:space="preserve">
+    <value>下单员备注</value>
+  </data>
+  <data name="FormRefunds_NhanVienKeToanGhiChu" xml:space="preserve">
+    <value>会计员备注</value>
+  </data>
+  <data name="FormRefunds_PhiDichVu" xml:space="preserve">
+    <value>服务费</value>
+  </data>
+  <data name="FormRefunds_QuyCachSanPham" xml:space="preserve">
+    <value>产品规格</value>
+  </data>
+  <data name="FormRefunds_SanPhamPhaiHoanTien" xml:space="preserve">
+    <value>需要换钱的产品</value>
+  </data>
+  <data name="FormRefunds_SoLuongLoi" xml:space="preserve">
+    <value>错误产品数量</value>
+  </data>
+  <data name="FormRefunds_SoTienDatHangDoiShop" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormRefunds_SoTienDatHangMacCa" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormRefunds_SoTienDuKienTrakhach" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormRefunds_SoTienGiamTruTraKhach" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormRefunds_SoTienKeToanThucNhan" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormRefunds_SoTIenKhac" xml:space="preserve">
+    <value>其他付款</value>
+  </data>
+  <data name="FormRefunds_ThongTinCSKH" xml:space="preserve">
+    <value>客服员备注</value>
+  </data>
+  <data name="FormRefunds_ThongTinDonHang" xml:space="preserve">
+    <value>货单信息</value>
+  </data>
+  <data name="FormRefunds_ThongTinPhieuYeuCau" xml:space="preserve">
+    <value>处理投诉的换钱要求单票信息</value>
+  </data>
+  <data name="FormRefunds_TienDichVu" xml:space="preserve">
+    <value>服务费</value>
+  </data>
+  <data name="FormRefunds_TinhTienHoanTra" xml:space="preserve">
+    <value>换钱款</value>
+  </data>
+  <data name="FormRefunds_TongTienDonHang" xml:space="preserve">
+    <value>货物总钱</value>
+  </data>
+  <data name="FormRefunds_TongTienKhachDaThanhToan" xml:space="preserve">
+    <value>客户已清算的总钱</value>
+  </data>
+  <data name="ManagePackage_BinhLuan" xml:space="preserve">
+    <value>评估</value>
+  </data>
+  <data name="ManagePackage_ChonKhoLuu" xml:space="preserve">
+    <value>选择储藏</value>
+  </data>
+  <data name="ManagePackage_ChonLoaiDonHang" xml:space="preserve">
+    <value>选择货物单</value>
+  </data>
+  <data name="ManagePackage_ChonQuaNgayChuaNhapKho" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManagePackage_ChonTrangThai" xml:space="preserve">
+    <value>选择状态</value>
+  </data>
+  <data name="ManagePackage_DanhSachSanPham" xml:space="preserve">
+    <value>产品目录</value>
+  </data>
+  <data name="ManagePackage_DonVi" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="ManagePackage_DuKienKhoVe" xml:space="preserve">
+    <value>预计？？</value>
+  </data>
+  <data name="ManagePackage_DuongBay" xml:space="preserve">
+    <value>空运</value>
+  </data>
+  <data name="ManagePackage_Gia" xml:space="preserve">
+    <value>单价/价格（CNY）</value>
+  </data>
+  <data name="ManagePackage_HinhAnh" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="ManagePackage_HoanTra" xml:space="preserve">
+    <value>退款</value>
+  </data>
+  <data name="ManagePackage_KhoDichDonHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManagePackage_KhoHienTai" xml:space="preserve">
+    <value>当今仓库 ？</value>
+  </data>
+  <data name="ManagePackage_KhoKhachChon" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManagePackage_KhoNhanHang" xml:space="preserve">
+    <value>接受仓库</value>
+  </data>
+  <data name="ManagePackage_KhoTao" xml:space="preserve">
+    <value>建立仓库</value>
+  </data>
+  <data name="ManagePackage_KhoThaiLan" xml:space="preserve">
+    <value>泰国仓库</value>
+  </data>
+  <data name="ManagePackage_KiemDem" xml:space="preserve">
+    <value>调数</value>
+  </data>
+  <data name="ManagePackage_CanTinhTien" xml:space="preserve">
+    <value>计算斤</value>
+  </data>
+  <data name="ManagePackage_LichSuKien" xml:space="preserve">
+    <value>件货历史</value>
+  </data>
+  <data name="ManagePackage_LoaiSai" xml:space="preserve">
+    <value>？？</value>
+  </data>
+  <data name="ManagePackage_LoaiThoiGian" xml:space="preserve">
+    <value>时间种类</value>
+  </data>
+  <data name="ManagePackage_Mau" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="ManagePackage_NgayTaoPhieu" xml:space="preserve">
+    <value>造票日期</value>
+  </data>
+  <data name="ManagePackage_NgayXuLy" xml:space="preserve">
+    <value>处理日期</value>
+  </data>
+  <data name="ManagePackage_NgungNhanThongBao" xml:space="preserve">
+    <value>停止接受通报</value>
+  </data>
+  <data name="ManagePackage_NhanThongBao" xml:space="preserve">
+    <value>接受通报</value>
+  </data>
+  <data name="ManagePackage_NhanVienTao" xml:space="preserve">
+    <value>建立员</value>
+  </data>
+  <data name="ManagePackage_NhapNoiDung" xml:space="preserve">
+    <value>输入内容</value>
+  </data>
+  <data name="ManagePackage_NhapTuKhoa" xml:space="preserve">
+    <value>进入词语</value>
+  </data>
+  <data name="ManagePackage_NVDuyetPhieu" xml:space="preserve">
+    <value>人员检票</value>
+  </data>
+  <data name="ManagePackage_NVTaoPhieu" xml:space="preserve">
+    <value>人员造票</value>
+  </data>
+  <data name="ManagePackage_PhieuTheoDoiDoiTra" xml:space="preserve">
+    <value>退换追踪票</value>
+  </data>
+  <data name="ManagePackage_PhieuTheoDoiHoanTien" xml:space="preserve">
+    <value>退款追踪票</value>
+  </data>
+  <data name="ManagePackage_QuanLyKienHangMatMa" xml:space="preserve">
+    <value>货物丢码管理</value>
+  </data>
+  <data name="ManagePackage_SoLuongDat" xml:space="preserve">
+    <value>订单数量</value>
+  </data>
+  <data name="ManagePackage_SoSai" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManagePackage_SoTienHoan" xml:space="preserve">
+    <value>退钱</value>
+  </data>
+  <data name="ManagePackage_ThongTinPhieu" xml:space="preserve">
+    <value>信息票</value>
+  </data>
+  <data name="ManagePackage_ToiNhapXuLy" xml:space="preserve">
+    <value>本人接受处理</value>
+  </data>
+  <data name="ManagePackage_ToiTao" xml:space="preserve">
+    <value>本人制造</value>
+  </data>
+  <data name="ManagePackage_TongTienHoan" xml:space="preserve">
+    <value>总退款</value>
+  </data>
+  <data name="ManagePackage_TrangThaiDonHang" xml:space="preserve">
+    <value>订单状态</value>
+  </data>
+  <data name="ManagePackage_TrangThaiKienHang" xml:space="preserve">
+    <value>件货情况</value>
+  </data>
+  <data name="ManagePackage_TriGiaSai" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_BanCoMuonXoa" xml:space="preserve">
+    <value>你是否确定除掉这些没有号码的信息</value>
+  </data>
+  <data name="Packaging_BaoHang" xml:space="preserve">
+    <value>包装</value>
+  </data>
+  <data name="Packaging_CanPhuBiGO" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_Cao" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="Packaging_CapNhatCanNangKienHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_ChonKhoLuu" xml:space="preserve">
+    <value>选择仓库</value>
+  </data>
+  <data name="Packaging_ChuaCoAnhSO" xml:space="preserve">
+    <value>件货没有照片</value>
+  </data>
+  <data name="Packaging_ChuaCoBao" xml:space="preserve">
+    <value>没有件货</value>
+  </data>
+  <data name="Packaging_Dai" xml:space="preserve">
+    <value>长</value>
+  </data>
+  <data name="Packaging_DSKienBao" xml:space="preserve">
+    <value>件货目录</value>
+  </data>
+  <data name="Packaging_GanDay" xml:space="preserve">
+    <value>最近</value>
+  </data>
+  <data name="Packaging_GhiChuBaoHang" xml:space="preserve">
+    <value>件货备注</value>
+  </data>
+  <data name="Packaging_GhiChuPhieuNhap" xml:space="preserve">
+    <value>进仓票备注</value>
+  </data>
+  <data name="Packaging_GiaTriBao" xml:space="preserve">
+    <value>件货价值</value>
+  </data>
+  <data name="Packaging_HangMatMa" xml:space="preserve">
+    <value>丢码货</value>
+  </data>
+  <data name="Packaging_KhoBaoHangSeDen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_KhoChuaBaoHang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_KhoDen" xml:space="preserve">
+    <value>？</value>
+  </data>
+  <data name="Packaging_KhoHang" xml:space="preserve">
+    <value>仓库</value>
+  </data>
+  <data name="Packaging_KhoTaoBao" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_KhoTaoBaoHang" xml:space="preserve">
+    <value>创造包装的仓库</value>
+  </data>
+  <data name="Packaging_KienMatMa" xml:space="preserve">
+    <value>丢码件货</value>
+  </data>
+  <data name="Packaging_Loai" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Packaging_LuuLai" xml:space="preserve">
+    <value>留存</value>
+  </data>
+  <data name="Packaging_MoTa" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="Packaging_NgayTaoBao" xml:space="preserve">
+    <value>件货创造日期</value>
+  </data>
+  <data name="Packaging_NguoiGiaoHang" xml:space="preserve">
+    <value>交货员</value>
+  </data>
+  <data name="Packaging_NhanVienTaoBao" xml:space="preserve">
+    <value>包装员</value>
+  </data>
+  <data name="Packaging_PhiPhatSinh" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_QLPhieuNhap" xml:space="preserve">
+    <value>进仓管理票</value>
+  </data>
+  <data name="Packaging_QuanLyPhieuNhapKho" xml:space="preserve">
+    <value>管理进仓票</value>
+  </data>
+  <data name="Packaging_Rong" xml:space="preserve">
+    <value>宽</value>
+  </data>
+  <data name="Packaging_SauKhiXoa" xml:space="preserve">
+    <value>除掉后不能回复资料</value>
+  </data>
+  <data name="Packaging_TaoPhieuNhapKho" xml:space="preserve">
+    <value>创造进仓票</value>
+  </data>
+  <data name="Packaging_TenKho" xml:space="preserve">
+    <value>仓库名称</value>
+  </data>
+  <data name="Packaging_ThemAnhMatMa" xml:space="preserve">
+    <value>丢码货加图片</value>
+  </data>
+  <data name="Packaging_ThemBaoHang" xml:space="preserve">
+    <value>加以件货</value>
+  </data>
+  <data name="Packaging_ThemKien" xml:space="preserve">
+    <value>加以件货</value>
+  </data>
+  <data name="Packaging_ThemKienChoDon" xml:space="preserve">
+    <value>给订单加以件货</value>
+  </data>
+  <data name="Packaging_ThemKienHangMatMa" xml:space="preserve">
+    <value>再丢码货上加以件货</value>
+  </data>
+  <data name="Packaging_ThemVaoHangMatMa" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_ThongTinPhieu" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_TimKiemDon" xml:space="preserve">
+    <value>寻找货单</value>
+  </data>
+  <data name="Packaging_TimKiemDon1" xml:space="preserve">
+    <value>寻找货单</value>
+  </data>
+  <data name="Packaging_ViTri" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="Packaging_Xoa" xml:space="preserve">
+    <value>除掉</value>
+  </data>
+  <data name="Warehouse_Deposit_BayNgay" xml:space="preserve">
+    <value>7天前</value>
+  </data>
+  <data name="Warehouse_Deposit_CanNang" xml:space="preserve">
+    <value>重量</value>
+  </data>
+  <data name="Warehouse_Deposit_DanhSachDonKyGui" xml:space="preserve">
+    <value>寄售订单目录</value>
+  </data>
+  <data name="Warehouse_Deposit_DuTinh" xml:space="preserve">
+    <value>预算</value>
+  </data>
+  <data name="Warehouse_Deposit_HomNay" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="Warehouse_Deposit_HomQua" xml:space="preserve">
+    <value>昨天</value>
+  </data>
+  <data name="Warehouse_Deposit_KhongThayDonKyGui" xml:space="preserve">
+    <value>没有找到委托单</value>
+  </data>
+  <data name="Warehouse_Deposit_MotThang" xml:space="preserve">
+    <value>30天前</value>
+  </data>
+  <data name="Warehouse_Deposit_NgayKhoiTao" xml:space="preserve">
+    <value>创造日</value>
+  </data>
+  <data name="Warehouse_Deposit_NhanVienXuLy" xml:space="preserve">
+    <value>处理员</value>
+  </data>
+  <data name="Warehouse_Deposit_SoKien" xml:space="preserve">
+    <value>件</value>
+  </data>
+  <data name="Warehouse_Deposit_ThangNay" xml:space="preserve">
+    <value>这个月</value>
+  </data>
+  <data name="Warehouse_Deposit_ThongTinKhachHang" xml:space="preserve">
+    <value>客户档案</value>
+  </data>
+  <data name="Warehouse_Deposit_TuanNay" xml:space="preserve">
+    <value>这周</value>
+  </data>
+  <data name="Warehouse_Deposit_TuyChon" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="Warehouse_Order_DongLai" xml:space="preserve">
+    <value>关团</value>
+  </data>
+  <data name="Warehouse_Order_NhanNhanhDonHang" xml:space="preserve">
+    <value>快接5个订单</value>
+  </data>
+  <data name="Warehouse_Order_NhanVienKho" xml:space="preserve">
+    <value>仓库员</value>
+  </data>
+  <data name="Warehouse_Order_XemThongKe" xml:space="preserve">
+    <value>监制订单统计</value>
+  </data>
+  <data name="Warehouse_RequestRefund_ChoCSKHXuLy" xml:space="preserve">
+    <value>稍等客服处理</value>
+  </data>
+  <data name="Warehouse_RequestRefund_ChoDatHangXuLy" xml:space="preserve">
+    <value>稍等处理订单</value>
+  </data>
+  <data name="Warehouse_RequestRefund_ChoKeToanXuLy" xml:space="preserve">
+    <value>稍等会计处理</value>
+  </data>
+  <data name="Warehouse_RequestRefund_GiamTru" xml:space="preserve">
+    <value>？？</value>
+  </data>
+  <data name="Warehouse_RequestRefund_HoanTienThucTe" xml:space="preserve">
+    <value>实际退押</value>
+  </data>
+  <data name="Warehouse_RequestRefund_MaYeuCauHoanTien" xml:space="preserve">
+    <value>退押编码</value>
+  </data>
+  <data name="Warehouse_RequestRefund_NguoiTao" xml:space="preserve">
+    <value>创造人</value>
+  </data>
+  <data name="Warehouse_RequestRefund_SoTien" xml:space="preserve">
+    <value>退押编码钱</value>
+  </data>
+  <data name="Warehouse_RequestRefund_XuatBaoCao" xml:space="preserve">
+    <value>提出报告</value>
+  </data>
+  <data name="Warehouse_SupportTicket_DanhSachKieuNai" xml:space="preserve">
+    <value>需要处理的投诉目录</value>
+  </data>
+  <data name="Warehouse_SupportTicket_GhiChuNoiBo" xml:space="preserve">
+    <value>内部备注</value>
+  </data>
+  <data name="Warehouse_SupportTicket_MaKienHang" xml:space="preserve">
+    <value>件货编码</value>
+  </data>
+  <data name="Warehouse_SupportTicket_NgayKhieuNai" xml:space="preserve">
+    <value>投诉日期</value>
+  </data>
+  <data name="Warehouse_SupportTicket_NguoiPhuTrach" xml:space="preserve">
+    <value>负责人</value>
+  </data>
+  <data name="Warehouse_Trade_DánhachDonThuongMai" xml:space="preserve">
+    <value>外贸订单目录</value>
+  </data>
+  <data name="Warehouse_Trade_ThemMoi" xml:space="preserve">
+    <value>加以</value>
+  </data>
+  <data name="Warehouse_Trade_TriGia" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="ChuaCoBanGhiNao" xml:space="preserve">
+    <value>Chưa có bản ghi nào</value>
+  </data>
+  <data name="Dong_Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="KienChoNhapKho" xml:space="preserve">
+    <value>Kiện chờ nhập kho</value>
+  </data>
+  <data name="KienTrongKho" xml:space="preserve">
+    <value>Kiện trong kho</value>
+  </data>
+  <data name="NgayNhapKho" xml:space="preserve">
+    <value>Ngày nhập kho</value>
+  </data>
+  <data name="XNKienHangMatMa" xml:space="preserve">
+    <value>Xác nhận kiện hàng mất mã</value>
+  </data>
+  <data name="XacNhan" xml:space="preserve">
+    <value>Xác nhận </value>
+  </data>
+  <data name="GanDon" xml:space="preserve">
+    <value>Gán đơn</value>
+  </data>
+  <data name="KhoVN" xml:space="preserve">
+    <value>Kho VN</value>
+  </data>
+  <data name="QLPhieuTheoDoiHoanTien" xml:space="preserve">
+    <value>Quản lý phiếu theo dõi hoàn tiền</value>
+  </data>
+  <data name="QLPhieuTheoDoiTraHang" xml:space="preserve">
+    <value>Quản lý phiếu theo dõi đổi trả hàng</value>
+  </data>
+  <data name="TenKhachHang" xml:space="preserve">
+    <value>Tên khách hàng</value>
+  </data>
+  <data name="TienHoanKhach" xml:space="preserve">
+    <value>Tiền hoàn khách</value>
+  </data>
+  <data name="TienShipHoan" xml:space="preserve">
+    <value>Tiền Ship hoàn</value>
+  </data>
+  <data name="QuaPackage" xml:space="preserve">
+    <value>Quá</value>
+  </data>
+  <data name="HienThi" xml:space="preserve">
+    <value>Hiển thị</value>
+  </data>
+  <data name="Packaging_ChoDongKienGo" xml:space="preserve">
+    <value>稍等装木箱</value>
+  </data>
+  <data name="Packaging_DaDongKienGo" xml:space="preserve">
+    <value>已经装木箱</value>
+  </data>
+  <data name="Packaging_DatHang" xml:space="preserve">
+    <value>订货/订单</value>
+  </data>
+  <data name="Packaging_KiemTra" xml:space="preserve">
+    <value>检查</value>
+  </data>
+  <data name="Packaging_KienGo" xml:space="preserve">
+    <value>木箱</value>
+  </data>
+  <data name="Packaging_PhieuPutAway" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_PhuongAnXuLY" xml:space="preserve">
+    <value>处理方案</value>
+  </data>
+  <data name="Packaging_QuanLyPhieuPutAway" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Packaging_SoLuongDung" xml:space="preserve">
+    <value>准确数量</value>
+  </data>
+  <data name="Packaging_SoLuongThieu" xml:space="preserve">
+    <value>缺少数量</value>
+  </data>
+  <data name="Packaging_Tiep" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Packaging_ToiGuiYeuCau" xml:space="preserve">
+    <value>我发要求票</value>
+  </data>
+  <data name="Packaging_ToiXuLy" xml:space="preserve">
+    <value>我处理</value>
+  </data>
+  <data name="Packaging_TroVe" xml:space="preserve">
+    <value>退回</value>
+  </data>
+  <data name="Packaging_YeuCauXuLyKiemDemSai" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HoVaTen" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="Packaging_CapNhatTTMatMaKien" xml:space="preserve">
+    <value>CẬP NHẬT THÔNG TIN MẤT MÃ CHO KIỆN</value>
+  </data>
+  <data name="Packaging_ChonHeTrangThai" xml:space="preserve">
+    <value>Chọn hệ trạng thái</value>
+  </data>
+  <data name="Packaging_ChuaCoKienHangNao" xml:space="preserve">
+    <value>Chưa có kiện hàng nào</value>
+  </data>
+  <data name="Packaging_LuiLai" xml:space="preserve">
+    <value>Lùi lại</value>
+  </data>
+  <data name="Packaging_MaBao" xml:space="preserve">
+    <value>Mã bao</value>
+  </data>
+  <data name="Packaging_NhapDonHang" xml:space="preserve">
+    <value>Nhập đơn hàng</value>
+  </data>
+  <data name="Packaging_STT" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="Packaging_TaiFileLen" xml:space="preserve">
+    <value>Tải file lên</value>
+  </data>
+  <data name="Packaging_ThemKienHang" xml:space="preserve">
+    <value>Thêm kiện hàng</value>
+  </data>
+  <data name="Packaging_TimKienHang" xml:space="preserve">
+    <value>Tìm kiện hàng</value>
+  </data>
+  <data name="Transport_BaoChoNhapKho" xml:space="preserve">
+    <value>稍等进仓的包货</value>
+  </data>
+  <data name="Transport_BaoKhoTao" xml:space="preserve">
+    <value>仓库员造包装</value>
+  </data>
+  <data name="Transport_BaoTrongKho" xml:space="preserve">
+    <value>仓库里的包货</value>
+  </data>
+  <data name="Transport_KhoDich" xml:space="preserve">
+    <value>目的仓库</value>
+  </data>
+  <data name="Transport_KhoDichCuaPhieu" xml:space="preserve">
+    <value>目的仓库</value>
+  </data>
+  <data name="Transport_KhoTaoPhieu" xml:space="preserve">
+    <value>创造票的仓库员</value>
+  </data>
+  <data name="Transport_NgayDuyet" xml:space="preserve">
+    <value>批准日期</value>
+  </data>
+  <data name="Transport_SoBao" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Transport_TaoBaoHang" xml:space="preserve">
+    <value>创造包装</value>
+  </data>
+  <data name="Transport_TaoPhieu" xml:space="preserve">
+    <value>创造票</value>
+  </data>
+  <data name="Transport_TaoPhieuDieuChuyen" xml:space="preserve">
+    <value>创造调动票</value>
+  </data>
+  <data name="Transport_TienVanChuyen" xml:space="preserve">
+    <value>运费</value>
+  </data>
+  <data name="Transport_TongCan" xml:space="preserve">
+    <value>总量</value>
+  </data>
+  <data name="Packaging_CapNhat" xml:space="preserve">
+    <value>种类费用</value>
+  </data>
+  <data name="Packaging_CapNhatGhiChu" xml:space="preserve">
+    <value>更新备注</value>
+  </data>
+  <data name="Packaging_CapNhatGhiChuPPS" xml:space="preserve">
+    <value>萌芽费的更新备注</value>
+  </data>
+  <data name="Packaging_CapNhatSoTienPPS" xml:space="preserve">
+    <value>萌芽费更新钱</value>
+  </data>
+  <data name="Packaging_CapNhatTien" xml:space="preserve">
+    <value>更新钱</value>
+  </data>
+  <data name="Packaging_LoaiPhi" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Packaging_SoTien" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="Packaging_Tien" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="Transport_DichVu" xml:space="preserve">
+    <value>服务</value>
+  </data>
+  <data name="Transport_DiemTrungChuyen" xml:space="preserve">
+    <value>中转站</value>
+  </data>
+  <data name="Transport_LoaiBao" xml:space="preserve">
+    <value>包装规格</value>
+  </data>
+  <data name="BanMaKiemTra" xml:space="preserve">
+    <value>Bắn mã kiểm tra kiện</value>
+  </data>
+  <data name="ChoDongKienGo" xml:space="preserve">
+    <value>Chờ đóng kiện gỗ </value>
+  </data>
+  <data name="ChonKhoTao" xml:space="preserve">
+    <value>Chọn kho tạo</value>
+  </data>
+  <data name="ChuyenDoi" xml:space="preserve">
+    <value>Chuyển đổi</value>
+  </data>
+  <data name="DaDongKienGo" xml:space="preserve">
+    <value>Đã đóng kiện gỗ </value>
+  </data>
+  <data name="NgayKiemDem" xml:space="preserve">
+    <value>Ngày kiểm đếm</value>
+  </data>
+  <data name="QLLayoutKhoHang" xml:space="preserve">
+    <value>Quản lý layout kho hàng</value>
+  </data>
+  <data name="SoLuongNhan" xml:space="preserve">
+    <value>Số lượng nhận</value>
+  </data>
+  <data name="SoLuongSai" xml:space="preserve">
+    <value>Số lượng sai</value>
+  </data>
+  <data name="SoLuongYeuCau" xml:space="preserve">
+    <value>Số lượng yêu cầu</value>
+  </data>
+  <data name="TaoKienGo" xml:space="preserve">
+    <value>Tạo kiện gỗ</value>
+  </data>
+  <data name="TaoPhieuNhapBao" xml:space="preserve">
+    <value>Tạo phiếu nhập bao</value>
+  </data>
+  <data name="TimBaoHang" xml:space="preserve">
+    <value>Tìm bao hàng</value>
+  </data>
+  <data name="TinhTien" xml:space="preserve">
+    <value>Tính tiền </value>
+  </data>
+  <data name="Transport_KhoBaoTao" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transport_KhoChoNhap" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transport_NgayVanChuyen" xml:space="preserve">
+    <value>交货期</value>
+  </data>
+  <data name="Transport_NhaVanChuyen" xml:space="preserve">
+    <value>物流公司</value>
+  </data>
+  <data name="Transport_TheTich" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="Transport_CanNangToiDa" xml:space="preserve">
+    <value>最大重量</value>
+  </data>
+  <data name="Transport_ChiTietTien" xml:space="preserve">
+    <value>详细钱</value>
+  </data>
+  <data name="Transport_ConThieu" xml:space="preserve">
+    <value>缺少钱</value>
+  </data>
+  <data name="Transport_DaThanhToan" xml:space="preserve">
+    <value>已付款</value>
+  </data>
+  <data name="Transport_DSNhaVanChuyen" xml:space="preserve">
+    <value>物流公司目录/名录</value>
+  </data>
+  <data name="Transport_GoiDienLanCuoi" xml:space="preserve">
+    <value>最后打电话</value>
+  </data>
+  <data name="Transport_Kho" xml:space="preserve">
+    <value>仓库</value>
+  </data>
+  <data name="Transport_KhoHang" xml:space="preserve">
+    <value>仓库</value>
+  </data>
+  <data name="Transport_LayOutCha" xml:space="preserve">
+    <value>？？？</value>
+  </data>
+  <data name="Transport_LoaiDonVi" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="Transport_MaLayOut" xml:space="preserve">
+    <value>仓库里的装货位置</value>
+  </data>
+  <data name="Transport_MaNhaVC" xml:space="preserve">
+    <value>物流公司号码</value>
+  </data>
+  <data name="Transport_NhanViepShip" xml:space="preserve">
+    <value>交货员</value>
+  </data>
+  <data name="Transport_NoKyTruoc" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transport_NVHoanThanh" xml:space="preserve">
+    <value>完成人员</value>
+  </data>
+  <data name="Transport_PhiLuuKho" xml:space="preserve">
+    <value>留仓库费用/仓储费</value>
+  </data>
+  <data name="Transport_QLKienHangChoXuat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transport_QLPhieuGiaoHang" xml:space="preserve">
+    <value>管理交货票</value>
+  </data>
+  <data name="Transport_TenLayOut" xml:space="preserve">
+    <value>仓库里的装货名称</value>
+  </data>
+  <data name="Transport_TenNhaVC" xml:space="preserve">
+    <value>物流公司名称/起名</value>
+  </data>
+  <data name="Transport_ThongTinCongNo" xml:space="preserve">
+    <value>负债信息</value>
+  </data>
+  <data name="Transport_tHUtU" xml:space="preserve">
+    <value>秩序</value>
+  </data>
+  <data name="Transport_TienPhaiThu" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transport_TienPhieu" xml:space="preserve">
+    <value>钱票</value>
+  </data>
+  <data name="Transport_TongTienPhieu" xml:space="preserve">
+    <value>总票</value>
+  </data>
+  <data name="BaoTai" xml:space="preserve">
+    <value>Bao tải</value>
+  </data>
+  <data name="CapNhatCanNangBH" xml:space="preserve">
+    <value>Cập nhật cân nặng bao hàng</value>
+  </data>
+  <data name="ChiPhiPSCuaKienHang" xml:space="preserve">
+    <value>Chi phí phát sinh của kiện hàng</value>
+  </data>
+  <data name="ChonKhoDen" xml:space="preserve">
+    <value>Chọn kho đến</value>
+  </data>
+  <data name="ChonLoaiBao" xml:space="preserve">
+    <value>Chọn loại bao</value>
+  </data>
+  <data name="DChonDiemTrungChuyen" xml:space="preserve">
+    <value>Chọn điểm trung chuyển</value>
+  </data>
+  <data name="LoaiChiPhi" xml:space="preserve">
+    <value>Loại chi phí</value>
+  </data>
+  <data name="NgayDongKien" xml:space="preserve">
+    <value>Ngày đóng kiện</value>
+  </data>
+  <data name="NgayNhap" xml:space="preserve">
+    <value>Ngày nhập </value>
+  </data>
+  <data name="NgayNhapBao" xml:space="preserve">
+    <value>Ngày nhập bao</value>
+  </data>
+  <data name="NhanVienNhap" xml:space="preserve">
+    <value>Nhân viên nhập</value>
+  </data>
+  <data name="PhieuDieuChuyen" xml:space="preserve">
+    <value>Phiếu điều chuyển</value>
+  </data>
+  <data name="PhiVanChuyenShop" xml:space="preserve">
+    <value>Phí vận chuyển Shop</value>
+  </data>
+  <data name="QuanLyPhieuDieuChuyenNoiBo" xml:space="preserve">
+    <value>Quản phiếu điều chuyển nội bộ</value>
+  </data>
+  <data name="QuanLyPhieuDieuVan" xml:space="preserve">
+    <value>Quản lý phiếu điều vận</value>
+  </data>
+  <data name="TaoPhieuDieuVan" xml:space="preserve">
+    <value>Tạo phiếu điều vận</value>
+  </data>
+  <data name="ThemPhiPhatSinh" xml:space="preserve">
+    <value>Thêm phí phát sinh</value>
+  </data>
+  <data name="ThongTinBaoHang" xml:space="preserve">
+    <value>Thông tin bao hàng</value>
+  </data>
+  <data name="TienShip" xml:space="preserve">
+    <value>Tiền Ship</value>
+  </data>
+  <data name="TrangThaiTien" xml:space="preserve">
+    <value>Trạng thái tiền</value>
+  </data>
+  <data name="XacNhanHangVeKho" xml:space="preserve">
+    <value> Xác nhận hàng về kho</value>
+  </data>
+  <data name="PhiXeNang" xml:space="preserve">
+    <value>叉车费</value>
+  </data>
+  <data name="DoiTac" xml:space="preserve">
+    <value>Đối tác</value>
+  </data>
+  <data name="ToiKho" xml:space="preserve">
+    <value>Tới kho</value>
+  </data>
+  <data name="TuKho" xml:space="preserve">
+    <value>Từ kho</value>
+  </data>
+  <data name="CanNangChotVC" xml:space="preserve">
+    <value>Cân nặng chốt VC</value>
+  </data>
+  <data name="ChonKhoDich" xml:space="preserve">
+    <value>Chọn kho đích</value>
+  </data>
+  <data name="DanhSachBaoHang" xml:space="preserve">
+    <value>Danh sách bao hàng</value>
+  </data>
+  <data name="DoiTacVanChuyen" xml:space="preserve">
+    <value>Đối tác vận chuyển</value>
+  </data>
+  <data name="DSLayoutKhoHang" xml:space="preserve">
+    <value>Danh sách layout kho hàng</value>
+  </data>
+  <data name="GiaVon" xml:space="preserve">
+    <value>Giá vốn</value>
+  </data>
+  <data name="HinhThucTinhTien" xml:space="preserve">
+    <value>Hình thức tính tiền</value>
+  </data>
+  <data name="MoTaBao" xml:space="preserve">
+    <value>Mô tả bao</value>
+  </data>
+  <data name="PhieuDieVan" xml:space="preserve">
+    <value>PHIẾU ĐIÊÙ VẬN</value>
+  </data>
+  <data name="PhuongThucVanChuyen" xml:space="preserve">
+    <value>Phương thức vận chuyển</value>
+  </data>
+  <data name="TheoDoiBaoHangVaDieuVan" xml:space="preserve">
+    <value>Theo dõi bao hàng &amp; điều vận</value>
+  </data>
+  <data name="CacYeuCauXuLyKiemDemSai" xml:space="preserve">
+    <value>Các yêu cầu xử lý kiểm đếm sai của đơn hàng</value>
+  </data>
+  <data name="CanNangThucTe" xml:space="preserve">
+    <value>Cân nặng thực tế</value>
+  </data>
+  <data name="DSDoiTacVanChuyen" xml:space="preserve">
+    <value> Danh sách đối tác vận chuyển</value>
+  </data>
+  <data name="MaLayoutKho" xml:space="preserve">
+    <value>Mã layout kho</value>
+  </data>
+  <data name="NhanVienKho" xml:space="preserve">
+    <value>NV kho</value>
+  </data>
+  <data name="PhiDongGo" xml:space="preserve">
+    <value>Phí đóng gỗ</value>
+  </data>
+  <data name="PhieuDieuChuyenNoiBo" xml:space="preserve">
+    <value>PHIẾU ĐIỀU CHUYỂN NỘI BỘ</value>
+  </data>
+  <data name="SoDon" xml:space="preserve">
+    <value>Số đơn</value>
+  </data>
+  <data name="TheTichChotVC" xml:space="preserve">
+    <value>Thể tích chốt VC</value>
+  </data>
+  <data name="ThieuTien" xml:space="preserve">
+    <value>Thiếu tiền</value>
+  </data>
+  <data name="ThongTinKienGo" xml:space="preserve">
+    <value>Thông tin kiện gỗ</value>
+  </data>
+  <data name="TienPhieu" xml:space="preserve">
+    <value>tiền phiếu</value>
+  </data>
+  <data name="ChuaCoKienHangNao" xml:space="preserve">
+    <value>Chưa có kiện/bao hàng nào</value>
+  </data>
+  <data name="NhanVienDuyet" xml:space="preserve">
+    <value>Nhân viên duyệt</value>
+  </data>
+  <data name="PhiVanChuyen" xml:space="preserve">
+    <value>Phí VC</value>
+  </data>
+  <data name="ThongKeDonBaoGia" xml:space="preserve">
+    <value>Thống kê đơn báo giá</value>
+  </data>
+  <data name="XuLyDonHangChoBaoGia" xml:space="preserve">
+    <value>Xử lý đơn hàng chờ báo giá</value>
+  </data>
+  <data name="NgayTaoTicket" xml:space="preserve">
+    <value>Ngày tạo Ticket</value>
+  </data>
+  <data name="ElectronicWallet" xml:space="preserve">
+    <value>电子钱包</value>
+  </data>
+  <data name="TraoDoiTrenDon" xml:space="preserve">
+    <value>trao đổi trên đơn</value>
+  </data>
+</root>

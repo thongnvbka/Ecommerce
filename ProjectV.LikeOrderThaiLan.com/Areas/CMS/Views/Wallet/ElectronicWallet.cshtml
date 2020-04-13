@@ -1,0 +1,459 @@
+﻿@using System.Globalization
+@{
+    ViewBag.Title = Resource.Dashboard_ElectricWallet;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+    var balanceAvalible = ViewBag.BalanceAvalible;
+}
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <style>
+        .tabbable-custom {
+            margin-bottom: 15px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+            .tabbable-custom > .tab-content {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                padding: 10px;
+                -webkit-border-radius: 0 0 4px 4px;
+                -moz-border-radius: 0 0 4px 4px;
+                -ms-border-radius: 0 0 4px 4px;
+                -o-border-radius: 0 0 4px 4px;
+                border-radius: 0 0 4px 4px;
+            }
+
+        .multi-btn {
+            margin-top: 10px !important;
+            display: table;
+            box-sizing: border-box;
+            margin-bottom: 20px !important;
+        }
+
+        .col-lg-12 {
+            width: 100%;
+        }
+
+        .col-lg-3 {
+            width: 25%;
+        }
+
+        .col-lg-6 {
+            width: 50%;
+        }
+
+        .col-lg-10 {
+            width: 83.33333%;
+        }
+
+        .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+            float: left;
+        }
+
+        #history-recharge {
+            font-size: 14px;
+            background: #ee3333;
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            min-width: 180px;
+            float: left;
+        }
+
+            #history-recharge > i {
+                font-size: 16px;
+            }
+
+        .btn1 {
+            margin-top: 10px !important;
+        }
+
+        #recharge1 {
+            font-size: 14px;
+            width: 65%;
+            float: left;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .bold {
+            font-weight: 600 !important;
+            font-size: 12px;
+        }
+
+        .activedeal {
+            background: #fd7f00;
+            color: #fff !important;
+        }
+
+        #withdraw1 {
+            font-size: 14px;
+            width: 65%;
+            padding: 8px;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        .select-option-recharge {
+            float: left;
+            width: 15%;
+            box-sizing: border-box;
+            margin-left: -10%;
+            margin-top: 15px;
+        }
+
+            .select-option-recharge > select {
+                height: 27px;
+                padding-left: 5px;
+                box-sizing: border-box;
+            }
+
+        .input-money-number > input {
+            text-align: left !important;
+        }
+
+        .zichan-chongzhi-main-paypal > p {
+            text-align: justify;
+        }
+
+        .zichan-chongzhi-main-guojixinyongka > p {
+            text-align: justify;
+        }
+
+        .search-time > .check-time {
+            padding-top: 14px !important;
+        }
+
+        .img-banks {
+            width: 230px;
+            float: left;
+            height: 50px;
+        }
+
+            .img-banks > i > img {
+                left: 0 !important;
+                top: 0px !important;
+                position: inherit !important;
+                min-width: 190px !important;
+                border: 2px solid #fd7f00;
+            }
+
+        .number-banks {
+            float: left;
+            width: 60%;
+            padding-top: 17px;
+            /*color: red;*/
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+            .number-banks > p {
+                float: left;
+                width: 100%;
+            }
+
+                .number-banks > p > span {
+                    text-align: right !important;
+                    float: right !important;
+                    margin-right: 20% !important;
+                }
+    </style>
+    <link href="~/Content/css/custom.css" rel="stylesheet" />
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<input autocomplete="false" name="hidden" type="text" style="display:none;">
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    <div class="user-r">
+
+        <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <div class="user-r-main display-none" data-bind="css: isRending() === true? '' : 'display-none'">
+            <div class="dingdan">
+                <ul class="zichan-nav">
+                    <li data-id="zijin" class="lete-active"> @Resource.Dashboard_ElectricWallet</li>
+                </ul>
+
+                <div class="rs">
+                    <div class="tabbable-custom">
+                        <div class="multi-btn col-lg-12 tab-content">
+                            <div class="col-lg-3 padding-le padding-ri text-center">
+                                <img src="~/Content/images/icon-dashboard/2-FinDealBaoGia.png" alt="" />
+                            </div>
+                            <div class="col-lg-6 padding-ri info-account padding-le">
+                                <h5 class="rs" style="margin-top: 25px;">@Resource.Available_Balances: <label>@string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:#,###}", @balanceAvalible) @Resource.Currency</label></h5>
+
+                                <div class="clearfix rs" style="padding-top: 20px;">
+                                    <a id="history-recharge" class="btn btn-primary bold" data-bind="click:GetListRecharge">
+                                        <i class="fa fa-history" aria-hidden="true"></i>&nbsp;&nbsp;@Resource.History_Transaction
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="clearfix col-lg-10" style="margin-top: 20px;">
+                                    <a id="recharge1" class="btn btn1 btn-default bold activedeal">
+                                        <i>
+                                            <img src="~/Content/images/icon-dashboard/icon_naptien.png" class="clickShow" alt="" />
+                                            <img src="~/Content/images/icon-dashboard/icon_naptien2.png" class="clickHide" alt="" />
+                                        </i>&nbsp;&nbsp;@Resource.Dashboard_Recharge
+                                    </a>
+                                    <a id="withdraw1" class="btn btn1 btn-default bold" data-bind="click: GetClaim">
+                                        <i class="rut-tien">
+                                            <img src="~/Content/images/icon-dashboard/icon_ruttien.png" class="clickShow" alt="" />
+                                            <img src="~/Content/images/icon-dashboard/icon_ruttien2.png" class="clickHide" alt="" />
+                                        </i>&nbsp;&nbsp;@Resource.TransactionHistory_Payment
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--load tem plate lich su giao dich,rut, nap tien-->
+                <div data-bind="template: { name: templateId }">
+                </div>
+                <div class="rs" id="customerRecharge">
+                    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Recharge/Recharge_" + culture + ".cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--modal nhap mật khẩu-->
+<div id="dialog_deposit_ok" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>@Resource.Home_Notification</h2>
+        </div>
+        <div class="modal-body">
+            <p>
+                <input type="password" name="Password" id="Password" placeholder="@Resource.Claim_PassLogin" class="form-control form-control-solid placeholder-no-fix" autocomplete="off" />
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default huy" data-dismiss="modal">@Resource.Order_OperationDestroy</button>
+            <button type="button" class="btn btn-success" id="btnConfirmDepositOk" style="background: #4CAF50; color: #fff;">OK</button>
+        </div>
+    </div>
+</div>
+<!--modal nhap mật khẩu-->
+<!--Template listrecharge-->
+@Html.Partial("~/Areas/CMS/Views/Wallet/listRecharge/ListRecharge.cshtml")
+<!--Template claim-->
+@Html.Partial("~/Areas/CMS/Views/Wallet/claim/Claim.cshtml")
+<!--Template rechargeListtemplate-->
+@Html.Partial("~/Areas/CMS/Views/Wallet/listRecharge/_RechargeList.cshtml")
+<!--Template claimListtemplate-->
+@Html.Partial("~/Areas/CMS/Views/Wallet/claim/_ClaimList.cshtml")
+@section scripts{
+
+    <script src="~/Areas/CMS/Scripts/jquery.mask.min.js"></script>
+
+    <script src="~/Areas/CMS/Scripts/jquery.maskedinput.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.numeric.extensions.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.regex.extensions.js"></script>
+    <script src="~/Scripts/jquery.formatCurrency-1.4.0.js"></script>
+
+    <script src="~/Content/js/tab.js"></script>
+
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+
+    @*//file js knockoutjs ViewModel*@
+    <script src="~/Areas/CMS/Scripts/models/recharge/rechargeItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/recharge/drawItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/wallet/walletViewModel.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#listRecharge").show();
+            $("#claim").hide();
+            $("#customerRecharge").hide();
+            $("a#withdraw1").removeClass("activedeal");
+            $(".clickShow").show();
+            $(".clickHide").hide();
+            $("#history-recharge").click(function () {
+                $("#listRecharge").show();
+                $("#claim").hide();
+                $("#customerRecharge").hide();
+            });
+            $("#recharge1").click(function () {
+                $("#listRecharge").hide();
+                $("#claim").hide();
+                $("#customerRecharge").show();
+                $("a#recharge1").addClass("activedeal");
+                $("a#withdraw1").removeClass("activedeal");
+                $(".clickShow").show();
+                $(".clickHide").hide();
+            });
+
+            $("#withdraw1").click(function () {
+                $("#listRecharge").hide();
+                $("#claim").show();
+                $("#customerRecharge").hide();
+                $("a#recharge1").removeClass("activedeal");
+                $("a#withdraw1").addClass("activedeal");
+                $(".clickShow").hide();
+                $(".clickHide").show();
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        function DepositOkConfig() {
+            $.ajax({
+                url: '/' + window.culture + '/Cms/AccountCMS/CheckPass',
+                type: 'Get',
+                data: { 'pass': $('#dialog_deposit_ok #Password').val() },
+                success: function (data) {
+                    if (data == 1) {
+                        $('#AdvanceMoney').val($('#AdvanceMoney').val().replace(/\,/g, '').replace(/\./g, ''));
+                        SaveAdvance();
+                    } else {
+                        toastr.error("รหัสผ่านไม่ถูกต้อง. กรุณากรอกใหม่อีกครั้ง!");
+                    }
+                }
+            });
+        }
+
+        function SaveAdvance() {
+            var obj = {
+                AdvanceMoney: $('#AdvanceMoney').val(),
+                CardName: $('#CardName').val(),
+                CardId: $('#CardId').val(),
+                CardBank: $('#CardBank').val(),
+                CardBranch: $('#CardBranch').val()
+            };
+            $.ajax({
+                url: '/' + window.culture + '/Cms/AccountCMS/SaveAdvance',
+                type: 'POST',
+                data: obj,
+                success: function (data) {
+                    if (data == 1) {
+                        $('#dialog_deposit_ok').modal('toggle');
+                        toastr.success("สร้างใบถอนเงินสำเร็จ ทางเราจะทำการติดต่อกลับ โดยเร็วที่สุด");
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+
+        function CheckMoney(event, str) {
+            console.log(event);
+            console.log(str);
+
+            var a = event.charCode;
+            var tmpAdvanceMoney = str.value + String.fromCharCode(a);
+            var tmpMoney = parseInt(tmpAdvanceMoney.replace(/\,/g, '').replace(/\./g, ''));
+            var tmpAva = parseInt('@ViewBag.BalanceAvalible');
+            if (tmpMoney > tmpAva) {
+                event.preventDefault();
+            }
+        };
+
+        function SetKeyNumber() {
+            $('#AdvanceMoney').keydown(function (event) {
+                // Allow special chars + arrows
+                if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9
+                    || event.keyCode == 27 || event.keyCode == 13
+                    || (event.keyCode == 65 && event.ctrlKey === true)
+                    || (event.keyCode >= 35 && event.keyCode <= 39)) {
+
+                    return;
+                } else {
+                    // If it's not a number stop the keypress
+                    if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                        event.preventDefault();
+                    }
+                }
+            });
+
+        }
+
+        $(document).ready(function () {
+            $('.decimal').mask('000.000.000.000.000,000', { reverse: true });
+            //$('.decimal').mask("#,##0,000", { reverse: true });
+            //$("#currency").maskMoney();
+            var modal = document.getElementById('dialog_deposit_ok');
+            var span = document.getElementsByClassName("close")[0];
+            var buttonX = document.getElementsByClassName("huy")[0];
+            buttonX.onclick = function () {
+                modal.style.display = "none";
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+
+            SetKeyNumber();
+            $('#btnConfirmDepositOk').click(function () {
+                DepositOkConfig();
+            });
+
+            $('#btnExport').click(function () {
+
+                window.location = '/Inventory/ExportInventory';
+
+            });
+            $('#AdvanceMoney').blur(function () {
+                $(this).val($(this).val().replace(/\,/g, '').replace(/\./g, ''));
+                $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: 0, region: 'vi-VN' });
+            })
+                .keyup(function (e) {
+                    var e = window.event || e;
+                    var keyUnicode = e.charCode || e.keyCode;
+                    if (e !== undefined) {
+                        switch (keyUnicode) {
+                            case 16:
+                                break; // Shift
+                            case 27:
+                                this.value = '';
+                                break; // Esc: clear entry
+                            case 35:
+                                break; // End
+                            case 36:
+                                break; // Home
+                            case 37:
+                                break; // cursor left
+                            case 38:
+                                break; // cursor up
+                            case 39:
+                                break; // cursor right
+                            case 40:
+                                break; // cursor down
+                            case 78:
+                                break; // N (Opera 9.63+ maps the "." from the number key section to the "N" key too!) (See: http://unixpapa.com/js/key.html search for ". Del")
+                            case 110:
+                                break; // . number block (Opera 9.63+ maps the "." from the number block to the "N" key (78) !!!)
+                            case 190:
+                                break; // .
+                            default:
+                                $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: -1, eventOnDecimalsEntered: true, region: 'vi-VN' });
+                        }
+                    }
+                });
+        });
+    </script>
+}

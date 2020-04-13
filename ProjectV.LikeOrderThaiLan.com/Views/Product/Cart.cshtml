@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = Resource.Home_Cart;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link href="../../Content/clip-font.css" rel="stylesheet" />
+    <link href="../../Content/css/product-cart.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+}
+@section scripts{
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="~/Content/bootstrap-toastr/toastr.min.js"></script>
+    <script src="~/Content/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/Scripts/resource/resource.@string.Format("{0}.js", culture)"></script>
+    <script src="/node_modules/core-js/client/shim.min.js"></script>
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+        //var resouce = {
+        //    name: "Đang tải dữ liệu...sssss",
+        //    listOrder: "Danh sách đơn hàng.ssss"
+        //};
+        System.import('app').catch(function (err) { console.error(err); });
+
+        @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+        }
+
+        @if (TempData["orderDetails"] != null)
+        {
+            <text>
+                var orderDetails = @Html.Raw(TempData["orderDetails"]);
+            </text>
+        }
+        var vipLevel = @Html.Raw(ViewBag.VipLevel);
+    </script>
+
+    @*<script src="/Scripts/knockout-3.4.0.js"></script>
+        <script src="/Scripts/lodash.min.js"></script>
+        <script src="/Scripts/shoping-cart/shoping-cart.model.js"></script>*@
+
+    <script src="~/Scripts/account-uploadimage/upload-image.@cultureJs"></script>
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+
+}
+<section class="car">
+    <div class="car-main">
+        <div id="shoping-cart" class="main">
+            <div class="content">
+                <div class="container_12">
+                    @Html.AntiForgeryToken()
+                    <shoping-cart></shoping-cart>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

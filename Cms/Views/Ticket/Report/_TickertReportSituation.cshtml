@@ -1,0 +1,52 @@
+﻿<script type="text/html" id="reportTicketSituation">
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+
+            <h3 class="box-title">Report of complaint handling over time.</h3>
+            <div class="box-tools pull-right">
+                <button data-bind="click: ExcelReportTicketSituation" class="btn btn-xs btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                
+                <div class="pull-right" style="padding: 10px 30px 0px 0px;">
+                    <div class="input-group">
+                        <button type="button" class="btn btn-default pull-right" id="daterange-btnReport">
+                            <span>
+                                <i class="fa fa-calendar"></i> Date of report
+                            </span>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="pull-right" style="padding: 10px 30px 0px 0px;">
+                    <select class="form-control" data-bind="value: contentChart">
+                        <option value="1">@*Thống kê ticket được khởi tạo theo thời gian*@List of ticket creation over time </option>
+                        <option value="2">@*Thống kê ticket theo loại ticket theo thời gian*@List of ticket types over time</option>
+                        <option value="3">@*Thống kê ticket theo loại VIP khách hàng theo thời gian*@List of ticket types by VIP customer levels over time </option>
+                        <option value="4">@*Thống kê ticket đã xử lý xong theo thời gian*@List of resolved tickets over time </option>
+                        <option value="5">@*Thống kê ticket mà nhân viên tiếp nhận theo thời gian*@ List of ticket receipts by staff over time</option>
+                        <option value="6">@*Thống kê ticket cùng số tiền hoàn bồi thực tế theo thời gian*@List of ticket with actual refund statistics over time</option>
+                    </select>
+                </div>
+                <div class="col-md-12 text-center">
+                    <h3 data-bind="text: reportTitleTicket"></h3>
+                    @*<h4 data-bind="text: reportTitle"></h4>*@
+                    <h4 class="padding-left-12">(<label data-bind="text: totalTicket"></label>&nbsp;complaint)</h4>
+                </div>
+                <div class="col-md-12">
+                    <div class="pad">
+                        <div id="userTicketSituation" style="min-width: 100px; height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>

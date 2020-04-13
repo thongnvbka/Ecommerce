@@ -1,0 +1,97 @@
+﻿@model CustomerForgotMeta
+
+@{
+    ViewBag.Title = Resource.Home_ForgetPass;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+@section styles
+{
+    <style>
+        .field-validation-error {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+}
+
+<section class="forget-p">
+
+    @Html.AntiForgeryToken()
+    <h1 class="text-center">
+        @Resource.Home_ForgetPass
+    </h1>
+    <div class="forget-p-queren">
+        @*<img src="~/Content/images/login/forget_queren.png" alt="" />
+            <br />*@
+        @if (ViewBag.Mess == null)
+            {
+            <img src="~/Content/images/login/forget_queren.png" alt="" />
+            <br />
+        }
+        else
+        {
+            <img src="~/Content/images/login/forget_queren.png" alt="" />
+            <br />
+            <div class="rs" style="text-align: center !important">
+                <h3 style="font-size: 16px;">@ViewBag.Mess </h3>
+            </div>
+        }
+
+        @if (ViewBag.Status == "1")
+            {
+            <h3 style="font-size: 16px;">@ViewBag.MessError </h3>
+            <br />
+            <div>
+                <a href="/@culture">@Resource.Home_Home</a> | <a href="@Url.Action("Login", "Account")">@Resource.Home_Login</a>
+            </div>
+        }
+        else
+        {  <form action="@Url.Action("PassForget", "Account")" method="post">
+            <div>
+                <p>
+                    <label>@Resource.Home_Email：</label>
+
+                    @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control placeholder-no-fix"},
+                            {"placeholder", Resource.Home_LoginEmail},
+                            {"type", "email"},
+                            {"autocomplete","off" }
+                        })
+                    <br />
+                    @Html.ValidationMessageFor(x => x.Email)
+                </p>
+            </div>
+            <button type="submit">@Resource.Home_RetrievalPass</button>
+            <div>
+                <a href="@Url.Action("Login", "Account")">@Resource.Home_Login</a> | <a href="@Url.Action("Register", "Account")">@Resource.Home_Register</a>
+            </div>
+        </form>
+        }
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            @if (TempData["Msg"] != null) {
+                    <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+                }
+            @if (TempData["MsgErr"] != null) {
+                    <text>toastr.error('@Html.Raw(TempData["MsgErr"])');</text>
+                }
+        });
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<script type="text/html" id="inforCustomer">
+
+    <div class="user-r-main-l-top">
+        <h1>@Resource.Dashboard_InforAccount </h1>
+        <div class="user-r-main-l-top-msg">
+            <div class="user-r-main-l-top-msg-tou">
+                <div class="user-r-main-l-top-msg-tou-img">
+                    <div class="user-r-main-l-top-msg-tou-img-box">
+                        <img alt="avatar" width="60" height="60" data-bind="attr:{src:customerModel().Avatar}" />
+                    </div>
+                    <br />
+                    <a href="/@culture/Account/Infor">@Resource.Dashboard_EditAccount</a>
+                </div>
+            </div>
+
+            <div class="user-r-main-l-top-msg-txt">
+                <p>
+                <p data-bind="text:customerModel().FullName">
+                </p> (<span data-bind="text:customerModel().Email"></span>)
+                <img src="/Content/images/icon-home/user_renzheng_icon.png" alt="" />
+                </p>
+                <p>
+
+                    <span>@Resource.Dashboard_LevelAccount：</span>
+                    <span class="red-color" data-bind="text:customerModel().LevelName"></span>
+
+                    <img src="/Content/images/icon-home/lv1.png" alt="" />
+                </p>
+            </div>
+        </div>
+        <div class="user-r-main-l-top-money">
+            <p>@Resource.Dashboard_TotalInAccount :</p>
+            <p>
+                <label data-bind="text:formatNumberic(Math.round(customerModel().BalanceAvalible()),'N3')"></label> <label> @Resource.Currency</label>
+            </p>
+            <p>
+                <a href="/@culture/CMS/AccountCMS/Rechange">@Resource.Dashboard_ExchargeNow !</a>
+            </p>
+        </div>
+    
+    </div> 
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/IndexAccount/_InforAccount_" + culture + ".cshtml")
+</script>

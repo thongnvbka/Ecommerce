@@ -1,0 +1,34 @@
+﻿<script type="text/html" id="PotentialCustomer-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a href="javascript:;" data-bind="click: $parent.viewPotentialCustomerDetail"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center"><img alt="Avatar" style="width: 50px;" data-bind="attr:{src: Avatar}"></td>
+        <td class="text-center" data-bind="text: FullName"></td>
+        <td class="text-left" data-bind="text: Birthday == null ? '--' : moment(Birthday).format('DD/MM/YYYY')"></td>
+        <td class="text-center" data-bind="text: Phone"></td>
+        <td class="text-center" data-bind="text: Email"></td>
+        <td class="text-center"><strong data-bind="text: UserFullName"></strong></td>
+        <td class="text-center"><strong data-bind="text: CustomerTypeName"></strong></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusPotentialCustomer[Status].Name, css: statusApp.statusPotentialCustomer[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            @if (CheckPermision(EnumAction.Update, EnumPage.PotentialCustomer))
+            {
+                <a data-bind="click: $parent.viewEditPotentialCustomer" href="javascript:;" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+            }
+            @if (CheckPermision(EnumAction.Delete, EnumPage.PotentialCustomer))
+            {
+                <a data-bind="click: $parent.removePotentialCustomer" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+            }
+            @if (CheckPermision(EnumAction.Approvel, EnumPage.PotentialCustomer))
+            {
+            <!-- ko if: Status == 0 -->
+                <a data-bind="click: $parent.customerOfficialPotential" class="btn btn-info btn-xs"><i class="fa fa-reply"></i> Official</a>
+            <!-- /ko -->
+            }
+        </td>
+    </tr>
+</script>

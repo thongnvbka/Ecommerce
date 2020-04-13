@@ -1,0 +1,38 @@
+﻿<script type="text/html" id="ticket-support-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="mailbox-star">
+            <a href="#"><i class="fa fa-star text-yellow"></i></a>
+        </td>
+        <td class="mailbox-name middle-table" data-bind="click: $parent.viewTicketDetail"><a href="javascript:;" data-bind="text: Code"></a></td>
+        <td class="mailbox-name middle-table"><a href="javascript:;" data-bind="text: OrderId"></a></td>
+        <td class="mailbox-subject width-370 middle-table">
+            <b data-bind="text: CustomerName"></b> - <span data-bind="text: substring(Content, 30)+'...'"></span>
+        </td>
+        <td class="mailbox-name middle-table"><a href="javascript:;" data-bind="text: UserName"></a></td>
+        <td class="text-center middle-table">
+            <i class="fa fa-clock-o mg-right-5"></i><span data-bind="text: moment(CreateDate).format('DD/MM/YYYY')" class=""></span>
+        </td>         Customer full name
+        <td class="text-center middle-table">
+            <span data-bind="text: statusApp.statusComplain[Status].Name, css: statusApp.statusComplain[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                    Function <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li><a data-bind="click: $parent.receivePurchaseOrder" href="javscript:;"><i class="fa fa-download text-info"></i>Accept to process</a></li>
+                    @if (UserState.Type > 0)
+                    {
+                        <li><a data-bind="click: $parent.assignedOrder" href="javscript:;"><i class="fa fa-user-plus text-success"></i>Assign to staff</a></li>
+                    }
+                    <li><a data-bind="click: $parent.viewEditDetail" href="javscript:;"><i class="fa fa-edit text-primary"></i>Update order</a></li>
+
+                    <li><a data-bind="click: $parent.orderClose" href="javscript:;"><i class="fa fa-times-circle text-danger"></i>Cancel order</a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </td>
+    </tr>
+</script>

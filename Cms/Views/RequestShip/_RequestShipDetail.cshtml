@@ -1,0 +1,114 @@
+﻿<div id="requestShipDetailModal" class="modal fade modal-dialog modal-p80" tabindex="-1" role="dialog">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <i class="fa fa-file-code-o"></i> Code order : <strong data-bind="text: ReturnCode( requestShip().OrderCode())" style="color: red"></strong>
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <small data-bind="text:'Created Date :' + moment(requestShip().CreateDate()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+
+                    <small data-bind="text: 'Updated date: ' + moment(requestShip().UpdateDate()).format('DD/MM/YYYY')" class="pull-right"></small>
+
+                </h2>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-md-4">
+                <strong class="strong-title"> Customer information </strong>
+                <div>
+
+                    <table class="table">
+                        <tr>
+                            <th><i class="fa fa-user"></i></th>
+                            <td>
+                                <span data-bind="text: requestShip().CustomerName"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-envelope-o"></i></th>
+                            <td data-bind="text: requestShip().CustomerEmail()"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-phone"></i></th>
+                            <td data-bind="text: requestShip().CustomerPhone()"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-map-marker"></i></th>
+                            <td data-bind="text: requestShip().CustomerAddress()"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <strong class="strong-title">Note</strong>
+                <div data-bind="text: requestShip().Note">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <strong class="strong-title">Status</strong>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Processed</th>
+                            <td>
+                                <select class="form-control select-view ddlAdd-status" id="ddlPage" style="width: 100%;"
+                                        data-bind="options: statusArray, optionsText: 'Text',optionsValue: 'Value', value: requestShip().Status"></select>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <span><strong class="strong-title">Package list  :</strong></span>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center w-40">#</th>
+                                    <th class="text-center w-150"><i class="fa fa-barcode"></i> Package</th>
+                                    <th class="text-center w-150"><i class="fa fa-barcode"></i> Weight</th>
+                                    <th class="text-center"><i class="fa fa-money"></i> Total</th>
+                                    <th class="text-center w-300"><i class="fa fa-thumb-tack"></i> Note</th>
+                                    <th class="text-center"><i class="fa fa-calendar"></i> Date of expected</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: listPackageView">
+                                <tr>
+                                    <td data-bind="text: $index()+1" class="text-center"></td>
+                                    <td data-bind="text: TransportCode" class="text-center"></td>
+                                    <td data-bind="text: Weight" class="text-center"></td>
+                                    <td data-bind="text: TotalPrice" class="text-center"></td>
+                                    <td data-bind="text: Note" class="text-center"></td>
+                                    <td data-bind="text: CreateDate == null? '':  moment(CreateDate).format('DD/MM/YYYY')" class="text-center"></td>
+                                   
+                                </tr>
+                            </tbody>
+                            <tfoot data-bind="if: listPackageView().length == 0">
+                                <tr>
+                                    <td colspan="6">No package</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" id="btnEdit2" data-bind="click: saveRequestShip"><i class="fa fa-plus"></i>Save</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    </div>
+</div>
+<style>
+    .detail-table tr {
+        border-bottom: 1px solid #D2D6DE;
+    }
+</style>

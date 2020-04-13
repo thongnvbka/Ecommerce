@@ -1,0 +1,112 @@
+﻿<script type="text/html" id="package">
+    <div class="box box-primary">
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                        <label for="ddlGroup">Search </label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can perform searches by customer's account ID, account name, real name, phone number, email, .."></i>
+                        <input class="form-control" id="SearchInfo_Keyword" name="SearchInfo.Keyword" placeholder="Code order, account ID, account name, real name, phone number, email, .." type="text" value="">
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label for="ddlWarehouse">Select System</label>
+                        <select class="form-control select-view" id="ddlWarehouse" style="width: 100%;">
+                            <option value="1" selected="selected">- All -</option>
+                            <option value="2">nhaphangtrungquoc.com</option>
+                            <option value="4">orderhangkinhdoanh.com</option>
+                            <option value="7">timnguonhanggiare.com</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Country</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">-All -</option>
+                            <option value="25">China</option>
+                            <option value="50">Vietnam</option>
+                            <option value="150">Thailand</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Status</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">-All -</option>
+                            <option value="25">Pending</option>
+                            <option value="50">Processed</option>
+                            <option value="100">Quoted (price)</option>
+                            <option value="100">Cancelled</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <!-- Date and time range -->
+                        <label>Start Date</label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i>Start Date
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">List of goods package(s)</h3>
+                    <a href="javascript:;" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add new</a>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <div class="tabbable page-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#all-tasks" data-toggle="tab">All <span class="label label-danger">100</span></a></li>
+                            <li><a href="#active" data-toggle="tab">China warehouse<span class="label label-primary">5</span></a></li>
+                            <li><a href="#closed" data-toggle="tab">Noi Bai warehouse<span class="label label-primary">30</span></a></li>
+                            <li><a href="#" data-toggle="tab">Doi Can warehouse<span class="label label-primary">5</span></a></li>
+                            <li><a href="#" data-toggle="tab">Cam Hoi warehouse<span class="label label-primary">5</span></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- First tab -->
+                            <div class="tab-pane active fade in" id="all-tasks">
+                                <!-- Tasks table -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th class="text-center">Transport code</th>
+                                                <th class="text-center">In orders</th>
+                                                <th class="text-center">Customer</th>
+                                                <th class="text-center">Expected warehouse on</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-bind="template: { name: 'package-list' }"></tbody>
+                                    </table>
+                                </div>
+                                <!-- /tasks table -->
+                            </div>
+                            <!-- /first tab -->
+                        </div>
+                    </div>
+                    <!-- /page tabs -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+</script>

@@ -1,0 +1,726 @@
+﻿@{
+    var statusFinish = (byte)OrderStatus.Finish;
+    var statusOrder = (byte)OrderStatus.Order;
+    var orderdetailCancel = (byte)OrderDetailStatus.Cancel;
+    var orderdetailSuccess = (byte)OrderDetailStatus.Order;
+    var orderPackage = (byte)OrderPackageStatus.ShopDelivery;
+    var orderWait = (byte)OrderStatus.AreQuotes;
+    var statusSuccess = (byte)OrderStatus.OrderSuccess;
+    var statusWaitAccountant = (byte)OrderStatus.WaitAccountant;
+    var orderDeposit = (byte)OrderStatus.WaitDeposit;
+    var order = (byte)OrderType.Order;
+    var source = (byte)OrderType.Source;
+    var deliveryShop = (byte)OrderStatus.DeliveryShop;
+
+    var update = CheckPermision(EnumPage.OrderCustomerCare, EnumAction.Update);
+    var delete = CheckPermision(EnumPage.OrderCustomerCare, EnumAction.Delete);
+}
+
+@Html.AntiForgeryToken()
+<div id="orderAddOrEditAwaitModal" class="modal fade modal-dialog modal-p90" tabindex="-1" data-backdrop="static" role="dialog">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <i class="fa fa-globe"></i> Code order : <strong data-bind="text: ReturnCode(Code())" style="color: red"></strong>
+                    <!-- ko if: IsRetail -->
+                    <i>[Order]</i>
+                    <!-- /ko -->
+                    <span data-bind="text: statusApp.order[Status() == undefined ? 0 : Status()].Name, css: statusApp.order[Status() == undefined ? 0 : Status()].Class"></span>
+                    <!-- ko if: mess() !== "" -->
+                    <span class="text-yellow"><i class="fa fa-exclamation-triangle"></i> <span data-bind="text: mess"></span></span>
+                    <!-- /ko -->
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <button type="button" class="btn btn-default pull-right ml15" data-dismiss="modal"><b>x</b></button>
+                <h2 class="order-header pull-right">
+                    <small data-bind="text: 'Start Date :' + moment(Created()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                    <!-- ko if: Status() !== @statusFinish-->
+                    <small class="pull-right">Date of completion: --/--/----</small>
+                    <!-- /ko -->
+                    <!-- ko if: Status() == @statusFinish-->
+                    <small data-bind="text: 'Date of completion: ' + moment(LastUpdate()).format('DD/MM/YYYY')" class="pull-right"></small>
+                    <!-- /ko -->
+                </h2>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-md-4">
+                <strong class="strong-title"> Customer Information </strong>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th class="w-40"><i class="fa fa-user"></i></th>
+                            <td>
+                                <span data-bind="text: LevelName()" class="label label-danger"></span>
+                                <span data-bind="text: CustomerName()"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-envelope-o"></i></th>
+                            <td data-bind="text: CustomerEmail()"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-phone"></i></th>
+                            <td data-bind="text: CustomerPhone()"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-map-marker"></i></th>
+                            <!-- ko if: customerFormAddress() != null -->
+                            <td data-bind="text: customerFormAddress().Address +', '+ customerFormAddress().WardName +', '+ customerFormAddress().DistrictName +', '+ customerFormAddress().ProvinceName"></td>
+                            <!-- /ko -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <strong class="strong-title">More information</strong>
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Website</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: WebsiteName" disabled="disabled" name="WebsiteName" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Shop<span class="color-red">*</span></label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <select data-bind="value: ShopId" class="form-control shop-search" style="width: 100%;"></select>
+                                            <a data-bind="click: showAddShop" href="javascript:;" class="input-group-addon btn-success"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">exchange rate</label>
+                                <div class="col-sm-8">
+                                    <input data-bind="value: ExchangeRate" disabled="disabled" name="ExchangeRate" type="text" class="form-control decimalCN">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Warehouse reception</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control select-view mb10" style="width: 100%;" data-bind="options: listWarehouseVN, optionsText: 'Name', optionsValue: 'Id', value: warehouseVNId, optionsCaption: '-- Choose warehouse --', "></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box-order">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">customer notes on the order</h3>
+                    </div>
+                    <div class="box-body">
+                        <div>
+                            <!-- ko if: Note() == null -->
+                            ---
+                            <!-- /ko -->
+                            <!-- ko ifnot: Note() == null -->
+                            <p data-bind="text: Note()"></p>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-order">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Ordering staff's note</h3>
+                    </div>
+                    <div class="box-body">
+                        <div>
+                            <!-- ko if: UserNote() == null -->
+                            ---
+                            <!-- /ko -->
+                            <!-- ko ifnot: UserNote() == null -->
+                            <p data-bind="text: UserNote()"></p>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-sm-12 invoice-col">
+                <div class="form-group">
+                    <b class="strong-title">Service is in use: </b>
+                    <div data-bind="foreach:  listOrderService">
+                        <label style="margin-right:10px;">
+                            <!-- ko if: Checked == 0 -->
+                            <a data-bind="click: (Mode == 1 || $parent.Status() > @deliveryShop) ? '' :  $parent.updateService" href="javascript:;"><i style="font-size: 19px; margin: 4px; color:red" class="fa fa-square-o"></i><span data-bind="text: ServiceName"></span></a>
+                            <br />
+                            <span class="pull-right">0 Baht</span>
+                            <!-- /ko -->
+                            <!-- ko ifnot: Checked == 0 -->
+                            <a data-bind="click: (Mode == 1 || $parent.Status() > @deliveryShop) ? '' :  $parent.updateService" href="javascript:;"><i style="font-size: 19px; margin: 4px; color:forestgreen" class="fa fa-check-square-o"></i><span data-bind="text: ServiceName"></span></a>
+                            <br />
+                            <span data-bind="text: formatNumbericCN(TotalPrice, 'N2') + ' Baht'" class="pull-right"></span>
+                            <!-- /ko -->
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Detail order: </b>
+                    <span data-bind="if: listDetail().length != 0">
+                        <span colspan="12"> Total link: <b data-bind="text: listDetail().length"></b> - Total  Customer order: <b data-bind="text: formatNumbericCN(_.sumBy(listDetail(), function(o) { return  Globalize('en-US').parseFloat(o.Quantity()); }),'N0')"></b> - Total Product achieved: <b data-bind="text: formatNumbericCN(_.sumBy(listDetail(), function(o) { return  o.Status != 1 ? Globalize('en-US').parseFloat(o.QuantityBooked()) : 0; }),'N0')"></b></span>
+                    </span>
+                    @*<span class="pull-right">Số link đặt được: <b data-bind="text: successDetail()"></b>/<span data-bind="text: listDetail().length"></span></span>*@
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                <th class="text-center w-250"><i class="fa fa-cube"></i> Product</th>
+                                <th class="text-center"><i class="fa fa-exclamation-circle"></i>Property</th>
+                                <th class="text-center"><i class="fa fa-globe"></i> Shop name</th>
+                                <th class="text-center"><i class="fa fa-sticky-note-o"></i> customer notes on link</th>
+                                <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i> Order customer</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-cubes"></i> achieved</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-money"></i> Product price (CNY)</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-superscript"></i> Total (CNY)</th>
+                                <th class="text-center"><i class="fa fa-file"></i> customer notes on link</th>
+                                <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                <!-- ko if: Status() < @statusWaitAccountant -->
+                                <th class="text-center"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                                <!-- /ko -->
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: {data: listDetail(), afterRender: renderedHandler}">
+                            <tr data-bind="style:{ 'background-color' :  Status != @orderdetailCancel ? '' : 'bisque' }">
+                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                <td class="text-center">
+                                    <img data-bind="attr: { src: Image }" style="width: 80px; height: 80px; margin-bottom: 5px;" alt="" /><br />
+                                    <span data-bind="attr: { id: 'editableImg'+ Id}, editable: Image, editableOptions: {name: 'image', pk: Id, url: '', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit'}" class="editable-img"></span>
+                                    <a data-bind="attr: { id: 'editableBtn'+ Id}" class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-edit"></i></a>
+                                    <a data-bind="click: $parent.showImg" class="btn btn-default btn-xs" href="javascript:;"><i class="fa fa-search"></i></a>
+                                </td>
+                                <td>
+                                   Product name : <span data-bind="editable: Name, editableOptions: {name: 'name', pk: Id, url: '', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}"></span><br /><br />
+                                    Link: <span data-bind="attr: { id: 'editableLink'+ Id}, editable: Link, editableOptions: {name: 'link', pk: Id, url: '', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}" class="editable-img"></span> <a data-bind="attr: { id: 'editableBtl'+ Id}" href="javascript:;">Change</a><br /><br />
+                                    <a data-bind="click: clickRead, attr: { href: Link}, css: IsView() == true ? '' : 'isRead'" href="javascript:;" target="_blank">Xem sản phẩm</a>
+                                </td>
+                                <td>
+                                    <!-- ko if: (Properties != '' && Properties != '[]' ) -->
+                                    <div data-bind="foreach: JSON.parse(Properties)">
+                                        <span data-bind="text: Label"></span>: <span data-bind="text: Text"></span><br /><br />
+                                    </div>
+                                    <!-- /ko -->
+                                    Color: <span data-bind="editable: Color, editableOptions: {name: 'color', pk: Id, url: '', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}"></span><br /><br />
+                                    Size: <span data-bind="editable: Size, editableOptions: {name: 'size', pk: Id, url: '', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}"></span>
+                                </td>
+                                <td>
+                                    <span data-bind="editable: ShopName, editableOptions: {name: 'shopName', pk: Id, url: '', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}"></span>
+                                </td>
+                                <td>
+                                    <span data-bind="editable: Note, editableOptions: {name: 'note', pk: Id, url: '', type: 'textarea', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}"></span>
+                                </td>
+                                <td class="text-center">
+                                    <!-- ko if: Status != @orderdetailCancel -->
+                                                     <!-- ko if: $parent.Status() < @statusWaitAccountant -->
+                                    <input data-bind="value: Quantity" class="text-right form-control decimalCN" type="text" />
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: $parent.Status() < @statusWaitAccountant -->
+                                    <span data-bind="text: Quantity"></span>
+                                    <!-- /ko -->
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status != @orderdetailCancel -->
+                                    <span data-bind="text: Quantity"></span>
+                                    <!-- /ko -->
+                                </td>
+                                <td class="text-center">
+                                    <!-- ko if: Status != @orderdetailCancel -->
+                                                     <!-- ko if: $parent.Status() < @statusWaitAccountant -->
+                                    <input data-bind="value: QuantityBooked" class="text-right form-control decimalCN" type="text" />
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: $parent.Status() < @statusWaitAccountant -->
+                                    <span data-bind="text: QuantityBooked"></span>
+                                    <!-- /ko -->
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status != @orderdetailCancel -->
+                                    <span>0</span>
+                                    <!-- /ko -->
+                                </td>
+                                <td class="text-center">
+                                    <!-- ko if: $parent.Status() < @statusWaitAccountant -->
+                                    <input data-bind="value: Price" class="text-right form-control decimalCN" type="text" />
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: $parent.Status() < @statusWaitAccountant -->
+                                    <span data-bind="text: Price"></span>
+                                    <!-- /ko -->
+                                </td>
+                                <td class="text-right">
+                                    <!-- ko if: Status != @orderdetailCancel -->
+                                    <span data-bind="text: TotalPrice"></span>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status != @orderdetailCancel -->
+                                    <span>0</span>
+                                    <!-- /ko -->
+                                </td>
+                                <td>
+                                    <span data-bind="editable: UserNote, editableOptions: {name: 'userNote', pk: Id, url: '', type: 'textarea', title: 'Nhập note', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not entered'}" style="resize: none; min-height: 20px;" data-autoresize></span>
+                                </td>
+                                <td class="text-center">
+                                    <span data-bind="text: statusApp.orderDetail[Status].Name, css: statusApp.orderDetail[Status].Class"></span>
+                                </td>
+                                <!-- ko if: $parent.Status() < @statusWaitAccountant -->
+                                <td class="text-center">
+
+                                    @if (update)
+                                    {
+                                        <!-- ko if: Status != @orderdetailSuccess -->
+                                    <a data-bind="click: $parent.orderDetailSuccess" href="javascript:;" class="btn btn-success btn-xs" title="Đặt được"><i class="fa fa-check"></i></a>
+
+                                        <!-- /ko -->
+                                        <!-- ko if: Status != @orderdetailCancel -->
+                                    <a data-bind="click: $parent.orderDetailCancel" href="javascript:;" class="btn btn-danger btn-xs" title="Không đặt được"><i class="fa fa-times"></i></a>
+                                        <a data-bind="click: $parent.forwardLink" href="javascript:;" class="btn btn-info btn-xs" title="Chuyển Link"><i class="fa fa-reply"></i></a>
+                                        <!-- /ko -->
+                                    }
+                                </td>
+                                <!-- /ko -->
+                            </tr>
+                        </tbody>
+                        <tfoot data-bind="if: listDetail().length == 0">
+                            <tr>
+                                <td colspan="12">Order no details</td>
+                            </tr>
+                        </tfoot>
+                        
+                    </table>
+                    <!-- ko if: listDetail().length > 1 -->
+                    <a data-bind="click: separationOrder" class="btn btn-info">Split orders</a>
+                    <!-- /ko -->
+                    <!-- ko if: listOrderView().length > 0 -->
+                    <b>
+                        Split into orders:
+                        <!-- ko foreach: listOrderView -->
+                        <a data-bind="attr: { href: '/Ticket#SHOW#' + ReturnCode(Code) }, text: ReturnCode(Code) " href="javascript:;" target="_blank"></a>,
+                        <!-- /ko -->
+                    </b>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><strong class="strong-title">Customer care staff handle:</strong></span>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-md-8">
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <table class="table-view">
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-xs-3">Inland shipping fee CN</td>
+                                            <td><input type="text" class="text-right form-control decimalCN" data-bind="value: FeeShip, valueUpdate: 'blur'" autocomplete="off"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Choose Order Type
+                                            </td>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <label><input data-bind="checked: IsRetail, checkedValue: false, disable: (Status() >= @orderDeposit)" type="radio" name="ordsou" value="false" /> an order</label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label><input data-bind="checked: IsRetail, checkedValue: true, disable: (Status() >=  @orderDeposit)" type="radio" name="ordsou" value="true" />single order</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table-view detail-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-3"></th>
+                                            <th class="text-right" style="border-right: 1px solid #D2D6DE">payment Customer (CNY)</th>
+                                            <th class="text-right" style="color: red">Paymnet Company (CNY)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Money Order(H)</td>
+                                            <td data-bind="text: TotalPrice()" class="text-right" style="border-right: 1px solid #D2D6DE"></td>
+                                            <td class="text-right">--</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ship fee (S)</td>
+                                            <td data-bind="text:  FeeShip()" class="text-right" style="border-right: 1px solid #D2D6DE"></td>
+                                            <td class="text-right">--</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total money(T=H+S)</td>
+                                            <td data-bind="text: TotalPriceCustomer()" class="text-right" style="border-right: 1px solid #D2D6DE"></td>
+                                            <td class="text-right">--</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bargain money(T1-T2)</td>
+                                            <td class="text-right" colspan="2">--</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br />
+                                <strong>
+                                    <span data-bind="text: '(Rates apply for daily orders: 1 yuan = ' + formatNumbericCN(ExchangeRate(), 'N2') + ' Baht)'"></span>
+                                </strong>
+                                <div class="p5" style="border-bottom: 1px solid #D2D6DE; width: 100%"></div>
+                                <div class="table-responsive">
+                                    <table class="table-view">
+                                        <tr>
+                                            <td class="col-xs-6">Order money (Baht)</td>
+                                            <td data-bind="text: TotalExchange()" class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Service fee(Baht)</td>
+                                            <td data-bind="text: formatNumbericCN(totalPriceService(), 'N2')" class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>total money (Baht)</td>
+                                            <td data-bind="text: Total()" class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Deposit(Baht)</td>
+                                            <td class="text-right">--</td>
+                                        </tr>
+                                        <tr>
+                                            <td>customer must pay (Baht)</td>
+                                            <td data-bind="text: '--'" class="text-right"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="p5" style="border-bottom: 1px solid #D2D6DE; width: 100%"></div>
+                                <div class="table-responsive">
+                                    <table class="table-view">
+                                        <tr>
+                                            <td class="col-xs-6">customer must deposit (<span data-bind="text: DepositPercent()"></span>%) (Baht) </td>
+                                            <td data-bind="text: formatNumbericCN((DepositPercent() * Globalize('en-US').parseFloat(TotalExchange())/100), 'N2')" class="text-right"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="with: viewBoxChat" id="divShowBoxChat" class="col-md-4">
+                <div data-bind="template: { name: templateChatId }"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#history">
+                            <strong class="strong-title">Order history:</strong>
+                            <span data-bind="click: checkShowHistory" href="javascript:;" class="pull-right btn btn-info btn-xs ml15">
+                                <!-- ko ifnot: isShowHistory -->
+                               View <i class="fa fa-chevron-down"></i>
+                                <!-- /ko -->
+                                <!-- ko if: isShowHistory -->
+                               Close <i class="fa fa-chevron-up"></i>
+                                <!-- /ko -->
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#log">
+                            <span>
+                                <strong class="strong-title">Order processing history:</strong>
+                                <span data-bind="click: checkShowLog" class="pull-right btn btn-info btn-xs ml15">
+                                    <!-- ko ifnot: isShowLog -->
+                                   View <i class="fa fa-chevron-down"></i>
+                                    <!-- /ko -->
+                                    <!-- ko if: isShowLog -->
+                                   Close <i class="fa fa-chevron-up"></i>
+                                    <!-- /ko -->
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+
+        <div class="tab-content">
+            <div id="history" class="tab-pane fade in active">
+                <ul class="timeline timeline-inverse">
+                    <!-- ko if: isShowHistory -->
+                    <!-- ko foreach: listHistory -->
+                    <li>
+                        <i data-bind="css: statusApp.order[Status].Ifa"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-calendar-check-o"></i> <span data-bind="text: moment(CreateDate).format('L LTS')"></span></span>
+                            <!-- ko if: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: CustomerName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                            <!-- ko ifnot: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: UserFullName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+            <div id="log" class="tab-pane fade">
+                <!-- ko if: isShowLog -->
+                <table class="table table-bordered table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>Time </th>
+                            <th>The operator</th>
+                            <th>Title</th>
+                            <th>Content </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: listLog -->
+                        <tr>
+                            <td>
+                                <span data-bind="text: moment(CreateDate).format('L LTS')"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: UserFullName"></span>
+                            </td>
+                            <td>
+                                <span data-bind="html: Content"></span>
+                            </td>
+                            <td>
+                                <!-- ko if: Type == 1 -->
+                                <table>
+                                    <tr>
+                                        <td data-bind="foreach: JSON.parse(DataBefore)" class="p10">
+                                            <b data-bind="text: Name"></b>: <span data-bind="text: Value"></span><br />
+                                        </td>
+                                        <td class="p10"><i class="fa fa-long-arrow-right"></i></td>
+                                        <td data-bind="foreach: JSON.parse(DataAfter)">
+                                            <b data-bind="text: Name"></b>: <span data-bind="text: Value"></span><br />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- /ko -->
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal-footer">
+    @if (update)
+    {
+        <!-- ko if: Status() == @orderWait -->
+        <button data-bind="click: orderWait" type="button" class="btn btn-success"><i class="fa fa-send"></i> Send quote</button>
+        <!-- /ko -->
+    }
+    @if (delete)
+    {
+        <!-- ko if: Status() < @statusOrder -->
+        <button data-bind="click: orderCloseDetailView" type="button" class="btn btn-danger"><i class="fa fa-times"></i>Cancel</button>
+        <!-- /ko -->
+    }
+    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button>
+</div>
+</div>
+
+<div id="update" class="modal modal-dialog modal-p90" tabindex="-1" data-backdrop="static" role="dialog" style="background: transparent !important; box-shadow: 0px 0px;">
+    <div class="text-center">
+        <div class="box-update">
+            <span class="loader loader-quart-9"></span>
+            Updating...
+        </div>
+    </div>
+</div>
+
+<div id="shopAdd" class="modal fade modal-dialog modal-p50" tabindex="-1" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-danger">Add new shop </h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                Shop name<span class="color-red">*</span>
+                <input data-bind="value: ShopName" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                Link shop<span class="color-red">*</span>
+                <input data-bind="value: ShopLink" class="form-control" required />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-bind="click: submitShop, enable: isSubmit" type="button" class="btn btn-primary">
+            <!-- ko if: isSubmit()-->
+            <i class="fa fa-check"></i>
+            <!-- /ko -->
+            <!-- ko if: !isSubmit()-->
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <!-- /ko -->
+            Confirm
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+<div id="shopImg" class="modal fade modal-dialog modal-p50" tabindex="-1" role="dialog">
+    <div class="modal-body">
+        <div class="row text-center">
+            <img data-bind="attr: { src: imgView }" style="width: 90%;" alt="" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+
+<div id="forwardLink" class="modal fade modal-dialog modal-p60" tabindex="-1" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-danger">Transfer order link</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Link information transfer:</h4>
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                            <th class="text-center"><i class="fa fa-cube"></i> Product</th>
+                            <th class="text-center"><i class="fa fa-exclamation-circle"></i>Property</th>
+                            <th class="text-center"><i class="fa fa-globe"></i>shop name</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: linkData">
+                        <tr>
+                            <td class="text-center">
+                                <img data-bind="attr: { src: Image }" style="width: 40px; height: 40px;" alt="" />
+                            </td>
+                            <td>
+                                Product name:<a data-bind="text: Name, attr: { href: Link}"></a>
+                            </td>
+                            <td>
+                                <!-- ko if: (Properties != '' && Properties != '[]' ) -->
+                                <div data-bind="foreach: JSON.parse(Properties)">
+                                    <span data-bind="text: Label"></span>: <span data-bind="text: Text"></span><br />
+                                </div>
+                                <!-- /ko -->
+                                Color: <span data-bind="text: Color"></span><br />
+                                Size: <span data-bind="text: Size"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: ShopName"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr />
+                <h4>List of transfer orders:</h4>
+                <input data-bind="value: searchLink, valueUpdate: 'afterkeydown' " class="form-control" placeholder="Enter order code" />
+                <br />
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Code order</th>
+                            <th>Status</th>
+                            <th>Care Staff</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: listOrderForward">
+                        <tr>
+                            <td class="text-center">
+                                <label style="display: block; width: 100%;">
+                                    <input data-bind="checked: $parent.CheckValue, checkedValue: Id" name="orderCheck" type="radio" />
+                                </label>
+                            </td>
+                            <td data-bind="text: ReturnCode(Code)"></td>
+                            <td>
+                                <span data-bind="text: statusApp.order[Status].Name, css: statusApp.order[Status].Class"></span>
+                            </td>
+                            <td data-bind="text: CustomerCareFullName + '(' + CustomerCareName + ')'  "></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <!-- ko if: listOrderForward().length == 0 -->
+                        <tr>
+                            <th colspan="4">
+                                No orders received transfer link!
+                            </th>
+                        </tr>
+                        <!-- /ko -->
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button data-bind="click: submitForwardLink, enable: isSubmit" type="button" class="btn btn-primary">
+            <!-- ko if: isSubmit()-->
+            <i class="fa fa-check"></i>
+            <!-- /ko -->
+            <!-- ko if: !isSubmit()-->
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <!-- /ko -->
+            Confirm
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+
+<style>
+    .table-view {
+        width: 100%;
+    }
+
+        .table-view td, .table-view th {
+            padding: 1px;
+        }
+
+    .modal-backdrop {
+        background: transparent;
+    }
+</style>

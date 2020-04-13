@@ -1,0 +1,19 @@
+﻿var requestShipModel = function () {
+    this.Id = ko.observable();
+    this.Code = ko.observable();
+    this.OrderId = ko.observable();
+    this.OrderCode = ko.observable();
+    this.PackageCode = ko.observable();
+    this.CreateDate = ko.observable();
+    this.UpdateDate = ko.observable();
+    this.CustomerId = ko.observable();
+    this.CustomerName = ko.observable();
+    this.CustomerEmail = ko.observable();
+    this.CustomerPhone = ko.observable();
+    this.CustomerAddress = ko.observable();
+    this.Status = ko.observable();
+    this.SystemId = ko.observable();
+    this.SystemName = ko.observable();
+    this.IsDelete = ko.observable();
+    this.Note = ko.observable();
+};

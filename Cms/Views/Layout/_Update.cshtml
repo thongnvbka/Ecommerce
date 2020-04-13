@@ -1,0 +1,179 @@
+﻿@model LayoutMeta
+
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+@Html.HiddenFor(x => x.WarehouseName)
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Warehouse</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.DropDownListFor(x => x.WarehouseId, new SelectList((List<DropdownItem>)ViewBag.WareHouseJsTree, "Value", "Text"), new Dictionary<string, object>()
+        {
+            {"class", "form-control"},
+            {"onchange","SetWarehouseName()" }
+        })
+    </div>
+</div>
+<div class="form-group">
+    <label for="ParentId" class="col-sm-2 control-label">Parent layout</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        <div id="layout_tree"></div>
+        @Html.HiddenFor(x=> x.ParentLayoutId)
+        @Html.HiddenFor(x => x.ParentLayoutName)
+        @Html.ValidationMessageFor(x => x.ParentLayoutId)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Code" class="col-sm-2 control-label">Layout Code <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Code, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+        @Html.ValidationMessageFor(x => x.Code)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Name <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Unit type </label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.DropDownListFor(x => x.Mode, new List<SelectListItem>()
+                {
+                    new SelectItem() { Value = "0", Text = "Area", Selected = true},
+                    new SelectItem() { Value = "1", Text = "Layout" },
+                    new SelectItem() { Value = "2", Text = "Shelves" },
+                    new SelectItem() { Value = "3", Text = "Items in shelves" },
+                    new SelectItem() { Value = "4", Text = "Bin in shelves" }
+                }, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"}
+                })
+    </div>
+</div>
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Status</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.DropDownListFor(x => x.Status, new List<SelectListItem>()
+        {
+            new SelectItem() { Value = "0", Text = "new" , Selected = true},
+            new SelectItem() { Value = "1", Text = "Current"  },
+            new SelectItem() { Value = "2", Text = "old" }
+        }, new Dictionary<string, object>()
+        {
+            {"class", "form-control"}
+        })
+        @Html.ValidationMessageFor(x => x.Status)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Describe</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextAreaFor(x => x.Description, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Long</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Length, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Width</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Width, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Height (cm)</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Height, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Maximum weight (kg)</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.MaxWeight, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+    </div>
+</div>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function SetWarehouseName(){
+            $('#WarehouseName').val($('#WarehouseId').find(":selected").text());
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetLayoutJsTreeByWareHouse", "Layout")',
+                data: {selectedId: $('#WarehouseId').val()},
+                async: false,
+                success: function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        SetLayoutTree(JSON.parse(data));
+                    }
+                }
+            });
+        }
+        function SetLayoutTree(tmpTree){
+            $("#layout_tree .dropdownjstree").remove();
+            $("#layout_tree").dropdownjstree({
+                source: tmpTree,
+                dropdownLabel: 'Choose a superior layout',
+                dropdownLabelClick: () => {
+                    $("#ParentLayoutId").val("");
+                    $('#ParentLayoutName').val("");
+                },
+                selectedNode: '@(Model == null || Model.ParentLayoutId == null ? "" : Model.ParentLayoutId.ToString())',
+                selectNote: (node, selected) => {
+                    $('#ParentLayoutId').val(selected.node.id);
+                    $('#ParentLayoutName').val(selected.node.text);
+                }
+            });
+        }
+        $(function () {
+            SetWarehouseName();
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+            $('#btnSubmit').click(function(){
+                if($('#WarehouseId').val() != '-1'){
+                    $('#frmSubmit').submit();
+                }
+                else{
+                    toastr.error('Please select a warehouse.');
+                }
+            })
+        });
+    </script>
+}

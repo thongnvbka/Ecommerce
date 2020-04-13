@@ -1,0 +1,18 @@
+﻿<script type="text/html" id="ListPartner">
+    <tr>
+        <td data-bind="text: (page-1)* pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewPartnerModal" href="javascript:;"><strong data-bind="text: Name"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: Code"></td>
+        <td class="text-center" data-bind="text: statusApp.statusPartner[Status].Name">
+        </td>
+        <td class="text-center" data-bind="text: Description"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewPartnerModal" href="javascript:;"
+               class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+            <a data-bind="click: $parent.removePartner" href="javascript:;"
+               class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete Product Cart  </a>
+        </td>
+    </tr>
+</script>

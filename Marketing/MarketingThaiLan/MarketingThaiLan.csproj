@@ -1,0 +1,1109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7A81DE1-AA0A-4AD2-B6A6-D33A5B43F060}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MarketingThaiLan</RootNamespace>
+    <AssemblyName>MarketingThaiLan</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css-marketing\css-marketing.css" />
+    <Content Include="Content\css-marketing\css-vs-z.com.css" />
+    <Content Include="Content\css-marketing\m_page.min.css" />
+    <Content Include="Content\css-marketing\sell_at_website.min.css" />
+    <Content Include="Content\css-marketing\style.min-help.css" />
+    <Content Include="Content\css-marketing\style.vs-marketing.css" />
+    <Content Include="Content\css-marketing\style2.css" />
+    <Content Include="Content\css\default.min.vs.1.5.5.css" />
+    <Content Include="Content\css\default.min.vs1.3.3.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\live-chat.css" />
+    <Content Include="Content\css\slide-theme.css" />
+    <Content Include="Content\css\style-help.css" />
+    <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot%40" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot%40v=4.3.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg%40v=4.3.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf%40v=4.3.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff%40v=4.3.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2%40v=4.3.0" />
+    <Content Include="Content\font-roboto\fonts\Roboto-Bold.ttf" />
+    <Content Include="Content\font-roboto\fonts\Roboto-Light.ttf" />
+    <Content Include="Content\font-roboto\fonts\Roboto-Medium.ttf" />
+    <Content Include="Content\font-roboto\fonts\Roboto-Regular.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\image-marketing\landingpage\11335923-0-icon1.png" />
+    <Content Include="Content\image-marketing\landingpage\11338473-0-icon-4.png" />
+    <Content Include="Content\image-marketing\landingpage\11362938-0-footer-background.png" />
+    <Content Include="Content\image-marketing\landingpage\11393048-0-banner-1920x580.png" />
+    <Content Include="Content\image-marketing\landingpage\11517713-0-logo-2.png" />
+    <Content Include="Content\image-marketing\landingpage\11517738-0-logo-zcom-01.png" />
+    <Content Include="Content\image-marketing\landingpage\12000123-0-bg.png" />
+    <Content Include="Content\image-marketing\landingpage\12003983-0-icon-1.png" />
+    <Content Include="Content\image-marketing\landingpage\12003988-0-icon-2.png" />
+    <Content Include="Content\image-marketing\landingpage\12007253-0-bg--2.png" />
+    <Content Include="Content\image-marketing\landingpage\4c03cb226fff8fabd1951f67a238640d.jpeg" />
+    <Content Include="Content\image-marketing\landingpage\8932273-0-Check.png" />
+    <Content Include="Content\image-marketing\landingpage\highlight_styles.png" />
+    <Content Include="Content\image-marketing\landingpage\loading_circle.svg" />
+    <Content Include="Content\images\404.jpg" />
+    <Content Include="Content\images\aboutus\bg-about-us-banner.jpg" />
+    <Content Include="Content\images\aboutus\bg-about-us.jpg" />
+    <Content Include="Content\images\aboutus\icon-customer.png" />
+    <Content Include="Content\images\aboutus\icon-employee.png" />
+    <Content Include="Content\images\aboutus\icon-income.png" />
+    <Content Include="Content\images\aboutus\icon-quote-left.png" />
+    <Content Include="Content\images\aboutus\icon-quote-right.png" />
+    <Content Include="Content\images\aboutus\img-about-us-intro.png" />
+    <Content Include="Content\images\aboutus\img-about-us-question.png" />
+    <Content Include="Content\images\affiliate\affiliate-block1-bg.png" />
+    <Content Include="Content\images\affiliate\affiliate-block1-quote1.png" />
+    <Content Include="Content\images\affiliate\affiliate-block1-quote2.png" />
+    <Content Include="Content\images\affiliate\affiliate-block1-quote3.png" />
+    <Content Include="Content\images\affiliate\affiliate-block1-tablet-bg.png" />
+    <Content Include="Content\images\affiliate\affiliate-block2-icon1.png" />
+    <Content Include="Content\images\affiliate\affiliate-block2-icon2.png" />
+    <Content Include="Content\images\affiliate\affiliate-block2-icon3.png" />
+    <Content Include="Content\images\affiliate\affiliate-block2-icon4.png" />
+    <Content Include="Content\images\affiliate\affiliate-block3-img1.png" />
+    <Content Include="Content\images\affiliate\affiliate-block3-img2.png" />
+    <Content Include="Content\images\affiliate\affiliate-block4-bg.png" />
+    <Content Include="Content\images\affiliate\affiliate-block4-img1.png" />
+    <Content Include="Content\images\affiliate\affiliate-block5-icon1.png" />
+    <Content Include="Content\images\affiliate\affiliate-block5-icon2.png" />
+    <Content Include="Content\images\affiliate\affiliate-block5-icon3.png" />
+    <Content Include="Content\images\affiliate\affiliate-block5-icon4.png" />
+    <Content Include="Content\images\affiliate\affiliate-crown.png" />
+    <Content Include="Content\images\affiliate\affiliate-mobile-quote.png" />
+    <Content Include="Content\images\affiliate\affiliate-quote-mobile-2.png" />
+    <Content Include="Content\images\affiliate\banner.jpg" />
+    <Content Include="Content\images\affiliate\banner.png" />
+    <Content Include="Content\images\affiliate\bottom_body.jpg" />
+    <Content Include="Content\images\affiliate\key.png" />
+    <Content Include="Content\images\affiliate\money.png" />
+    <Content Include="Content\images\affiliate\promote-bg.png" />
+    <Content Include="Content\images\affiliate\questions.jpg" />
+    <Content Include="Content\images\affiliate\ruler_pencil.png" />
+    <Content Include="Content\images\affiliate\share.png" />
+    <Content Include="Content\images\affiliate\star.png" />
+    <Content Include="Content\images\affiliate\step-1.png" />
+    <Content Include="Content\images\affiliate\step-2.png" />
+    <Content Include="Content\images\affiliate\step-3.png" />
+    <Content Include="Content\images\affiliate\sub-comment-2.png" />
+    <Content Include="Content\images\affiliate\sub-comment.png" />
+    <Content Include="Content\images\affiliate\theme.png" />
+    <Content Include="Content\images\app_check.png" />
+    <Content Include="Content\images\arrow-next.png" />
+    <Content Include="Content\images\arrow-prev.png" />
+    <Content Include="Content\images\arrow-up.png" />
+    <Content Include="Content\images\asset2\bg-info.jpg" />
+    <Content Include="Content\images\asset2\bg-list.jpg" />
+    <Content Include="Content\images\asset2\bg-parther.jpg" />
+    <Content Include="Content\images\asset2\bg-themepartner.jpg" />
+    <Content Include="Content\images\asset2\bg-top.jpg" />
+    <Content Include="Content\images\asset2\folder.png" />
+    <Content Include="Content\images\asset2\iconbat.jpg" />
+    <Content Include="Content\images\asset2\iconbook.jpg" />
+    <Content Include="Content\images\asset2\iconcar.jpg" />
+    <Content Include="Content\images\asset2\iconcircle.jpg" />
+    <Content Include="Content\images\asset2\iconfree.jpg" />
+    <Content Include="Content\images\asset2\iconmario.jpg" />
+    <Content Include="Content\images\asset2\laptop.png" />
+    <Content Include="Content\images\asset2\newspaper.png" />
+    <Content Include="Content\images\asset2\paper.png" />
+    <Content Include="Content\images\asset2\puzzle.png" />
+    <Content Include="Content\images\asset2\support24.png" />
+    <Content Include="Content\images\asset2\toolkit.png" />
+    <Content Include="Content\images\backgroud-support.png" />
+    <Content Include="Content\images\background2.png" />
+    <Content Include="Content\images\backgrounf-how-to-sales.png" />
+    <Content Include="Content\images\banner\12000488-0-san-pham.png" />
+    <Content Include="Content\images\banner\banner-partner2.png" />
+    <Content Include="Content\images\banner\banner_doitac_dieukhoan.jpg" />
+    <Content Include="Content\images\banner\bg-enom-ext.jpg" />
+    <Content Include="Content\images\banner\bg-video.jpg" />
+    <Content Include="Content\images\banner\bg-vn-ext.jpg" />
+    <Content Include="Content\images\banner\bg_app_store.png" />
+    <Content Include="Content\images\banner\bg_app_store_sm.png" />
+    <Content Include="Content\images\banner\bg_customer_comments.png" />
+    <Content Include="Content\images\banner\cart.png" />
+    <Content Include="Content\images\banner\desc_management.png" />
+    <Content Include="Content\images\banner\desc_seo.png" />
+    <Content Include="Content\images\banner\desc_style.png" />
+    <Content Include="Content\images\banner\ghn.png" />
+    <Content Include="Content\images\banner\i.jpg" />
+    <Content Include="Content\images\banner\icon-check.jpg" />
+    <Content Include="Content\images\banner\icon-down-g.png" />
+    <Content Include="Content\images\banner\icon-down.png" />
+    <Content Include="Content\images\banner\icon-download-hover.jpg" />
+    <Content Include="Content\images\banner\icon-download.jpg" />
+    <Content Include="Content\images\banner\icon-item.png" />
+    <Content Include="Content\images\banner\icon-submenu.png" />
+    <Content Include="Content\images\banner\icon-veiw.png" />
+    <Content Include="Content\images\banner\iconhongke.jpg" />
+    <Content Include="Content\images\banner\lighter.jpg" />
+    <Content Include="Content\images\banner\lock.jpg" />
+    <Content Include="Content\images\banner\mail.jpg" />
+    <Content Include="Content\images\banner\marketing.png" />
+    <Content Include="Content\images\banner\phone.jpg" />
+    <Content Include="Content\images\banner\play-hover.png" />
+    <Content Include="Content\images\banner\sapo.png" />
+    <Content Include="Content\images\banner\search-banner.jpg" />
+    <Content Include="Content\images\banner\ship.png" />
+    <Content Include="Content\images\banner\tag.png" />
+    <Content Include="Content\images\banner\vht.png" />
+    <Content Include="Content\images\banner\zopim.png" />
+    <Content Include="Content\images\banner_icon1.png" />
+    <Content Include="Content\images\banner_icon2.png" />
+    <Content Include="Content\images\bg-4.jpg" />
+    <Content Include="Content\images\bg-pattern-2.jpg" />
+    <Content Include="Content\images\bg-pattern-3.jpg" />
+    <Content Include="Content\images\bg_aboutus.png" />
+    <Content Include="Content\images\bg_registration.png" />
+    <Content Include="Content\images\bg_top_new.jpg" />
+    <Content Include="Content\images\bizweb.png" />
+    <Content Include="Content\images\bizweb_banner.png" />
+    <Content Include="Content\images\bizweb_new_logo_short.png" />
+    <Content Include="Content\images\bizweb_old_logo.png" />
+    <Content Include="Content\images\bizweb_old_logo_short.png" />
+    <Content Include="Content\images\bizweb_price_logo.png" />
+    <Content Include="Content\images\bocongthuong.png" />
+    <Content Include="Content\images\cafebiz-logo.png" />
+    <Content Include="Content\images\contact\img-contact-map.png" />
+    <Content Include="Content\images\contact\map-maker.png" />
+    <Content Include="Content\images\customer-image-video.png" />
+    <Content Include="Content\images\Domain\domain-free-banner-bg.png" />
+    <Content Include="Content\images\Domain\domain-free-banner.jpg" />
+    <Content Include="Content\images\Domain\domain-free-block1-bg.png" />
+    <Content Include="Content\images\Domain\domain-free-block1-img.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-cup.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-handshake.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-icon.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-img1.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-img2.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-img3.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-img4.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-number1.png" />
+    <Content Include="Content\images\Domain\domain-free-block2-number2.png" />
+    <Content Include="Content\images\Domain\domain-free-block3-img1.png" />
+    <Content Include="Content\images\Domain\domain-free-block3-img2.png" />
+    <Content Include="Content\images\Domain\domain-free-block3-img3.png" />
+    <Content Include="Content\images\Domain\domain-free-block3-img7.png" />
+    <Content Include="Content\images\Domain\icon-domain-support.png" />
+    <Content Include="Content\images\Domain\refresh.png" />
+    <Content Include="Content\images\Domain\register-success.png" />
+    <Content Include="Content\images\fsvecom.png" />
+    <Content Include="Content\images\func\bg-tab_02.jpg" />
+    <Content Include="Content\images\func\cloud.png" />
+    <Content Include="Content\images\func\icon-mob-nav.png" />
+    <Content Include="Content\images\func\icontab1-hover.png" />
+    <Content Include="Content\images\func\icontab1.png" />
+    <Content Include="Content\images\func\icontab10-hover.png" />
+    <Content Include="Content\images\func\icontab10.png" />
+    <Content Include="Content\images\func\icontab2-hover.png" />
+    <Content Include="Content\images\func\icontab2.png" />
+    <Content Include="Content\images\func\icontab3-hover.png" />
+    <Content Include="Content\images\func\icontab3.png" />
+    <Content Include="Content\images\func\icontab4-hover.png" />
+    <Content Include="Content\images\func\icontab4.png" />
+    <Content Include="Content\images\func\icontab5-hover.png" />
+    <Content Include="Content\images\func\icontab5.png" />
+    <Content Include="Content\images\func\icontab6-hover.png" />
+    <Content Include="Content\images\func\icontab6.png" />
+    <Content Include="Content\images\func\icontab7-hover.png" />
+    <Content Include="Content\images\func\icontab7.png" />
+    <Content Include="Content\images\func\icontab8-hover.png" />
+    <Content Include="Content\images\func\icontab8.png" />
+    <Content Include="Content\images\func\icontab9-hover.png" />
+    <Content Include="Content\images\func\icontab9.png" />
+    <Content Include="Content\images\func\tab1-1.png" />
+    <Content Include="Content\images\func\tab1-2.png" />
+    <Content Include="Content\images\func\tab1-3.png" />
+    <Content Include="Content\images\func\tab1-4.png" />
+    <Content Include="Content\images\func\tab1-5.png" />
+    <Content Include="Content\images\func\tab1-6.png" />
+    <Content Include="Content\images\func\tab1-7.png" />
+    <Content Include="Content\images\func\tab2-1.jpg" />
+    <Content Include="Content\images\func\tab2-2.jpg" />
+    <Content Include="Content\images\func\tab2-3.jpg" />
+    <Content Include="Content\images\func\tab2-4.jpg" />
+    <Content Include="Content\images\func\tab2-5.jpg" />
+    <Content Include="Content\images\func\tab2-6.jpg" />
+    <Content Include="Content\images\func\tab3-1.jpg" />
+    <Content Include="Content\images\func\tab3-2.jpg" />
+    <Content Include="Content\images\func\tab3-3.jpg" />
+    <Content Include="Content\images\func\tab3-4.jpg" />
+    <Content Include="Content\images\func\tab3-5.jpg" />
+    <Content Include="Content\images\func\tab3-6.jpg" />
+    <Content Include="Content\images\func\tab4-1.jpg" />
+    <Content Include="Content\images\func\tab4-2.jpg" />
+    <Content Include="Content\images\func\tab4-3.jpg" />
+    <Content Include="Content\images\func\tab4-4.jpg" />
+    <Content Include="Content\images\func\tab5-1.jpg" />
+    <Content Include="Content\images\func\tab5-2.jpg" />
+    <Content Include="Content\images\func\tab5-3.jpg" />
+    <Content Include="Content\images\func\tab5-4.jpg" />
+    <Content Include="Content\images\func\tab5-5.jpg" />
+    <Content Include="Content\images\func\tab5-6.jpg" />
+    <Content Include="Content\images\func\tab6-1.jpg" />
+    <Content Include="Content\images\func\tab6-2.jpg" />
+    <Content Include="Content\images\func\tab6-3.jpg" />
+    <Content Include="Content\images\func\tab6-4.jpg" />
+    <Content Include="Content\images\func\tab7-1.jpg" />
+    <Content Include="Content\images\func\tab7-2.jpg" />
+    <Content Include="Content\images\func\tab7-3.jpg" />
+    <Content Include="Content\images\func\tab7-4.jpg" />
+    <Content Include="Content\images\func\tab7-5.jpg" />
+    <Content Include="Content\images\func\tab7-6.jpg" />
+    <Content Include="Content\images\icon-arrow.png" />
+    <Content Include="Content\images\icon-clock.png" />
+    <Content Include="Content\images\icon-cup.png" />
+    <Content Include="Content\images\icon-down-g.png" />
+    <Content Include="Content\images\icon-home.png" />
+    <Content Include="Content\images\icon-left.png" />
+    <Content Include="Content\images\icon-lock.png" />
+    <Content Include="Content\images\icon-popup-close.png" />
+    <Content Include="Content\images\icon-right.png" />
+    <Content Include="Content\images\icon-submenu.png" />
+    <Content Include="Content\images\icon-theme.png" />
+    <Content Include="Content\images\icon-theme2.png" />
+    <Content Include="Content\images\icon-toogle-black.png" />
+    <Content Include="Content\images\icon-toogle.png" />
+    <Content Include="Content\images\icon3.png" />
+    <Content Include="Content\images\icon_cloud.png" />
+    <Content Include="Content\images\icon_email.png" />
+    <Content Include="Content\images\icon_file_att.png" />
+    <Content Include="Content\images\icon_newspaper.png" />
+    <Content Include="Content\images\icon_phone.png" />
+    <Content Include="Content\images\icon_step.png" />
+    <Content Include="Content\images\img-video-1.jpg" />
+    <Content Include="Content\images\img-video-2.jpg" />
+    <Content Include="Content\images\img-video-3.jpg" />
+    <Content Include="Content\images\img-video-4.jpg" />
+    <Content Include="Content\images\index\banner.png" />
+    <Content Include="Content\images\index\border_guide_default_horizontal.png" />
+    <Content Include="Content\images\index\border_guide_default_vertical.png" />
+    <Content Include="Content\images\index\border_guide_hover_horizontal.png" />
+    <Content Include="Content\images\index\border_guide_hover_vertical.png" />
+    <Content Include="Content\images\index\FhHRx-Spinner.gif" />
+    <Content Include="Content\images\index\icon-back.png" />
+    <Content Include="Content\images\index\icon-blog.png" />
+    <Content Include="Content\images\index\icon-document.png" />
+    <Content Include="Content\images\index\icon-forum.png" />
+    <Content Include="Content\images\index\icon-manual.png" />
+    <Content Include="Content\images\index\icon-phone.png" />
+    <Content Include="Content\images\index\icon-step.png" />
+    <Content Include="Content\images\index\icon-user-guide.png" />
+    <Content Include="Content\images\index\icon_ask.png" />
+    <Content Include="Content\images\index\icon_guide_config.png" />
+    <Content Include="Content\images\index\icon_guide_config_hover.png" />
+    <Content Include="Content\images\index\icon_guide_content.png" />
+    <Content Include="Content\images\index\icon_guide_content_hover.png" />
+    <Content Include="Content\images\index\icon_guide_custom.png" />
+    <Content Include="Content\images\index\icon_guide_custom_hover.png" />
+    <Content Include="Content\images\index\icon_guide_other.png" />
+    <Content Include="Content\images\index\icon_guide_other_hover.png" />
+    <Content Include="Content\images\index\icon_guide_store.png" />
+    <Content Include="Content\images\index\icon_guide_store_hover.png" />
+    <Content Include="Content\images\index\icon_help.png" />
+    <Content Include="Content\images\index\icon_register.png" />
+    <Content Include="Content\images\index\icon_search.png" />
+    <Content Include="Content\images\index\icon_video1.png" />
+    <Content Include="Content\images\index\ipad.png" />
+    <Content Include="Content\images\index\product1.png" />
+    <Content Include="Content\images\index\product2.png" />
+    <Content Include="Content\images\intimate\banner.png" />
+    <Content Include="Content\images\intimate\bg-bottom.png" />
+    <Content Include="Content\images\intimate\bg.png" />
+    <Content Include="Content\images\intimate\flag.png" />
+    <Content Include="Content\images\intimate\img1.png" />
+    <Content Include="Content\images\intimate\img2.png" />
+    <Content Include="Content\images\intimate\img3.png" />
+    <Content Include="Content\images\intimate\img4.png" />
+    <Content Include="Content\images\intimate\img5.png" />
+    <Content Include="Content\images\intimate\img6.png" />
+    <Content Include="Content\images\intimate\pay.png" />
+    <Content Include="Content\images\intimate\pen.png" />
+    <Content Include="Content\images\intimate\pic.png" />
+    <Content Include="Content\images\iphone.png" />
+    <Content Include="Content\images\kangaroo-video.png" />
+    <Content Include="Content\images\landing-arrow.png" />
+    <Content Include="Content\image-marketing\landingpage\12002288-0-sp-2.png" />
+    <Content Include="Content\images\landingpage\ban-ve-may-bay.jpg" />
+    <Content Include="Content\images\landingpage\ban_tranh.jpg" />
+    <Content Include="Content\images\landingpage\bat-dong-san-banner.png" />
+    <Content Include="Content\images\landingpage\Bat_dong_san.jpg" />
+    <Content Include="Content\images\landingpage\bg-website-landing-intro.png" />
+    <Content Include="Content\images\landingpage\c-food-banner.png" />
+    <Content Include="Content\images\landingpage\car1.png" />
+    <Content Include="Content\images\landingpage\car2.png" />
+    <Content Include="Content\images\landingpage\clock-header.jpg" />
+    <Content Include="Content\images\landingpage\comment-mobile-bg.png" />
+    <Content Include="Content\images\landingpage\conclusion-footer.jpg" />
+    <Content Include="Content\images\landingpage\conclusion-header.jpg" />
+    <Content Include="Content\images\landingpage\content-sales.png" />
+    <Content Include="Content\images\landingpage\dien-thoai-banner.png" />
+    <Content Include="Content\images\landingpage\dien-tu-am-thanh-banner.png" />
+    <Content Include="Content\images\landingpage\DienTu_AmThanh.jpg" />
+    <Content Include="Content\images\landingpage\Dien_thoai.jpg" />
+    <Content Include="Content\images\landingpage\Doanh-nghibp.jpg" />
+    <Content Include="Content\images\landingpage\doanh-nghiep-banner.png" />
+    <Content Include="Content\images\landingpage\Dongho.jpg" />
+    <Content Include="Content\images\landingpage\Do_an_vat.jpg" />
+    <Content Include="Content\images\landingpage\Do_choi_tre_em.jpg" />
+    <Content Include="Content\images\landingpage\Do_gia_dinh.jpg" />
+    <Content Include="Content\images\landingpage\Do_luu_niem.jpg" />
+    <Content Include="Content\images\landingpage\Do_the_thao.jpg" />
+    <Content Include="Content\images\landingpage\du-lich-banner.png" />
+    <Content Include="Content\images\landingpage\DuLich.jpg" />
+    <Content Include="Content\images\landingpage\duoc-pham-banner.png" />
+    <Content Include="Content\images\landingpage\ecommerce-banner.png" />
+    <Content Include="Content\images\landingpage\email.png" />
+    <Content Include="Content\images\landingpage\fashion-header.png" />
+    <Content Include="Content\images\landingpage\fast-food-footer.jpg" />
+    <Content Include="Content\images\landingpage\fast-food-header.jpg" />
+    <Content Include="Content\images\landingpage\flower-header.jpg" />
+    <Content Include="Content\images\landingpage\free-site-banner.png" />
+    <Content Include="Content\images\landingpage\free-site-block1-icon.png" />
+    <Content Include="Content\images\landingpage\free-site-block1-img.png" />
+    <Content Include="Content\images\landingpage\free-site-block2-bg.png" />
+    <Content Include="Content\images\landingpage\free-site-block2-bg3.png" />
+    <Content Include="Content\images\landingpage\free-site-block2-icon1.png" />
+    <Content Include="Content\images\landingpage\free-site-block2-icon2.png" />
+    <Content Include="Content\images\landingpage\free-site-block2-icon3.png" />
+    <Content Include="Content\images\landingpage\free-site-block2-img.png" />
+    <Content Include="Content\images\landingpage\free-site-block3-img1.png" />
+    <Content Include="Content\images\landingpage\free-site-block3-img2.png" />
+    <Content Include="Content\images\landingpage\free-site-block3-img3.png" />
+    <Content Include="Content\images\landingpage\free-site-block3-img4.png" />
+    <Content Include="Content\images\landingpage\free-site-block3-img5.png" />
+    <Content Include="Content\images\landingpage\free-site-block4-img1.png" />
+    <Content Include="Content\images\landingpage\free-site-block4-img2.png" />
+    <Content Include="Content\images\landingpage\free-site-block4-img3.png" />
+    <Content Include="Content\images\landingpage\free-site-block5-bg.png" />
+    <Content Include="Content\images\landingpage\free-site-block6-img1.png" />
+    <Content Include="Content\images\landingpage\free-site-block6-img2.png" />
+    <Content Include="Content\images\landingpage\furniture-banner.png" />
+    <Content Include="Content\images\landingpage\gia-dung-banner.png" />
+    <Content Include="Content\images\landingpage\gia-re-banner.png" />
+    <Content Include="Content\images\landingpage\Giaydep.jpg" />
+    <Content Include="Content\images\landingpage\hand-bag-header.jpg" />
+    <Content Include="Content\images\landingpage\Hoa-tuoi.jpg" />
+    <Content Include="Content\images\landingpage\icon-expert-cooperation.png" />
+    <Content Include="Content\images\landingpage\icon-friendly-fuction.png" />
+    <Content Include="Content\images\landingpage\icon-highly-customizable.png" />
+    <Content Include="Content\images\landingpage\icon-huge-appstore.png" />
+    <Content Include="Content\images\landingpage\icon-left.png" />
+    <Content Include="Content\images\landingpage\icon-right.png" />
+    <Content Include="Content\images\landingpage\icon-save-unlimited.png" />
+    <Content Include="Content\images\landingpage\icon-support-all-time.png" />
+    <Content Include="Content\images\landingpage\image2.jpg" />
+    <Content Include="Content\images\landingpage\image3.jpg" />
+    <Content Include="Content\images\landingpage\jewelry-header.jpg" />
+    <Content Include="Content\images\landingpage\khach-san-banner.png" />
+    <Content Include="Content\images\landingpage\Khach-spn.jpg" />
+    <Content Include="Content\images\landingpage\landing-zalo-banner.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block1-bg.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block1-img1.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block2-img1.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block2-img2.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block2-img3.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block2-img4.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block2-img5.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block2-img6.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block3-bg.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block4-img1.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block4-img2.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block4-img3.png" />
+    <Content Include="Content\images\landingpage\landing-zalo-block4-img4.png" />
+    <Content Include="Content\images\landingpage\my-nghe-header.png" />
+    <Content Include="Content\images\landingpage\mypham-banner.png" />
+    <Content Include="Content\images\landingpage\Mz-phxm.jpg" />
+    <Content Include="Content\images\landingpage\new-mobile-home-content.png" />
+    <Content Include="Content\images\landingpage\nha-hang-banner.png" />
+    <Content Include="Content\images\landingpage\Nha-hang.jpg" />
+    <Content Include="Content\images\landingpage\Nti-thtt.jpg" />
+    <Content Include="Content\images\landingpage\o-to-banner.png" />
+    <Content Include="Content\images\landingpage\Oto.jpg" />
+    <Content Include="Content\images\landingpage\partner-mobile-bg.png" />
+    <Content Include="Content\images\landingpage\pet-header.jpg" />
+    <Content Include="Content\images\landingpage\Phf-kibn-dt.jpg" />
+    <Content Include="Content\images\landingpage\phone-accessory-header.jpg" />
+    <Content Include="Content\images\landingpage\phone-call.png" />
+    <Content Include="Content\images\landingpage\picture-header.jpg" />
+    <Content Include="Content\images\landingpage\plane-ticket-header.jpg" />
+    <Content Include="Content\images\landingpage\prenant-fashion-header.jpg" />
+    <Content Include="Content\images\landingpage\recruitment-header.jpg" />
+    <Content Include="Content\images\landingpage\register-banner.png" />
+    <Content Include="Content\images\landingpage\sale-banner.png" />
+    <Content Include="Content\images\landingpage\sale-block2-banner.png" />
+    <Content Include="Content\images\landingpage\sneaker-header.jpg" />
+    <Content Include="Content\images\landingpage\souvenir-header.jpg" />
+    <Content Include="Content\images\landingpage\spa-banner.png" />
+    <Content Include="Content\images\landingpage\spa.jpg" />
+    <Content Include="Content\images\landingpage\the-thao-banner.png" />
+    <Content Include="Content\images\landingpage\Thh-c_25C3_25B4ng-mz-nghb.jpg" />
+    <Content Include="Content\images\landingpage\Thoi_trang.jpg" />
+    <Content Include="Content\images\landingpage\Thrc-phxm-sach.jpg" />
+    <Content Include="Content\images\landingpage\Thu-cung.jpg" />
+    <Content Include="Content\images\landingpage\thuong_mai_dien_tu.jpg" />
+    <Content Include="Content\images\landingpage\tk-web-gia-rp.jpg" />
+    <Content Include="Content\images\landingpage\toihienmau.png" />
+    <Content Include="Content\images\landingpage\toy-header.jpg" />
+    <Content Include="Content\images\landingpage\Trang-sjc.jpg" />
+    <Content Include="Content\images\landingpage\Tui-xach.jpg" />
+    <Content Include="Content\images\landingpage\tuyen-dung.jpg" />
+    <Content Include="Content\images\landingpage\Van-phong-phxm.jpg" />
+    <Content Include="Content\images\landingpage\Vay-cuvi.jpg" />
+    <Content Include="Content\images\landingpage\vpp-banner.png" />
+    <Content Include="Content\images\landingpage\website-by-industry-banner.jpg" />
+    <Content Include="Content\images\landingpage\wedding-dress-header.jpg" />
+    <Content Include="Content\images\landing\customer-comment-slide-next-hv.png" />
+    <Content Include="Content\images\landing\customer-comment-slide-next.png" />
+    <Content Include="Content\images\landing\customer-comment-slide-prev-hv.png" />
+    <Content Include="Content\images\landing\customer-comment-slide-prev.png" />
+    <Content Include="Content\images\landing\demo1.png" />
+    <Content Include="Content\images\landing\demo2.png" />
+    <Content Include="Content\images\landing\demo3.png" />
+    <Content Include="Content\images\landing\dribbble-24_1x.png" />
+    <Content Include="Content\images\landing\icon-cup.png" />
+    <Content Include="Content\images\landing\icon-submenu.png" />
+    <Content Include="Content\images\landing\icon-view-zoom.png" />
+    <Content Include="Content\images\landing\img-adayroi-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-bizweb-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-face-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-khachhang-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-pos-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-sendo-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-websitekhac-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\img-zalo-ldbztkwbh.png" />
+    <Content Include="Content\images\landing\line-vertor-animation.png" />
+    <Content Include="Content\images\landing\line-vertor-mobile.png" />
+    <Content Include="Content\images\landing\line-vertor-tablet.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-banner-image.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-banner.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-1-bg.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-icon-connect.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-icon-mobile.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-icon-theme.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-icon-time.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-3-icon-arrow.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-3.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-4.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-icon-item.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-image-email.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-image-message.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-image-phone.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-mobile.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5.jpg" />
+    <Content Include="Content\images\lanling\baner-sapo.jpg" />
+    <Content Include="Content\images\lanling\banner-ga.jpg" />
+    <Content Include="Content\images\lanling\beemart.jpg" />
+    <Content Include="Content\images\lanling\bg-module1.jpg" />
+    <Content Include="Content\images\lanling\bg-module2.jpg" />
+    <Content Include="Content\images\lanling\bg-module3.jpg" />
+    <Content Include="Content\images\lanling\bg-module4.jpg" />
+    <Content Include="Content\images\lanling\cart.jpg" />
+    <Content Include="Content\images\lanling\check-sapo.png" />
+    <Content Include="Content\images\lanling\cloud.png" />
+    <Content Include="Content\images\lanling\ecommerce-landing-1page-design.png" />
+    <Content Include="Content\images\lanling\img1.png" />
+    <Content Include="Content\images\lanling\img2.png" />
+    <Content Include="Content\images\lanling\img3.png" />
+    <Content Include="Content\images\lanling\img4.png" />
+    <Content Include="Content\images\lanling\img5.png" />
+    <Content Include="Content\images\lanling\img6.png" />
+    <Content Include="Content\images\lanling\iPhone-web-design-inspiration-3.jpg" />
+    <Content Include="Content\images\lanling\landingpagedesign1.gif" />
+    <Content Include="Content\images\lanling\pay.jpg" />
+    <Content Include="Content\images\lanling\report-w.png" />
+    <Content Include="Content\images\lanling\report.jpg" />
+    <Content Include="Content\images\lanling\security.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-1-index-1.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-1-index-2.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-1-index-3.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-1-index-4.jpg" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-image-1.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-image-2.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-image-3.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-2-image-4.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-3-image-1.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-icon-email.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-icon-message.png" />
+    <Content Include="Content\images\landing\thietkewebsitebanhang-block-5-icon-phone.png" />
+    <Content Include="Content\images\laptop.png" />
+    <Content Include="Content\images\line.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\logo_Dantri_Mau.png" />
+    <Content Include="Content\images\logo_ictnews_mau.png" />
+    <Content Include="Content\images\logo_VietnamPlus_mau.png" />
+    <Content Include="Content\images\logo_vnxpress_mau.png" />
+    <Content Include="Content\images\logo_vtv_mau.png" />
+    <Content Include="Content\images\marketing\11362938-0-footer-background.png" />
+    <Content Include="Content\images\marketing\khuyenmai-thang2-full.png" />
+    <Content Include="Content\images\marketing\khuyenmai-thang2-small.png" />
+    <Content Include="Content\images\mpage\background-mpage-adv-left.png" />
+    <Content Include="Content\images\mpage\banner-new-mpage.png" />
+    <Content Include="Content\images\mpage\close.png" />
+    <Content Include="Content\images\mpage\custom-hieu.jpg" />
+    <Content Include="Content\images\mpage\custom-lam.jpg" />
+    <Content Include="Content\images\mpage\custom-last.png" />
+    <Content Include="Content\images\mpage\divider.png" />
+    <Content Include="Content\images\mpage\icon-auto-cmt.png" />
+    <Content Include="Content\images\mpage\icon-auto-hide.png" />
+    <Content Include="Content\images\mpage\icon-cup.png" />
+    <Content Include="Content\images\mpage\icon-free.png" />
+    <Content Include="Content\images\mpage\icon-human-mpage-mobile.png" />
+    <Content Include="Content\images\mpage\icon-human-mpage-tab.png" />
+    <Content Include="Content\images\mpage\icon-human-mpage.png" />
+    <Content Include="Content\images\mpage\icon-manager-cmt.png" />
+    <Content Include="Content\images\mpage\icon-manager-fanpage.png" />
+    <Content Include="Content\images\mpage\icon-manager-product.png" />
+    <Content Include="Content\images\mpage\icon-number-1.png" />
+    <Content Include="Content\images\mpage\icon-number-2.png" />
+    <Content Include="Content\images\mpage\icon-number-3.png" />
+    <Content Include="Content\images\mpage\icon-play-video.png" />
+    <Content Include="Content\images\mpage\icon-sale-in-pos.png" />
+    <Content Include="Content\images\mpage\icon-sale-in-web.png" />
+    <Content Include="Content\images\mpage\icon-sale-in-web2.png" />
+    <Content Include="Content\images\mpage\img-box-cmt.png" />
+    <Content Include="Content\images\mpage\mpage-header.png" />
+    <Content Include="Content\images\mpage\new_logo.png" />
+    <Content Include="Content\images\new-search.png" />
+    <Content Include="Content\images\newindex\arrow-blue.png" />
+    <Content Include="Content\images\newindex\arrow-down-1.png" />
+    <Content Include="Content\images\newindex\arrow-down-2.png" />
+    <Content Include="Content\images\newindex\bee-customer.png" />
+    <Content Include="Content\images\newindex\bw-feedback-bg.png" />
+    <Content Include="Content\images\newindex\bw-help-bg.png" />
+    <Content Include="Content\images\newindex\bw-staff-bg.png" />
+    <Content Include="Content\images\newindex\Checked.svg" />
+    <Content Include="Content\images\newindex\Facebook.svg" />
+    <Content Include="Content\images\newindex\gento-customer.png" />
+    <Content Include="Content\images\newindex\gento-image.png" />
+    <Content Include="Content\images\newindex\handshake.png" />
+    <Content Include="Content\images\newindex\hero-arrow.svg" />
+    <Content Include="Content\images\newindex\index-banner-bg.png" />
+    <Content Include="Content\images\newindex\ipad.png" />
+    <Content Include="Content\images\newindex\kangaroo-customer.png" />
+    <Content Include="Content\images\newindex\kangaroo-image.png" />
+    <Content Include="Content\images\newindex\Money.svg" />
+    <Content Include="Content\images\newindex\open-quote.png" />
+    <Content Include="Content\images\newindex\people.png" />
+    <Content Include="Content\images\newindex\phone-call.png" />
+    <Content Include="Content\images\newindex\Phone.svg" />
+    <Content Include="Content\images\newindex\quote-bg.png" />
+    <Content Include="Content\images\newindex\Search.svg" />
+    <Content Include="Content\images\newindex\single-people.png" />
+    <Content Include="Content\images\newindex\Web.svg" />
+    <Content Include="Content\images\newlandingpage\bg-banhangonline.jpg" />
+    <Content Include="Content\images\newlandingpage\bg-kd-bandotreem-block2.jpg" />
+    <Content Include="Content\images\newlandingpage\content-block-1-bg-mobile.png" />
+    <Content Include="Content\images\newlandingpage\content-block-1-bg-tablet.png" />
+    <Content Include="Content\images\newlandingpage\content-block-1-bg.png" />
+    <Content Include="Content\images\newlandingpage\icon-item.png" />
+    <Content Include="Content\images\newlandingpage\img-content-4loikhuyentoiuuchiphi1.png" />
+    <Content Include="Content\images\newlandingpage\img-content-4loikhuyentoiuuchiphi2.png" />
+    <Content Include="Content\images\newlandingpage\img-content-4loikhuyentoiuuchiphi3.png" />
+    <Content Include="Content\images\newlandingpage\img-content-4loikhuyentoiuuchiphi4.png" />
+    <Content Include="Content\images\newlandingpage\img-head-4loikhuyentoiuuchiphi1.png" />
+    <Content Include="Content\images\newlandingpage\img-head-4loikhuyentoiuuchiphi2.png" />
+    <Content Include="Content\images\newlandingpage\img-head-4loikhuyentoiuuchiphi3.png" />
+    <Content Include="Content\images\newlandingpage\img-head-4loikhuyentoiuuchiphi4.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-ad-img.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-banner-bg.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-bw-theme-bg.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-device-white.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-device.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-money-white.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-money.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-people-white.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-people.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-slide-white.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-icon-slide.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-money-img.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-1.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-2.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-3.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-3a.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-4.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-7.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-8.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-profession-icon-9.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-report-icon-1.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-report-icon-2.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-report-icon-3.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-report-icon-4.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-step-2.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-step-3.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-step-4.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-step-bg.png" />
+    <Content Include="Content\images\newlandingpage\kd-online-tablet-banner.png" />
+    <Content Include="Content\images\newlandingpage\order-number.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon1.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon2.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon3.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon4.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon5.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon6.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon7.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon8.png" />
+    <Content Include="Content\images\newlandingpage\other-web-icon9.png" />
+    <Content Include="Content\images\newlandingpage\red-arrow.png" />
+    <Content Include="Content\images\newlandingpage\sell-other-web-banner.png" />
+    <Content Include="Content\images\newlandingpage\sell-other-web-img-content.png" />
+    <Content Include="Content\images\newlandingpage\tag1.png" />
+    <Content Include="Content\images\newlandingpage\tag2.png" />
+    <Content Include="Content\images\newlandingpage\tag3.png" />
+    <Content Include="Content\images\newlandingpage\tag5.png" />
+    <Content Include="Content\images\newlandingpage\white-arrow.png" />
+    <Content Include="Content\images\newlogo\5-star.png" />
+    <Content Include="Content\images\newlogo\bizweb_logo_new.svg" />
+    <Content Include="Content\images\newlogo\bizweb_logo_old.svg" />
+    <Content Include="Content\images\newlogo\landing-arrow.png" />
+    <Content Include="Content\images\newlogo\line.png" />
+    <Content Include="Content\images\newlogo\spinner.gif" />
+    <Content Include="Content\images\newlogo\step-1.png" />
+    <Content Include="Content\images\newlogo\step-2.png" />
+    <Content Include="Content\images\newlogo\step-3.png" />
+    <Content Include="Content\images\partner-background-logopartner.png" />
+    <Content Include="Content\images\partner\bg_foundation.png" />
+    <Content Include="Content\images\partner\bg_foundation_bottom.png" />
+    <Content Include="Content\images\partner\ceo.png" />
+    <Content Include="Content\images\partner\icon_app_partner.png" />
+    <Content Include="Content\images\partner\icon_control.png" />
+    <Content Include="Content\images\partner\icon_discount.png" />
+    <Content Include="Content\images\partner\icon_marketing.png" />
+    <Content Include="Content\images\partner\icon_marketing_partner.png" />
+    <Content Include="Content\images\partner\icon_optimal.png" />
+    <Content Include="Content\images\partner\icon_partner.png" />
+    <Content Include="Content\images\partner\icon_seo.png" />
+    <Content Include="Content\images\partner\icon_support.png" />
+    <Content Include="Content\images\partner\icon_theme_partner.png" />
+    <Content Include="Content\images\partner\img_foundation2.png" />
+    <Content Include="Content\images\partner\logo-crm-color.png" />
+    <Content Include="Content\images\partner\logo-crm-gray.png" />
+    <Content Include="Content\images\partner\logo-epacific-color.png" />
+    <Content Include="Content\images\partner\logo-epacific-gray.png" />
+    <Content Include="Content\images\partner\logo-giaohangnhanh-color.png" />
+    <Content Include="Content\images\partner\logo-giaohangnhanh-gray.png" />
+    <Content Include="Content\images\partner\logo-giaohangtietkiem-color.png" />
+    <Content Include="Content\images\partner\logo-giaohangtietkiem-gray.png" />
+    <Content Include="Content\images\partner\logo-sapo-color.png" />
+    <Content Include="Content\images\partner\logo-sapo-gray.png" />
+    <Content Include="Content\images\partner\logo-sc-color.png" />
+    <Content Include="Content\images\partner\logo-sc-gray.png" />
+    <Content Include="Content\images\partner\logo-sendo-color.png" />
+    <Content Include="Content\images\partner\logo-sendo-gray.png" />
+    <Content Include="Content\images\partner\logo-shipchung-color.png" />
+    <Content Include="Content\images\partner\logo-shipchung-gray.png" />
+    <Content Include="Content\images\partner\logo-usedata-color.png" />
+    <Content Include="Content\images\partner\logo-usedata-gray.png" />
+    <Content Include="Content\images\partner\logo-vecom-color.png" />
+    <Content Include="Content\images\partner\logo-vecom-gray.png" />
+    <Content Include="Content\images\partner\logo-vht-color.png" />
+    <Content Include="Content\images\partner\logo-vht-gray.png" />
+    <Content Include="Content\images\partner\logo-viam-color.png" />
+    <Content Include="Content\images\partner\logo-viam-gray.png" />
+    <Content Include="Content\images\partner\logo-vietguys-color.png" />
+    <Content Include="Content\images\partner\logo-vietguys-gray.png" />
+    <Content Include="Content\images\partner\logo-viettel-color.png" />
+    <Content Include="Content\images\partner\logo-viettel-gray.png" />
+    <Content Include="Content\images\partner\logo-vinalink-color.png" />
+    <Content Include="Content\images\partner\logo-vinalink-gray.png" />
+    <Content Include="Content\images\partner\logo-webcall-color.png" />
+    <Content Include="Content\images\partner\logo-webcall-gray.png" />
+    <Content Include="Content\images\partner\logo-websosanh-color.png" />
+    <Content Include="Content\images\partner\logo-websosanh-gray.png" />
+    <Content Include="Content\images\partner\logo-wiindi-color.png" />
+    <Content Include="Content\images\partner\logo-wiindi-gray.png" />
+    <Content Include="Content\images\popup-divider.png" />
+    <Content Include="Content\images\popup\bt_close.png" />
+    <Content Include="Content\images\popup\bt_close_2.png" />
+    <Content Include="Content\images\price\arrow-down.png" />
+    <Content Include="Content\images\price\arrow-up.png" />
+    <Content Include="Content\images\price\bg-seperate-price.png" />
+    <Content Include="Content\images\price\bw-plus.png" />
+    <Content Include="Content\images\price\icon-crown.png" />
+    <Content Include="Content\images\price\icon-price-info.png" />
+    <Content Include="Content\images\price\icon_diamond_new.png" />
+    <Content Include="Content\images\price\icon_new.png" />
+    <Content Include="Content\images\price\icon_price_comment.png" />
+    <Content Include="Content\images\price\icon_price_diamond_new.png" />
+    <Content Include="Content\images\price\icon_price_remove.png" />
+    <Content Include="Content\images\price\icon_title_diamond.png" />
+    <Content Include="Content\images\price\icon_view_detail.png" />
+    <Content Include="Content\images\price\ico_enflag_new.png" />
+    <Content Include="Content\images\price\ico_vnflag_new.png" />
+    <Content Include="Content\images\price\new_line.png" />
+    <Content Include="Content\images\price\price-comment-next-hv.png" />
+    <Content Include="Content\images\price\price-comment-next.png" />
+    <Content Include="Content\images\price\price-comment-prev-hv.png" />
+    <Content Include="Content\images\price\price-comment-prev.png" />
+    <Content Include="Content\images\price\register-block-bg.png" />
+    <Content Include="Content\images\price\thai.png" />
+    <Content Include="Content\images\referwebsite\icon-beauty-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-beauty.png" />
+    <Content Include="Content\images\referwebsite\icon-electric-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-electric.png" />
+    <Content Include="Content\images\referwebsite\icon-equipment-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-equipment.png" />
+    <Content Include="Content\images\referwebsite\icon-family-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-family.png" />
+    <Content Include="Content\images\referwebsite\icon-featured-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-featured.png" />
+    <Content Include="Content\images\referwebsite\icon-furniture-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-furniture.png" />
+    <Content Include="Content\images\referwebsite\icon-other-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-other.png" />
+    <Content Include="Content\images\referwebsite\icon-service-hover.png" />
+    <Content Include="Content\images\referwebsite\icon-service.png" />
+    <Content Include="Content\images\referwebsite\icon-view-zoom.png" />
+    <Content Include="Content\images\register_roof.png" />
+    <Content Include="Content\images\Sapo\sapo-logo.png" />
+    <Content Include="Content\images\search-404.png" />
+    <Content Include="Content\images\sell-at-store-banner-bg.png" />
+    <Content Include="Content\images\Step\fpage-step-1.png" />
+    <Content Include="Content\images\Step\fpage-step-2.png" />
+    <Content Include="Content\images\Step\fpage-step-3.png" />
+    <Content Include="Content\images\Step\sendo-step-1.png" />
+    <Content Include="Content\images\Step\sendo-step-2.png" />
+    <Content Include="Content\images\Step\sendo-step-3.png" />
+    <Content Include="Content\images\Step\zalo-step-1.png" />
+    <Content Include="Content\images\Step\zalo-step-2.png" />
+    <Content Include="Content\images\Step\zalo-step-3.png" />
+    <Content Include="Content\images\support_avar.png" />
+    <Content Include="Content\images\talinpa-logo.jpg" />
+    <Content Include="Content\images\theme\GM Energy mobile.png" />
+    <Content Include="Content\images\theme\Globalfood_mobile.png" />
+    <Content Include="Content\images\theme\ARfabric.png" />
+    <Content Include="Content\images\theme\Chowy fashionable.png" />
+    <Content Include="Content\images\theme\comulateplus.png" />
+    <Content Include="Content\images\theme\Fresh Me.png" />
+    <Content Include="Content\images\theme\Globalfood.png" />
+    <Content Include="Content\images\theme\GM Energy.png" />
+    <Content Include="Content\images\theme\import-bag-center.png" />
+    <Content Include="Content\images\theme\Leader_in.png" />
+    <Content Include="Content\images\theme\Marine Food.png" />
+    <Content Include="Content\images\theme\MShopping.png" />
+    <Content Include="Content\images\theme\NARA.png" />
+    <Content Include="Content\images\theme\Pokamaka.png" />
+    <Content Include="Content\images\theme\shopcar.png" />
+    <Content Include="Content\images\theme\showcase.png" />
+    <Content Include="Content\images\theme\showcase-mobile.png" />
+    <Content Include="Content\images\theme\logo_color.png" />
+    <Content Include="Content\images\theme\logo_white.png" />
+    <Content Include="Content\images\theme\sofitshop.com.png" />
+    <Content Include="Content\images\theme\to-b-shop.png" />
+    <Content Include="Content\images\theme\zenith.png" />
+    <Content Include="Content\images\theme\TRAVEL.png" />
+    <Content Include="Content\images\totop.png" />
+    <Content Include="Content\images\toyota.jpg" />
+    <Content Include="Content\images\vans.png" />
+    <Content Include="Content\images\vicc.png" />
+    <Content Include="Content\images\video-reg-fancybg.png" />
+    <Content Include="Content\images\vision\banner.png" />
+    <Content Include="Content\images\vision\bg-core-value.png" />
+    <Content Include="Content\images\vision\icon-quote-left.png" />
+    <Content Include="Content\images\vision\icon-quote-right.png" />
+    <Content Include="Content\images\vobfvecom.png" />
+    <Content Include="Content\images\vomf.png" />
+    <Content Include="Content\js\moment.js" />
+    <Content Include="Content\js\add-new-shop.js" />
+    <Content Include="Content\js\default.js" />
+    <Content Include="Content\js\loadToolbarPartial.js" />
+    <Content Include="Content\js\script.js" />
+    <Content Include="Content\swiper3\ans-swiper.css" />
+    <Content Include="Content\swiper3\ans-swiper.js" />
+    <Content Include="Content\swiper3\ans-swiper.min.css" />
+    <Content Include="Content\swiper3\ans-swiper.min.js" />
+    <Content Include="Content\swiper3\css\swiper.css" />
+    <Content Include="Content\swiper3\css\swiper.min.css" />
+    <Content Include="Content\swiper3\demos\01-default.html" />
+    <Content Include="Content\swiper3\demos\02-responsive.html" />
+    <Content Include="Content\swiper3\demos\03-vertical.html" />
+    <Content Include="Content\swiper3\demos\04-space-between.html" />
+    <Content Include="Content\swiper3\demos\05-slides-per-view.html" />
+    <Content Include="Content\swiper3\demos\06-slides-per-view-auto.html" />
+    <Content Include="Content\swiper3\demos\07-centered.html" />
+    <Content Include="Content\swiper3\demos\08-centered-auto.html" />
+    <Content Include="Content\swiper3\demos\09-freemode.html" />
+    <Content Include="Content\swiper3\demos\10-slides-per-column.html" />
+    <Content Include="Content\swiper3\demos\11-nested.html" />
+    <Content Include="Content\swiper3\demos\12-grab-cursor.html" />
+    <Content Include="Content\swiper3\demos\13-scrollbar.html" />
+    <Content Include="Content\swiper3\demos\14-nav-arrows.html" />
+    <Content Include="Content\swiper3\demos\15-infinite-loop.html" />
+    <Content Include="Content\swiper3\demos\16-effect-fade.html" />
+    <Content Include="Content\swiper3\demos\17-effect-cube.html" />
+    <Content Include="Content\swiper3\demos\18-effect-coverflow.html" />
+    <Content Include="Content\swiper3\demos\19-keyboard-control.html" />
+    <Content Include="Content\swiper3\demos\20-mousewheel-control.html" />
+    <Content Include="Content\swiper3\demos\21-autoplay.html" />
+    <Content Include="Content\swiper3\demos\22-dynamic-slides.html" />
+    <Content Include="Content\swiper3\demos\23-thumbs-gallery-loop.html" />
+    <Content Include="Content\swiper3\demos\23-thumbs-gallery.html" />
+    <Content Include="Content\swiper3\demos\24-multiple-swipers.html" />
+    <Content Include="Content\swiper3\demos\25-hash-navigation.html" />
+    <Content Include="Content\swiper3\demos\26-rtl.html" />
+    <Content Include="Content\swiper3\demos\27-jquery.html" />
+    <Content Include="Content\swiper3\demos\28-parallax.html" />
+    <Content Include="Content\swiper3\demos\29-custom-pagination.html" />
+    <Content Include="Content\swiper3\demos\30-lazy-load-images.html" />
+    <Content Include="Content\swiper3\demos\31-custom-plugin.html" />
+    <Content Include="Content\swiper3\demos\32-scroll-container.html" />
+    <Content Include="Content\swiper3\demos\32-slideable-menu.html" />
+    <Content Include="Content\swiper3\demos\33-responsive-breakpoints.html" />
+    <Content Include="Content\swiper3\demos\34-autoheight.html" />
+    <Content Include="Content\swiper3\demos\35-effect-flip.html" />
+    <Content Include="Content\swiper3\demos\36-pagination-fraction.html" />
+    <Content Include="Content\swiper3\demos\37-pagination-progress.html" />
+    <Content Include="Content\swiper3\demos\38-history.html" />
+    <Content Include="Content\swiper3\demos\38-jquery-ie9-loop.html" />
+    <Content Include="Content\swiper3\demos\39-zoom.html" />
+    <Content Include="Content\swiper3\js\swiper.jquery.js" />
+    <Content Include="Content\swiper3\js\swiper.jquery.min.js" />
+    <Content Include="Content\swiper3\js\swiper.jquery.umd.js" />
+    <Content Include="Content\swiper3\js\swiper.jquery.umd.min.js" />
+    <Content Include="Content\swiper3\js\swiper.js" />
+    <Content Include="Content\swiper3\js\swiper.min.js" />
+    <Content Include="Content\swiper3\sample-swiper.css" />
+    <Content Include="Content\swiper3\sample-swiper.min.css" />
+    <Content Include="Content\swiper3\___version.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="eziweb.ico" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\images\affiliate\promote-img.png%40v=100" />
+    <Content Include="Content\images\favicon.ico%40v1" />
+    <Content Include="Content\images\newindex\bw-feedback-bg.png%40v=5" />
+    <Content Include="Content\swiper3\ans-swiper.less" />
+    <Content Include="Content\swiper3\js\maps\swiper.jquery.min.js.map" />
+    <Content Include="Content\swiper3\js\maps\swiper.jquery.umd.min.js.map" />
+    <Content Include="Content\swiper3\js\maps\swiper.min.js.map" />
+    <Content Include="Content\swiper3\less\core.less" />
+    <Content Include="Content\swiper3\less\effects.less" />
+    <Content Include="Content\swiper3\less\mixins.less" />
+    <Content Include="Content\swiper3\less\navigation-f7.less" />
+    <Content Include="Content\swiper3\less\navigation.less" />
+    <Content Include="Content\swiper3\less\preloader-f7.less" />
+    <Content Include="Content\swiper3\less\preloader.less" />
+    <Content Include="Content\swiper3\less\scrollbar.less" />
+    <Content Include="Content\swiper3\less\swiper.less" />
+    <Content Include="Content\swiper3\less\zoom.less" />
+    <Content Include="Content\swiper3\sample-swiper.less" />
+    <Content Include="Content\swiper3\___sample.cshtml" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\HELVETICANEUE.TTF" />
+    <Content Include="Content\fonts\HELVETICANEUEBOLD.TTF" />
+    <Content Include="Content\fonts\UTMNEOSANSINTEL.TTF" />
+    <Content Include="Content\fonts\UTMNEOSANSINTELBOLD.TTF" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Home\MarketingSeo.cshtml" />
+    <Content Include="Views\Home\SalientFeatures.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Header2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarketingController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Marketing\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMarketing.cshtml" />
+    <Content Include="Views\Shared\_FooterMarketing.cshtml" />
+    <Content Include="Views\Marketing\IndexPromotion.cshtml" />
+    <Content Include="Views\Home\PriceList.cshtml" />
+    <Content Include="Views\Home\WarehouseInterface.cshtml" />
+    <Content Include="Views\Marketing\DesignWebsite.cshtml" />
+    <Content Include="Views\Home\Security.cshtml" />
+    <Content Include="Views\Home\ManagerStore.cshtml" />
+    <Content Include="Views\Home\SellBest.cshtml" />
+    <Content Include="Views\Home\CustomTheme.cshtml" />
+    <Content Include="Views\Home\ManagerProduct.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Marketing\IndexPromotion_vi.cshtml" />
+    <Content Include="Views\Shared\_LayoutMarketing_vi.cshtml" />
+    <Content Include="Views\Home\PriceList_vi.cshtml" />
+    <Content Include="Views\Home\SalientFeatures_vi.cshtml" />
+    <Content Include="Views\Home\SellBest_vi.cshtml" />
+    <Content Include="Views\Marketing\SellOnFaceBook.cshtml" />
+    <Content Include="Views\Home\ManagerStore_vi.cshtml" />
+    <Content Include="Views\Home\CustomTheme _vi.cshtml" />
+    <Content Include="Views\Home\MarketingSeo_vi.cshtml" />
+    <Content Include="Views\Home\ManagerProduct_vi.cshtml" />
+    <Content Include="Views\Home\Security_vi.cshtml" />
+    <Content Include="Views\Marketing\DesignWebsite_vi.cshtml" />
+    <Content Include="Views\Marketing\SellOnFaceBook_vi.cshtml" />
+    <Content Include="Views\Home\WarehouseInterface_vi.cshtml" />
+    <Content Include="Views\Shared\_Footer_vi.cshtml" />
+    <Content Include="Views\Shared\_FooterMarketing_vi.cshtml" />
+    <Content Include="Views\Shared\_Header2_vi.cshtml" />
+    <Content Include="Views\Shared\_Header_vi.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Theme\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60140</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60140/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

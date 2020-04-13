@@ -1,0 +1,56 @@
+﻿@{
+    var success = (byte)ClaimForRefundStatus.Success;
+    var account = (byte)ClaimForRefundStatus.AccountantWait;
+}
+<script type="text/html" id="claimforrefund-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <!-- ko if: Status < @success-->
+            <!-- ko if: Status == @account-->
+            @if (CheckPermision(EnumAction.Approvel, EnumPage.TicketClaimforrefund, EnumPage.ExecuteClaimForRefund))
+            {
+                <a data-bind="click: $parent.btnViewExecuteClaimForRefund" href="javscript:;" class="btn btn-success btn-xs" title="Change">
+                    <i class="fa fa-plus-square" data-toggle="tooltip" data-placement="right" title="" data-original-title="Refund handling"></i>
+                </a>
+            }
+
+            <a data-bind="click: $parent.btnViewRefundMoneyModalBack.bind($data, Id)" href="javscript:;" class="btn btn-success btn-xs" title="Go back">
+                <i class="fa fa fa-reply" data-toggle="tooltip" data-placement="right" title="" data-original-title="Go back"></i>
+            </a>
+            <!-- /ko -->
+            <a href="javscript:;" data-bind="click: $parent.viewDeleteClaimForRefund" class="btn btn-danger btn-xs">
+                <i class="fa fa-times-circle" data-toggle="tooltip" data-placement="right" title="" data-original-title="Cancel"></i>
+            </a>
+            <!-- /ko -->
+        </td>
+        <td class="text-center">
+            <a data-bind="click: $parent.btnViewClaimForRefundDetail" href="javascript:;">
+                <span data-bind="text: Code"></span>
+            </a>
+        </td>
+        <td class="text-center">
+            <a data-bind="click: $parent.GetTicketDetailView.bind($data, TicketId)" href="javascript:;">
+                <span data-bind="text: TicketCode"></span>
+            </a>
+        </td>
+        <td class="text-center">
+            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(OrderId, OrderCode); }" href="javascript:;"><span data-bind="text: ReturnCode(OrderCode)"></span></a>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusClaimForRefund[Status].Name, css: statusApp.statusClaimForRefund[Status].Class">Status</span>
+            <span data-bind="text: moment(LastUpdated).format('DD/MM/YYYY HH:mm')"></span>
+        </td>
+        <td class="text-center" data-bind="text: SupportFullName"></td>
+        <td>
+            <span data-bind="text: CustomerFullName"></span>
+            <p data-bind="text: CustomerPhone"></p>
+            <p data-bind="text: CustomerEmail"></p>
+        </td>
+        <td class="text-center" data-bind="text: formatNumberic(SupporterMoneyRequest, 'N2')"></td>
+        <td class="text-center" data-bind="text: formatNumberic(CurrencyDiscount, 'N2')"></td>
+        <td class="text-center" data-bind="text: formatNumberic(RealTotalRefund, 'N2')"></td>
+        <td class="text-center" data-bind="text: ReasonCancel"></td>
+
+    </tr>
+</script>

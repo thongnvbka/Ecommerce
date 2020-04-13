@@ -1,0 +1,18 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.ViewEngine
+@{
+    ViewBag.Title = Resource.Home_TermsOfService;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+ 
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+
+}
+
+<section class="term-of-service"> 
+    @Html.Partial("~/Views/Home/TermsOfService/TermsOfService_" + culture + ".cshtml")
+</section>
+ 
+ 

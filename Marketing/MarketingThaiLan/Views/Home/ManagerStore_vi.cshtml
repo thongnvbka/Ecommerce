@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyCuaHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+
+}
+<section class="tool-list">
+    <div class="container">
+        <div class="tool-list-mobile hidden-md hidden-sm hidden-lg invisible-xs">
+            <a href="javascript:void(0);" id="btn-toollist">Tính năng nổi bật</a>
+            <div class="tool-list-mobile-nav" id="mob-toollist-content" style="display: none;">
+                <ul class="list-unstyled">
+                    <li class=""><a href="@Url.Action("SalientFeatures","Home")"><span>Tính năng nổi bật</span></a></li>
+                    <li class=""><a href="@Url.Action("SellBest","Home")"><span>Web bán hàng ưu việt</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerStore","Home")"><span>Quản lý cửa hàng</span></a></li>
+                    <li class="current"><a href="@Url.Action("CustomTheme","Home")"><span>Tùy chỉnh giao diện</span></a></li>
+                    <li class=""><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing &amp; SEO</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerProduct","Home")"><span>Quản lý sản phẩm</span></a></li>
+                    <li class=""><a href="@Url.Action("Security","Home")"><span>Mạnh mẽ &amp; Bảo mật</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-list-content hidden-xs">
+            <div id="owl-tool" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 2282px; left:0; display: block;">
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("SalientFeatures","Home")"><span>Tính năng</span><br>nổi bật</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("SellBest","Home")"><span>Web bán hàng</span><br>ưu việt</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("ManagerStore","Home")"><span>Quản lý</span><br>cửa hàng</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool current">
+                                <a href="@Url.Action("CustomTheme","Home")"><span>Tùy chỉnh</span><br>giao diện</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("MarketingSeo","Home")"><span>Marketing</span><br>&amp; SEO</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("ManagerProduct","Home")"><span>Quản lý</span><br>sản phẩm</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("Security","Home")"><span>Mạnh mẽ </span><br>&amp; Bảo mật</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-controls clickable" style="display: none;">
+                    <div class="owl-pagination">
+
+                        <div class="owl-page active"><span class=""></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="customNavigation visible-sm-block">
+                <a class="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="tool-content">
+    <div class="container" style="opacity: 1; left:0;">
+        <div class="tool-content-title">
+            <h1>Quản lý cửa hàng thông minh</h1>
+            <p>Giúp bạn tiết kiệm thời gian những vẫn đạt được hiệu quả cao nhất</p>
+        </div>
+        <div class="tool-content-info tool-page-4">
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="~/Content/images/func/tab4-1.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>Quản lý thông tin khách hàng</h2>
+                        <p>Thấu hiểu khách hàng thông qua lịch sử mua hàng sẽ giúp bạn đưa ra các chương trình quảng cáo phù hợp giúp tăng nhanh doanh số. Ngoài ra việc khuyến khích khách hàng tạo tài khoản trên website cũng giúp bạn thu thập thông tin khách hàng phục vụ cho các chương trình khuyến mại của mình</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="~/Content/images/func/tab4-2.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>Theo dõi và xử lý đơn hàng nhanh chóng</h2>
+                        <p>Tốc độ xử lý đơn hàng là 1 trong những điểm quan trong giúp bạn giữ được khách hàng ở lại với mình. Bizweb cung cấp cho bạn đầy đủ công cụ để xử lý đơn hàng với chỉ vài click chuột. Việc hoàn thành đơn hàng, liên hệ đơn vị vận chuyển, thống kê quản lý đơn hàng... sẽ không còn tốn nhiều công sức của bạn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="~/Content/images/func/tab4-3.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>Quản lý cửa hàng của bạn ở mọi nơi</h2>
+                        <p>Với xu thế sử dụng máy tính bảng hay điện thoại thông minh hiện nay thì nhu cầu theo dõi và quản lý cửa hàng trên thiết bị di động là cấp thiết hơn bao giờ hết. Với Bizweb, bạn có thể truy cập quản trị website trên máy tính bảng, điện thoại ở khắp mọi nơi để cập nhật thông tin, quản lý sản phẩm, đơn hàng, liên hệ với khách hàng...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">Làm sao để gia tăng doanh số bán hàng của bạn ?</h3>
+            <span>
+                Đăng ký nhận Website bán hàng miễn phí ngay
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            @*<a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Đăng ký ngay</a>*@
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="#">Đăng ký ngay</a>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $('.tool-list-mobile #btn-toollist').click(function () {
+            $('.tool-list-mobile #mob-toollist-content').slideToggle(200);
+            $(this).toggleClass('active');
+        });
+        $('.tool-list-mobile #mob-toollist-content, .tool-list-mobile #btn-toollist').click(function (e) { e.stopPropagation(); });
+        $(document).click(function () {
+            $('.tool-list-mobile #mob-toollist-content').hide();
+            $('.tool-list-mobile #btn-toollist').removeClass('active');
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0, left: '0'
+                }, 500, function () {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+}

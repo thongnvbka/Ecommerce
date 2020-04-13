@@ -1,0 +1,123 @@
+﻿@using Library.ViewModels.Items
+@model List<NotifiOrderItem>
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@if (Model != null && Model.Any())
+{
+    <a href="@Url.Action("Notification", "AccountCMS", new {Area = "CMS"})">@Resource.Home_Notification (<span id="weidu_num2" class="show-data"> @ViewBag.CountNotifi</span> )</a>
+
+    <div class="rs drop-cart" style="position: absolute">
+        <div class="dropdown-content menu-notification" id="style-1" style="width: 210%; margin-left: -20%; overflow-y: auto; max-height: 200px;">
+            @foreach (var item in Model)
+            {
+                <a href="@string.Format("/{0}/CMS/AccountCMS/DetailNotitication?notifiId={1}", culture, item.Id)">
+                    @if (item.Title.Length > 30)
+                    {
+                        <text>@item.Title.ToLower().Substring(0, 30) ...</text>
+                    }
+                    else
+                    {
+                        @item.Title
+                    }
+                    <span class="time-notifi">
+                        <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.CreateDate)
+                    </span>
+                </a>
+                @*switch (item.OrderType)
+                    {
+
+                        case 0:
+                            <a href="@string.Format("/{0}/CMS/Order/DetailOrder?orderId={1}", culture,item.OrderId)">
+                                @if (item.Title.Length > 30)
+                                {
+                                    <text>@item.Title.ToLower().Substring(0, 30) ...</text>
+                                }
+                                else
+                                {
+                                    @item.Title
+                                }
+                                <span class="time-notifi">
+                                    <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.CreateDate)
+                                </span>
+                            </a>
+
+                            break;
+                        case 1:
+                            <a href="@string.Format("/{0}/CMS/Order/DetailDeposit?depositId={1}", culture,item.OrderId)">
+                                @if (item.Title.Length > 30)
+                                {
+                                    <text>@item.Title.ToLower().Substring(0, 30) ...</text>
+                                }
+                                else
+                                {
+                                    @item.Title
+                                }
+                                <span class="time-notifi">
+                                    <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.CreateDate)
+                                </span>
+                            </a>
+                            break;
+                        case 2:
+                            <a href="@string.Format("/{0}/CMS/Order/DetailSourcing?sourcingId={1}", culture,item.OrderId)">
+                                @if (item.Title.Length > 30)
+                                {
+                                    <text>@item.Title.ToLower().Substring(0, 30) ...</text>
+                                }
+                                else
+                                {
+                                    @item.Title
+                                }
+                                <span class="time-notifi">
+                                    <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.CreateDate)
+                                </span>
+                            </a>
+                            break;
+                        case 3:
+                            <a href="@string.Format("/{0}/CMS/Ticket/DetailTicket?ticketId={1}", culture,item.OrderId)">
+                                @if (item.Title.Length > 30)
+                                {
+                                    <text>@item.Title.ToLower().Substring(0, 30) ...</text>
+                                }
+                                else
+                                {
+                                    @item.Title
+                                }
+                                <span class="time-notifi">
+                                    <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.CreateDate)
+                                </span>
+                            </a>
+                            break;
+                        case 4:
+                            <a href="@string.Format("/{0}//CMS/Wallet/ElectronicWallet", culture)">
+                                @if (item.Title.Length > 30)
+                                {
+                                    <text>@item.Title.ToLower().Substring(0, 30) ...</text>
+                                }
+                                else
+                                {
+                                    @item.Title
+                                }
+                                <span class="time-notifi">
+                                    <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.CreateDate)
+                                </span>
+                            </a>
+                            break;
+                    }*@
+            }
+         
+        </div>
+
+        <div class="dropdown-content menu-notification" style="width: 210%; margin-left: -20%; max-height: 200px;">
+            <a href="/@culture/CMS/AccountCMS/Notification" class="view-all-notification">
+                ดูทั้งหมด 
+            </a>
+        </div>
+    </div>
+
+
+}
+else
+{
+    <a href="@Url.Action("Notification", "AccountCMS", new {Area = "CMS"})">@Resource.Home_Notification (<span id="weidu_num2"> 0 </span>)</a>
+}

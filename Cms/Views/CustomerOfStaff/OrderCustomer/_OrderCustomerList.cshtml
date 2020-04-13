@@ -1,0 +1,47 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<script type="text/html" id="ordercustomer-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        
+        <td class="text-center">
+            <!-- ko if: Type === @order-->
+            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, Id), attr: { href: '/Ticket#' + ReturnCode(Code) }" href="javascript:;">
+                <span data-bind="text: ReturnCode(Code)"></span>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: Type === @deposit-->
+            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, Id), attr: { href: '/Ticket#' + ReturnCode(Code) }" href="javascript:;">
+                <span data-bind="text: ReturnCode(Code)"></span>
+            </a>
+            <!-- /ko -->
+        </td>
+        <td class="text-center" data-bind="text: moment(Created).format('DD/MM/YYYY HH:ss')"></td>
+        <td class="text-left" data-bind="text: CustomerName"></td>
+        <td class="text-center" data-bind="text: CustomerUserName"></td>
+        <td class="text-right">
+            <b data-bind="text: formatNumberic(Total, 'N2')"></b>
+        </td>
+        <td class="text-right">
+            <b data-bind="text: formatNumberic(TotalWeight, 'N2')">
+
+            </b>
+        </td>
+        <td class="text-right">
+            <b data-bind="text: formatNumberic(PriceBargain, 'N2')"></b>
+        </td>
+        <td class="text-right">
+            <b data-bind="text: formatNumberic(ServiceOrder, 'N2')"></b>
+        </td>
+        <td class="text-center">
+            <!-- ko if: Type === @deposit-->
+            <span data-bind="text: statusApp.order[Status].Name, css: statusApp.deposit[Status].Class"></span>
+            <!-- /ko -->
+            <!-- ko if: Type === @order-->
+            <span data-bind="text: statusApp.order[Status].Name, css: statusApp.order[Status].Class"></span>
+            <!-- /ko -->
+        </td>
+    </tr>
+</script>

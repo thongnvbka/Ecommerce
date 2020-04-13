@@ -1,0 +1,66 @@
+﻿@model ModelView<Library.DbContext.Entities.CustomerSale, CustomerSaleViewModel>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Account ID</th>
+            <th class="text-center"> Account Management</th>
+            <th class="text-center">Customer Information</th>
+            <th class="text-center">The "purchase fee"</th>
+            <th class="text-center">Preferred "shipping charges"</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Items.Any())
+        {
+            <tr>
+                <td colspan="9" class="text-center">No Record</td>
+            </tr>
+        }
+        else
+        {
+            var idx = 1;
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    
+                    <td class="text-center">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                    <td class="text-center"><img alt="Avatar" style="width: 50px;"src="@item.ImagePath"></td>
+                    <td class="text-center">
+                        <a href="#"><strong>@item.CardId</strong></a><br />
+                        @*<span class="badge bg-green">VIP 3</span>*@
+                    </td>
+                    <td class="text-center">@item.CardNumber</td>
+                    <td>
+                        <span>Hoàng</span><br />
+                        @*<span>Phone : 010291929122</span>*@
+                    </td>
+                    <td class="text-center">@item.SaleShoping %</td>
+                    <td class="text-center">@item.SaleShoping %</td>
+                    <td class="text-center">
+                        <span class="label label-success">
+                            @if (item.Status == 0)
+                            {
+                                <text>Opening</text>
+                            }
+                            else
+                            {
+                                <text>Locking</text>
+                            }
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <a href="#" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="#" class="btn btn-sm btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+                    </td>
+                </tr>
+                idx++;
+            }
+        }
+    </tbody>
+</table>
+@Html.Partial("_Paging", Model.PageInfo)

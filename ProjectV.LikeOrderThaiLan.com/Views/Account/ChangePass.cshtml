@@ -1,0 +1,105 @@
+﻿@model CustomerChangePassMeta
+@{
+    ViewBag.Title = Resource.Dashboard_ChangePass;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="dingdan">
+                <ul class="zichan-nav" id="buyOrder">
+                    <li data-id="zijin" class="lete-active">
+                        @Resource.Dashboard_ChangePass
+                    </li>
+                </ul>
+                @if (ViewBag.Status == "1")
+                {
+                    <h5 class="bold-css col-lg-12 padding-left padding-right ">
+                        <label class="title-h5">
+                            @ViewBag.Mess
+                        </label>
+                    </h5>
+                }
+                @*<div class="rs mg-t-15" style="color: red; text-align: center;">
+                        @Html.ValidationSummary(false)
+                    </div>*@
+
+                <form class="change-pass-cus rs" action="@Url.Action("ChangePass", "Account")" method="post" id="change-pass-cus">
+
+                    @Html.AntiForgeryToken()
+                    <div class="forget-p-queren rs">
+                        <div class="rs">
+                            <p class="rs">
+                                <label>
+                                    @Resource.ChangePass_PassOld
+                                    (<span class="red-color">*</span>)：
+                                </label>
+
+                                @Html.PasswordFor(x => x.PasswordOld, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                    {"placeholder", Resource.ChangePass_PassOld},
+                                    {"type", "password"}
+                                })
+                                @Html.ValidationMessageFor(x => x.PasswordOld)
+                            </p>
+                        </div>
+                        <div>
+                            <p class="rs">
+                                <label>
+                                    @Resource.ChangePass_PassNew
+                                    (<span class="red-color">*</span>)：
+                                </label>
+
+                                @Html.PasswordFor(x => x.Password, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                    {"placeholder", Resource.ChangePass_PassNew},
+                                    {"type", "password"}
+                                })
+                                @Html.ValidationMessageFor(x => x.Password)
+                            </p>
+                        </div>
+                        <div>
+                            <p class="rs">
+                                <label> @Resource.Home_PassAgain (<span class="red-color">*</span>)：</label>
+
+                                @Html.PasswordFor(x => x.ConfirmPassword, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                    {"placeholder", Resource.Home_PassAgain},
+                                    {"type", "password"}
+                                })
+                                @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                            </p>
+                        </div>
+                        <button type="submit">
+                            @Resource.NewPass_ChangePass
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts
+{
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            @if (TempData["Msg"] != null) {
+                    <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+                }
+            @if (TempData["MsgErr"] != null) {
+                    <text>toastr.error('@Html.Raw(TempData["MsgErr"])');</text>
+                }
+        });
+    </script>
+}

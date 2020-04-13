@@ -1,0 +1,35 @@
+﻿@model ComplainTypeMeta
+@{
+    ViewBag.Title = "Add new journal entry";
+}
+<script>
+    var complainTypeJsTree = @Html.Raw(ViewBag.complainTypeJsTree);
+</script>
+<section class="content-header">
+    <h1>
+        Add new type of complaint
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("ComplainType")">List of complaint type</a></li>
+        <li class="active">Add new type of complaint</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("CreateComplainType")" method="post" class="form-horizontal" id="submitForm">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_UpdateComplainType", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("ComplainType")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <button type="button" class="btn btn-info pull-right" onclick="submitForm()"><i class="fa fa-plus"></i> Add more type of complaint</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<!-- /.content -->
+

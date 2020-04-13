@@ -1,0 +1,43 @@
+﻿@using Common.Emums;
+@{
+    ViewBag.Title = Resource.List_Order;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.css" rel="stylesheet" />
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+
+    <div data-bind="template: { name: templateId }">
+    </div>
+</section>
+@Html.Partial("~/Areas/CMS/Views/Order/order/_status.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/order/_OrderList.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/order/_Order.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/order/_popup.cshtml")
+
+ 
+@section scripts{
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/orderPopupModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/orderDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/orderItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/orderStatusItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/orderViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+
+    <script>
+            @if (TempData["Msg"] != null) {
+                    <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+    </script>
+}

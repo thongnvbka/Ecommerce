@@ -1,0 +1,460 @@
+﻿@model string
+@{
+    var statusFinish = (byte)DepositStatus.Finish;
+    var statusWaitOrder = (byte)DepositStatus.WaitOrder;
+    var other = (byte)OrderServices.Other;
+}
+<style>
+    .table-view {
+        width: 100%;
+    }
+
+    .table-view td, .table-view th {
+        padding: 1px;
+    }
+</style>
+
+<script>
+    function serviceOthe(type) {
+        return type == 0 ? 'Shipping fee' : 'Forklift fee';
+    }
+</script>
+
+<div id="@(Model == null ? "orderDepositDetail" : Model)" class="modal fade modal-dialog modal-p80" tabindex="-1" data-backdrop="static" role="dialog">
+    <div class="modal-body">
+        <form id="formOrderDeposit">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <!-- ko if: deposit().Code != undefined -->
+                        <i class="fa fa-globe"></i> Order code: <strong data-bind="text: ReturnCode(deposit().Code)" style="color: red"></strong>
+                        <span data-bind="text: statusApp.deposit[deposit().Status == undefined ? 0 : deposit().Status].Name, css: statusApp.deposit[deposit().Status == undefined ? 0 : deposit().Status].Class"></span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <small data-bind="text: 'Start Date :' + moment(deposit().Created).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                        <!-- ko if: deposit().Status != @statusFinish-->
+                        <small class="pull-right">Date of completion: --/--/----</small>
+
+                        <!-- /ko -->
+                        <!-- ko if: deposit().Status == @statusFinish-->
+                        <small data-bind="text: 'Date of completion: ' + moment(deposit().LastUpdate).format('DD/MM/YYYY')" class="pull-right"></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Guest notes</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="callout callout-info">
+                                <p data-bind="text: deposit().Note"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Staff notes</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="callout callout-info">
+                                <p data-bind="text: deposit().Description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row importwarehouse">
+                <div class="col-xs-4">
+                    <strong class="strong-title"> Customer information </strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Full name :</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().CustomerName" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Phone:</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().CustomerPhone" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email:</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().CustomerEmail" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Address :</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().CustomerAddress" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <strong class="strong-title">Receiver information</strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Full name :</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().ContactName" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Phone:</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().ContactPhone" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email:</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().ContactEmail" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Address :</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: deposit().ContactAddress" class="control-label" style="text-align: left!important"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <strong class="strong-title">More information</strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Exchange rate is applied:</label>
+                                <div class="col-sm-8">
+                                    <label data-bind="text: '1 CNY = ' + formatNumberic(deposit().ExchangeRate, 'N2') + ' Baht'" class="control-label">Exchange rate is applied:</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Depository:</label>
+                                <div class="col-sm-8">
+                                    <label data-bind="text: deposit().WarehouseName" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Warehouse delivery:</label>
+                                <div class="col-sm-8">
+                                    <label data-bind="text: deposit().WarehouseDeliveryName" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Identifier:</label>
+                                <div class="col-sm-8">
+                                    <label data-bind="text: codeOw" class="control-label"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form id="formDepositDetail">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong class="strong-title">Commodity information</strong>
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-40">#</th>
+                                        <th class="text-center">Image</th>
+                                        <th class="text-center">orders name</th>
+                                        <th class="text-center">branch</th>
+                                        <th class="text-center">Describe</th>
+                                        <th class="text-center">Quantity </th>
+                                        <th class="text-center">Size (cm)</th>
+                                        <th class="text-center">Weight(Kg)</th>
+                                        <th class="text-center">Package quantity</th>
+                                        <th class="text-center">Ship TQ (yuan)</th>
+                                        <th class="text-center">Transport code</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: listDetail">
+                                    <tr>
+                                        <td data-bind="text: $index()+1" class="text-center"></td>
+                                        <td class="text-center">
+                                            <img data-bind="attr: { src: '/images/' + Image + '_1x100_1'}" alt="Avatar" style="width: 50px;">
+                                        </td>
+                                        <td data-bind="text: ProductName"></td>
+                                        <td data-bind="text: CategoryName" class="text-center"></td>
+                                        <td data-bind="text: Note" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(Quantity, 'N0')" class="text-center"></td>
+                                        <td data-bind="text: Size" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(Weight, 'N2')" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(PacketNumber, 'N2')" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(ShipTq + '', 'N2')" class="text-center"></td>
+                                        <td data-bind="text: ListCode" class="text-center"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot data-bind="if: listDetail().length == 0">
+                                    <tr>
+                                        <td class="text-center" colspan="12">
+                                            There are no signed line items
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <strong class="strong-title">Processing staff</strong>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-xs-4">
+                <div class="form-horizontal">
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label">Ship TQ (yuan)</label>
+                        <div class="col-sm-9">
+                            <input data-bind="value: deposit().FeeShip" disabled="disabled" type="text" class="form-control decimal">
+                            <br />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label">Price approved (VND)</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input data-bind="value: deposit().ApprovelPrice, valueUpdate: 'blur'" disabled="disabled" type="text" class="text-right form-control decimal" aria-label="Text input with dropdown button">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span data-bind="text: '/' + deposit().ApprovelUnit"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9" style="padding-left: 36px;">
+                            <label class="checkbox">
+                                <input data-bind="checked: deposit().DepositType" type="checkbox" disabled="disabled" /> Have a PIN
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9" style="padding-left: 36px;">
+                            <label class="checkbox">
+                                <input data-bind="checked: deposit().OrderInfoId" type="checkbox" disabled="disabled" /> Go to work
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                        <label class="col-sm-3 control-label">Service: </label>
+                        <div class="col-sm-9" style="padding-left: 36px;">
+                            <div data-bind="foreach:  listOrderServiceCheck">
+                                <label class="checkbox">
+                                    <input data-bind="checked: Checked" disabled="disabled" type="checkbox" /> <span data-bind="text: ServiceName"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="table-responsive" style="width: 100%">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Total package:</th>
+                            <td data-bind="text:  formatNumberic(deposit().PacketNumber, 'N0')" class="text-right"></td>
+                        </tr>
+                        <tr>
+                            <th>Total Weight :</th>
+                            <td data-bind="text:  formatNumberic(deposit().TotalWeight, 'N2')" class="text-right"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-md-4">
+                                Total amount temporarily(Baht):<br />
+                                <i>According to customer figures provided</i>
+                            </th>
+                            <th data-bind="text:  formatNumberic(deposit().ProvisionalMoney, 'N2')" class="text-right"></th>
+                        </tr>
+                        <tr>
+                            <th class="col-md-4">Total money (Baht)</th>
+                            <th data-bind="text: formatNumberic(_.sumBy(listOrderService(), function(o) { return  o.TotalPrice; }),'N2')" class="text-right"></th>
+                        </tr>
+                    </table>
+                    <hr />
+                    <h4>Service rate: </h4>
+                    <table class="table table-bordered table-hover">
+                        <tbody data-bind="foreach: listOrderService">
+                            <!-- ko if: ServiceId == @other -->
+                            @*<tr>
+                                    <td>
+                                        <span data-bind="text:  ServiceName + ' (Baht)'"></span> <a class="btn btn-xs btn-info">Detail</a>
+                                    </td>
+                                    <td data-bind="text:  formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                                </tr>*@
+                            <!-- ko foreach: $parent.listOrderServiceOther -->
+                            <tr>
+                                <td data-bind="text:  serviceOthe(Mode) + ' (Baht)'"></td>
+                                <td data-bind="text:  formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                            </tr>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- ko if: ServiceId != @other -->
+                            <tr>
+                                <td data-bind="text:  ServiceName + ' (Baht)'"></td>
+                                <td data-bind="text:  formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                            </tr>
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div data-bind="with: viewBoxChat" id="divShowBoxChat" class="col-md-4 view-chat-box">
+                <div data-bind="template: { name: templateChatId }"></div>
+            </div>
+        </div>
+        <!-- ko if: deposit().Status >= @statusWaitOrder -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <span><strong class="strong-title">List of packages :</strong></span>
+                        <span data-bind="if: listPackageView().length != 0">
+                            <span colspan="10">
+                                Order leaves <b>
+                                    <strong data-bind="text: ReturnCode(deposit().Code)" style="color: red"></strong>
+                                </b> có: <b data-bind="text: listPackageView().length"></b> Package - Total weight current:
+                                <b data-bind="text: formatNumberic(_.sumBy(listPackageView(), function(o) { return  o.Weight;}),'N2')"></b> (kg)
+                                - Total weight conversion: <b data-bind="text: formatNumberic(_.sumBy(listPackageView(), function(o) { return  o.WeightConverted;}),'N2')"></b>(kg)
+                                - Total weight charged: <b data-bind="text: formatNumberic(_.sumBy(listPackageView(), function(o) { return  o.WeightActual;}),'N2')"></b>(kg)
+                            </span>
+                        </span>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center w-40">#</th>
+                                    <th class="text-center"><i class="fa fa-cube"></i> Package code</th>
+                                    <th class="text-center w-100"><i class="fa fa-code"></i> Transport code</th>
+                                    <th class="text-center w-100"><i class="fa fa-calendar"></i> Expected date into warehouse </th>
+                                    <th class="text-center">Size (Cm) (length*width*height)</th>
+                                    <th>Actual weight</th>
+                                    <th> conversion weight (kg)</th>
+                                    <th>Weight charged </th>
+                                    <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: listPackageView">
+                                <tr>
+                                    <td data-bind="text: $index()+1" class="text-center"></td>
+                                    <td class="text-center">
+                                        <a data-bind="text: 'P' + Code, click: packageDetailModelView.showModel.bind($data, Id)" href="javascript:;"></a>
+                                    </td>
+                                    <td data-bind="text: TransportCode" class="text-center"></td>
+                                    <td data-bind="text: ForcastDate == null? '':  moment(ForcastDate).format('DD/MM/YYYY')" class="text-center"></td>
+                                    <td data-bind="text: Size" class="text-center"></td>
+                                    <td data-bind="text: formatNumberic(Weight, 'N2')"></td>
+                                    <td>
+                                        <span data-bind="text: formatNumberic(WeightConverted, 'N2')"></span><br/>
+                                        <!-- ko if: Size != null -->
+                                        <span data-bind="text: '(' + Size + ')'"></span>
+                                        <!-- /ko -->
+                                    </td>
+                                    <td data-bind="text: formatNumberic(WeightActual, 'N2')"></td>
+                                    <td class="text-center">
+                                        <span data-bind="text: statusApp.orderPackage[Status].Name, css: statusApp.orderPackage[Status].Class"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot data-bind="if: listPackageView().length == 0">
+                                <tr>
+                                    <td colspan="7">There is currently no bill of lading!</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="timeline timeline-inverse">
+                    <li class="time-label">
+                        <span>
+                            <strong class="strong-title">Order history:</strong>
+                            <a data-bind="click: checkShowHistory" href="javascript:;" class="pull-right btn btn-info btn-xs ml15">
+                                <!-- ko ifnot: isShowHistory -->
+                               View <i class="fa fa-chevron-down"></i>
+                                <!-- /ko -->
+                                <!-- ko if: isShowHistory -->
+                               Close <i class="fa fa-chevron-up"></i>
+                                <!-- /ko -->
+                            </a>
+                        </span>
+                    </li>
+                    <!-- ko if: isShowHistory -->
+                    <!-- ko foreach: listHistory -->
+                    <li>
+                        <i data-bind="css: statusApp.order[Status].Ifa"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-calendar-check-o"></i> <span data-bind="text: moment(CreateDate).format('L LTS')"></span></span>
+                            <!-- ko if: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: CustomerName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                            <!-- ko ifnot: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: UserFullName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">
+            Order staff:
+            <!-- ko if: userOrder() != null -->
+            <b><span data-bind="text: userOrder().FullName + '-' + userOrder().TitleName"></span></b><i>(<span data-bind="text: userOrder().Email"></span>)</i>
+            <!-- /ko-->
+            <!-- ko ifnot: userOrder() != null -->
+            --
+            <!-- /ko-->
+        </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
+    </div>
+</div>
+

@@ -1,0 +1,190 @@
+﻿<div id="complaincreate" class="modal fade modal-dialog modal-p60" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create complaint ticket</h4>
+    </div>
+    <div class="modal-body row">
+        <div class="pad-10 col-lg-12 ">
+            <div class="col-lg-12 pad-none">
+                <div class="col-lg-4 pad-none">
+                    <label class="uppercase-title">
+                        SELECT CUSTOMER
+                    </label>
+                    <div class="box-tools pull-right">
+                        <div class="has-feedback" style="width:300px">
+                            <select data-bind="value: customerId" class="form-control input-sm customer-search" style="width: 100%;"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 pad-none">
+                    <div class="col-lg-12">
+                        @*<section class="col-md-3 form-group">
+                            <label for="ddlWarehouse">Chọn Orders</label>
+                            <select data-bind="value: orderCodeCustomer" class="form-control input-sm orderCodeCustomer-search" style="width: 100%;"></select>
+                        </section>*@
+
+                        <label class="col-lg-12 uppercase-title">
+                            @*NHẬP VÀO Orders*@IMPORT ORDER
+                        </label>
+                        <label class="col-lg-3">
+                        </label>
+                        <div class="col-lg-9 box-tools pull-right" style="padding-left:0px;">
+                            <div class="has-feedback" style="width:300px">
+                                <select data-bind="options: listOrderCustomer, optionsText: 'Code', optionsValue: 'Code', value: orderCodeCustomer" class="form-control select2-order" ></select>
+                                @*<input data-bind="value: complainModel().OrderCode" class="form-control height35" style="width:100%;" placeholder="code hóa đơn" />*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 pad-none mg-top-20" style="margin-top:20px;">
+            <div class="col-lg-4 left-complain">
+                <div class="col-lg-12 pad-none">
+                    <p>
+                        <label class="uppercase-title">SELECT TYPE OF COMPLAINT</label>
+                    </p>
+                    <div class="progress" style="height:2px;width:100%">
+                        <span class="progress-bar" style="width: 40%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 padding-le">
+                    
+                    <div data-bind="foreach: listComplainType" class="checkbox padding-le check-cus-complain list-type-order">
+                        <p>
+                            <label>
+                                <input name="TypeOrder" type="radio" class="icheck check" data-bind="checkedValue: Value, checked: $parent.selectedService"> <span data-bind="text: Text"></span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 right-complain">
+                <div class="col-lg-12 pad-none">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6 pad-none">
+                        <p class="uppercase-title">
+                            <label class="uppercase-title">COMPLAINT DETAIL</label>
+                        </p>
+                        <div class="progress" style="height:2px;width:100%">
+                            <span class="progress-bar" style="width: 40%;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label col-md-3">
+                        <span class="pull-right">
+                          Content : (<span class="red">*</span>)
+                        </span>
+                    </label>
+                    <div class="col-md-9">
+                        <textarea type="text" data-bind="value: complainModel().Content" class="form-control" placeholder="Detail contents here"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3">
+                        <span class="pull-right">
+                            Compensation amount:
+                        </span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" data-bind="value: complainModel().RequestMoney" class="form-control height35 decimal" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label"><span class="pull-right">Image:</span></label>
+                    <div class="col-sm-9">
+                        <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                            <span class="btn btn-primary btn-file btn-flat">
+                                <!-- ko if: isUpload()-->
+                                <i class="fa fa-file-image-o"></i>
+                                <!-- /ko -->
+                                <!-- ko if: !isUpload()-->
+                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                <!-- /ko -->
+                                Goods image
+                                <input class="flieuploadImg" name="" type="file">
+                            </span>
+                            <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                        </div>
+                        <br />
+
+                        <div id="effect-7" class="effects clearfix">
+                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                <!-- ko if: DetailImagePath1() !== '' -->
+                                <img data-bind="attr: { src: DetailImagePath1}" style="width: 100%; height: 60px;" alt="" /><br />
+                                <div class="overlay">
+                                    <a data-bind="click: DetailImagePath1.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                    <a class="close-overlay hidden">x</a>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                <!-- ko if: DetailImagePath2() !== '' -->
+                                <img data-bind="attr: { src: DetailImagePath2}" style="width: 100%; height: 60px;" alt="" /><br />
+                                <div class="overlay">
+                                    <a data-bind="click: DetailImagePath2.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                    <a class="close-overlay hidden">x</a>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                <!-- ko if: DetailImagePath3() !== '' -->
+                                <img data-bind="attr: { src: DetailImagePath3}" style="width: 100%; height: 60px;" alt="" /><br />
+                                <div class="overlay">
+                                    <a data-bind="click: DetailImagePath3.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                    <a class="close-overlay hidden">x</a>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                <!-- ko if: DetailImagePath4() !== '' -->
+                                <img data-bind="attr: { src: DetailImagePath4}" style="width: 100%; height: 60px;" alt="" /><br />
+                                <div class="overlay">
+                                    <a data-bind="click: DetailImagePath4.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                    <a class="close-overlay hidden">x</a>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="if: listOrderDetail().length > 0" class="pad-10 col-lg-12" style="overflow-y:scroll; max-height:400px; margin-bottom:20px;">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        @*<th class="text-center">#</th>*@
+                        <th class="text-center">Code</th>
+                        <th class="text-center"><i class="fa fa-ticket"></i> Product name</th>
+                        <th class="text-center"><i class="fa fa-ticket"></i>Image</th>
+                        <th class="text-center"><i class="fa fa-thumb-tack"></i> Link</th>
+                        <th class="text-center"><i class="fa fa-hand-pointer-o"></i>Quantity </th>
+                        <th class="text-center"><i class="fa fa-hand-pointer-o"></i>Price(CNY)</th>
+                        <th class="text-center w-250"><i class="fa fa-ticket"></i>Content </th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: listOrderDetail">
+                    <tr>
+                        <td data-bind="text: Id"></td>
+                        <td data-bind="text: Name"></td>
+                        <td><img data-bind="attr:{src: Image}" alt="..." class="margin chatImg" width="50" onclick="showImgChat(this)" /></td>
+                        <td data-bind="text: Link"></td>
+                        <td data-bind="text: Quantity"></td>
+                        <td data-bind="text: formatNumberic(Price,'N2')"></td>
+                        <td><textarea data-bind="value: NoteComplain"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="bottom-complain text-center">
+            <a href="javascript:;" class="btn btn-primary img-complain-upload pull-right" data-bind="click: createTicket" data-dismiss="modal">Create request</a>
+        </div>
+    </div>
+</div>

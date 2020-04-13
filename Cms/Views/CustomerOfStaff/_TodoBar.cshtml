@@ -1,0 +1,174 @@
+﻿@if (CheckPermision(EnumAction.View, EnumPage.PotentialCustomer, EnumPage.PotentialCustomerByStaff))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Managing potential customers</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.PotentialCustomer))
+                {
+                    <li data-bind="css: active() == 'PotentialCustomer' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('PotentialCustomer')}" href="/customerofstaff#PotentialCustomer">
+                            <i class="fa fa-inbox"></i> Customer list (Potential)
+                            <span class="label label-danger pull-right" data-bind="text: totalPotentialCustomer"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.PotentialCustomerByStaff))
+                {
+                    <li data-bind="css: active() == 'customerfeasibility-by-staff' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customerfeasibility-by-staff')}" href="/customerofstaff#customerfeasibility-by-staff">
+                            <i class="fa fa-file-text-o"></i> Customer list (Potential)_User
+                            <span class="label label-danger pull-right" data-bind="text: totalPotentialCustomerByUser"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+@if (CheckPermision(EnumAction.View, EnumPage.Customer, EnumPage.CustomerbyStaff))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"> Official customer management</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.Customer))
+                {
+                    <li data-bind="css: active() == 'customer' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customer')}" href="/customerofstaff#customer">
+                            <i class="fa fa-inbox"></i> Customer list (Official)
+                            <span class="label label-danger pull-right" data-bind="text: totalCustomer"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.CustomerbyStaff))
+                {
+                    <li data-bind="css: active() == 'customer-by-staff' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customer-by-staff')}" href="/customerofstaff#customer-by-staff">
+                            <i class="fa fa-inbox"></i> Customer list (Official)_User
+                            <span class="label label-primary pull-right" data-bind="text: totalCustomerByUser"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumAction.View, EnumPage.BussinessSupport, EnumPage.BussinessReportCustomer))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-support"></i> Support
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.BussinessSupport))
+                {
+                    <li data-bind="css: active() == 'ticket-support' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('ticket-support')}" href="/customerofstaff#ticket-support">
+                            <i class="fa fa-circle-o text-yellow"></i> Support_Complain
+                            <span class="label label-danger pull-right" data-bind="text: totalTicketSupport"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.BussinessReportCustomer))
+                {
+                    <li data-bind="css: active() == 'customerfind' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customerfind')}" href="/customerofstaff#customerfind">
+                            <i class="fa fa-user"></i> Search customer information
+                        </a>
+                    </li>
+                }
+
+                <li data-bind="css: active() == 'ordercustomer' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('ordercustomer')}" href="/customerofstaff#ordercustomer">
+                        <i class="fa fa-user"></i> Track Staff orders
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumAction.View, EnumPage.BussinessReportCustomer, EnumPage.BussinessReportRevenue))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-area-chart"></i> Customer statistics
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.BussinessReportCustomer))
+                {
+                    <li data-bind="css: active() == 'customer-report' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customer-report')}" href="/customerofstaff#customer-report">
+                            <i class="fa fa-inbox"></i> Customer statistics
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.BussinessReportRevenue))
+                {
+                    <li data-bind="css: active() == 'customer-orderPending' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customer-orderPending')}" href="/customerofstaff#customer-orderPending">
+                            <i class="fa fa-inbox"></i> Customer statistics_Receiving_Order
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.BussinessReportRevenue))
+                {
+                    <li data-bind="css: active() == 'revenue' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('revenue')}" href="/customerofstaff#revenue">
+                            <i class="fa fa-inbox"></i> Staff Sales Order Statistics
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                    <li data-bind="css: active() == 'revenueDeposit' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('revenueDeposit')}" href="/customerofstaff#revenueDeposit">
+                            <i class="fa fa-inbox"></i> Staff turnover statistics Deposit
+                            <span class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                <li data-bind="css: active() == 'reportCustomerSituation' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportCustomerSituation')}" href="/customerofstaff#reportCustomerSituation">
+                        <i class="fa fa-inbox"></i> Customer Menu Statistcal OverTime
+                        <span class="label label-danger pull-right"></span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+}

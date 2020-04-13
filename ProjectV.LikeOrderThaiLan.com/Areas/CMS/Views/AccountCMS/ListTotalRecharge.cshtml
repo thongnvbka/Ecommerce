@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "ListTotalRechange";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="zichan rs" style="box-sizing:border-box;">
+                <ul class="zichan-nav">
+                    <li data-id="zijin" class="lete-active"> @Resource.TransactionHistory </li> 
+                </ul>
+                <div class="zichan-msg"> 
+                    <span>
+                   @Resource.TransactionHistory_TotalTransaction:  <a data-bind="text: totalRecharge"> </a>  
+                    </span>
+                </div>
+                <div class="zichan-zijin zichan-box rs">
+                    <table border="1" cellspacing="1" cellpadding="1">
+                        <thead>
+                            <tr>
+                                <th> @Resource.TransactionHistory_Time </th>
+                                <th> @Resource.TransactionHistory_TransactionType </th>
+                                <th> @Resource.TransactionHistory_Content </th>
+                                <th> @Resource.TransactionHistory_Value </th>
+                                <th> @Resource.Dashboard_Surplus </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: 'rechargeList', foreach: listRecharge }"></tbody>
+
+                        <tfoot data-bind="if: listRecharge().length == 0" class="dingdan-content-non">
+                            <tr>
+                                <td colspan="8">@Resource.RequestsPayment_NoData</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <form class="rs mg-bottom-20">
+                        <div data-bind="if: listRecharge().length > 0" class="mg-t-15 rs">
+                            <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                            <ul class="pagination no-margin pull-right">
+                                <li data-bind="if: pageStart">
+                                    <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                </li>
+                                <li data-bind="if: pageNext">
+                                    <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <!-- ko foreach: listPage -->
+                                <li data-bind="css: Page === page ? 'active' :''  ">
+                                    <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                </li>
+                                <!-- /ko -->
+                                <li data-bind="if: pagePrev">
+                                    <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <li data-bind="if: pageEnd">
+                                    <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/ListRecharge/_RechargeList.cshtml")
+@section scripts{
+    @*//thu vien substring*@
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    @*//thu vien alert delete*@
+    <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    @*//file js knockoutjs ViewModel*@
+    <script src="~/Areas/CMS/Scripts/models/recharge/rechargeItemModel.js"></script> 
+    <script src="~/Areas/CMS/Scripts/viewmodels/recharge/rechargeViewModel.js"></script> 
+    @*//thu vien ajax*@
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+
+}

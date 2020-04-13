@@ -1,0 +1,100 @@
+﻿@using Library.ViewModels.VipLevel
+@{
+    var order = (Library.DbContext.Entities.Order)ViewBag.Order;
+    var orderDetails = (List<Library.DbContext.Entities.OrderDetail>)ViewBag.OrderDetails;
+    var orderServices = (List<Library.DbContext.Entities.OrderService>)ViewBag.OrderServices;
+    var vipLevel = (VipLevelViewModel)ViewBag.VipLevel;
+
+    ViewBag.Title = Resource.Title_DepositFromCart +"#" + order.Code; 
+}
+
+<div id="mini-cart" class="ch-box">
+    <div class="order_sum_container">
+        <form class="cf" onsubmit="return false;">
+            <h3 class="ch-main-title bgde5b01">@Resource.Product_InforOrder <span>(@order.ProductNo @Resource.Order_Product)</span></h3>
+            <div class="order_sum" style="width: 100%;float: left;">
+                <input type="hidden" name="num_cart_item" id="num_cart_item" value="1">
+                <div class="order_scrollable">
+                    <table class="order_scroll_table w100p">
+                        <thead>
+                            <tr class="head-title">
+                                <th class="name-product text-center">@Resource.Order_Product</th>
+                                <th class="qty text-center">@Resource.Product_Number</th>
+                                <th class="right_align text-center">@Resource.Product_Amount <br /> (@Resource.Currency)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var orderDetail in orderDetails)
+                            {
+                                <tr class="first_item ">
+                                    <td>@orderDetail.Name</td>
+                                    <td class="qty text-center">@orderDetail.Quantity.ToString("N0", CultureInfo)</td>
+                                    <td class="price-pr text-center">@orderDetail.TotalExchange.ToString("N0", CultureInfo)</td>
+                                </tr>
+                            }
+                            <tr class="delivery-wrap">
+                                <td colspan="3">
+                                    <div class="dukienhangve">
+                                        <div class="delivery-options-title">@Resource.Product_DeliveryTime:</div>
+                                        <div class="shipping_options">
+                                            <div class="shippingOptionRow">
+                                                <label class="shippingOptionLabel">
+                                                    <span class="lead_date">- @Resource.Product_DeliveryTimeHN</span><br />
+                                                    @*<span class="lead_date">- Hàng về Hồ Chí Minh: Từ 7 - 12 ngày</span>*@
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ch-cart-conclusion bgE5EAE8">
+                    <table class="total_item">
+                        <tbody>
+                            <tr class="first_subtotal">
+                                <td class="subtotal sel-subtotal">@Resource.Product_TotalMoneyProduct </td>
+                                <td colspan="2" class="cost-right">@order.TotalExchange.ToString("N0", CultureInfo) @Resource.Currency</td>
+                            </tr>
+                            @*@foreach (var orderService in orderServices)
+                            {
+                                <tr>
+                                    <td class="subtotal highlight shipping_cost_free">@orderService.ServiceName</td>
+                                    @if (orderService.ServiceId < 2)
+                                    {
+                                        <td colspan="2" class="cost-right">@orderService.TotalPrice.ToString("N0", CultureInfo) @Resource.Currency</td>
+                                    }
+                                    @if (orderService.ServiceId > 1)
+                                    {
+                                        <td colspan="2" class="cost-right">_ @Resource.Currency</td>
+                                    }
+                                </tr>
+                            }*@
+                            <tr class="total">
+                                <td class="total pt10 pb10">
+                                    <strong class="total-label">@Resource.Product_ProvisionalAmount</strong><br />
+                                    <span>@Resource.Product_NotIncludingShipping </span>
+                                </td>
+                                <td colspan="2" class="total right_align sel-total">
+                                    <strong class="total-price cost-right size1-2em">
+                                        @order.Total.ToString("N0", CultureInfo) @Resource.Currency
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr class="total">
+                                <td class="total pt10 pb10">
+                                    <strong class="total-label"> @Resource.Product_MoneyDeposit </strong><br />
+                                    <span>(@Resource.Order_OperationDeposit <span class="right-total-level">@vipLevel.Deposit.ToString("N2", CultureInfo)</span> %)</span>
+                                </td>
+                                <td colspan="2" class="total right_align sel-total">
+                                    <strong class="total-price cost-right size1-2em"><span class="right-total-price">@((order.TotalExchange * vipLevel.Deposit / 100).ToString("N0", CultureInfo))</span> @Resource.Currency</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

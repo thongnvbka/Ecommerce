@@ -1,0 +1,72 @@
+﻿@using System.Globalization
+@model Library.DbContext.Entities.Customer
+@{
+    ViewBag.Title = Resource.Dashboard_IndexAccount;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@section styles{
+    <style>
+        .warning-order > p {
+            line-height: 1.6em;
+        }
+    </style>
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="user-r-main display-none" data-bind="css: isRending() === true? '' : 'display-none'">
+
+            <div class="user-r-main-l">
+
+                <div data-bind="template: { name: 'inforCustomer',data: viewModeAccount }">
+                </div>
+            </div>
+
+            <div class="user-r-main-r">
+                <div data-bind="template: { name: 'Notificommon',data: viewModeAccount }">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/IndexAccount/_InforNotifi.cshtml")
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/IndexAccount/_InforAccount.cshtml")
+ 
+
+@section scripts{
+    <script src="~/Areas/CMS/Scripts/models/order/orderModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/notification/notificationCommon.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/account/customerModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/account/accountViewModel.js"></script>
+    <script>
+
+        function ticket(evt, ticketName) {
+            var i;
+            var tabcontent = document.getElementsByClassName("tabcontent");
+
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" lete-active", "");
+            }
+            document.getElementById(ticketName).style.display = "block";
+            evt.currentTarget.className += " lete-active";
+
+        }
+    </script>
+
+}

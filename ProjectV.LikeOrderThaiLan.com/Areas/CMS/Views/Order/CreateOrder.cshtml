@@ -1,0 +1,760 @@
+﻿@{
+    ViewBag.Title = Resource.Create_OrderNew;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Content/plugins/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/css/css-home/upproduct.css" rel="stylesheet" />
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section id="orderAdd" class="create-new-order">
+    <h1>@Resource.CreateOrder_CreateOrderFromWebsite</h1>
+    <span class="nh-divide rs"></span>
+    <ul class="zy-main-top" id="stepCreateOrder">
+        <li class="dg-caigourucang lete-active">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.Order_CreateOrder</a>
+            <br />
+            <a class="time-create-order">@($"{DateTime.Now.Day} / {DateTime.Now.Month} / {DateTime.Now.Year} ") </a>
+            @*<a class="time-create-order">@DateTime.Now.ToShortDateString()</a>*@
+            <label></label>
+        </li>
+        <li class="dg-tijiao lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.Order_StatusWaitQuotes</a>
+            <br />
+            <a class="time-create-order">--/--/----</a>
+            <label></label>
+        </li>
+        <li class="dg-guojiyunfei lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order"> @Resource.CreateOrder_Payment</a>
+            <br />
+            <a class="time-create-order">--/--/----</a>
+            <label></label>
+        </li>
+        <li class="dg-shouhuo lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.StepByStep_Order</a>
+            <br />
+            <a class="time-create-order">--/--/----</a>
+            <label></label>
+        </li>
+        <li class="dg-fahaiwai lete-hover">
+            <span></span>
+            <a href="javascript:;" class="status-create-order">@Resource.StepByStep_Delivery</a>
+            <br />
+            <a class="time-create-order">--/--/----</a>
+        </li>
+    </ul>
+
+    <div class="order-float-bar-block" id="order-bar" style="margin-top: 26px;">
+        <div class="tab-btn block-get-info" id="tabProduct">
+            <input data-bind="value: url" type="text" class="input-link" id="product-link">
+            <a class="remove-link-input" href="javascript:;" style="display: none;"><i class="fa fa-times-circle"></i></a>
+            <a data-bind="click: getHTML" class="btn-get-info" href="javascript:;">@Resource.CreateOrder_SelectInforProduct</a>
+        </div>
+        <div class="tab-btn block-view-order" id="tabListProduct">
+            <a class="button-block" href="javascript:;">
+                <span class="view-order-text">@Resource.CreateOrder_SeeOrder</span>
+                <div class="order-short-info">
+                    <span class="info-item">@Resource.Has <span data-bind="text: countShop" class="order-total-shop"></span> shop</span>
+                    <span class="info-item"><span data-bind="text: countLink" class="order-total-link">0</span> link</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="rs listOrder" id="listOrder" style="display: none">
+        <form class="zichan-zijin zichan-box rs" id="listCreateOrder">
+            @Html.AntiForgeryToken()
+
+            <!-- ko if: listOrder().length == 0 -->
+            <h3 style="font-size: 16px; text-align: center;">@Resource.CreateOrder_NotProduct</h3>
+            <!-- /ko -->
+            <!-- ko ifnot: listOrder().length == 0 -->
+            <div class="rs select-storage" style="">
+                <div class="rs" style="width: 75%;">
+                    <p style="padding-bottom: 10px !important"> @Resource.CreateOrder_SelectService </p>
+                    <div class="progress" style="height: 2px; width: 50%; margin-left: 15px;">
+                        <span class="progress-bar" style="width: 40%;"></span>
+                    </div>
+                    <div data-bind="foreach: listService" class="check-service-deposit">
+                        <label>
+                            <input type="checkbox" class="icheck check" data-bind="checkedValue: ServiceId, checked: Checked, click: $parent.updateService" /><span data-bind="text: ServiceName"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="rs" style="width: 25%; min-width: 300px;padding-right: 10px;  box-sizing: border-box;">
+                    <p style="padding-bottom: 10px !important"> @Resource.CreateOrder_SelectStorage </p>
+                    <div class="progress" style="height: 2px; width: 96%; margin-left: 15px;">
+                        <span class="progress-bar" style="width: 60%;"></span>
+                    </div>
+                    <select data-bind="options:listWardDelivery, optionsText: 'Text', optionsValue: 'Value', value: WardDeliveryId "></select>
+                </div>
+
+                <span class="nh-divide rs"></span>
+            </div>
+
+            <table class="table table-product table-create-new-pr table-order" border="1" cellpadding="1" cellspacing="1" id="add-input">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">#</th>
+                        <th style="width: 150px;"> @Resource.CreateOrder_InforImage</th>
+                        <th style="width: 320px;">
+                            @Resource.CreateOrder_InforProduct<br />
+                            @*<i>Tên, link, màu sắc, kích thước</i>*@
+                            <i>ชื่อ, ลิงค์, สีสัน, ขนาด</i>
+                        </th>
+                        <th style="width: 150px;">@Resource.Product_Number</th>
+                        <th style="width: 150px;">
+                            ราคาต่อชิ้น
+                            <br />
+                            <i>หน่วย: ¥</i>
+                            @*@Resource.CreateOrder_InforPrice<br />
+                                <i> @Resource.CreateOrder_InforUnit: ¥</i>*@
+                        </th>
+                        <th style="width: 200px;">
+
+                            ราคาทั้งหมด
+                            <br />
+                            <i> หน่วย: ¥</i>
+
+                            @*@Resource.Product_Amount<br />
+                                <i> @Resource.CreateOrder_InforUnit: ¥</i>*@
+                        </th>
+                        <th>@Resource.Note</th>
+                        <th style="width: 40px;"></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: {data: listOrder, afterRender: renderedHandler}">
+                    <!-- ko if: TypeObj() == 'hand' -->
+                    <tr>
+                        <td class="text-center">
+                            <span class="td-init" data-bind="text: $index()+1"></span>
+                        </td>
+                        <td>
+                            <a>
+                                <img data-bind="attr: { src: (Image() == '' ? '/Images/add-img.png' : Image)}" width="100" height="100" alt="" />
+                            </a>
+                        </td>
+                        <td class="infor-product">
+                            <input data-bind="value: Link(), hasFocus: LinkFocus, css: LinkCss, disable: true" type="text" placeholder=" @Resource.CreateOrder_InputLinkProduct " style="width: 100%;" />
+                            <input data-bind="value: Name" type="text" placeholder="@Resource.CreateOrder_InputNameProduct" style="width: 100%;" />
+                            <input data-bind="value: Color, hasFocus: ColorFocus, css: ColorCss" type="text" placeholder="@Resource.Product_Color" style="width: 100%;" />
+                            <input data-bind="value: Size, hasFocus: SizeFocus, css: SizeCss" type="text" placeholder="@Resource.CreateOrder_InputSize" style="width: 100%;" />
+                        </td>
+
+                        <td class="quantity-pro" style="vertical-align: top;">
+                            <input data-bind="value: Quantity, hasFocus: QuantityFocus, css: QuantityCss" placeholder="@Resource.Product_Number" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                        </td>
+                        <td class="quantity-pro" style="vertical-align: top;">
+                            <input data-bind="value: Price" type="text" placeholder=" @Resource.CreateOrder_InforPrice " class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                        </td>
+                        <td class="quantity-pro" style="vertical-align: top;">
+                            <input data-bind="value: TotalPrice(), disable: true" placeholder="@Resource.Product_Amount" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                        </td>
+
+                        <td style="vertical-align: top;">
+                            <textarea data-bind="value: Note" type="text" placeholder="@Resource.Note" style="width: calc(100% - 20px); margin: 0 10px; margin-top: 23px;" rows="4"></textarea>
+                        </td>
+
+                        <td class="option-delete" style="padding: 8px 0 !important;">
+                            <a data-bind="click: $parent.removeOrder" class="btn btn-delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                    <!-- ko if: TypeObj() == 'link' -->
+                    <tr>
+                        <td class="text-center">
+                            <span class="td-init" data-bind="text: $index()+1"></span>
+                        </td>
+                        <td>
+                            <a>
+                                <img data-bind="attr: { src: (Image() == '' ? '/Images/add-img.png' : Image)}" width="100" height="100" alt="" />
+                            </a>
+                        </td>
+                        <td class="infor-product">
+                            <input data-bind="value: Link(), hasFocus: LinkFocus, css: LinkCss, disable: true" type="text" placeholder=" @Resource.CreateOrder_InputLinkProduct " style="width: 100%;" />
+                            <input data-bind="value: Name" type="text" placeholder="@Resource.CreateOrder_InputNameProduct" style="width: 100%;" />
+                            <!-- ko if: Properties().length != 0 -->
+                            <div data-bind="foreach: Properties">
+                                <p data-bind="text: Label + ': ' + Text" style="text-align: left;"></p>
+                            </div>
+                            <!-- /ko -->
+                        </td>
+
+                        <td class="quantity-pro" style="vertical-align: top;">
+                            <input data-bind="value: Quantity, hasFocus: QuantityFocus, css: QuantityCss" placeholder="@Resource.Product_Number" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                            <span data-bind="text: 'จำนวนสินค้งคงเหลือ: ' @*@Resource.Still '*@ + EndAmount()" style="text-align: right; display: block;"></span>
+                        </td>
+                        <td class="quantity-pro" style="vertical-align: top;">
+                            <input data-bind="value: Price" type="text" placeholder=" @Resource.CreateOrder_InforPrice " class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                        </td>
+                        <td class="quantity-pro" style="vertical-align: top;">
+                            <input data-bind="value: TotalPrice(), disable: true" placeholder="@Resource.Product_Amount" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                        </td>
+
+                        <td style="vertical-align: top;">
+                            <textarea data-bind="value: Note" type="text" placeholder="@Resource.Note" style="width: calc(100% - 20px); margin: 0 10px; margin-top: 23px;" rows="4"></textarea>
+                        </td>
+
+                        <td class="option-delete" style="padding: 8px 0 !important;">
+                            <a data-bind="click: $parent.removeOrder" class="btn btn-delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" style="text-align: right">@Resource.TransactionHistory_Total: <span data-bind="text: formatNumberic(_.sumBy(listOrder(), function(o) { return Globalize.parseFloat(o.Quantity()); }),'N0')"></span></th>
+                        <th></th>
+                        <th style="text-align: right">@Resource.Product_TotalMoney: <span data-bind="text: formatNumberic(_.sumBy(listOrder(), function(o) { return Globalize.parseFloat(o.TotalPrice()); }),'N2')"></span> ¥</th>
+                        <th colspan="2" style="text-align: right">@Resource.Create_TotalMoneyExcharge: <span data-bind="text: formatNumberic(_.sumBy(listOrder(), function(o) { return Globalize.parseFloat(o.TotalPrice())}) * rate,'N0')"></span> @Resource.Currency</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="action-create-new rs" style="width: 1260px !important;">
+                <button data-bind="click: showNotifile, enable: isSubmit" class="btn btn-add" type="button" style="float: right;">
+                    <!-- ko if: isSubmit()-->
+                    <i class="fa fa-check"></i>
+                    <!-- /ko -->
+                    <!-- ko if: !isSubmit()-->
+                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                    <!-- /ko -->
+                    @Resource.Order_CreateOrder
+                </button>
+            </div>
+            <!-- /ko -->
+        </form>
+    </div>
+
+    <div class="good-main-content" id="productOrderDetail">
+        <div style="display: none">
+            <img id="shopping-cart" src="~/Images/shopping-cart-294547_960_720.png" alt="" />
+        </div>
+
+        <div class="detail_content_box1117 product_attr">
+            <!-- ko if: product() == null -->
+            <div class="text-center">
+                @Html.Raw(Resource.CreateOrder_NoteCreateLink)
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: product() == null -->
+            <!-- ko if: isSuccess() == true -->
+            <div data-bind="css: isSubmit() === true? 'display-none' : ''" class="text-center text-red">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i><br />
+                <span style="padding-top: 5px; color: red;">@Resource.Create_WaittingLoadding...</span>
+            </div>
+            <div data-bind="css: isSubmit() === true? '' : 'display-none'" class="display-none">
+                <div style="clear: both;"></div>
+                <div class="detail_left_sty" id="pic_show">
+                    <div style="float: left; width: 434px;">
+                        <div id="pic1117_pig_box_1" style="text-align: center;" class="js-pic-append">
+                            <img data-bind="attr: { src: product().Image}" id="pic" height="432" alt="">
+                        </div>
+                    </div>
+                    <div id="pic1117_small_box_1" class="pic_theme">
+                        <!-- ko foreach: listImg -->
+                        <a rel="nofollow" href="javascript:void(0);" class="p_small_off">
+                            <img data-bind="attr: { src: img}" onclick="goodspics(this)" class="item_pics" alt="" style="width: 43px; height: 43px;">
+                        </a>
+                        <!-- /ko -->
+                    </div>
+                    <div> </div>
+                </div>
+                <div class="detail_show" id="data_box1117_3">
+                    <ul id="detailShow">
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">Link:</div>
+                            <div class="cu_4">
+                                <input data-bind="value: product().ProLink" disabled="disabled" style="width: 670px; float: left; margin-left: 6px; border-top: 1px #b1c47c solid; border-left: 1px #b1c47c solid; border-bottom: 1px #b1c47c solid;" id="url" class="biaodansty1117-1" type="text">
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">@Resource.CreateOrder_InputNameProduct:</div>
+                            <div class="cu_4">
+                                <input data-bind="value: product().Name" disabled="disabled" name="" id="title" class="biaodansty1117-1" style="width: 670px !important;" type="text">
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">Shop:</div>
+                            <div class="cu_4">
+                                <input data-bind="value: product().ShopNick" disabled="disabled" name="" id="seller" class="biaodansty1117-1" style="width: 670px !important;" type="text">
+                            </div>
+                        </li>
+                        <!-- ko if: website() != 1 -->
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">@Resource.Product_Number :</div>
+                            <div class="cu_4">
+                                <p data-bind="text: '≥' + product().BeginAmount"></p>
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1"> @Resource.CreateOrder_InforPrice (¥):</div>
+                            <div class="cu_4">
+                                <p data-bind="text: product().Price"></p>
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="s_g" style="display: list-item;">
+                            <div class="cu_1">@Resource.Create_ExchargeCN (@Resource.Currency):</div>
+                            <div class="cu_4">
+                                <p data-bind="text: product().PriceExchange"></p>
+                            </div>
+                        </li>
+                        <!-- /ko -->
+                        <!-- ko ifnot: website() != 1 -->
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item; width: 800px;">
+                            <table style="border: 0 !important; width: 100%; line-height: 36px;">
+                                <tr>
+                                    <td style="width: 100px; text-align: right;">@Resource.Product_Number:</td>
+                                    <!-- ko foreach: listRange -->
+                                    <td data-bind="html: Amount" style="text-align: left; padding-left: 14px;"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; text-align: right;"> @Resource.CreateOrder_InforPrice (¥):</td>
+                                    <!-- ko foreach: listRange -->
+                                    <td data-bind="text: Price" style="text-align: left; padding-left: 14px;"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; text-align: right;">@Resource.Create_ExchargeCN (@Resource.Currency):</td>
+                                    <!-- ko foreach: listRange -->
+                                    <td data-bind="text: PriceExchange" style="text-align: left; padding-left: 14px;"></td>
+                                    <!-- /ko -->
+                                </tr>
+                            </table>
+                        </li>
+                        <!-- /ko -->
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item; width: 800px;">
+                            <div class="cu_1" style="height: 1px; width: 780px; border-top: 1px solid #d6d9ce;"></div>
+                            <div class="cu_1" style="width: 540px; height: 10px;"></div>
+                        </li>
+
+                        <!-- ko foreach: listProperty -->
+                        <li id="date3_cu1117_box" style="width: 800px;">
+                            <!-- ko if: Type == 'color' -->
+                            <div data-bind="text: '@Resource.Product_Color ('+ Title + '):'" class="cu_1" style="float: left"></div>
+                            <!-- /ko -->
+                            <!-- ko if: Type == 'size' -->
+                            <div data-bind="text: 'Size ('+ Title + '):'" class="cu_1" style="float: left"></div>
+                            <!-- /ko -->
+                            <!-- ko if: Type == 'other' -->
+                            <div data-bind="text: '@Resource.Orther ('+ Title + '):'" class="cu_1" style="float: left"></div>
+                            <!-- /ko -->
+                            <div style="width: 680px !important; float: left">
+                                <!-- ko if: IsDetail == true -->
+                                <table data-bind="foreach: ChilProperty" style="border: 0 !important;">
+                                    <tr style="padding: 10px; border-bottom: 1px dashed #d7d8dc">
+                                        <!-- ko if: Type == 'img' -->
+                                        <td style="width: 69px;">
+                                            <img data-bind="attr: { src: Img}" alt="" style="width: 43px; height: 43px;">
+                                        </td>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: Type == 'img' -->
+                                        <td></td>
+                                        <!-- /ko -->
+                                        <td style="padding-left: 13px;">
+                                            <p data-bind="text: Title, attr: { title: Title}" style="text-align: left"></p>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: Price() + ' ¥'"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: 'จำนวนสินค้งคงเหลือ: ' @*@Resource.Still '*@ + QuantityBook()"></span>
+                                        </td>
+                                        <td>
+                                            <!-- ko if: QuantityBook() != 0 -->
+                                            <input data-bind="value: Quantity, valueUpdate: 'blur', event: { blur: UpdateQuantity }" class="decimal" type="text" placeholder="@Resource.Product_Number" style="width: 60px; height: 12px; padding: 5px;" />
+                                            <!-- /ko -->
+                                        </td>
+                                        <td>
+                                            <textarea data-bind="value: Note" type="text" placeholder="@Resource.Note" style="padding: 5px;"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- /ko -->
+                                <!-- ko ifnot: IsDetail == true -->
+                                <!-- ko foreach: ChilProperty -->
+                                <!-- ko if: Img == null -->
+                                <a data-bind="text: Title, attr: { title: Title}, css: CSS, click: CSS() == 'size-select'? CheckQuantity(): CheckQuantity" href="javascript:;"></a>
+                                <!-- /ko -->
+                                <!-- ko ifnot: Img == null -->
+                                <a data-bind="attr: { title: Title}, css: CSS, style: { backgroundImage: 'url(\'' + Img + '\')' }, click: CSS() == 'size-select'? CheckQuantity(): CheckQuantity" href="javascript:;"></a>
+                                <!-- /ko -->
+                                <!-- /ko -->
+                                <!-- /ko -->
+                            </div>
+                            <div class="cu_3_1"></div>
+                        </li>
+                        <!-- /ko -->
+                        <li>
+                            <div class="btnbuybox1117-1" style="width: 698px;">
+                                <h3 data-bind="text: mes" style="float: left;line-height: 50px;"></h3>
+                                <button data-bind="click: addDetaiOrderToUrl, enable: isSubmit" id="add_cart" class="btn add_cart" type="button" style="float: right; width: 200px; height: 50px;">
+                                    <!-- ko if: isSubmit()-->
+                                    <i class="fa fa-plus"></i>
+                                    <!-- /ko -->
+                                    <!-- ko if: !isSubmit()-->
+                                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                    <!-- /ko -->
+                                    @Resource.CreateOrder_AddNewOrder
+                                </button>
+                            </div>
+                        </li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: isSuccess() == true -->
+            <div data-bind="css: isSubmit() === true? '' : 'display-none'" class="display-none">
+                @Html.Raw(Resource.CreateOrder_WarningPause)
+                <br />
+                <br />
+                <table class="table table-product table-create-new-pr table-order" border="1" cellpadding="1" cellspacing="1" id="add-input">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">#</th>
+                            <th style="width: 150px;"> @Resource.CreateOrder_InforImage</th>
+                            <th style="width: 320px;">
+                                @Resource.CreateOrder_InforProduct <br />
+                                <i>ชื่อลิงค์สีขนาด</i>
+                                @*   <i>Tên, link, màu sắc, kích thước</i>*@
+                            </th>
+                            <th style="width: 150px;">@Resource.Product_Number</th>
+                            <th style="width: 150px;">
+                                @Resource.CreateOrder_InforPrice<br />
+                                <i> @Resource.CreateOrder_InforUnit: ¥</i>
+                            </th>
+                            <th>@Resource.Note </th>
+                            <th style="width: 40px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: {data: listOrderDetail, afterRender: renderedHandler}">
+                        <tr>
+                            <td class="text-center">
+                                <span class="td-init" data-bind="text: $index()+1"></span>
+                            </td>
+                            <td>
+                                <a>
+                                    <img data-bind="attr: { src: (Image() == '' ? '/Images/add-img.png' : Image),  id: 'editableBtn'+ Id}" width="100" height="100" alt="" />
+                                    <span data-bind="attr: { id: 'editableImg'+ Id}, editable: Image, editableOptions: {name: 'image', pk: Id, url: '', showbuttons: false, autotext: 'never', onblur: 'submit',placeholder:'Nhập link ảnh'}" class="editable-img"></span>
+                                </a>
+                            </td>
+                            <td class="infor-product">
+                                <input data-bind="value: Link, hasFocus: LinkFocus, css: LinkCss" type="text" placeholder="@Resource.CreateOrder_InputLinkProduct" style="width: 100%;" />
+                                <input data-bind="value: Name" type="text" placeholder="@Resource.CreateOrder_InputNameProduct" style="width: 100%;" />
+                                <input data-bind="value: Color, hasFocus: ColorFocus, css: ColorCss" type="text" placeholder="@Resource.Product_Color" style="width: 100%;" />
+                                <input data-bind="value: Size, hasFocus: SizeFocus, css: SizeCss" type="text" placeholder="@Resource.CreateOrder_InputSize" style="width: 100%;" />
+                            </td>
+
+                            <td class="quantity-pro" style="vertical-align: top;">
+                                <input data-bind="value: Quantity, hasFocus: QuantityFocus, css: QuantityCss" placeholder="@Resource.Product_Number" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                            </td>
+                            <td class="quantity-pro" style="vertical-align: top;">
+                                <input data-bind="value: Price" type="text" placeholder="@Resource.CreateOrder_InforPrice" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                            </td>
+                            @*<td class="quantity-pro" style="vertical-align: top;">
+                                    <input placeholder="Thành tiền" class="decimal" style="width: 100%; text-align: right; height: 41px; margin-top: 21px;" />
+                                </td>*@
+
+                            <td style="vertical-align: top;">
+                                <textarea data-bind="value: Note" type="text" placeholder="@Resource.Note" style="width: calc(100% - 20px); margin: 0 10px; margin-top: 31px;" rows="4"></textarea>
+                            </td>
+
+                            <td class="option-delete">
+                                <!-- ko if: $index() != 0 -->
+                                <a data-bind="click: $parent.removeOrderDetail" class="btn btn-delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <!-- /ko -->
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7" style="padding: 10px 0;">
+                                <a data-bind="click: addOrderDetail" style="text-align: left">
+                                    <div style="width: 70px; height: 70px; border: 1px dashed #878787; margin-left: 79px; text-align: center; float: left">
+                                        <i class="fa fa-plus" style="font-size: 78px; color: #D5D5D5;"></i>
+                                    </div>
+                                    <span style="float: left; padding: 11px; font-size: 18px; line-height: 52px;">@Resource.CreateOrder_AddNewProduct</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="action-create-new rs" style="width: 1260px !important;">
+                    <h3 data-bind="text: mes" style="float: left;line-height: 35px;"></h3>
+                    <button data-bind="click: addDetaiOrder, enable: isSubmit" id="btn-add" class="btn btn-add" type="button" style="float: right;">
+                        <!-- ko if: isSubmit()-->
+                        <i class="fa fa-plus"></i>
+                        <!-- /ko -->
+                        <!-- ko if: !isSubmit()-->
+                        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                        <!-- /ko -->
+                        @Resource.CreateOrder_AddNewOrder
+                    </button>
+                </div>
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+            <span id="begin"></span>
+        </div>
+    </div>
+    <div id="delete-box" class="login zhezhao">
+        <div style="display: inline-block; vertical-align: middle; width: 30%;">
+            <div class="del-box">
+                <div class="del-box-top">
+                    @Resource.CreateOrder_Warning
+                    <button data-bind="click: hideNotifile" style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff; border: none" class="close-box">
+                        <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                    </button>
+                </div>
+                <div class="del-box-content warning-order">
+                    <p>
+                        Đơn hàng quý khách đặt nhỏ hơn <span class="red-color bold">1.000.000 VNĐ</span>, Quý khách xin vui lòng đặt đơn hàng lớn hơn <span class="red-color bold">1.000.000 VNĐ</span> để được giảm giá phí dịch vụ từ 12% xuống còn 4%
+                    </p>
+                    <p class="bold red-color mg-t-15">Xin chân thành cảm ơn!</p>
+                </div>
+                <div class="del-box-btn">
+                    <button data-bind="click: saveOrder" id="del_s" class="close-box"> Tiếp tục đặt </button><button data-bind="click: hideNotifile" id="del_c" class="close-box">Hủy </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--note huong dan tao don hang ky gui-->
+<section class="zhuanyun-how" id="how_zhuanyun">
+    <img class="how-daigou-box-bot-l" src="/Content/images/img-more/ic-arrow-left.png" alt="">
+    <img class="how-daigou-box-bot-r" src="/Content/images/img-more/ic-arrow-right.png" alt="">
+    <div class="zhuanyun-how-title">
+        <span>
+            @Resource.CreateOrder_GuideCreateOrder
+        </span>
+    </div>
+    <ul class="zhuanyun-how-nav clearFix">
+        <li data-id="1" class="lete-active">
+            <span></span>
+            <a>@Resource.Order_CreateOrder</a>
+            <label></label>
+        </li>
+        <li data-id="2" class="">
+            <span></span>
+            <a>@Resource.CreateOrder_SelectInfor</a>
+            <label></label>
+        </li>
+        <li data-id="3" class="">
+            <span></span>
+            <a>@Resource.CreateOrder_SelectServiceStorage</a>
+            <label></label>
+        </li>
+        <li data-id="4" class="">
+            <span></span>
+            <a>@Resource.Order_OperationDeposit</a>
+            <label></label>
+        </li>
+        <li data-id="5" class="">
+            <span></span>
+            <a>@Resource.Home_Transport</a>
+            <label></label>
+        </li>
+        <li data-id="6" class="">
+            <span></span>
+            <a>@Resource.Order_StatusComplete</a>
+        </li>
+    </ul>
+    <div class="zhuanyun-how-img">
+        <img data-id="1" class="lete-active" src="~/Content/images/img-more/CreateOrder1.png" alt="" />
+        <img data-id="2" src="~/Content/images/img-more/CreateOrder2.png" class="" alt="" />
+        <img data-id="3" src="~/Content/images/img-more/CreateOrder3.png" class="" alt="" />
+        <img data-id="4" src="~/Content/images/img-more/CreateOrder4.png" class="" alt="" />
+        <img data-id="5" src="~/Content/images/img-more/CreateOrder5.png" class="" alt="" />
+        <img data-id="6" src="~/Content/images/img-more/CreateOrder6.png" class="" alt="" />
+    </div>
+</section>
+@section scripts{
+    <script src="~/Scripts/lodash.js"></script>
+    <script src="~/Content/bootstrap-toastr/toastr.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.extensions.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.inputmask.numeric.extensions.js"></script>
+    <script src="~/Areas/CMS/Scripts/jquery.mask.js"></script>
+    <script src="~/Content/plugins/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/knockout.x-editable.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    @*<script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.th.js"></script>*@
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/orderAddViewModel.js"></script>
+    <script src="~/Content/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script>
+        var dataJson;
+        var listService = @Html.Raw(ViewBag.listService);
+        var listWardDelivery = @Html.Raw(ViewBag.ListWardDelivery);
+        var rate = @ViewBag.Rate;
+        var customerId = @CustomerState.Id;
+
+        $(document).ready(function () {
+            //reset
+            $("#listCreateOrder").hide();
+            $("#productOrderDetail").show();//hien thi chi tiet cua san pham
+            $("#listOrder").hide();
+            $("#tabProduct").addClass("active");//add active cho tabproduct
+            $("#tabListProduct").removeClass("active");
+
+            $("#productOrderDetail").addClass("arrow_box");//add
+            $("#listCreateOrder").removeClass("arrow_box");
+
+            $("#tabProduct").click(function () {
+                $("#productOrderDetail").show();
+                $("#listCreateOrder").hide();
+                $("#listOrder").hide();
+
+                $("#productOrderDetail").addClass("arrow_box");
+                $("#listCreateOrder").removeClass("arrow_box");
+
+                $("#tabProduct").addClass("active");
+                $("#tabListProduct").removeClass("active");
+            });
+
+            $("#tabListProduct").click(function () {
+                $("#productOrderDetail").hide();
+                $("#listCreateOrder").show();
+                $("#listOrder").show();
+
+                $("#tabListProduct").addClass("active");
+                $("#tabProduct").removeClass("active");
+
+                $("#listCreateOrder").addClass("arrow_box");
+                $("#productOrderDetail").removeClass("arrow_box");
+            });
+
+        });
+
+        function goodspics(e) {
+
+            $(".item_pics").parent("a").attr("class", "p_small_off");
+            $(".item_pics").parent("a").attr("onmouseover", "this.className='p_small_on';");
+            $(".item_pics").parent("a").attr("onmouseout", "this.className='p_small_off';");
+            $(e).parent("a").removeAttr("onmouseout");
+            $(e).parent("a").removeAttr("onmouseover");
+            $(e).parent("a").attr("class", "p_small_on");
+            $("#pic").attr("src", $(e).attr("src"));
+        }
+
+        $(".product-xiangqing").on("mousemove", function () {
+            $(".row1124-1-2").fadeIn();
+        });
+
+        function flyToCart() {
+            var cart = $('#tabListProduct');
+            var imgtofly = $('#pic');
+            var begin = $('#begin');
+            if (imgtofly) {
+                var imgclone = imgtofly.clone()
+                    .offset({ top: begin.offset().top, left: begin.offset().left })
+                    .css({ 'opacity': '0.7', 'position': 'absolute', 'height': '100px', 'width': '100px', 'z-index': '100000' })
+                    .appendTo($('body'))
+                    .animate({
+                        'top': cart.offset().top + 30,
+                        'left': cart.offset().left + 480,
+                        'width': 55,
+                        'height': 55
+                    }, 2000, 'easeInElastic');
+                imgclone.animate({ 'width': 0, 'height': 0 }, function () { $(this).detach(); });
+            }
+            return false;
+        }
+
+        function flyToCartHand() {
+            var cart = $('#tabListProduct');
+            var imgtofly = $('#shopping-cart');
+            var begin = $('#begin');
+            if (imgtofly) {
+                var imgclone = imgtofly.clone()
+                    .offset({ top: begin.offset().top, left: begin.offset().left })
+                    .css({ 'opacity': '0.7', 'position': 'absolute', 'height': '100px', 'width': '100px', 'z-index': '100000' })
+                    .appendTo($('body'))
+                    .animate({
+                        'top': cart.offset().top + 30,
+                        'left': cart.offset().left + 480,
+                        'width': 55,
+                        'height': 55
+                    }, 2000, 'easeInElastic');
+                imgclone.animate({ 'width': 0, 'height': 0 }, function () { $(this).detach(); });
+            }
+            return false;
+        }
+    </script>
+    <script>
+        $("#zhuanyun_to_jiaocheng").on("click", function () {
+            $("body,html").animate({ scrollTop: $("#how_zhuanyun").offset().top - 50 }, 1000);
+        });
+        $(".zhuanyun-how-nav").on("click", "li", function () {
+            clearInterval(setInterval1);
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(this).addClass("lete-active");
+            var id = $(this).attr("data-id");
+            $(".zhuanyun-how-img").find("img").removeClass("lete-active");
+            $(".zhuanyun-how-img").find("img[data-id='" + id + "']").addClass("lete-active");
+        });
+        $(".zhuanyun-how-img").on("click", function () {
+            $("body,html").animate({ scrollTop: "0" }, 1000);
+        });
+
+        $(".how-daigou-box-bot-l").on("click", function () {
+            clearInterval(setInterval1);
+            var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+            if (id <= 1) {
+                id = 6;
+            } else {
+                id -= 1;
+            }
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+            $(".zhuanyun-how-img img").removeClass("lete-active");
+            $(".zhuanyun-how-img img[data-id='" + id + "']").addClass("lete-active");
+        });
+
+        var setInterval1 = setInterval(function () {
+            var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+            if (id >= 6) {
+                id = 1;
+            } else {
+                id += 1;
+            }
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+            $(".zhuanyun-how-img img").removeClass("lete-active");
+            $(".zhuanyun-how-img img[data-id='" + id + "']").addClass("lete-active");
+        }, 4000);
+
+        $(".how-daigou-box-bot-r").on("click", function () {
+            clearInterval(setInterval1);
+            var id = Number($(".zhuanyun-how-nav").find("li.lete-active").attr("data-id"));
+            if (id >= 6) {
+                id = 1;
+            } else {
+                id += 1;
+            }
+            $(".zhuanyun-how-nav").find("li").removeClass("lete-active");
+            $(".zhuanyun-how-nav li[data-id='" + id + "']").addClass("lete-active");
+            $(".zhuanyun-how-img img").removeClass("lete-active");
+            $(".zhuanyun-how-img img[data-id='" + id + "']").addClass("lete-active");
+        });
+    </script>
+}

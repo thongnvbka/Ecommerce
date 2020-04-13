@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Config permission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Manage access to the system
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">System</a></li>
+        <li class="active">System access list</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    @Html.AntiForgeryToken()
+    <permissions>Loading...</permissions>
+</section>
+<!-- /.content -->
+
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/node_modules/core-js/client/shim.min.js"></script>
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.permission.js"></script>
+    <script>
+        System.import('/app').catch(function (err) { console.error(err); });
+    </script>
+}

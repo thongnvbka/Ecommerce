@@ -1,0 +1,376 @@
+﻿
+@{
+    ViewBag.Title = "Likeorder.com";
+    Layout = "~/Views/ShareMrk/_LayoutMrk.cshtml";
+}
+
+@section styles
+{
+
+    <link href="~/ContentMrk/css-marketing/m_page.min.css" rel="stylesheet" />
+}
+
+
+<div class="landing-mpage-new clearfix">
+    <div class="mpage-banner">
+        <div class="">
+            <div class="container">
+                <h1 class="title-mpage">นำเข้าสินค้าจากผู้ผลิตที่จีน</h1>
+                <p class="title-detail-mpage">สั่งซื้อ เลือกสินค้าโดยตัวเองที่ ALIBABA, 1688, TAOBAO, TMALL…</p>
+                @*<div class="icon-video">
+                    <a id="open42"><img src="/ContentMrk/images/mpage/icon-play-video.png" class="cursor-pointer"></a>
+                </div>*@
+
+                <a class="btn-registration btn-trial cursor-pointer" href="/th/Home/Guide" ><i class="fa fa-question"></i><span class="mpage-banner-trial-text">ลองใช้ฟรี</span></a>
+                <a class="btn-registration btn-trial cursor-pointer" href="/th/Account/Register"><i class="fa fa-thumbs-o-up"></i><span class="mpage-banner-trial-text">สมัครสมาชิก</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="mpage-adv clearfix">
+        <div class="mpage-adv-col-left clearfix">
+            <div class="">
+                <div class="col-md-12 col-sm-12 col-xs-12 mpage-adv-left">
+                    <h2 class="adv-title">คุณกำลังกังวล...</h2>
+                    <div class="adv-title-detail row">ถ้าคุณเป็นผู้คนกำลังเรียนรู้การทำธุรกิจ หาแหล่งสินค้า หรือเป็นนักธุรกิจมีหลากหลายประสบการณ์ คุณอาจจะเคยเจอหนึ่งในไม่กี่ปัญหาต่อไปนี้</div>
+                    <div class="comment-box1 clearfix"><div class="comment-box-sm"><img src="/ContentMrk/images/mpage/img-box-cmt.png" class="img-box-cmt">ไม่มีขั้นต่ำ</div></div>
+                    <div class="comment-box2 clearfix"><div class="comment-box-sm"><img src="/ContentMrk/images/mpage/img-box-cmt.png" class="img-box-cmt">ไม่ต้องรอปิดรอบ?</div></div>
+                    <div class="comment-box3 clearfix"><div class="comment-box-sm"><img src="/ContentMrk/images/mpage/img-box-cmt.png" class="img-box-cmt">ไม่ต้องมีบัญชีธนาคารจีน?</div></div>
+                    <img src="/ContentMrk/images/mpage/icon-human-mpage.png" class="icon-human visible-lg visible-md hidden-sm hidden-xs">
+                    <img src="/ContentMrk/images/mpage/icon-human-mpage-tab.png" class="icon-human visible-sm  hidden-xs hidden-lg">
+                    <img src="/ContentMrk/images/mpage/icon-human-mpage-mobile.png" class="icon-human visible-xs  hidden-sm hidden-md">
+                </div>
+            </div>
+        </div>
+        <div class="mpage-adv-col-right clearfix">
+            <div class="">
+                <div class="col-md-12 col-sm-12 col-xs-12 mpage-adv-temp">
+                    <div class="mpage-adv-detail col-md-12 col-sm-4 col-xs-12 mpage-mod-margin-top">
+                        <img src="/ContentMrk/images/mpage/icon-number-1.png" class="mpage-adv-col-right-num1">
+                        <h3 class="mpage-adv-detail-title col-xs-8 col-md-12 col-sm-12">ไม่รู้จะขายหรือทำธุรกิจอะไร</h3>
+                        <p class="mpage-adv-detail-des col-xs-8 col-md-12 col-sm-12">คุณเคยค้นหาสินค้าเพื่อทำธุรกิจ หรือง่ายๆก็คือคุณเคยเห็นสินค้าตัวหนึ่งดีมาก อยากลองเอามาขาย แต่ไม่รู้ซื้อที่ไหนได่ ราคาขายส่งเท่าไหร่</p>
+                    </div>
+                    <div class="mpage-adv-line clearfix visible-xs hidden-lg hidden-md hidden-sm"></div>
+                    <div class="mpage-adv-detail col-md-12 col-sm-4 col-xs-12 mpage-mod-margin-top2">
+                        <img src="/ContentMrk/images/mpage/icon-number-2.png" class="mpage-adv-col-right-num2">
+                        <h3 class="mpage-adv-detail-title col-xs-8 col-md-12 col-sm-12">ราคาขายส่งสูงมาก</h3>
+                        <p class="mpage-adv-detail-des col-xs-8 col-md-12 col-sm-12">คุณหาได้คู่ค้าจำหน่ายภายในประเทศแต่ราคาขายส่งสูงมากถ้าเอาไปขายจะแข่งขันบนตลาดไม่ได้เพราะจะได้รายได้น้อยมาก ไม่สามารถทำธุรกิจแบบยาวนาน</p>
+                    </div>
+                    <div class="mpage-adv-line clearfix visible-xs hidden-lg hidden-md hidden-sm"></div>
+                    <div class="mpage-adv-detail col-md-12 col-sm-4 col-xs-12 mpage-mod-margin-top3">
+                        <img src="/ContentMrk/images/mpage/icon-number-3.png" class="mpage-adv-col-right-num3">
+                        <h3 class="mpage-adv-detail-title col-xs-8 col-md-12 col-sm-12">ค่าใช้จ่ายในการนำเข้าสินค้าเองสูงมาก</h3>
+                        <p class="mpage-adv-detail-des col-xs-8 col-md-12 col-sm-12">ใครๆก็รู้ว่าจีนจำหน่ายสินค้าด้วยราคาส่งถูกที่สุดแต่ค่าใช้จ่ายที่ต้องเสียเมื่อไปซื้อเองที่จีนสูงมาก (ค่าเดินทาง จ้างล่าม ค่าห้องพัก ฯ )</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mpage-detail">
+        <div class="container">
+            <div class="content-detail">
+                <h2 class="mpage-detail-title" style="margin-bottom : 0px;">ไม่ต้องเสียเวลา แต่ยังทำให้ยอดขายขึ้นเป็นสองเท่า</h2>
+                <hr class="mpage-detail-line">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <ul class="mpage-detail-left clearfix">
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/ContentMrk/images/mpage/icon-manager-cmt.png"></div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">มีผู้ผลิตมากเกินไป</h3>
+                                    <p class="mpage-detail-title-des">คุณหาได้สินค้าที่เหมาะสมทำธุรกิจแล้ว ปัญหาคือ สินค้าเดียวรูปแบบเดี่ยวแต่มีหลายผู้ผลิต คุณไม่รู้จะเลือกผู้ผลิตไหนที่มีความน่าเชื่อถือ</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/ContentMrk/images/mpage/icon-manager-product.png"></div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">ไม่รู้ภาษาจีน</h3>
+                                    <p class="mpage-detail-title-des">คุณกังวลว่าภาษาจะเป็นอุปสรรคทำให้คุณไม่สามารถหาแหล่งสินค้าหรือเจรจาต่อรองกับร้านค้าเพื่อได้ราคาดีที่สุด</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/ContentMrk/images/mpage/icon-free.png"></div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">สินค้าไม่มาถึงตรงเวลาที่คาดหวัง</h3>
+                                    <p class="mpage-detail-title-des">ถึงแม้ว่าคุณจะไปที่จีนเองคุณก็ต้องหิ้วสินค้าผ่านบริษัทขนส่งเพื่อนำเข้าสินค้าจากจีนมาเมืองไทย แต่ถ้าสินค้ามาช้ามากมันจะทำให้คุณเสียเวลาและเสียโอกาสทำธุรกิจไปด้วย</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <ul class="mpage-detail-right clearfix">
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/ContentMrk/images/mpage/icon-auto-cmt.png" class="mod-img-1"></div>
+                                <div class="col-md-10 modify-col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub mod-title-sub">เลือกบริษัทขนส่งยาก</h3>
+                                    <p class="mpage-detail-title-des">ณ บัดนี้มีหลายบริษัทให้บริการทั้งหมดช่วยให้คุณสั่งซื้อและขนส่งสินค้าจากจีนมาไทย แต่คุณยังต้องปวดหัวเรื่องคำนวณราคา ระดับปอดภัยของสินค้าและเวลาออเดอร์ได้สำเร็จ…</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/ContentMrk/images/mpage/icon-manager-fanpage.png" class="mod-img"></div>
+                                <div class="col-md-10 modify-col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">สินค้ามากผิดรูปแบบ ขาดสินค้า</h3>
+                                    <p class="mpage-detail-title-des">หลายผู้ผลิตที่จีนส่งผิดหรือส่งขาดสินค้าโดยไม่รู้ตัว และคุณไม่รู้วิธีส่งข้อร้องเรียนถึงผู้ผลิต</p>
+                                </div>
+                            </li>
+                            @*<li class="clearfix mod-li">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/ContentMrk/images/mpage/icon-auto-hide.png" class="mod-img-2"></div>
+                                <div class="col-md-10 modify-col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">อัตโนมัติซ่อนคอมเม้น</h3>
+                                    <p class="mpage-detail-title-des">คอมเม้นที่ลูกค้าสั่งซื้อสินค้าจะได้อัตโนมัติซ่อนทำให้คู่แข่งของคุณไม่สามารถเอาข้อมูลลูกค้าได้</p>
+                                </div>
+                            </li>*@
+                        </ul>
+                    </div>
+                </div>
+                <a class="btn-registration btn-trial cursor-pointer" href="https://likeorder.com/th/Home/Guide"><i class="fa fa-thumbs-o-up"></i><span class="mpage-banner-trial-text">วิธีสั่งซื้อ</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="guide-step">
+        <div class="container">
+            <h3>ให้เราเป็นเพื่อนร่วมทำธุรกิจกับคุณ</h3>
+            <p class="sub-title">แค่ทำตาม 3 ขั้นตอนต่อไปนี้ คุณสามารถทำให้ลูกค้ามีประสิทธิภาพเป็นพันคนรู้จักสินค้าของคุณ</p>
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-12 item">
+                    <img src="/ContentMrk/images/Step/fpage-step-1.png">
+                    <p>สมัครบัญชี</p>
+                    <span>ใส่ข้อมูลส่วนตัวที่จำเป็นเข้าช่อง กรุณาให้ข้อมูลอย่างแม่นยำเพื่อรับรองการคอนเฟิร์มและจัดการออเดอร์ของคุณไม่มีปัญหา</span>
+                    <img class="arrow hidden-xs hidden-sm" src="/ContentMrk/images/landing-arrow.png">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-12 item">
+                    <img src="/ContentMrk/images/Step/fpage-step-2.png">
+                    <p>เลือกสินค้าและเพิ่มสินค้าเข้าตะกร้า</p>
+                    <span>เข้าเว็บขายสินค้าเหมือน Taobao.com, Tmall.com, 1688.com … เลือกสินค้าและรอสินค้าได้เพิ่มเข้าไปตะกร้า</span>
+                    <img class="arrow hidden-xs hidden-sm" src="/ContentMrk/images/landing-arrow.png">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-12 item">
+                    <img src="/ContentMrk/images/Step/fpage-step-3.png">
+                    <p>ส่งออเดอร์สั่งสินค้า</p>
+                    <span>กลับที่เว็บไซต์ของLikeorder และเช็คตะกร้าสินค้าคลิกปุ่ม " ส่งออเดอร์" เพื่อออเดอร์ได้สำเร็จ รอคอนเฟิร์ม</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="index-top-comments hidden-xs">
+        <div class="container">
+            <p class="text-center">ด้วยประสบการณ์และความกระตือรือร้น เรามั่นใจจะให้คุณบริการ มูลค่าที่ดีที่สุด</p>
+            <div class="help-text text-center"></div>
+            <div id="top-comments-list" class="owl-carousel top-comments__list">
+                <div class="top-comment__item">
+                    <div class="top-comment__item-thumbnail" style="background-image: url('/ContentMrk/images/mpage/custom-hieu.jpg')">
+                    </div>
+                    <div class="top-comment__item-info">
+                        <p class="top-comment__item-content">
+                            ประสบการณ์ 10 ปี
+                        </p>
+                        <div class="customer-name">
+                            ด้วยประสบการณ์ 10 ปีในการทำธุรกิจและขนส่งสินค้าจากจีน เรามีความรู้เกี่ยวกับตลาดดีหรือประเภทสินค้าที่จีน เราสามารถเจรจากับหลายบริษัทที่นี่ เพื่อการทำธุรกิจมีผลมากที่สุด
+                        </div>
+                    </div>
+                </div>
+                <div class="top-comment__item">
+                    <div class="top-comment__item-thumbnail" style="background-image: url('/ContentMrk/images/mpage/custom-lam.jpg')">
+                    </div>
+                    <div class="top-comment__item-info">
+                        <p class="top-comment__item-content">
+                            ระบบโกดังใหญ่
+                        </p>
+                        <div class="customer-name">
+                            ระบบโกดังของทางเราที่มีทั่วประเทศจีนกับไทย ความจุ 10ตัน/วัน รับรองจะให้บริการที่ดีที่สุดให้ทั้งหมดลูกค้า
+                        </div>
+                    </div>
+                </div>
+                <div class="top-comment__item">
+                    <div class="top-comment__item-thumbnail" style="background-image: url('/ContentMrk/images/mpage/custom-last.png')">
+                    </div>
+                    <div class="top-comment__item-info">
+                        <p class="top-comment__item-content">
+                            ขั้นตอนทำงานมีผลมากที่สุด
+                        </p>
+                        <div class="customer-name">
+                            ขั้นตอนการทำงานชัดเจนอย่างเข้มงวด จัดการสินค้าได้ทำทันที รับรองสินค้าจะได้ขนส่งอย่างต่อเนื่อง ไม่ให้เกิดปัญหาอยู่ที่โกดังนานๆ
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .owl-theme .owl-controls .owl-page span {
+            background: #6e6969;
+        }
+
+        .owl-theme .owl-controls .active span {
+            background: #3b8ed0;
+        }
+    </style>
+
+    @*<div id="top-comments" class="visible-xs">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+                <div class="text-center">
+                    <p class="h3-scale" style="margin-top:20px">Đừng nghe chúng tôi nói</p>
+                    <p class="uppercase">Hãy nghe cảm nhận từ khách hàng của chúng tôi</p>
+                </div>
+                <div class="swiper-container swiper-container-horizontal" style="cursor: -webkit-grab;">
+                    <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/ContentMrk/images/mpage/custom-last.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Tôi đã được các bạn nhân viên chăm sóc và hỗ trợ rất nhiệt tình, giúp tôi có  thể sử dung Fpage để quản lý cửa hàng và công việc kinh doanh của mình dễ dàng và tiện lợi hơn.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Minh Đức
+                                    <a class="text-aqua" href="https://www.facebook.com/tuixachphukiendathat" target="_blank" rel="nofollow">www.facebook.com/tuixachphukiendathat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/ContentMrk/images/mpage/custom-hieu.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Fpage giúp tôi nâng cao hiệu quả bán hàng trên facebook. Tôi không còn đau đầu lo lắng bị cướp đơn hàng hay bỏ sót đơn hàng để tập trung hoàn toàn vào phát triển ý tưởng kinh doanh.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Trần Hiếu
+                                    <a class="text-aqua" href="https://www.facebook.com/XiuPaoDuDu" target="_blank" rel="nofollow">www.facebook.com/XiuPaoDuDu</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/ContentMrk/images/mpage/custom-lam.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Tôi đã tìm được giải pháp tối ưu bán hàng trên facebook cho cửa hàng của mình. Từ ngày sử dụng Fpage, tôi có thể quản lý 3 fanpage cùng lúc giúp tôi tiết kiệm được nhiều thời gian hơn</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Huyền Trang
+                                    <a class="text-aqua" href="https://www.facebook.com/1992Watches" target="_blank" rel="nofollow">www.facebook.com/1992Watches</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/ContentMrk/images/mpage/custom-last.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Tôi đã được các bạn nhân viên chăm sóc và hỗ trợ rất nhiệt tình, giúp tôi có  thể sử dung Fpage để quản lý cửa hàng và công việc kinh doanh của mình dễ dàng và tiện lợi hơn.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Minh Đức
+                                    <a class="text-aqua" href="https://www.facebook.com/tuixachphukiendathat" target="_blank" rel="nofollow">www.facebook.com/tuixachphukiendathat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/ContentMrk/images/mpage/custom-hieu.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Fpage giúp tôi nâng cao hiệu quả bán hàng trên facebook. Tôi không còn đau đầu lo lắng bị cướp đơn hàng hay bỏ sót đơn hàng để tập trung hoàn toàn vào phát triển ý tưởng kinh doanh.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Trần Hiếu
+                                    <a class="text-aqua" href="https://www.facebook.com/XiuPaoDuDu" target="_blank" rel="nofollow">www.facebook.com/XiuPaoDuDu</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-comments swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="mpage-sample">
+        <div class="container">
+            <h2 class="mpage-sample-title">ความมุ่งมั่น</h2>
+            <span class="mpage-detail-subtitle">ความสำเร็จของลูกค้าเป็นค่านิยมหลักของทางเรา</span>
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-4 item-sample">
+                    <div class="item-sample-img">
+                        <a href="/ban-hang-tren-website-bizweb.html"><img src="/ContentMrk/images/mpage/icon-sale-in-web.png"></a>
+                    </div>
+                    <h3 class="btn-text-sample"><a href="/thiet-ke-website-ban-hang.html">ราคาถูกที่สุด</a></h3>
+                    <p class="mpage-sample-info">ค่าขนส่งแค่ตั้งแต่ 45บาท/กิโล</p>
+                    <hr style="width:85%;margin-top:32px" class="visible-xs hidden-lg hidden-md hidden-sm">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-4 item-sample">
+                    <div class="item-sample-img">
+                        <a href="/ban-hang-tai-cua-hang.html"><img src="/ContentMrk/images/mpage/icon-sale-in-pos.png"></a>
+                    </div>
+                    <h3 class="btn-text-sample"><a href="/ban-hang-tai-cua-hang.html">รวดเร็วที่สุด</a></h3>
+                    <p class="mpage-sample-info mod-mpage-sample-info">สินค้าจะมาถึงท่านโดยเร็วที่สุด </p>
+                    <hr style="width:85%;margin-top:32px" class="visible-xs hidden-lg hidden-md hidden-sm">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-4 item-sample">
+                    <div class="item-sample-img">
+                        <a href="/ban-hang-tren-website-khac.html"><img src="/ContentMrk/images/mpage/icon-sale-in-web2.png"></a>
+                    </div>
+                    <h3 class="btn-text-sample"><a href="/ban-hang-tren-website-khac.html">ปลอดภัยที่สุด</a></h3>
+                    <p class="mpage-sample-info mod-mpage-sample-info">คืนเงิน 100% ถ้าเกิดปัญหากับสินค้าส่งข้อร้องเรียนและช่วยคุณแก้ปัญหากับผู้ผลิต/ ผู้จำหน่าย</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-register">
+        <div class="container">
+            <h3>Likeorder คือใคร ?</h3>
+            <span class="sub-text">ด้วยประสบการณ์และความกระตือรือร้น เรามั่นใจจะให้คุณบริการ มูลค่า ที่ดีที่สุด</span>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 button-block">
+                <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://likeorder.com/th/Account/Register">สมัครตอนนี้</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var modal42 = $('#modal42').jmodal({ 'buttonClose': true });
+            $('#open42').click(function () {
+                modal42.open();
+                video1.src = "https://www.youtube.com/embed/jwdSz8oO2O4?autoplay=1&v=VIDEO_IDENTIFIER";
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#top-comments-list").owlCarousel({
+                'items': 2,
+                itemsDesktop: [1200, 2], //5 items between 1000px and 901px
+                itemsDesktopSmall: [1199, 1], // betweem 900px and 601px
+                itemsTablet: [768, 1], //2 items between 600 and 0
+                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+                'pagination': true,
+                autoPlay: 10000
+            });
+        })
+    </script>
+    <script>
+        var commentSwiper = new Swiper('#top-comments .swiper-container', {
+            autoplay: 10000,
+            autoplayDisableOnInteraction: false,
+            slidesPerView: 1,
+            grabCursor: true,
+            pagination: '.swiper-pagination-comments',
+            paginationClickable: true,
+            loop: true
+        })
+    </script>
+}
+

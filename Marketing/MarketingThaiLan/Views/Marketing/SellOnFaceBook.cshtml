@@ -1,0 +1,382 @@
+﻿@using System.ServiceModel.Configuration
+
+@{
+    ViewBag.Title = "SellOnFaceBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header
+{
+    @Html.Partial("_Header")
+}
+@section styles
+{
+
+    <link href="~/Content/css-marketing/m_page.min.css" rel="stylesheet" />
+}
+
+
+<div class="landing-mpage-new clearfix">
+    <div class="mpage-banner">
+        <div class="">
+            <div class="container">
+                <h1 class="title-mpage">ขายสินค้าบนFacebook อย่างมีมืออาชีพ</h1>
+                <p class="title-detail-mpage">จัดการคอมเม้นและข้อความในอินบ็อสอย่างงายๆ</p>
+                <div class="icon-video">
+
+                    <a id="open42"><img src="/Content/images/mpage/icon-play-video.png" class="cursor-pointer"></a>
+                </div>
+
+                <a class="btn-registration btn-trial cursor-pointer" href="javascript:;" onclick="openCreateStorePopup(this, null,true)"><i class="fa fa-facebook-square icon-face"></i><span class="mpage-banner-trial-text">ลองใช้ฟรี</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="mpage-adv clearfix">
+        <div class="mpage-adv-col-left clearfix">
+            <div class="">
+                <div class="col-md-12 col-sm-12 col-xs-12 mpage-adv-left">
+                    <h2 class="adv-title">ขายสินค้าบนFacebook?</h2>
+                    <div class="adv-title-detail row">คุณมีคอมเม้นและข้อความในอินบ็อสเป็นจำนวนมาก</div>
+                    <div class="comment-box1 clearfix"><div class="comment-box-sm"><img src="/Content/images/mpage/img-box-cmt.png" class="img-box-cmt">วิธ๊สั่งซื้อยังไง?</div></div>
+                    <div class="comment-box2 clearfix"><div class="comment-box-sm"><img src="/Content/images/mpage/img-box-cmt.png" class="img-box-cmt">สินค้าที่เคยสั่งไป วันนี้มาถึงหรือยังคะ?</div></div>
+                    <div class="comment-box3 clearfix"><div class="comment-box-sm"><img src="/Content/images/mpage/img-box-cmt.png" class="img-box-cmt">สิวัสดีค่ะ ขอทราบราคาร้องเท้า Zara สีดำนี้นะค่ะ?</div></div>
+                    <img src="/Content/images/mpage/icon-human-mpage.png" class="icon-human visible-lg visible-md hidden-sm hidden-xs">
+                    <img src="/Content/images/mpage/icon-human-mpage-tab.png" class="icon-human visible-sm  hidden-xs hidden-lg">
+                    <img src="/Content/images/mpage/icon-human-mpage-mobile.png" class="icon-human visible-xs  hidden-sm hidden-md">
+                </div>
+            </div>
+        </div>
+        <div class="mpage-adv-col-right clearfix">
+            <div class="">
+                <div class="col-md-12 col-sm-12 col-xs-12 mpage-adv-temp">
+                    <div class="mpage-adv-detail col-md-12 col-sm-4 col-xs-12 mpage-mod-margin-top">
+                        <img src="/Content/images/mpage/icon-number-1.png" class="mpage-adv-col-right-num1">
+                        <h3 class="mpage-adv-detail-title col-xs-8 col-md-12 col-sm-12">จัดการคอมเม้น อินบ็อส</h3>
+                        <p class="mpage-adv-detail-des col-xs-8 col-md-12 col-sm-12">คุณมีคอมเม้นและข้อความในอินบ็อสเป็นจำนวนมาก ไม่สามารถครบคุฒทั้งหมด <br class="visible-lg visible-md visible-sm visible-xs">บ้างที่ทำให้คุณพลาดออเดอร์จากลูกค้า?</p>
+                    </div>
+                    <div class="mpage-adv-line clearfix visible-xs hidden-lg hidden-md hidden-sm"></div>
+                    <div class="mpage-adv-detail col-md-12 col-sm-4 col-xs-12 mpage-mod-margin-top2">
+                        <img src="/Content/images/mpage/icon-number-2.png" class="mpage-adv-col-right-num2">
+                        <h3 class="mpage-adv-detail-title col-xs-8 col-md-12 col-sm-12">จัดการสต็อกสินค้า</h3>
+                        <p class="mpage-adv-detail-des col-xs-8 col-md-12 col-sm-12">คุณไม่มีเครื่องมือจัดการสินค้าที่เคยขายที่ Facebook และสินค้ายังค้างอยู่ในรสต็อก เพราะฉะนั้นทำให้คุณเสียเวลาเพื่อการจัดการที่หลัง?</p>
+                    </div>
+                    <div class="mpage-adv-line clearfix visible-xs hidden-lg hidden-md hidden-sm"></div>
+                    <div class="mpage-adv-detail col-md-12 col-sm-4 col-xs-12 mpage-mod-margin-top3">
+                        <img src="/Content/images/mpage/icon-number-3.png" class="mpage-adv-col-right-num3">
+                        <h3 class="mpage-adv-detail-title col-xs-8 col-md-12 col-sm-12">เสียลูกค้าให้แก่คู่แข่ง</h3>
+                        <p class="mpage-adv-detail-des col-xs-8 col-md-12 col-sm-12">คู่แข่งของคุณขโมยข้อมูลลูกค้าจาก Fanpage ของคุณ ? <br class="visible-lg visible-md visible-sm visible-xs">ข้อมูลลูกค้าไม่ไก้รักษาความปลอดภัย?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mpage-detail">
+        <div class="container">
+            <div class="content-detail">
+                <h2 class="mpage-detail-title" style="margin-bottom : 0px;">ไม่ต้องเสียเวลา แต่ยังทำให้ยอดขายขึ้นเป็นสองเท่า</h2>
+                <hr class="mpage-detail-line">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <ul class="mpage-detail-left clearfix">
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/Content/images/mpage/icon-manager-cmt.png"></div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">จัดการความคิดเห็น - กล่องอินบ็อส</h3>
+                                    <p class="mpage-detail-title-des">อัตโนมัติเก็บทั้งหมดคอมเม้นและข้อความของลูกค้าจาก fanpage มาถึง  Fpage. คุณค่ะต้องเขา Fpage เพื่อตอบคำถามของลูกค้า เก็บออเดอร์อย่างงายๆ</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/Content/images/mpage/icon-manager-product.png"></div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">จัดการสินค้า</h3>
+                                    <p class="mpage-detail-title-des">สร้างออเดอร์ด้วยเว็บไซต์EziwebPage ติดตามอย่างละเอียดจำนวนสินค้าที่ขายไปแล้วบนFacebookและจำนวนสินค้าที่ค้างอยู่</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/Content/images/mpage/icon-free.png"></div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">จัดการข้อมูลของลูกค้า</h3>
+                                    <p class="mpage-detail-title-des">ข้อมูลของลูกค้าได้เก็บรักษาและแบ่งแยกเป็นกลุ่มลูกค้า ช่วยให้คุณติดตามงานและออกนโยบายขายสินค้าเหมาะสำหรับกลุ่มลูกค้าต่างกัน</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <ul class="mpage-detail-right clearfix">
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/Content/images/mpage/icon-auto-cmt.png" class="mod-img-1"></div>
+                                <div class="col-md-10 modify-col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub mod-title-sub">อัตโนมัติตอบคอมเม้น</h3>
+                                    <p class="mpage-detail-title-des">เมื่อคุณไม่ออนไลน์คุณก็ไม่สามารถตอบลูกค้าได้ทันที ฟังก์ชันนี้จะช่วยให้คุณตอบลูกค้าได้ทันทีทุกเวลา</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/Content/images/mpage/icon-manager-fanpage.png" class="mod-img"></div>
+                                <div class="col-md-10 modify-col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">จัดการหลาย fanpage</h3>
+                                    <p class="mpage-detail-title-des">จัดการ 2หรือหลาย fanpageด้วย Fpage,  คุณไม่ต้องเสียเวลาเข้าไปดูแต่ละfanpageอีกต่อไป</p>
+                                </div>
+                            </li>
+                            <li class="clearfix mod-li">
+                                <div class="col-md-2 col-sm-12 col-xs-12"><img src="/Content/images/mpage/icon-auto-hide.png" class="mod-img-2"></div>
+                                <div class="col-md-10 modify-col-md-10 col-sm-12 col-xs-12">
+                                    <h3 class="mpage-detail-title-sub">อัตโนมัติซ่อนคอมเม้น</h3>
+                                    <p class="mpage-detail-title-des">คอมเม้นที่ลูกค้าสั่งซื้อสินค้าจะได้อัตโนมัติซ่อนทำให้คู่แข่งของคุณไม่สามารถเอาข้อมูลลูกค้าได้</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="btn-registration btn-trial cursor-pointer" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform"><i class="fa fa-facebook-square icon-face"></i><span class="mpage-banner-trial-text">ลองใช้ฟรี</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="guide-step">
+        <div class="container">
+            <h3>เริ่มขายสินค้าบน Facebook กับ Eziwebshopอย่างไร?</span></h3>
+            <p class="sub-title">แค่ทำตาม 3 ขั้นตอนต่อไปนี้ คุณสามารถทำให้ลูกค้ามีประสิทธิภาพเป็นพันคนรู้จักสินค้าของคุณ</p>
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-12 item">
+                    <img src="/Content/images/Step/fpage-step-1.png">
+                    <p>ขั้นตอนที่ 1</p>
+                    <span>สมัครใช้Fpage - ช่องขายสินค้าบนFacebook</span>
+                    <img class="arrow hidden-xs hidden-sm" src="/Content/images/landing-arrow.png">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-12 item">
+                    <img src="/Content/images/Step/fpage-step-2.png">
+                    <p>ขั้นตอนที่ 2</p>
+                    <span>เลือก fanpage ที่คุณอยากจะจัดการ</span>
+                    <img class="arrow hidden-xs hidden-sm" src="/Content/images/landing-arrow.png">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-12 item">
+                    <img src="/Content/images/Step/fpage-step-3.png">
+                    <p>ขั้นตอนที่ 3</p>
+                    <span>จัดการคอมเม้น อินบ็อสและขายสินค้าบนFacebookอย่างฟรีฟรี</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="index-top-comments hidden-xs">
+        <div class="container">
+            <p class="text-center">รากฐานขายสินค้าออนไลน์ใช้ดีที่สุดในเมืองไทย</p>
+            <div class="help-text text-center">ลูกค้าเชื่อมั่นเลือกใช้บริการ</div>
+            <div id="top-comments-list" class="owl-carousel top-comments__list">
+                <div class="top-comment__item">
+                    <div class="top-comment__item-thumbnail" style="background-image: url('/Content/images/mpage/custom-hieu.jpg')">
+                    </div>
+                    <div class="top-comment__item-info">
+                        <p class="top-comment__item-content"> 
+                            เป็นคู่ค้าที่ใช้บริการของ Eziwebshopมานาม ผมได้เห็นถึงความเป็นมืออาชีพและความกระตือรือร้นของบริษัทEziwebshop
+                            ขอให้ Eziwebshopจะพัฒนาอย่างยิ่งใหญ่ต่อไป
+                        </p>
+                        <div class="customer-name">
+                            คุณนิติพงศ์ เลาหวิศิษฎ์ <a class="text-aqua" href="https://www.facebook.com/XiuPaoDuDu" target="_blank" rel="nofollow">www.facebook.com/XiuPaoDuDu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-comment__item">
+                    <div class="top-comment__item-thumbnail" style="background-image: url('/Content/images/mpage/custom-lam.jpg')">
+                    </div>
+                    <div class="top-comment__item-info">
+                        <p class="top-comment__item-content">
+                            ใช้Eziwebshopสร้างเว็บไซต์ช่วยให้ดิฉันเปลี่ยนแปลงวิธิขายสินค้า ไม่ใช้แค่โดยตรงเหมือนเมื่อก่อน แต่ ยังได้ขายบน เว็บไซต์ และ Facebook จำนวนลูกค้าก็เพิ่มขึ้นทุกวัน
+                        </p>
+                        <div class="customer-name">
+                            คุณวริศรา รุ่งเรืองวัฒนา <a class="text-aqua" href="https://www.facebook.com/1992Watches" target="_blank" rel="nofollow">www.facebook.com/1992Watches</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-comment__item">
+                    <div class="top-comment__item-thumbnail" style="background-image: url('/Content/images/mpage/custom-last.png')">
+                    </div>
+                    <div class="top-comment__item-info">
+                        <p class="top-comment__item-content">
+                            เว็บไซต์Eziwebshopใช้งานง่ายๆ ถึงแม้ว่าตัวเองไม่ใช่คนมีมืออาชีพแต่ก็ยังจัดการเว็บของตัวเองได้
+                        </p>
+                        <div class="customer-name">
+                            คุณนิติพงศ์ เลาหวิศิษฎ์ <a class="text-aqua" href="https://www.facebook.com/tuixachphukiendathat" target="_blank" rel="nofollow">www.facebook.com/tuixachphukiendathat</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .owl-theme .owl-controls .owl-page span {
+            background: #6e6969;
+        }
+
+        .owl-theme .owl-controls .active span {
+            background: #3b8ed0;
+        }
+    </style>
+
+    <div id="top-comments" class="visible-xs">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+                <div class="text-center">
+                    <p class="h3-scale" style="margin-top:20px">Đừng nghe chúng tôi nói</p>
+                    <p class="uppercase">Hãy nghe cảm nhận từ khách hàng của chúng tôi</p>
+                </div>
+                <div class="swiper-container swiper-container-horizontal" style="cursor: -webkit-grab;">
+                    <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/Content/images/mpage/custom-last.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Tôi đã được các bạn nhân viên chăm sóc và hỗ trợ rất nhiệt tình, giúp tôi có  thể sử dung Fpage để quản lý cửa hàng và công việc kinh doanh của mình dễ dàng và tiện lợi hơn.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Minh Đức
+                                    <a class="text-aqua" href="https://www.facebook.com/tuixachphukiendathat" target="_blank" rel="nofollow">www.facebook.com/tuixachphukiendathat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/Content/images/mpage/custom-hieu.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Fpage giúp tôi nâng cao hiệu quả bán hàng trên facebook. Tôi không còn đau đầu lo lắng bị cướp đơn hàng hay bỏ sót đơn hàng để tập trung hoàn toàn vào phát triển ý tưởng kinh doanh.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Trần Hiếu
+                                    <a class="text-aqua" href="https://www.facebook.com/XiuPaoDuDu" target="_blank" rel="nofollow">www.facebook.com/XiuPaoDuDu</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/Content/images/mpage/custom-lam.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Tôi đã tìm được giải pháp tối ưu bán hàng trên facebook cho cửa hàng của mình. Từ ngày sử dụng Fpage, tôi có thể quản lý 3 fanpage cùng lúc giúp tôi tiết kiệm được nhiều thời gian hơn</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Huyền Trang
+                                    <a class="text-aqua" href="https://www.facebook.com/1992Watches" target="_blank" rel="nofollow">www.facebook.com/1992Watches</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/Content/images/mpage/custom-last.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Tôi đã được các bạn nhân viên chăm sóc và hỗ trợ rất nhiệt tình, giúp tôi có  thể sử dung Fpage để quản lý cửa hàng và công việc kinh doanh của mình dễ dàng và tiện lợi hơn.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Minh Đức
+                                    <a class="text-aqua" href="https://www.facebook.com/tuixachphukiendathat" target="_blank" rel="nofollow">www.facebook.com/tuixachphukiendathat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0">
+                            <div class="thumbnail">
+                                <img style="width : 100px;height : 100px;border-radius : 50%;" src="/Content/images/mpage/custom-hieu.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <p>Fpage giúp tôi nâng cao hiệu quả bán hàng trên facebook. Tôi không còn đau đầu lo lắng bị cướp đơn hàng hay bỏ sót đơn hàng để tập trung hoàn toàn vào phát triển ý tưởng kinh doanh.</p>
+                                </div>
+                                <div class="customer-name">
+                                    Nguyễn Trần Hiếu
+                                    <a class="text-aqua" href="https://www.facebook.com/XiuPaoDuDu" target="_blank" rel="nofollow">www.facebook.com/XiuPaoDuDu</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-comments swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mpage-sample">
+        <div class="container">
+            <h2 class="mpage-sample-title">รากฐานขายสินค้าออนไลน์ใช้ดีที่สุดในเมืองไทย</h2>
+            <span class="mpage-detail-subtitle">ลูกค้าเชื่อมั่นเลือกใช้บริการ</span>
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-4 item-sample">
+                    <div class="item-sample-img">
+                        <a href="/ban-hang-tren-website-bizweb.html"><img src="/Content/images/mpage/icon-sale-in-web.png"></a>
+                    </div>
+                    <h3 class="btn-text-sample"><a href="/thiet-ke-website-ban-hang.html">ขายสินค้าบนเว็บไซต์</a></h3>
+                    <p class="mpage-sample-info">ออกแบบเว็บไซต์ภายใน 1 นาทีด้วยEziwebshop</p>
+                    <hr style="width:85%;margin-top:32px" class="visible-xs hidden-lg hidden-md hidden-sm">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-4 item-sample">
+                    <div class="item-sample-img">
+                        <a href="/ban-hang-tai-cua-hang.html"><img src="/Content/images/mpage/icon-sale-in-pos.png"></a>
+                    </div>
+                    <h3 class="btn-text-sample"><a href="/ban-hang-tai-cua-hang.html">ขายสินค้า</a></h3>
+                    <p class="mpage-sample-info mod-mpage-sample-info">ซอฟต์แวร์จัดการงานขายสินค้าที่ฉลาดในEziwebshop</p>
+                    <hr style="width:85%;margin-top:32px" class="visible-xs hidden-lg hidden-md hidden-sm">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-4 item-sample">
+                    <div class="item-sample-img">
+                        <a href="/ban-hang-tren-website-khac.html"><img src="/Content/images/mpage/icon-sale-in-web2.png"></a>
+                    </div>
+                    <h3 class="btn-text-sample"><a href="/ban-hang-tren-website-khac.html">ขายสินค้าที่เว็บไซต์อื่น</a></h3>
+                    <p class="mpage-sample-info mod-mpage-sample-info">อัพโหลดสินค้าบนเว็บไซต์อื่นช่วยให้โอกาสขายได้สินค้าเพิ่มเยอะขึ้น</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-register">
+        <div class="container">
+            <h3>ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+            <span class="sub-text">สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้</span>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 button-block">
+                <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var modal42 = $('#modal42').jmodal({ 'buttonClose': true });
+            $('#open42').click(function () {
+                modal42.open();
+                video1.src = "https://www.youtube.com/embed/jwdSz8oO2O4?autoplay=1&v=VIDEO_IDENTIFIER";
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#top-comments-list").owlCarousel({
+                'items': 2,
+                itemsDesktop: [1200, 2], //5 items between 1000px and 901px
+                itemsDesktopSmall: [1199, 1], // betweem 900px and 601px
+                itemsTablet: [768, 1], //2 items between 600 and 0
+                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+                'pagination': true,
+                autoPlay: 10000
+            });
+        })
+    </script>
+    <script>
+        var commentSwiper = new Swiper('#top-comments .swiper-container', {
+            autoplay: 10000,
+            autoplayDisableOnInteraction: false,
+            slidesPerView: 1,
+            grabCursor: true,
+            pagination: '.swiper-pagination-comments',
+            paginationClickable: true,
+            loop: true
+        })
+    </script>
+}

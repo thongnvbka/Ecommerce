@@ -1,0 +1,121 @@
+﻿<div id="mustReturnDetailModal" class="modal fade modal-dialog modal-p60" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>DETAILED LIST OF DAMAGES</strong>
+                        <span class="impornumber">Tracking number: <strong data-bind="text: mustReturnModel().Code()"></strong></span>
+                        <small data-bind="text: 'Actual collection date: ' + moment(mustReturnModel().Created()).format('DD/MM/YYYY')"></small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name of object type</th>
+                                <td data-bind="text: mustReturnModel().AccountantSubjectName()"></td>
+                            </tr>
+                            <tr>
+                                <th>Object code:</th>
+                                <td data-bind="text: mustReturnModel().SubjectCode()"></td>
+                            </tr>
+                            <tr>
+                                <th>Object name:</th>
+                                <td data-bind="text: mustReturnModel().SubjectName()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Status:</th>
+                                <td><span data-bind="text: mustReturnModel().StatusName(), css: mustReturnModel().StatusClass()"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Money Fund:</th>
+                                <td data-bind="text: mustReturnModel().FinanceFundName()"></td>
+                            </tr>
+                            <tr>
+                                <th>Account name already collected:</th>
+                                <td data-bind="text: mustReturnModel().TreasureName()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                            <h4><i class="icon fa fa-thumb-tack"></i>Staff notes !</h4>
+                            <span data-bind="text: mustReturnModel().Note()"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="importwarehouse">
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Amount to be collected (Baht)</th>
+                                <th class="text-center" style="color: blue">Amount of deduction (Baht)</th>
+                                <th class="text-center" style="color: green">Amount of money actual collection (Baht)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="text-center"><strong data-bind="text: formatNumberic(mustReturnModel().CurrencyFluctuations(), 'N2')"></strong></td>
+                                <td class="text-center" style="color: blue" data-bind="text: formatNumberic(mustReturnModel().CurrencyDiscount(), 'N2')"></td>
+                                <td class="text-center" style="color: green" data-bind="text: formatNumberic(mustReturnModel().CurrencyReal(), 'N2')"><i class="fa fa-caret-up"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+        </section>
+        <section class="importwarehouse">
+            <div class="row signature">
+                <div class="col-sm-4" align="center">
+                    <h5><strong>The person making the ticket</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: mustReturnModel().UserName()"></span>
+                </div>
+
+                <div class="col-sm-4" align="center">
+                    <span><strong>Customer</strong></span>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: "></span>
+                </div>
+
+                <div class="col-sm-4" align="center">
+                    <h5><strong>Chief accountant</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: mustReturnModel().UserApprovalName()"></span>
+                </div>
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-primary"><i class="fa fa-print"></i>Print </a>
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+</div>

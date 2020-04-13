@@ -1,0 +1,35 @@
+﻿<script type="text/html" id="ListNoti">
+    <tr>
+        <td data-bind="text: (page-1)* pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(OrderId, OrderCode); }" href="javascript:;"><strong data-bind="text: ReturnCode(OrderCode)"></strong></a>
+        </td>
+        <td class="text-center">
+            <a data-bind="attr: { href: ShopLink}" target="_blank"><strong data-bind="text: ShopLink"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: WarehouseName">
+        </td>
+        <td class="text-center">
+            <p><i class="fa fa-user-o"></i> <span data-bind="text: CustomerName" class=""></span></p>
+            
+            <p><i class="fa fa-envelope-o"></i> <span data-bind="text: CustomerEmail" class=""></span></p>
+            
+            <p><i class="fa fa-phone"></i> <span data-bind="text: CustomerPhone" class=""></span></p>
+            
+        </td>
+        <td class="text-center">
+            <p><i class="fa fa-check"></i> <a href="javascript:void(0)" title="Miscounted number of goods" data-bind="text: QuantityLose" class=""></a></p>
+            <p><i class="fa fa-check"></i> <a href="javascript:void(0)" title="Miscounted amount of money" data-bind="text: TotalPriceLose + ' ¥'" class=""></a></p>
+            <p><i class="fa fa-check"></i> <a href="javascript:void(0)" title="Miscounted amount of money to VND" data-bind="text: TotalExchangeLose + ' VND'" class=""></a></p>
+           
+        </td>
+        <td class="text-center">
+            <p><i class="fa fa-check"></i> <a href="javascript:void(0)" title="actual quantily" data-bind="text: ProductNo" class=""></a></p>
+            <p><i class="fa fa-check"></i> <a href="javascript:void(0)" title="Total money shop" data-bind="text: TotalPriceShop + ' ¥'" class=""></a></p>
+            <p><i class="fa fa-check"></i> <a href="javascript:void(0)" title="Total money shop conversion" data-bind="text: TotalExchangeShop + ' VND'" class=""></a></p>
+        </td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewCountingModal" href="javascript:;">Detail</a>
+        </td>
+    </tr>
+</script>

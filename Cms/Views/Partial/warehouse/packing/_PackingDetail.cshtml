@@ -1,0 +1,151 @@
+﻿<div id="packingDetailModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="importwarehouse">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>PACKING LIST INFORMATION</strong>
+                                <span class="impornumber">Slip number: <strong data-bind="text: packingModel().Code()"></strong></span>
+                                <small data-bind="text: 'Start Date :' + moment(packingModel().Created()).format('DD/MM/YYYY')"></small>
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row importwarehouse">
+                        <!-- accepted payments column -->
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Staff generated code:</th>
+                                        <td data-bind="text: packingModel().UserCode()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Full name :</th>
+                                        <td data-bind="text: packingModel().UserFullName()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Consigned warehouse :</th>
+                                        <td data-bind="text: packingModel().WarehouseDesName()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td data-bind="text: packingModel().WarehouseDesAddress()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Envelope code</th>
+                                        <th class="text-center">Number package</th>
+                                        <th class="text-center" style="color: green">Weight</th>
+                                        <th class="text-center" style="color: blue">Weight converted</th>
+                                        <th class="text-center" style="color: red">Volume (m3)</th>
+                                        <th class="text-center" width="20%">Stock status - note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center"><strong>WALET12919</strong></td>
+                                        <td class="text-center">23</td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center"><strong>WALET12919</strong></td>
+                                        <td class="text-center">23</td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center"><strong>WALET12919</strong></td>
+                                        <td class="text-center">23</td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row signature">
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>The person making the votes</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: packingModel().UserFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Carrier</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: packingModel().ShipperName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Storekeepers</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: packingModel().WarehouseManagerFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Accountant</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: packingModel().WarehouseAccountantFullName()"></span>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary"><i class="fa fa-print"></i>Print </a>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #packingDetailModal {
+        padding: 0px 10px !important;
+    }
+
+        #packingDetailModal .modal-lg {
+            width: 90% !important;
+        }
+</style>

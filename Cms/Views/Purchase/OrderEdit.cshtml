@@ -1,0 +1,342 @@
+﻿@{
+    ViewBag.Title = "Tạo mới đơn hàng";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    @*<h1>
+            Tạo mới đơn hàng
+        </h1>*@
+</section>
+<!-- Main content -->
+<section class="invoice">
+    <!-- title row -->
+    <div class="row">
+        <div class="col-xs-9">
+            <h2 class="order-header">
+                <i class="fa fa-globe"></i> MÃ ĐƠN HÀNG: <strong style="color: red">ORD6896253</strong>
+                <span class="label label-default">Pending</span>
+            </h2>
+        </div>
+        <div class="col-xs-3">
+            <h2 class="order-header">
+                <small class="pull-right">Create date: 02/09/2016</small><br />
+                <small class="pull-right">Ngày hoàn tất: 02/10/2016</small>
+            </h2>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">Khách ghi chú</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="callout callout-info">
+                        <p>
+                            Mình Muốn nhập loại gấu teddy ôm trái tim này. Yêu cầu của mình là chỉ nhập vỏ và phụ kiện của gấu teddy được may thành phẩm, sử dụng tiếng anh, bỏ phần thêu chữ trung quốci, còn phần lõi ruột bên trong mình tự sản xuất vào cho công nhân nhồi sau. Mụcíchể giảmược giá thành nhập khẩu và giảm cước ship về VietnamShip hàng tiểu ngạch về, nhận tạiịa chỉ 79 Ngọc Hồi, Quận Hoàng Mai, TP Hà Nội (CTY TNHH TM VẬN TẢIƯỜNG SẮT NAM VIỆT) Lương Hữu Phúc: 0915491899
+                        </p>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row importwarehouse">
+        <!-- accepted payments column -->
+        <div class="col-xs-4">
+            <strong>Account information</strong>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Họ tên:</th>
+                        <td><span class="label label-danger">VIP 1</span> USE0120120102 - Nguyễn Ngọc Phan</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>hanoibanhcuon@almasaeedstudio.com</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>0912349258</td>
+                    </tr>
+                    <tr>
+                        <th>Địa chỉ</th>
+                        <td>312 Nguyễn Phong Sắc, Đống đa, Hà Nội</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <strong>Thông tin người thanh toán</strong>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Họ tên:</th>
+                        <td>USE0120120102 - Nguyễn Ngọc Phan</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>hanoibanhcuon@almasaeedstudio.com</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>0912349258</td>
+                    </tr>
+                    <tr>
+                        <th>Địa chỉ</th>
+                        <td>312 Nguyễn Phong Sắc, Đống đa, Hà Nội</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <strong>Thông tin thêm</strong>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Tên Shop</th>
+                        <td><a href="#"><strong>义乌市雅然电子商务商行</strong></a></td>
+                    </tr>
+                    <tr>
+                        <th>Tỷ giá đang áp dụng</th>
+                        <td>1 NDT = 3.410 VNĐ</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row importwarehouse">
+        <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+                <b>Dịch vụ sử dụng thêm: </b>
+                <label>
+                    <input type="checkbox" class="minimal" checked> Dịch vụ kiểm đếm
+                </label>
+                <label>
+                    <input type="checkbox" class="minimal"> Dịch vụ đóng kiện gỗ
+                </label>
+                <label>
+                    <input type="checkbox" class="minimal"> Dịch vụ đóng kiện gỗ
+                </label>
+                <label>
+                    <input type="checkbox" class="minimal"> Dịch vụ đóng kiện gỗ
+                </label>
+                <label>
+                    <input type="checkbox" class="minimal"> Dịch vụ đóng kiện gỗ
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <!-- Table row -->
+    <button type="button" class="btn btn-success btn-xs btn-flat pull-right" style="margin-right: 5px;">
+        <i class="fa fa-plus"></i> Thêm Sản phẩm
+    </button>
+    <div class="row importwarehouse">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Ảnh sản phẩm</th>
+                        <th class="text-center">Tên sản phẩm</th>
+                        <th>Thuộc tính sản phẩm</th>
+                        <th>Miêu tả</th>
+                        <th class="text-center" style="color: blue">Order customer</th>
+                        <th class="text-center" style="color: blue">Đặt được</th>
+                        <th class="text-center" style="color: blue">Thực nhận</th>
+                        <th class="text-center" style="color: red">Đơn giá (NDT)</th>
+                        <th class="text-center" style="color: red">Thành tiền (NDT)</th>
+                        <th class="text-center">Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+                        <td><a href="#">Giày dép da</a></td>
+                        <td><a href="#">Size: 20, Màu: Xanh</a></td>
+                        <td>Giày dép da siêu bền</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">50.00</td>
+                        <td class="text-center">100.00</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Change</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Xóa</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+                        <td><a href="#">Kính xem tivi 3D</a></td>
+                        <td><a href="#">Size: 20, Màu: Xanh</a></td>
+                        <td>Kính xem tivia năng,đặt cọc không giới hạn</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">50.00</td>
+                        <td class="text-center">100.00</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Change</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Xóa</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+                        <td><a href="#">Đầu đĩa DVD</a></td>
+                        <td><a href="#">Size: 20, Màu: Xanh</a></td>
+                        <td>Đầuược trang bị khá nhiều đặc tính hay ho</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">50.00</td>
+                        <td class="text-center">100.00</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Change</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Xóa</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+                        <td><a href="#">Đĩa cứng Blue ray</a></td>
+                        <td><a href="#">Size: 20, Màu: Xanh</a></td>
+                        <td>Đĩa cứng này phải được gắn trong thông tin sản phẩm</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">02</td>
+                        <td class="text-center">50.00</td>
+                        <td class="text-center">100.00</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Change</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Xóa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.col -->
+    </div>
+
+    <div class="row">
+        <!-- accepted payments column -->
+        <div class="col-xs-12">
+            <span><strong>Nhân viên đặt hàng xử lý:</strong></span>
+            <button type="button" class="btn btn-success btn-xs btn-flat pull-right" style="margin-right: 5px;">
+                <i class="fa fa-plus"></i> Thêm MVĐ
+            </button>
+        </div>
+    </div>
+    <div class="row importwarehouse">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Mã hợp đồng</th>
+                        <th class="text-center">Mã vận đơn</th>
+                        <th class="text-center">Tổng giá trị đơn (NDT)</th>
+                        <th class="text-center" style="color: red">Mặc cả Shop (NDT)</th>
+                        <th class="text-center" style="color: red">Đã thanh toán cho shop (NDT)</th>
+                        <th class="text-center" style="color: red">Còn lại phải thanh toán (NDT)</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><strong>227165151863</strong></td>
+                        <td class="text-center">227165151863, 227165151863, 227165151863, 227165151863</td>
+                        <td class="text-center">350.00</td>
+                        <td class="text-center">300.00</td>
+                        <td class="text-center">
+                            100.00
+                        </td>
+                        <td class="text-center">
+                            50.00
+                        </td>
+                        <td class="text-center">
+                            <span class="label label-success">Chờ shop phát hàng</span>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Change</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Xóa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <!-- accepted payments column -->
+        <div class="col-xs-9">
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-3">
+            <p class="lead">Ngày thanh toán: 2/22/2014</p>
+            (Tỷ giá áp dụng cho đơn hàng này: 1 Tệ = 3,410 VNĐ)
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th style="width:60%">Tổng tiền hàng:</th>
+                        <td>24.000.000</td>
+                    </tr>
+                    <tr>
+                        <th>Đặt cọc:</th>
+                        <td>2.000.000</td>
+                    </tr>
+                    <tr>
+                        <th>Service rate:</th>
+                        <td>250.000</td>
+                    </tr>
+                    <tr>
+                        <th>Tổng phí vận chuyển:</th>
+                        <td>100.000</td>
+                    </tr>
+                    <tr>
+                        <th style="width:50%">Đặt cọc:</th>
+                        <td>- 12.000.000</td>
+                    </tr>
+                    <tr>
+                        <th>Còn lại thanh toán:</th>
+                        <td>15.500.000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+
+    <!-- /.row -->
+    <!-- this row will not appear when printing -->
+    <div class="row no-print">
+        <div class="col-xs-12">
+            <a href="/Purchase/Order/" target="_blank" class="btn btn-default"><i class="fa fa-arrow-left"></i> Danh sách đơn hàng</a>
+            <button type="button" class="btn btn-success pull-right">
+                <i class="fa fa fa-print"></i> In đơn hàng
+            </button>
+            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                <i class="fa fa-print"></i> In phiếu
+            </button>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+<div class="clearfix"></div>

@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = Resource.Packaging_YeuCauXuLyKiemDemSai;
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+}
+
+<section class="content-header">
+    <h1>
+        Miscount handling request
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Miscount handling request</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        @*<div class="col-sm-3 col-md-2">
+                @Html.Partial("_WarehouseSidebar", EnumPage.PackageNoCode)
+            </div>
+            <div class="col-sm-9 col-md-10">*@
+        <div class="col-sm-12">
+            <!-- Main content -->
+            <div id="accountingLose">
+                @Html.Partial("_GroupCommentModal")
+                <div class="box box-success">
+                    <div class="box-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li data-bind="attr: {class: tabMode() == 0 ? 'active': ''}" role="presentation" class="active"><a data-bind="click: changeTabMode.bind($data, 0)" href="#walletTab" role="tab" data-toggle="tab"> All <span data-bind="text: allNo" class="label label-primary"></span></a></li>
+                            <li data-bind="attr: {class: tabMode() == 1 ? 'active': ''}" role="presentation"><a data-bind="click: changeTabMode.bind($data, 1)" href="#walletTab" role="tab" data-toggle="tab">Send request<span data-bind="text: createdNo" class="label label-warning"></span></a></li>
+                            <li data-bind="attr: {class: tabMode() == 2 ? 'active': ''}" role="presentation"><a data-bind="click: changeTabMode.bind($data, 2)" href="#walletTab" role="tab" data-toggle="tab">Process request <span data-bind="text: handleNo" class="label label-info"></span></a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="walletTab">
+                                <div>
+                                    <div class="box-body pad table-responsive">
+                                        <form data-bind="submit: search.bind($data, 1)" id="searchForm" method="get" role="form" class="form-inline">
+                                            <div class="form-group">
+                                                <select data-bind="value: status" class="form-control">
+                                                    <option value="">--  Select status --</option>
+                                                    <option value="0">Newly created</option>
+                                                    <option value="1">Processing</option>
+                                                    <option value="2">Close</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <button type="button" class="btn btn-default pull-right" id="forcastDate-btn">
+                                                        <span>
+                                                            <i class="fa fa-calendar"></i> Arrival date
+                                                        </span>
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input data-bind="value: keyword" placeholder="Search ..." type="text" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-search'}" class="fa fa-search"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12" id="body-table">
+                                        <div class="box">
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table table-bordered table-hover tree">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center w50">#</th>
+                                                            <th class="text-left w50">Code order</th>
+                                                            <th class="text-left hidden-sm hidden-md">Shop name</th>
+                                                            <th class="text-left hidden-sm">Customer</th>
+                                                            <th class="text-center w50">Quantity </th>
+                                                            <th class="text-center">Value (CNY)</th>
+                                                            <th class="text-center">Ordered quantity</th>
+                                                            <th class="text-center">Order now </th>
+                                                            <th class="text-center">Help </th>
+                                                            <th class="text-center">Created Date</th>
+                                                            <th class="text-center w50"></th>
+                                                            <th class="text-center w50">Status</th>
+                                                            <th class="text-center">Handling plan</th>
+                                                            @if (UserState.OfficeType.HasValue && (UserState.OfficeType == (byte)OfficeType.Order
+|| UserState.OfficeType == (byte)OfficeType.Deposit || UserState.OfficeType == (byte)OfficeType.Warehouse))
+                                                            {
+                                                                <th class="text-center w50"></th>
+                                                            }
+                                                        </tr>
+                                                    </thead>
+                                                    <!-- ko if: orders().length == 0 -->
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="8" class="text-center">There are no records</td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <!-- /ko -->
+                                                    <!-- ko ifnot: orders().length == 0 -->
+                                                    <tbody data-bind="template: {name: 'packagesTemplate', foreach: orders}"></tbody>
+                                                    <!-- /ko -->
+                                                </table>
+                                            </div>
+
+                                            <div class="row mt15">
+                                                <div class="col-sm-6">
+                                                    <div id="sumaryPagerPackage" class="henry-paging mt5"></div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div id="pagerPackage"></div>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.content -->
+        </div>
+    </div>
+</section>
+
+@Html.Partial("_RefundUpdateModal")
+
+@Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+
+@Html.Partial("_RequestAcountingLoseModal")
+@Html.Partial("_ChangeStatusModal")
+@Html.Partial("~/Views/ImportWarehouse/_ImageViewModal.cshtml")
+
+@section Styles{
+    <link href="~/Content/plugins/HenrySlider/henry-slider.css" rel="stylesheet" />
+    <link href="~/Content/plugins/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/wysiwyg/src/wysiwyg-editor.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="/Content/plugins/HenrySlider/henry-slider.js"></script>
+    <script src="/Content/plugins/webui-popover/jquery.webui-popover.js"></script>
+    <script src="/Content/plugins/wysiwyg/src/wysiwyg.js"></script>
+    <script src="/Content/plugins/wysiwyg/src/wysiwyg-editor.js"></script>
+    <script src="/Content/plugins/wysiwyg/src/henry-editor.js"></script>
+    <script src="/Scripts/viewmodels/GroupChatHubModal.js"></script>
+    <script src="/Scripts/common/status.@cultureJs"></script>
+
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/order/depositDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderCommerceDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/AcountingLose/changeStatusModel.js"></script>
+    <script src="/Scripts/viewmodels/importWarehouse/viewImageModel.js"></script>
+    <script src="/Scripts/viewmodels/AcountingLose/requestAcoutingLoseModel.js"></script>
+    <script src="/Scripts/viewmodels/AcountingLose/refundUpdateModel.js"></script>
+    <script src="/Scripts/viewmodels/AcountingLose/acountingLoseModel.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="packagesTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+            <td class="text-left">
+                <a data-bind="click: function() {orderTypeViewModel.showViewOrder(id, code); }" href="javascript:;"><b data-bind="text: ReturnCode(code)"></b></a>
+            </td>
+            <td class="hidden-sm  hidden-md">
+                <a data-bind="text: shopName, attr: {href: shopLink}" target="_blank"></a>
+            </td>
+            <td class="hidden-sm">
+                <span data-bind="text: customerName"></span><br />
+                <span data-bind="text: customerPhone"></span><br />
+                (<span data-bind="text: customerEmail"></span>)
+            </td>
+            <td data-bind="text: formatNumberic(quantityLose)" class="text-right"></td>
+            <td data-bind="text: formatNumberic(totalPriceLose, 'N2')" class="text-right"></td>
+            <td class="text-right">
+                <a data-bind="click: $parent.showRequest" href="javascript:;">
+                    <strong><span data-bind="text: formatNumberic(requestNo, 'N2'); "></span></strong>
+                </a>
+            </td>
+            <td data-bind="text: userFullName" class="text-center"></td>
+            <td data-bind="text: customerCareFullName"></td>
+            <td>
+                <a data-bind="text: createdTextNow, attr: {title: createdText}" href="javascript:;"></a>
+            </td>
+            <td class="text-center">
+                <a data-bind="click: $parent.comment, attr: {class: commentNo() > 0 ? 'btn btn-warning btn-sm' : 'btn btn-success btn-sm'}" class="btn btn-success" href="javascript:;"><i class="fa fa-comments"></i></a>
+            </td>
+            <td class="text-center">
+                <span data-bind="text: statusText, attr: {class: statusClass }" class="label label-success"></span><br />
+            </td>
+            <!-- ko if: noteProcess -->
+            <td data-bind="html: noteProcess.replace(/\n/g, '<br />')" class="bg-warning"></td>
+            <!-- /ko -->
+            <!-- ko ifnot: noteProcess -->
+            <td class="bg-warning"></td>
+            <!-- /ko -->
+            @if (UserState.OfficeType.HasValue && (UserState.OfficeType == (byte)OfficeType.Order || UserState.OfficeType == (byte)OfficeType.Deposit || UserState.OfficeType == (byte)OfficeType.Warehouse))
+            {
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @*Thao tác*@Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            @if (UserState.OfficeType == (byte)OfficeType.Order || UserState.OfficeType == (byte)OfficeType.Deposit)
+                            {
+                                <li><a data-bind="click: $parent.addRefund.bind($data, id, 0)" href="javascript:;"><i class="fa fa-money"></i> @*Tạo phiếu theo dõi Refund*@Create refund tracking form</a></li>
+                            }
+                            else if (UserState.OfficeType == (byte)OfficeType.Warehouse)
+                            {
+                                <li><a data-bind="click: $parent.addRefund.bind($data, id, 1)" href="javascript:;"><i class="fa fa-suitcase"></i> @*Tạo phiếu theo dõi đổi trả*@Create goods return tracking form</a></li>
+                            }
+                            @if (UserState.OfficeType.HasValue && (UserState.OfficeType == (byte)OfficeType.Order || UserState.OfficeType == (byte)OfficeType.Deposit))
+                            {
+                                <!-- ko if: requestStatus == 0 || requestStatus == 1 -->
+                                <li><a data-bind="click: $parent.closeRequest" href="javascript:;"><i class="fa fa-money"></i> @*Thay đổi trạng thái*@Change status</a></li>
+                                <!-- /ko -->
+                            }
+                        </ul>
+                    </div>
+                </td>
+            }
+        </tr>
+    </script>
+}

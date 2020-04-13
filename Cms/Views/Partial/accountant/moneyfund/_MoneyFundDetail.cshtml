@@ -1,0 +1,130 @@
+﻿<div id="moneyFundDetailModal" class="modal fade modal-dialog modal-p60" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>TRANSACTION PURCHASE PRECIOUS</strong>
+                        <span class="impornumber">Transaction code: <strong data-bind="text: fundBillModel().Code()"></strong></span>
+                        <small data-bind="text: 'Date of implementation: ' + moment(fundBillModel().LastUpdated()).format('DD/MM/YYYY')"></small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name of object type</th>
+                                <td data-bind="text: fundBillModel().AccountantSubjectName()"></td>
+                            </tr>
+                            <tr>
+                                <th>Object code:</th>
+                                <td data-bind="text: fundBillModel().SubjectCode()"></td>
+                            </tr>
+                            <tr>
+                                <th>Object name:</th>
+                                <td data-bind="text: fundBillModel().SubjectName()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Transaction type:</th>
+                                <td><span data-bind="text: fundBillModel().TypeName(), css: fundBillModel().TypeClass()"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Account name:</th>
+                                <td data-bind="text: fundBillModel().FinanceFundName()"></td>
+                            </tr>
+                            <tr>
+                                <th>Placement:</th>
+                                <td data-bind="text: fundBillModel().TreasureName()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                            <h4><i class="icon fa fa-thumb-tack"></i>Staff notes !</h4>
+                            <span data-bind="text: fundBillModel().Note()"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="importwarehouse">
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Account name</th>
+                                <th class="text-center">Generated fluctuations (Baht)</th>
+                                @*<th class="text-center">Số dư trước giao dịch (Baht)</th>
+                                <th class="text-center">Số dư sau giao dịch (Baht)</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><strong data-bind="text: fundBillModel().FinanceFundName"></strong></td>
+                                <td class="text-center"><strong data-bind="text: fundBillModel().CurrencyFluctuations"></strong></td>
+                                @*<td class="text-center" style="color: blue" data-bind="text: formatNumberic(fundBillModel().CurencyStart(), 'N2')"></td>
+                                <!-- ko if: fundBillModel().Type() == 0 -->
+                                <td class="text-center" style="color: blue">
+                                    <i class="fa fa-caret-up"></i> <span data-bind="text: formatNumberic(fundBillModel().CurencyEnd(), 'N2')"></span>
+                                </td>
+                                <!-- /ko -->
+                                <!-- ko if: fundBillModel().Type() == 1 -->
+                                <td class="text-center" style="color: red">
+                                    <i class="fa fa-caret-down"></i> <span data-bind="text: formatNumberic(fundBillModel().CurencyEnd(), 'N2')"></span>
+                                </td>
+                                <!-- /ko -->*@
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+        </section>
+        <section class="importwarehouse">
+            <div class="row signature">
+                <div class="col-sm-4" align="center">
+                    <h5><strong>The person making the ticket</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: fundBillModel().UserName()"></span>
+                </div>
+
+                <div class="col-sm-4" align="center">
+                    <h5><strong>Customer</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: "></span>
+                </div>
+
+                <div class="col-sm-4" align="center">
+                    <h5><strong>Chief accountant</strong></h5>
+                    <span class="description">(Sign and write full name)</span>
+                    <span class="name" data-bind="text: fundBillModel().UserApprovalName()"></span>
+                </div>
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-primary"><i class="fa fa-print"></i>Print </a>
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+</div>

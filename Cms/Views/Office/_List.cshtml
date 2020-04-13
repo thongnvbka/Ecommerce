@@ -1,0 +1,126 @@
+﻿@model  ModelView<Library.DbContext.Entities.Office, OfficeFilterViewModel>
+@{
+    var hasDelete = CheckPermision(EnumPage.Office, EnumAction.Delete);
+    var hasUpdate = CheckPermision(EnumPage.Office, EnumAction.Update);
+    var hasDeleteOrUpdate = hasDelete || hasUpdate;
+}
+<div class="box">
+    @*<div class="box-header">
+            <h3 class="box-title">Hover Data Table</h3>
+        </div>*@
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover tree">
+                <thead>
+                    <tr>
+                        <th class="text-center w-350">#</th>
+                        <th class="text-center w-110">Code</th>
+                        <th class="text-center w-200">Type</th>
+                        <th class="text-center w-145">Status</th>
+                        <th class="text-center w-350">Describe</th>
+                        <th class="text-center w-245">Created Date</th>
+                        @if (hasDeleteOrUpdate)
+                        {
+                            <th class="text-center w-150"></th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+            {
+                        <tr>
+                            <td colspan="7" class="text-center">There are no records</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+
+                        foreach (var m in Model.Items)
+                        {
+                            <tr class="@("treegrid-" + m.Id) @(m.ParentId != null ? "treegrid-parent-" + m.ParentId.Value : "")">
+                                <td>@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.TotalRecord + idx). @m.Name</td>
+                                <td>@m.Code</td>
+                                <td class="text-center">
+                                    @if (m.Type == 0)
+                                    {
+                                        <span class="label label-warning">Normal</span>
+                                    }
+                                    else if (m.Type == 1)
+                                    {
+                                        <span class="label label-success">Warehouse</span>
+                                    }
+                                    else if (m.Type == 2)
+                                    {
+                                        <span class="label label-info">Personnel</span>
+                                    }
+                                    else if (m.Type == 3)
+                                    {
+                                        <span class="label label-info">Accountant</span>
+                                    }
+                                    else if (m.Type == 4)
+                                    {
+                                        <span class="label label-info">Business</span>
+                                    }
+                                    else if (m.Type == 5)
+                                    {
+                                        <span class="label label-info">Customer care</span>
+                                    }
+                                    else if (m.Type == 6)
+                                    {
+                                        <span class="label label-info">Order now </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-default">Directorate</span>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (m.Status == 0)
+                                    {
+                                        <span class="label label-warning">New </span>
+                                    }
+                                    else if (m.Status == 1)
+                                    {
+                                        <span class="label label-success">Present </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-default">Old </span>
+                                    }
+                                </td>
+                                <td>@m.Description</td>
+                                <td class="text-right">@m.Created.ToString("g")</td>
+                                @if (hasDeleteOrUpdate)
+                                {
+                                    <td class="text-center">
+                                        @if (hasUpdate)
+                                        {
+                                            <a href="@Url.Action("Edit", new {id = m.Id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                        }
+                                        @if (hasDelete)
+                                        {
+                                            <a href="javascript:;" data-url="@Url.Action("Delete", new {id = m.Id})" data-name="@m.Name" class="btn btn-sm btn-danger delete-item"><i class="fa fa-times"></i> Delete  </a>
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                            idx += 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @Html.Partial("_Paging", Model.PageInfo)
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        $('.tree').treegrid();
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@{
+    var contractCodeWait = (byte)ContractCodeType.AwaitingPayment;
+    var update = CheckPermision(EnumAction.Update, EnumPage.OrderAccountant);
+}
+
+<script type="text/html" id="accountant-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-left">
+            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, OrderId)" href="javascript:;"><strong data-bind="text: ReturnCode(OrderCode)"></strong></a><br />
+            <!-- ko if: moment(new Date()).diff(moment(CreateDate), 'days') < 2 -->
+            <span data-bind="text: '(' + moment(CreateDate).locale('vi').startOf().fromNow() + ')'" class=""></span>
+            <!-- /ko -->
+            <!-- ko ifnot: moment(new Date()).diff(moment(CreateDate), 'days') < 2 -->
+            <span data-bind="text: '(' + moment(CreateDate).locale('vi').format('L LTS') + ')'" class=""></span>
+            <!-- /ko -->
+        </td>
+        <td class="text-left">
+            <strong data-bind="text: ContractCode"></strong>
+        </td>
+        <td data-bind="text: formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+        <td class="text-left">
+            <!-- ko if: AccountantDate !== null -->
+            <!-- ko if: moment(new Date()).diff(moment(AccountantDate), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(AccountantDate).locale('vi').startOf().fromNow()" class=""></span>
+            <!-- /ko -->
+            <!-- ko ifnot: moment(new Date()).diff(moment(AccountantDate), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(AccountantDate).locale('vi').format('L LTS')" class=""></span>
+            <!-- /ko -->
+            <!-- /ko -->
+        </td>
+        <td class="text-right">
+            <span data-bind="text: AccountantFullName"></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusContractCode[Status].Name, css: statusApp.statusContractCode[Status].Class"></span>
+        </td>
+        <td class="text-left">
+            @if (update)
+            {
+                <!-- ko if: Status == @contractCodeWait -->
+                <a data-bind="click: $parent.showPaymentContractCode" href="javscript:;" class="btn btn-success btn-xs"><i class="fa fa-check"></i> Pay</a>
+                <a data-bind="click: $parent.cannalContractCode" href="javscript:;" class="btn btn-danger btn-xs"><i class="fa fa-reply-all"></i> Test requirements</a>
+                <!-- /ko -->
+            }
+        </td>
+    </tr>
+</script>

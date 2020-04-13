@@ -1,0 +1,540 @@
+﻿@{
+    var statusFinish = (byte)OrderStatus.Finish;
+    var statusOrder = (byte)OrderStatus.Order;
+    var orderdetailCancel = (byte)OrderDetailStatus.Cancel;
+    var orderdetailSuccess = (byte)OrderDetailStatus.Order;
+
+    var orderWait = (byte)OrderStatus.AreQuotes;
+    var statusSuccess = (byte)OrderStatus.OrderSuccess;
+    var statusWaitAccountant = (byte)OrderStatus.WaitAccountant;
+    var reasonOther = (byte)OrderReasons.TheOtherReason;
+    var deliveryShop = (byte)OrderStatus.DeliveryShop;
+
+    var orderPackage = (byte)OrderPackageStatus.ShopDelivery;
+}
+<style>
+    .table-view {
+        width: 100%;
+    }
+
+        .table-view td, .table-view th {
+            padding: 1px;
+        }
+</style>
+<form>
+    <div id="orderCommerceDetailModal" class="modal fade modal-dialog modal-p90" tabindex="-1" data-backdrop="static" role="dialog">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-globe"></i> Code order : <strong data-bind="text: ReturnCode(Code())" style="color: red"></strong>
+                        <span data-bind="text: statusApp.order[Status()].Name, css: statusApp.order[Status()].Class"></span>
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-default pull-right ml15" data-dismiss="modal"><b>x</b></button>
+                    <h2 class="order-header pull-right">
+                        <small data-bind="text: 'Start Date :' + moment(Created()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                                    <!-- ko if: Status() !== @statusFinish-->
+                        <small class="pull-right"> Completed: --/--/----</small>
+                        <!-- /ko -->
+                        <!-- ko if: Status() == @statusFinish-->
+                        <small data-bind="text: 'Date of completion: ' + moment(LastUpdate()).format('DD/MM/YYYY')" class="pull-right"></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <div class="row importwarehouse">
+                <div class="col-md-4">
+                    <strong class="strong-title"> Customer Information </strong>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th class="w-40"><i class="fa fa-user"></i></th>
+                                <td>
+                                    <span data-bind="text: LevelName()" class="label label-danger"></span>
+                                    <span data-bind="text: CustomerName()"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="fa fa-envelope-o"></i></th>
+                                <td data-bind="text: CustomerEmail()"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="fa fa-phone"></i></th>
+                                <td data-bind="text: CustomerPhone()"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="fa fa-map-marker"></i></th>
+                                <td data-bind="text: CustomerAddress()"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <strong class="strong-title">More information</strong>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th>Website</th>
+                                <td>
+                                    <a href="javascript:;">
+                                        <strong data-bind="text: WebsiteName"></strong>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Shop</th>
+                                <td>
+                                    <a href="javascript:;">
+                                        <strong data-bind="text: ShopName"></strong>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Exchange rate is applied</th>
+                                <td data-bind="text: '1 CNY = ' + ExchangeRate() + ' Baht'"></td>
+                            </tr>
+                            <tr>
+                                <th>Customer warehouse delivery</th>
+                                <td data-bind="text: WarehouseDeliveryName"></td>
+                            </tr>
+                            <tr>
+                                <th>Identifier</th>
+                                <td data-bind="text: codeOw"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-order">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Customer notes</h3>
+                        </div>
+                        <div class="box-body">
+                            <div>
+                                <span data-bind="html: UserNote"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-order">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">staff notes</h3>
+                        </div>
+                        <div class="box-body">
+                            <div>
+                                <span data-bind="html: Note"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row importwarehouse">
+                <div class="col-sm-12 invoice-col">
+                    <div class="form-group">
+                        <b class="strong-title">Service is in use </b>
+                        <div data-bind="foreach:  listOrderService">
+                            <label style="margin-right:10px;">
+                                <!-- ko if: Checked == 0 -->
+                                <i style="font-size: 19px; margin: 4px; color:red" class="fa fa-square-o"></i><span data-bind="text: ServiceName"></span>
+                                <br />
+                                <span class="pull-right">0 Baht</span>
+                                <!-- /ko -->
+                                <!-- ko ifnot: Checked == 0 -->
+                                <i style="font-size: 19px; margin: 4px; color:forestgreen" class="fa fa-check-square-o"></i><span data-bind="text: ServiceName"></span>
+                                <br />
+                                <span data-bind="text: formatNumbericCN(TotalPrice, 'N2') + ' Baht'" class="pull-right"></span>
+                                <!-- /ko -->
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row importwarehouse">
+                <div class="col-xs-12 table-responsive">
+                    <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                    <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                        <b class="strong-title">Detail order: </b>
+                        <br />
+                        <br />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                    <th class="text-center"><i class="fa fa-cube"></i> Product name</th>
+                                    <th class="text-center"><i class="fa fa-exclamation-circle"></i>Property</th>
+                                    <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i> Customer set</th>
+                                    <th class="text-center" style="color: red"><i class="fa fa-money"></i> Price (CNY)</th>
+                                    <th class="text-center" style="color: red"><i class="fa fa-superscript"></i> Total (CNY)</th>
+                                    <th class="text-center"><i class="fa fa-file"></i> Note</th>
+                                    <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: {data: listDetail}">
+                                <tr>
+                                    <td data-bind="text: $index()+1" class="text-center"></td>
+                                    <td class="text-center">
+                                        <img data-bind="attr: { src: Image }" style="width: 40px; height: 40px;" alt="" /><br />
+                                    </td>
+                                    <td>
+                                        <a data-bind="text: Name, attr: { href: Link}" href="javascript:;" target="_blank"></a><br />
+                                        <!-- ko if: Note() !== null -->
+                                        <span data-bind="text: '( ' + Note() + ' )'"></span>
+                                        <!-- /ko -->
+                                    </td>
+                                    <td>
+                                        Color: <span data-bind="text: Color"></span><br />
+                                        Size: <span data-bind="text: Size"></span>
+                                    </td>
+                                    <td data-bind="text: Quantity" class="text-center"></td>
+                                    <td data-bind="text: Price" class="text-center"></td>
+                                    <td data-bind="text: TotalPrice" class="text-center"></td>
+                                    <td data-bind="html: UserNote"></td>
+                                    <td class="text-center">
+                                        <span data-bind="text: statusApp.orderDetail[Status].Name, css: statusApp.orderDetail[Status].Class"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot data-bind="if: listDetail().length == 0">
+                                <tr>
+                                    <td colspan="10">Order does not have transactional details</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <span><strong class="strong-title">Order staff handle:</strong></span>
+                </div>
+            </div>
+            <div class="row importwarehouse">
+                <div class="col-md-8">
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <table class="table-view">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <b>Warehouse TQ</b><br />
+                                                    <span data-bind="text: WarehouseName()"></span>
+                                                </td>
+                                            </tr>
+
+                                            <!-- ko if: Status() >= @statusOrder -->
+                                            <tr>
+                                                <td>
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center w-40">#</th>
+                                                                <th class="text-center"><i class="fa fa-barcode"></i> Contract code</th>
+                                                                <th class="text-center">
+                                                                    <i class="fa fa-money"></i> Amount (CNY)<br />
+                                                                    <i>Money + Money ship</i>
+                                                                </th>
+                                                                <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody data-bind="foreach: listContractCode">
+                                                            <tr>
+                                                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                                                <td data-bind="text: ContractCode" class="text-left"></td>
+                                                                <td data-bind="text: TotalPrice" class="text-right"></td>
+                                                                <td class="text-center">
+                                                                    <span data-bind="text: statusApp.statusContractCode[Status].Name, css: statusApp.statusContractCode[Status].Class"></span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- /ko -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- ko if: Status() >= @statusOrder -->
+                                    <table class="table-view">
+                                        <thead>
+                                            <tr>
+                                            <tr>
+                                                <th class="col-xs-3"></th>
+                                                <th style="color: red">Company payment (CNY)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Money (H)</td>
+                                                <td data-bind="text:  TotalPrice" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shipping fee (S)</td>
+                                                <td data-bind="text:  FeeShip" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tổng tiền (T=H+S)</td>
+                                                <td data-bind="text: TotalPriceCustomer" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Money paid</td>
+                                                <td data-bind="text: TotalShop" class="text-right"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br />
+
+                                    <strong>
+                                        <span data-bind="text: '(Rates apply for daily orders: 1 yuan = ' + ExchangeRate() + ' Baht)'"></span>
+                                    </strong>
+                                    <div class="p5" style="border-bottom: 1px solid #D2D6DE; width: 100%"></div>
+                                    <div class="table-responsive">
+                                        <table class="table-view">
+                                            <tr>
+                                                <td class="col-xs-6">Money (Baht)</td>
+                                                <td data-bind="text: TotalExchange" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total service charge (Baht)</td>
+                                                <td data-bind="text: formatNumbericCN(totalPriceService(), 'N2')" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>provisional total amount (Baht)</td>
+                                                <td data-bind="text: Total" class="text-right"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="p5" style="border-bottom: 1px solid #D2D6DE; width: 100%"></div>
+                                    <div class="table-responsive">
+                                        <table class="table-view">
+                                            <tr>
+                                                <td>The company paid for the shop (Baht)</td>
+                                                <td data-bind="text: TotalShopExchange" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Other payment company (Baht) <a data-bind="click: showExchangeOther, text: titleExchangeOther" href="javascript:;"></a></td>
+                                                <!-- ko ifnot: IsExchangeOther -->
+                                                <td data-bind="text: orderExchangeOther() == undefined ? '--' : formatNumbericCN(orderExchangeOther(), 'N2')" class="text-right"></td>
+                                                <!-- /ko -->
+                                            </tr>
+                                            <!-- ko if: IsExchangeOther -->
+                                            <!-- ko foreach: listOrderExchage() -->
+                                            <tr>
+                                                <td data-bind="text: ModeName +' (Baht)'"></td>
+                                                <td data-bind="text: formatNumbericCN(TotalPrice, 'N2')" class="text-right"></td>
+                                            </tr>
+                                            <!-- /ko -->
+                                            <!-- /ko -->
+                                            <tr>
+                                                <td>Customer paid (Baht)</td>
+                                                <td data-bind="text: OrderExchange" class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span data-bind="text: titleTotalCus"></span> (Baht)</td>
+                                                <td data-bind="text: CashShortage" class="text-right" style="font-size: 18px; font-weight: 600; color: red"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-bind="with: viewBoxChat" id="divShowBoxChat" class="col-md-4">
+                    <div data-bind="template: { name: templateChatId }"></div>
+                </div>
+            </div>
+            <!-- ko if: Status() > @statusOrder -->
+            <div class="row importwarehouse">
+                <div class="col-xs-12">
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-40">#</th>
+                                        <th class="text-center"><i class="fa fa-file"></i> Note</th>
+                                        <th class="text-center"><i class="fa fa-barcode"></i> Package code</th>
+                                        <th class="text-center w-300"><i class="fa fa-barcode"></i> Transport code</th>
+                                        <th class="text-center w-300"><i class="fa fa-calendar"></i> Expected date of warehouse</th>
+                                        <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: listPackageView">
+                                    <tr>
+                                        <td data-bind="text: $index()+1" class="text-center"></td>
+                                        <td data-bind="text: Note" class="text-center"></td>
+                                        <td class="text-center">
+                                            <a data-bind="text: 'P' + Code, click: packageDetailModelView.showModel.bind($data, Id)" href="javascript:;"></a>
+                                        </td>
+                                        <td data-bind="text: TransportCode" class="text-center"></td>
+                                        <td data-bind="text: ForcastDate == null? '':  moment(ForcastDate).format('DD/MM/YYYY')" class="text-center"></td>
+                                        <td class="text-center">
+                                            <span data-bind="text: statusApp.orderPackage[Status].Name, css: statusApp.orderPackage[Status].Class"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot data-bind="if: listPackageView().length == 0">
+                                    <tr>
+                                        <td colspan="6">No package</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#historyCommerceDetail">
+                                <strong class="strong-title">Order history:</strong>
+                                <span data-bind="click: checkShowHistory" href="javascript:;" class="pull-right btn btn-info btn-xs ml15">
+                                    <!-- ko ifnot: isShowHistory -->
+                                 View <i class="fa fa-chevron-down"></i>
+                                    <!-- /ko -->
+                                    <!-- ko if: isShowHistory -->
+                                   Close <i class="fa fa-chevron-up"></i>
+                                    <!-- /ko -->
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#logCommerceDetail">
+                                <span>
+                                    <strong class="strong-title">Transaction history:</strong>
+                                    <span data-bind="click: checkShowLog" class="pull-right btn btn-info btn-xs ml15">
+                                        <!-- ko ifnot: isShowLog -->
+                                       View <i class="fa fa-chevron-down"></i>
+                                        <!-- /ko -->
+                                        <!-- ko if: isShowLog -->
+                                       Close <i class="fa fa-chevron-up"></i>
+                                        <!-- /ko -->
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="historyCommerceDetail" class="tab-pane fade in active">
+                            <ul class="timeline timeline-inverse">
+                                <!-- ko if: isShowHistory -->
+                                <!-- ko foreach: listHistory -->
+                                <li>
+                                    <i data-bind="css: statusApp.order[Status].Ifa"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-calendar-check-o"></i> <span data-bind="text: moment(CreateDate).format('L LTS')"></span></span>
+                                        <!-- ko if: UserFullName == null -->
+                                        <h3 class="timeline-header no-border">
+                                            <a data-bind="text: CustomerName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                                        </h3>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: UserFullName == null -->
+                                        <h3 class="timeline-header no-border">
+                                            <a data-bind="text: UserFullName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                                        </h3>
+                                        <!-- /ko -->
+                                    </div>
+                                </li>
+                                <!-- /ko -->
+                                <li>
+                                    <i class="fa fa-clock-o bg-gray"></i>
+                                </li>
+                                <!-- /ko -->
+                            </ul>
+                        </div>
+                        <div id="logCommerceDetail" class="tab-pane fade">
+                            <!-- ko if: isShowLog -->
+                            <table class="table table-bordered table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Time </th>
+                                        <th>the operator</th>
+                                        <th>Title</th>
+                                        <th>Content </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ko foreach: listLog -->
+                                    <tr>
+                                        <td>
+                                            <span data-bind="text: moment(CreateDate).format('L LTS')"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: UserFullName"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="html: Content"></span>
+                                        </td>
+                                        <td>
+                                            <!-- ko if: Type == 1 -->
+                                            <table>
+                                                <tr>
+                                                    <td data-bind="foreach: JSON.parse(DataBefore)" class="p10">
+                                                        <b data-bind="text: Name"></b>: <span data-bind="text: Value"></span><br />
+                                                    </td>
+                                                    <td class="p10"><i class="fa fa-long-arrow-right"></i></td>
+                                                    <td data-bind="foreach: JSON.parse(DataAfter)">
+                                                        <b data-bind="text: Name"></b>: <span data-bind="text: Value"></span><br />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- /ko -->
+                                        </td>
+                                    </tr>
+                                    <!-- /ko -->
+                                </tbody>
+                            </table>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</form>
+<style>
+    .btn-success {
+        background-color: #00a65a !important;
+        border-color: #008d4c !important;
+        color: white !important;
+    }
+
+        .btn-success.focus {
+            color: #fff;
+            background-color: #449d44 !important;
+            border-color: #255625 !important;
+        }
+
+        .btn-success:hover {
+            color: #fff;
+            background-color: #449d44 !important;
+            border-color: #398439 !important;
+        }
+</style>

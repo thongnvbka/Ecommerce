@@ -1,0 +1,31 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+    var source = (byte)OrderType.Source;
+}
+
+<script type="text/html" id="ListRequest">
+    <tr>
+        <td data-bind="text: (page-1)* pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center" data-bind="text: Code"></td>
+        <td class="text-center">
+            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(OrderId, OrderCode); }" href="javascript:;"><strong data-bind="text: ReturnCode(OrderCode)"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: CustomerName">
+            
+        </td>
+        <td class="text-center" data-bind="text: CustomerEmail">
+        </td>
+        <td class="text-center" data-bind="text: CustomerPhone">
+            
+        </td>
+        <td class="text-center" data-bind="text: CustomerAddress"></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusRequestShip[Status].Name, css: statusApp.statusRequestShip[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewRequestModal" href="javascript:;">Detail</a>
+        </td>
+    </tr>
+</script>

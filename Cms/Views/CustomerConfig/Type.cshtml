@@ -1,0 +1,91 @@
+﻿@model ModelView<Library.DbContext.Entities.CustomerType, Library.ViewModels.CustomerTypeViewModel>
+@{
+    ViewBag.Title = "Configure customer group tracking";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Configure customer group tracking
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form action="@Model.PageInfo.Url" id="searchForm" method="post" role="form">
+        @Html.HiddenFor(x => x.PageInfo.CurrentPage)
+        <div class="">
+            <div class="">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <section class="col-md-12 form-group" id="body-table">
+                            @Html.Partial("_TypeList", Model)
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function pagging(currentPage) {
+            $("#PageInfo_CurrentPage").val(currentPage);
+            searchForm();
+        }
+
+        function searchForm() {
+            $("#searchForm").submit();
+        }
+
+        $(document).ready(function () {
+            var frm = $('#searchForm');
+            frm.submit(function (ev) {
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        $("#body-table").html(data);
+                    }
+                });
+
+                ev.preventDefault();
+            });
+
+            $("#body-table")
+               .on("click",
+                   "a.delete-item",
+                   function () {
+                       var $this = $(this);
+                       swal({
+                           title: 'Are you sure you want to delete this item?',
+                           text: 'Customer group "' + $this.data("name") + '"',
+                           type: 'warning',
+                           showCancelButton: true,
+                           //confirmButtonColor: '#3085d6',
+                           //cancelButtonColor: '#d33',
+                          cancelButtonText: 'Cancel',
+                           confirmButtonText: 'Delete'
+                       })
+                           .then(function () {
+                               $.post($this.data("url"),
+                                   function (data) {
+                                       if (data <= 0) {
+                                           toastr.warning("Category Does not exist or has been deleted");
+                                           return;
+                                       }
+                                       toastr.success("Deleted successfully");
+                                       searchForm();
+                                   });
+                           }, function () { });
+                   });
+
+
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        })
+    </script>
+}
+<!-- /.content -->

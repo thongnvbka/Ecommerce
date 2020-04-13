@@ -1,0 +1,137 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<div class="user-l">
+    <dl>
+        <dt>@Resource.Dashboard_Account </dt>
+        <dd>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "AccountCMS", new {Area = "CMS"})" class="@ViewBag.ActiveAccount">
+                        <i class="fa fa-user"></i>
+                        @Resource.Dashboard_MyAccount
+                    </a>
+                </li>
+                  
+                <li>
+                    <a href="@Url.Action("Notification", "AccountCMS", new {Area = "CMS"})" class="@ViewBag.ActiveNotification">
+                        <i class="fa fa-envelope-o"></i>
+                        @Resource.Dashboard_NotificationAccountNew
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("NotificationCommon", "AccountCMS", new {Area = "CMS"})" class="@ViewBag.ActiveNotificationCommon">
+                        <i class="fa fa-envelope-o"></i>
+                        @Resource.Dashboard_NotificationSystemAccount 
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("ElectronicWallet", "Wallet", new {Area = "CMS"})" class="@ViewBag.ElectronicWallet">
+                        <i class="fa fa-money"></i>
+                        @Resource.Dashboard_ElectricWallet
+                        <img src="/Content/images/icon-home/user_new_icon.png" alt="">
+                        <p class="balanceAvalible-toolbar"></p>
+                    </a>
+                </li>
+              
+            </ul>
+        </dd>
+    </dl>
+ 
+    <dl>
+        <dt>@Resource.Dashboard_ManagementOrder</dt>
+        <dd>
+            <ul>
+                @*<li>
+                    <a href="@Url.Action("OrdersStatistics", "Statistical", new {Area = "CMS"})" class="@ViewBag.ActiveBuyOrdersStatistics">
+                        <i class="fa fa-bar-chart"></i>
+                        @Resource.Dashboard_StatisticalOrder
+
+                    </a>
+                </li>*@
+                <li>
+                    <a href="@Url.Action("BuyOrder", "Order", new {Area = "CMS"})" class="@ViewBag.ActiveBuyOrder">
+                        <i class="fa fa-table"></i>
+                        @Resource.Dashboard_Order
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("DepositOrder", "Order", new {Area = "CMS"})" class="@ViewBag.ActiveDepositOrder">
+                        <i class="fa fa-list-alt"></i>
+                        @Resource.Dashboard_Deposit
+                        <img src="/Content/images/icon-home/user_new_icon.png" alt="">
+                    </a>
+                </li>
+               
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt>@Resource.Dashboard_ManagementGoods </dt>
+       
+        <dd>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Package", "Transport", new {Area = "CMS"})" class="@ViewBag.ActivePackage">
+                        <i class="fa fa-building"></i>
+                        @Resource.Dashboard_ManagementPackage
+                    </a>
+                </li>
+               
+            </ul>
+        </dd>
+    </dl>
+    
+    <dl>
+        <dt>@Resource.Dashboard_ManagementTicket</dt>
+        <dd>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Ticket", "Ticket", new {Area = "CMS"})" class="@ViewBag.ActiveListTicket">
+                        <i class="fa fa-list-alt"></i>
+                        @Resource.Dashboard_TicketList
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("CreateTicket", "Ticket", new {Area = "CMS"})" class="@ViewBag.ActiveCreateTicket">
+                        <i class="fa fa-plus"></i>
+                        @Resource.Dashboard_CreateTicket
+                    </a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt>@Resource.Dashboard_Setting</dt>
+        <dd>
+            <ul>
+                <li>
+                    <a href="/@culture/Account/Infor" class="@ViewBag.Infor">
+                        <i class="fa fa-cog"></i>
+                        @Resource.Dashboard_SettingAccount
+                    </a>
+                </li>
+                <li>
+                    <a href="/@culture/Account/ChangePass" class="@ViewBag.ChangePass">
+                        <i class="fa fa-lock"></i>
+                        @Resource.Dashboard_ChangePass
+                    </a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt>@Resource.Dashboard_SupportService</dt>
+        <dd>
+            <ul>
+                <li>
+                    <a href="/@culture/Home/Guide" class="@ViewBag.ActiveGuide">
+                        <i class="fa fa-question-circle"></i>
+                        @Resource.Home_Guide
+                    </a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+</div>

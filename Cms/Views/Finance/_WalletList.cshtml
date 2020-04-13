@@ -1,0 +1,65 @@
+﻿@model  ModelView<Library.DbContext.Entities.CustomerWallet, CustomerWalletViewModel>
+
+<div class="box">
+    @*<div class="box-header">
+            <h3 class="box-title">Hover Data Table</h3>
+        </div>*@
+    <!-- /.box-header -->
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center w-40">#</th>
+                    <th class="text-center w-40">IDD</th>
+                    <th class="text-center w-200">E-wallet account designation</th>
+                    <th class="text-center w-150">Father's name</th>
+                    <th class="text-center w-80">System</th>
+                    <th class="text-center w-100">Status</th>
+                    <th class="text-center w-200">Note</th>
+                    <th class="text-center w-200">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Items.Any())
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">There are no records</td>
+                    </tr>
+                }
+                else
+                {
+                    var idx = 1;
+                    foreach (var m in Model.Items)
+                    {
+                        <tr>
+                            <td class="text-center">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                            <td>@m.Idd</td>
+                            <td>@m.Name</td>
+                            <td>@m.ParentName</td>
+                            <td>@m.IsIdSystem</td>
+                            <td>
+                                @if (@m.Status == 0)
+                                {
+                                    <span>Actve</span>
+                                }
+                                else
+                                {
+                                    <span>Stop operations</span>
+                                }
+                            </td>
+                            <td>@m.Description</td>
+                            <td class="text-center">
+
+                                <a href="@Url.Action("EditWallet", new {id = m.Id})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit </a>
+                                <a href="javascript:;" data-url="@Url.Action("DeleteWallet", new {id = m.Id})" data-name="@m.Name" class="btn btn-sm btn-danger delete-item"><i class="fa fa-times"></i> Delete  </a>
+                            </td>
+                        </tr>
+                        idx += 1;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+    @Html.Partial("_Paging", Model.PageInfo)
+</div>

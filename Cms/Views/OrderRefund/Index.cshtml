@@ -1,0 +1,214 @@
+﻿@{
+    var mode = (byte)ViewBag.Mode;
+    ViewBag.Title = mode == 0 ? "Quản lý phiếu theo dõi Refund" : Resource.QLPhieuTheoDoiTraHang;
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+}
+
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Main content -->
+            <div id="orderRefund">
+                @Html.AntiForgeryToken()
+                @Html.Partial("_GroupCommentModal")
+                <div class="box box-success">
+                    <div class="box-body">
+                        <div>
+                            <div class="box-body pad table-responsive">
+                                <form data-bind="submit: search.bind($data, 1)" id="searchForm" method="get" role="form" class="form-inline">
+                                    <div class="form-group">
+                                        <select data-bind="value: status" class="form-control">
+                                            <option value="">--  Select status --</option>
+                                            <option value="0">Newly created</option>
+                                            <option value="1">Completed</option>
+                                            
+                                            
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-default pull-right" id="forcastDate-btn">
+                                                <span>
+                                                    <i class="fa fa-calendar"></i> Arrival date 
+                                                </span>
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input data-bind="value: keyword" placeholder="Search ..." type="text" class="form-control" />
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-primary"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-search'}" class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12" id="body-table">
+                                <div class="box">
+                                    <!-- /.box-header -->
+                                    <div class="box-body table-responsive">
+                                        <table class="table table-bordered table-hover tree">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center w50">#</th>
+                                                    <th class="text-center w50">Transition</th>
+                                                    
+                                                    <th class="text-center w50">Invoice</th>
+                                                    <th class="text-center">Customer</th>
+                                                    <th class="text-center">Staffs create</th>
+                                                    <th class="text-center w50">@(mode == 0 ? "Deferred payment" : "Money ship postponed") (CNY)</th>
+                                                    <th class="text-center w50">Product Number</th>
+                                                    <th class="text-center w50">Number Link</th>
+                                                    <th class="text-center">Value (CNY)</th>
+                                                    <th class="text-center">Note</th>
+                                                    <th class="text-center w50">Status</th>
+                                                    <th class="text-center w50">Comment</th>
+                                                </tr>
+                                            </thead>
+                                            <!-- ko if: items().length == 0 -->
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="12
+                                                        " class="text-center">There are no records</td>
+                                                </tr>
+                                            </tbody>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: items().length == 0 -->
+                                            <tbody data-bind="template: {name: 'orderRefundTemplate', foreach: items}"></tbody>
+                                            <!-- /ko -->
+                                        </table>
+                                    </div>
+
+                                    <div class="row mt15">
+                                        <div class="col-sm-6">
+                                            <div id="sumaryPagerOrderRefund" class="henry-paging mt5"></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="pagerOrderRefund"></div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.content -->
+        </div>
+    </div>
+</section>
+
+@Html.Partial("~/Views/AcountingLose/_RefundUpdateModal.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+
+@section Styles{
+    <link href="~/Scripts/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <link href="/Scripts/viewmodels/suggettion/PickUserModal.css" rel="stylesheet" />
+    <link href="~/Content/plugins/HenrySlider/henry-slider.css" rel="stylesheet" />
+    <link href="~/Content/plugins/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/wysiwyg/src/wysiwyg-editor.css" rel="stylesheet" />
+}
+
+            @section Scripts{
+    <script>
+        var validateBlackListExtensions = function (file) {
+            var ext = file.substring(file.lastIndexOf(".")).toLowerCase();
+            return !_.some([".jpg", ".jpeg", ".gif", ".png"], function (item) { return item == ext; });
+        };
+
+    var maxFileLength = @ViewBag.MaxFileLength;
+    var modePage = @ViewBag.Mode;
+    </script>
+    <script src="~/Content/plugins/HenrySlider/henry-slider.js"></script>
+    <script src="~/Content/plugins/webui-popover/jquery.webui-popover.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/wysiwyg.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/wysiwyg-editor.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/henry-editor.js"></script>
+    <script src="~/Scripts/viewmodels/GroupChatHubModal.js"></script>
+    <script src="~/Scripts/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/knockout.x-editable.js"></script>
+    <script src="/Scripts/common/status.@cultureJs"></script>
+
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/order/depositDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/order/orderCommerceDetailViewModel.js"></script>
+    @*<script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+        <script src="/Scripts/viewmodels/suggettion/SuggetionOrderInputComponents.js"></script>
+        <script src="/Scripts/viewmodels/importWarehouse/addPackageLoseModel.js"></script>
+        <script src="/Scripts/viewmodels/packageNoCode/assignPackageModel.js"></script>*@
+    <script src="/Scripts/viewmodels/AcountingLose/refundUpdateModel.js"></script>
+    <script src="/Scripts/viewmodels/orderRefund/orderRefundModel.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="orderRefundTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+            <td><a data-bind="click: $parent.showDetail.bind($data, id)" href="javascript:;"><b data-bind="text: 'R' + code"></b></a></td>
+            <td class="text-center">
+                <a data-bind="click: function() {orderTypeViewModel.showViewOrder(orderId, orderCode); }" href="javascript:;"><span data-bind="text: ReturnCode(orderCode)"></span></a>
+            </td>
+            <td>
+                <ul class="tbl-list">
+                    <li><i class="fa fa-user"></i> <a href="javascript:;"><b data-bind="text: customerName"></b></a></li>
+                    <li><i class="fa fa-envelope-o"></i> <span data-bind="text: customerEmail"></span></li>
+                </ul>
+            </td>
+            <td>
+                <ul class="tbl-list">
+                    <li><i class="fa fa-user"></i> <a data-bind="attr: {title: createUserName}" href="javascript:;"><b data-bind="text: createUserFullName"></b></a></li>
+                    <li data-bind="attr: {title: createdText}"><i class="fa fa-time"></i> <span data-bind="text: createdTextNow"></span></li>
+                </ul>
+            </td>
+            <td data-bind="text: formatNumberic(amountActual, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(productNo, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(linkNo, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(amount, 'N2')" class="text-right"></td>
+            <td>
+                <span data-bind="text: note" class="color-red"></span>
+            </td>
+            <td class="text-center">
+                <span data-bind="attr: {class: status() == 0 ? 'label label-warning' : 'label label-success'}">
+                    @if ((mode == 0 && UserState.OfficeType.HasValue && UserState.OfficeType == (byte)OfficeType.Accountancy) || (mode == 1 && UserState.OfficeType.HasValue && UserState.OfficeType == (byte)OfficeType.Order))
+                    {
+                        <span data-bind="editable: status, editableOptions: {pk: id, type: 'select', options: $parent.listStatus, optionsText: 'text', optionsValue: 'id', showbuttons: false, autotext: 'never', url: $parent.updateStatus}"></span>
+                    }
+                    else
+                    {
+                        <span data-bind="text: statusText"></span>
+                    }
+                </span>
+            </td>
+            <td class="text-center">
+                <a data-bind="click: $parent.comment, attr: {class: commentNo() > 0 ? 'btn btn-warning' : 'btn btn-success'}" class="btn btn-success" href="javascript:;"><i class="fa fa-comments"></i></a>
+            </td>
+        </tr>
+    </script>
+}

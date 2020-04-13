@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Account Management";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Account Management
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("Fund","Finance")">Fund management</a></li>
+        <li class="active">Account list</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-footer">
+            <a href="@Url.Action("AccountAdd","Finance")" class="btn btn-primary"> Add account</a>
+            <button type="submit" class="btn btn-danger display-none" id="ltDeleteAll" onclick="javascript: return ShowDeleteAll();">Delete account</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">List</h3>
+                </div>
+                @Html.Partial("~/Views/Finance/AccountList.cshtml")
+
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- Modal -->
+<div id="dialog_delete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Notification</h4>
+            </div>
+            <div class="modal-body">
+                <p id="mess_delete"></p>
+                <input type="hidden" value="0" id="hfId" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="javascript: return DeleteConfig();"><i class='fa fa-trash-o'></i>&nbsp;Agree</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog_success" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Notification</h4>
+            </div>
+            <div class="modal-body">
+                <p id="mess_success"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Agree</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function ShowDeleteAll() {
+        $("#mess_delete").text("Are you sure you want to delete the selected bank accounts!");
+        var id = "";
+        $('#dt_basic').find("tr").each(function (idx) {
+            $(this).find('td').find('input:checkbox').each(function (index) {
+                if (index == 0) {
+                    if (this.checked && idx != 0) {
+                        id += $(this).parent().parent().find('.item-id').val() + "|";
+                    }
+                }
+            });
+        });
+        $("#hfId").val(id);
+        $('#dialog_delete').modal('show');
+        return false;
+    }
+    function ShowMessager(id) {
+        $("#mess_delete").text("Are you sure you want to delete the selected bank account!");
+        $("#hfId").val(id);
+        $('#dialog_delete').modal('show');
+        return false;
+    }
+    function DeleteConfig() {
+        $.ajax({
+            url: '@Url.Action("DeleteArticle", "Article")',
+            type: 'POST',
+            data: { "id": $("#hfId").val() },
+            success: function (data) {
+                if (data > 0) {
+                    LoadListItems(1);
+                }
+                if (data == -1) {
+                    $("#mess_success").text("An error occurred during data deletion. Please try again!");
+                    $('#dialog_success').modal('show');
+                }
+            },
+            beforeSend: function () {
+                ShowLoading();
+            },
+            complete: function () {
+                HideLoading();
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //$("#dt_basic").DataTable();
+    })
+</script>

@@ -1,0 +1,121 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<div class="user-r-main-l-tip">
+    <h1>ข้อแจ้งเตื่อน</h1>
+    <div class="user-r-main-l-tip-content">
+        <div class="user-r-main-l-tip-content-box">
+            <h2>โปรดทราบ</h2>
+
+            <dl>
+                <dt>ออเดอร์ทียังไม่ได้ดำเนินการสั่งซื้อ：</dt>
+                <dd><a href="/@culture/CMS/Order/BuyOrder">คุณกำลังมี（<label data-bind="text: orderAwait"></label>）ออเดอร์ที่กำลังรอมัดจำ !</a></dd>
+
+            </dl>
+        </div>
+        <ul>
+            <li>
+                <img src="/Content/images/icon-css/user_zhuanyun_icon.png" alt="" />
+                <span>
+                    มี（<label data-bind="text: notification"></label>）ข้อความแจ้งเตือนเกี่ยวกับความเปลียนแปลงของยอดเงินคงเหลือในกระเป๋าเงินอิเล็กทรอนิก
+                    <a href="/@culture/CMS/AccountCMS/Notification">กรุณาอ่านตอนนี้！</a>
+                </span>
+            </li>
+            <li>
+                <img src="/Content/images/icon-css/user_daigou_icon.png" alt="" />
+                <span>
+                    มี（<label data-bind="text: orderNew"></label>）ออเดอร์กำลังอยู่ในตะกร้าสินค้าของคุณ
+                    <a href="/@culture/Product/Cart">ดำเนินการสั่งซื้อ！</a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="user-r-main-l-faq">
+    <h1>คำถามที่พบบ่อย</h1>
+    <ul class="user-r-main-l-faq-nav clearFix" id="clicktabTicket">
+        <li class="tablinks lete-active" onclick="ticket(event, 'buy')" id="defaultOpen"><a>เติมเงิน </a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'transport')"><a>ซื้อสินค้า</a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'rechange')"><a>ขนส่ง</a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'ship')"><a>จัดส่งสินค้า</a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'afterBuy')"><a>หลังจากที่ซื้อสินค้า</a><span></span></li>
+    </ul>
+
+    <div id="buy" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: block">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">กระเป๋าเงินอิเล็กทรอนิกคืออะไร?</a></li>
+                <li><a href="javascript:;">ฉันจะทำยังไงเพื่อเติมเงินเข้ากระเป๋าเงินอิเล็กทรอนิกของฉัน ?</a></li>
+                <li><a href="javascript:;">ควบคุมยอดเงินคงเหลือในกระเป๋าเงินอิเล็กทรอนิกเมื่อซื้อสินค้า ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">ติดตามยอดเงินคงเหลือในกระเป๋าเงินอิเล็กทรอนิก ?</a></li>
+                <li><a href="javascript:;">วิธีถอนเงินจากกระเป๋าเงินอิเล็กทรอนิก ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="transport" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">วิธีสั่งซื้อ ?</a></li>
+                <li><a href="javascript:;">ส่วนขยายคืออะไร ?</a></li>
+                <li><a href="javascript:;">สามารถซื้อสินค้าโดยวิธีไหนบ้าง ?</a></li>
+                <li><a href="javascript:;">ค่าใช้จ่ายต่างๆของออเดอร์ ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">เรทแลกเปลี่ยนซื้อสินค้าคืออะไร ?</a></li>
+                <li><a href="javascript:;">ติดตามสถานะของออเดอร์ ?</a></li>
+                <li><a href="javascript:;">การตั้งถิ่นฐานออเดอร์ ?</a></li>
+                <li><a href="javascript:;">ติดตามหนี้สิ้นออเดอร์ ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="rechange" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">ตู้สินค้าคืออะไร ?</a></li>
+                <li><a href="javascript:;">วิธ๊ติดตามตู้สินค้า ?</a></li>
+                <li><a href="javascript:;">กำหนดเวลาสินค้ามาถึง ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">ฝากเก็บสินค้า ?</a></li>
+                <li><a href="javascript:;">เมื่อไหร่ได้รับสินค้า ?</a></li>
+                <li><a href="javascript:;">ความเสี่ยงระหว่างการขนส่ง ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="ship" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">ส่งของถึงบ้านและชำระยอดเงินที่เหลือ ?</a></li>
+                <li><a href="javascript:;">ชำระยอดเงินที่เหลือหลังจากซื้อสินค้า ?</a></li>
+         
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">วิธีรับสินค้าเมื่อสินค้ามาถึงเมื่องไทย?</a></li>
+                <li><a href="javascript:;">ร้องขอจัดส่ง ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="afterBuy" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">จัดการข้อร้องเรียน ?</a></li>
+                <li><a href="javascript:;">นโยบายคืนและร้องเรียน ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">ชำระค่าใช้จ่ายเกิดขึ้น ?</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

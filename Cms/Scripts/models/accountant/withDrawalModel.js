@@ -1,0 +1,22 @@
+﻿var withDrawalDetailModel = function () {
+    this.Id = ko.observable("");
+this.Code = ko.observable("");
+this.CustomerId = ko.observable("");
+this.CustomerName = ko.observable("");
+this.CustomerCode = ko.observable("");
+this.CustomerEmail = ko.observable("");
+this.CustomerPhone = ko.observable("");
+this.CardName = ko.observable("");
+this.CardId = ko.observable("");
+this.CardBank = ko.observable("");
+this.CardBranch = ko.observable("");
+this.CreateDate = ko.observable("");
+this.LastUpdate = ko.observable("");
+this.UserId = ko.observable("");
+this.UserName = ko.observable("");
+this.Status = ko.observable("");
+this.Note = ko.observable("");
+this.AdvanceMoney = ko.observable("");
+this.SystemId = ko.observable("");
+this.SystemName = ko.observable("");
+}

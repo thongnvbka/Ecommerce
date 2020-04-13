@@ -1,0 +1,363 @@
+﻿<div id="orderSourcingAddOrEdit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add new order sourcing source</h4>
+            </div>
+            <div class="modal-body">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h2 class="order-header">
+                            <i class="fa fa-globe"></i> Code order : <strong data-bind="text: ReturnCode(order().Code())" style="color: red"></strong>
+                            <span data-bind="text: order().StatusName(), css: order().StatusClass()"></span>
+                        </h2>
+                    </div>
+                    <div class="col-xs-3">
+                        <h2 class="order-header">
+                            <small data-bind="text: 'Innitiated date :' + moment(order().Created()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                            <small class="pull-right">Date of completion: --/--/----</small>
+                        </h2>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <i class="fa fa-bullhorn"></i>
+                                <h3 class="box-title">Note customer</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="callout callout-info">
+                                    <p data-bind="text: order().Note()"></p>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <div class="row importwarehouse">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-4">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Customer Information</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Customer ID, customer name, Phone, Email...">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info btn-flat">Use!</button>
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Full name :</label>
+                                        <div class="col-sm-10">
+                                            <label for="inputPassword3" class="control-label">Vũ Minh Tú</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Phone:</label>
+                                        <div class="col-sm-10">
+                                            <label for="inputPassword3" class="control-label">091231232141</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Email:</label>
+                                        <div class="col-sm-10">
+                                            <label for="inputPassword3" class="control-label">hanoibanhcuon@gmail.com</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Address :</label>
+                                        <div class="col-sm-10">
+                                            <label for="inputPassword3" class="control-label">Số 1123, 123 nguyễn phong sắc, đống đa, Hà Nội</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Reciever Information</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Full name :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Phone:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Email:</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Address :</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">More information</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label">Exchange rate is applied:</label>
+                                        <div class="col-sm-8">
+                                            <label data-bind="text: '1 CNY = ' + formatNumberic(order().ExchangeRate(), 'N2') + ' Baht'" for="inputPassword3" class="control-label">Exchange rate is applied:</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- /.col -->
+                </div>
+                <div class="row importwarehouse">
+                    <div class="col-sm-12 invoice-col">
+                        <div class="form-group">
+                            <b>Service is in use: </b>
+                            <div data-bind="foreach:  order().ListOrderService()">
+                                <label style="margin-right:10px;">
+                                    <!-- ko if: Type == 0 -->
+                                    <i style="font-size: 19px; margin: 4px; color:red" class="fa fa-square-o"></i><span data-bind="text: ServiceName"></span>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Type == 0 -->
+                                    <i style="font-size: 19px; margin: 4px; color:forestgreen" class="fa fa-check-square-o"></i><span data-bind="text: ServiceName"></span>
+                                    <!-- /ko -->
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <div class="row importwarehouse">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Horizontal Form -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Enter commodity information</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal">
+                                    <div class="col-md-6">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">order name/label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputEmail3">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">branch</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                                                        <option value="10" selected="selected">- Select branch -</option>
+                                                        <option value="25">branch 1</option>
+                                                        <option value="50">branch 2</option>
+                                                        <option value="150">branch 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">branch</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                                                        <option value="10" selected="selected">- Country -</option>
+                                                        <option value="25">China</option>
+                                                        <option value="50">Vietnam</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Describe product</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" rows="3" placeholder="Describe product..."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Image</label>
+                                                <div class="col-sm-9">
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-body">
+                                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Quantity </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputEmail3">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">Product price</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" placeholder="CNY ...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">Property</label>
+                                                <div class="col-sm-9">
+                                                    <label for="inputPassword" class="col-sm-2 control-label pull-left">Length:</label>
+                                                    <div class="col-sm-2">
+                                                        <input type="text" class="form-control" id="inputPassword3">
+                                                    </div>
+                                                    <label for="inputPassword" class="col-sm-2 control-label pull-left">:</label>
+                                                    <div class="col-sm-2">
+                                                        <input type="text" class="form-control" id="inputPassword3">
+                                                    </div>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label pull-left">Height:</label>
+                                                    <div class="col-sm-2">
+                                                        <input type="text" class="form-control" id="inputPassword3">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <a class="btn btn-danger"><i class="fa fa-plus"></i> Add product</a>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- Table row -->
+                <div class="row importwarehouse">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center"> Product name</th>
+                                    <th class="text-center">branch</th>
+                                    <th>Product Description</th>
+                                    <th>Property</th>
+                                    <th>Country</th>
+                                    <th class="text-center" style="color: blue">Order customer</th>
+                                    <th class="text-center" style="color: red">Product price (CNY)</th>
+                                    <th class="text-center" style="color: red">Total (CNY)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td><a href="#">Leather shoes</a></td>
+                                    <td class="text-center">Fashion</td>
+                                    <td>This product is made of high quality material. Please handle with care and attention</td>
+                                    <td><a href="#">Size: 20, Coclor:Blue</a></td>
+                                    <td><a href="#">China</a></td>
+                                    <td class="text-center">3,500</td>
+                                    <td class="text-center">50.00</td>
+                                    <td class="text-center">35,000.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <div class="row">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-9">
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-3">
+                        <p class="lead">Date of payment: 2/22/2014</p>
+                        (Rates apply for daily orders: 1 Yuan = 3,410 Baht)
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <tr>
+                                    <th style="width:60%">Cost of goods sold:</th>
+                                    <td data-bind="text: formatNumberic(order().TotalExchange(), 'N2')"></td>
+                                </tr>
+                                <tr>
+                                    <th>Deposit:</th>
+                                    <td>2.000.000</td>
+                                </tr>
+                                <tr>
+                                    <th>Service rate:</th>
+                                    <td>250.000</td>
+                                </tr>
+                                <tr>
+                                    <th>Sum transport fee:</th>
+                                    <td>100.000</td>
+                                </tr>
+                                <tr>
+                                    <th style="width:50%">Deposit:</th>
+                                    <td>- 12.000.000</td>
+                                </tr>
+                                <tr>
+                                    <th>Còn Pay back:</th>
+                                    <td>15.500.000</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Receipt</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #orderSourcingAddOrEdit {
+        padding: 0px 10px !important;
+    }
+
+        #orderSourcingAddOrEdit .modal-lg {
+            width: 80% !important;
+        }
+</style>

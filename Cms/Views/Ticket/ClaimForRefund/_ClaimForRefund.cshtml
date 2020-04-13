@@ -1,0 +1,173 @@
+﻿@{
+    var type = UserState.Type;
+    var isOrder = CheckOfficeType(UserState.OfficeId.Value, OfficeType.Order);
+}
+<script type="text/html" id="claimforrefund">
+    <div class="box box-primary">
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                        <label for="ddlGroup">Keyword search</label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can perform searches by customer's account ID, account name, real name, phone number, email, .."></i>
+                        <input class="form-control" placeholder="Code order, account ID, account name, real name, phone number, email, .." type="text" data-bind="value: SearchClaimForRefundModal().Keyword">
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label>Customer</label>
+                        <select data-bind="value: SearchClaimForRefundModal().CustomerId" class="form-control customer-search" style="width: 100%;"></select>
+                    </section>
+                    <section class="col-md-2 form-group">
+
+                        <label>@*Tìm theo nhân viên*@Search by staff</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listUser, optionsText: 'Text', optionsValue: 'Value', value: SearchClaimForRefundModal().UserId"></select>
+
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label>Status</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listStatusRefund, optionsText: 'Text', optionsValue: 'Value', value: SearchClaimForRefundModal().Status"></select>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <!-- Date and time range -->
+                        <label>Start Date</label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> Created Date
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <button data-bind="click: clickSearch" class="btn btn-danger search-list"><i class="fa fa-search"></i> Search</button>
+                        <button data-bind="click: exportExcelClaimForRefund" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+
+                        @*@if (isOrder)
+                        {
+                            <button data-bind="click: " class="btn btn-success">Tạo phiếu Refund</button>
+                        }*@
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            <div class="box">
+                <div class="box-body">
+                    <div class="tabbable page-tabs">
+                        @*<ul data-bind="foreach : listSystemRender" class="nav nav-tabs">
+                                <li data-bind="css: Class">
+                                    <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab(Value)}" data-toggle="tab">
+                                        <span data-bind="text: Text"></span>
+                                        <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                    </a>
+                                </li>
+                            </ul>*@
+                        <div class="tab-content">
+                            <div class="tab-pane active fade in" id="all-tasks">
+                                <br />
+                                <div data-bind="if: listClaimForRefundView().length > 0" class="mt15">
+                                    <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                    <ul class="pagination pagination-sm no-margin pull-right">
+                                        <li data-bind="if: pageStart">
+                                            <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                        </li>
+                                        <li data-bind="if: pageNext">
+                                            <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <!-- ko foreach: listPage -->
+                                        <li data-bind="css: Page == page ? 'active' :''  ">
+                                            <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                        </li>
+                                        <!-- /ko -->
+                                        <li data-bind="if: pagePrev">
+                                            <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <li data-bind="if: pageEnd">
+                                            <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br />
+                                <br />   
+                                @*<div class="re-responsive">
+                                    <div style="height:20px; width:100%;overflow-x: scroll; overflow-y:hidden;"></div>
+                                </div>*@ 
+                                <div class="box-body table-responsive no-padding">
+                                    <div data-bind="css: isRending() == true? 'display-none' : ''">
+                                        <div class="spinner">
+                                            <div class="rect1"></div>
+                                            <div class="rect2"></div>
+                                            <div class="rect3"></div>
+                                            <div class="rect4"></div>
+                                            <div class="rect5"></div>
+                                        </div>
+                                    </div>
+                                    <div data-bind="css: isRending() == true? '' : 'display-none'" class="display-none">
+                                        <!-- Tasks table -->
+                                        <div class="box-body table-responsive no-padding">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center w-35">#</th>
+                                                        <th class="text-center w-120">Action </th>
+                                                        <th class="text-center w-90">Request code</th>
+                                                        <th class="text-center w-90">Ticket ID</th>
+                                                        <th class="text-center w-100">Code order</th>
+                                                        <th class="text-center w-150">Status</th>
+                                                        <th class="text-center w-200">Staff</th>
+                                                        <th class="text-center w-150">Customer</th>
+                                                        <th class="text-center text-green w-150">Refund request (VNĐ)</th>
+                                                        <th class="text-center text-green w-120">Deduct (VNĐ)</th>
+                                                        <th class="text-center text-red w-150">Amount actually refunded (VNĐ)</th>
+                                                        <th class="text-center w-150">Reason(s)</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody data-bind="template: { name: 'claimforrefund-list', foreach: listClaimForRefundView }"></tbody>
+                                                <tfoot data-bind="if: listClaimForRefundView().length == 0">
+                                                    <tr>
+                                                        <td colspan="8">No Data</td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-bind="if: listClaimForRefundView().length > 0" class="mt15">
+                                    <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                    <ul class="pagination pagination-sm no-margin pull-right">
+                                        <li data-bind="if: pageStart">
+                                            <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                        </li>
+                                        <li data-bind="if: pageNext">
+                                            <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <!-- ko foreach: listPage -->
+                                        <li data-bind="css: Page == page ? 'active' :''  ">
+                                            <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                        </li>
+                                        <!-- /ko -->
+                                        <li data-bind="if: pagePrev">
+                                            <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <li data-bind="if: pageEnd">
+                                            <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>

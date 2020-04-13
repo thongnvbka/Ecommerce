@@ -1,0 +1,197 @@
+﻿<script type="text/html" id="order-wait-new">
+    <div data-bind="with: orderWaitViewModel">
+        <div class="box box-primary">
+            <!-- form start -->
+            <form data-bind="submit: clickSearch" role="form">
+                <div class="box-body">
+                    <div class="row">
+                        <section class="col-md-3 form-group">
+                            <label>Search </label>
+                            <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can do a search by Code orders, contract code, Lading code"></i>
+                            <input data-bind="value: keyword" class="form-control" placeholder="Code orders, contract code, Lading code" type="text">
+                            <div class="customer-checkbox">
+                                <input data-bind="checked: checkExactCode" type="checkbox" id="checkbox-1">
+                                <label for="checkbox-1"><span class="checkbox">Seach Text</span></label>
+                            </div>
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label>Select System</label>
+                            <select class="form-control select-view" style="width: 100%;" data-bind="options: listSystem, optionsText: 'Text', optionsValue: 'Value', value: systemId"></select>
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label>Status</label>
+                            <select class="form-control select-view" style="width: 100%;" data-bind="options: listStatus, optionsText: 'Text', optionsValue: 'Value', value: status"></select>
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label> Order date </label>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                    <span>
+                                        <i class="fa fa-calendar"></i>Start Date
+                                    </span>
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                            </div>
+                        </section>
+                        <div class="clearfix"></div>
+                        <section class="col-md-3 form-group">
+                            <label>Customer</label>
+                            <select data-bind="value: customerId" class="form-control customer-search" style="width: 100%;"></select>
+                        </section>
+                        <div class="col-md-2">
+                            <label>&nbsp;</label><br />
+                            <button data-bind="click: clickSearch" type="button" class="btn btn-danger search-list"><i class="fa fa-search"></i> Search</button>
+                            
+                            <div class="customer-checkbox">
+                                <input data-bind="checked: checkRetail" type="checkbox" id="checkbox-2">
+                                <label for="checkbox-2"><span class="checkbox">Retail Orders</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" id="body-table">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">New Quotes waiting list</h3>
+                        <!-- ko if: listOrder().length > 0 -->
+                        <button data-bind="click: receivePurchaseMultiOrder, enable: isSubmit" href="javascript:;" class="btn btn-primary pull-right">
+                            <!-- ko if: isSubmit()-->
+                            <i class="fa fa-cart-arrow-down"></i>
+                            <!-- /ko -->
+                            <!-- ko if: !isSubmit()-->
+                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            <!-- /ko -->
+                            Get fast <span data-bind="text: cogAwait"></span>/<span data-bind="text: totalAwait"></span> order
+                        </button>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <div class="tabbable page-tabs">
+                            <ul data-bind="foreach : listSystemRender" class="nav nav-tabs">
+                                <li data-bind="css: Class">
+                                    <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab(Value)}" data-toggle="tab">
+                                        <span data-bind="text: Text"></span>
+                                        <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <!-- First tab -->
+                                <div class="tab-pane active fade in" id="all-tasks">
+                                    <!-- Tasks table -->
+                                    <br />
+                                    <div data-bind="if: listOrder().length > 0">
+                                        <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li data-bind="if: pageStart">
+                                                <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                            </li>
+                                            <li data-bind="if: pageNext">
+                                                <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <!-- ko foreach: listPage -->
+                                            <li data-bind="css: Page == page ? 'active' :''  ">
+                                                <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                            </li>
+                                            <!-- /ko -->
+                                            <li data-bind="if: pagePrev">
+                                                <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <li data-bind="if: pageEnd">
+                                                <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br />
+                                    <br />      
+
+                                    <div class="box-body table-responsive no-padding">
+                                        <div data-bind="css: isRending() == true? 'display-none' : ''">
+                                            <div class="spinner">
+                                                <div class="rect1"></div>
+                                                <div class="rect2"></div>
+                                                <div class="rect3"></div>
+                                                <div class="rect4"></div>
+                                                <div class="rect5"></div>
+                                            </div>
+                                        </div>
+                                        <div data-bind="css: isRending() == true? '' : 'display-none'" class="display-none">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center w-35">#</th>
+                                                    <th class="text-center w-140"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                                                    <th class="text-center w-100"><i class="fa fa-ticket"></i> Code order</th>
+                                                    <th class="text-center w-150"><i class="fa fa-thumb-tack"></i> Status</th>
+                                                    <th class="text-center w-200"><i class="fa fa-user"></i> Customer</th>
+                                                    <th class="text-center w-150"><i class="fa fa-money"></i> Value (Currency)</th>
+                                                    <th class="text-center w-120"><i class="fa fa-calendar"></i>Time </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody data-bind="template: { name: 'order-list', foreach: listOrder }"></tbody>
+                                                <tfoot data-bind="if: listOrder().length == 0">
+                                                <tr>
+                                                    <td colspan="9">No orders were found waiting for quotation</td>
+                                                </tr>
+                                                </tfoot>
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+                                    <div data-bind="if: listOrder().length > 0" class="mt15 mb100">
+                                        <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li data-bind="if: pageStart">
+                                                <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                            </li>
+                                            <li data-bind="if: pageNext">
+                                                <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <!-- ko foreach: listPage -->
+                                            <li data-bind="css: Page == page ? 'active' :''  ">
+                                                <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                            </li>
+                                            <!-- /ko -->
+                                            <li data-bind="if: pagePrev">
+                                                <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <li data-bind="if: pageEnd">
+                                                <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <a href="javscript:;" class="btn btn-success btn-xs"><i class="fa fa-user-plus"></i></a> Distributed to Staffs &nbsp;&nbsp;
+                                        <a href="javscript:;" class="btn btn-info btn-xs"><i class="fa fa-edit"></i></a> Edit orders &nbsp;&nbsp;
+                                        <a href="javscript:;" class="btn btn-primary btn-xs"><i class="fa fa-reply"></i></a> Transfer orders for other staff &nbsp;&nbsp;
+                                        <a href="javscript:;" class="btn btn-danger btn-xs"><i class="fa fa-times-circle"></i></a> Cancel
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /page tabs -->
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- Modal -->
+        <!-- =============== Modal xử lý Cancel Orders ===================== -->
+        @Html.Partial("~/Views/Purchase/OrderCustomerCase/_OrderCancel.cshtml")
+
+        <!-- ================== Phân Orders báo giá cho nhân viên ======================== -->
+        @Html.Partial("~/Views/Purchase/OrderCustomerCase/_OrderAssigned.cshtml")
+
+    </div>
+</script>

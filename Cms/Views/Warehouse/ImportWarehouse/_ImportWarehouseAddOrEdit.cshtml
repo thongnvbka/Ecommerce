@@ -1,0 +1,248 @@
+﻿<div id="importWarehouseAddOrEdit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="importwarehouse">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>Stock in </strong>
+                                <span class="impornumber">Slip number: <strong>ORD6896253</strong></span>
+                                <small>Arrival date : 02/10/2016</small>
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@*Thông tin người giao hàng*@Carrier information</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal">
+                                    <div class="box-body ">
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Carrier :</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Phone</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Address :</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" rows="2" placeholder="Address ..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@*Thông tin kho nhập hàng*@Stock-in warehouse report</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Consigned warehouse :</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control input-lg select-view" style="width: 100%;">
+                                                    <option selected="selected">- CONSIGNED WAREHOUSE -</option>
+                                                    <option>China warehouse</option>
+                                                    <option>Ba Đình - Hà Nội warehouse</option>
+                                                    <option>Doi Can warehouse</option>
+                                                    <option>Dai Long warehouse</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Warehouse name:</label>
+                                            <div class="col-sm-10">
+                                                <label for="inputPassword3" class="data">China warehouse no.1</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Address :</label>
+                                            <div class="col-sm-10">
+                                                <label for="inputPassword3" class="data"> No. 123, China 1, 234 No. 123, China 1, 234 No. 123, China 1, 234</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row importwarehouse">
+                        <div class="col-sm-11 form-group">
+                            <label class="control-label">Select Transport code</label>
+                            <select class="form-control input-lg select-view" style="width: 100%;">
+                                <option selected="selected">- SELECT TRANSPORT CODE -</option>
+                                <option>MVD0102120012</option>
+                                <option>MVD0102120012</option>
+                                <option>MVD0102120012</option>
+                                <option>MVD0102120012</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-1 form-group">
+                            <label class="control-label"></label>
+                            <a class="btn btn-primary">ACCEPT GOODS TO STOCK</a>
+                        </div>
+
+                    </div>
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Waiting list</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body ">
+                                <div class="row importwarehouse">
+                                    <div class="col-xs-12 table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">#</th>
+                                                    <th class="text-center">Transport code</th>
+                                                    <th class="text-center" style="color: green">Weight</th>
+                                                    <th class="text-center" style="color: blue">Weight converted</th>
+                                                    <th class="text-center" style="color: red">Volume (m3)</th>
+                                                    <th class="text-center">Warehouse area</th>
+                                                    <th class="text-center">Stock status</th>
+                                                    <th class="text-center" width="20%">Stock status - note</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center"><strong>MVD0102012919</strong></td>
+                                                    <td class="text-center">21.00</td>
+                                                    <td class="text-center">22.00</td>
+                                                    <td class="text-center">--</td>
+                                                    <td class="text-center">Waiting list</td>
+                                                    <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                                    <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2</td>
+                                                    <td class="text-center"><strong>MVD1242012002</strong></td>
+                                                    <td class="text-center">21.00</td>
+                                                    <td class="text-center">22.00</td>
+                                                    <td class="text-center">--</td>
+                                                    <td class="text-center">Waiting list</td>
+                                                    <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                                    <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">3</td>
+                                                    <td class="text-center"><strong>MVD0102211002</strong></td>
+                                                    <td class="text-center">21.00</td>
+                                                    <td class="text-center">22.00</td>
+                                                    <td class="text-center">--</td>
+                                                    <td class="text-center">Waiting list of stock in</td>
+                                                    <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                                    <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">4</td>
+                                                    <td class="text-center"><strong>MVD01212012002</strong></td>
+                                                    <td class="text-center">21.00</td>
+                                                    <td class="text-center">22.00</td>
+                                                    <td class="text-center">--</td>
+                                                    <td class="text-center">Waiting list</td>
+                                                    <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                                    <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Table row -->
+                    <div class="row signature">
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Creator</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name">Nguyễn Quốc Cử</span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Carrier</strong></h5>
+                            <span>(Sign and write full name)</span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Warehouse keeper</strong></h5>
+                            <span>(Sign and write full name)</span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Accountant</strong></h5>
+                            <span>(Sign and write full name)</span>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary pull-left"><i class="fa fa-print"></i> Print </a>
+                <a class="btn btn-danger"><i class="fa fa-plus"></i> Save</a>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #importWarehouseAddOrEdit {
+        padding: 0 10px !important;
+    }
+    #importWarehouseAddOrEdit .modal-lg {
+            width: 90% !important;
+        }
+</style>

@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "CreateTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="dingdan">
+                <div class="modal-head">
+                    <h5 class="uppercase">Tạo yêu cầu khiếu nại</h5>
+                </div>
+                <form class="create-complain rs" id="complain-submit">
+
+                    <div class="rs top-complain ">
+                        <div class="title-top rs ">
+                            <div class="wrap-au">
+                                <p>
+                                    Lựa chọn đơn hàng
+                                </p>
+                                <div class="progress" style="height:2px;width:100%">
+                                    <span class="progress-bar" style="width: 40%;"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rs text-center" style="margin-top:20px;">
+                            <label class="lb-complain-top">
+                                <span class="pull-right">
+                                    Đơn hàng khiếu nại: (<span class="red-color">*</span>)
+                                </span>
+                            </label>
+                            <div class="input-search-order-complain">
+                                <input type="text" placeholder="Mã đơn hàng" id="txtOrderCode" data-bind="value: ticketnModel().OrderCode">
+                            </div>
+                            <p class="rs note-order-code-complain">(<span class="red-color">*</span>) Lưu ý quý khách chỉ được chọn một mã đơn hàng khiếu nại</p>
+                        </div>
+                    </div>
+
+                    <div class="rs form-input-complain">
+                        <div class="left-complain">
+                            <div class="rs wrap-au2">
+                                <p>
+                                    Lựa chọn loại khiếu nại
+                                </p>
+                                <div class="progress" style="height:2px;width:100%">
+                                    <span class="progress-bar" style="width: 50%;"></span>
+                                </div>
+                            </div>
+
+                            <p class="rs bold-title-complain">Vấn đề hàng hóa</p>
+
+                            <div class="rs list-type-order" data-bind="foreach: listTypeComplain">
+                                <label>
+                                    <input type="checkbox" class="icheck check" data-bind="checkedValue: Value, checked: selectedService"> <span data-bind="text: Text"></span>
+                                </label>
+                            </div>
+
+                            <div class="clear"></div>
+
+                        </div>
+                        <div class="right-complain">
+                            <div class="rs wap-au3">
+                                <p>
+                                    Chi tiết khiếu nại
+                                </p>
+                                <div class="progress" style="height:2px;width:100%">
+                                    <span class="progress-bar" style="width: 40%;"></span>
+                                </div>
+                            </div>
+                            <div class="lb-complain-content rs  first-content">
+                                <label class="left-content-complain ">
+                                    <span class="pull-left">
+                                        Nội dung: (<span class="red-color">*</span>)
+                                    </span>
+                                </label>
+                                <div class="text-content-complain right-content-complain">
+                                    <textarea data-bind="value: ticketnModel().Content" type="text" name="Content" id="txtContent" class="form-control" placeholder="Mô tả chi tiết nội dung tại đây"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="lb-complain-content rs">
+                                <label class="left-content-complain ">
+                                    <span class="pull-left">
+                                        Số tiền bồi thường:
+                                    </span>
+                                </label>
+                                <div class="input-number-complain right-content-complain">
+                                    <input data-bind="value: ticketnModel().RequestMoney" type="text" placeholder="Số tiền mong muốn nhận được bồi thường">
+                                </div>
+                            </div>
+
+                            <div class="lb-complain-content rs">
+                                <label class="left-content-complain ">
+                                    <span class="pull-left">
+                                        Hình ảnh: (<span class="red-color">*</span>)
+                                    </span>
+                                </label>
+                                <div class="img-complain right-content-complain">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                                        <span class="btn btn-primary btn-file btn-flat">
+                                            <!-- ko if: isUpload()-->
+                                            <i class="fa fa-file-image-o"></i>
+                                            <!-- /ko -->
+                                            <!-- ko if: !isUpload()-->
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                            <!-- /ko -->
+                                            Ảnh hàng hóa
+                                            <input class="flieuploadImg" name="" type="file">
+                                        </span>
+                                        <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <i>*Giới hạn kích thước tối đa 2MB*</i>
+                                </div>
+                            </div>
+
+                            <div class="lb-complain-content rs  list-img">
+                                <div class="col-md-12" style="margin-top: 10px;">
+                                    <div id="effect-7" class="effects clearfix">
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath1() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath1}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath1.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath2() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath2}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath2.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath3() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath3}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath3.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath4() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath4}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath4.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-complain text-center">
+                        <a href="javascript:;" class="btn btn-primary img-complain-upload" id="btnSubmit" data-bind="click: createTicket">Tạo yêu cầu</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Partial("~/Views/Partial/_MenuShoppingCart.cshtml")
+@section scripts{
+    <script src="~/Areas/CMS/Scripts/models/complain/complainModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/complain/complainViewModel.js"></script>
+    <script type="text/javascript">
+        var listTicketType = @Html.Raw(ViewBag.ListComplainTypeService);
+    </script>
+}

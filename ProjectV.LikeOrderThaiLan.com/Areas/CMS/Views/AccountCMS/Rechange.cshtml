@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Rechange";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+@section styles
+{
+    <style>
+        .img-banks {
+            width: 230px;
+            float: left;
+            height: 50px;
+        }
+
+            .img-banks > i > img {
+                left: 0 !important;
+                top: 0px !important;
+                position: inherit !important;
+                min-width: 190px !important;
+                border: 2px solid #fd7f00;
+            }
+
+        .number-banks {
+            float: left;
+            width: 60%;
+            padding-top: 17px;
+            /*color: red;*/
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+            .number-banks > p {
+                float: left;
+                width: 100%;
+            }
+
+                .number-banks > p > span {
+                    text-align: right !important;
+                    float: right !important;
+                    margin-right: 20% !important;
+                }
+    </style>
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+
+            <div class="zichan">
+                @Html.Partial("~/Areas/CMS/Views/AccountCMS/Recharge/Recharge_" + culture + ".cshtml")
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+
+    <script src="~/Content/js/tab.js"></script>
+}

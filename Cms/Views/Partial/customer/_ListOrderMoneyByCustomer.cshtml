@@ -1,0 +1,110 @@
+﻿@{
+    var isAccountant = CheckOfficeType(UserState.OfficeId.Value, OfficeType.Accountancy);
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<script type="text/html" id="OrderMoney">
+
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Transaction type</th>
+                    <th class="text-center">Transaction code</th>
+                    <th class="text-center">Time </th> 
+                   
+                    <th class="text-center">Invoice </th>
+                    <th class="text-center text-green">PAY (+)</th>
+                    <th class="text-center text-red">TAKE OUT (-)</th>
+                    <th class="text-center">Status</th>
+                </tr>
+
+            </thead>
+            <tbody data-bind="template: { name: 'orderMoney-list', foreach: listOrderMoneyByCustomer }"></tbody>
+            <tfoot data-bind="if: listOrderMoneyByCustomer().length == 0">
+                <tr>
+                    <td colspan="5">No Data</td>
+                </tr>
+            </tfoot>
+
+        </table>
+        <div data-bind="if: listOrderMoneyByCustomer().length > 0" class="mt15">
+            <div data-bind="html: pageTitle" class="pull-left"></div>
+
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li data-bind="if: pageStart">
+                    <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                </li>
+                <li data-bind="if: pageNext">
+                    <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                </li>
+                <!-- ko foreach: listPage -->
+                <li data-bind="css: Page == page ? 'active' :''  ">
+                    <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                </li>
+                <!-- /ko -->
+                <li data-bind="if: pagePrev">
+                    <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                </li>
+                <li data-bind="if: pageEnd">
+                    <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="orderMoney-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.typeRechargeBill[Type].Name, css: statusApp.typeRechargeBill[Type].Class"></span>
+        </td>
+        <td class="text-center">
+            @if (isAccountant)
+            {
+                <a href="javascript:;" data-bind="click:$parent.viewMoneyFundDetailFind"><strong data-bind="text: Code"></strong></a>
+            }
+            else
+            {
+                <a href="javascript:;" data-bind="click:"><strong data-bind="text: Code"></strong></a>
+            }
+            
+        </td>
+        <td class="text-center">
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).format('DD/MM/YYYY HH:mm')@*moment(Created).locale('vi').startOf().fromNow()*@" class=""></span>
+        </td>
+        <td class="text-center">
+            <!-- ko if: OrderType == @order-->
+            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, OrderId)" href="javascript:;">
+                <strong>
+                    <span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == @deposit-->
+            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, OrderId)" href="javascript:;">
+                <strong>
+                    <span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+        </td>
+        
+        <td align="right" class="text-green">
+            <!-- ko if: Increase > 0 -->
+            <i class="fa fa-caret-up"></i> <span data-bind="text: formatNumberic(Increase, 'N2')"></span>
+            <!-- /ko -->
+        </td>
+        <td align="right" class="text-red">
+            <!-- ko if: Diminishe > 0 -->
+            <i class="fa fa-caret-down"></i> <span data-bind="text: formatNumberic(Diminishe, 'N2')"></span>
+            <!-- /ko -->
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusRechargeBill[Status].Name, css: statusApp.statusRechargeBill[Status].Class"></span>
+        </td>
+
+    </tr>
+</script>
+

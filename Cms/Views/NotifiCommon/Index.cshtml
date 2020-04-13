@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Order processing room";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+@section Styles{
+    <link href="~/Content/plugins/tabdrop/css/tabdrop.css" rel="stylesheet" />
+    <link href="~/Content/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+    <link href="/Content/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" />
+    <link href="/Content/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" />
+    <style>
+        input.decimal:focus {
+            text-align: left !important;
+        }
+    </style>
+}
+
+<section class="content-header">
+    <h1>
+        FullName - TitleName
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> System notification list</a></li>
+    </ol>
+</section>
+
+<section id="notifiView" class="content">
+    <div class="row">
+        <div class="col-xs-2 todobar">
+            @Html.Partial("_TodoBar")
+        </div>
+        <div class="col-xs-10 view-content-box">
+            <div data-bind="css: isLoading() == true? 'display-none' : ''" class="text-center" style="padding-top:200px">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw text-blue"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div data-bind="css: isLoading() == true? '' : 'display-none'" class="display-none">
+                <div data-bind="template: { name: templateId }"></div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/NotifiCommon/_NotifiAddOrEdit.cshtml")
+
+</section>
+
+@section pagespecific{
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="~/Content/plugins/tabdrop/js/bootstrap-tabdrop.js"></script>
+    <script src="~/Content/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Content/plugins/datepicker/locales/bootstrap-datepicker.vi.js"></script>
+    <script src="/Content/plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
+    <script src="/Content/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
+    <script src="~/Scripts/common/status.@cultureJs"></script>
+    <script src="~/Scripts/common/common.js"></script>
+    <script src="/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/components/SearchCustomerComponent.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script id="isEmp"></script>
+    <!--Hoàn tiền khiếu nại-->
+    @Html.Partial("~/Views/NotifiCommon/_NotifiList.cshtml")
+    @Html.Partial("~/Views/NotifiCommon/_NotifiIndex.cshtml")
+    
+    <script src="~/Scripts/models/notifi/NotifiModel.js"></script>
+    <script src="~/Scripts/viewmodels/notifi/notifiViewModel.js"></script>
+    <script>
+        $(function () {
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+        });
+    </script>
+}

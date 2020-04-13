@@ -1,0 +1,111 @@
+﻿<div id="CustomerDetailModal" class="modal fade modal-dialog modal-p80" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detail info customers</h4>
+    </div>
+    <div class="modal-body">
+        <!-- Table row -->
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="/Content/dist/img/user2-160x160.jpg" alt="User profile picture">
+                            <h3 class="profile-username text-center" data-bind="text: customerModel().FullName"></h3>
+                            <p class="text-muted text-center" data-bind="text: customerModel().SystemName"></p>
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Customer ID :</b> <a class="pull-right" data-bind="text:  customerModel().Code()"></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Account type</b> <a class="pull-right"><span class="label label-danger" data-bind="text: customerModel().LevelName"></span></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Balances</b> <a class="pull-right" data-bind="text: formatNumberic(customerModel().BalanceAvalible(), 'N2') +' đ'"></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>The amount spent</b> <a class="pull-right" data-bind="text: formatNumberic(customerModel().Balance(), 'N2') +' đ'"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Personal information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <strong><i class="fa fa-book margin-r-5"></i> Full name</strong>
+                            <p class="text-muted" data-bind="text: customerModel().FullName"> </p>
+                            <hr>
+                            <strong><i class="fa fa-book margin-r-5"></i>Phone</strong>
+                            <p class="text-muted" data-bind="text:customerModel().Phone">  </p>
+                            <hr>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+                            <p class="text-muted" data-bind="text:customerModel().Email"> </p>
+                            <hr>
+                            <strong><i class="fa fa-book margin-r-5"></i>Address</strong>
+                            <p class="text-muted" data-bind="text:customerModel().Address"> </p>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li data-bind="css: active2() == 'customerDetail' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail2('customerDetail')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-user"></i> Customer information
+                                </a>
+                            </li>
+                            <li data-bind="css: active2() == 'SupportHistory' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail2('SupportHistory')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-history"></i> Customer support history
+                                </a>
+                            </li>
+                            <li data-bind="css: active2() == 'OrderHistory1' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail2('OrderHistory1')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-inbox"></i> Order history
+                                </a>
+                            </li>
+                            <li data-bind="css: active2() == 'OrderMoney1' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail2('OrderMoney1')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-money"></i> E-wallet
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div data-bind="template: { name: templateId2 }"></div>
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success"><i class="fa fa fa-angle-left"></i> Accept to process</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+ 
+@Html.Partial("~/Views/CustomerOfStaff/Customer/_moreDetailCustomer/_InforCustomer.cshtml")
+@Html.Partial("~/Views/CustomerOfStaff/Customer/_moreDetailCustomer/_ListComplainByCustomer.cshtml")
+@Html.Partial("~/Views/CustomerOfStaff/Customer/_moreDetailCustomer/_ListOrderByCustomer.cshtml")
+@Html.Partial("~/Views/CustomerOfStaff/Customer/_moreDetailCustomer/_ListOrderMoneyByCustomer.cshtml")
+
+
+
+
+

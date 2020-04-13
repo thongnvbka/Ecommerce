@@ -1,0 +1,114 @@
+﻿<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">List of orders</h3>
+
+        <a href="@Url.Action("Create")" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add new</a>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="tabbable page-tabs">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#all-tasks" data-toggle="tab">All<span class="label label-danger">100</span></a></li>
+                <li><a href="#active" data-toggle="tab">Warehouse TQ<span class="label label-primary">5</span></a></li>
+                <li><a href="#closed" data-toggle="tab">Noi Bai Warehouse<span class="label label-primary">30</span></a></li>
+                <li><a href="#" data-toggle="tab">Đội Cấn warehouse <span class="label label-primary">5</span></a></li>
+                <li><a href="#" data-toggle="tab">Cảm Hội warehouse<span class="label label-primary">5</span></a></li>
+            </ul>
+            <div class="tab-content">
+                <!-- First tab -->
+                <div class="tab-pane active fade in" id="all-tasks">
+                    <!-- Tasks table -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Shipping ticket code</th>
+                                    <th class="text-center">Transfer slip</th>
+                                    <th class="text-center">Customer</th>
+                                    <th class="text-center">quantity Package</th>
+                                    <th class="text-center">Staff coordinator</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">
+                                        <a href="@Url.Action("Detail")"><strong>DEL010012012</strong></a><br />
+                                        <span class="badge bg-danger">02/08/2016 12:00AM</span>
+                                    </td>
+                                    <td class="text-center">Transfer slip to Ms Van Anh</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>Nguyễn Thị Vân Anh</strong></a>
+                                    </td>
+                                    <td class="text-center">02 (Weight charged (kg))</td>
+                                    <td class="text-center"><a href="#"><strong>Nguyễn Văn An</strong></a></td>
+                                    <td class="text-center">
+                                        <span class="label label-default">Recently created</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tasks table -->
+                </div>
+                <!-- /first tab -->
+                <!-- Second tab -->
+                <div class="tab-pane fade" id="active">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Account code</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Account </th>
+                                    <th class="text-center">Select System</th>
+                                    <th class="text-center">User information</th>
+                                    <th>More information</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="pull-right">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <!-- /tasks table -->
+                </div>
+                <!-- /second tab -->
+                <!-- Third tab -->
+                <div class="tab-pane fade" id="closed">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Account ID</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Account </th>
+                                    <th class="text-center">Select System</th>
+                                    <th class="text-center">Personal information</th>
+                                    <th>More information</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="pull-right">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <!-- /tasks table -->
+                </div>
+                <!-- /third tab -->
+            </div>
+        </div>
+        <!-- /page tabs -->
+    </div>
+    <!-- /.box-body -->
+</div>
+

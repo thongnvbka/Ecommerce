@@ -1,0 +1,819 @@
+﻿
+@{
+    ViewBag.Title = "สต็อคอินเตอร์เฟซ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles{
+    <link href="~/Content/css/style.min.css" rel="stylesheet" />
+    <link href="~/Content/css/slide-theme.css" rel="stylesheet" />
+}
+<div id="dvBanner">
+    <div class="row banner-container">
+        <div class="col-md-12">
+            <h1>
+                <span class="lbl-text large">2000+ อินเตอร์เฟซ</span>
+                <span class="lbl-text light">อินเตอร์เฟซเว็บขายสินค้าสวยงาม มีความเชียวชาญ และหลักหลายทางด้าน</span>
+            </h1>
+        </div>
+
+    </div>
+</div>
+<div class="row margin-top-40">
+    <div class="col-lg-12">
+        <div class="container">
+            <div id="toolbar">
+                <div role="toolbar" class="btn-toolbar">
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 dvtoolbar dvtool input-search">
+                        <form method="get" id="formSearch" novalidate="novalidate">
+                            <div class="input-group">
+                                <input id="search" type="text" name="search" class="form-control" placeholder="คุณค้นหาอินเตอร์เฟซอะไร?">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" id="btnSearch" style="position :relative;">
+                                        <span class="icon-search"></span>
+                                    </button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 dvtoolbar dvtool select-price">
+                        <div class="btn-group btn-group-justified" id="dvPrice">
+                            <a role="button" val="all" class="btn btn-default all active" href="/?price=all">ทั้งหมด</a>
+                            <a role="button" val="free" class="btn btn-default border-0 free" href="/?price=free">ฟรี</a>
+                            <a role="button" val="paid" class="btn btn-default paid" href="/?price=paid">ซื้อ</a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 dvtool dvColletion">
+                        <div id="dvColletion">
+                            <select id="CollectionId" class="form-control selectpicker" name="CollectionId" @*style="display: none;"*@>
+                                <option value="">ทั้งหมดทางด้านอาชีพ</option>
+                                @*<option value="1">Công nghệ - Kỹ thuật số</option>
+                                    <option value="2">Thiết bị điện</option>
+                                    <option value="3">Thời trang - Trang sức</option>
+                                    <option value="4">Thực phẩm - Nhà hàng</option>
+                                    <option value="5">Thể thao - Dịch vụ</option>
+                                    <option value="6">Nội thất - Trang trí văn phòng</option>
+                                    <option value="7">Sinh hoạt - Gia dụng</option>
+                                    <option value="9">Bất động sản - Xây dựng</option>
+                                    <option value="10">Thủ công - Mỹ nghệ - Quà tặng</option>
+                                    <option value="12">Khác</option>*@
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 dvtool dvSort">
+                        <div id="dvSort">
+                            <select class="form-control selectpicker" @*style="display: block;"*@>
+                                <option value="">จัดการ</option>
+                                @*<option value="1">Giá từ thấp đến cao</option>
+                                    <option value="2">Giá từ cao đến thấp</option>
+                                    <option value="3">Tên A - Z</option>
+                                    <option value="4">Tên Z - A</option>
+                                    <option value="5">Bán chạy nhất</option>*@
+                            </select>
+                            @*<div class="btn-group bootstrap-select form-control"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="SortId" title="Sắp xếp"><span class="filter-option pull-left">Sắp xếp</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open"><ul class="dropdown-menu inner" role="menu"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Sắp xếp</span>" data-tokens="null"><span class="text">Sắp xếp</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Gia từ thấp đến cao</span>" data-tokens="null"><span class="text">Giá từ thấp đến cao</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Gia từ cao đến thấp</span>" data-tokens="null"><span class="text">Giá từ cao đến thấp</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Ten A - Z</span>" data-tokens="null"><span class="text">Tên A - Z</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="4"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Ten Z - A</span>" data-tokens="null"><span class="text">Tên Z - A</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="5"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Ban chạy nhất</span>" data-tokens="null"><span class="text">Bán chạy nhất</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div></div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+        <div id="wrapper" class="default-wrapper">
+
+
+            <div class="col-lg-12 text-center hidden" id="loadTheme">
+                <img src="~/Content/images/newlogo/spinner.gif" />
+            </div>
+
+            <div class="slide-theme">
+                <div class="swiper-container swiper-container-horizontal">
+                    <div class="swiper-wrapper" style="transform: translate3d(-3746px, 0, 0); transition-duration: 0;">
+                        @*<div class="swiper-slide hidden-sm hidden-md hidden-xs swiper-slide-duplicate" data-swiper-slide-index="2" style="width: 1873px;">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                        <h2>Template  อินเตอร์เฟซตัวอย่าง<span>Ateck</span></h2>
+                                        <img src="~/Content/images/newlogo/5-star.png" />
+                                        <p>ราคาได้แก่คุณ: <span>Free</span></p>
+                                        <div class="registration-block">
+                                            <a href="/" class="btn-registration">Demo</a>
+                                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform" class="btn-registration view-detail">
+                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                        <div class="laptop">
+                                            <a href="#">
+                                                <img src="~/Content/images/theme/Globalfood.png" alt=""/>
+                                            </a>
+                                        </div>
+                                        <div class="iphone">
+                                            <a href="#">
+                                                <img src="~/Content/images/theme/Globalfood_mobile.png" />
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template  อินเตอร์เฟซตัวอย่าง<span>Maxxshop</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>ราคาได้แก่คุณ: <span>Free</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Demo</a>
+                                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform" class="btn-registration view-detail">สมัครรับฟรี</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="~/Content/images/theme/GM Energy.png" alt="" />
+
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/">
+                                            <img src="~/Content/images/theme/GM Energy mobile.png" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide hidden-sm hidden-md hidden-xs swiper-slide-active" data-swiper-slide-index="1" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template  Showcase<span>Perfume Rise</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>ราคาได้แก่คุณ: <span>Free</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Demo</a>
+                                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform" class="btn-registration view-detail">สมัครรับฟรี</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="#">
+                                            <img src="~/Content/images/theme/showcase.png" />
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="#">
+                                            <img src="~/Content/images/theme/showcase-mobile.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide hidden-sm hidden-md hidden-xs swiper-slide-next" data-swiper-slide-index="2" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template  อินเตอร์เฟซตัวอย่าง<span>Global food</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>ราคาได้แก่คุณ: <span>Free</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Demo</a>
+                                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform" class="btn-registration view-detail">สมัครรับฟรี</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="~/Content/images/theme/Globalfood.png" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/?mobile=true">
+                                            <img src="~/Content/images/theme/Globalfood_mobile.png" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 1873px;">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                        <h2>Template  อินเตอร์เฟซตัวอย่าง<span>Maxxshop</span></h2>
+                                        <img src="~/Content/images/newlogo/5-star.png" />
+                                        <p>ราคาได้แก่คุณ: <span>Free</span></p>
+                                        <div class="registration-block">
+                                            <a href="/" class="btn-registration">Demo</a>
+                                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform" class="btn-registration view-detail">สมัครรับฟรี</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                        <div class="laptop">
+                                            <a href="/">
+                                                <img src="https://bizwebtheme.dktcdn.net/themes/15/themefeatures/5b2f9f813fd139d66d43eb0eeafec525.png?1486025504503">
+                                            </a>
+                                        </div>
+                                        <div class="iphone">
+                                            <a href="/">
+                                                <img src="https://bizwebtheme.dktcdn.net/themes/15/themefeatures/cbd79863b5b88ad6cee0818f144b2de2.jpg?1486025504503">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+
+            <div class="line">
+                <img src="~/Content/images/newlogo/line.png" />
+            </div>
+
+            <div class="hot-theme">
+                <div class="container">
+                    <h2>Top ชื้นชอบที่สุด</h2>
+                    <p class="sub-title"> อินเตอร์เฟซ ที่ได้หลายคนใช้</p>
+                    <div class="skins-home-items">
+                        <div class="skin-item nn-prod-box">
+                            <span class="tag">ชื้นชอบที่สุด</span>
+                            <a title="Green Construction" href="/Content/images/theme/Pokamaka.png" target="_blank" class="thumbnail">
+                                <div class="">
+                                    <img class="img-responsive" alt="" src="~/Content/images/theme/Pokamaka.png">
+                                    <div class="nn-prod-icon">
+                                        <h4>Pokamaka Shop</h4>
+                                        <span class="price">Free</span>
+                                        <span class="item-id hidden">GR 02</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skin-item nn-prod-box">
+                            <span class="tag">ชื้นชอบที่สุด</span>
+                            <a title="Green Construction" href="/Content/images/theme/Leader_in.png" target="_blank" class="thumbnail">
+                                <div class="">
+                                    <img class="img-responsive" alt="" src="~/Content/images/theme/Leader_in.png">
+                                    <div class="nn-prod-icon">
+                                        <h4>Leader in shop</h4>
+                                        <span class="price">800 bath</span>
+                                        <span class="item-id hidden">GR 02</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skin-item nn-prod-box">
+                            <span class="tag">ชื้นชอบที่สุด</span>
+                            <a title="Green Construction" href="/Content/images/theme/MShopping.png" target="_blank" class="thumbnail">
+                                <div class="">
+                                    <img class="img-responsive" alt="" src="~/Content/images/theme/MShopping.png" />
+                                    <div class="nn-prod-icon">
+                                        <h4>MShopping</h4>
+                                        <span class="price">550 bath</span>
+                                        <span class="item-id hidden">GR 02</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="scroll-top-bar hidden-md hidden-sm hidden-xs" style="display: none;">
+                <span>
+                    คุณยังไม่สามารถเลือกได้อินเตอร์เฟซที่ถูกใจใช่ไหม
+                    สร้างเว็ยไซต์ตอนนี้เพื่อจะได้เลือกอินเตอร์เฟซ
+                </span>
+                <a class="btn-registration" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+            </div>
+            <div class="new-theme">
+                <div class="container">
+                    <h2>อินเตอร์เฟซใหม่สุด</h2>
+                    <p class="sub-title">ด้วย2000 template สวยงาม มีความเชียวชาญ นี่เป็นอินเตอร์เฟซใหม่สุดของEziwebshop</p>
+                    <div id="divTheme" define="{&quot;themes&quot;: new BizwebThemes.theme({&quot;total_theme_page&quot;:12,&quot;get_link_theme&quot;:&quot;/home/home/getmorethemes&quot;})}">
+                        <div class="skins-home-items" id="themes_list_container">
+                            <div class="skin-item nn-prod-box">
+                                <a title="Import bag center" href="/Content/images/theme/import-bag-center.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/import-bag-center.png">
+                                        <div class="nn-prod-icon">
+                                            <h4>Import bag center</h4>
+                                            <span class="price">500 bath</span>
+                                            <span class="item-id hidden">Import bag center</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/import-bag-center.png">
+                                    <a href="/Content/images/theme/import-bag-center.png" class="theme-name" target="_blank">Import bag center</a>
+                                    <span class="price">500 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/import-bag-center.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="To b shop" href="/Content/images/theme/to-b-shop.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/to-b-shop.png">
+                                        <div class="nn-prod-icon">
+                                            <h4>To b shop</h4>
+                                            <span class="price">500 bath</span>
+                                            <span class="item-id hidden">Furniture 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/to-b-shop.png" >
+                                    <a href="/Content/images/theme/to-b-shop.png" class="theme-name" target="_blank">To b shop</a>
+                                    <span class="price">500 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/to-b-shop.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Main food" href="/Content/images/theme/Marine Food.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/Marine Food.png">
+                                        <div class="nn-prod-icon">
+                                            <h4>Main food</h4>
+                                            <span class="price">660 bath</span>
+                                            <span class="item-id hidden">Engo_01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/Marine Food.png">
+                                    <a href="/Content/images/theme/Marine Food.png" class="theme-name" target="_blank">Main food</a>
+                                    <span class="price">660 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/Marine Food.png" class="btn-registration" target="_blank">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Zenith" href="/Content/images/theme/zenith.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/zenith.png">
+                                        <div class="nn-prod-icon">
+                                            <h4>Zenith</h4>
+                                            <span class="price">700 bath</span>
+                                            <span class="item-id hidden">Gift 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img src="~/Content/images/theme/zenith.png" alt="" />
+                                    <a href="/Content/images/theme/zenith.png" target="_blank" class="theme-name">Zenith</a>
+                                    <span class="price">700 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/zenith.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Nara" href="/Content/images/theme/NARA.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" src="~/Content/images/theme/NARA.png" alt="" />
+                                        <div class="nn-prod-icon">
+                                            <h4>Nara</h4>
+                                            <span class="price">Free</span>
+                                            <span class="item-id hidden">Cosmetic 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img src="~/Content/images/theme/NARA.png" alt="" />
+                                    <a href="/Content/images/theme/NARA.png" class="theme-name" target="_blank">Nara</a>
+                                    <span class="price">Free</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/NARA.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Fresh Me" href="/Content/images/theme/Fresh Me.png" class="thumbnail" target="_blank">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/Fresh Me.png" />
+                                        <div class="nn-prod-icon">
+                                            <h4>Fresh Me</h4>
+                                            <span class="price">600 bath</span>
+                                            <span class="item-id hidden">GR08</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/Fresh Me.png" />
+                                    <a href="/Content/images/theme/Fresh Me.png" class="theme-name" target="_blank">Fresh Me</a>
+                                    <span class="price">600 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/Fresh Me.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Sofitshop" href="/Content/images/theme/sofitshop.com.png" class="thumbnail" target="_blank">
+                                    <div class="">
+                                        <img class="img-responsive" src="~/Content/images/theme/sofitshop.com.png" alt="" />
+                                        <div class="nn-prod-icon">
+                                            <h4>Sofitshop</h4>
+                                            <span class="price">550 bath</span>
+                                            <span class="item-id hidden">Sofitshop</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img src="~/Content/images/theme/sofitshop.com.png" alt="" />
+                                    <a href="/Content/images/theme/sofitshop.com.png" class="theme-name" target="_blank">Sofitshop</a>
+                                    <span class="price">550 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/sofitshop.com.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Travel" href="/Content/images/theme/TRAVEL.png" class="thumbnail" target="_blank">
+                                    <div class="">
+                                        <img class="img-responsive" src="~/Content/images/theme/TRAVEL.png" alt="" />
+                                        <div class="nn-prod-icon">
+                                            <h4>Travel</h4>
+                                            <span class="price">700 bath</span>
+                                            <span class="item-id hidden">auslogic</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img src="~/Content/images/theme/TRAVEL.png" alt="" />
+                                    <a href="/Content/images/theme/TRAVEL.png" class="theme-name" target="_blank">Travel</a>
+                                    <span class="price">700 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/TRAVEL.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="ARfabric" href="/Content/images/theme/ARfabric.png" class="thumbnail" target="_blank">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/ARfabric.png" />
+                                        <div class="nn-prod-icon">
+                                            <h4>ARfabric</h4>
+                                            <span class="price">550 bath</span>
+                                            <span class="item-id hidden">Ins7903</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img src="~/Content/images/theme/ARfabric.png" alt="" />
+                                    <a href="/Content/images/theme/ARfabric.png" target="_blank" class="theme-name">ARfabric</a>
+                                    <span class="price">550 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/ARfabric.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Comulateplus" href="/Content/images/theme/comulateplus.png" class="thumbnail" target="_blank">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/comulateplus.png" />
+
+                                        <div class="nn-prod-icon">
+                                            <h4>Comulateplus</h4>
+                                            <span class="price">700 bath</span>
+                                            <span class="item-id hidden">coffeeandyou</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/comulateplus.png" />
+                                    <a href="/Content/images/theme/comulateplus.png" class="theme-name" target="_blank">Comulateplus</a>
+                                    <span class="price">700 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/comulateplus.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Shop Car" href="/Content/images/theme/shopcar.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/shopcar.png" />
+                                        <div class="nn-prod-icon">
+                                            <h4>Shop Car</h4>
+                                            <span class="price">550 bath</span>
+                                            <span class="item-id hidden">Electronic 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/shopcar.png" />
+                                    <a href="/Content/images/theme/shopcar.png" target="_blank" class="theme-name">Shop Car</a>
+                                    <span class="price">550 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/shopcar.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Chowy fashionable" href="/Content/images/theme/Chowy fashionable.png" target="_blank" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="~/Content/images/theme/Chowy fashionable.png" />
+                                        <div class="nn-prod-icon">
+                                            <h4>Chowy fashionable</h4>
+                                            <span class="price">820 bath</span>
+                                            <span class="item-id hidden">Leo 32</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="~/Content/images/theme/Chowy fashionable.png" />
+                                    <a href="/Content/images/theme/Chowy fashionable.png" class="theme-name" target="_blank">Chowy fashionable</a>
+                                    <span class="price">820 bath</span>
+                                    <div class="registration-block">
+                                        <a href="/Content/images/theme/Chowy fashionable.png" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container" style="text-align:center;margin-top:10px">
+                            <a class="btnLoad btn-registration" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform" @*id="btnLoad"*@>ดุอินเตอร์เฟซเพิ่มเติม</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="guide-step">
+                <div class="container">
+                    <h3>แค่ต้องทำสามขั้นต้อนเพื่อใช้อินเตอร์เฟซเว็บไซต์ขายสินค้าสวยงาม</h3>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12 col-sm-4 item">
+                            <img src="~/Content/images/newlogo/step-1.png" />
+                            <p>ขั้นต้อนที่  1</p>
+                            <span>เลือกอินเตอร์เฟซเหมาะสำหรับความต้องการ</span>
+                            <img class="arrow hidden-xs" src="~/Content/images/newlogo/landing-arrow.png" />
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4 item">
+                            <img src="~/Content/images/newlogo/step-2.png" />
+                            <p>ขั้นต้อนที่ 2</p>
+                            <span>แก้ไขอินเตอร์เฟซเหมาะสำหรับความต้องการ</span>
+                            <img class="arrow hidden-xs" src="~/Content/images/newlogo/landing-arrow.png" />
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4 item">
+                            <img src="~/Content/images/newlogo/step-3.png" />
+                            <p>ขั้นต้อนที่ 3</p>
+                            <span>เริ่มขายสินค้าออนไลน์</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="x-tmpl-mustache" id="themes-list-template" class="html-template">
+                {{#themes}}
+                <div class="skin-item nn-prod-box">
+                    <a title="{{name}}" href="/{{alias}}" class="thumbnail">
+                        <div class="">
+                            <img class="img-responsive" alt="" src="{{image_path}}" />
+                            <div class="nn-prod-icon">
+                                <h4>{{name}}</h4>
+                                <span class="price">{{price_mod}}</span>
+                                <span class="item-id hidden">{{code}}</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dialog">
+                        <img alt="" src="{{image_path}}" />
+                        <a href="/{{alias}}" class="theme-name">{{name}}</a>
+                        <span class="price">{{price_mod}}</span>
+                        <div class="registration-block">
+                            <a href="/{{alias}}" class="btn-registration">Demo</a>
+                            <a href="/{{alias}}" class="btn-registration view-detail">ดูเพิ่มเติม</a>
+                        </div>
+                    </div>
+                </div>
+                {{/themes}}
+            </script>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @*<script src="~/Content/js/loadToolbarPartial.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            var priceParam = parse('price');
+            if (priceParam == 'free') {
+                $('#dvPrice a').removeClass("active");
+                $('#dvPrice a.free').addClass("active");
+            } else if (priceParam == 'paid') {
+                $('#dvPrice a').removeClass("active");
+                $('#dvPrice a.paid').addClass("active");
+            } else {
+                $('#dvPrice a').removeClass("active");
+                $('#dvPrice a.all').addClass("active");
+            }
+
+            setTimeout(function () {
+                var collectionParam = parse('collection');
+                if (collectionParam != null && collectionParam != '') {
+                    $('#CollectionId').val(collectionParam);
+                    $('#CollectionId option[value="' + collectionParam + '"]').attr('selected', 'selected');
+                    $(document).find('#dvColletion li[data-original-index="' + collectionParam + '"]').addClass('background-selected');
+                    $(document).find('#dvColletion li[data-original-index="0"]').removeClass('selected');
+                    $(document).find('#dvColletion button[data-id="CollectionId"]').attr('title', '');
+                    if ($("#CollectionId option:selected").text().length > 20) {
+                        var sel_text = $("#CollectionId option:selected").text().substr(0, 15);
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text(sel_text + "...");
+                    } else {
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text($("#CollectionId option:selected").text());
+                    }
+                    //We need to show the text inside the span that the plugin show
+
+                }
+
+                //var collectionParam = parse('collection');
+                //if (collectionParam.length) {
+                //    if(collectionParam!='0')
+                //    $('#dvColletion ul li:first').hide();
+                //}
+
+                var origin_text = $("#CollectionId").parent().find(".bootstrap-select .filter-option").text();
+                if ($(window).width() >= 992 && $(window).width() < 1200) {
+                    if (origin_text.length > 10) {
+                        var temp_text = origin_text.substr(0, 9);
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text(temp_text + "...");
+                    }
+                } else if ($(window).width() >= 1200) {
+                    if (origin_text.length > 20) {
+                        var temp_text = origin_text.substr(0, 17);
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text(temp_text + "...");
+                    }
+                }
+
+
+                var sortParam = parse('sort');
+                if (sortParam != null && sortParam != '') {
+                    $('#SortId').val(sortParam);
+                    $('#SortId option[value="' + sortParam + '"]').attr('selected', 'selected');
+                    $(document).find('#dvSort li[data-original-index="' + sortParam + '"]').addClass('background-selected');
+                    $(document).find('#dvSort li[data-original-index="0"]').removeClass('selected');
+                    $(document).find('#dvSort button[data-id="SortId"]').attr('title', '');
+                    //We need to show the text inside the span that the plugin show
+                    var sortText = $("#SortId option:selected").text();
+                    if ($(window).width() >= 992 && $(window).width() < 1200) {
+                        if (sortText.length > 10) {
+                            sortText = sortText.substr(0, 9);
+                        }
+                    }
+                    $("#SortId").parent().find(".bootstrap-select .filter-option").text(sortText);
+
+                }
+
+            }, 300);
+
+            var searchParam = parse('search');
+            $("#search").val(searchParam);
+
+            $("#btnSearch").click(function () {
+                $("#formSearch").submit();
+            });
+            //var dropdownList = $("#SearchId");
+
+            $("#SortId").change(function () {
+                loadTheme();
+            });
+
+            $("#CollectionId").change(function () {
+                loadTheme();
+            });
+
+            $('#dvPrice a').click(function () {
+                $('#dvPrice a').removeClass("active");
+                $(this).addClass("active");
+                //console.log('ok');
+                loadTheme();
+
+                return false;
+            });
+
+
+        });
+
+        function parse(val) {
+            var result = "",
+                tmp = [];
+            location.search
+                //.replace ( "?", "" )
+                // this is better, there might be a question mark inside
+                .substr(1)
+                .split("&")
+                .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+                });
+            return result;
+        }
+    </script>
+
+    <script>
+        var commentSwiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            paginationClickable: true,
+            preventClicks: false,
+            preventClicksPropagation: false,
+            loop: true,
+            autoplay: 5000
+        });
+
+        $(function () {
+            //$(window).resize(function () {
+            //    commentSwiper();
+            //});
+            $(document).bind('DOMMouseScroll', function (e) {
+                if (e.originalEvent.detail <= 0) {
+                    if ($(this).scrollTop() >= $('.hot-theme').offset().top) {
+                        $(".scroll-top-bar").show();
+                    }
+                    else {
+                        $(".scroll-top-bar").hide();
+                    }
+                    if ($(this).scrollTop() >= $('.guide-step').offset().top) {
+                        $(".scroll-top-bar").hide();
+                    }
+                }
+                else {
+                    $(".scroll-top-bar").hide();
+                }
+            });
+            //IE, Opera, Safari
+            $(document).bind('mousewheel', function (e) {
+                if (e.originalEvent.wheelDelta >= 0) {
+                    if ($(this).scrollTop() >= $('.hot-theme').offset().top) {
+                        $(".scroll-top-bar").show();
+                    }
+                    else {
+                        $(".scroll-top-bar").hide();
+                    }
+                    if ($(this).scrollTop() >= $('.guide-step').offset().top) {
+                        $(".scroll-top-bar").hide();
+                    }
+                }
+                else {
+                    $(".scroll-top-bar").hide();
+                }
+            });
+
+        });
+
+        function commentSwiper() {
+            if ($(window).width() < 768) {
+                var commentSwiper = new Swiper('.swiper-container', {
+                    autoplayDisableOnInteraction: false,
+                    grabCursor: true,
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    slidesPerView: 1,
+                    loop: true
+
+                });
+            }
+            else if ($(window).width() > 1199) {
+
+            }
+            else {
+                var commentSwiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    //nextButton: '.swiper-button-next',
+                    //prevButton: '.swiper-button-prev',
+                    slidesPerView: 1,
+                    loop: true,
+                    autoplayDisableOnInteraction: false
+                });
+            }
+        }
+    </script>
+
+    <script src="~/Content/js/script.js"></script>
+}

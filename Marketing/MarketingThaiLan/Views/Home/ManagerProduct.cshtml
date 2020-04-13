@@ -1,0 +1,206 @@
+﻿
+@{
+    ViewBag.Title = "จัดการสินค้า";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $('.tool-list-mobile #btn-toollist').click(function() {
+            $('.tool-list-mobile #mob-toollist-content').slideToggle(200);
+            $(this).toggleClass('active');
+        });
+        $('.tool-list-mobile #mob-toollist-content, .tool-list-mobile #btn-toollist').click(function(e) { e.stopPropagation(); });
+        $(document).click(function() {
+            $('.tool-list-mobile #mob-toollist-content').hide();
+            $('.tool-list-mobile #btn-toollist').removeClass('active');
+        });
+    </script>
+     
+    <script type="text/javascript">
+
+        $(function() {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function() {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0,
+                    left: '0'
+                }, 500, function() {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+            $(function () {
+                var owl = $("#owl-tool");
+                owl.owlCarousel({
+                    items: 7,
+                    itemsDesktop: [1000, 7],
+                    itemsDesktopSmall: [992, 5],
+                    itemsTablet: [768, 5],
+                    itemsMobile: false
+                });
+                $(".next").click(function () {
+                    owl.trigger('owl.next');
+                })
+                $(".prev").click(function () {
+                    owl.trigger('owl.prev');
+                });
+            });
+            $(function () {
+                $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                    $(this).delay(50);
+                    $(".tool-content .container").addClass('absh').animate({
+                        opacity: 1.0, left: '0'
+                    }, 500, function () {
+                        $(this).delay(10).removeClass('absh');
+                    });
+                });
+            });
+    </script>
+}
+<section class="tool-list">
+    <div class="container">
+        <div class="tool-list-mobile hidden-md hidden-sm hidden-lg invisible-xs">
+            <a href="javascript:void(0);" id="btn-toollist">Tính năng nổi bật</a>
+            <div class="tool-list-mobile-nav" id="mob-toollist-content" style="display: none;">
+                <ul class="list-unstyled">
+                    <li class=""><a href="@Url.Action("SalientFeatures","Home")"><span>ฟังก์ชันเด่นๆ</span></a></li>
+                    <li class=""><a href="@Url.Action("SellBest","Home")"><span>เว็บไซต์ขายสินค้ายอดเยี่ยม</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerStore","Home")"><span>จัดการร้านค้า</span></a></li>
+                    <li class=""><a href="@Url.Action("CustomTheme","Home")"><span>การกำหนดลักษณะอินเตอร์เฟซ</span></a></li>
+                    <li class=""><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing &amp; SEO</span></a></li>
+                    <li class="current"><a href="@Url.Action("ManagerProduct","Home")"><span>จัดการสินค้า</span></a></li>
+                    <li class=""><a href="@Url.Action("Security","Home")"><span>รักษาความปลอดภัยอย่างมันคง</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-list-content hidden-xs">
+            <div id="owl-tool" class="owl-carousel owl-theme">
+                <div class="items-tool "><a href="@Url.Action("SalientFeatures","Home")"><span>ฟังก์ชันเด่นๆ</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("SellBest","Home")"><span>เว็บไซต์ขายสินค้ายอดเยี่ยม</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("ManagerStore","Home")"><span>จัดการร้านค้า</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("CustomTheme","Home")"><span>การกำหนดลักษณะอินเตอร์เฟซ</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing</span><br>&amp; SEO</a></div>
+                <div class="items-tool current"><a href="@Url.Action("ManagerProduct","Home")"><span>จัดการสินค้า</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("Security","Home")"><span>รักษาความปลอดภัยอย่างมันคง</span></a></div>
+
+            </div>
+            <div class="customNavigation visible-sm-block">
+                <a class="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+ 
+<section class="tool-content">
+    <div class="container" style="opacity: 1; left:0;">
+        <div class="tool-content-title">
+            <h1>จัดการสินค้าอย่างสดวก</h1>
+            <p>มากกว่า 1 เว็บไซต์ปกติ</p>
+            <p>Eziwebshop เป็นเว็บไซต์ที่มีระบบจัดการสินค้าที่คุณต้องการ</p>
+        </div>
+        <div class="tool-content-info tool-page-5">
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="/Content/images/func/tab5-1.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+
+                        <h2>ข้อมูลสินค้า<br>คอบทุกอย่าง รายละเอียด</h2>
+                        <p>คุณสามารถขายสินค้าด้วยข้อมูลเบื้องต้น เหมือน ชื่อสินค้า ราคา รายละเอียดสินค้า หรือตั้งงค่าระดับสูงกว่านี้ : การกำหนดลักษณะต่างๆ จัดการโกดัง SEOๆ ทั้งหมดจะช่วยให้งานดูแลสินค้างายขึ้น</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="/Content/images/func/tab5-2.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>การตกแต่งสินค้า<br>ดึงดูดใจลูกค้า</h2>
+                        <p>สินค้าที่ได้รับการตกแต่งดึงดูดใจลูกค้า ด้วยข้อมูลสินค้ารายละเอียด อ่านงายๆจะให้ลุกค้าเชื่อถือมากขึ้นและกระตุ้นให้ลุกค้าสั่งซื้อ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="/Content/images/func/tab5-3.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>เพิ่มสินค้าและโหลด<br>รายชื่อสินค้า</h2>
+                        <p>คุณสามารถใส่เพิมสินหรือกระจ่ายออกสินค้าอย่างงายๆกับ Eziwebshop แค่ต้องทำไม่กี่ขั้นต้อน คุณสามารถใส่เพิ่มสินค้าเป็นพันๆประเภท หรือ โหลดรายชื่อของสินค้าค้างที่ระบบเพื่อการเก็บข้อมูลอย่างรวดเร็ว</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="/Content/images/func/tab5-4.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>จัดการ<br>รายการสินค้า</h2>
+                        <p>คุณสามารถจัดการและดูแลสินค้าตามรายการ แทค(tag) ประเภทสินค้า…. รายการสินค้าจะอัตโนมัติช่วยคุณจัดการสินค้าตามความต้องการ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="/Content/images/func/tab5-5.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>จัดการสต็อก</h2>
+                        <p>จัดการติดตามจำนวนสินค้าค้างทีสต็อก อัตโนมัติอัพเดทจำนวนสินค้าค้างในสต็อกเมื่อมีออเดอร์ คุณสามารถติดตามและตัดสินใจเรื่องซื้อสินค้าเพิ่มง่ายขึ้น</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="/Content/images/func/tab5-6.jpg" alt="" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>การกำหนดลักษณะ ช่วยเหลือSEO</h2>
+                        <p>คุณสามารถกำหนดลักษณะ tagdescribe หัวข้อ และลิงค์ URL ของสินค้าเพื่อช่วยการ SEO มีผลมากที่สุด</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+            <span>
+                สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            @*<a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Đăng ký ngay</a>*@
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+        </div>
+    </div>
+</div>
+
+
+

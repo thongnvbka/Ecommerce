@@ -1,0 +1,32 @@
+﻿<script type="text/html" id="reportGomContOffice">
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">@*Doanh thu tính lương P.Gom cont *@Gom cont department payroll calculation</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <section class="col-md-2 form-group">
+                    <div class="input-group">
+                        <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                            <span>
+                                <i class="fa fa-calendar"></i> Select date
+                            </span>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                    </div>
+                </section>
+                <section class="col-md-2 form-group">
+                    <button data-bind="click: ExcelReportGomContOffice" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</script>

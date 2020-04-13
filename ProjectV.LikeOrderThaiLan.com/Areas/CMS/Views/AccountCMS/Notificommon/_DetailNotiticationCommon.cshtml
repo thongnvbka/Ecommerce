@@ -1,0 +1,25 @@
+﻿<script type="text/html" id="detailNotificationCommon">
+
+    <div class="xiaoxi">
+        <ul class="xiaoxi-nav">
+            <li data-id="zhongxin" class="lete-active">@Resource.Home_Notification :
+                <span data-bind="text:notificationModel().Title"></span>
+            </li>
+
+        </ul>
+        <div class="rs content-notification display-none" data-bind="css: isRendingPage() === true? '' : 'display-none'">
+
+            <p>
+            <i class="fa fa-calendar-check-o"></i>@Resource.TransactionHistory_TimeUp: <span data-bind="text: moment(notificationModel.CreateDate).format('DD/MM/YYYY   h:mm:ss')"></span>
+
+            <p data-bind="text:notificationModel().Description"></p>
+            <div class="back-list rs">
+                <a class="btn" data-bind="click:backToList">@Resource.TransactionHistory_ComeBack</a>
+            </div>
+        </div>
+        <div data-bind="css: isRendingPage() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</script>  

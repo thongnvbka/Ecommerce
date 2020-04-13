@@ -1,0 +1,188 @@
+﻿<div id="packageDetail" class="modal fade modal-dialog modal-p60" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+    <div class="modal-body">
+        <!-- ko if: isLoading -->
+        <div>
+            <i class="fa fa-spinner fa-pulse"></i> @*Loading data*@ Loading
+        </div>
+        <!-- /ko -->
+        <!-- ko ifnot: isLoading -->
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <i class="fa fa-file-text-o"></i>
+                    <span>Toolbar Package "#<b data-bind="text: 'P'+code()" style="color: red"></b>"</span>
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <!-- ko if: id() > 0-->
+                    <small class="pull-right">Date of event: <span data-bind="text: moment(created()).format('DD/MM/YYYY HH:mm')"></span></small>
+                    <!-- /ko -->
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form">
+                    <div class="form-horizontal">
+                        <h4 class="form-section mt0 mb10 bold500 border-green">Information lawsuit</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Transport code:</th>
+                                    <td data-bind="text: transportCode"></td>
+                                </tr>
+                                <tr>
+                                    <th>Expected warehouse on :</th>
+                                    <td data-bind="text: forcastDate() ? moment(forcastDate()).format('DD/MM/YYYY')  : '_'"></td>
+                                </tr>
+                                <tr>
+                                    <th>Ordered goods:</th>
+                                    <td data-bind="text: orderCode"></td>
+                                </tr>
+                                <tr>
+                                    <th>Size:</th>
+                                    <td><span data-bind="text: size()"></span> (cm)</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight:</th>
+                                    <td><span data-bind="text: formatNumberic(weight(), 'N2')"></span> (kg)</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight after exchange:</th>
+                                    <td><span data-bind="text: formatNumberic(weightConverted(), 'N2')"></span> (kg)</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight charged:</th>
+                                    <td><span data-bind="text: formatNumberic(weightActual(), 'N2')"></span> (kg)</td>
+                                </tr>
+                                <tr>
+                                    <th>Status:</th>
+                                    <td><span data-bind="text: statesGroupBy[''+status()][0].name"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-horizontal">
+                        <h4 class="form-section mt0 mb10 bold500 border-green">Warehouse information</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Store in stock:</th>
+                                    <td>
+                                        <div data-bind="text: currentWarehouseName"></div>
+                                        <div data-bind="text: currentWarehouseAddress"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Warehouse reception:</th>
+                                    <td>
+                                        <div data-bind="text: warehouseName"></div>
+                                        <div data-bind="text: warehouseAddress"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Warehouse Thailand pick up:</th>
+                                    <td>
+                                        <div data-bind="text: customerWarehouseName"></div>
+                                        <div data-bind="text: customerWarehouseAddress"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form">
+                    <div class="form-horizontal">
+                        <h4 class="form-section mt0 mb10 bold500 border-green">Customer information</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Full name:</th>
+                                    <td data-bind="text: customerName"></td>
+                                </tr>
+                                <tr>
+                                    <th>Account :</th>
+                                    <td data-bind="text: customerUserName"></td>
+                                </tr>
+                                <tr>
+                                    <th>Customer level :</th>
+                                    <td data-bind="text: customerLevelName"></td>
+                                </tr>
+                                <tr>
+                                    <th>Note:</th>
+                                    <td data-bind="text: note"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-horizontal">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#historyStatus" aria-controls="historyStatus" role="tab" data-toggle="tab">List status</a></li>
+                            <li role="presentation"><a href="#historyNote" aria-controls="historyNote" role="tab" data-toggle="tab">List note</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="historyStatus">
+                                <table class="table table-bordered mt15">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Chronological order</th>
+                                            <th class="text-center">Time </th>
+                                            <th class="text-center">Content </th>
+                                            <th class="text-center">Staff</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: histories">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1" class="text-center"></td>
+                                            <td data-bind="text: moment(createDate).format('DD/MM/YYYY HH:mm')" class="text-right"></td>
+                                            <td data-bind="text: content"></td>
+                                            <td data-bind="text: userFullName"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="historyNote">
+                                <table class="table table-bordered mt15">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Chronological order</th>
+                                            <th class="text-center">Time </th>
+                                            <th class="text-center">Content </th>
+                                            <th class="text-center">Staff</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: packageNotes">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1" class="text-center"></td>
+                                            <td class="text-center">
+                                                <span data-bind="text: $parent.packageNoteMode()[mode+'']" class="label label-default"></span>
+                                                <div data-bind="text: moment(time).format('DD/MM/YYYY HH:mm')"></div>
+                                            </td>
+                                            <td data-bind="text: content"></td>
+                                            <td data-bind="text: userFullName"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary"><i class="fa fa-print"></i>Print </a>
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+</div>

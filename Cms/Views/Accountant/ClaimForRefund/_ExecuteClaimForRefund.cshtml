@@ -1,0 +1,210 @@
+﻿<div id="ExecuteClaimForRefund" class="modal fade modal-dialog modal-p40" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>REFUND AND COMPLAINT HANDLING</strong>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">REFUND INFORMATION</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Request code:</th>
+                                                        <td data-bind="text: claimForRefund().Code"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Request created date</th>
+                                                        <td data-bind="text:moment(claimForRefund().Created()).format('DD/MM/YYYY')"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Customer service staff:</th>
+                                                        <td data-bind="text: claimForRefund().SupportFullName"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Customer Information</h3>
+                        </div>
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <select class="form-control input-lg select-view" style="width: 100%;" data-bind="options: listAccountantSubject, optionsText: 'Text', optionsValue: 'Value', value: fundBillModel().AccountantSubjectId" disabled></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Customer name:</th>
+                                                        <td data-bind="text: claimForRefund().CustomerFullName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Phone:</th>
+                                                        <td data-bind="text: claimForRefund().CustomerPhone"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: claimForRefund().CustomerEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @*<div class="col-xs-3">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Select transaction execution fund <span class="color-red">(*)</span></h3>
+                        </div>
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <div id="claimforrefund_financeFund_tree"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Bank:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundNameBank"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Account number:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundBankAccountNumber"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Representative:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundUserFullName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundUserEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Chọn Type định khoản <span class="color-red">(*)</span></h3>
+                        </div>
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-usd"></i>
+                                            </div>
+                                            <div id="claimforrefund_treasure_tree"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Tên định khoản:</th>
+                                                        <td data-bind="text: fundBillModel().TreasureName"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>*@
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-danger">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label text-bold">Amount of money: <span class="color-red">(*)</span></label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <input type="text" class="text-right form-control decimal" data-bind="value: claimForRefund().RealTotalRefund" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">Note:</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="value: 'Recharge e-wallet from complaint processing. Complaint handling code: ' + claimForRefund().Note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" data-bind="click: btnExecuteClaimForRefund" href="javascript:;"><i class="fa fa-check"></i>Confirm</a>
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+    </div>
+</div>

@@ -1,0 +1,197 @@
+﻿@model TransferMeta
+@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+    var source = (byte)OrderType.Source;
+}
+<div id="transferDetailModal" class="modal modal-dialog modal-lg fade" role="dialog">
+    <form id="transferForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <span>Transfer sheet "#<b data-bind="text: 'T'+code()" style="color: red"></b>"</span>
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <small class="pull-right">Created Date: <span data-bind="text: moment(fromTime()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                        <!-- ko if: toTime -->
+                        <small class="pull-right">Date entered: <span data-bind="text: moment(toTime()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Warehouse creation</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">staffs create:</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: fromUserFullName"></span> - <span data-bind="text: fromUserUserName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse creation:</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: fromWarehouseName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Destination warehouse :</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: toWarehouseName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Entered by (staff):</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: toUserFullName"></span> - <span data-bind="text: toUserUserName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Information slip</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Gross weight:</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(totalWeight(), 'N2')"></span> (kg)</div>
+                                        </div>
+                                        <label class="col-sm-3 control-label">Number of package(s):</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(walletNo())"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Number of package(s):</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(packageNo())"></span></div>
+                                        </div>
+                                        <label class="col-sm-3 control-label">Transportation fee:</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(priceShip())"></span> (Currency)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Status :</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: status == 0 ? 'Newly created' : 'Completed', css: status == 0 ? 'label label-warning' : 'label label-success'" class="label label-default"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Note:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: note"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Package list</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <div class="col-xs-12 table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center w50">#</th>
+                                                    <th class="text-center w50">Packages code</th>
+                                                    <th class="text-center w50">Exhibition </th>
+                                                    <th class="text-center w50">Lading code</th>
+                                                    <th class="text-center w50">Envelope code</th>
+                                                    <th class="text-center w150">Weight</th>
+                                                    <th class="text-center w150">Weight conversion(kg)</th>
+                                                    <th class="text-center w150">Weight charged</th>
+                                                    <th class="text-center">Note</th>
+                                                </tr>
+                                            </thead>
+                                            <!-- ko if: items().length == 0 || isLoadingItems() -->
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="11" class="text-center">
+                                                        <!-- ko if: isLoadingItems() -->
+                                                        <i class="fa fa-spinner fa-pulse"></i> Loading data...
+                                                        <!-- /ko -->
+                                                        <!-- ko if: items().length == 0 -->
+                                                        No Packge
+                                                        <!-- /ko -->
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: items().length == 0 -->
+                                            <tbody data-bind="template: {name: 'transferDetailPackageTemplate', foreach: items}"></tbody>
+                                            <!-- /ko -->
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var allWarehouse = @Html.Raw(ViewBag.AllWarehouses);
+    </script>
+    <script id="transferDetailPackageTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: $index()+1" class="text-center"></td>
+            <td class="text-center"><a data-bind="text: 'P'+packageCode, click: $parent.showDetailPackage.bind($data, packageId)" href="javascript:;"></a></td>
+            <td class="text-center">
+                <a data-bind="click: function() {orderTypeViewModel.showViewOrder(orderId, orderCode); }" href="javascript:;"><span data-bind="text: ReturnCode(orderCode)"></span></a>
+            </td>
+            <td data-bind="text: transportCode" class="text-center"></td>
+            <td class="text-center">
+                <a data-bind="text: 'B'+transferCode" href="javascript:;"></a>
+            </td>
+            <td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(weightConverted, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(weightActual, 'N2')" class="text-right"></td>
+            <td data-bind="text: note"></td>
+        </tr>
+    </script>
+}

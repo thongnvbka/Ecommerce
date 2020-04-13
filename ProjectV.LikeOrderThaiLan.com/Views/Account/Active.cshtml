@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = Resource.Title_ActiveAccount;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="forget-p">
+    <h1 class="text-center">@Resource.Home_RegisterActive</h1>
+    <br />
+    <div class="forget-p-yanzheng">
+
+        <img src="~/Images/success-icon-10.png" atl="" width="100" alt="" />
+        <h5 class="text-center" style="font-size: 16px; margin-bottom: 10px;">@ViewBag.Mess</h5>
+        @if (ViewBag.Status == "1")
+        {
+            <div class="text-center" id="getpass" style="margin-top: 10px; margin-bottom: 10px; font-size: 14px;">
+                <a href="/@culture">@Resource.Home_Home</a>|<a href="@Url.Action("Login", "Account")">@Resource.Home_Login</a>
+            </div>
+        }
+    </div>
+</section>

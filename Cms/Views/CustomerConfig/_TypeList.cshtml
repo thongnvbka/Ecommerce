@@ -1,0 +1,65 @@
+﻿@model ModelView<Library.DbContext.Entities.CustomerType,CustomerTypeViewModel>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">List of customer groups</h3>
+
+        <a href="@Url.Action("CreateCustomerType")" class="btn btn-success pull-right"><i class="fa fa-plus"></i>Add new Warehouse</a>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center w-40">#</th>
+                        <th class="text-center w-210">Name of group</th>
+                        <th class="text-center w-350">Note</th>
+                        <th class="text-center w-200">Status</th>
+                        <th class="text-center w-200">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+                    {
+                        <tr><td colspan="5">No Record</td></tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+                        foreach (var x in Model.Items)
+                        {
+                            <tr>
+                                <td class="text-center w-40">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                                <td><strong>@x.NameType</strong></td>
+                                <td>@x.Description</td>
+                                <td class="text-center">
+                                    @if (x.Status == 0)
+                                    {
+                                        <span class="label label-success">Opening</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-warning">Pause</span>
+                                    }
+
+                                </td>
+                                <td class="text-center w-140">
+                                    <a href="@Url.Action("EditCustomerType", new {id = x.Id})" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                    <a href="javascript:;" data-url="@Url.Action("DeleteCustomerType", new {id = x.Id})" data-name="@x.NameType" class="btn btn-sm btn-danger btn-xs delete-item"><i class="fa fa-trash"></i> Delete  </a>
+                                </td>
+                            </tr>
+                            idx++;
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        @Html.Partial("_Paging", Model.PageInfo)
+    </div>
+    <!-- /.box-body -->
+</div>
+
+
+

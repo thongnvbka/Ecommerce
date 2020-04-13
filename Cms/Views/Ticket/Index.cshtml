@@ -1,0 +1,332 @@
+﻿@{
+    ViewBag.Title = "Customer Care";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+@section Styles{
+    @Styles.Render("~/Content/order")
+    @*<link href="~/Scripts/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/plugins/tabdrop/css/tabdrop.css" rel="stylesheet" />*@
+    @*<link href="~/Content/custom.css" rel="stylesheet" />*@
+
+}
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Scripts/common/status.@cultureJs"></script>
+
+    @Html.Partial("~/Views/Ticket/Assign/_Assign.cshtml")
+    @Html.Partial("~/Views/Ticket/Assign/_AssignList.cshtml")
+
+    @Html.Partial("~/Views/Ticket/Complain/_Complain.cshtml")
+    @Html.Partial("~/Views/Ticket/Complain/_ComplainList.cshtml")
+
+    @Html.Partial("~/Views/Ticket/Last/_Last.cshtml")
+    @Html.Partial("~/Views/Ticket/Last/_LastList.cshtml")
+
+
+    @Html.Partial("~/Views/Ticket/Report/_TickertReportSituation.cshtml")
+    @Html.Partial("~/Views/Ticket/Report/_ReportOrderWaitSituation.cshtml")
+    @Html.Partial("~/Views/Ticket/Report/_SupportReport.cshtml")
+    @Html.Partial("~/Views/Ticket/Ticket/_Ticket.cshtml")
+    @Html.Partial("~/Views/Ticket/Ticket/_TicketList.cshtml")
+
+    @Html.Partial("~/Views/Ticket/Support/_Support.cshtml")
+    @Html.Partial("~/Views/Ticket/Support/_SupportList.cshtml")
+
+    @Html.Partial("~/Views/Partial/Ticket/_ClaimForRefundDetail.cshtml")
+    @Html.Partial("~/Views/Ticket/ClaimForRefund/_ClaimForRefund.cshtml")
+    @Html.Partial("~/Views/Ticket/ClaimForRefund/_ClaimForRefundList.cshtml")
+
+
+    <!-- Xử lý Orders của chăm sóc khách hàng -->
+    @if (CheckPermision(EnumAction.View, EnumPage.OrderWait))
+    {
+        @Html.Partial("~/Views/Purchase/OrderWait/_OrderWait.cshtml")
+    }
+    @if (CheckPermision(EnumAction.View, EnumPage.OrderWaitNew))
+    {
+        @Html.Partial("~/Views/Purchase/OrderWaitNew/_OrderWaitNew.cshtml")
+    }
+    @if (CheckPermision(EnumAction.View, EnumPage.OrderCustomerCare))
+    {
+        @Html.Partial("~/Views/Purchase/OrderCustomerCase/_OrderCustomerCase.cshtml")
+    }
+    @if (CheckPermision(EnumAction.View, EnumPage.OrderWait, EnumPage.OrderWaitNew, EnumPage.OrderCustomerCare))
+    {
+        @Html.Partial("~/Views/Purchase/OrderCustomerCase/_OrderList.cshtml")
+    }
+
+    @Html.Partial("~/Views/Partial/accountant/moneyfund/_MoneyFundDetail.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/recharge/_RechargeDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderSourcingDetail.cshtml")
+
+
+
+    @Html.Partial("~/Views/Partial/customer/_CustomerFind.cshtml") <!-- Tra cứu thông tin khách hàng -->
+    <!--Create ticket-->
+
+    
+    @Scripts.Render("~/bundles/ticketscript")
+
+
+    <script type="text/javascript">
+        var listWarehouseVN = @Html.Raw(ViewBag.ListWarehouseVN);
+        var listComplainTypeService = @Html.Raw(ViewBag.ListComplainTypeService);
+        var orderType = @Html.Raw(ViewBag.OrderType);
+        var listcomplainType = @Html.Raw(ViewBag.ListcomplainType);
+        var listcomplainTypJsTree = @Html.Raw(ViewBag.complainTypeJsTree);
+
+
+        $(function () {
+            //Enable iCheck plugin for checkboxes
+            //iCheck for checkbox and radio inputs
+            $('.mailbox-messages input[type="checkbox"]')
+                .iCheck({
+                    checkboxClass: 'icheckbox_flat-blue',
+                    radioClass: 'iradio_flat-blue'
+                });
+
+            //Enable check and uncheck all functionality
+            $(".checkbox-toggle")
+                .click(function () {
+                    var clicks = $(this).data('clicks');
+                    if (clicks) {
+                        //Uncheck all checkboxes
+                        $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+                        $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+                    } else {
+                        //Check all checkboxes
+                        $(".mailbox-messages input[type='checkbox']").iCheck("check");
+                        $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+                    }
+                    $(this).data("clicks", !clicks);
+                });
+
+            //Handle starring for glyphicon and font awesome
+            $(".mailbox-star")
+                .click(function (e) {
+                    e.preventDefault();
+                    //detect type
+                    var $this = $(this).find("a > i");
+                    var glyph = $this.hasClass("glyphicon");
+                    var fa = $this.hasClass("fa");
+
+                    //Switch states
+                    if (glyph) {
+                        $this.toggleClass("glyphicon-star");
+                        $this.toggleClass("glyphicon-star-empty");
+                    }
+
+                    if (fa) {
+                        $this.toggleClass("fa-star");
+                        $this.toggleClass("fa-star-o");
+                    }
+                });
+        });
+    </script>
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @UserState.FullName - @UserState.TitleName
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> @*Xem thống kê CSKH*@View customer service report</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section id="supporterView" class="content">
+    <div class="row">
+        <div class="col-xs-2 todobar">
+            @Html.Partial("_TodoBar")
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-10 view-content-box">
+            <div data-bind="template: { name: templateId }"></div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <!-- =============== Modal xử lý phân ticket cho nhân viên chưa nhận xử lý===================== -->
+
+    <div id="ticketAssignedModal" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Assign ticket: <span data-bind="text: complainModel().Code()"></span></b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Select staff to handle ticket</label>
+                <select class="form-control select-view" style="width: 100%;" data-bind="options: listUserOffice, optionsText: 'UserFullNameOffice', optionsValue: 'Id',value:  userselected"></select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: assignedComplainNotGet.bind($data, checkCustomerCareId), enable: isSubmit" data-dismiss="modal" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Confirm
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal xử lý phân ticket trế xử lý cho nhân viên ===================== -->
+
+    <div id="ticketAssignedLateModal" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Assign ticket: <span data-bind="text: complainModel().Code()"></span></b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Select staff to handle ticket</label>
+                <select class="form-control select-view" style="width: 100%;" data-bind="options: listUserOffice, optionsText: 'UserFullNameOffice', optionsValue: 'Id',value:  userselected"></select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: assignedComplain, enable: isSubmit" type="button" data-dismiss="modal" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Confirm
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <!-- =============== Modal xử lý trao đổi với khách hàng ===================== -->
+    <div id="commentForCustomer" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Information will be sent to customers, are you sure to send!?</b></h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: feedbackComplain" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <div id="checkClaim" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Order has been refunded! Do you want to make another refund request?</b></h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: viewRefundMoneyModalCommon" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal thay đổi nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentEdit" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Update contents here:</b></h4>
+        </div>
+        <div class="modal-body">
+            <textarea data-bind="value: contentEdit" style="width:100%;min-height: 100px"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: updateContent" data-dismiss="modal">Update</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal xóa nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentDelete" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>The conversation will be deleted, are you sure to delete !?</b></h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: deleteContent" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal nhập lý do Hủy Refund slip ===================== -->
+    <div id="commentCancelClaim" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Reason to cancel refund request:</b></h4>
+        </div>
+        <div class="modal-body">
+            <textarea data-bind="value: reasonClaim" style="width:100%;min-height: 100px"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: btnDeleteClaimForRefund" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal gan nhan vien cho khiếu nại ===================== -->
+    <div id="customerCareReceive" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger">Order<b data-bind="text: orderCodeTicket"></b> is tracked by Customer Service staff<b data-bind="text: customerCareOrder"></b>, are you sure to take on processing the complaint <b data-bind="text: customerCareTicket"></b> !?</h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: receiveTicketOrder.bind($data, checkCustomerCareId)" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <!-- =============== Modal gan nhan vien cho khiếu nại ===================== -->
+    <div id="customerCareAssign" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger">Order<b data-bind="text: orderCodeTicket"></b> is tracked by Customer Service staff<b data-bind="text: customerCareOrder"></b>, are you sure to assign complaint processing task <b data-bind="text: customerCareTicket"></b> to another customer service staff !?</h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: assignedCustomerCareComplain.bind($data, checkCustomerCareId,customerCareOrderId)" data-dismiss="modal">Default</button>
+            <button class="btn btn-primary" data-bind="click: assignedTicketModal.bind($data, checkCustomerCareId)" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+
+    @Html.Partial("~/Views/Partial/Ticket/_TicketDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_RefundTickket.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_ClaimForRefundDetail.cshtml")
+    @Html.Partial("~/Views/Ticket/ClaimForRefund/_RefundTickket.cshtml")
+    @Html.Partial("~/Views/Ticket/_CreateTicket.cshtml")
+</section>

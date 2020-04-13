@@ -1,0 +1,124 @@
+﻿<div id="withDrawalAddOrEdit" class="modal fade modal-dialog modal-p80" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <!-- ko if: PlusOrMinus() == 0 -->
+                        <strong>CREATE DEPOSIT SLIP TO ELECTRONIC WALLET</strong>
+                        <!-- /ko -->
+                        <!-- ko if: PlusOrMinus() == 1 -->
+                        <strong>CREATE DEDUCTING MONEY SLIP TO ELECTRONIC WALLET</strong>
+                        <!-- /ko -->
+                        @*<span class="impornumber">Số phiếu: <strong></strong></span>
+                            <small data-bind="text: 'Date of implementation: ' + rechargeBillModel().Created"></small>*@
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Customer information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <search-customer-widget params="customerName: customerName, customer: customer, clickSelect: selectCustomerRecharge, removeSelect: removeSelectCustomerRecharge"></search-customer-widget>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Customer ID :</th>
+                                                        <td data-bind="text: rechargeBillModel().CustomerCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Full name:</th>
+                                                        <td data-bind="text: rechargeBillModel().CustomerName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Phone:</th>
+                                                        <td data-bind="text: rechargeBillModel().CustomerPhone"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: rechargeBillModel().CustomerEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Amount executed:</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <!-- ko if: PlusOrMinus() == 0 -->
+                                    <label for="inputPassword3" class="col-sm-3 control-label text-red text-bold">Amount added:</label>
+                                    <!-- /ko -->
+                                    <!-- ko if: PlusOrMinus() == 1 -->
+                                    <label for="inputPassword3" class="col-sm-3 control-label text-red text-bold">Amound deducted:</label>
+                                    <!-- /ko -->
+
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <input type="text" class="form-control" data-bind="value: rechargeBillModel().CurrencyFluctuations">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Note:</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="value: rechargeBillModel().Note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" href="javascript:;"><i class="fa fa-check"></i> Confirm</a>
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+    </div>
+</div>
+
+@*<style>
+        #rechargeAddOrEdit {
+            padding: 0px 10px !important;
+        }
+
+            #rechargeAddOrEdit .modal-lg {
+                width: 90% !important;
+            }
+    </style>*@

@@ -1,0 +1,188 @@
+﻿@model QuickAddUserMeta
+@{
+    var groupPermission = new List<SelectListItem> { new SelectItem() { Text = "Select access permission", Value = "", Selected = true } };
+    groupPermission.AddRange((List<SelectListItem>)ViewBag.GroupPermission);
+    var listAccSub = new List<SelectListItem> { new SelectItem() { Text = "Select type of subject", Value = "", Selected = true } };
+    listAccSub.AddRange((List<SelectListItem>)ViewBag.ListAccSub);
+}
+<div id="quick-add-staff-modal" class="modal fade modal-dialog modal-p40" tabindex="-1" data-focus-on="input:first">
+    <div class="modal-content">
+        <form action="@Url.Action("QuickAdd")" class="ajax" method="post">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"><i class="fa fa-bolt"></i> Quick add staff</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Choose office <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <div id="quick-add-staff-modal-jstree"></div>
+                            @Html.HiddenFor(x => x.OfficeId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Position <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(x => x.TitleId, new List<SelectListItem>()
+                            {
+                                new SelectItem() {Text = "Choose title", Selected = true}
+                            }, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"}
+                            })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Rank <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(x => x.Type, new List<SelectListItem>()
+                            {
+                                new SelectItem() {Value = "0", Text = "Staff"},
+                                new SelectItem() {Value = "1", Text = "Head"},
+                                new SelectItem() {Value = "2", Text = "Manager"}
+                            }, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"}
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Full name <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"},
+                                {"placeholder",  "Full name"}
+                            })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Account <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(x => x.UserName, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"},
+                                {"placeholder", "System access account"}
+                            })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Password <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(x => x.Password, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"}
+                            })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Access permission</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(x => x.GroupPermisionId, groupPermission, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"}
+                            })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Type of subject <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(x => x.TypeId, listAccSub, new Dictionary<string, object>()
+                            {
+                                {"class", "form-control"}
+                            })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(x => x.IsCompany) Company's sales Staff
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Add new</button>
+                <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> Close </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        $(function () {
+            var qickAddForm = $("#quick-add-staff-modal form.ajax");
+            qickAddForm.submit(function (ev) {
+                $.ajax({
+                    type: qickAddForm.attr('method'),
+                    url: qickAddForm.attr('action'),
+                    data: qickAddForm.serialize(),
+                    success: function (data) {
+                        if (typeof data == "string") {
+                            toastr.warning(data);
+                            return;
+                        }else if (typeof data == "number") {
+                            toastr.success("Successfully added staff");
+                            $("#quick-add-staff-modal #UserName").val("");
+                            $("#quick-add-staff-modal #FullName").val("");
+                            // Refresh form danh sách
+                            window.searchForm();
+                        }
+                    }
+                });
+
+                ev.preventDefault();
+            });
+
+            // Khởi tạo Jstree
+            $("#quick-add-staff-modal-jstree")
+                .dropdownjstree({
+                    source: window.officesTree,
+                    dropdownLabel: 'Choose department',
+                    dropdownLabelClick: () => {
+                        $("#quick-add-staff-modal #OfficeId").val("1");
+                        quickAddChangeOfficeId(1);
+                    },
+                    selectedNode: '1',
+                    selectNote: (node, selected) => {
+                        $("#quick-add-staff-modal #OfficeId").val(selected.selected[0]);
+                        quickAddChangeOfficeId(selected.selected[0]);
+                    } //,
+                    //ready: () => {
+                    //    console.log("ready");
+                    //}
+                });
+
+            // Sự kiện thay đổi đơn vị
+            function quickAddChangeOfficeId(officeId) {
+                $("#quick-add-staff-modal #TitleId").attr('disabled', 'disabled');
+
+                $.get("@Url.Action("PossitionByOffice", "Position")?officeId=" + officeId,
+                    function(data) {
+                        var options = '<option value="">Choose title</option>';
+                        $.each(data,
+                            function(idx, item) {
+                                options = options +
+                                    '<option value="' +
+                                    item.id +
+                                    '" selected>' +
+                                    item.name +
+                                    '</option>';
+                            });
+                        $("#quick-add-staff-modal #TitleId").html(options);
+                        $("#quick-add-staff-modal #TitleId").removeAttr('disabled');
+                    });
+            }
+        });
+    </script>
+}

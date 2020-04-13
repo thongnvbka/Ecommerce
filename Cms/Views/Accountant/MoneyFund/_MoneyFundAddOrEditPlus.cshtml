@@ -1,0 +1,212 @@
+﻿@{
+    var approved = (byte)FundBillStatus.Approved;
+}
+<div id="moneyFundAddOrEdit" class="modal fade modal-dialog modal-p80" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>CREATE FUND DEPOSIT SLIP</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Input person of concern information<span class="color-red">(*)</span></h3>
+                        </div>
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        @*<!-- ko if: fundBillModel().Status() < @approved -->*@
+                                        <!-- ko if: AddOrEdit() == 0 -->
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <select data-bind="value: fundBillModel().SubjectId" class="form-control subject-search customer-fund-bill-model" style="width: 100%;"></select>
+                                        </div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Representative code:</th>
+                                                        <td data-bind="text: fundBillModel().SubjectCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Representative:</th>
+                                                        <td data-bind="text: fundBillModel().SubjectName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Phone:</th>
+                                                        <td data-bind="text: fundBillModel().SubjectPhone"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: fundBillModel().SubjectEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Select transaction execution fund <span class="color-red">(*)</span></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <!-- ko if: fundBillModel().Status() !== @approved -->
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <div id="financeFund_addtree"></div>
+                                        </div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Bank:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundNameBank"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Account number:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundBankAccountNumber"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Representative:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundUserFullName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: fundBillModel().FinanceFundUserEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Choose entry <span class="color-red">(*)</span></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-usd"></i>
+                                            </div>
+                                            <div id="treasure_addtree"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>@*Tên định khoản*@Entry name:</th>
+                                                        <td data-bind="text: fundBillModel().TreasureName"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- ko ifnot: AddOrEdit() == 0 -->
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-4 control-label">Incurring date: </label>
+                        <div class="col-sm-8">
+                            <input data-bind="value: fundBillModel().LastUpdated" type="text" class="form-control birthday" readonly>
+                        </div>
+                    </div>
+                    <!--/ko-->
+                </div>
+            </div>
+            <!-- info row -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-danger">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label text-bold">Amount: <span class="color-red">(*)</span></label>
+                                    <div class="col-sm-11">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <!-- ko if: fundBillModel().Status() == @approved -->
+                                            <input type="text" class="form-control decimalCN" data-bind="value: fundBillModel().CurrencyFluctuations" disabled>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: fundBillModel().Status() == @approved -->
+                                            <input type="text" class="form-control decimalCN" data-bind="value: fundBillModel().CurrencyFluctuations">
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">Note:</label>
+                                    <div class="col-sm-11">
+                                        <!-- ko if: fundBillModel().Status() == @approved -->
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="value: fundBillModel().Note" disabled></textarea>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: fundBillModel().Status() == @approved -->
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="value: fundBillModel().Note"></textarea>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" data-bind="click: btnCreateOrEditFundBill" href="javascript:;"><i class="fa fa-check"></i> Confirm</a>
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+    </div>
+</div>
+

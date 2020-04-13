@@ -1,0 +1,796 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.Controllers
+@{
+    var rate = new BaseController().ExchangeRate();
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+
+@{
+    ViewBag.Title = Resource.DetailOrder_Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //phi phat sinh
+    byte tmpOther = (byte)Common.Emums.OrderServices.Other;
+}
+@section styles{
+    <link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/Scripts/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<div id="contentMain">
+    <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <section class="zy-main popup-main" data-bind="css: isRending() === true? '' : 'display-none'" style="padding-top: 5px;">
+
+        <ul class="zy-main-top menu-top-detail-order" id="topTabDetailOrder" style="margin-bottom: 0 !important;">
+            <li class="dg-caigourucang tablinks lete-active infor-order-detail" onclick="tabDetailOrder(event, 'inforOrderDetail')" id="defaultOpen">
+                <span></span>
+                <a href="javascript:;" style="text-transform: none"> @Resource.Product_InforOrder </a>
+                <label></label>
+            </li>
+            <li class="dg-guojiyunfei tablinks infor-order-detail kienhang" onclick="tabDetailOrder(event, 'dealOrderDetail')">
+                <i class="fa fa-money" aria-hidden="true"></i>
+                <a href="javascript:;">  @Resource.DetaiOrder_Excharge </a>
+                <label></label>
+            </li>
+            <li class="dg-caigourucang tablinks infor-order-detail kienhang" onclick="tabDetailOrder(event, 'packageOrderDetail')">
+                <i class="fa fa-ticket"></i>
+                <a href="javascript:;"> @Resource.Dashboard_ManagementPackage </a>
+                <label></label>
+            </li>
+            <li class="dg-tijiao tablinks infor-order-detail" onclick="tabDetailOrder(event, 'depositOrderDetail')">
+                <span></span>
+
+                <a href="javascript:;">  @Resource.DetaiOrder_Ticket </a>
+            </li>
+            <!-- ko if: (orderDetail().Status() >= @((byte)Common.Emums.OrderStatus.New) && orderDetail().Status() < @((byte)Common.Emums.OrderStatus.WaitOrder)) -->
+            <li class="dg-caigourucang tablinks lete-delete tablinks delete-order-detail" id="huy" style="float: right !important" data-bind="click: orderPopupModel.showMessagerCancel.bind($data,orderDetail().Id())">
+                <i class="fa fa-trash"></i>
+                <a> @Resource.Cancel_Order </a>
+            </li>
+            <!-- /ko -->
+            <!-- ko if: (orderDetail().Status() >= @((byte)Common.Emums.OrderStatus.WaitOrder)) -->
+            <!-- ko if: (isComplain() == 0) -->
+            <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/CreateTicket/' + orderDetail().Id()}" target="_blank">
+
+                <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important; background: #fd7f00 !important;border: 1px solid #fd7f00 !important">
+                    <i class="fa fa-ticket"></i>
+                    <p class="ticket-more"> @Resource.DetaiOrder_Ticket</p>
+                </li>
+            </a>
+
+            <!-- /ko -->
+            <!-- ko if: (isComplain() != 0) -->
+            <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket/' + isComplain()}" target="_blank">
+                <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important; background: #fd7f00 !important;border: 1px solid #fd7f00 !important">
+                    <i class="fa fa-ticket"></i>
+                    <p class="ticket-more"> @Resource.DetaiOrder_Ticket</p>
+                </li>
+            </a>
+
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: (orderDetail().Status() == @((byte)Common.Emums.OrderStatus.WaitDeposit)) -->
+            @*<li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important" data-bind="click: orderPopupModel.showMessagerDeposit.bind($data,orderDetail().Id())">
+                    <i class="fa fa-pencil-square-o"></i>
+                    <a href="#"> Đặt cọc </a>
+                </li>*@
+            <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important">
+                <i class="fa fa-pencil-square-o"></i>
+                <a href="#" style="color:red"> @Resource.Order_OperationDeposit </a>
+            </li>
+            <!-- /ko -->
+        </ul>
+        <div class="zy-main-content">
+            <div class="zy-main-content-msg">
+                <div class="zy-main-content-msg-l" style="float: right !important;">
+                    <p style="margin-left: 0 !important; padding-left: 15px; margin-bottom: 20px; padding-top: 15px;">
+                        @Resource.Product_InforOrder
+                        <span class="excharge">
+                            <strong> @Resource.Home_ExchangeRate : 1¥ = </strong>
+                            @*<span>
+                                </span>@rate.*@
+                            <span data-bind="text: formatNumbericCN(orderDetail().ExchangeRate(), 'N2')"></span>
+                        </span>
+                    </p>
+                    <span>
+                        <strong> @Resource.DetaiOrder_CodeOrder:</strong>
+                        <span style="font-size: 14px; font-weight: bold; color: red; padding-left: 3px !important" data-bind="text: 'ORD' + orderDetail().Code()"></span>
+                    </span><!--ma don hang order-->
+                    <span class="excharge" style="padding-left: 5px !important">
+                        <strong>  @Resource.Order_Status:</strong>
+                        <label data-bind="text: statusApp.orderView[orderDetail().Status()].Name, css: statusApp.orderView[orderDetail().Status()].Class"></label>
+                        @*<span data-bind="text:orderDetail().Status"></span>*@
+                    </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span>
+                        <strong>  @Resource.RequestsPayment_CreateDate:</strong>
+                        <span data-bind="text: moment(orderDetail().Created()).format('DD/MM/YYYY  h:mm:ss')"></span>
+                    </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span>
+                        <strong>  @Resource.DetaiOrder_StorageGetOut :</strong>
+                        <span data-bind="text: orderDetail().WarehouseDeliveryName"></span>
+                    </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span>
+                        <strong> @Resource.DetaiOrder_NumberLink :</strong> <span data-bind="text: orderDetail().LinkNo"></span>
+                    </span><!--tong so san pham + tong so tien NDT-->
+                    <span>
+                        <strong> @Resource.DetaiOrder_ProductNumber:</strong> <span data-bind="text: orderDetail().ProductNo"></span>
+                    </span><!-- tong so tien NDT-->
+                    <span>
+                        <strong> @Resource.Deposit_NumberPackage:</strong> <span data-bind="text: orderDetail().PackageNo"></span>
+                    </span><!-- tong so tien NDT-->
+
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span>
+                        <strong>@Resource.Product_ShopName:</strong> <a href="javascript:;">
+                            <span data-bind="text: substring(orderDetail().ShopName(),50)"></span>
+                        </a><!--tong so san pham + tong so tien NDT-->
+                    </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    @*<div class="rs">
+                        <div id="tab3" class="borderbox totalmoneyorder rs">
+                            <p style="margin-left: 0 !important; padding-left: 15px;">@Resource.DetaiOrder_Bill </p>
+                            <div class="progress" style="height: 2px; width: 92%; margin-left: 15px;">
+                                <span class="progress-bar" style="width: 40%;"></span>
+                            </div>
+
+                            <div class="full-border rs">
+                                <div class="total-tariff">
+                                    <div class="money-order">
+                                        <ul>
+                                            <li><strong style="color: red"> @Resource.DetaiOrder_TotakMonetOrder:</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="infor-money-order">
+                                        <div class="rs">
+                                            <ul>
+                                                <li>
+                                                    <span class="order-price" data-bind="text: formatNumbericCN(orderDetail().TotalExchange(), 'N0')"></span> (@Resource.Currency)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both"></div>
+
+                                    <div style="clear: both"></div>
+                                    <div class="rs" data-bind="foreach: orderServicesView, afterRender: renderedHandler">
+                                        <!-- ko if: ServiceId == 0 || ServiceId == 1 || ServiceId == 2 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong data-bind="text: ServiceName + ':'"></strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        <!-- ko if: ServiceId == 3 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong> @Resource.DetaiOrder_TransportTQ</strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        <!-- ko if: ServiceId == 4 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong>@Resource.DetaiOrder_TransportTQVN</strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        <!-- ko if: ServiceId == 5 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong> @Resource.DetaiOrder_TransportVN</strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        <!-- ko if: ServiceId == @tmpOther -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong> @Resource.DetaiOrder_Incurred <b id="service-other" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b></strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                    <div class="zy-main-content-msg-l-hr rs"></div>
+                    <div id="allAccounting" class="rs">
+                        <p style="margin-left: 0 !important; padding-left: 15px;">  @Resource.DetaiOrder_Total</p>
+                        <div class="progress" style="height: 2px; width: 92%; margin-left: 15px;">
+                            <span class="progress-bar" style="width: 40%;"></span>
+                        </div>
+                        <div class="rs" style="padding-left: 15px; padding-top: 15px;">
+                            <p class="rs">
+                                <strong class="left-total">
+                                    @Resource.DetaiOrder_TotalPriceOrder:&nbsp;&nbsp;
+                                </strong>
+                                <strong class="right-total">
+                                    <span class="order-accounting" data-bind="text: formatNumbericCN(orderDetail().Total(), 'N0')"></span> (@Resource.Currency)
+                                </strong>
+                            </p>
+                            <p class="rs">
+                                <strong class="left-total" data-bind="text: '@Resource.Order_StatusPaid'"></strong>
+                                <strong class="right-total">
+                                    <span class="order-payment" data-bind="text: formatNumbericCN(orderDetail().TotalPayed() - orderDetail().TotalRefunded(), 'N0')">
+                                    </span> (@Resource.Currency)
+                                </strong>
+                            </p>
+                            <p class="rs">
+                                <!-- ko if: (orderDetail().Debt() >= 0) -->
+                                <strong class="left-total">
+                                    @Resource.Order_Missing:&nbsp;&nbsp;
+                                </strong>
+                                <strong class="right-total">
+                                    <span class="order-missing" data-bind="text: formatNumbericCN(orderDetail().Debt(),'N0')"></span> (@Resource.Currency)
+                                </strong>
+                                <!-- /ko -->
+                                <!-- ko ifnot: (orderDetail().Debt() >= 0) -->
+                                <strong class="left-total">
+                                    @Resource.DetaiOrder_CompanyReturn:&nbsp;&nbsp;
+                                </strong>
+                                <strong class="right-total">
+                                    <span class="order-missing" data-bind="text: formatNumbericCN(Math.abs(orderDetail().Debt()), 'N0')"></span> (@Resource.Currency)
+                                </strong>
+                                <!-- /ko -->
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="chatModal" class="x rs" style="display: table; position: static; float: left; margin-top: 20px;">
+                        @Html.Partial("~/Areas/CMS/Views/Chat/_Chat.cshtml")
+                    </div>
+                </div>
+
+                <div class="zy-main-content-msg-r tabcontent" id="dealOrderDetail">
+                    <div class="content-package rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellspacing="1" cellpadding="1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>@Resource.Code_Transition</th>
+                                        <th> @Resource.TransactionHistory_Time </th>
+                                        <th class="text-left"> @Resource.TransactionHistory_Content </th>
+                                        <th class="text-right"> @Resource.TransactionHistory_Value </th>
+                                        <th class="text-right"> @Resource.Dashboard_Surplus </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: recharge">
+                                    <tr>
+                                        <td data-bind="text: $index()+1"> </td>
+                                        <td data-bind="text: Code"></td>
+                                        <td data-bind="text: moment(Created).format('DD/MM/YYYY   hh:mm:ss')"></td>
+
+                                        <td data-bind="text: TreasureName" class="td-text-left"></td>
+                                        <!-- ko if:Type==1 -->
+                                        <td class="red-color  td-text-money"> - <span data-bind="text:formatNumberic(Math.round(CurrencyFluctuations),'N4')"></span> </td>
+                                        <!-- /ko -->
+                                        <!-- ko if:Type==0 -->
+                                        <td class="green-color  td-text-money"> + <span data-bind="text:formatNumberic(Math.round(CurrencyFluctuations),'N4')"></span></td>
+                                        <!-- /ko -->
+                                        <!-- ko if:Type==0 -->
+                                        <td class="green-color td-text-money"><i class="fa fa-sort-asc"></i> <span data-bind="text:formatNumberic(Math.round(CurencyEnd),'N4')"></span></td>
+                                        <!-- /ko -->
+                                        <!-- ko if:Type==1 -->
+                                        <td class="red-color td-text-money"><i class="fa fa-caret-down"></i> <span data-bind="text:formatNumberic(Math.round(CurencyEnd),'N4')"></span></td>
+                                        <!-- /ko -->
+                                    </tr>
+                                </tbody>
+
+                                <tfoot data-bind="if: recharge().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="6">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="zy-main-content-msg-r tabcontent" id="packageOrderDetail">
+                    <div class="content-package rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30px !important"> # </th>
+                                        <th class="w-200"> @Resource.DetaiOrder_CodePackage</th>
+                                        <th> @Resource.Package_Weight</th>
+                                        <th> @Resource.Product_Amount (@Resource.Currency) </th>
+                                        <th> @Resource.Package_Storage </th>
+                                        <th> @Resource.Order_Status </th>
+                                        <td style="width: 60px !important">#</td>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: {data: orderPackage, afterRender: renderedPackageHandler}">
+                                    <tr>
+                                        <td data-bind="text: $index() + 1"></td>
+                                        <td>
+                                            <div class="rs content-code">
+                                                <span style="width: 100%;">
+                                                    <!-- ko if: IsGross == 1 -->
+                                                    <span class="code-order rs"><a data-bind="text: 'P' + Code"></a> </span>
+                                                    <!-- /ko -->
+                                                    <!-- ko if: IsGross > 1 -->
+                                                    <span class="code-order rs">
+                                                        @*<a data-bind="text: 'P' + Code + '(đóng chung)'"></a>*@
+                                                        <a data-bind="text: 'P' + Code + '(แพคเกจที่นำแสดงโดย)'"></a>
+                                                        <b data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer" data-bind="attr: {id:'package-wallet-' + Id}">&nbsp;(?)</b>
+                                                    </span>
+                                                    <!-- /ko -->
+                                                    @*<p class="rs" data-bind="text: moment(Created).format('DD/MM/YYYY   hh:mm:ss')"></p>*@
+                                                    <span class="code-package-icon rs" title="Mã vận đơn">
+                                                        <i class="fa fa-truck" aria-hidden="true"></i> <span data-bind="text: TransportCode"></span>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: (Weight === undefined || Weight===null) ? '--' : formatNumbericCN(Weight, 'N2')">
+
+                                            </span> 
+                                            <b data-content="น้ำหนักจริง" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b><br />
+                                            @*<b data-content="Cân nặng thực" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b><br />*@
+                                            <span data-bind="text: (WeightActual === undefined || WeightActual===null) ? '--' : formatNumbericCN(WeightActual, 'N2')"></span>
+                                            <b data-content="น้ำหนักได้แปลงหน่วย" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+                                            @*<b data-content="Cân nặng quy đổi" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>*@
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: (ActualMoney === undefined || ActualMoney===null) ? '--' : formatNumberic(Math.round(ActualMoney),'N4')"></span><b data-content="ค่าน้ำหนักได้แปลงหน่วย" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text:CurrentWarehouseName"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: statusApp.orderPackageView[Status].Name"></span>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" data-toggle="popover" data-html="true" data-trigger="hover" class="package-history" data-bind="attr: {id:'package-history-' + Id}">รายละเอียด @*Chi tiết*@</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot data-bind="if: orderPackage().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="7">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="zy-main-content-msg-r tabcontent" id="depositOrderDetail">
+                    <div class="content-package rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30px !important"> # </th>
+                                        <th class="w-200"> @Resource.Ticket_Code </th>
+                                        <th class="w-250"> @Resource.Ticket_Content </th>
+                                        <th> @Resource.Ticket_EmployeeFeedback </th>
+                                        <th> @Resource.Order_Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: complains">
+                                    <tr>
+                                        <td data-bind="text: $index()+1"></td>
+                                        <td>
+                                            <div class="rs content-code">
+                                                <span>
+                                                    <span class="code-order rs">
+                                                        <a data-bind="text:Code, attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket?ticketId=' + Id}" target="_blank">
+                                                        </a>
+                                                    </span>
+                                                    <p data-bind="text: moment(CreateDate).format('DD/MM/YYYY   hh:mm:ss')"></p>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="text-left p10" data-bind="text:Content"></td>
+                                        <td class="text-left p10" data-bind="text:LastReply"></td>
+                                        <td>
+                                            <label data-bind="text: statusApp.complainView[Status].Name, css: statusApp.complainView[Status].Class"></label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                                <tfoot data-bind="if: complains().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="6">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zy-main-content-msg-r tabcontent" id="inforOrderDetail">
+                    @*<div class="rs">
+                        <div class="service-order" style="width: 100% !important; margin: 0; padding-left: 20px; box-sizing: border-box;">
+                            <div class="rs">
+                                <p style="margin-left: 0 !important; text-transform: uppercase">
+                                    @Resource.DetaiOrder_ServiceOrder
+                                </p>
+                                <div class="progress" style="height: 2px; width: 70%">
+                                    <span class="progress-bar" style="width: 50%;"></span>
+                                </div>
+                                <!-- ko if: (orderDetail().Status() < @((byte) Common.Emums.OrderStatus.WaitOrder)) -->
+
+                                <div class="service" data-bind="foreach: orderServices">
+
+                                    <label style="float: left; padding-right: 40px;">
+                                        <input type="checkbox" data-bind="checked: Checked, event: { change: $root.updateService }">
+                                        <span class="inline-block" data-bind="text: ServiceName"></span>
+                                    </label>
+                                </div>
+
+                                <!-- /ko -->
+                                <!-- ko if: (orderDetail().Status() >= @((byte) Common.Emums.OrderStatus.WaitOrder))-->
+
+                                <div class="service" data-bind="foreach: orderServices">
+
+                                    <label style="float: left; padding-right: 8%;">
+                                        <input type="checkbox" data-bind="checked: Checked" disabled="disabled">
+                                        <span class="inline-block" data-bind="text: ServiceName"></span>
+                                    </label>
+                                </div>
+
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>*@
+
+                    <div class="rs" style="border-top: 1px solid #ddd;">
+                        <!-- ko if: (orderDetail().Status() === @((byte)Common.Emums.OrderStatus.Cancel)) -->
+                        <!-- ko if: (orderDetail().ReasonCancel != null) -->
+                        <div class="infor-customer" style="margin: 0 !important; padding-left: 20px; box-sizing: border-box;width: 100%">
+                            <div class="rs" style="width: 100%;">
+                                <div class="rs">
+                                    <p style="margin-left: 0 !important; text-transform: uppercase">
+                                        Lý do hủy đơn
+                                    </p>
+                                    <div class="progress" style="height: 2px; width: 70%">
+                                        <span class="progress-bar" style="width: 50%;"></span>
+                                    </div>
+                                    <div class="inforct rs">
+                                        <p data-bind="text: orderDetail().ReasonCancel">
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+
+                    <div class="rs" style="border-top: 1px solid #ddd;">
+                        <div class="infor-customer" style="margin: 0 !important; padding-left: 20px; box-sizing: border-box;width: 100%">
+                            <div class="rs" style="width: 45%;">
+                                <div class="rs">
+                                    <p style="margin-left: 0 !important; text-transform: uppercase">
+                                        @Resource.DetaiOrder_InforOrder
+                                    </p>
+                                    <div class="progress" style="height: 2px; width: 70%">
+                                        <span class="progress-bar" style="width: 50%;"></span>
+                                    </div>
+                                    <div class="inforct rs">
+                                        <!-- ko if: orderAddress().FullName != null -->
+                                        <p class="">
+                                            @Resource.RequestsPayment_Name:&nbsp;<span class="bold" data-bind="text: orderAddress().FullName">Nguyễn Huyền Nhung</span>
+                                        </p>
+                                        <!-- /ko -->
+                                        <!-- ko if: orderAddress().FullName == null -->
+                                        <p class="">
+                                            @Resource.RequestsPayment_Name:&nbsp;<span class="bold">@CustomerState.FullName</span>
+                                        </p>
+                                        <!-- /ko -->
+                                        <!-- ko if: orderAddress().Phone != null -->
+                                        <p class="">
+                                            @Resource.Home_RegisterNumber:&nbsp;<span class="bold" data-bind="text: orderAddress().Phone">0913579829</span>
+                                        </p>
+                                        <!-- /ko -->
+                                        <!-- ko if: orderAddress().Phone == null -->
+                                        <p class="">
+                                            @Resource.Home_RegisterNumber:&nbsp;<span class="bold">@CustomerState.Phone</span>
+                                        </p>
+                                        <!-- /ko -->
+                                        <!-- ko if: orderAddress().Address != null -->
+                                        <p class="">
+                                            @Resource.Home_Address:&nbsp;<span class="bold" data-bind="text: orderAddress().Address">,&nbsp;<span class="bold" data-bind="text: district">,&nbsp;</span><span class="bold" data-bind="text: province"></span>Số 3 Nguyễn Ngọc Khang, Ba Đình, TP.Hà Nội.</span>
+                                        </p>
+                                        <!-- /ko -->
+                                        <!-- ko if: orderAddress().Address == null -->
+                                        <p class="">
+                                            @Resource.Home_Address:&nbsp;<span class="bold"> @CustomerState.Address</span>
+                                        </p>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="note-order" style="margin: 0 !important; width: 55%; padding-right: 20px; box-sizing: border-box;">
+                                <div class="rs">
+                                    <p style="margin-left: 0 !important; text-transform: uppercase">
+                                        @Resource.DetaiOrder_NoteOrder
+                                    </p>
+                                    <div class="progress" style="height: 2px; width: 70%">
+                                        <span class="progress-bar" style="width: 50%;"></span>
+                                    </div>
+                                    <div class="rs text-note">
+                                        <div class="rs text-note">
+                                            <!-- ko if: (orderDetail().Status() < @((byte) Common.Emums.OrderStatus.WaitOrder)) -->
+
+                                            <textarea data-bind="value: orderDetail().Note, valueUpdate: 'blur', event: { change: updateNote}" cols="20" name="OrderDetailItem.Note" rows="3" style="width: 100%;"></textarea>
+
+                                            <!-- /ko -->
+                                            <!-- ko if: (orderDetail().Status() >= @((byte) Common.Emums.OrderStatus.WaitOrder)) -->
+
+                                            <textarea data-bind="value: orderDetail().Note, valueUpdate: 'blur'" disabled="disabled" cols="20" name="OrderDetailItem.Note" onchange="UpdateNote('1015', this)" rows="3" style="width: 100%;"></textarea>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rs list-products" style="padding-bottom: 30px; border-bottom: 1px solid #ddd;">
+                            <div class="zichan-zijin zichan-box rs">
+                                <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30px !important"></th>
+                                            <th width="40" style="text-transform: none"> @Resource.CreateOrder_InforImage</th>
+                                            <th width="200">  @Resource.DetaiOrder_ProductName </th>
+                                            <th width="60"> @Resource.Product_Number </th>
+                                            <th width="90">  @Resource.DetaiOrder_PriceProduct</th>
+                                            <th width="90"> @Resource.Product_Amount (@Resource.Currency) </th>
+                                            @*<th width="100"> Miêu tả </th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: listOrderDetail">
+                                        <tr>
+                                            <td data-bind="text: $index()+1" class="text-center">1</td>
+                                            <td class="text-center">
+                                                <img data-bind="attr: { src: Image}" style="width: 50px;" src="https://cbu01.alicdn.com/img/ibank/2016/993/582/3375285399_815345275.400x400.jpg" alt="">
+                                            </td>
+                                            <td class="text-left-5" style="text-align: left;">
+                                                <!-- ko if: (Link !== '' || Link !== 'undefined') -->
+                                                <!-- ko if: (Name.trim() !== '') -->
+                                                <a target="_blank" data-bind="text: Name, attr: { href: Link}" href="https://detail.1688.com/offer/543033071445.html?spm=a26e3.8027625.1999173159.1.pZ5Vz5"></a><br>
+                                                <!-- /ko -->
+                                                <!-- ko if: (Name.trim() == '') -->
+                                                <a target="_blank" data-bind="attr: { href: Link}" href="https://detail.1688.com/offer/543033071445.html?spm=a26e3.8027625.1999173159.1.pZ5Vz5">Xem link</a><br>
+                                                <!-- /ko -->
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: (Link !== '' || Link !== 'undefined') -->
+                                                <a target="_blank" data-bind="text: Name" href="javascript:void(0)"></a><br>
+                                                <!-- /ko -->
+                                                <!-- ko if: Properties !== '' -->
+                                                <span data-bind="foreach: JSON.parse(Properties)">
+                                                    <span data-bind="text: Label">@Resource.Product_Color </span>: <span data-bind="text: Text">字母圆圈狗</span><br>
+                                                </span>
+                                                <!-- /ko -->
+                                                <!-- ko if: Note !== '' -->
+                                                <span>
+                                                    <span>@Resource.Note</span>: <span data-bind="text: Note">字母圆圈狗</span>
+                                                </span>
+                                                <!-- /ko -->
+                                                <br />
+                                                <span>
+                                                    <span> @Resource.GhiChuRieng </span>: <br />
+                                                    @*<span>Ghi chú riêng</span>: <br />*@
+                                                    <textarea data-bind="value: PrivateNote, valueUpdate: 'blur', event: { change: $root.updatePrivateNote}" cols="20" name="PrivateNote" rows="3" style="width: 100%;"></textarea>
+                                                </span>
+                                                <!-- ko ifnot: Properties !== '' --><!-- /ko -->
+                                            </td>
+                                            <td class="text-center">
+                                                <span data-bind="text: (Quantity === undefined || Quantity===null) ? '--' : formatNumbericCN(Quantity, 'N0')"></span> /
+                                                <span data-bind="text: (QuantityBooked === undefined || QuantityBooked===null) ? '--' : formatNumbericCN(QuantityBooked, 'N0')"></span> /
+                                                <span data-bind="text: (QuantityActuallyReceived === undefined || QuantityActuallyReceived===null) ? '--' : formatNumbericCN(QuantityActuallyReceived, 'N0')"></span>
+                                                <b data-content="ลูกค้าสั่งซื้อ / ซื้อได้ / ลูกค้ารับ" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+                                                @*<b data-content="Khách đặt/Đặt được/Thực nhận" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>*@
+                                            </td>
+                                            <td class="text-right">
+                                                <p>
+                                                    <span data-bind="text: formatNumbericCN(Math.round(Price* $parent.orderDetail().ExchangeRate()), 'N0')"></span> <sup>฿</sup>
+                                                </p>
+                                                <p>
+                                                    <span data-bind="text: formatNumbericCN(Price, 'N2')"></span><sup>¥</sup>
+                                                </p>
+                                            </td>
+                                            <td class="text-right">
+                                                <span data-bind="text: formatNumbericCN(Price*QuantityBooked*$parent.orderDetail().ExchangeRate(), 'N0')"></span> <sup>฿</sup>
+                                            </td>
+                                            @*<td data-bind="html: UserNote"></td>*@
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="rs back-to-list">
+                            <a data-bind="click: backToList" class="btn"><i class="fa fa-arrow-left"></i> @Resource.TransactionHistory_ComeBack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.Partial("/Areas/CMS/Views/Order/order/_popup.cshtml")
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/lodash.js"></script>
+    <script src="~/Content/js/tab-content.js"></script>
+    <script src="~/Content/js/chat-box.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/orderPopupModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/orderDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/chat/chatViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/detailOrdertViewModel.js"></script>
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    <script src="https://lodash.com/docs/4.17.4#orderBy"></script>
+    <script src="~/Areas/CMS/Scripts/jquery-ui/popover.js"></script>
+
+    <script>
+
+        //header top
+        $(".header-top").click(function () {
+
+            $header = $(this);
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition
+                    return $content.is(":visible") ? "Thu gọn" : "Xem danh sách kiện hàng";
+                });
+            });
+
+        });
+    </script>
+
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+    <script>
+
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+
+        function tabDetailOrder(evt, ticketName) {
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" lete-active", "");
+            }
+            document.getElementById(ticketName).style.display = "block";
+            evt.currentTarget.className += " lete-active";
+
+        }
+
+        document.getElementById("defaultOpen").click();
+    </script>
+    <script src="~/Scripts/jquery.sticky.js"></script>
+
+    <script>
+        $(window).load(function () {
+            $("#topTabDetailOrder").sticky({ topSpacing: 0 });
+        });
+    </script>
+
+}

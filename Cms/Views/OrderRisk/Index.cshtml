@@ -1,0 +1,206 @@
+﻿@{
+    ViewBag.Title = "Order risk";
+}
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#nhanvien').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Staffs ordering success today.'
+                },
+                subtitle: {
+                    //text: '<a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Xem thống kê Detail hơn</a>'
+                },
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '11px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Order number'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: 'Total revenue now: <b>{point.y:.1f} Baht</b>'
+                },
+                series: [{
+                    name: 'Total value',
+                    data: [
+                    ['Order 1', 23],
+                    ['Order 2', 16],
+                    ['Order 3', 14],
+                    ['Order 4', 14],
+                    ['Order 5', 12],
+                    ['Order 6', 12],
+                    ['Order 7', 11],
+                    ['Order 8', 11],
+                    ['Order 9', 11],
+                    ['Order 10', 11],
+                    ['Order 11', 10],
+                    ['Order 12', 10],
+                    ['Order 13', 10],
+                    ['Order 14', 9],
+                    ['Order 15', 9],
+                    ['Order 16', 9],
+                    ['Order 17', 8],
+                    ['Order 18', 8],
+                    ['Order 19', 8],
+                    ['Order 20', 8]
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '11px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
+
+            $('#tongdon').highcharts({
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45
+                    }
+                },
+                title: {
+                    text: 'Daily orders today'
+                },
+                subtitle: {
+                    //text: 'Sum Orders hôm nay'
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: 100,
+                        depth: 45
+                    }
+                },
+                series: [{
+                    name: 'Number: ',
+                    data: [
+                        ['Set done', 8],
+                        ['Placing', 3],
+                        ['Cancel', 1],
+                        ['Wait deposits', 6]
+                    ]
+                }]
+            });
+        });
+    </script>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        List of risky orders
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> View order statistics</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+        @*<div class="row">
+                <div class="col-md-4">
+                    <div id="tongdon" style="min-width: 100px; height: 200px; margin: 0 auto"></div>
+                </div>
+                <div class="col-md-8">
+                    <div id="nhanvien" style="min-width: 100px; height: 200px; margin: 0 auto"></div>
+                </div>
+            </div>*@
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                          <label for="ddlGroup">Keyword search </label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can perform searches by customer's account ID, account name, real name, phone number, email, .."></i>
+                        <input class="form-control" id="SearchInfo_Keyword" name="SearchInfo.Keyword" placeholder="Code orders, Account name, Full name, Register Number, Email..." type="text" value="">
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label for="ddlWarehouse">Select System</label>
+                        <select class="form-control select-view" id="ddlWarehouse" style="width: 100%;">
+                            <option value="1" selected="selected">- All  -</option>
+                            <option value="2">nhaphangtrungquoc.com</option>
+                            <option value="4">orderhangkinhdoanh.com</option>
+                            <option value="7">timnguonhanggiare.com</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Order type</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">VIP 0</option>
+                            <option value="50">VIP 1</option>
+                            <option value="150">VIP 2</option>
+                            <option value="200">VIP 3</option>
+                            <option value="300">VIP 4</option>
+                            <option value="400">VIP 5</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Status</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">Open</option>
+                            <option value="50">Stop operations</option>
+                            <option value="100">Deleted</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <!-- Date and time range -->
+                        <label> Order date </label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> Select the date the customer subscribes
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            @Html.Partial("_OrderRiskList")
+        </div>
+        <!-- /.col -->
+    </div>
+
+</section>
+<!-- /.content -->

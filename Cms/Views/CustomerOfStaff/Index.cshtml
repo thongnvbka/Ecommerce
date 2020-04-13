@@ -1,0 +1,198 @@
+﻿@{
+    ViewBag.Title = "Business Sales Jobs";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+
+@section Styles{
+    <link href="~/Content/plugins/tabdrop/css/tabdrop.css" rel="stylesheet" />
+    <style>
+        input.decimal:focus {
+            text-align: left !important;
+        }
+    </style>
+}
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Scripts/common/status.@cultureJs"></script>
+
+    @Html.Partial("~/Views/CustomerOfStaff/_Customer-report.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/_CustomerReportSituation.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/Customer/_Customer.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/Customer/_CustomerList.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerByStaff/_CustomerByStaff.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerByStaff/_CustomerByStaffList.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerFeasibilityByStaff/_CustomerFeasibilityByStaff.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerFeasibilityByStaff/_CustomerFeasibilityByStaffList.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerOrderPending/_CustomerOrderPending.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerOrderPending/_CustomerOrderPendingList.cshtml")
+
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupport.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupportList.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketDetail.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/PotentialCustomer/_PotentialCustomer.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/PotentialCustomer/_PotentialCustomerList.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/RevenueReport/_RevenueReport.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/RevenueReport/_RevenueReportList.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/RevenueReport/_RevenueReportDeposit.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/RevenueReport/_RevenueReportDepositList.cshtml")
+
+    @Html.Partial("~/Views/Partial/accountant/moneyfund/_MoneyFundDetail.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/recharge/_RechargeDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderSourcingDetail.cshtml")
+
+    @Html.Partial("~/Views/CustomerOfStaff/OrderCustomer/_OrderCustomer.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/OrderCustomer/_OrderCustomerList.cshtml")
+
+    <script src="~/Scripts/models/accountant/rechargeBillModel.js"></script>
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    @Scripts.Render("~/bundles/customerscript")
+
+    <script type="text/javascript">
+        $(function () {
+
+            //Enable iCheck plugin for checkboxes
+            //iCheck for checkbox and radio inputs
+            $('.mailbox-messages input[type="checkbox"]').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+            });
+
+            //Enable check and uncheck all functionality
+            $(".checkbox-toggle").click(function () {
+                var clicks = $(this).data('clicks');
+                if (clicks) {
+                    //Uncheck all checkboxes
+                    $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+                    $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+                } else {
+                    //Check all checkboxes
+                    $(".mailbox-messages input[type='checkbox']").iCheck("check");
+                    $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+                }
+                $(this).data("clicks", !clicks);
+            });
+
+            //Handle starring for glyphicon and font awesome
+            $(".mailbox-star").click(function (e) {
+                e.preventDefault();
+                //detect type
+                var $this = $(this).find("a > i");
+                var glyph = $this.hasClass("glyphicon");
+                var fa = $this.hasClass("fa");
+
+                //Switch states
+                if (glyph) {
+                    $this.toggleClass("glyphicon-star");
+                    $this.toggleClass("glyphicon-star-empty");
+                }
+
+                if (fa) {
+                    $this.toggleClass("fa-star");
+                    $this.toggleClass("fa-star-o");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @UserState.FullName - @UserState.TitleName
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> View customer statistics</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section id="customerOffStaffPage" class="content">
+    <div class="row">
+        <div class="col-xs-3 todobar2">
+            @Html.Partial("_TodoBar")
+        </div>
+        <div class="col-xs-9  view-content-box2">
+            <div data-bind="template: { name: templateId }"></div>
+        </div>
+    </div>
+    @*@Html.Partial("~/Views/Partial/customer/_CustomerFindCustomer.cshtml")*@
+    @Html.Partial("~/Views/Partial/customer/_CustomerFind.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/Customer/_CustomerAddOrEdit.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/CustomerByStaff/_CustomerByStaffAddOrEdit.cshtml")
+    <!-- =============== Modal thay đổi nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentEdit" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Update content here:</b></h4>
+        </div>
+        <div class="modal-body">
+            <textarea data-bind="value: contentEdit" style="width:100%;min-height: 100px"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: updateContent" data-dismiss="modal">Update</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal xóa nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentDelete" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>The content of the exchange will be deleted, you are sure to delete!?</b></h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: deleteContent" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <div id="commentForCustomer" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Information will be sent to the customer, you are sure to send information!?</b></h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: feedbackComplain" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

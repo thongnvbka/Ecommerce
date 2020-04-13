@@ -1,0 +1,52 @@
+﻿<script type="text/html" id="rechargeList">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1"> </td>
+        <td data-bind="text: Code"></td>
+        <td data-bind="text: moment(Created).format('DD/MM/YYYY   hh:mm:ss')"></td>
+        <td class="td-text-center">
+            
+            <!-- ko if:OrderType == @((byte)Common.Emums.OrderType.Deposit) -->
+                <a target="_blank" data-bind="text:OrderCode, attr: {href: '/' + window.culture + '/CMS/Order/DetailDeposit?depositId=' + OrderId}" class="red-color"></a>
+            <!-- /ko -->
+            <!-- ko if:OrderType == @((byte)Common.Emums.OrderType.Order) -->
+                <a target="_blank" data-bind="text:OrderCode, attr: {href: '/' + window.culture + '/CMS/Order/DetailOrder?orderId=' + OrderId}" class="red-color"></a>
+            <!-- /ko -->
+            <!-- ko if:OrderType == @((byte)Common.Emums.OrderType.Source) -->
+                <a target="_blank" data-bind="text:OrderCode, attr: {href: '/' + window.culture + '/CMS/Order/DetailSourcing?sourcingId=' + OrderId}" class="red-color"></a>
+            <!-- /ko -->
+            
+        </td>
+        <!-- ko if:Type == 1 -->
+        <td class="red-color">หัก</td>
+        <!-- /ko -->
+        <!-- ko if:Type == 0 -->
+        <td class="green-color">เติมเงิน</td>
+        <!-- /ko -->
+        <!-- ko if:Note == null -->
+        <td data-bind="text: TreasureName" class="td-text-left"></td>
+        <!-- /ko -->
+        <!-- ko if:Note !== null -->
+        <td data-bind="text: TreasureName + ' ( LikeOrder Note: '+ Note +')'" class="td-text-left"></td>
+        <!-- /ko -->
+        <!-- ko if:Type==1 -->
+        <td class="red-color  td-text-money"> - <span data-bind="text:formatNumberic(Math.round(CurrencyFluctuations),'N4')"></span> </td>
+        <!-- /ko -->
+        <!-- ko if:Type==0 -->
+        <td class="green-color  td-text-money"> + <span data-bind="text:formatNumberic(Math.round(CurrencyFluctuations),'N4')"></span></td>
+        <!-- /ko -->
+
+        <!-- ko if:Type==1 -->
+        <td class="red-color  td-text-money"><span data-bind="text:formatNumberic(Math.round(CurencyStart),'N4')"></span> </td>
+        <!-- /ko -->
+        <!-- ko if:Type==0 -->
+        <td class="green-color  td-text-money"><span data-bind="text:formatNumberic(Math.round(CurencyStart),'N4')"></span></td>
+        <!-- /ko -->
+
+        <!-- ko if:Type==1 -->
+        <td class="red-color td-text-money"><i class="fa fa-caret-down"></i> <span data-bind="text:formatNumberic(Math.round(CurencyEnd),'N4')"></span></td>
+        <!-- /ko  -->
+        <!-- ko ifnot:Type==1 -->
+        <td class="green-color  td-text-money"><i class="fa fa-caret-up"></i><span data-bind="text:formatNumberic(Math.round(CurencyEnd),'N4')"></span></td>
+        <!-- /ko -->
+    </tr>
+</script>

@@ -1,0 +1,123 @@
+﻿<link href="~/Content/GroupCommentBox.css" rel="stylesheet" />
+<!-- Modal -->
+<div class="modal fade" id="groupCommentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-bind="with: groupCommentBoxModelModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title pr-icon-left" id="myModalLabel">
+            <i class="fa fa-commenting-o"></i><span> Comment</span>: "<b data-bind="text: objectTitle"></b>"
+            <span class="btn-group pull-right pr-mgr-10">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-gears"></i>
+                </button>
+                <ul class="dropdown-menu" style="left: auto; right: 0">
+                    <li><a href="javascript://" data-bind="click: changeIsShowNotificationSetting"><i class="fa fa-bullhorn"></i><span data-bind="text: isShowNotificationText"></span></a></li>
+                </ul>
+            </span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper-loading" style="padding-top: 30px;" data-bind="visible: isLoadingComment">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+        @*<div class="wrapper-comment-chat" data-bind="visible: !isLoadingComment()" style="display: none;">*@
+        <div class="wrapper-comment-chat" data-bind="visible: !isLoadingComment()">
+            <ul class="media-list main-list comment-modal-list" data-bind="foreach: listComments">
+                <li data-bind="attr: {class: Class, id: 'parent-'+Id}">
+                    <a class="media-left" href="javascript://">
+                        <img class="img-circle avatar" data-bind="attr: {src: Image == null || Image == '' ? '/Images/L0NvbnRlbnQvaW1hZ2VzL25vbmUuanBn_50x50_0.jpg' : '/Images/'+ Image + '_50x50_1.jpg', alt: FullName }, alt: FullName">
+                    </a>
+                    <div class="media-body w100pc">
+                        <div class="group-chat-comment-item">
+                            <h4 class="media-heading">
+                                <span data-bind="text: FullName"></span>
+                                <span class="badge badge-info" data-bind="visible: IsCustomer">Customer</span>
+                                <span class="time" data-bind="text: Time"></span>
+                            </h4>
+                            <div data-bind="html: Content">
+                            </div>
+                            <ul class="wrapper-groupchat-action">
+                                <li>
+                                    @*<i class="fa fa-thumbs-up"></i>*@
+                                    <a href="javascript://" data-bind="click: $parent.like, text: LikeText"></a>
+                                    <!-- ko if: Like() > 0 -->
+                                    <a class="pr-icon-left none-decoration" href="javascript://" data-bind="click: $parent.showLikeDetail"><span data-bind="text: Like"></span></a>
+                                    <!-- /ko -->
+                                </li>
+                                <li>
+                                    @*<i class="clip-bubbles-2"></i>*@
+                                    <a href="javascript://" data-bind="click: $parent.reply">Reply</a>
+                                    <!-- ko if: NumberOfReplies() > 0-->
+                                    <a class="pr-icon-left none-decoration" href="javascript://" data-bind="click: $parent.reply"><span data-bind="text: NumberOfReplies"></span></a>
+                                    <!-- /ko -->
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div data-bind="visible: IsShowReply" class="wrapper-sub-list">
+                            <div class="wrapper-loading" data-bind="visible: IsLoadingReply">
+                                <div class="spinner" style="margin: 10px auto;">
+                                    <div class="rect1"></div>
+                                    <div class="rect2"></div>
+                                    <div class="rect3"></div>
+                                    <div class="rect4"></div>
+                                    <div class="rect5"></div>
+                                </div>
+                            </div>
+                            <ul class="media-list sub-list pr-mgb-10" data-bind="foreach: ListReplies, visible: !IsLoadingReply() && ListReplies().length > 0">
+                                <li data-bind="attr: {class: Class}">
+                                    <a class="media-left" href="javascript://">
+                                        <img class="img-circle avatar" data-bind="attr: {src: Image == null || Image == '' ? '/Images/L0NvbnRlbnQvaW1hZ2VzL25vbmUuanBn_50x50_0.jpg' : '/Images/'+ Image + '_50x50_1.jpg', alt: FullName }, alt: FullName">
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="group-chat-comment-item">
+                                            <h4 class="media-heading">
+                                                <span data-bind="text: FullName"></span>
+                                                <span class="badge badge-info pr-mgr-5" data-bind="visible: IsCustomer">Customer</span>
+                                                <span class="time" data-bind="text: Time"></span>
+                                            </h4>
+                                            <div data-bind="html: Content"></div>
+                                            <ul class="wrapper-groupchat-action">
+                                                <li><a href="javascript://" data-bind="click: $parents[1].like, text: LikeText, enable: !IsSending()"></a></li>
+                                                <!-- ko if: Like() > 0 -->
+                                                <li><a class="pr-icon-left none-decoration" href="javascript://" data-bind="click: $parents[1].showLikeDetail"><i class="fa fa-thumbs-o-up"></i><span data-bind="text: Like"></span></a></li>
+                                                <!-- /ko -->
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <span data-bind="visible: ListReplies().length == 0 && !IsLoadingReply()">No comment yet</span>
+                            <a href="javascript://" data-bind="visible: IsShowLoadmoreReply(), click: $parent.loadMoreReply">
+                                <span class="pull-left">Download more comment</span>
+                                <div class="wrapper-loading link-loading pr-mgl-10" data-bind="visible: IsLoadingMoreReply()">
+                                    <div class="spinner">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <hr />
+            <!-- ko if: isShowCommentBox() -->
+            <div class="wrapper-comment-box">
+                <textarea data-bind="attr: {id: 'commentBoxModal' }" class="form-control" rows="2" id="commentBox" placeholder="Enter the content ..."></textarea>
+                <div class="text-right mt10">
+                    <button data-bind="attr: {id: 'commentBoxModal' }, click: sendMessage" type="button" class="btn btn-primary" id="sendMessage">Send</button>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div><!-- .wrapper-comment-chat -->
+    </div>
+</div>

@@ -1,0 +1,382 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.ViewEngine
+@{
+    ViewBag.Title = "Upproduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Content/css/css-home/upproduct.css" rel="stylesheet" />
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="good-main">
+    <div class="good-main-content">
+
+        <div class="mainbox1117">
+
+            <div class="detail_content_box1117 product_attr">
+
+                <div style="clear:both;"></div>
+                <div class="detail_left_sty" id="pic_show">
+                    <div style="float:left; width:434px;">
+                        <div id="pic1117_pig_box_1" style="text-align:center;" class="js-pic-append">
+                            <img id="pic" src="https://img.alicdn.com/imgextra/i3/2181933435/TB26ba.bxvzQeBjSZFAXXaF9VXa_!!2181933435.jpg_300x300.jpg" height="432">
+                        </div>
+                    </div>
+                    <div id="pic1117_small_box_1" class="pic_theme">
+                        <a rel="nofollow" href="javascript:void(0);" class="p_small_off">
+                            <img onclick="goodspics(this)" src="https://img.alicdn.com/bao/uploaded/i4/TB13uPZNpXXXXXVXVXXXXXXXXXX_!!0-item_pic.jpg_300x300.jpg" id="border_sty_3" class="item_pics">
+                        </a>
+                        <a rel="nofollow" href="javascript:void(0);" class="p_small_off">
+                            <img onclick="goodspics(this)" src="https://img.alicdn.com/imgextra/i2/2181933435/TB23mu6bp_AQeBjSZFvXXbnKXXa_!!2181933435.jpg_300x300.jpg" id="border_sty_3" class="item_pics">
+                        </a>
+                        <a rel="nofollow" href="javascript:void(0);" class="p_small_off">
+                            <img onclick="goodspics(this)" src="https://img.alicdn.com/imgextra/i1/2181933435/TB2FKW4bpHzQeBjSZFpXXXm1XXa_!!2181933435.jpg_300x300.jpg" id="border_sty_3" class="item_pics">
+                        </a>
+                        <a rel="nofollow" href="javascript:void(0);" class="p_small_on">
+                            <img onclick="goodspics(this)" src="https://img.alicdn.com/imgextra/i3/2181933435/TB26ba.bxvzQeBjSZFAXXaF9VXa_!!2181933435.jpg_300x300.jpg" id="border_sty_3" class="item_pics">
+                        </a>
+                        <a rel="nofollow" href="javascript:void(0);" class="p_small_off">
+                            <img onclick="goodspics(this)" src="https://img.alicdn.com/imgextra/i3/2181933435/TB2PGydammK.eBjSZPfXXce2pXa_!!2181933435.jpg_300x300.jpg" id="border_sty_3" class="item_pics">
+                        </a>
+                    </div>
+                    <div> </div>
+                </div>
+                <div class="detail_show" id="data_box1117_3">
+                    <ul>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">Link:</div>
+                            <div class="cu_4">
+                                <input name="" disabled="" style="width:396px;float:left;margin-left: 6px;border-top:1px #b1c47c solid;border-left:1px #b1c47c solid;border-bottom:1px #b1c47c solid;" id="url" class="biaodansty1117-1" value="https://world.tmall.com/item/42753843742.htm?id=42753843742" type="text">
+                                <input id="convert_url" value="https://world.tmall.com/item/42753843742.htm?id=42753843742" type="hidden">
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li">
+                            <div id="title_pig_box_1">
+                                <ts1>Hoàn thành </ts1>
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">Tên sản phẩm:</div>
+                            <div class="cu_4">
+                                <input name="" id="title" class="biaodansty1117-1" value="掌微 椴木花菇 深山小香菇 味鲜个小肉厚 蘑菇 东北特产干货130g11" type="text">
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">Người bán:</div>
+                            <div class="cu_4">
+                                <input name="" id="seller" class="biaodansty1117-1" value="掌微 椴木花菇 深山小香菇 味鲜个小肉厚 蘑菇 东北特" type="text">
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1">Giá:</div>
+                            <div class="cu_4">
+                                <input id="price" class="biaodansty1117-2" value="188 ¥" type="text">
+                                <br>
+                                <span style="color:#666;padding-left: 7px">giá có thể thương lượng <a href="https://world.tmall.com/item/42753843742.htm?id=42753843742" style="font-weight:normal" target="_blank">chi tiết</a></span>
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="s_g" style="display: list-item;">
+                            <div class="cu_1">Kho hàng:</div>
+                            <div class="cu_4">
+                                <input id="shipping" class="biaodansty1117-2" value="Hàng châu" type="text">
+                                <br>
+                                <span style="color:#666;padding-left: 7px">để <strong id="deliveryAddress">Hàng Châu</strong>có thể chỉnh sửa</span>
+                            </div>
+                        </li>
+                        <li id="date3_cu1117_box" class="pro_li" style="display: list-item;">
+                            <div class="cu_1" style="height:1px;width: 540px;border-top:1px solid #d6d9ce;"></div>
+                            <div class="cu_1" style="width: 540px;height:10px;"></div>
+                        </li>
+                        <li id="date3_cu1117_box">
+                            <div class="cu_1">Số lượng:</div>
+                            <div class="cu_3">
+                                <a rel="nofollow" href="javascript:void(0);" class="jian_1" id="jian"></a>
+                                <div class="form_sz">
+                                    <input name="page2" maxlength="5" id="form_next_2" style="width:38px;" class="buy_num" value="1" type="text">
+                                </div>
+                                <a rel="nofollow" href="javascript:void(0);" class="jia_1" id="jia"></a>
+                            </div>
+                            <div class="cu_3_1"></div>
+                        </li>
+                        <li id="date3_cu1117_box">
+                            <div class="cu_1">Ghi chú:</div>
+                            <div class="cu_4">
+                                <textarea id="note_my" placeholder="Ví dụ : màu sắc, kích thước, kiểu dáng..."></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btnbuybox1117-1">
+                                <a href="@Url.Action("Cart","Cart")" target="_self" class="buy_now">Thanh toán</a>
+                                <a href="javascript:void(0);" target="_self" class="add_cart">Thêm vào giỏ hàng</a>
+                            </div>
+                        </li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="good-main-shoppingcar">
+        <div class="good-main-shoppingcar-top">
+            <img src="~/Content/images/icon-service/shoppingingcar_icon.png" alt=""/>
+            <span>
+                Giỏ hàng
+            </span>
+        </div>
+        <div class="good-main-shoppingcar-content">
+
+            <div class="dg-cart-box" id="js-dg-cart-box" style="max-height: 327px;">
+                <div class="other-item" id="js-zq-cart">
+                    <h4 class="js-cart-nums"></h4>
+                    <div class="dg-item-list" id="js-dgCart-list">
+                        <div id="calcWrap" data-totalnums="0" data-totalmoneys="￥0" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dg-cart-bom" id="js-dif-h">
+                <p>Tổng số <span id="js-totalNums" class="nums-red">0</span> sản phẩm</p>
+                <p class="mt5" style="padding-bottom:10px;">Tổng số tiền: <span id="js-totalMoneys" class="nums-red">￥0</span></p>
+                <p class="dg-pay-btn clearFix">
+                    <a href="#" class="go-pay-btn tdec-none fr" style="cursor: not-allowed; background-color: rgb(153, 153, 153);">Thanh toán</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="mainbox1117 product_info">
+    <div class="detail_content_box1117" style="width:1280px;">
+
+        <div style="clear:both;"></div>
+        <div class="product_left rs">
+            <ul class="row1124-1-1" id="desc_title" style="">
+                <li class="btn1124-1-4 active tablinks" id="defaultOpen" onclick="openTabUpProduct(event, 'desc_arr')">Chi tiết sản phẩm</li>
+                <li class="btn1124-1-4" onclick="openTabUpProduct(event, 'procurementProcess')">Quy trình mua sắm</li>
+                <li class="btn1124-1-4" onclick="openTabUpProduct(event, 'service')">Dịch vụ</li>
+                <li class="btn1124-1-4" onclick="openTabUpProduct(event, 'payment')">Thanh toán</li>
+            </ul>
+
+            <div id="product_content" class="rs">
+                <div id="desc_arr" class="tabcontent rs">
+                    <div class="row1124-1-2">
+                        <div class="miaoshu1124-1" id="desc">Thông tin chi tiết sản phẩm</div>
+                    </div>
+                </div>
+                <div style="display: none; padding: 30px 15px;" id="procurementProcess" class="tabcontent rs">
+                    <table cellpadding="10" cellspacing="0">
+                        <tbody>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_process.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>Quy trình mua sắm</strong><br>
+                                    ☆ Các bước dễ dàng để thực hiện~！海外华人代购（天猫/京东/淘宝等中国国内电商平台），更快、更省、更有保障！<br>
+                                    <img src="~/Content/images/icon-upproduct/buy_process.jpg" />
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_limit.png" />
+                                </td>
+                                <td align="left" style="padding-left:10px; line-height:20px; font-size:12px; padding-bottom:20px; padding-top:5px;">
+                                    <strong>代购物品限制</strong><br>
+                                    ☆ 在中国购买的商品，必须是符合中华人民共和国的法律法规、国家准许进口的商品。由于海关政策限制，证券货币、动植物标本/种子、毒品、刀具、大容量液体、化学粉末等物品不支持邮寄到海外。<a style="text-decoration:none;" href="#">详情…</a>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_delivered.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <p>
+                                        <strong>代购物品验收入仓</strong><br>
+                                        ☆ 由您寄送至Lete仓库的物品将会存放在您的个人专属仓库（Lete平台为每一个使用平台的会员免费提供的实体仓库）。入仓前，Lete仓务人员堆您的物品包裹进行整理、检查验收，整理操作内容包括但不限于（开箱验货、清洁外包装、拆除或加固包装、包裹体积量度、包裹称重等）。如发现您寄送至Lete仓库的物品与您在平台上提交的清单不符（与清单描述不符/货不对板、物品损坏破损等），Lete仓务有权拒签。为了您的代购订单顺利完成，请您按实际情况填写代购清单（注：清单可修改：可在仓务未签收前，在平台上修改）。
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_calculate.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <p>
+                                        <strong>代购费用计费方式</strong><br>
+                                        ☆ 代购总费用=国际快递寄送邮费+服务费(不定期免费)+操作费（含报关费）+增值服务费(自主选择、部分免费)。
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_shipping.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:10px;padding-top:5px;">
+                                    <strong>国际货运快递方式</strong><br>
+                                    ☆ Lete华人代购平台在全球超过100多个国家/地区产生业务，与国内外大型的国际/跨国物流运输公司/快递公司有着紧密的合作，给平台的会员用户多重物流方案选择（时效型、经济型、综合型、自主选择型等方案）。您可以在<a style="text-decoration:none;" href="#">个人中心</a>&gt;&gt;<a style="text-decoration:none;" href="#">寄运工具</a> 中选择快递方式及其收费计算（参考）。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_warehouse.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>个人专属仓库</strong><br>
+                                    ☆ Lete华人代购平台给每一位注册用户提供一个个人专属的仓库。（<a style="text-decoration:none;" href="#">您的地址：请登录查看！）</a>您可以将物品寄存与此，该仓库有90天的免费储存期，详情。（不同会员等级，有不同时长的免费储存期。）
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_protocol.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>代购免责声明</strong><br>
+                                    ☆ Lete华人代购平台给注册会员提供代购、代购等服务，代购服务中若出现纠纷问题，需明确责任方，按责承担。出现以下几种情况，Lete平台为责任方，Lete平台全程担责，超出该范围，lete平台不承担责任，只协助用户处理纠纷问题。①货品由Lete平台及仓库接收确认入仓后，丢失、人为损坏，不包括不可抗拒阻力下的事故造成的。②代购款项由注册用户支付至lete平台涉及的账户中，未经注册用户授权指令而造成该用户资金损失，不包括注册用户账号被盗或被黑客入侵使用。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/buy_unclear.png" />
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>部分货品无法代购的处理方式</strong><br>
+                                    ☆ 用户提交的代购订单中出现单个或多个物品无法入的异常情况（与提交中的订单不符/货不对板、快递丢件、包裹包装破裂、包裹内容物损坏等）Lete平台有权针对相关问题作出如下操作：基于平台对注册用户提供优质服务的宗旨，Lete平台在遇到上述异常情况时，会第一时间与您取得联系（站内信、邮件、电话/短信等），按照您的指令做出相关的操作；如无法在特定的时间内与您取得联系，我们将：1、提交中的订单不符/货不对板的包裹，lete平台作拒签拒收处理。2、快递丢件的包裹，lete平台作不负责处理，但，仍提供协助，帮您与快递沟通赔付事宜。3、包裹包装破裂的包裹，Lete平台作签收并第一时间拍照上传处理，视包装物而定，收取包装费。（普通简易包装免费，特殊加固包装需收取5元包装费）。4、包裹内容物损坏的包裹，lete平台做拒签拒收处理。
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="display: block; padding: 30px 15px;" id="service" class="tabcontent rs">
+                    <table cellpadding="10" cellspacing="0">
+                        <tbody>
+                            <tr style="padding-bottom:20px;">
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/24hours-online.png" alt="24小时贴心服务">
+                                </td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>24小时在线客服</strong><br>
+                                    ☆ 无论您在世界上的哪个城市，在Lete这里，我们没有时差。Lete平台为您提供全天候24小时在线服务，专业专注，只为给您更好的体验。（特定或法定假日除外。）
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/one-to-one-service.png" alt=""></td>
+                                <td align="left" style="padding-left:10px; line-height:20px; font-size:12px; padding-bottom:20px; padding-top:5px;">
+                                    <strong>一对一实时反馈</strong><br>
+                                    ☆ 超过40位/班次的在线客服，全程跟踪订单，有疑问找Lete。凡是超过24小时不跟进的订单问题，您都会得到赔付，赔付金额为订单金额的5%，上限不超过300元。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/compensation.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <p>
+                                        <strong>丢件包赔</strong><br>
+                                        ☆ 入仓物品在仓储期间丢件的，Lete平台负责100%赔付。（不可抗拒阻力的因素造成的丢件除外，如，地震，台风雷暴洪水等）；出仓丢包理赔：物品一旦发离仓库，包裹受到所承运的快递公司保护，在此期间，发生丢包的情况，lete平台全程协助追讨索赔。
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/insurance_cover.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <p>
+                                        <strong>保险保障</strong><br>
+                                        ☆ 自主选择购买第三方权威的保险公司进行投保，从而保障您的每一个订单。
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/advancement.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:10px;padding-top:5px;">
+                                    <strong>先行垫付购买</strong><br>
+                                    ☆ 高级会员专享不同额度的先行垫付购买资金，如，a商品代购价在促销时为100元，但促销时间已过期，实际交易价格为150元。针对超出部分50元，在得到您确认授权之后（即使用先行垫付购买的会员特权），Lete平台为您先行支付超额部分50元。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/value-added-Service.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:10px;padding-top:5px;">
+                                    <strong>特色增值服务</strong><br>
+                                    ☆ Lete平台为每一位会员提供：超50位专业买手为您采购、开箱验货、简单包装、分箱/合箱、视频照片保真留底、90天超长时间免费仓储等服务。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/return_refund.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>极速退款/退换货</strong><br>
+                                    ☆ Lete平台为会员用户的提供畅顺无忧的售后服务，24小时内极速介入处理退款或退换货的订单，本着公平公正的立场，与您一起解决问题。此外，针对不同等级的会员用户免除不同环节中相关的操作费。
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="display: none; padding: 30px 15px;" id="payment" class="tabcontent rs">
+                    <table cellpadding="10" cellspacing="0">
+                        <tbody>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/paypal.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <strong>Paypal支付</strong><br>
+                                    ☆ 外币支付手续费：Paypal收取外币充值通道费每笔: 3%+0.3美元 当前Lete平台收取外币兑换汇率：美元-人民币 1：6.56。<br>
+                                    Paypal全球最大的在线支付平台，可通过国际信用卡和各国银行卡，实现即时付款！<br>
+                                    使用的货币均以美元进行折算，资金将在1~60分钟内到账。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/international-bank.png" alt=""></td>
+                                <td align="left" style="padding-left:10px; line-height:20px; font-size:12px; padding-bottom:20px; padding-top:5px;">
+                                    <strong>国际信用卡支付</strong><br>
+                                    ☆ 外币支付手续费：Paypal收取外币充值通道费每笔: 3%+0.3美元 当前Lete平台收取外币兑换汇率：美元-人民币 1：6.56。<br>
+                                    Paypal全球最大的在线支付平台，可通过国际信用卡，实现即时付款！<br>
+                                    使用的货币均以美元进行折算，资金将在1~60分钟内到账。
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/alipay.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <p>
+                                        <strong>支付宝支付</strong><br>
+                                        ☆ 支付宝(中国)网络技术有限公司是中国领先的独立第三方支付平台，是阿里巴巴集团的关联公司。&nbsp;<br>
+                                        支付宝以人民币进行交易，资金将在1~60分钟内到账。
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/wepay.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:20px;padding-top:5px;">
+                                    <p>
+                                        <strong>微信支付</strong><br>
+                                        ☆ 支持大多数大陆发行的储蓄卡/信用卡。
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="padding-bottom:20px;">
+                                <td><img src="~/Content/images/icon-upproduct/unionpay.png" alt=""></td>
+                                <td align="left" valign="center" style="padding-left:10px; line-height:20px;font-size:12px;padding-bottom:10px;padding-top:5px;">
+                                    <strong>国内银行卡银联转账汇款支付</strong><br>
+                                    ☆ 支持大多数中国大陆发行的带有银联/UnionPay标识的储蓄卡/信用卡。
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="product_right">
+            <div class="good-main-shoppingcar good-ad" style="float: right;">
+                <div class="good-main-shoppingcar-top">
+                    Liên hệ với chúng tôi
+                </div>
+                <div class="good-main-shoppingcar-content good-ad-content">
+                    <img src="~/Content/images/icon-home/lete-weixin.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>
+@section scripts{
+    <script src="~/Content/js/jquery.SuperSlide.2.1.1.js"></script> 
+    <script src="~/Content/js/tab.js"></script> 
+}

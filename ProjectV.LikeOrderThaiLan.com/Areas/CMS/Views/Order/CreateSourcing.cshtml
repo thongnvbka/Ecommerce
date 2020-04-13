@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "CreateSourcing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/plugins/jstree/dist/themes/default/style.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @*@Html.Partial("~/Views/Partial/_Toolbar.cshtml")*@
+
+    <div class="dingdan">
+        <div class="" id="tab_1">
+            <div id="tabs-container" class="form-info">
+                <div class="selectService col-lg-12" id="leftService">
+                    <div class="col-lg-12" id="basicPakage">
+                        <p>Thông tin dịch vụ tìm nguồn</p>
+                    </div>
+                    <div>
+                        <div class="child"><i class="fa fa-check green"></i> Tìm kiếm hàng hóa link tổng hợp theo yêu cầu của khách hàng</div>
+                        <div class="child"><i class="fa fa-check green"></i> Phân tích người bán(Quy mô,chiết khấu,độ uy tín,chính sách bảo hành,hỗ trợ khác...)</div>
+                        <div class="child"><i class="fa fa-check green"></i> Đàm phán giá tối ưu chia tỉ lệ <span class="spanSC">50%-50%</span></div>
+                    </div>
+                    <div class="col-lg-12" id="titleSeperate">
+                        <p>Chi tiết giao dịch</p>
+                    </div>
+                    <div>
+                        <div class="child"><i class="fa fa-times red-color"></i> <span class="spanSC">Mất phí</span> giao dịch mẫu</div>
+                        <div class="child"><i class="fa fa-check green"></i> Soạn thảo hợp đồng</div>
+                        <div class="child"><i class="fa fa-check green"></i> Ưu đãi <span class="spanSC">20%</span> phí giao dịch</div>
+                        <div class="child"><i class="fa fa-check green"></i> Ưu đãi <span class="spanSC">1000đ/kg</span> phí vận chuyển   </div>
+                    </div>
+                    <div class="col-lg-12" id="titleSeperate">
+                        <p>Quyền lợi sau mua hàng</p>
+                    </div>
+                    <div>
+                        <div class="child"><i class="fa fa-check green"></i> Giải quyết tranh chấp,khiếu nại phát sinh</div>
+                        <div class="child"><i class="fa fa-check green"></i> Hỗ trợ <span class="spanSC">10%</span>chi phí đổi trả hàng hóa</div>
+                    </div>
+                    <div class="childTop text-center" id="endBasic">
+                        <p style="padding-top:15px;">
+                            <span class="source-price">Phí dịch vụ: 2.000.0000</span> VND / <span>01 yêu cầu</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="service-button">
+                    <button class="btn btn-primary" href="" id="btnDeposit" onclick="create()">Tạo yêu cầu ngay</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="createsourcing" class="rs">
+            <div class="rs" id="listSourcing">
+                <form class="zichan-zijin zichan-box rs" id="listCreateSourcing">
+
+                    <table class="table table-product table-create-new-pr" border="1" cellpadding="1" cellspacing="1" id="add-input">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">#</th>
+                                <th style="width: 150px;">Ảnh</th>
+                                <th style="width: 250px;">Thông tin hàng hóa</th>
+                                <th style="width: 280px;">Kích thước hàng hóa </th>
+                                <th style="width: 200px;">Ghi chú </th>
+                                <th style="width: 40px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: {data: listSourcingDetail, afterRender: renderedHandler}">
+                            <tr>
+                                <td class="text-center" data-bind="text: $index()+1"></td>
+                                <td>
+                                    <img data-bind="attr: { src: ImagePath1 }" width="100" height="80" alt="" /><br />
+                                    <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: $parent.addImage">
+                                        <span class="btn btn-primary btn-file btn-flat" style="color: #fff;">
+                                            Tải ảnh
+                                            <input class="flieuploadImg" name="" type="file" style="width:20px;">
+                                        </span>
+                                        <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                    </div>
+                                </td>
+                                <td class="infor-order-deposit" style="text-align: left; ">
+                                    <div class="rs">
+                                        <input type="text" placeholder="Nhập tên sản phẩm" data-bind="value: Name, hasFocus: NameFocus, css: NameCss" /><br />
+                                    </div>
+                                    <div class="rs" style="height: 35px !important">
+                                        <div class="category_tree_deposit rs" data-bind="attr: { id: 'cate' + Id}"></div>
+                                    </div>
+                                    <div class="rs">
+                                        <input type="text" placeholder="Link sản phẩm" data-bind="value: Link, hasFocus: LinkFocus, css: LinkCss" /><br />
+                                    </div>
+                                </td>
+
+                                <td class="infor-order-deposit infor-size-product" style="text-align: center;">
+                                    <div class="rs">
+                                        <input type="number" placeholder="Số lượng sản phẩm" min="0" data-bind="value: Quantity, hasFocus: QuantityFocus, css: QuantityCss" /><br />
+                                    </div>
+                                    <br />
+                                    <div class="rs">
+                                        <input type="text" placeholder="Màu sắc" data-bind="value: Color, hasFocus: ColorFocus, css: ColorCss" />
+                                    </div>
+                                    <br />
+                                </td>
+
+                                <td style="text-align: center;" class="note-product-create-sourcing">
+                                    <div class="rs">
+                                        <textarea type="text" placeholder="Ghi chú" data-bind="value: Note"></textarea>
+                                    </div>
+                                </td>
+
+                                <td class="option-delete" style="padding: 0 !important;">
+
+                                    <a class="btn btn-delete" data-bind="click: $parent.removeOrderDetail"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="10">
+                                    <a data-bind="click: addSourcingDetail" style="text-align: left">
+                                        <div style="width: 70px; height: 70px; border: 1px dashed #878787; margin-left: 38px; text-align: center; float: left">
+                                            <i class="fa fa-plus" style="font-size: 78px; color: #D5D5D5;"></i>
+                                        </div>
+                                        <span style="float: left; padding: 11px; font-size: 18px; line-height: 52px;">Thêm sản phẩm</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="action-create-new rs">
+                        <div class="left-create-order send-request" id="btnSubmit" style="float: left;">
+                            <div class="rs back-to-list pull-left">
+                                <a class="btn" data-bind="click:backToList"><i class="fa fa-arrow-left"></i>Trở về</a>
+                            </div>
+                        </div>
+                        <button data-bind="click: saveSourcing, enable: isSubmit" class="btn btn-add" type="button" style="float: right;">
+                            <!-- ko if: isSubmit()-->
+                            <i class="fa fa-check"></i>
+                            <!-- /ko -->
+                            <!-- ko if: !isSubmit()-->
+                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            <!-- /ko -->
+                            Tạo đơn tìm nguồn hàng
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+@section scripts{
+
+    <script src="~/Scripts/lodash.min.js"></script>
+    <script src="~/Content/plugins/select2/select2.full.min.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jquery.dropdownjstree.js"></script>
+
+    @* //InputMark *@
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.numeric.extensions.js"></script>
+
+    @*//file js knockoutjs ViewModel*@
+    <script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/sourcingProduct.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/sourcingDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/source/sourceStatusItemModel.js"></script>
+    @*<script src="~/Areas/CMS/Scripts/viewmodels/order/sourcing/sourcingViewModel.js"></script>*@
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/sourcing/createSourcingViewModel.js"></script>
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    <script src="~/Content/js/tab-content.js"></script>
+    <script type="text/javascript">
+        var listcategoryJsTree = @Html.Raw(ViewBag.ListCategory);
+    </script>
+
+}

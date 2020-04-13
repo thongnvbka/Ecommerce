@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewBag.Title = "BaoMat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $('.tool-list-mobile #btn-toollist').click(function () {
+            $('.tool-list-mobile #mob-toollist-content').slideToggle(200);
+            $(this).toggleClass('active');
+        });
+        $('.tool-list-mobile #mob-toollist-content, .tool-list-mobile #btn-toollist').click(function (e) { e.stopPropagation(); });
+        $(document).click(function () {
+            $('.tool-list-mobile #mob-toollist-content').hide();
+            $('.tool-list-mobile #btn-toollist').removeClass('active');
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0, left: '0'
+                }, 500, function () {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+}
+
+
+
+
+<section class="tool-list">
+    <div class="container">
+        <div class="tool-list-mobile hidden-md hidden-sm hidden-lg invisible-xs">
+            <a href="javascript:void(0);" id="btn-toollist">Tính năng nổi bật</a>
+            <div class="tool-list-mobile-nav" id="mob-toollist-content" style="display: none;">
+                <ul class="list-unstyled">
+                    <li class=""><a href="@Url.Action("SalientFeatures","Home")"><span>Tính năng nổi bật</span></a></li>
+                    <li class=""><a href="@Url.Action("SellBest","Home")"><span>Web bán hàng ưu việt</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerStore","Home")"><span>Quản lý cửa hàng</span></a></li>
+                    <li class="current"><a href="@Url.Action("CustomTheme","Home")"><span>Tùy chỉnh giao diện</span></a></li>
+                    <li class=""><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing &amp; SEO</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerProduct","Home")"><span>Quản lý sản phẩm</span></a></li>
+                    <li class=""><a href="@Url.Action("Security","Home")"><span>Mạnh mẽ &amp; Bảo mật</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-list-content hidden-xs">
+            <div id="owl-tool" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 2282px; left:0; display: block;">
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("SalientFeatures","Home")"><span>Tính năng</span><br>nổi bật</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("SellBest","Home")"><span>Web bán hàng</span><br>ưu việt</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("ManagerStore","Home")"><span>Quản lý</span><br>cửa hàng</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool current">
+                                <a href="@Url.Action("CustomTheme","Home")"><span>Tùy chỉnh</span><br>giao diện</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("MarketingSeo","Home")"><span>Marketing</span><br>&amp; SEO</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("ManagerProduct","Home")"><span>Quản lý</span><br>sản phẩm</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("Security","Home")"><span>Mạnh mẽ </span><br>&amp; Bảo mật</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-controls clickable" style="display: none;">
+                    <div class="owl-pagination">
+
+                        <div class="owl-page active"><span class=""></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="customNavigation visible-sm-block">
+                <a class="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="tool-content">
+    <div class="container" style="opacity: 1; left: 0;">
+        <div class="tool-content-title">
+            <h1>Nền tảng hệ thống website mạnh mẽ</h1>
+            <p>website hoạt động ổn định </p>
+            <p>tốc độ truy cập vượt trội và đảm bảo tính bảo mật an toàn</p>
+        </div>
+        <div class="tool-content-info tool-page-2">
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab2-1.jpg" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+
+                        <h2>Không giới hạn<br> Băng thông</h2>
+                        <p>Bizweb cung cấp cho bạn website với tốc độ truy cập vượt trội, băng thông không giới hạn. Bạn không bao giờ phải lo lắng về việc trả thêm chi phí để mở rộng băng thông nhằm phục vụ khách hàng truy cập vào website của mình.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="/Content/images/func/tab2-2.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+
+                        <h2>Hệ thống máy chủ<br> mạnh mẽ</h2>
+                        <p>Bizweb sử dụng hệ thống máy chủ mạnh mẽ, đảm bảo website của bạn chạy ổn định và mọi dữ liệu dc bảo mật ở mức cao nhất</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="/Content/images/func/tab2-3.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+
+                        <h2>Chứng chỉ SSL</h2>
+                        <p>Website của bạn được trang bị sẵn chuẩn SSL giúp bảo vệ thông tin và dữ liệu trong website an toàn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="/Content/images/func/tab2-4.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+
+                        <h2>Sao lưu dữ liệu<br> liên tục</h2>
+                        <p>Hệ thống của chúng tôi mỗi ngày đều thực hiện backup dữ liệu của bạn để đảm bảo không có sự cố nào về dữ liệu có thể xảy ra với website của bạn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="/Content/images/func/tab2-5.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+
+                        <h2>Nâng cấp tính năng<br> tự động</h2>
+                        <p>Website của bạn sẽ được nâng cấp tính năng mới tự động để bạn có những trải nghiệm tốt nhất khi sử dụng Bizweb</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="/Content/images/func/tab2-6.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+
+                        <h2>Hệ thống hoạt động<br> ổn định và được hỗ trợ 24/7</h2>
+                        <p>Với Bizweb, bạn luôn có 1 đội ngũ kỹ thuật hùng hậu theo dõi website của bạn 24/7 để đảm bảo website luôn hoạt động ổn định và sẵn sàng trợ giúp bạn bất cứ lúc nào</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">Hơn 23,000 doanh nghiệp và chủ shop đang bán hàng như thế nào?</h3>
+            <span>
+                Đăng ký dùng thử miễn phí 15 ngày để khám phá
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <input style="font-weight : 300;" id="site_name_bottom" class="input-site-name hidden-xs" type="text" value="" placeholder="Nhập tên cửa hàng/doanh nghiệp của bạn" onkeypress="return onInputStoreName(event, this)">
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Dùng thử miễn phí</a>
+        </div>
+    </div>
+</div>
+
+
+

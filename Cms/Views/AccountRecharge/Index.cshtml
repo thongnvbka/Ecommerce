@@ -1,0 +1,231 @@
+﻿@{
+    ViewBag.Title = "Customer e-wallet management";
+}
+
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#naptien').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Statistics of the recharge situation'
+                },
+                subtitle: {
+                    //text: 'Source: WorldClimate.com'
+                },
+                xAxis: {
+                    categories: [
+                        '01/09/2016',
+                        '02/09/2016',
+                        '03/09/2016',
+                        '04/09/2016',
+                        '05/09/2016',
+                        '06/09/2016',
+                        '07/09/2016',
+                        '08/09/2016',
+                        '09/09/2016',
+                        '10/09/2016',
+                        '11/09/2016',
+                        '12/09/2016'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Rainfall (mm)'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} Baht</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Nhaphangtrungquoc.com',
+                    data: [4293.9, 7211.5, 16.4, 1229.2, 1244.0, 1763.0, 11135.6, 148.5, 2126.4, 19421.1, 9212.6, 5224.4]
+
+                }, {
+                    name: 'Orderhangkinhdoanh.com',
+                    data: [83.6, 718.8, 9228.5, 9213.4, 12106.0, 842.5, 1025.0, 1304.3, 921.2, 823.5, 1016.6, 921.3]
+
+                }, {
+                    name: 'Timnguonhanggiare.com',
+                    data: [1248.9, 3218.8, 329.3, 421.4, 4127.0, 428.3, 529.0, 539.6, 522.4, 635.2, 519.3, 5321.2]
+
+                }]
+            });
+
+            $('#trutien').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Statistics withdrawal situation'
+                },
+                subtitle: {
+                    //text: 'Source: WorldClimate.com'
+                },
+                xAxis: {
+                    categories: [
+                        '01/09/2016',
+                        '02/09/2016',
+                        '03/09/2016',
+                        '04/09/2016',
+                        '05/09/2016',
+                        '06/09/2016',
+                        '07/09/2016',
+                        '08/09/2016',
+                        '09/09/2016',
+                        '10/09/2016',
+                        '11/09/2016',
+                        '12/09/2016'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Rainfall (mm)'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} package</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Nhaphangtrungquoc.com',
+                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+                }, {
+                    name: 'Orderhangkinhdoanh.com',
+                    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+                }, {
+                    name: 'Timnguonhanggiare.com',
+                    data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+                }]
+            });
+        });
+    </script>
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Customer e-wallet management
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> View statistics loaded with deductions</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="naptien" style="min-width: 150px; height: 250px; margin: 0 auto"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="trutien" style="min-width: 150px; height: 250px; margin: 0 auto"></div>
+            </div>
+        </div>
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                          <label for="ddlGroup">Keyword search </label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can perform searches by customer's account ID, account name, real name, phone number, email, .."></i>
+                        <input class="form-control" id="SearchInfo_Keyword" name="SearchInfo.Keyword" placeholder="account ID, account name, real name, phone number, email, .." type="text" value="">
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label for="ddlWarehouse">Select System</label>
+                        <select class="form-control select-view" id="ddlWarehouse" style="width: 100%;">
+                            <option value="1" selected="selected">- All -</option>
+                            <option value="2">nhaphangtrungquoc.com</option>
+                            <option value="4">orderhangkinhdoanh.com</option>
+                            <option value="7">timnguonhanggiare.com</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Account type</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">VIP 0</option>
+                            <option value="50">VIP 1</option>
+                            <option value="150">VIP 2</option>
+                            <option value="200">VIP 3</option>
+                            <option value="300">VIP 4</option>
+                            <option value="400">VIP 5</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Status</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">Opening</option>
+                            <option value="50">Stop operations</option>
+                            <option value="100">Deleted</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <!-- Date and time range -->
+                        <label>Registration Date</label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> Select the date the customer subscribes
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            @Html.Partial("_List")
+        </div>
+        <!-- /.col -->
+    </div>
+
+</section>
+<!-- /.content -->

@@ -1,0 +1,63 @@
+﻿@model  ModelView<Library.DbContext.Entities.Warehouse, WarehouseViewModel>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">@*Định danh kho*@Warehouse ID</th> @* la j *@  
+            <th class="text-center">Warehouse name</th>
+            <th class="text-center">Country</th>
+            <th class="text-center">Address</th>
+            <th class="text-center">Manager</th>
+            <th class="text-center">Phone</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Items.Any())
+        {
+            <tr>
+                <td colspan="10" class="text-center">There are no records</td>
+            </tr>
+        }
+        else
+
+        {
+            var idx = 1;
+            foreach (var m in Model.Items)
+            {
+                <tr>
+                    <td class="text-center w-50">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                    <td class="text-center">
+                        <a href="#"><strong>@m.Code</strong></a>
+                    </td>
+                    <td>@m.Name</td>
+                    <td>@m.Country</td>
+                    <td>@m.Address</td>
+                    <td>@m.UserFullName</td>
+                    <td>@m.Phone</td>
+                    <td class="text-center">
+                        @{
+                            if (@m.Status == 1)
+                            {
+                                <span class="label label-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="label label-default">Non-access</span>
+                            }
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("WarehouseEdit", new {id = m.Id})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="javascript:;" data-url="@Url.Action("WarehouseDelete", new {id = m.Id})" data-name="@m.Name" class="btn btn-danger btn-sm delete-item"><i class="fa fa-trash"></i> Delete </a>
+                    </td>
+                </tr>
+                idx += 1;
+            }
+        }
+    </tbody>
+</table>
+
+@Html.Partial("_Paging", Model.PageInfo)

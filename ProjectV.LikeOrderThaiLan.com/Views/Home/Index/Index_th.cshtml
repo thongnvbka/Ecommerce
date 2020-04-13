@@ -1,0 +1,105 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.Controllers
+@{
+    var rate = new BaseController().ExchangeRate();
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<section class="home-tool">
+    <div class="home-tool-main">
+        <div class="home-tool-main-top">
+            <span>
+                @Resource.Home_HeplYou
+            </span>
+        </div>
+        <ul class="home-tool-main-tcontent clearFix">
+            <li data-id="daigou" class="lete-active" style="min-height: 395px;">
+                <img src="~/Content/images/icon-home-master/home_daigou_icon.png" alt=""/>
+                <h1>
+                    @Resource.Home_ServiceOrder
+                </h1>
+                <p>
+                    @Resource.Home_ServiceOrderContent
+                </p>
+                <span></span>
+            </li>
+            <li data-id="zhuanyun" style="min-height: 395px;">
+                <span style="left: 49% !important"></span>
+                <img src="~/Content/images/icon-home-master/home_zhuanyun_icon.png" alt=""/>
+                <h1>
+                    @Resource.Home_ServiceDepositOrder
+                </h1>
+                <p>
+                    @Resource.Home_ServiceDepositOrderContent
+                </p>
+            </li>
+
+            <li data-id="dingzhi" style="min-height: 395px;">
+                <img src="~/Content/images/icon-home-master/home_dingzhi_icon.png" alt=""/>
+                <span style="left: 49% !important"></span>
+                <h1>
+                    @Resource.Home_ServiceSourcing
+                </h1>
+                <p>
+                    @Resource.Home_ServiceSourcingContent
+                </p>
+            </li>
+        </ul>
+        <div class="home-tool-main-tcontent-box daigou_msg lete-active" style="display: block; background-image: url('/Content/images/icon-css/Order.png') !important;">
+            <a class="home-tool-main-tcontent-box-a" href="/@culture/CMS/Order/CreateOrder">
+                @Resource.Home_OrderNow
+            </a>
+            <label></label>
+        </div>
+
+        <div class="home-tool-main-tcontent-box zhuanyun_msg " style="display: none; background-image: url('/Content/images/icon-css/Deposit.png') !important;">
+            <label></label>
+            <a class="home-tool-main-tcontent-box-a" href="/@culture/CMS/Order/CreateDeposit" style="background: #dd2727; color: #fff; padding: 10px; font-size: 14px; box-sizing: border-box; border-radius: 5px;">
+                @Resource.Home_CreateDeposit
+            </a>
+        </div>
+
+        <div class="home-tool-main-tcontent-box dingzhi_msg" style="display: none; background-image: url('/Content/images/icon-css/Sourcing.png') !important;">
+            <label></label>
+            <a class="home-tool-main-tcontent-box-a" href="/@culture">@Resource.Home_CreateSourcingOrder</a>
+        </div>
+    </div>
+</section>
+
+<section class="home-service">
+    <div class="home-service-top">
+        <span>
+            @Resource.Home_Camketcldv
+        </span>
+        <p>@Resource.Home_ServiceOur</p>
+    </div>
+    <div class="home-service-content">
+        <img src="~/Content/images/icon-home-master/P1.png" alt="" />
+        <p><span>◇</span>สนับสนุนลูกค้าตลอด24/7</p>
+        <p><span>◇</span>ปลอดภัยในการขนส่ง</p>
+        <p><span>◇</span>ระยะเวลาที่รวดเร็ว - จัดส่งถึงบ้าน</p>
+    </div>
+    <div class="home-service-content">
+        <img src="~/Content/images/icon-home-master/P2.png" alt="" />
+        <p><span>◇</span>ค่าบริการต่ำที่สุด</p>
+        <p><span>◇</span>การจัดการกระเป๋าเงินอิเล็กทรอนิกส์งายและโปร่งใส</p>
+        <p><span>◇</span>ประเมินราคา หลัง 15 นับจากตอนรับออเดอร์</p>
+    </div>
+    <div class="home-service-content">
+        <img src="~/Content/images/icon-home-master/P3.png" alt="" />
+        <p>
+            <span>◇</span>จััดซื้อรวดเร็วภายใน  4 ชั่วโมงหลังจากที่ลุกค้าว่างมัดจำ
+        </p>
+        <p>
+            <span>◇</span>ช่วยเหลือการค้นหาเหล่งสินค้าที่มีความน่าเชื่อถือและมีเราคาถูกที่สุด
+        </p>
+        <p>
+            <span>◇</span>รับประกันคืนเงิน 100% ถ้าสินค้าหายในระหว่างการขนส่ง
+        </p>
+    </div>
+    <div class="rs" style="text-align: center; box-sizing: border-box;">
+        <a href="/@culture/Home/FAQ" class="bgdv" target="_blank">
+            @Resource.Home_TablePriceService
+        </a>
+    </div>
+
+</section>

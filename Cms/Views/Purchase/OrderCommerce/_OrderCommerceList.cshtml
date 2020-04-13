@@ -1,0 +1,79 @@
+﻿@{
+    var status = (byte)OrderStatus.WaitOrder;
+    var statusSuccess = (byte)OrderStatus.OrderSuccess;
+    var statusOrder = (byte) OrderStatus.Order;
+    var wait = (byte) OrderStatus.WaitPrice;
+    var quotes = (byte)OrderStatus.AreQuotes;
+
+    var update = CheckPermision(EnumAction.Update, EnumPage.OrderCommerce);
+    var delete = CheckPermision(EnumAction.Delete, EnumPage.OrderCommerce);
+}
+
+<script type="text/html" id="order-commerce-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td>
+            <a data-bind="click: orderCommerceDetailViewModel.showModal.bind($data, Id)" href="javascript:;"><strong data-bind="text: ReturnCode(Code)"></strong></a><br />
+            <span data-bind="text: '( ' + formatNumberic(ProductNo, 'N0') + ' Product' + ' )'"></span>
+        </td>
+        <td class="text-center">
+            <!-- ko if: moment(new Date()).diff(moment(Created), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+            <!-- /ko -->
+            <!-- ko ifnot: moment(new Date()).diff(moment(Created), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').format('L LTS')" class=""></span>
+            <!-- /ko -->
+        </td>
+        <td data-bind="text: formatNumberic(Total, 'N2')" class="text-right"></td>
+        @*<td class="text-right">
+            <strong data-bind="text: formatNumberic(ProductNo, 'N0')"></strong>
+        </td>*@
+        <td>
+            <span style="display:inline-block">
+                <i class="fa fa-envelope-o w20 text-blue" data-toggle="tooltip" data-placement="right" title="" data-original-title="Email"></i>&nbsp;<span data-bind="text: Email"></span>
+            </span>
+        </td>
+        <!-- ko if: $parent.active() != 'order-new' -->
+        @if (UserState.Type != 0)
+        {
+            <td class="text-center">
+                <span style="display:inline-block"><span data-bind="text: UserFullName"></span></span>
+            </td>
+        }
+        <!-- /ko -->
+        <td class="text-center">
+            <span data-bind="text: statusApp.order[Status].Name, css: statusApp.order[Status].Class"></span>
+        </td>
+        <td>
+            <!-- ko if: Chat == 0 -->
+            <a data-bind="click: $parent.showChatOrder" href="javascript:;" class="label label-success"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with customers"></i></a>
+            <!-- /ko -->
+            <!-- ko ifnot: Chat == 0 -->
+            <a data-bind="click: $parent.showChatOrder" href="javascript:;" class="label label-warning"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with customers"></i></a>
+            <!-- /ko -->
+        </td>
+        <td>
+            @if (update)
+            {
+                <!-- ko if: Status > @status -->
+                <a data-bind="click: orderCommerce.viewOrderAdd.bind($data, Id), attr: { href: '/Purchase/Order#' + ReturnCode(Code) }" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> View</a>
+                <!-- /ko -->
+                <!-- ko if: Status == @quotes -->
+                <a data-bind="click: $parent.viewEditDetail.bind($data, Id), attr: { href: '/Purchase/Order#' + ReturnCode(Code) }" href="javscript:;" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> View</a>
+            }
+            <!-- /ko -->
+            @if (delete)
+            {
+                <!-- ko if: Status < @statusSuccess -->
+                <a data-bind="click: $parent.orderClose" href="javscript:;" class="btn btn-danger btn-xs"><i class="fa fa-times-circle"></i> Cancel</a>
+                <!-- /ko -->
+            }
+            @if (UserState.Type > 0)
+            {
+                <!-- ko if: (UserId > 0 && Status == @statusOrder) -->
+                <a data-bind="click: $parent.orderReplyModal" href="javscript:;" class="btn btn-primary btn-xs" title="Transfer to another Staff"><i class="fa fa-reply"></i> Trip</a>
+                <!-- /ko -->
+            }
+        </td>
+    </tr>
+</script>

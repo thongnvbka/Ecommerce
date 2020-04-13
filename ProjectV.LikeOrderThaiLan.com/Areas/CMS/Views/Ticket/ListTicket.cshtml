@@ -1,0 +1,139 @@
+﻿<script type="text/html" id="ticket">
+    <section class="zy-main">
+        <div class="user-r">
+            <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="user-r-main display-none" data-bind="css: isRending() === true? '' : 'display-none'">
+                <div class="dingdan">
+                    <ul class="zichan-nav" id="buyOrder">
+                        <li data-id="zijin" class="lete-active"> @Resource.Dashboard_TicketList </li>
+                        <li class="create-new" style="margin-left: 10px;">
+                            <a href="@Url.Action("CreateTicket", "Ticket", new {Area = "CMS"})">
+                                <i class="fa fa-plus"></i>
+                                @Resource.Ticket_CreateTicket
+                            </a>
+                        </li>
+                        <li class="create-new">
+                            <input type="text" id="txtKeyword" placeholder="@Resource.Order_InputCodeOrder" data-bind="value: Keyword, event: {keypress: onEnter}" autocomplete="off"/>
+                            <i class="fa fa-search" id="btnSearch" style="margin-right: 10px;" data-bind="click: searchKeyword"></i>
+                        </li>
+                    </ul>
+                    <div class="dingdan-top">
+                        <div class="search-time">
+                            <div class="text-time">
+                                <p>@Resource.Order_TimeCreateOrder</p>
+                            </div>
+                            <div class="check-time">
+                                <a href="javascript:void(0)" class="btn btn-default" data-bind="click: searchAllTime">@Resource.Order_StatusAll</a>
+                            </div>
+                            <div class="search-calender">
+                                <div class="date-start">
+                                    <span>@Resource.From:</span><input type="text" id="date_timepicker_start" data-bind="value: StartSearch" placeholder="20/10/2016" autocomplete="off"/> <i class="fa fa-calendar"></i>
+                                </div>
+                                <div class="date-end">
+                                    <span>@Resource.To : </span><input type="text" id="date_timepicker_end" data-bind="value: FinishSearch" placeholder="20/10/2016" autocomplete="off"/> <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search-time" style="border-bottom: 1px solid #e1e1e1;">
+                            <div class="text-time" style="padding-top: 17px !important">
+                                <p>@Resource.Order_Status</p>
+                            </div>
+                            <div class="check-time" style="padding-top: 10px !important">
+                                <a href="javascript:void(0)" data-bind="click: searchStatus.bind($data, -1)" class="btn btn-default">@Resource.Order_StatusAll</a>
+                            </div>
+                            <div class="status-payment" data-bind="template: { name: 'tab-status', data: complainStatusItemModel }">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zichan-zijin zichan-box rs">
+                        <form class="rs mg-bottom-20">
+                            <div data-bind="if: listAllComplain().length > 0" class="mg-t-15 rs paegging-infor">
+                                <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                <ul class="pagination no-margin pull-right">
+                                    <li data-bind="if: pageStart">
+                                        <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                    </li>
+                                    <li data-bind="if: pageNext">
+                                        <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                    </li>
+                                    <!-- ko foreach: listPage -->
+                                    <li data-bind="css: Page === page ? 'active' :''  ">
+                                        <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                    </li>
+                                    <!-- /ko -->
+                                    <li data-bind="if: pagePrev">
+                                        <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                    </li>
+                                    <li data-bind="if: pageEnd">
+                                        <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+
+                        <div data-bind="css: isRendingPage() === true? '' : 'display-none'" class="rs loading-acc">
+                            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30px !important"> # </th>
+                                        <th class="w-200"> @Resource.Ticket_Code </th>
+                                        <th> @Resource.Order_Exhibition </th>
+                                        <th class="w-250"> @Resource.Ticket_Content </th>
+                                        <th> @Resource.Ticket_EmployeeFeedback </th>
+                                        <th> @Resource.Order_Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="template: { name: 'ListTicket', foreach: listAllComplain }"></tbody>
+
+                                <tfoot data-bind="if: listAllComplain().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="6">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        
+
+                        <div data-bind="css: isRendingPage() === true? 'display-none' : ''" class="rs loading-acc">
+                            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <form class="rs mg-bottom-20">
+                            <div data-bind="if: listAllComplain().length > 0" class="mg-t-15 rs">
+                                <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                <ul class="pagination no-margin pull-right">
+                                    <li data-bind="if: pageStart">
+                                        <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                    </li>
+                                    <li data-bind="if: pageNext">
+                                        <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                    </li>
+                                    <!-- ko foreach: listPage -->
+                                    <li data-bind="css: Page === page ? 'active' :''  ">
+                                        <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                    </li>
+                                    <!-- /ko -->
+                                    <li data-bind="if: pagePrev">
+                                        <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                    </li>
+                                    <li data-bind="if: pageEnd">
+                                        <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+      
+    </section>
+</script>

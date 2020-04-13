@@ -1,0 +1,458 @@
+--------- 08:32:11 ---------
+Ref URL: https://projectv.com/delivery
+Host: projectv.com
+URL: /DebitReport
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 08:32:11 ---------
+Ref URL: 
+Host: projectv.com
+URL: /TrackingDebt
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 08:32:12 ---------
+Ref URL: https://projectv.com/TrackingDebt
+Host: projectv.com
+URL: /TrackingPackage
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 08:32:12 ---------
+Ref URL: 
+Host: projectv.com
+URL: /delivery
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 08:32:13 ---------
+Ref URL: 
+Host: projectv.com
+URL: /DebitReport
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 09:09:37 ---------
+Ref URL: https://projectv.com/error/no-permission?permission=Xem&pages=Theo dõi công nợ đơn hàng
+Host: projectv.com
+URL: /package
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 09:09:38 ---------
+Ref URL: https://projectv.com/
+Host: projectv.com
+URL: /Purchase/Order
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.DbContext.Repositories.NotifyRealTimeRepository.GetNotifySystemByToUserId(String keyword, Int32 userId, Nullable`1 isRead, Nullable`1 type, Int32 currentPage, Int32 recordPerPage, Int32& totalRecord) in C:\Tfs\ProjectV\Library\DbContext\Repositories\NotifyRealTimeRepository.cs:line 22
+   at Cms.Attributes.LogTrackerAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Tfs\ProjectV\Cms\Attributes\LogTrackerAttribute.cs:line 91
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void Validate()
+--------- 09:14:57 ---------
+Ref URL: https://projectv.com/Account/LogOn?ReturnUrl=%2FTrackingPackage
+Host: projectv.com
+URL: /Account/LogOn
+IP: 127.0.0.1
+Error: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+Source: EntityFramework
+Trace:    at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.SingleOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.UnitOfWork.Repository`1.SingleOrDefault(Expression`1 predicate) in C:\Tfs\ProjectV\Library\UnitOfWork\Repository.cs:line 56
+   at Cms.Controllers.AccountController.<LogOn>d__1.MoveNext() in C:\Tfs\ProjectV\Cms\Controllers\AccountController.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+InnerException : 
+GetBaseException : System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+Library.DbContext.ComplainOrder: : EntityType 'ComplainOrder' has no key defined. Define the key for this EntityType.
+ComplainOrders: EntityType: EntitySet 'ComplainOrders' is based on type 'ComplainOrder' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.SingleOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Library.UnitOfWork.Repository`1.SingleOrDefault(Expression`1 predicate) in C:\Tfs\ProjectV\Library\UnitOfWork\Repository.cs:line 56
+   at Cms.Controllers.AccountController.<LogOn>d__1.MoveNext() in C:\Tfs\ProjectV\Cms\Controllers\AccountController.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+TargetSite : Void Validate()

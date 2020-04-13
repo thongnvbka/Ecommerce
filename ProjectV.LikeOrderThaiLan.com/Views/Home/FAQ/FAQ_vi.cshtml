@@ -1,0 +1,1161 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.Controllers 
+@{
+    var rate = new BaseController().ExchangeRate();
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<section class="faq">
+    <div class="faq-nav">
+        <div class="faq-nav-top">
+            Câu hỏi thường gặp
+        </div>
+        <div class="faq-nav-box">
+            <h1>Hướng dẫn<span></span></h1>
+            <ul style="display: block;">
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'dathang')" id="defaultOpen">Tạo đơn hàng</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'kygui')">Tạo đơn ký gửi</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'khieunai')">Khiếu nại</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'caidatcongcu')">Cài đặt EXTENTION</a>
+                </li>
+
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'naptienvidientu')">Nạp tiền ví điện tử</a>
+                </li>
+
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'giaidapdichvu')">Giải đáp dịch vụ </a>
+                </li>
+            </ul>
+        </div>
+        <div class="faq-nav-box">
+            <h1>Bảng giá<span></span></h1>
+            <ul style="display: block;">
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'dvdathang')">Dịch vụ đặt hàng</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'dvkygui')">Dịch vụ ký gửi</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="dathang">
+        <div class="faq-content-msg">
+            <h3>Hướng dẫn tạo đơn đặt hàng</h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="font-17">
+                <b class="red-color">
+                    Trên hệ thống của Nhập hàng kinh doanh hỗ trợ 2 cách tạo đơn hàng,
+                    tạo đơn bằng extention hoặc gửi link và thông tin sản phẩm lên hệ thống. Nhập hàng kinh doanh
+                    khuyến khích khách hàng tạo đơn hàng thông qua extention để không phải chờ nhân viên báo giá
+                </b>
+            </p>
+
+            <p class="mg-t-15">
+                <a href="javascript:;" class="arr-collapse collapsed bold" id="cach1">
+                    1. Đơn hàng thông qua Extention <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+            </p>
+            <div id="gd1" class="panel-collapse collapse in" aria-expanded="true">
+
+                <p>
+                    - Với cách tạo đơn hàng này yêu cầu quý khách phải cài add-on trên trình duyệt của mình,
+                    quý khách có thể xem hướng dẫn cài đặt add-on tại
+                    <a href="https://chrome.google.com/webstore/detail/c%C3%B4ng-c%E1%BB%A5-%C4%91%E1%BA%B7t-h%C3%A0ng-nhkd/dkodpapicpniilofliibpjfahphljjnd/related" target="_blank">đây</a>
+                </p>
+                <p class="font-17">
+                    <b class="red-color mg-t-15">Bước 1:</b> Sau khi cài add-on khách hàng có thể vào trang
+                    <a href="https://taobao.com" target="_blank">taobao</a>,
+                    <a href="https://tmall.com" target="_blank">tmall</a>,
+                    <a href="https://1688.com" target="_blank">1688</a> để lựa chọn sản phẩm
+                </p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan1.png" alt="" />
+                </p>
+
+                <p class="mg-t-15"><b class="red-color">Bước 2:</b> Khách hàng vào giỏ hàng để kiểm tra thông tin sản phẩm, lựa chọn dịch dụ đi kèm. Bấm hoàn thành đơn đã chọn</p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan2.png" alt="" />
+                </p>
+                <p class="mg-t-15"><b class="red-color">Bước 3:</b> Kết đơn</p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan3.png" alt="" />
+
+                </p>
+                <p>Sau khi bấm kết đơn đơn hàng của quý khách sẽ hiện ở đơn chờ đặt cọc trong mục quản lý đơn hàng</p>
+                <p class="font-17"><b class="red-color">Bước 4:</b> Đặt cọc. Quý khách có thể lựa chọn đặt cọc cho từng đơn hoặc tất cả các đơn</p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan4.png" alt="" />
+                </p>
+                <p class="margin-15 text-danger font-17  mg-t-15"><b class="red-color">Lưu ý</b></p>
+                <ul class="note-guide-faq">
+                    <li><p>- Đơn hàng quá 30 ngày không kết đơn sẽ bị xóa khỏi giỏ hàng</p></li>
+                    <li><p>- Đối với các đơn hàng quá 30 ngày không đặt cọc hệ thống sẽ tự động xóa đơn hàng</p></li>
+                    <li><p>- Sản phẩm đã chọn thông số (màu sắc, kích thước) trước khi cho vào giỏ hàng nhưng giỏ hàng không hiện, quý khách vui lòng lấy link sản phẩm -&gt; xóa sản phẩm trong giỏ hàng rồi thực hiện lại các bước mua hàng như bình thường.</p></li>
+                    <li style="margin-top: 30px; margin-bottom: 21px;"><p>- Nếu xảy ra lỗi trong quá trình mua hàng bằng extention, quý khách vui lòng vào đây để thông báo cho bộ phận kĩ thuật của chúng tôi</p></li>
+                </ul>
+            </div>
+
+            <p class="margin-15 font-17">
+                <a href="javascript:;" class="arr-collapse bold" id="cach2">2. Tạo đơn hàng trực tiếp trên web <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+            </p>
+            <div id="gd2" class="panel-collapse collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <p>Phương thức này phù hợp với những đơn hàng ít sản phẩm tuy nhiên quý khách phải đợi nhân viên chăm sóc khách hàng của chúng tôi chỉnh sửa các thông tin theo chuẩn sau đó khách hàng sẽ tiến hành đặt cọc đơn hàng.</p>
+                    <p class="mg-t-15">
+                        <img src="/Content/images/img-more/CreateOrder2Resize.png" alt="" />
+                        <img src="/Content/images/img-more/CreateOrder3Resize.png" alt="" class="mg-t-15" />
+                    </p>
+                    <p>Khách hàng điền thông tin sản phẩm theo mẫu rồi bấm gửi đơn hàng, đơn hàng sau khi gửi sẽ hiện ở đơn chờ báo giá trong mục quản lý đơn hàng. Đơn hàng sau khi báo giá sẽ được thông báo với khách hàng thông qua hệ thống, quý khách có thể tiến hành đặt cọc đơn hàng như hình thức đặt cọc bằng extention.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="kygui">
+        <div class="faq-content-msg">
+            <h3>Hướng dẫn tạo đơn hàng ký gửi</h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="margin-15 font-17"><b class="red-color">Bước 1:</b> Khách hàng gửi hàng vào kho của Nhập hàng kinh doanh theo địa chỉ</p>
+            <div class="row margin-15">
+                <div class="col-md-6">
+                    <p>收货地址: 广东省广州市芳村窖口大街 48号双桥9号</p>
+                    <p>收货人: 黄越开</p> 
+                    <p>联系电话： 86-15625454242</p>
+                </div>
+            </div>
+            <p class="mg-t-15"><b class="red-color">Bước 2:</b> Khách hàng vào trang chủ LikeOrder.com, bấm vào tạo đơn kí gửi</p>
+            <p class="mg-t-15">
+
+                <img src="/Content/images/img-more/CreateDeposit1Resize.png" alt="" />
+            </p>
+            <p class="margin-15 font-17"><b class="red-color">Bước 3:</b> Nhập thông tin theo form để thông báo cho Nhập hàng kinh doanh biết hàng đang được chuyển và chúng tôi theo dõi đơn hàng tốt hơn.</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/CreateDeposit3Resize.png" alt="" />
+            </p>
+            <p class="font-17 text-danger"><b class="red-color">Lưu ý</b></p>
+            <p>Khách hàng cần điền đầy đủ thông tin để thuận lợi cho quá trình thông quan và phân loại hàng hóa. Thông tin thiếu hoặc không chính xác công ty sẽ lưu tại khu vực hàng hóa chưa phân loại của công ty và tính phí lưu kho.</p>
+            <p>Quý khách tham khảo thêm về chính sách và điều kiện về hàng kí gửi tại <a href="/@culture/Home/Faq"><b>đây</b></a></p>
+
+        </div>
+    </div>
+
+    <div class="faq-content tabcontent" id="khieunai">
+        <div class="faq-content-msg">
+            <h3>Hướng dẫn gửi khiếu nại</h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="bold">1. Bấm vào nút <span class="text-primary">[Khiếu nại]</span> khi đơn đã hoàn thành</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/CreateTicket1.png" alt="" />
+            </p>
+            <p class="bold mg-t-15">2. Điền theo form</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/CreateTicket2.png" alt="" />
+            </p>
+
+            <p class="mg-t-15">
+                <b class="red-color">
+                    Khách hàng tham khảo về chính sách giải quyết khiếu nại của công ty
+                    <a href="/@culture/Home/TermsOfService">tại đây</a>
+                </b>
+            </p>
+
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="caidatcongcu">
+        <div class="faq-content-msg">
+            <h3>Hướng dẫn cài đặt công cụ đặt hàng</h3>
+        </div>
+
+        <div class="faq-content-msg">
+            <p class="bold">1.Click vào nút <span class="text-primary">"Công cụ đặt hàng"</span></p>
+            <p class="mg-t-15">
+                <img src="~/Content/images/img-more/Setup.png"  alt="" />
+            </p>
+            <p class="bold  mg-t-15">
+                2.Sau khi click <span class="text-primary">"Công cụ đặt hàng"</span> -&gt; sẽ hiển thị ra trang công cụ -&gt; các bạn nhấp vào nút <span class="text-primary">[Add to Chrome]</span> màu xanh dương.
+            </p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/SetupExtensition2.png" alt="" />
+            </p>
+            <p class="bold mg-t-15">3. Sau khi click <span class="text-primary">[Add to Chrome]</span> -&gt; sẽ hiển thị popup -&gt; các bạn nhấp vào nút <span class="text-primary">[Add Extension]</span></p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/SetupExtensition3.png" alt="" />
+            </p>
+            <p class="bold mg-t-15">4. Cài đặt thành công</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/SetupExtensition4.png" alt="" />
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="faq-content tabcontent" id="naptienvidientu">
+        <div class="faq-content-msg">
+            <h3>Hướng dẫn nạp tiền ví điện tử</h3>
+        </div>
+        <div class="faq-content-msg">
+
+            <p class="text-primary font-17"><b class="red-color">1. Nạp tiền trực tiếp:</b></p>
+            <p>Quý khách vui lòng tới các địa chỉ sau:</p>
+            <p><b class="red-color">Hà Nội:</b></p>
+            <p>Tầng 3 số 32/133 Thái Hà, P. Trung Liệt, Q. Đống Đa, TP. Hà Nội</p>
+            <p><b class="red-color">Hồ Chí Minh:</b></p>
+            <p>Số 87/33/1 Nguyễn Sỹ Sách, P.15, Q. Tân Bình, TP. Hồ Chí Minh</p>
+
+
+            <p class="text-primary font-17"><b class="red-color">2. Chuyển khoản ngân hàng:</b></p>
+            <p class="bold red-color">• 2.1. Internet banking: </p>
+            <div class="panel-body">
+                <div class="row margin-15">
+                    <p>Quý khách chuyển khoản ghi rõ nội dung: NAPTIEN { email- số điện thoại liên hệ }. Trong đó email là email đăng nhập hệ thống của  quý khách, số điện thoại là số điện thoại quý khách đang sử dụng.</p>
+                </div>
+                <div class="zichan-zijin zichan-box rs" style="margin-top: 0 !important">
+
+                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th style="width: 200px !important">#</th>
+                                <th class="morestandard"><h4>Số tài khoản</h4></th>
+                                <th class="morestandard"><h4>Chủ tài khoản</h4></th>
+                                <th class="morestandard"><h4>Chi nhánh</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"> Ngân hàng Vietcombank</td>
+                                <td class="text-center"> 0451000377825</td>
+                                <td class="text-center"> Nguyễn Hữu Hưởng</td>
+                                <td class="text-center"> Phòng Giao Dịch Mỹ Đình - chi nhánh Thành Công</td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center"> Ngân hàng Vietcombank</td>
+                                <td class="text-center"> 0451000377791</td>
+                                <td class="text-center"> Đào Vân Anh</td>
+                                <td class="text-center"> Chi nhánh Thành Công</td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center"> Ngân hàng Vietcombank</td>
+                                <td class="text-center"> 0451000377827</td>
+                                <td class="text-center"> Phan Thị Như Quỳnh</td>
+                                <td class="text-center"> Phòng Giao Dịch Mỹ Đình - chi nhánh Thành Công</td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center"> Ngân hàng Vietcombank</td>
+                                <td class="text-center"> 0011004311023</td>
+                                <td class="text-center"> Bùi Thuỳ Nhung</td>
+                                <td class="text-center"> Chi nhánh Sở Giao dịch</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> Ngân hàng Vietcombank</td>
+                                <td class="text-center"> 0071001103623</td>
+                                <td class="text-center"> Phan Thị Như Quỳnh</td>
+                                <td class="text-center"> Phòng Giao dịch số 8 VCB TP HCM, 146-148 Đường Cộng Hoà, Phường 12, Quận Tân Bình, HCM</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> Ngân hàng Vietcombank</td>
+                                <td class="text-center"> 0071001103619</td>
+                                <td class="text-center"> Nguyễn Hữu Hưởng</td>
+                                <td class="text-center"> Phòng Giao dịch số 8 VCB TP HCM, 146-148 Đường Cộng Hoà, Phường 12, Quận Tân Bình, HCM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row margin-15">
+                    <p>Chúng tôi thường xuyên kiểm tra biến động tài khoản để nạp tiền nhanh nhất cho khách hàng. Quý khách sẽ được xác nhận nạp tiền nhanh hơn nếu chuyển tiền cùng hệ thống ngân hàng.</p>
+                    <p>Quý khách cần hỗ trợ xin vui lòng gọi điện đến số hotline 096.585.1688, 096.535.1688, 090.722.9469 hoặc 096.334.1688 - lựa chọn văn phòng HN hoặc văn phòng HCM - lựa chọn kế toán để xác nhận nạp tiền.</p>
+                </div>
+            </div>
+            <p class="bold red-color">• 2.2. ATM hoặc các hệ thống không có ghi chú: </p>
+            <p>Quý khách nạp tiền xong vui lòng gọi điện đến số hotline 096.585.1688, 096.535.1688, 090.722.9469 hoặc 096.334.1688 - lựa chọn VP HN hoặc VP HCM - lựa chọn phòng kế toán, hoặc gửi thư đến email support@LikeOrder.com với nội dung: NAPTIEN  VCB ( Tech hoặc BIDV  ) {email - số điện thoại}{sotaikhoan}. Trong đó email là email đăng nhập hệ thống của quý khách, số điện thoại là số điện thoại quý khách đang sử dụng, sotaikhoan là số tài khoản ngân hàng của quý khách.</p>
+            <p>Mọi vấn đề liên quan tới nạp tiền vào tài khoản, quý khách vui lòng liên hệ số hotline dưới chân trang. </p>
+
+        </div>
+    </div>
+
+    <div class="faq-content tabcontent" id="giaidapdichvu">
+        <div class="faq-content-msg">
+            <h3>Giải đáp dịch vụ - Những câu hỏi thường gặp</h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="margin-15 font-17">
+                <a href="javascript:;" class="arr-collapse collapsed bold" id="who">
+                    I. CHÚNG TÔI ORDER HÀNG GÌ?
+                </a>
+            </p>
+            <div id="whoContent" class="panel-collapse collapse in" aria-expanded="true">
+                <p>
+                    <span class="bold">LikeOrder </span>  nhận order tất cả những mặt hàng có bán trên các web Trung Quốc, chấp nhận thanhtoán qua internet, trừ hàng cấm.
+                    <span class="bold">
+                        *Hàng hóa cấm đặt
+                    </span>
+                </p>
+                <p>
+                    - Các loại vật phẩm, hàng hóa quốc cấm như ma túy, chất kích thích thần kinh, vũ khí đạn dược,
+                    trang thiết bị quân sự, văn hóa phẩm đồi trụy, tài liệu, ấn phẩm phản động, kích động chống
+                    lại nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.
+                </p>
+                <p> - Các mặt hàng thực phẩm chức năng (nước hoa, mỹ phẩm, đồ ăn, thuốc , dung dịch, ...). </p>
+                <p> - Vật hoặc chất dễ nổ, dễ cháy và các chất gây nguy hiểm hoặc làm mất vệ sinh, gây ô nhiễm môi trường. </p>
+                <p> - Sinh vật sống. </p>
+                <p>
+                    (Nếu quý khách cố tình mua sinh vật sống, trong trường hợp bị cơ quan chức năng thu hồi Quý khách sẽ hoàn toàn
+                    chịu trách nhiệm trước cơ quan pháp luật).
+                </p>
+                <p class="bold"> *Lưu ý với khách hàng ở TP HCM như sau : </p>
+                <p> Do yêu cầu an ninh hàng không, <span class="bold">LikeOrder</span> KHÔNG nhận ghép bao một số mặt hàng chuyển thẳng về kho TP HCM bao gồm: </p>
+                <p> - Chất lỏng dễ cháy: Sản phẩm là dung dịch như nước hoa, mỹ phẩm dạng lỏng, sơn, keo, hương liệu, cồn, rượu, keo xịt tóc… </p>
+                <p>
+                    - Chất khí: Bình gas, hộp quẹt gas, bình oxy để thở…
+                </p>
+                <p>
+                    - Chất ăn mòn như: Axit, ắc quy, pin, sạc dự phòng…
+                </p>
+                <p>
+                    - Xe máy, ô tô, bột hóa chất và các mặt hàng có từ trường…
+                </p>
+                <p>
+                    - Các mặt hàng khác xác nhận tại thời điểm mua hàng hoặc vận chuyển.
+                </p>
+                <p>
+                    Khi tạo đơn hàng, Quý khách vui lòng chọn đúng địa chỉ kho mà Quý khách muốn nhận hàng. Khi tạo đơn xong, Quý khách vui lòng kiểm tra lại.
+                    Trong trường hợp Quý khách chọn nhầm kho và hàng đã trên đường chuyển về, Quý khách vui lòng chịu mọi chi phí phát sinh.
+
+                </p>
+            </div>
+
+            <p class="margin-15 font-17">
+                <a href="javascript:;" class="arr-collapse collapsed bold" id="part2">
+                    II. CÁC CÂU HỎI THƯỜNG GẶP
+                </a>
+            </p>
+            <div id="part2Content" class="panel-collapse collapse in" aria-expanded="true">
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p1">
+                        1. Tôi muốn tạo đơn hàng thì phải làm như thế nào?
+                    </a>
+                </p>
+                <div id="p1Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>- Quý khách có thể vào <a href="/@culture/Home/FAQ" class="bold red-color">đây</a>  đọc và làm theo hướng dẫn. </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p2">
+                        2. Tại sao đăng ký tài khoản tôi phải điền đầy đủ thông tin?
+                    </a>
+                </p>
+                <div id="p2Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        Quý khách cần điền đầy đủ thông tin cá nhân: tên, số điện thoại, địa chỉ email, nick chat… để chúng tôi chủ động liên lạc với Quý khách khi hàng về, hoặc khi có thay đổi về đơn hàng.
+                    </p>
+                    <p>
+                        <span class="bold red-color"> Tất cả đều vì lợi ích của Quý khách!</span>
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p3">
+                        3.Tỷ giá tệ của <span class="bold">LikeOrder</span> tính như thế nào?
+                    </a>
+                </p>
+                <div id="p3Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        - Tỷ giá tệ của <span class="bold">LikeOrder</span> là tỷ giá tự do, tỷ giá này được <span class="bold">LikeOrder</span> tính toán và cân bằng ở mức hợp lý nhất.
+                        Nếu có sự thay đổi về giá tệ, chúng tôi sẽ thông báo trên website của <span class="bold">LikeOrder</span>.
+                    </p>
+                    <p class="bold">
+                        - Tỷ giá hiện tại áp dụng là: 1 Tệ = @rate.ToString("N0")
+
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p4">
+                        4. Chi phí để mua 1 đơn hàng
+                    </a>
+                </p>
+                <div id="p4Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p class="bold">
+                        - Chi phí cho 1 đơn hàng bao gồm: Tiền hàng trên website + Phí ship Trung Quốc + Phí giao dịch + Phí kiểm đếm + Phí cước vận chuyển TQ -VN + Phí ship hàng tận nhà (nếu Quý khách lựa chọn dịch vụ)
+                    </p>
+                    <p class="bold">
+                        Trong đó:
+                    </p>
+                    <p>
+                        - <span class="bold">Tiền hàng trên web:</span> là tiền mua hàng hay giá nhập toàn bộ sản phẩm Quý khách muốn mua. Đây là tiền mua hàng mà <span class="bold">LikeOrder</span> phải trả cho nhà cung cấp.
+                    </p>
+                    <p>
+                        - <span class="bold">Phí ship Trung Quốc:</span> là phí chuyển hàng từ nhà cung cấp tới địa điểm nhận hàng của <span class="bold">LikeOrder</span>.
+                    </p>
+
+                    <p>
+                        - <span class="bold">Phí giao dịch:</span> là phí dịch vụ mua hàng mà Quý khách trả cho <span class="bold">LikeOrder</span>.
+                    </p>
+                    <p>
+                        - <span class="bold">Phí kiểm đếm:</span> là gói dịch vụ đảm bảo sản phẩm của Quý khách không bị nhà cung cấp giao sai hoặc giao thiếu.
+                    </p>
+                    <p>
+                        <span class="bold">Quý khách có thể tùy chọn sử dụng gói dịch vụ này khi đặt hàng.</span>
+                    </p>
+
+                    <p>
+                        - <span class="bold">Phí cước vận chuyển cân nặng:</span> là phí vận chuyển hàng từ Trung Quốc về kho của <span class="bold">LikeOrder</span> tại Việt Nam
+                    </p>
+                    <p>
+                        - <span class="bold">Phí ship hàng tận nhà:</span> là phí vận chuyển hàng từ kho Việt Nam của <span class="bold">LikeOrder</span> đến nhà Quý khách.
+                    </p>
+                    <p>
+                        Để biết chi tiết báo giá đơn hàng, Quý khách xem phần <span class="bold red-color">Báo giá</span>
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p5">
+                        5. Phí ship từ nhà cung cấp Trung Quốc tới kho nhận hàng của <span class="bold">LikeOrder</span> được tính như thế nào?
+                    </a>
+                </p>
+                <div id="p5Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        - Ship TQ: Là phí vận chuyển hàng từ nhà cung cấp đến kho hàng của <span class="bold">LikeOrder</span>.
+                    </p>
+                    <p>
+                        - Nếu lựa chọn chuyển phát nhanh cùng tỉnh Quảng Đông sẽ là 10 tệ/kg đầu, 6 tệ/kg tiếp theo.
+                    </p>
+                    <p>
+                        - Nếu khác tỉnh sẽ là 12 tệ/kg đầu, 8 tệ/kg tiếp theo.
+                    </p>
+                    <p>
+                        - Một số nhà cung cấp freeship, chúng tôi sẽ miễn phí cho Quý khách.
+                    </p>
+                    <p>
+                        - Nếu lô hàng > 10kg Quý khách có thể lựa chọn chuyển phát chậm, phí chuyển chậm là 70 tệ /kg đầu+2 tệ/kg tiếp theo. Thời gian nhận hàng sẽ chậm hơn 2 - 5 ngày tùy xa gần.
+
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p6">
+                        6. Phí cước vận chuyển cân nặng được tính như thế nào?
+                    </a>
+                </p>
+                <div id="p6Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        Mọi mặt hàng đều có cân nặng thực tế và cân nặng quy đổi theo khối.
+                    </p>
+                    <p>
+                        Cân nặng được áp dụng là mức cân nặng cao hơn của trọng lượng thực và khối lượng quy đổi.
+                    </p>
+                    <p>
+                        Khối lượng quy đổi được tính theo công thức: (kg) = Dài (cm) x rộng (cm) x cao (cm)/ 6000
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p7">
+                        7. Tại sao tôi lại phải trả phí ship Trung Quốc? Tại sao có những đơn hàng tôi phải trả phí ship cao, có những đơn hàng tôi không phải trả phí ship? Nếu tôi mua nhiều sản phẩm, phí ship có được giảm không?
+                    </a>
+                </p>
+                <div id="p7Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        - Ship TQ là tiền phí vận chuyển do bên chuyển phát Trung Quốc thu.
+                    </p>
+                    <p>
+                        Phí ship Trung Quốc cao hay thấp phụ thuộc vào khoảng cách xa hay gần từ nhà cung cấp đến kho của <span class="bold">LikeOrder</span>..
+                    </p>
+                    <p>
+                        Trường hợp phí ship Trung Quốc cao, có thể là do nhà cung cấp bán hạ giá sản phẩm, nhưng thực tế họ lại tính phí ship cao để bù vào tiền hàng.
+                    </p>
+                    <p>
+                        - Có trường hợp hôm nay mua 1 giá ship, tuần sau mua, lại có 1 giá ship khác: có thể tại thời điểm mua hàng, shop có chương trình khuyến mãi giảm giá ship. <span class="bold">LikeOrder</span>. chỉ check và báo giá lại cho khách bằng tài khoản taobao đã được add sẵn địa chỉ kho nhận hàng của Công ty.
+                    </p>
+                    <p>
+                        Quý khách hoàn toàn có thể kiểm tra lại bằng tài khoản: thaindp passs: Tom2013
+                    </p>
+                    <p>
+                        -   Nếu Quý khách mua hàng với số lượng lớn, nhà cung cấp sẽ tính theo giá bán sỉ, vì vậy phí vận chuyển một lần của một nhà cung cấp sẽ thấp hơn khi Quý khách “nhặt” sản phẩm ở nhiều nhà cung cấp khác nhau.
+                    </p>
+
+                    <div class="zichan-zijin zichan-box rs" style="margin-top: 0 !important">
+
+                        <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                            <thead>
+                                <tr>
+                                    <th class="morestandard">Chuyển phát nhanh thông thường</th>
+                                    <th class="morestandard">Kg đầu dựa vào quy định của nhà cung cấp trên trang Taobao hoặc Alibaba</th>
+                                    <th class="morestandard">Kg tiếp theo nếu nhà cung cấp thuộc tỉnh Quảng Đông là 6 tệ, khác tỉnh Quàng Đông là 8 tệ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td class="text-center"> Chuyển phát nhanh siêu tốc</td>
+                                    <td class="text-center"> Kg đầu dựa vào quy định của nhà cung cấp trên trang Taobao hoặc Alibaba</td>
+                                    <td class="text-center">Mỗi 0.5kg tiếp theo là 5 tệ/kg</td>
+                                </tr>
+
+                                <tr>
+
+                                    <td class="text-center"> Chuyển phát thường bằng ô tô tải</td>
+                                    <td class="text-center" colspan="2"> Mỗi kg 2 tệ/ kg + 70 tệ/ đơn hàng</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p8">
+                        8. Các chính sách thay đổi tỉ giá, cước cân nặng vận chuyển có thay đổi khi tôi đặt hàng không?
+                    </a>
+                </p>
+                <div id="p8Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        - Trường hợp tay đổi tỷ giá, <span class="bold">LikeOrder</span> sẽ áp dụng đúng tỷ giá tại thời điểm Quý khách đặt cọc
+                    </p>
+                    <p>
+                        VD: Hôm nay Quý khách tạo đơn tỷ giá là 3540. Vài ngày sau Quý khách mới đặt hàng, <span class="bold">LikeOrder</span> có thông báo
+                        thay đổi tỷ giá 3550, chúng tôi sẽ tính cho Quý khách theo tỷ giá tại thời điểm Quý khách đặt cọc tiền cho đơn hàng là 3550
+                    </p>
+                    <p>
+                        - Trường hợp thay đổi cước cân nặng vận chuyển, <span class="bold">LikeOrder</span> sẽ áp dụng tính theo bảng giá thay đổi tại thời điểm xuất hàng
+                        ra khỏi kho
+                    </p>
+                    <p>
+                        VD: Tại thời điểm Quý khách đặt hàng, cước cân nặng là 15.000/kg trong thời gian chờ hàng về <span class="bold">LikeOrder</span>
+                        tăng cước lên 2.000/kg, khi hàng về đơn hàng của Quý khách sẽ được tính theo cước cân nặng là 17.000/kg.
+                    </p>
+                    <p>
+                        Tại thời điểm Quý khách đặt hàng cước cân nặng là 15.000/kg trong thời gian đợi hàng về <span class="bold">LikeOrder</span> có chính sách giảm 2.000/kg, khi hàng về, đơn hàng của Quý khách sẽ được tính 13.000/kg.
+                    </p>
+                    <p class="bold">
+                        Chú ý: Các điều chỉnh tỷ giá hay cước cân nặng mà <span class="bold">LikeOrder</span> ban hành, đều thay đổi theo biến động của thị trường tỉ giá và thị trường vận chuyển.
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p9">
+                        9. Tôi mua những món hàng giá trị cao chẳng may mất hàng, tôi có được hoàn lại tiền không?
+                    </a>
+                </p>
+                <div id="p9Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        - Khi <span class="bold">LikeOrder</span> làm thất lạc hàng của Quý khách, <span class="bold">LikeOrder</span> sẽ hoàn trả 100% tiền hàng của Quý khách.
+                    </p>
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p10">
+                        10. <span class="bold">LikeOrder</span> có bồi thường cho tôi không, khi hàng của tôi bị nhầm màu, nhầm size, nhầm kiểu dáng…?
+                    </a>
+                </p>
+                <div id="p10Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>- <strong>Qu&yacute; kh&aacute;ch lựa chọn dịch vụ kiểm đếm</strong> trước khi thanh to&aacute;n đặt cọc đơn h&agrave;ng, <strong><em><span class="bold">LikeOrder</span> </em></strong>sẽ chịu tr&aacute;ch nhiệm với đơn h&agrave;ng của Qu&yacute; kh&aacute;ch.</p>
+
+                    <p>Mọi khiếu nại của Qu&yacute; kh&aacute;ch về thiếu h&agrave;ng, nhầm size, nhầm kiểu d&aacute;ng, nhầm m&agrave;u..<strong><em> <span class="bold">LikeOrder</span> </em></strong>sẽ bồi thường cho Qu&yacute; kh&aacute;ch.</p>
+
+                    <p>Tuy nhi&ecirc;n dịch vụ kiểm đếm của ch&uacute;ng t&ocirc;i cung cấp cho Qu&yacute; kh&aacute;ch, sẽ kh&ocirc;ng bao gồm việc kiểm tra chất lượng của sản phẩm, hay đường kim mũi chỉ, độ bền chết liệu của sản phẩm may mặc,</p>
+
+                    <p>Đối với mầu săc của sản phẩm, ch&uacute;ng t&ocirc;i sẽ kh&ocirc;ng chịu tr&aacute;ch nhiệm đối với cấp độ đậm nhạt của m&agrave;u sắc</p>
+
+                    <p>VD: m&agrave;u đỏ tươi với đỏ đậm, v&agrave;ng chanh với v&agrave;ng cam, hay ghi s&aacute;ng với ghi đậm&hellip;v&igrave; ảnh chụp tr&ecirc;n web với sản phẩm thật thường kh&ocirc;ng đồng nhất khi dưới t&aacute;c động của &aacute;nh s&aacute;ng.</p>
+
+                    <p>- <strong>Qu&yacute; kh&aacute;ch kh&ocirc;ng lựa chọn dịch vụ kiểm đếm</strong>, <strong><em><span class="bold">LikeOrder</span> </em></strong>sẽ chỉ hỗ trợ Qu&yacute; kh&aacute;ch khiếu nại với nh&agrave; cung cấp. <strong>99% khiếu nại của ch&uacute;ng t&ocirc;i đều th&agrave;nh c&ocirc;ng đem lại niềm tin cho kh&aacute;ch h&agrave;ng</strong>.</p>
+
+                    <p><strong>Trường hợp thiếu h&agrave;ng</strong>: Qu&yacute; kh&aacute;ch cung cấp cho ch&uacute;ng t&ocirc;i h&igrave;nh ảnh sản phẩm, h&igrave;nh ảnh chụp c&acirc;n nặng của kiện h&agrave;ng, h&igrave;nh ảnh m&atilde; vận đơn để ch&uacute;ng t&ocirc;i hỗ trợ Qu&yacute; kh&aacute;ch khiếu nại với Nh&agrave; cung cấp. Sự ch&iacute;nh x&aacute;c của Qu&yacute; kh&aacute;ch sẽ l&agrave; cơ sở để ch&uacute;ng t&ocirc;i hỗ trợ Qu&yacute; kh&aacute;ch khiếu nại với Nh&agrave; cung cấp th&agrave;nh c&ocirc;ng.</p>
+
+                    <p><strong>Trường hợp nhầm size, nhầm m&agrave;u, nhầm kiểu d&aacute;ng</strong></p>
+
+                    <p><strong>- Lỗi do nh&acirc;n vi&ecirc;n của ch&uacute;ng t&ocirc;i</strong>: ch&uacute;ng t&ocirc;i sẽ bồi thường cho Qu&yacute; kh&aacute;ch</p>
+
+                    <p>Mọi đơn h&agrave;ng đều c&oacute; lịch sử giao dịch với nh&agrave; cung cấp. Nh&agrave; cung cấp l&agrave; do Qu&yacute; kh&aacute;ch lựa chọn <strong><em><span class="bold">LikeOrder</span> </em></strong>chỉ giao dịch đ&uacute;ng với nh&agrave; cung cấp m&agrave; Qu&yacute; kh&aacute;ch chỉ định v&agrave; c&oacute; nhiệm vụ vận chuyển h&agrave;ng về Việt Nam.</p>
+
+                    <p>Căn cứ v&agrave;o nick đặt h&agrave;ng của nh&acirc;n vi&ecirc;n giao dịch, Qu&yacute; kh&aacute;ch c&oacute; thể kiểm tra nh&acirc;n vi&ecirc;n đ&oacute; c&oacute; mua h&agrave;ng theo đ&uacute;ng m&ocirc; tả của Qu&yacute; kh&aacute;ch hay kh&ocirc;ng.</p>
+
+                    <p style="text-align: center" class="margin-15">
+                        <img src="~/Images/faq1.png" alt="" />
+                    </p>
+                    <p><strong>- Lỗi do Nh&agrave; cung cấp ph&aacute;t sai: </strong>ch&uacute;ng t&ocirc;i sẽ hỗ trợ Qu&yacute; kh&aacute;ch khiếu nại tới nh&agrave; cung cấp</p>
+
+                    <p>*Y&ecirc;u cầu nh&agrave; cung cấp giảm gi&aacute;, nếu họ chấp thuận, phần tiền giảm gi&aacute; ch&uacute;ng t&ocirc;i sẽ ho&agrave;n trả cho Qu&yacute; kh&aacute;ch khi nhận được tiền từ nh&agrave; cung cấp Trung Quốc trả lại.</p>
+
+                    <p>*Chuyển ngược h&agrave;ng trở lại Trung Quốc, y&ecirc;u cầu nh&agrave; cung cấp đổi trả lại theo đ&uacute;ng đơn h&agrave;ng đ&atilde; đặt, chi ph&iacute; vận chuyển ngược VN &ndash; TQ. Qu&yacute; kh&aacute;ch chi trả theo mức 100.000 đ/ kg đầu + 50.000 đ/ c&aacute;c kg sau, thời gian đổi trả từ 20-30 ng&agrave;y tuỳ thuộc vị tr&iacute; xa gần của nh&agrave; cung cấp, ch&uacute;ng t&ocirc;i hỗ trợ to&agrave;n bộ tiền cước c&acirc;n nặng chiều h&agrave;ng về. (Đối với kh&aacute;ch h&agrave;ng tại TP HCM, Qu&yacute; kh&aacute;ch t&iacute;nh th&ecirc;m chi ph&iacute; vận chuyển từ TP HCM ra HN)</p>
+
+                    <p>*Trường hợp lỗi do nh&agrave; cung cấp gửi sai, ch&uacute;ng t&ocirc;i đ&atilde; khiếu nại nhưng họ kh&ocirc;ng c&ocirc;ng nhận hoặc tr&acirc;y ỳ kh&ocirc;ng thực hiện nghĩa vụ của m&igrave;nh, Qu&yacute; kh&aacute;ch vui l&ograve;ng chịu mọi tổn thất.</p>
+
+                    <p>Để tr&aacute;nh xảy ra c&aacute;c sai s&oacute;t ngo&agrave;i mong muốn, g&acirc;y thiệt hại cho cả hai b&ecirc;n, trong qu&aacute; tr&igrave;nh mua h&agrave;ng, Qu&yacute; kh&aacute;ch n&ecirc;n chọn nh&agrave; cung cấp uy t&iacute;n, c&oacute; giao dịch cao thường xuy&ecirc;n tr&ecirc;n thị trường.</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p11">
+                        11. Có cách nào để tôi phân biệt được mức độ tín nhiệm của nhà cung cấp hay không? Làm thế nào để biết được nhà cung cấp này có uy tín hay không?
+                    </a>
+                </p>
+                <div id="p11Content" class="panel-collapse collapse in" aria-expanded="true">
+
+                    <p>
+                        - Qu&yacute; kh&aacute;ch c&oacute; thể ph&acirc;n biệt nh&agrave; cung cấp uy t&iacute;n qua qu&aacute; tr&igrave;nh họ kinh doanh, Qu&yacute; kh&aacute;ch xem số điểm uy t&iacute;n của nh&agrave; cung cấp qua biểu tượng tr&aacute;i tim &lt; kim cương xanh &lt; kim cương v&agrave;ng &lt; vương miện xanh &lt; vương miện v&agrave;ng, đồng thời dựa v&agrave;o số lượng những người mua trước đ&atilde; giao dịch v&agrave; b&igrave;nh luận trước đ&oacute;.<br />
+                        - Nh&agrave; cung cấp b&aacute;n c&agrave;ng l&acirc;u năm, tỷ lệ giao dịch th&agrave;nh c&ocirc;ng c&agrave;ng nhiều, Qu&yacute; kh&aacute;ch c&agrave;ng y&ecirc;n t&acirc;m khi mua h&agrave;ng. Ngo&agrave;i ra Qu&yacute; kh&aacute;ch c&oacute; thể đ&aacute;nh gi&aacute; độ uy t&iacute;n dựa v&agrave;o số lượng những người mua trước đ&atilde; giao dịch v&agrave; b&igrave;nh luận cho điểm đối với nh&agrave; cung cấp.
+                    </p>
+
+                    <p>- Nh&agrave; cung cấp dối tr&aacute; hay lừa đảo đa phần l&agrave; shop mới khởi tạo, Qu&yacute; kh&aacute;ch n&ecirc;n c&acirc;n nhắc kỹ trước khi mua h&agrave;ng. <strong><em><span class="bold">LikeOrder</span></em></strong> chỉ mua đ&uacute;ng link Qu&yacute; kh&aacute;ch gửi v&agrave; đều c&oacute; lịch sử giao dịch để Qu&yacute; kh&aacute;ch y&ecirc;n t&acirc;m.</p>
+
+                    <p><strong>C&aacute;c trường hợp được gọi l&agrave; nh&agrave; cung cấp kh&ocirc;ng uy t&iacute;n</strong> :</p>
+
+                    <p>+ Nh&agrave; cung cấp kh&ocirc;ng giao h&agrave;ng, <strong><em><span class="bold">LikeOrder</span> </em></strong>kh&ocirc;ng li&ecirc;n hệ được với nh&agrave; cung cấp (trường hợp n&agrave;y tỷ lệ rất thấp).</p>
+
+                    <p>+ Nh&agrave; cung cấp giao h&agrave;ng thiếu nhưng kh&ocirc;ng nhận, mặc d&ugrave; đ&atilde; c&oacute; bằng chứng khiếu nại v&agrave; kiện l&ecirc;n Taobao.</p>
+
+                    <p>+ Nh&agrave; cung cấp b&aacute;n h&agrave;ng kh&ocirc;ng đ&uacute;ng với &nbsp;quảng c&aacute;o tr&ecirc;n website (tỉ lệ rất thấp).</p>
+
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p12">
+                        12. Khi tôi gửi đơn hàng, tôi có được báo giá ngay không?
+                    </a>
+                </p>
+                <div id="p12Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>- T&ugrave;y v&agrave;o từng thời điểm, nhưng ch&uacute;ng t&ocirc;i sẽ b&aacute;o gi&aacute; cho Qu&yacute; kh&aacute;ch nhanh nhất c&oacute; thể. V&igrave; vậy Qu&yacute; kh&aacute;ch chỉ n&ecirc;n y&ecirc;u cầu b&aacute;o ngay với những sản phẩm Qu&yacute; kh&aacute;ch đang cần gấp.</p>
+
+                    <p>C&oacute; một sự thực: nếu Qu&yacute; kh&aacute;ch y&ecirc;u cầu b&aacute;o gi&aacute; l&uacute;c đ&oacute;, m&agrave; h&ocirc;m sau mới mua, c&oacute; khi l&uacute;c đ&oacute; nh&agrave; cung cấp lại hết h&agrave;ng. V&igrave; vậy đa phần kh&aacute;ch mua xỉ lu&ocirc;n đặt trước một khoản tiền, v&agrave; gửi đơn h&agrave;ng để đặt, chủ động ho&agrave;n to&agrave;n khi c&oacute; nhu cầu bổ sung link đột xuất.</p>
+
+                    <p>Qu&yacute; kh&aacute;ch n&ecirc;n soạn đơn v&agrave; k&egrave;m link thay thế, hoặc khi ch&uacute;ng t&ocirc;i đặt đơn h&agrave;ng của bạn sẽ li&ecirc;n lạc trực tiếp để CSKH&nbsp;của ch&uacute;ng t&ocirc;i gi&uacute;p bạn t&igrave;m link thay thế v&agrave; đ&agrave;m ph&aacute;n với nh&agrave; cung cấp.</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p13">
+                        13. Khi xảy ra sự cố về hàng hóa (sai màu, kích thước, chất lượng sản phẩm, sai chủng loại…) trách nhiệm của <span class="bold">LikeOrder</span> đến đâu?
+                    </a>
+                </p>
+                <div id="p13Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>-&nbsp;Sự cố do qu&aacute; tr&igrave;nh đặt h&agrave;ng: nhầm size, nhầm m&agrave;u, sai chủng loại ....kh&aacute;ch h&agrave;ng khi đ&atilde; l&ecirc;n đơn, nếu phần ghi ch&uacute; m&ocirc; tả kh&ocirc;ng được ch&iacute;nh x&aacute;c, b&ecirc;n&nbsp;<strong><em><span class="bold">LikeOrder</span></em></strong>&nbsp;sẽ kh&ocirc;ng chịu tr&aacute;ch nhiệm nếu xảy ra nhầm lẫn. Qu&yacute; kh&aacute;ch kh&ocirc;ng ghi ch&uacute;, đồng nghĩa với việc lựa chọn random sản phẩm đ&oacute;. Mọi thao t&aacute;c giao dịch với nh&agrave; cung cấp đều c&oacute; lịch sử giao dịch.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                    <p>- Trường hợp&nbsp;<strong><em><span class="bold">LikeOrder</span></em></strong>&nbsp;đặt sai, ch&uacute;ng t&ocirc;i sẽ chịu bồi thường 100% gi&aacute; trị tiền h&agrave;ng. Nếu &nbsp;<strong><em><span class="bold">LikeOrder</span> </em></strong>l&agrave;m đ&uacute;ng nhưng nh&agrave; cung cấp gửi sai, đ&oacute; l&agrave; lỗi của nh&agrave; cung cấp. <strong><em><span class="bold">LikeOrder</span></em></strong> sẽ căn cứ v&agrave;o việc Qu&yacute; kh&aacute;ch c&oacute; lựa chọn dịch vụ c&oacute; kiểm đếm hay kh&ocirc;ng kiểm đếm để tiến h&agrave;nh hỗ trợ</p>
+
+                    <p>+ C&oacute; kiểm đếm ch&uacute;ng t&ocirc;i sẽ chịu ho&agrave;n to&agrave;n rủi ro</p>
+
+                    <p>+ Kh&ocirc;ng kiểm đếm ch&uacute;ng t&ocirc;i sẽ hỗ trợ tối đa kh&aacute;ch h&agrave;ng khiếu nại với nh&agrave; cung cấp : Giảm gi&aacute;, đổi h&agrave;ng hoặc ho&agrave;n tiền. Chi ph&iacute; đổi trả h&agrave;ng ch&uacute;ng t&ocirc;i t&iacute;nh 100.000 đ/ kg đầu v&agrave; 50.000 đ/ kg tiếp theo (Kh&aacute;ch h&agrave;ng ngo&agrave;i HN vui l&ograve;ng chịu th&ecirc;m ph&iacute; vận chuyển đến kho của ch&uacute;ng t&ocirc;i)</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p14">
+                        14. Tại sao theo quy định 1-3 ngày trả kết quả đặt hàng, nhưng có khi mấy ngày sau đơn hàng của tôi mới được đặt?
+                    </a>
+                </p>
+                <div id="p14Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>V&igrave; c&oacute; những nh&agrave; cung cấp kh&ocirc;ng trả lời, ch&uacute;ng t&ocirc;i phải mất thời gian chờ họ.</p>
+
+                    <p>Trong l&uacute;c đặt h&agrave;ng, nếu c&oacute; vấn đề với link sản phẩm, nh&acirc;n vi&ecirc;n đặt h&agrave;ng của <strong><em><span class="bold">LikeOrder</span></em></strong> sẽ li&ecirc;n lạc b&aacute;o cho Qu&yacute; kh&aacute;ch để hỗ trợ đặt h&agrave;ng nhanh nhất. Ngay l&uacute;c đ&oacute;, bạn đ&atilde; c&oacute; được kết quả m&igrave;nh cần rồi.</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p15">
+                        15. Sau ngày chốt đơn đặt hàng, tôi có thể gửi thêm đơn hàng hoặc link đặt thêm không? Hàng có về đúng đợt chốt trước đó không?
+                    </a>
+                </p>
+                <div id="p15Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>-&nbsp; Một ng&agrave;y, một tuần hay 1 th&aacute;ng bạn c&oacute; thể đặt nhiều đơn đều được, <strong><em><span class="bold">LikeOrder</span></em></strong> đều c&oacute; thể x&aacute;c nhận v&agrave; đặt li&ecirc;n tục cho bạn</p>
+
+                    <p>&nbsp;-&nbsp; H&agrave;ng về nhanh hay chậm phụ thuộc v&agrave;o nh&agrave; cung cấp giao h&agrave;ng đến kho <strong><em><span class="bold">LikeOrder</span></em></strong></p>
+
+                    <p>&nbsp;- Ch&uacute;ng t&ocirc;i lu&ocirc;n&nbsp;tiếp nhận bất cứ l&uacute;c n&agrave;o đơn h&agrave;ng của Qu&yacute; kh&aacute;ch ph&aacute;t sinh. Tuy nhi&ecirc;n th&ecirc;m link v&agrave;o đơn h&agrave;ng khi đơn h&agrave;ng đ&atilde; chuyển trạng th&aacute;i đặt cọc ch&uacute;ng t&ocirc;i kh&ocirc;ng xử l&yacute; được.</p>
+
+                    <p>L&yacute; do l&agrave; để đảm bảo t&iacute;nh ch&iacute;nh x&aacute;c của dữ liệu . Qu&yacute; kh&aacute;ch vui l&ograve;ng tạo đơn h&agrave;ng mới hoặc b&aacute;o đặt h&agrave;ng (nếu kịp thời) hủy đơn đ&oacute; để tạo đơn mới đầy đủ v&agrave; ch&iacute;nh x&aacute;c hơn&nbsp;</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p16">
+                        16. Khi hàng về, tôi có được báo đến lấy hàng hay không?
+                    </a>
+                </p>
+                <div id="p16Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>&nbsp;-&nbsp; Khi h&agrave;ng về ch&uacute;ng t&ocirc;i c&oacute; th&ocirc;ng&nbsp; b&aacute;o tin nhắn tr&ecirc;n t&agrave;i khoản của Qu&yacute; kh&aacute;ch, trạng th&aacute;i &ldquo;<strong>Trong kho VN</strong>&rdquo; Qu&yacute; kh&aacute;ch chủ động đến kho đ&atilde; đăng k&yacute; để nhận h&agrave;ng.</p>
+
+                    <p>Giờ l&agrave;m việc của ch&uacute;ng t&ocirc;i từ 8h00-12h00 v&agrave; từ 13h30-17h30. Qu&yacute; kh&aacute;ch vui l&ograve;ng đến trước giờ đ&oacute;ng cửa &iacute;t nhất 15 ph&uacute;t để ch&uacute;ng t&ocirc;i được phục vụ Qu&yacute; kh&aacute;ch chu đ&aacute;o.</p>
+
+                    <p>&nbsp;-&nbsp; Khi c&oacute; sự cố h&agrave;ng về chậm do &ldquo;<strong> tắc bi&ecirc;n</strong>&rdquo;, ch&uacute;ng t&ocirc;i cũng sẽ th&ocirc;ng b&aacute;o cho Qu&yacute; kh&aacute;ch. Nếu Qu&yacute; kh&aacute;ch muốn cập nhật th&ocirc;ng tin nhanh nhất, Qu&yacute; kh&aacute;ch gọi đến c&aacute;c hotline tr&ecirc;n website cho ch&uacute;ng t&ocirc;i!</p>
+
+                </div>
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p17">
+                        17.Với mặt hàng dễ vỡ, khi hàng về xảy ra vỡ, chất lượng không như mong đợi trách nhiệm của <span class="bold">LikeOrder</span> như thế nào?
+                    </a>
+                </p>
+                <div id="p17Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p><strong>- Danh mục h&agrave;ng dễ vỡ:&nbsp;</strong></p>
+
+                    <p><strong>+ Đồ gốm sứ, thủy tinh</strong></p>
+
+                    <p><strong>+ Thiết bị điện tử</strong></p>
+
+                    <p><strong>+ Đồ chơi, sản phẩm từ nhựa</strong></p>
+
+                    <p><strong>+ Vali...</strong></p>
+
+                    <p><strong>&nbsp;- C&aacute;c mặt h&agrave;ng thuộc danh mục h&agrave;ng&nbsp;dễ vỡ, Qu&yacute; kh&aacute;ch vẫn lựa chọn mua h&agrave;ng, cần lưu &yacute; chọn dịch vụ đ&oacute;ng kiện gỗ để giảm thiểu tối đa rủi ro vận chuyển, nhưng Qu&yacute; kh&aacute;ch vui l&ograve;ng chịu mọi tổn thất khi rủi ro xảy ra.</strong></p>
+
+                    <p><strong>Chi ph&iacute; đ&oacute;ng kiện gỗ ch&uacute;ng t&ocirc;i &aacute;p dụng theo biểu ph&iacute; sau:</strong> <strong>30 tệ cho kg đầu v&agrave; 1 tệ cho kg tiếp theo&nbsp;</strong></p>
+
+                    <p>- <strong>Sự cố do vận chuyển</strong>: H&agrave;ng h&oacute;a dễ vỡ, dễ hỏng, <span class="bold">LikeOrder</span> sẽ <strong>kh&ocirc;ng chịu tr&aacute;ch nhiệm </strong>đối với h&agrave;ng dễ vỡ.</p>
+
+                    <p><strong>- Sự cố do chất lượng sản phẩm</strong>: <strong><em><span class="bold">LikeOrder</span></em></strong> chỉ l&agrave; c&ocirc;ng ty vận chuyển trung gian, ch&uacute;ng t&ocirc;i kh&ocirc;ng phải l&agrave; nh&agrave; sản xuất, v&igrave; vậy ch&uacute;ng t&ocirc;i kh&ocirc;ng chịu tr&aacute;ch nhiệm vớ&iacute; chất lượng sản phẩm m&agrave; Qu&yacute; kh&aacute;ch mua. Ch&uacute;ng t&ocirc;i chỉ hỗ trợ Qu&yacute; kh&aacute;ch khiếu nại với nh&agrave; cung cấp.</p>
+
+                    <p><strong><em>Lưu &yacute; về mặt chất lượng sản phẩm</em></strong><strong>:&nbsp;</strong>Đối với kh&aacute;ch h&agrave;ng mua số lượng nhiều, Qu&yacute; kh&aacute;ch cần t&igrave;m kiếm v&agrave; lựa chọn kỹ nh&agrave; cung cấp trước khi đặt tin tưởng v&agrave;o họ.</p>
+
+                    <p>Qu&yacute; kh&aacute;ch cũng kh&ocirc;ng n&ecirc;n chọn mặt h&agrave;ng qu&aacute; rẻ. Qu&yacute; kh&aacute;ch n&ecirc;n lựa chọn nh&agrave; cung cấp uy t&iacute;n đ&atilde; c&oacute; nhiều giao dịch v&agrave; được đ&aacute;nh gi&aacute; tốt.</p>
+
+                    <p>Ngo&agrave;i ra trước khi nhập 1 l&ocirc; h&agrave;ng lớn, Qu&yacute; kh&aacute;ch n&ecirc;n đặt mẫu thử, để kiểm tra xem chất lượng c&oacute; tốt kh&ocirc;ng, v&agrave; b&aacute;o với bộ phận CSKH trao đổi trước với người b&aacute;n về sự hợp t&aacute;c l&acirc;u d&agrave;i, cũng như c&aacute;c ch&iacute;nh s&aacute;ch đổi trả khi h&agrave;ng h&oacute;a kh&ocirc;ng đ&uacute;ng như quảng c&aacute;o.</p>
+
+                    <p>L&agrave;m như vậy sẽ thuận lợi hơn cho Qu&yacute; kh&aacute;ch v&agrave; ch&uacute;ng t&ocirc;i, cả 2 sẽ kh&ocirc;ng rơi v&agrave;o trường hợp mua phải h&agrave;ng k&eacute;m chất lượng, mất kh&aacute; nhiều chi ph&iacute; đổi trả + thời gian giải quyết hậu mua h&agrave;ng.</p>
+
+                    <p>Những kh&aacute;ch h&agrave;ng nhập lẻ, do mong muốn đa dạng mẫu m&atilde; để kinh doanh, n&ecirc;n lưu &yacute; c&aacute;c yếu tố gi&aacute; cả, &nbsp;kh&ocirc;ng n&ecirc;n <strong><em>mua đồ rẻ. </em></strong>Ch&uacute;ng t&ocirc;i chỉ l&agrave; đơn vị trung gian mua theo y&ecirc;u cầu Qu&yacute; kh&aacute;c n&ecirc;n sẽ kh&ocirc;ng giải quyết vấn đề chất lượng h&agrave;ng h&oacute;a.</p>
+
+                </div>
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p18">
+                        18. Tôi ở xa không đến lấy hàng được, nhờ bên chuyển phát hay người thân đến lấy xảy ra trường hợp thiếu hàng khi nhận thì sẽ xử lý như thế nào?
+                    </a>
+                </p>
+                <div id="p18Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p><strong>-&nbsp;&nbsp;</strong>Trong trường hợp n&agrave;y, <strong><span class="bold">LikeOrder</span></strong>&nbsp;sẽ&nbsp;<strong><em>&ldquo;kh&ocirc;ng chịu tr&aacute;ch nhiệm&rdquo;</em></strong>, h&agrave;ng h&oacute;a ra khỏi kho ch&uacute;ng t&ocirc;i đều c&oacute; giấy tờ bi&ecirc;n bản xuất kho (số lượng, c&acirc;n nặng,&hellip;) kh&aacute;ch h&agrave;ng h&atilde;y l&agrave;m việc với b&ecirc;n chuyển ph&aacute;t về việc kiểm h&agrave;ng thương lượng mức ph&iacute; với ph&iacute;a họ.</p>
+
+                </div>
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p19">
+                        19. Biểu giá là tính chung cho tất cả các khách hàng?
+                    </a>
+                </p>
+                <div id="p19Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>
+                        -&nbsp;&nbsp;<strong><em><span class="bold">LikeOrder</span></em></strong>&nbsp;cam kết tuyệt đối kh&ocirc;ng c&oacute; sự ph&acirc;n biệt với bất kỳ kh&aacute;ch h&agrave;ng n&agrave;o. Với đơn h&agrave;ng lớn v&agrave; kh&aacute;ch h&agrave;ng thường xuy&ecirc;n, ch&uacute;ng t&ocirc;i c&oacute; ch&iacute;nh s&aacute;ch&nbsp;<strong><em>chiết khấu % &aacute;p dụng cho c&aacute;c đơn h&agrave;ng đạt đủ mức từ VIP 1 đến VIP 8</em></strong><br />
+
+
+                    </p>
+                </div>
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p20">
+                        20.  Đơn hàng sẽ được tiến hành giao dịch khi tôi đặt cọc bao nhiêu tiền hàng?
+                    </a>
+                </p>
+                <div id="p20Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>&nbsp;-&nbsp;<strong><em><span class="bold">LikeOrder</span></em></strong>&nbsp;hỗ trợ mọi kh&aacute;ch h&agrave;ng đặt h&agrave;ng với&nbsp;<strong><em>90% gi&aacute; trị đơn h&agrave;ng.</em></strong></p>
+
+                    <p>Căn cứ v&agrave;o cấp độ th&agrave;nh vi&ecirc;n của Qu&yacute; kh&aacute;ch, Qu&yacute; kh&aacute;ch chỉ cần đặt cọc một khoản tiền dựa tr&ecirc;n tổng số tiền h&agrave;ng. Số tiền h&agrave;ng c&ograve;n thiếu v&agrave; cước ph&iacute; vận chuyển c&acirc;n nặng, Qu&yacute; kh&aacute;ch sẽ thanh to&aacute;n khi nhận h&agrave;ng.</p>
+
+                    <p>- Mọi giao dịch tiền mặt hay qua chuyển khoản đều c&oacute; phiếu thu, khi nộp tiền Qu&yacute; kh&aacute;ch giữ lại phiếu thu.Với thanh to&aacute;n chuyển khoản, mọi khoản tiền gửi v&agrave;o t&agrave;i khoản của c&ocirc;ng ty ch&uacute;ng t&ocirc;i đảm bảo kh&ocirc;ng bao giờ thất tho&aacute;t,&nbsp;Qu&yacute; kh&aacute;ch giữ lại bi&ecirc;n lai chuyển tiền để đối chiếu nhanh hoặc y&ecirc;u cầu nh&acirc;n vi&ecirc;n C&ocirc;ng ty kiểm tra gi&uacute;p.</p>
+
+                </div>
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p21">
+                        21. Tiền đã đặt mua hàng, nếu không mua được hàng <span class="bold">LikeOrder</span> sẽ trả lại trong bao lâu? Hàng về thiếu báo lại Taobaoexpress tài khoản sẽ có tiền trả lại từ người bán sau bao lâu ?
+                    </a>
+                </p>
+                <div id="p21Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>- Khi Qu&yacute; kh&aacute;ch đặt h&agrave;ng, muốn hủy đơn lấy lại tiền, Qu&yacute; kh&aacute;ch vui l&ograve;ng li&ecirc;n hệ với nh&acirc;n vi&ecirc;n giao dịch tiếp nhận đơn h&agrave;ng. Nếu đơn h&agrave;ng đ&oacute; chưa trả tiền nh&agrave; cung cấp, nh&acirc;n vi&ecirc;n đ&oacute; sẽ l&agrave;m lệnh hủy v&agrave; tiền sẽ chảy v&agrave;o v&iacute; kh&aacute;ch h&agrave;ng ngay tại l&uacute;c đ&oacute;. Nếu đơn h&agrave;ng đ&atilde; được giao dịch th&igrave; điều n&agrave;y l&agrave; kh&ocirc;ng thể.</p>
+
+                    <p>- Khi nh&agrave; cung cấp hết h&agrave;ng, nh&acirc;n vi&ecirc;n đặt h&agrave;ng giao dịch cập nhật trạng th&aacute;i, đồng thời Qu&yacute; kh&aacute;ch sẽ nhận được tiền mua h&agrave;ng của nh&agrave; cung cấp đ&oacute; ngay v&agrave;o v&iacute;&nbsp;</p>
+
+                    <p>- Khi Qu&yacute; kh&aacute;ch lựa chọn dịch vụ kiểm đếm, ch&uacute;ng t&ocirc;i nhận h&agrave;ng ở kho TQ sẽ tiến h&agrave;nh cập nhật số lượng thực kiểm đếm. Số lượng &iacute;t hơn so với số lượng Qu&yacute; kh&aacute;ch đặt mua, tiền thừa sẽ được ho&agrave;n v&agrave;o v&iacute; kh&aacute;ch h&agrave;ng sau 24 giờ</p>
+
+                    <p>- Qu&yacute; kh&aacute;ch lựa chọn dịch vụ kh&ocirc;ng kiểm đếm. Qu&yacute; kh&aacute;ch vui l&ograve;ng gửi th&ocirc;ng tin h&agrave;ng thiếu trong v&ograve;ng 48 tiếng. Qu&aacute; thời gian đ&oacute; tỉ lệ đ&ograve;i tiền v&agrave; giải quyết khiếu nại sẽ giảm, n&ecirc;n ch&uacute;ng t&ocirc;i kh&oacute; đảm bảo quyền lợi mua h&agrave;ng của Qu&yacute; kh&aacute;ch.</p>
+
+                    <p>Khi người b&aacute;n ho&agrave;n trả tiền, ch&uacute;ng t&ocirc;i sẽ ho&agrave;n trả tiền v&agrave;o v&iacute; của Qu&yacute; kh&aacute;ch. Thời gian kh&aacute;ch nhận được nhanh hay chậm phụ thuộc v&agrave;o thời điểm ch&uacute;ng t&ocirc;i nhận được tiền người b&aacute;n trả lại</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p22">
+                        22. Tôi đặt hàng cách đây 1 tuần sao vẫn trạng thái "CÓ MÃ VẬN ĐƠN"? Sao hàng vẫn chưa có trong kho TQ của <span class="bold">LikeOrder</span>?
+                    </a>
+                </p>
+                <div id="p22Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p>C&oacute; rất nhiều người b&aacute;n tr&ecirc;n Taobao, v&igrave; vậy <span class="bold">LikeOrder</span> kh&ocirc;ng thể kiểm so&aacute;t hết tất cả c&aacute;c gian h&agrave;ng của nh&agrave; cung cấp. Tốc độ giao h&agrave;ng phụ thuộc v&agrave;o một v&agrave;i yếu tố sau:</p>
+
+                    <p>- Nh&agrave; cung cấp uy t&iacute;n, c&oacute; sẵn h&agrave;ng, phục vụ tốt =&gt; h&agrave;ng giao nhanh</p>
+
+                    <p>- Nh&agrave; cung cấp kh&ocirc;ng c&oacute; sẵn h&agrave;ng, h&agrave;ng phải đợi sản xuất =&gt; h&agrave;ng giao chậm</p>
+
+                    <p>- Trường hợp nh&agrave; cung cấp đ&atilde; giao h&agrave;ng nhưng nh&agrave; vận chuyển TQ lại l&agrave;m thất lạc v&agrave; mất h&agrave;ng.</p>
+
+                    <p>* Qu&yacute; kh&aacute;ch kiểm tra thấy sau 1 tuần thấy đơn h&agrave;ng vẫn trong trạng th&aacute;i &ldquo; C&Oacute; M&Atilde; VẬN ĐƠN&rdquo;, c&oacute; thể li&ecirc;n lạc với nh&acirc;n vi&ecirc;n đặt h&agrave;ng đơn h&agrave;ng đ&oacute; để kiểm tra hoặc hủy giao dịch với nh&agrave; cung cấp để ho&agrave;n lại tiền</p>
+
+                    <p>* Để đảm bảo giảm thiểu rủi ro cho Qu&yacute; kh&aacute;ch, <strong><em><span class="bold">LikeOrder</span></em></strong> sẽ chủ động hủy giao dịch khi qu&aacute; 5 ng&agrave;y nh&agrave; cung cấp vẫn kh&ocirc;ng giao h&agrave;ng, hoặc ch&uacute;ng t&ocirc;i sẽ li&ecirc;n hệ với Qu&yacute; kh&aacute;ch để kh&aacute;ch h&agrave;ng lựa chọn việc chờ đợi giao h&agrave;ng hay lấy lại tiền.</p>
+
+                </div>
+
+                <p class="margin-15 font-17">
+                    <a href="javascript:;" class="arr-collapse collapsed bold" id="p23">
+                        23. Tôi mua hàng qua <span class="bold">LikeOrder</span> có phải làm hợp đồng với công ty không?
+                    </a>
+                </p>
+                <div id="p23Content" class="panel-collapse collapse in" aria-expanded="true">
+                    <p><strong>&nbsp;-&nbsp;</strong>Qu&yacute; kh&aacute;ch n&ecirc;n k&yacute; hợp đồng với c&ocirc;ng ty để đảm bảo quyền lợi v&agrave; hiểu r&otilde; những quy định mua h&agrave;ng. <strong><em><span class="bold">LikeOrder</span> </em></strong>sẽ kh&ocirc;ng chịu tr&aacute;ch nhiệm với những trường hợp giao dịch ngo&agrave;i, chuyển tiền cho c&aacute; nh&acirc;n xử l&yacute; gi&uacute;p đơn h&agrave;ng hoặc quản l&yacute; gi&uacute;p t&agrave;i khoản</p>
+
+                    <p>=&gt;&gt;&nbsp;&nbsp;Khi Qu&yacute; kh&aacute;ch đặt cọc tiền h&agrave;ng tức l&agrave; đ&atilde; đồng &yacute; với mọi quy định order của <strong><em><span class="bold">LikeOrder</span>, </em></strong>c&aacute;c trường hợp xảy ra khiếu nại ch&uacute;ng t&ocirc;i sẽ &aacute;p dụng đ&uacute;ng theo c&aacute;c quy định đ&atilde; n&ecirc;u tr&ecirc;n.&nbsp;</p>
+
+                    <p><strong><em>Ch&acirc;n th&agrave;nh cảm ơn Qu&yacute; kh&aacute;ch!</em></strong></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="dvdathang">
+        <div class="faq-content-msg">
+            <h3>Bảng giá dịch vụ đặt hàng</h3>
+        </div>
+        <div class="faq-content-msg tabbable-custom rs" style="box-sizing: border-box;">
+
+            <ul class="nav nav-tabs border-tab nav-view rs">
+                <li class="tab-margin" onclick="tabServiceCharge(event, 'phiCD')" id="defaultOpen2">
+                    <a aria-expanded="true">Phí cố định</a>
+                </li>
+                <li class="tab-margin" onclick="tabServiceCharge(event, 'phiDVK')">
+                    <a aria-expanded="false">Phí dịch vụ khác</a>
+                </li>
+            </ul>
+
+            <div class="rs tabcontent2 mg-t-15" id="phiCD">
+                <p>Phí cố định là phí bắt buộc cho mọi đơn hàng, bao gồm: Phí dịch vụ (1), Phí vận chuyển nội địa Trung Quốc (2), Phí vận chuyển Trung Quốc - Việt Nam (3)</p>
+                <p>
+                    <span class="bold red-color">1.Phí dịch vụ</span> <br />
+                </p>
+                <p>Phí dịch vụ mua hàng = Giá trị đơn hàng (không bao gồm phí ship Trung Quốc) * % phí dịch vụ</p>
+
+                <p class="text-left">* Bảng phần trăm phí dịch vụ mua hàng</p>
+
+                <div class="zichan-zijin zichan-box rs" style="margin-top: 0 !important">
+                    <p class="curent-quotation">Đơn vị: %</p>
+                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;"><h4>Giá trị đơn hàng(VND)</h4></th>
+                                <th class="morestandard" style="width: 50%;"><h4>Phí dịch vụ</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"> &lt; 1 triệu</td>
+                                <td class="text-center">12.0%</td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center"> 2 triệu = Giá trị đơn hàng &lt; 30 triệu</td>
+                                <td class="text-center"> 4.0%</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> ≥30 triệu</td>
+                                <td class="text-center"> 3.5%</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> &gt;50 triệu</td>
+                                <td class="text-center"> 3.0%</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> &gt;100 triệu</td>
+                                <td class="text-center"> 2.5%</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> &gt;200 triệu</td>
+                                <td class="text-center"> 2.0%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <p class="rs">
+                    <span class="bold red-color">2.Phí vận chuyển nội địa Trung Quốc</span> <br />
+                </p>
+
+                <p>
+                    Do nhà bán hàng cung cấp thông tin phụ thuộc vào phí vận chuyển nội địa Trung Quốc thực tế
+                </p> <br />
+                <p>
+                    <span class="bold red-color">3.Phí vận chuyển Trung Quốc - Việt Nam</span> <br />
+                </p>
+                <p> - Mọi mặt hàng đều có cân nặng thực tế và cân nặng quy đổi theo khối. Cân nặng được áp dụng là mức cân nặng cao hơn của trọng lượng thực và khối lượng quy đổi. 
+                    Khối lượng quy đổi được tính theo công thức : <span class="bold red-color">(kg) = (dài(cm) x rộng(cm) x cao(cm))/6000</span>.
+                    Chúng tôi sẽ tính cước cân nặng theo giá trị lớn hơn giữa cân nặng thực tế và cân nặng quy đổi
+                </p>
+                <p><span class="red-color bold"> * Lưu ý:</span> các mặt hàng nhẹ nhưng cồng kềnh thường có cân nặng quy đổi lớn hơn là
+                    :<span class="red-color"> chăn, ga, gối, nệm, đàn ghita, thú bông</span></p>
+                <p class="text-left">* Cước vận chuyển từ Trung Quốc về Việt Nam</p>
+
+                <div class="zichan-zijin zichan-box rs" style="margin-top: 20px !important">
+                    <p class="curent-quotation">Đơn vị: VND</p>
+                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">&nbsp;</th>
+                                <th class="morestandard" colspan="4" style="width: 70%;"><h4>Phí dịch vụ</h4></th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th style="padding: 5px; width: 30%;">Số cân</th>
+                                <th style="padding: 5px; width: 35%;">Hà Nội</th>
+                                <th style="padding: 5px; width: 35%;">Hồ Chí Minh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">&lt; 10kg </td>
+                                <td class="text-center">25.000 </td>
+                                <td class="text-center">33.000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">10-30kg </td>
+                                <td class="text-center">20.000 </td>
+                                <td class="text-center">28.000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">&gt; 30kg </td>
+                                <td class="text-center">15.000 </td>
+                                <td class="text-center">23.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>&nbsp;</p>
+                <p class="rs mg-t-15 text-left">
+                    * Cước phí vận chuyển bay nhanh (Áp dụng cho khu vực Hồ Chí Minh)<br />
+                </p>
+
+                <div class="zichan-zijin zichan-box rs">
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product">
+                        <thead>
+                            <tr>
+                                <th class="morestandard" style="width: 50%;"><h4> Số cân Bay nhanh </h4></th>
+                                <th class="morestandard" style="width: 50%;">Giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"> < 10kg </td>
+                                <td class="text-center"> 36.000 VND</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"> Từ 10kg đến 30kg</td>
+                                <td class="text-center"> 33.000 VND</td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center"> > 30kg</td>
+                                <td class="text-center"> 29.500 VND</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="rs tabcontent2 mg-t-15" id="phiDVK">
+                <p>Là chi phí phải trả khi sử dụng các dịch vụ gia tăng</p>
+                <p class="rs">
+                    <span class="bold red-color">1.Phí kiểm đếm</span> <br />
+                </p>
+
+                <div class="zichan-zijin zichan-box rs">
+                    <p class="curent-quotation">Đơn vị: VND/sp</p>
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product">
+                        <thead>
+                            <tr>
+
+                                <th class="morestandard" style="width: 33%"><h4>Số lượng sản phẩm/đơn</h4></th>
+                                <th class="morestandard" style="width: 33%"><h4>Mức phí thu sản phẩm  (&gt;10 tệ)</h4></th>
+                                <th class="morestandard" style="width: 33%"><h4>Mức phí thu sản phẩm (&lt;10 tệ)</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1-2 sản phẩm</td>
+                                <td class="text-center">5.000</td>
+                                <td class="text-center">1.500</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">3-10 sản phẩm</td>
+                                <td class="text-center">3.500</td>
+                                <td class="text-center">1.000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">11-100 sản phẩm</td>
+                                <td class="text-center">2.000</td>
+                                <td class="text-center">700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">101-500 sản phẩm</td>
+                                <td class="text-center">1.500</td>
+                                <td class="text-center">700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">&gt;500 sản phẩm</td>
+                                <td class="text-center">1.000</td>
+                                <td class="text-center">700</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <br />
+                <p class="rs mg-t-15">
+                    <span class="bold red-color">2.Phí đóng gỗ</span> <br />
+                </p>
+
+                <div class="zichan-zijin zichan-box rs" style="margin-top: 0 !important">
+                    <p class="curent-quotation">Đơn vị: NDT</p>
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%">&nbsp;</th>
+                                <th class="morestandard" style="width: 33%"><h4>Kg đầu tiên</h4></th>
+                                <th class="morestandard" style="width: 33%"><h4>Kg tiếp theo</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <p>Phí đóng gỗ</p>
+                                </td>
+                                <td class="text-center">20 tệ</td>
+                                <td class="text-center">0.8 tệ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-content tabcontent" id="dvkygui">
+        <div class="faq-content-msg">
+            <h3>Bảng giá dịch vụ ký gửi</h3>
+        </div>
+        <div class="faq-content-msg" style="float: left;  width: 100%; box-sizing: border-box;">
+
+            <p>
+                Phí dịch vụ ký gửi hàng hóa bao gồm: <span class="bold red-color">Phí vận chuyển</span> (1) + <span class="bold red-color">Phí đóng gói kiện hàng</span> (2)
+            </p>
+            <br />
+            <p>
+                <span class="bold red-color">1.Phí vận chuyển</span>
+            </p>
+            <p>
+                Mọi mặt hàng đều có cân nặng thực tế và cân nặng quy đổi theo khối. 
+                Cân nặng được áp dụng là mức cân nặng cao hơn của trọng lượng thực và khối lượng quy đổi.
+                Khối lượng quy đổi được tính theo công thức : <span class="bold red-color">(kg) = (dài(cm) x rộng(cm) x cao(cm))/6000</span>.
+                Chúng tôi sẽ tính cước cân nặng theo giá trị lớn hơn giữa cân nặng thực tế và cân nặng quy đổi
+            </p> 
+            <p class="mg-t-15" style="font-weight: 700;">Đối với những kiện hàng trên 50kg, đơn giá vận chuyển như sau</p>
+
+            <div class="zichan-zijin zichan-box rs" style="margin-top: 0 !important;">
+                <p class="curent-quotation">Đơn vị: VND/Kg</p>
+                <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                    <thead>
+                        <tr>
+                            <th class="text-center" rowspan="2">Địa điểm nhận hàng</th>
+                            <th class="text-center" rowspan="2">Hình thức vận chuyển</th>
+                            <th class="text-center" rowspan="2">Thời gian nhận hàng</th>
+                            <th class="text-center morestandard">Vip 0</th>
+                            <th class="text-center morestandard">Vip 1</th>
+                            <th class="text-center  morestandard">Vip 2</th>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Khối lượng hàng <br /> vận chuyển &lt;= 2 tấn/tháng</th>
+                            <th class="text-center">
+                                Khối lượng hàng <br /> vận chuyển &gt; 2 tấn/tháng
+                            </th>
+                            <th class="text-center">Khối lượng hàng <br /> vận chuyển &gt; 5 tấn/tháng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center morestandard">
+                                <p>Hà Nội</p>
+                            </td>
+                            <td class="text-center">&nbsp;</td>
+                            <td class="text-center">2 ngày</td>
+                            <td class="text-center">17.000</td>
+                            <td class="text-center">15.000</td>
+                            <td class="text-center">14.000</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="text-center morestandard">
+                                <p>Hồ Chí Minh</p>
+                            </td>
+                            <td class="text-center">Đi chậm</td>
+                            <td class="text-center">4 - 5 ngày</td>
+                            <td class="text-center">22.000</td>
+                            <td class="text-center">20.000</td>
+                            <td class="text-center">19.000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Đi bay</td>
+                            <td class="text-center">3 ngày</td>
+                            <td class="text-center"><b>38.000</b></td>
+                            <td class="text-center">37.000</td>
+                            <td class="text-center">36.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <p class="text-left mg-t-15 rs" style="font-weight: 700;">Đối với những kiện hàng dưới 50kg, phí vận chuyển được tính như sau :</p>
+
+            <p style="font-style: italic;">
+                * Phí vận chuyển bằng 100.000 VND cho cân nặng đầu tiên và tính theo bảng giá cho số cân nặng còn lại
+            </p>
+            <p class="text-center bold red-color">
+                Phí vận chuyển = 100.000 + (Số cân nặng - 1) x Đơn giá
+            </p>
+            <p class="rs mg-t-15">
+                <span class="bold red-color">2.Phí đóng gỗ</span> <br />
+            </p>
+
+            <div class="zichan-zijin zichan-box rs" style="margin-top: 0 !important;">
+                <p class="curent-quotation">Đơn vị: NDT</p>
+                <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th class="morestandard"><h4>Kg đầu tiên</h4></th>
+                            <th class="morestandard"><h4>Kg tiếp theo</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <p>Phí đóng gỗ</p>
+                            </td>
+                            <td class="text-center">20 tệ</td>
+                            <td class="text-center">0.8 tệ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</section>

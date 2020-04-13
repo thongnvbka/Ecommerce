@@ -1,0 +1,78 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<div id="boxes">
+    <div style="top: 40px; left: 30%; display: none;" id="dialog" class="window">
+        <div class="top-notifi" style="float: left; width: 100%;border: 1px solid #dd2727; padding: 20px;box-sizing: border-box;">
+            <a href="/@culture" style="float: left">
+                <img src="~/Images/icon_likeorder_200x200---2.png" width="175" alt="">
+            </a>
+            <p style="float: right;font-size: 20px;  font-style: italic;  color: #dd2727; font-weight: 600;    margin-top: 35px;">Giao dịch dễ dàng - nhập hàng nhanh chóng</p>
+        </div>
+        <div id="lorem">
+            <p class="title-notifi">Thông báo</p>
+            <p class="title-notifi-content">(V/v chuyển đổi hệ thống LikeOrder.com)</p>
+            <p class="content-top" style="font-style: italic">
+                Kính gửi: Quý khách hàng !
+            </p>
+            <p class="content-top">
+                LikeOrder.com xin trân trọng thông báo:
+            </p>
+            <p style="font-size: 14px;">
+
+
+                Để đảm bảo và nâng cao chất lượng dịch vụ khách hàng được tốt hơn,
+                hệ thống <span class="red-color bold">LikeOrder.com</span> sẽ "<span class="red-color bold">Tạm ngưng giao dịch</span>" để "<span class="red-color bold">Chuyển đổi hệ thống</span>"
+                trong khoảng thời gian: Từ 18h chiều Thứ 6 - ngày 06/1/2016 đến 08h sáng Thứ 7 - ngày 07/1/2016.
+                @*Từ 17h Thứ bảy - ngày 17/12/2016 đến 08h Thứ 2 - ngày 19/12/2016.*@
+                <br />
+                Xin quý khách hàng lưu ý:<br />
+                - Chúng tôi vẫn sử dụng Domain:<span class="red-color bold"> https://LikeOrder.com </span> để giao dịch sau thời gian chuyển đổi hệ thống.
+                Chúng tôi sẽ ngưng giao dịch đặt đơn hàng trên hệ thống <span class="red-color bold"> LikeOrder.com </span>
+                "<span class="red-color bold"> cũ </span>" bắt đầu Từ 18h chiều Thứ 6 - ngày 06/1/2016.
+                <br />
+                - Đối với các đơn hàng giao dịch chưa hoàn thành trước 18h Thứ sáu - ngày 06/1/2016, quý khách hàng vui lòng vào theo dõi thông tin
+                những đơn hàng chưa hoàn thành qua đường link:
+            </p>
+            <p>
+                <span class="red-color bold">https://old.LikeOrder.com </span>Số dư ví điện tử của quý khách sẽ được chuyển sang
+                hệ thống <span class="red-color bold"> https://LikeOrder.com </span> "mới" để giao dịch  từ 08h Thứ 7 - ngày 07/1/2016.
+                <br />
+                - Để đảm bảo an toàn cho tài khoản của mình, quý khách vui lòng sử dụng tính năng lấy lại mật khẩu trên hệ thống <span class="red-color bold"> https://LikeOrder.com/vi/Account/PassForget </span>
+                từ 08h Thứ 7 - ngày 07/1/2016.Extension trên hệ thống <span class="red-color bold"> LikeOrder.com </span> cũ sẽ không hoạt động được trên hệ thống <span class="red-color bold">
+                    LikeOrder.com
+                </span> mới, Kể từ 08h Thứ 7 - ngày 07/1/2016, quý khách vui lòng "<span class="red-color bold"> xóa bỏ Extension cũ  </span>" và
+                "<span class="red-color bold">Cài đặt Extension trên hệ thống mới</span>" của chúng tôi tại đường link trên trang chủ website hoặc trực tiếp tại đường Link
+                <a href="https://chrome.google.com/webstore/detail/c%C3%B4ng-c%E1%BB%A5-%C4%91%E1%BA%B7t-h%C3%A0ng-nhkd/dkodpapicpniilofliibpjfahphljjnd" target="_blank" class="red-color bold"> 
+                    tại đây
+                </a>.
+            </p>
+            <p style="margin-bottom: 20px !important;">
+                Mọi thông tin thắc mắc, hay các vấn đề phát sinh cần hỗ trợ thêm. Xin quý khách vui lòng gửi Email tới bộ phận Chăm sóc khách hàng của chúng tôi tại địa chỉ Email: <span class="red-color bold">
+                    support@LikeOrder.com
+                </span>
+                Hoặc qua Hotline:<br />
+
+                096.585.1688 – CSKH Trương Hằng.<br />
+
+                096.535.1688 – CSKH Quỳnh Trang.<br />
+
+                090.722.9469 – CSKH Mỹ Dung.<br />
+
+                096.334.1688 – CSKH Ninh Huyền<br />
+
+                Để được hỗ trợ kịp thời.
+                <br />
+                <span class="red-color bold"> Hân hạnh được phục vụ quý khách !..</span>
+            </p>
+        </div>
+
+        <div id="footer-notifi">
+            <i class="fa fa-envelope-o"></i> Support@LikeOrder.com
+            <i class="fa fa-globe" style="margin-left: 10px;"></i> LikeOrder.com
+        </div>
+    </div>
+    <div style="width: 100%; font-size: 32pt; color:white; height: 100%; display: none; opacity: 0.6;" id="mask"></div>
+</div>
+

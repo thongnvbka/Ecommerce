@@ -1,0 +1,32 @@
+﻿@model Library.ViewModels.TemplateEmailJob.OverDaysOrderViewModel
+@{
+    int index = 1;
+}
+<h4>Overdue order @Model.Day does not have enough conditions to put in stock</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center w50">#</th>
+            <th class="text-center w50">Code orders</th>
+            <th class="text-center">Customer name</th>
+            <th class="text-center">Phone</th> 
+            <th class="text-center">Email</th>
+            <th class="text-center">Last update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model.Orders)
+        {
+            <tr>
+                <td class="text-center">@index</td>
+                <td><a href="/Purchase/Order#@("ORD" + o.Code)" target="_blank">@("ORD" + o.Code)</a></td>
+                <td>@o.CustomerName</td>
+                <td>@o.CustomerPhone</td>
+                <td>@o.CustomerEmail</td>
+                <td>@o.LastUpdate.ToString("g")</td>
+            </tr>
+            index += 1;
+        }
+    </tbody>
+</table>

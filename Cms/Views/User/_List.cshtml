@@ -1,0 +1,122 @@
+﻿@model  ModelView<Library.DbContext.Results.UserResult, UserFilterViewModel>
+@{
+    var hasUpdate = CheckPermision(EnumPage.Staff, EnumAction.Update);
+    var hasDelete = CheckPermision(EnumPage.Staff, EnumAction.Delete);
+    var hasUpdateOrDelete = hasDelete || hasUpdate;
+}
+<div class="box">
+    @*<div class="box-header">
+            <h3 class="box-title">Hover Data Table</h3>
+        </div>*@
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center w-40">#</th>
+                        <th class="text-center w-100">Avatar</th>
+                        <th class="text-center w-200">Full name</th>
+                        <th class="text-center w-150">Account management </th>
+                        <th class="text-center w-150">Starting date</th>
+                        <th class="text-center w-150">Date of birth</th>
+                        <th class="text-center w-150">Unit</th>
+                        <th class="text-center w-200">Position</th>
+                        <th class="text-center w-200">Rank</th>
+                        <th class="text-center w-100">Status</th>
+                        @if (hasUpdateOrDelete)
+                        {
+                            <th class="text-center w-150"></th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+            {
+                        <tr>
+                            <td colspan="10" class="text-center">There are no records</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+                        foreach (var m in Model.Items)
+                        {
+                            <tr>
+                                <td class="text-center">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.TotalRecord + idx)</td>
+                                <td class="text-center">
+                                    <img src="@string.Format("/images/{0}_50x50_1", m.Avatar)" alt="@m.FullName">
+                                </td>
+                                <td><a href="javascript:;">@m.FullName</a></td>
+                                <td>@m.UserName</td>
+                                <td class="text-right">
+                                    @if (m.StartDate != null)
+                                    {
+                                        @m.StartDate.Value.ToString("d")
+                                    }
+                                </td>
+                                <td class="text-right">
+                                    @if (m.Birthday != null)
+                                    {
+                                        @m.Birthday.Value.ToString("d")
+                                    }
+                                </td>
+                                <td>@m.OfficeName</td>
+                                <td>@m.TitleName</td>
+                                <td class="text-center">
+                                    @if (m.Type == 0)
+                                    {
+                                        <span class="label label-success">Staff</span>
+                                    }
+                                    else if (m.Type == 1)
+                                    {
+                                        <span class="label label-info">@*Trưởng đơn vị*@Head</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-warning">Manager</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (m.Status == 1)
+                                    {
+                                        <span class="label label-success">Normal</span>
+                                    }
+                                    else if (m.Status == 0)
+                                    {
+                                        <span class="label label-info">Probation</span>
+                                    }
+                                    else if (m.Status > 1 && m.Status < 5)
+                                    {
+                                        <span class="label label-warning">@(m.Status == 3 ? "On leave" : "Maternity leave")</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-danger">@(m.Status == 5 ? "Resignation" : "Retired")</span>
+                                    }
+                                </td>
+                                @if (hasUpdateOrDelete)
+                                {
+                                    <td class="text-center">
+                                        @if (hasUpdate)
+                                        {
+                                            <a href="@Url.Action("Edit", new {id = m.Id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit Account</a>
+                                        }
+                                        @if (hasDelete)
+                                        {
+                                            <a href="javascript:;" data-url="@Url.Action("Delete", new {id = m.Id})" data-name="@m.FullName" class="btn btn-sm btn-danger delete-item"><i class="fa fa-times"></i> Delete  </a>
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                            idx += 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @Html.Partial("_Paging", Model.PageInfo)
+    </div>
+    <!-- /.box-body -->
+</div>

@@ -1,0 +1,71 @@
+﻿  @{
+    var navPages = (List<Library.DbContext.Results.PermissionActionResult>)ViewBag.NavPages;
+    var navModule = (List<Library.DbContext.Entities.Module>)ViewBag.NavModules;
+    var navActivePages = (List<Library.DbContext.Results.PermissionActionResult>)ViewBag.NavActivePages;
+}
+
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="@string.Format("/images/{0}_50x50_1", UserState.Avatar)" alt="@UserState.FullName" class="img-circle">
+            </div>
+            <div class="pull-left info">
+                <p>@UserState.FullName</p>
+                <a href="javascript:;"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        @if (navModule != null && navPages != null)
+        {
+            <ul class="sidebar-menu">
+                @foreach (var m in navModule.Where(x => x.ParentId == null).OrderBy(x=> x.OrderNo))
+                {
+                    <li class="header">@m.Name.ToUpper()</li>
+                    foreach (var m2 in navModule.Where(x => x.ParentId == m.Id).OrderBy(x=> x.OrderNo))
+                    {
+                        <li class="treeview @(navActivePages.Any(x=> x.ModuleId == m2.Id) ? "active" : "")">
+                            <a href="javascript:;">
+                                <i class="@m2.Icon"></i> <span>@m2.Name</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                @foreach (var p in navPages.Where(x => x.ModuleId == m2.Id).OrderBy(x=> x.PageOrderNo))
+                                {
+                                    <li class="@(navActivePages.Any(x=> x.PageId == p.PageId) ? "active" : "")"><a href="@p.PageUrl"><i class="@p.PageIcon"></i>@p.PageName</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    foreach (var p in navPages.Where(x => x.ModuleId == m.Id).OrderBy(x => x.PageOrderNo))
+                    {
+                        <li class="treeview @(navActivePages.Any(x=> x.PageId == p.PageId) ? "active" : "")">
+                            <a href="@p.PageUrl">
+                                <i class="@p.PageIcon"></i>
+                                <span>@p.PageName</span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    </section>
+    <!-- /.sidebar -->
+</aside>

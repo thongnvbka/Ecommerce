@@ -1,0 +1,161 @@
+﻿@model  ModelView<Library.DbContext.Entities.Treasure, TreasureViewModel>
+
+@{
+    ViewBag.Title = "Management of fund allocation";
+}
+<section class="content-header">
+    <h1>
+        Management of revenue and expenditure accounts
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Type of fund</a></li>
+        <li class="active">List in the balance sheet</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-body pad">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-inline clearfix">
+                        <div class="form-group pull-right mb15">
+                            <div class="input-group">
+                                @Html.AntiForgeryToken()
+                                <span class="input-group-btn">
+                                    <a href="/Finance/CreateTreasure" class="btn btn-primary"><i class="fa fa-plus"></i> Add balance of payments</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-md-3">
+                    <form action="@Model.PageInfo.Url" id="searchForm" method="post" role="form">
+                        @*<div class="checkbox-label">
+                                <a (click)="allChild = !allChild" class="font-checkbox" href="javascript:;">
+                                    <i [class]="allChild ? 'clip-checkbox-checked':'clip-checkbox-unchecked-2'" class=""></i>
+                                </a> <span (click)="allChild = !allChild" class="label">Cả đơn vị con</span>
+                            </div>*@
+                        @Html.HiddenFor(x => x.PageInfo.CurrentPage)
+                        <div>
+                            <div id="position-office-jstree"></div>
+                            @Html.HiddenFor(x => x.SearchInfo.Selected)
+                            @Html.HiddenFor(x => x.SearchInfo.Path)
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-8 col-md-9">
+                    <div id="loading">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                    <div id="body-table" class="table-scrollable" style="display:none">
+                        @Html.Partial("_List", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function pagging(currentPage) {
+            $("#PageInfo_CurrentPage").val(currentPage);
+            searchForm();
+        }
+
+        function searchForm() {
+            $('#body-table').hide();
+            $('#loading').show();
+
+            $("#searchForm").submit();
+        }
+
+        $(function () {
+            var frm = $('#searchForm');
+            frm.submit(function (ev) {
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        $("#body-table").html(data);
+                        $('#body-table').show();
+                        $('#loading').hide();
+                    }
+                });
+
+                ev.preventDefault();
+            });
+
+            $("#body-table")
+                .on("click",
+                    "a.delete-item",
+                    function () {
+                        var $this = $(this);
+                        swal({
+                            title: 'Are you sure to delete this item?',
+                            text: 'Balance of payments "' + $this.data("name") + '"',
+                            type: 'warning',
+                            showCancelButton: true,
+                            //confirmButtonColor: '#3085d6',
+                            //cancelButtonColor: '#d33',
+                           cancelButtonText: 'Cancel',
+                            confirmButtonText: 'Delete'
+                        })
+                            .then(function () {
+                                $.post($this.data("url"),
+                                    function (data) {
+                                        if (data == -1) {
+                                            toastr.warning("Balance of payments does not exist or has been deleted");
+                                            return;
+                                        }
+                                        if (data == -2) {
+                                            toastr.warning("Cannot delete entries that has child entry");
+                                            return;
+                                        }
+                                        toastr.success("Deleted successfully");
+                                        searchForm();
+                                    });
+                            }, function () { });
+                    });
+
+            // Khởi tạo jsTree đơn vị
+            window.treasureJsTree = @Html.Raw(ViewBag.treasureJsTree);
+            var firstLoading = true;
+            $('#position-office-jstree')
+                .jstree({
+                    'plugins': ["types"],
+                    'core': {
+                        "themes": {
+                            "responsive": false
+                        },
+                        'data': window.treasureJsTree
+                    },
+                    'select_node': '@(Model.SearchInfo.Selected)'
+                })
+                .on('changed.jstree',
+                    function(e, data) {
+                        if (firstLoading) {
+                            firstLoading = false;
+                            return;
+                        }
+                        $("#SearchInfo_Selected").val(data.selected[0]);
+                        $("#SearchInfo_Path").val(_.find(window.treasureJsTree, function(o) { return o.id == data.selected[0]}).idPath);
+                        searchForm();
+                    });
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        });
+    </script>
+}

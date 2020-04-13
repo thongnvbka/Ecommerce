@@ -1,0 +1,49 @@
+﻿<div id="permission-users-modal" class="modal fade modal-dialog modal-p70" tabindex="-1">
+    <!--<div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title"><i class="fa fa-users"></i> Các tài khoản có quyền "<b>Nhân viên đặt hàng</b>"</h4>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center w25">#</th>
+                    <th class="text-center w50">Avatar</th>
+                    <th class="text-center">Full name</th>
+                    <th class="text-center">Account</th>
+                    <th class="text-center">Unit</th>
+                    <th class="text-center">Position</th>
+                    <th class="text-center w50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <template [ngIf]="users.length > 0">
+                    <tr *ngFor="let u of users; let index = index">
+                        <td class="text-center">{{(currentPage-1)*recordPerPage+index+1}}</td>
+                        <td class="text-center"><img [src]="u.avatar" alt="Avatar" style="width: 50px;" /></td>
+                        <td>{{u.fullName}}</td>
+                        <td>{{u.userName}} </td>
+                        <td>{{u.officeName}}</td>
+                        <td>{{u.titleName}}</td>
+                        <td class="text-center">
+                            <a (click)="delete(t)" class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-times fa fa-white"></i> Delete permission</a>
+                        </td>
+                    </tr>
+                </template>
+                <tr *ngIf="users.length === 0">
+                    <td class="text-center" colspan="10">
+                        <div class="alert alert-info m0">No data</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pager [totalRecord]="totalRecord" [recordPerPage]="recordPerPage" [recordName]="'Employee'" (pageClick)="search($event)"></pager>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> Close</button>
+    </div>
+</div>
+<!--</div>
+</div>-->

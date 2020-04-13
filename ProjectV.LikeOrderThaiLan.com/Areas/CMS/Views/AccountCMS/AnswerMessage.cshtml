@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "AnswerMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+ 
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="zixun">
+                <ul class="zixun-nav">
+                    <li data-id="huifu" class="lete-active">咨询回复</li>
+                    <li data-id="zhuanshu">大客户专属客服</li>
+                </ul>
+                <div class="zixun-huifu zixun-box">
+                    <div class="zixun-huifu-msg">
+                        共有： <a>0 </a>条咨询。已回复的有： <a>0 </a>条， 未得到回复的咨询： <a>0 </a>条。
+                        <p>我们是如此重视您的咨询啊~！所以，除了下班休息时间，不在系统前，无法作答之外，我们尽量做到，秒回复，分答~！</p>
+                    </div>
+                    <h1>
+                        <input id="check_all" type="checkbox" name="" value="">
+                        <label>全选</label>
+                        <a id="piliang_del">批量删除</a>
+                    </h1>
+                    <ul class="zixun-huifu-top">
+                        <li>&nbsp;</li>
+                        <li>咨询时间</li>
+                        <li>咨询类型</li>
+                        <li>咨询内容</li>
+                        <li>回复状态</li>
+                        <li>操作</li>
+                    </ul>
+                    <div class="dingdan-content-non">
+                        暂无记录
+                    </div>
+
+                    <form name="selectPageForm" action="/user.php" method="get">
+
+                        <div class="zichan-chongzhi-history-btn">
+
+                            <p>
+                                <span id="total_num2">一共有 0 条记录</span>
+                            </p>
+                        </div>
+                    </form>
+                    <form action="user.php" method="post" enctype="multipart/form-data" name="formMsg" onsubmit="return submitMsg()">
+                        <div class="zixun-huifu-zixun">
+                            <h1><span>+</span>我要咨询</h1>
+                            <div class="zixun-huifu-zixun-box">
+                                <p>*咨询类型:</p>
+                                <div>
+                                    <input type="radio" name="msg_type" id="" value="0" checked="checked"><label>订单咨询</label>
+                                    <input type="radio" name="msg_type" id="" value="1"><label>代购咨询</label>
+                                    <input type="radio" name="msg_type" id="" value="2"><label>转运咨询</label>
+                                    <input type="radio" name="msg_type" id="" value="3"><label>快递物流配送</label>
+                                    <input type="radio" name="msg_type" id="" value="4"><label>支付与充值</label>
+                                    <input type="radio" name="msg_type" id="" value="5"><label>优惠卡券/积分</label>
+                                    <input type="radio" name="msg_type" id="" value="6"><label>特色服务</label>
+                                    <input type="radio" name="msg_type" id="" value="7"><label>其他</label>
+                                </div>
+                            </div>
+                            <div class="zixun-huifu-zixun-box">
+                                <p>*咨询类容:</p>
+                                <div>
+                                    <textarea id="textarea_zx" name="msg_content" rows="" cols=""></textarea>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="msg_title" value="咨询">
+                            <input type="hidden" name="act" value="act_add_message">
+                            <div class="zixun-huifu-zixun-box">
+                                <p>&nbsp;</p>
+                                <div>
+                                    <input id="submit_zx" type="submit" value="提交咨询"><span id="submitTip_zx"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="zixun-zhuanshu zixun-box" style="display: none;">
+                    <div class="zixun-zhuanshu-msg">
+                        <p>我们是如此重视您的咨询啊~！所以，除了下班休息时间，不在系统前，无法作答之外，我们尽量做到，秒回复，分答~！</p>
+                        <span>哎哟~！很抱歉，您暂时还没有专属的客服哦！ 查看<a id="shenqing_tiaojian">申请条件</a>！</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

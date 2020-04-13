@@ -1,0 +1,23 @@
+﻿<script type="text/html" id="ListNoti">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1"> </td> 
+        <td class="text-left"><a data-bind="click: $parent.detailNotification" class="td-text-left link-shop" style="float: left"><span data-bind="text: substring(Title,40)"></span></a> </td>
+        <td class="text-center" data-bind="text: moment(CreateDate).format('DD/MM/YYYY   hh:mm:ss')"></td>
+        <!-- ko if: IsRead==1 -->
+        <td class="text-center td-text-left" data-bind="text: substring(Description,40)" style="font-weight: normal !important"> </td>
+        <!-- /ko -->
+        <!-- ko if: IsRead==0 -->
+        <td class="text-center td-text-left" data-bind="text: substring(Description,40)"> </td>
+        <!-- /ko -->
+        <!-- ko if: IsRead==1 -->
+        <td class="text-center" style="font-weight: normal !important">
+            @Resource.TransactionHistory_IsRead
+        </td>
+        <!-- /ko -->
+        <!-- ko if: IsRead==0 -->
+        <td class="text-center">
+            @Resource.TransactionHistory_NoRead
+        </td>
+        <!-- /ko -->
+    </tr>
+</script>

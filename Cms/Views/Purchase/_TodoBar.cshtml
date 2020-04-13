@@ -1,0 +1,324 @@
+﻿@if (CheckPermision(EnumAction.View, EnumPage.OrderNew, EnumPage.OrderOrder, EnumPage.OrderDelay, EnumPage.OrderDepositNew, EnumPage.OrderDeposit, EnumPage.OrderDepositDelay,
+                                                                                                    EnumPage.StockQuotesNew, EnumPage.StockQuotes, EnumPage.OrderSourcing, EnumPage.OrderLadingCode))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-user"></i> Order processing</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumPage.OrderNew, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-new' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-new')}" href="/Purchase/Order#order-new">
+                            <i class="fa fa-warning text-red"></i> Order has not processed yet
+                            <span data-bind="text: totalOrderNew" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderOrder, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order')}" href="/Purchase/Order#order">
+                            <i class="fa fa-inbox"></i>  Order
+                            <span data-bind="text: totalOrder" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderRetail, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-retail' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-retail')}" href="/Purchase/Order#order-retail">
+                            <i class="fa fa-cube text-orange"></i> Retail Orders
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderDelay, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-delay' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-delay')}" href="/Purchase/Order#order-delay">
+                            <i class="fa fa-hourglass-half text-orange"></i> Delay order processing
+                            <span data-bind="text: totalOrderLate" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+               
+                @if (CheckPermision(EnumPage.OrderDepositNew, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-deposit-new' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-deposit-new')}" href="/Purchase/Order#order-deposit-new">
+                            <i class="fa fa-warning text-red"></i> Order has not processed yet
+                            <span data-bind="text: totalOrderDepositNew" class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderDeposit, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-deposit' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-deposit')}" href="/Purchase/Order#order-deposit">
+                            <i class="fa fa-truck"></i>sign order
+                            <span data-bind="text: totalOrderDeposit" class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderDepositDelay, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-deposit-delay' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-deposit-delay')}" href="/Purchase/Order#order-deposit-delay">
+                            <i class="fa fa-hourglass-half text-orange"></i> Delayed order processing
+                            <span data-bind="text: totalOrderDepositLate" class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.StockQuotesNew, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'stock-quotes-new' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('stock-quotes-new')}" href="/Purchase/Order#stock-quotes-new">
+                            <i class="fa fa-tags text-orange"></i> Unreadable source ticket
+                            <span data-bind="text: totalStockQuoesNew" class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                }
+
+                @if (CheckPermision(EnumPage.StockQuotes, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'stock-quotes' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('stock-quotes')}" href="/Purchase/Order#stock-quotes">
+                            <i class="fa fa-tags"></i> Source ticket
+                            <span data-bind="text: totalStockQuoes" class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                }
+
+                @if (CheckPermision(EnumPage.OrderSourcing, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-sourcing' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-sourcing')}" href="/Purchase/Order#order-sourcing">
+                            <i class="fa fa-inbox"></i> order find the source
+                            <span data-bind="text: totalOrderSourcing" class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                }
+                
+                @if (CheckPermision(EnumPage.OrderCommerce, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-commerce' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-commerce')}" href="/Purchase/Order#order-commerce">
+                            <i class="fa fa-folder-open-o"></i> Commercial orders
+                        </a>
+                    </li>
+                }
+
+                @if (CheckPermision(EnumPage.OrderLadingCode, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'lading-code' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('lading-code')}" href="/Purchase/Order#lading-code">
+                            <i class="fa fa-truck"></i> Manage bill of lading
+                            @*<span data-bind="text: totalOrderSourcing" class="label label-primary pull-right"></span>*@
+                        </a>
+                    </li>
+                }
+
+                @if (CheckPermision(EnumPage.OrderUserWebsite, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'user-website' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('user-website')}" href="/Purchase/Order#user-website">
+                            <i class="fa fa-cogs"></i> configuration website staff
+                        </a>
+                    </li>
+                }
+
+
+                @*<li data-bind="css: active() == 'accountant' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('accountant')}" href="javascript:;">
+                            <i class="fa fa-dollar"></i> Thanh toán tiền đặt hàng
+                        </a>
+                    </li>*@
+            </ul>
+        </div>
+    </div>
+}
+@if (CheckPermision(EnumAction.View, EnumPage.OrderNoCodeOfLading, EnumPage.OrderAwaitingPayment, EnumPage.OrderNotEnoughInventory, EnumPage.OrderTallyMissing))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-warning"></i> Risky orders</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumPage.OrderNoCodeOfLading, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-risk' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-risk')}" href="/Purchase/Order#order-risk">
+                            <i class="fa fa-circle-o text-yellow"></i> No bill of lading
+                            <span data-bind="text: totalOrderRisk" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderAwaitingPayment, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-accountant' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-accountant')}" href="/Purchase/Order#order-accountant">
+                            <i class="fa fa-circle-o text-yellow"></i> Waiting for accountant to pay
+                            <span data-bind="text: totalOrderAccountant" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderNotEnoughInventory, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-warehouse' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-warehouse')}" href="/Purchase/Order#order-warehouse">
+                            <i class="fa fa-circle-o text-yellow"></i> Not enough in stock
+                            <span data-bind="text: totalOrderNoWarehouse" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderTallyMissing, EnumAction.View))
+                {
+                    @*<li data-bind="css: active() == 'order-tally' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-tally')}" href="javascript:;">
+                            <i class="fa fa-circle-o text-yellow"></i> Kiểm đếm thiếu hàng
+                            <span data-bind="text: totalOrderRisk" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>*@
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumAction.View, EnumPage.OrderSuccess))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-check-circle-o"></i> Completed application</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumPage.OrderSuccess, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-success' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-success')}" href="/Purchase/Order#order-success">
+                            <i class="fa fa-check-circle-o text-green"></i> Complete the application
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+
+@if (CheckPermision(EnumAction.View, EnumPage.CustomerSearch, EnumPage.OrderSupport, EnumPage.OrderClaimForRefund))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-support"></i> Help</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumPage.CustomerSearch, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'customerfind' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('customerfind')}" href="/Purchase/Order#customerfind">
+                            <i class="fa fa-user"></i> Look up customer information
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderSupport, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'ticket-support' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('ticket-support')}" href="/Purchase/Order#ticket-support">
+                            <i class="fa fa-circle-o text-yellow"></i> Support to resolve complaints
+                            <span class="label label-danger pull-right" data-bind="text: totalTicketSupport">100</span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderClaimForRefund, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'claimforrefund' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('claimforrefund')}" href="/Purchase/Order#claimforrefund">
+                            <i class="fa fa-circle-o text-yellow"></i> Refunding request ticket
+                            <span class="label label-danger pull-right" data-bind="text: totalClaimForRefund"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumPage.ReportOrder, EnumAction.View))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-area-chart"></i> Order statistics</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: active() == 'report' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('report')}" href="/Purchase/Order#report">
+                        <i class="fa fa-pie-chart"></i> Total statistics of money orders
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportBargain' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportBargain')}" href="/Purchase/Order#reportBargain">
+                        <i class="fa fa-pie-chart"></i> Statistics money bargain orders
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportOrder' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportOrder')}" href="/Purchase/Order#reportOrder">
+                        <i class="fa fa-pie-chart"></i> Order status statistics
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+@*@if (CheckPermision(EnumPage.OrderDeposit, EnumAction.View))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-area-chart"></i> Thống kê đặt hàng ký gửi</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: active() == 'report' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportDeposit')}" href="/Purchase/Order#reportDeposit">
+                        <i class="fa fa-pie-chart"></i> Thống kê Total money đơn đặt hàng ký gửi
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}*@

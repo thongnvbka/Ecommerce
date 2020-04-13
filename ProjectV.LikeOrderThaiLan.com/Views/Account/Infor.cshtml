@@ -1,0 +1,436 @@
+﻿@model CustomerUpdateMeta
+@{
+    ViewBag.Title = Resource.Dashboard_SettingAccount;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listCountry = DropdownItem.GetCountry();
+    listCountry.Insert(0, new DropdownItem() { Value = "0", Text = "--- Chọn quốc gia ---" });
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var urlCountry = $"/{culture}/Account/GetCityByCountry";
+    var urlDitrict = $"/{culture}/Account/GetDistrictByCity";
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    @if (Model != null)
+    {
+        <div class="user-r">
+            <div class="user-r-main">
+                <div class="dingdan">
+                    <ul class="zichan-nav" id="buyOrder">
+                        <li data-id="zijin" class="lete-active">
+                            @Resource.Account_Infor
+                        </li>
+                    </ul>
+
+                    @Html.ValidationSummary(false)
+                    <form class="change-pass-cus rs" method="post" id="frmInfor">
+
+                        <div class="forget-p-queren">
+                            <div style="padding-top: 20px; box-sizing: border-box;">
+                                <p>
+                                    <label>@Resource.Account_InforEmail：</label>
+                                    <span>
+                                        @Model.Email
+                                    </span>
+                                </p>
+                            </div>
+                            <div style="padding-top: 20px; box-sizing: border-box;">
+
+                                <p>
+                                    <label>@Resource.Home_Pass：</label>
+                                    <span>
+                                        ******
+                                    </span>
+                                    <span> <a href="/@culture/Account/ChangePass">@Resource.NewPass_ChangePass</a></span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <label>@Resource.Account_InforName (<span class="red-color">*</span>)</label>
+                                    @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                    {"placeholder", "Nguyen Van An"},
+                                    {"autocomplete","off" },
+                                    { "type","text" }
+                                })
+                                    @Html.ValidationMessageFor(x => x.FullName)
+                                </p>
+                            </div>
+                            <div id="upload-image-cus">
+                                <p style="margin-bottom: 0px;">
+                                    <label>@Resource.InforAccount_Image：</label>
+                                    <span>
+                                        @Html.HiddenFor(m => m.Avatar)
+                                        @if (Model != null && Model.Avatar != null)
+                                        {
+                                            <img src="@Model.Avatar" class="img" id="imgShow" width="50" height="50" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Images/icon_likeorder_128x128.png" height="50" alt="" />
+                                        }
+                                    </span>
+                                    <br />
+                                </p>
+                                <p>
+                                    <label></label>
+
+                                    <input id="file-one" class="show-hide" type="file" hidden name="form[files][]" onchange="FileHandler(event, this)" accept='image/*'>
+                                    <input type="text" class="form-control" placeholder="" id="input-file-one" style="width: 283px;">
+                                    <span>
+                                        <a onclick="showfile('file-one')" class="form-control btn btn-primary form-control-img">
+                                            <i class="fa fa-folder-open icon posit-top icon-i icon-upload-file" aria-hidden="true"></i> @Resource.InforAccount_SelectImage
+                                        </a>
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <label>@Resource.InforAccount_Sex</label>
+
+                                    @Html.DropDownList("GenderName",
+             new SelectList(Enum.GetValues(typeof(SexCustomerInfor))),
+             @Resource.LuaChonGioiTinh,
+             //"Lựa chọn giới tính",
+             new { @class = "form-control form-control-solid placeholder-no-fix height35" })
+                                </p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <label>@Resource.InforAccount_DateOfBirth</label>
+                                    @Html.TextBoxFor(x => x.Birthday, "{0:dd-MM-yyyy}", new Dictionary<string, object>()
+                                    {
+                                       { "class" ,"form-control datepicker"},
+                                       { "placeholder","01/01/2016" }
+                                    })
+
+                                    @Html.ValidationMessageFor(x => x.Birthday)
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <label>@Resource.Account_InforPhone (<span class="red-color">*</span>)：</label>
+                                    @Html.TextBoxFor(x => x.Phone, new Dictionary<string, object>()
+                                {
+                                    {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                    {"placeholder", "0989267876"},
+                                    { "type","text" },
+                                      {"autocomplete","off" },
+                                    { "maxlength","12"}
+                                })
+                                    @Html.ValidationMessageFor(x => x.Phone)
+                                </p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <label> @Resource.InforAccount_Storage：</label>
+                                    @Html.DropDownListFor(m => m.WarehouseId,
+                                                    new SelectList((List<Library.DbContext.Entities.Office>)ViewBag.ListWardDelivery, "Id", "Name"),
+                                                    new
+                                                    {
+                                                        //@onchange = "DistrictChange(this)",
+                                                        //@class = "form-control list-district"
+                                                    })
+                                    @Html.HiddenFor(m => m.WarehouseId)
+                                </p>
+                            </div>
+
+                            @*<div>
+                                    <p>
+                                        <label>@Resource.Account_InforCountry：</label>
+
+                                        @Html.DropDownListFor(m => m.CountryId, new SelectList(listCountry, "Value", "Text"),
+                                       new
+                                       {
+                                           @onchange = "CountryChange(this,'.list-city');",
+                                           @class = "form-control"
+                                       })
+                                    </p>
+                                </div>*@
+
+                            @*<div>
+                                    <p>
+                                        <label>@Resource.Account_InforCity:</label>
+
+                                        @Html.DropDownListFor(m => m.ProvinceId,
+                                       new SelectList((IEnumerable<Library.DbContext.Entities.Province>)ViewBag.listProvince, "Id", "Name"),
+                                       new
+                                       {
+                                           @onchange = "CityChange(this,'.list-district');",
+                                           @class = "form-control list-city"
+                                       })
+                                        @Html.HiddenFor(m => m.ProvinceName)
+                                    </p>
+                                </div>*@
+
+                            @*<div>
+                                    <p>
+                                        <label>@Resource.Account_InforDistric：</label>
+                                        @Html.DropDownListFor(m => m.DistrictId,
+                                       new SelectList((IEnumerable<Library.DbContext.Entities.District>)ViewBag.listDistrict, "Id", "Name"),
+                                       new
+                                       {
+                                           @onchange = "DistrictChange(this)",
+                                           @class = "form-control list-district"
+                                       })
+                                        @Html.HiddenFor(m => m.DistrictName)
+                                    </p>
+                                </div>*@
+
+                            <div id="addressCustomer">
+                                <p>
+                                    <label>@Resource.Home_Address  ：</label>
+                                    @Html.TextAreaFor(x => x.Address, new Dictionary<string, object>()
+                                        {
+                                            {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                            {"placeholder", Resource.Home_Address},
+                                              {"autocomplete","off" },
+                                        })
+                                    @Html.ValidationMessageFor(x => x.Address)
+                                </p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <label>@Resource.Account_InforAccountHolders：</label>
+                                    @Html.TextBoxFor(x => x.CardName, new Dictionary<string, object>()
+                                                                {
+                                                              {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                                                    {"placeholder", Resource.Account_InforAccountHolders},
+                                                                      {"autocomplete","off" },
+                                                                })
+                                </p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <label>@Resource.Account_InforCardNumber：</label>
+                                    @Html.TextBoxFor(x => x.CardId, new Dictionary<string, object>()
+                                                                {
+                                                                   {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                                                    {"placeholder", Resource.Account_InforCardNumber},
+                                                                      {"autocomplete","off" },
+                                                                })
+                                </p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <label>@Resource.Account_InforBanks：</label>
+                                    @Html.TextBoxFor(x => x.CardBank, new Dictionary<string, object>()
+                                    {
+                                        {"class", "form-control form-control-solid placeholder-no-fix height35"},
+                                        {"placeholder", Resource.Account_InforBanks},
+                                          {"autocomplete","off" },
+                                    })
+                                </p>
+                            </div>
+
+                            <button type="button" id="btnSubmit">@Resource.Account_InforUpdate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+</section>
+
+@section scripts{
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+    <script src="~/Content/js/jquery.datetimepicker.full.js"></script>
+    <script src="~/Content/js/datetime-piker.js"></script>
+    <script>
+        function showfile(id) {
+            $('#' + id).click();
+            $('#' + id).change(function () {
+                // When original file input changes, get its value, show it in the fake input
+                info = '';
+                // Display filename (without fake path)
+                var path = $('#' + id).val().split('\\');
+                info = path[path.length - 1];
+
+                $('#input-' + id).val(info);
+            });
+        }
+
+        function ShowLoading() {
+            var element = $('body');
+            if (element.length > 0) {
+                element.append("<div class='loading-icon' style='position: fix'></div>");
+                element.css("position", "relative");
+            }
+        }
+
+        function HideLoading() {
+            var element = $('body');
+            if (element.length > 0) {
+                element.find(".loading-icon").remove();
+            }
+        }
+        $.datetimepicker.setLocale('vi');
+    </script>
+
+    <script type="text/javascript">
+        //upload 1 anh
+        var selectedFiles;
+        function Upload(obj) {
+            var data = new window.FormData();
+            for (var i = 0; i < selectedFiles.length; i++) {
+                data.append(selectedFiles[i].name, selectedFiles[i]);
+            }
+            $.ajax({
+                url: '@Url.Action("FileUploadHandler", "Account")',
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (result) {
+                    $(obj).parent().find('.img').attr('src', result);
+                    $(obj).parent().find('.img').removeAttr('style');
+                    $('#Avatar').val(result);
+                },
+                error: function () {
+                    alert(window.InforAccount.error.loiuploadanh);
+                },
+                beforeSend: function () {
+                    ShowLoading();
+                },
+                complete: function () {
+                    HideLoading();
+                }
+            });
+        }
+        function FileHandler(e, obj) {
+            selectedFiles = e.target.files;
+            Upload(obj);
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Phone').keydown(function (event) {
+                // Allow special chars + arrows
+                if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9
+                    || event.keyCode == 27 || event.keyCode == 13
+                    || (event.keyCode == 65 && event.ctrlKey === true)
+                    || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                    return;
+                } else {
+                    // If it's not a number stop the keypress
+                    if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                        event.preventDefault();
+                    }
+                }
+            });
+        })
+        //dat nuoc
+        function CountryChange(ddlCountry, tmpCl) {
+            $.ajax({
+                url: '@urlCountry',
+                type: 'GET',
+                data: { countryId: $(ddlCountry).val() },
+                success: function (data) {
+                    if (data != null) {
+                        $(tmpCl).html(data);
+                    }
+                }
+            });
+        }
+        //thanh pho
+        function CityChange(ddlCity, tmpCl) {
+            $.ajax({
+                url: '@urlDitrict',
+                type: 'GET',
+                data: { provinceId: $(ddlCity).val() },
+                success: function (data) {
+                    if (data != null) {
+                        $('#ProvinceName').val($(ddlCity).find("option:selected").text());
+                        $(tmpCl).html(data);
+                    }
+                }
+            });
+        }
+        //quan huyen
+        function DistrictChange(e) {
+            $('#DistrictName').val($(e).find("option:selected").text());
+        }
+        //cap nhat thong tin
+        $(document).ready(function () {
+            $('#btnSubmit').click(function () {
+                var err = 0;
+                if ($('#FullName').val().trim().length == 0) {
+                    toastr.error(window.InforAccount.error.vuilongnhaphoten);
+                    $('#FullName').focus();
+                    err = 1;
+                }
+                else {
+                    if ($('#Phone').val().trim().length == 0) {
+                        toastr.error(window.InforAccount.error.vuilongnhapsodienthoai);
+                        $('#Phone').focus();
+                        err = 1;
+                    }
+                }
+                if (err == 0) {
+                    var tmpProvinceId = "0";
+                    if ($('#ProvinceId option').length > 0) {
+                        tmpProvinceId = $('#ProvinceId').val();
+                    }
+                    var tmpDistrictId = "0";
+                    if ($('#DistrictId option').length > 0) {
+                        tmpDistrictId = $('#DistrictId').val();
+                    }
+                    var obj = {
+                        FullName: $('#FullName').val(),
+                        Avatar: $('#Avatar').val(),
+                        Phone: $('#Phone').val(),
+                        CountryId: $('#CountryId').val(),
+                        ProvinceId: tmpProvinceId,
+                        ProvinceName: $('#ProvinceName').val(),
+                        DistrictName: $('#DistrictName').val(),
+                        DistrictId: tmpDistrictId,
+                        Address: $('#Address').val(),
+                        CardName: $('#CardName').val(),
+                        CardId: $('#CardId').val(),
+                        CardBank: $('#CardBank').val(),
+                        GenderName: $('#GenderName').val(),
+                        Birthday: $('#Birthday').val(),
+                        WarehouseId: $('#WarehouseId').val()
+                    }
+
+                    $.ajax({
+                        url: '@Url.Action("Infor", "Account")',
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(obj),
+                        success: function (result) {
+                            if (result > 0) {
+                                toastr.success(window.InforAccount.error.capthatthanhcong);
+                            }
+                        },
+                        error: function () {
+                            toastr.error(window.InforAccount.error.loicapnhatthongtin);
+                        },
+                        sync: true,
+                        processData: false
+                    });
+                }
+
+            });
+        });
+    </script>
+    <script src="~/Scripts/account-uploadimage/upload-image.@cultureJs"></script>
+}

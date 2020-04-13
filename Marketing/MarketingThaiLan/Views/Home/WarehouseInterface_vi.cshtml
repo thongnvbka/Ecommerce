@@ -1,0 +1,812 @@
+﻿
+@{
+    ViewBag.Title = "KhoGiaoDien";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles{
+    <link href="~/Content/css/style.min.css" rel="stylesheet" />
+    <link href="~/Content/css/slide-theme.css" rel="stylesheet" />
+}
+<div id="dvBanner">
+    <div class="row banner-container">
+        <div class="col-md-12">
+            <h1>
+                <span class="lbl-text large">2000+ อินเตอร์เฟซ</span>
+                <span class="lbl-text light">อินเตอร์เฟซเว็บขายสินค้าสวยงาม มีความเชียวชาญ และหลักหลายทางด้าน</span>
+            </h1>
+        </div>
+
+    </div>
+</div>
+<div class="row margin-top-40">
+    <div class="col-lg-12">
+        <div class="container">
+            <div id="toolbar">
+                <div role="toolbar" class="btn-toolbar">
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 dvtoolbar dvtool input-search">
+                        <form method="get" id="formSearch" novalidate="novalidate">
+                            <div class="input-group">
+                                <input id="search" type="text" name="search" class="form-control" placeholder="Bạn tìm giao diện gì?">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" id="btnSearch" style="position :relative;">
+                                        <span class="icon-search"></span>
+                                    </button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </form>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 dvtoolbar dvtool select-price">
+                        <div class="btn-group btn-group-justified" id="dvPrice">
+                            <a role="button" val="all" class="btn btn-default all active" href="/?price=all">ทั้งหมด</a>
+                            <a role="button" val="free" class="btn btn-default border-0 free" href="/?price=free">ฟรี</a>
+                            <a role="button" val="paid" class="btn btn-default paid" href="/?price=paid">ซื้อ</a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 dvtool dvColletion">
+                        <div id="dvColletion">
+                            <select id="CollectionId" class="form-control selectpicker" name="CollectionId" @*style="display: none;"*@>
+                                <option value="">ทั้งหมดทางด้านอาชีพ</option>
+                                <option value="1">Công nghệ - Kỹ thuật số</option>
+                                <option value="2">Thiết bị điện</option>
+                                <option value="3">Thời trang - Trang sức</option>
+                                <option value="4">Thực phẩm - Nhà hàng</option>
+                                <option value="5">Thể thao - Dịch vụ</option>
+                                <option value="6">Nội thất - Trang trí văn phòng</option>
+                                <option value="7">Sinh hoạt - Gia dụng</option>
+                                <option value="9">Bất động sản - Xây dựng</option>
+                                <option value="10">Thủ công - Mỹ nghệ - Quà tặng</option>
+                                <option value="12">Khác</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 dvtool dvSort">
+                        <div id="dvSort">
+                            <select class="form-control selectpicker" @*style="display: block;"*@>
+                                <option value="">จัดการ</option>
+                                <option value="1">Giá từ thấp đến cao</option>
+                                <option value="2">Giá từ cao đến thấp</option>
+                                <option value="3">Tên A - Z</option>
+                                <option value="4">Tên Z - A</option>
+                                <option value="5">Bán chạy nhất</option>
+                            </select>
+                            @*<div class="btn-group bootstrap-select form-control"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="SortId" title="Sắp xếp"><span class="filter-option pull-left">Sắp xếp</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open"><ul class="dropdown-menu inner" role="menu"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Sắp xếp</span>" data-tokens="null"><span class="text">Sắp xếp</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Gia từ thấp đến cao</span>" data-tokens="null"><span class="text">Giá từ thấp đến cao</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Gia từ cao đến thấp</span>" data-tokens="null"><span class="text">Giá từ cao đến thấp</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Ten A - Z</span>" data-tokens="null"><span class="text">Tên A - Z</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="4"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Ten Z - A</span>" data-tokens="null"><span class="text">Tên Z - A</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="5"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Ban chạy nhất</span>" data-tokens="null"><span class="text">Bán chạy nhất</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div></div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+        <div id="wrapper" class="default-wrapper">
+
+
+            <div class="col-lg-12 text-center hidden" id="loadTheme">
+                <img src="~/Content/images/newlogo/spinner.gif" />
+            </div>
+
+            <div class="slide-theme">
+                <div class="swiper-container swiper-container-horizontal">
+                    <div class="swiper-wrapper" style="transform: translate3d(-3746px, 0, 0); transition-duration: 0;">
+                        <div class="swiper-slide hidden-sm hidden-md hidden-xs swiper-slide-duplicate" data-swiper-slide-index="2" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template, giao diện mẫu <span>Ateck</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>Giá dành cho bạn : <span>1,200,000 VNĐ</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/12/themefeatures/c78323b721c1436044027e4eb9c24515.png?1486025469647">
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/?mobile=true">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/12/themefeatures/a371502eb23d40ad51ce0b058804c2dd.jpg?1486025469647">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template, giao diện mẫu <span>Maxxshop</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>Giá dành cho bạn : <span>700,000 VNĐ</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/15/themefeatures/5b2f9f813fd139d66d43eb0eeafec525.png?1486025504503">
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/15/themefeatures/cbd79863b5b88ad6cee0818f144b2de2.jpg?1486025504503">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide hidden-sm hidden-md hidden-xs swiper-slide-active" data-swiper-slide-index="1" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template, giao diện mẫu <span>Perfume Rise</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>Giá dành cho bạn : <span>500,000 VNĐ</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/16/themefeatures/4fac64826577530a1ee635e436af38c3.png?1486025513840">
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/16/themefeatures/5db0a20ff61496a062958c030b7f3db3.png?1486025513840">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide hidden-sm hidden-md hidden-xs swiper-slide-next" data-swiper-slide-index="2" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template, giao diện mẫu <span>Ateck</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>Giá dành cho bạn : <span>1,200,000 VNĐ</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/12/themefeatures/c78323b721c1436044027e4eb9c24515.png?1486025469647">
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/?mobile=true">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/12/themefeatures/a371502eb23d40ad51ce0b058804c2dd.jpg?1486025469647">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 1873px;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-push-6 text-col">
+                                    <h2>Template, giao diện mẫu <span>Maxxshop</span></h2>
+                                    <img src="~/Content/images/newlogo/5-star.png" />
+                                    <p>Giá dành cho bạn : <span>700,000 VNĐ</span></p>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-lg-pull-6 image-col">
+                                    <div class="laptop">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/15/themefeatures/5b2f9f813fd139d66d43eb0eeafec525.png?1486025504503">
+                                        </a>
+                                    </div>
+                                    <div class="iphone">
+                                        <a href="/">
+                                            <img src="https://bizwebtheme.dktcdn.net/themes/15/themefeatures/cbd79863b5b88ad6cee0818f144b2de2.jpg?1486025504503">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+
+            <div class="line">
+                <img src="~/Content/images/newlogo/line.png" />
+            </div>
+
+            <div class="hot-theme">
+                <div class="container">
+                    <h2>Top ชื้นชอบที่สุด</h2>
+                    <p class="sub-title"> อินเตอร์เฟซ ที่ได้หลายคนใช้</p>
+                    <div class="skins-home-items">
+                        <div class="skin-item nn-prod-box">
+                            <span class="tag">ชื้นชอบที่สุด</span>
+                            <a title="Green Construction" href="/" class="thumbnail">
+                                <div class="">
+                                    <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2193/themestores/f6e50a29de5ff6d932d527f1d095cc18.png?1484878441030">
+                                    <div class="nn-prod-icon">
+                                        <h4>Office Shop</h4>
+                                        <span class="price">Miễn phí</span>
+                                        <span class="item-id hidden">GR 02</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skin-item nn-prod-box">
+                            <span class="tag">Yêu thích nhất</span>
+                            <a title="Green Construction" href="/" class="thumbnail">
+                                <div class="">
+                                    <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/1141/themestores/d9efbfa5ef20796da13446d21af86edb.png?1482217152157">
+                                    <div class="nn-prod-icon">
+                                        <h4>EGA Mini Market</h4>
+                                        <span class="price">1,800,000 VNĐ</span>
+                                        <span class="item-id hidden">GR 02</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skin-item nn-prod-box">
+                            <span class="tag">Yêu thích nhất</span>
+                            <a title="Green Construction" href="/" class="thumbnail">
+                                <div class="">
+                                    <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2201/themestores/4545dc632789ae626b2f3fdc09aeb0fd.jpg?1482397358477">
+                                    <div class="nn-prod-icon">
+                                        <h4>MegaShop</h4>
+                                        <span class="price">1,200,000 VNĐ</span>
+                                        <span class="item-id hidden">GR 02</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="scroll-top-bar hidden-md hidden-sm hidden-xs" style="display: none;">
+                <span>Bạn chưa chọn được giao diện mẫu vừa ý? Hãy tạo website trước và chọn giao diện sau</span>
+                <a class="btn-registration" onclick="openCreateStorePopup(this);" href="javascript:;">Dùng thử miễn phí</a>
+            </div>
+            <div class="new-theme">
+                <div class="container">
+                    <h2>อินเตอร์เฟซใหม่สุด</h2>
+                    <p class="sub-title">ด้วย1000 template สวยงาม มีความเชียวชาญ นี่เป็นอินเตอร์เฟซใหม่สุดของEziwebshop</p>
+                    <div id="divTheme" define="{&quot;themes&quot;: new BizwebThemes.theme({&quot;total_theme_page&quot;:12,&quot;get_link_theme&quot;:&quot;/home/home/getmorethemes&quot;})}">
+                        <div class="skins-home-items" id="themes_list_container">
+                            <div class="skin-item nn-prod-box">
+                                <a title="Edu Learn" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2246/themestores/1a3dbfdd8775d745446d07046203ee2c.png?1486028124813">
+                                        <div class="nn-prod-icon">
+                                            <h4>Edu Learn</h4>
+                                            <span class="price">500,000 VNĐ</span>
+                                            <span class="item-id hidden">Edu Learn</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2246/themestores/1a3dbfdd8775d745446d07046203ee2c.png?1486028124813">
+                                    <a href="/" class="theme-name">Edu Learn</a>
+                                    <span class="price">500,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Future Theme" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2245/themestores/f9fe66eac80f6b79303de9107866d21d.png?1484800290117">
+                                        <div class="nn-prod-icon">
+                                            <h4>Future Theme</h4>
+                                            <span class="price">500,000 VNĐ</span>
+                                            <span class="item-id hidden">Furniture 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2245/themestores/f9fe66eac80f6b79303de9107866d21d.png?1484800290117">
+                                    <a href="/" class="theme-name">Future Theme</a>
+                                    <span class="price">500,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Life Is Good" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2244/themestores/736ede6cea1d86d9b5336de2e261405f.jpg?1484894647340">
+                                        <div class="nn-prod-icon">
+                                            <h4>Life Is Good</h4>
+                                            <span class="price">1,300,000 VNĐ</span>
+                                            <span class="item-id hidden">Engo_01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2244/themestores/736ede6cea1d86d9b5336de2e261405f.jpg?1484894647340">
+                                    <a href="/" class="theme-name">Life Is Good</a>
+                                    <span class="price">1,300,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Tết Việt" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2243/themestores/995f2f7498cbe87a96cc53421fb09fdb.png?1484813295777">
+                                        <div class="nn-prod-icon">
+                                            <h4>Tết Việt</h4>
+                                            <span class="price">700,000 VNĐ</span>
+                                            <span class="item-id hidden">Gift 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2243/themestores/995f2f7498cbe87a96cc53421fb09fdb.png?1484813295777">
+                                    <a href="/" class="theme-name">Tết Việt</a>
+                                    <span class="price">700,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Corolla" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2242/themestores/d0be64a6eb9c128e2df6abdca131ba0c.png?1484560759293">
+                                        <div class="nn-prod-icon">
+                                            <h4>Corolla</h4>
+                                            <span class="price">Miễn phí</span>
+                                            <span class="item-id hidden">Cosmetic 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2242/themestores/d0be64a6eb9c128e2df6abdca131ba0c.png?1484560759293">
+                                    <a href="/" class="theme-name">Corolla</a>
+                                    <span class="price">Miễn phí</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Fashionshop" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2241/themestores/d71a3bf39d3a01682f2313db993cf012.png?1484020640233">
+                                        <div class="nn-prod-icon">
+                                            <h4>Fashionshop</h4>
+                                            <span class="price">1,600,000 VNĐ</span>
+                                            <span class="item-id hidden">GR08</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2241/themestores/d71a3bf39d3a01682f2313db993cf012.png?1484020640233">
+                                    <a href="/" class="theme-name">Fashionshop</a>
+                                    <span class="price">1,600,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="LKT Pioneers" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2240/themestores/831e41b12aa58f8c2374aff35c1ec7e8.png?1484100731033">
+                                        <div class="nn-prod-icon">
+                                            <h4>LKT Pioneers</h4>
+                                            <span class="price">1,200,000 VNĐ</span>
+                                            <span class="item-id hidden">LKT-PIONEERS</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2240/themestores/831e41b12aa58f8c2374aff35c1ec7e8.png?1484100731033">
+                                    <a href="/" class="theme-name">LKT Pioneers</a>
+                                    <span class="price">1,200,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Auslogics" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2239/themestores/31fa9762f8bfbc4a9991342b2db879c6.png?1484030970683">
+                                        <div class="nn-prod-icon">
+                                            <h4>Auslogics</h4>
+                                            <span class="price">1,000,000 VNĐ</span>
+                                            <span class="item-id hidden">auslogic</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2239/themestores/31fa9762f8bfbc4a9991342b2db879c6.png?1484030970683">
+                                    <a href="/" class="theme-name">Auslogics</a>
+                                    <span class="price">1,000,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Baby plus" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2235/themestores/05f5a794e1a2ba7aa3c3caeda80b1f1e.png?1482390679730">
+                                        <div class="nn-prod-icon">
+                                            <h4>Baby plus</h4>
+                                            <span class="price">1,200,000 VNĐ</span>
+                                            <span class="item-id hidden">Ins7903</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2235/themestores/05f5a794e1a2ba7aa3c3caeda80b1f1e.png?1482390679730">
+                                    <a href="/" class="theme-name">Baby plus</a>
+                                    <span class="price">1,200,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Coffee And You" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2234/themestores/9c9e34dca9f17e4bd652bcc582bd9064.png?1481265542340">
+                                        <div class="nn-prod-icon">
+                                            <h4>Coffee And You</h4>
+                                            <span class="price">700,000 VNĐ</span>
+                                            <span class="item-id hidden">coffeeandyou</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2234/themestores/9c9e34dca9f17e4bd652bcc582bd9064.png?1481265542340">
+                                    <a href="/" class="theme-name">Coffee And You</a>
+                                    <span class="price">700,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Golden Mart" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2233/themestores/14cad6446963453b131171a081604cfc.png?1484210086343">
+                                        <div class="nn-prod-icon">
+                                            <h4>Golden Mart</h4>
+                                            <span class="price">1,200,000 VNĐ</span>
+                                            <span class="item-id hidden">Electronic 01</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2233/themestores/14cad6446963453b131171a081604cfc.png?1484210086343">
+                                    <a href="/" class="theme-name">Golden Mart</a>
+                                    <span class="price">1,200,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-item nn-prod-box">
+                                <a title="Leo Coolstuff" href="/" class="thumbnail">
+                                    <div class="">
+                                        <img class="img-responsive" alt="" src="https://bizwebtheme.dktcdn.net/themes/2232/themestores/40c2bd548de99003a0bcabfca5ef5fe2.jpg?1480132636973">
+                                        <div class="nn-prod-icon">
+                                            <h4>Leo Coolstuff</h4>
+                                            <span class="price">1,100,000 VNĐ</span>
+                                            <span class="item-id hidden">Leo 32</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dialog">
+                                    <img alt="" src="https://bizwebtheme.dktcdn.net/themes/2232/themestores/40c2bd548de99003a0bcabfca5ef5fe2.jpg?1480132636973">
+                                    <a href="/" class="theme-name">Leo Coolstuff</a>
+                                    <span class="price">1,100,000 VNĐ</span>
+                                    <div class="registration-block">
+                                        <a href="/" class="btn-registration">Xem demo</a>
+                                        <a href="/" class="btn-registration view-detail">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container" style="text-align:center;margin-top:10px">
+                            <a class="btnLoad btn-registration" id="btnLoad">ดุอินเตอร์เฟซเพิ่มเติม</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="guide-step">
+                <div class="container">
+                    <h3>แค่ต้องทำสามขั้นต้อนเพื่อใช้อินเตอร์เฟซเว็บไซต์ขายสินค้าสวยงาม</span></h3>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12 col-sm-4 item">
+                            <img src="~/Content/images/newlogo/step-1.png" />
+                            <p>Bước 1</p>
+                            <span>Chọn giao diện mẫu phù hợp với nhu cầu của bạn</span>
+                            <img class="arrow hidden-xs" src="~/Content/images/newlogo/landing-arrow.png" />
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4 item">
+                            <img src="~/Content/images/newlogo/step-2.png" />
+                            <p>Bước 2</p>
+                            <span>Tùy chỉnh giao diện dễ dàng theo ý muốn</span>
+                            <img class="arrow hidden-xs" src="~/Content/images/newlogo/landing-arrow.png" />
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4 item">
+                            <img src="~/Content/images/newlogo/step-3.png" />
+                            <p>Bước 3</p>
+                            <span>Bắt đầu bán hàng online chuyên nghiệp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="x-tmpl-mustache" id="themes-list-template" class="html-template">
+                {{#themes}}
+                <div class="skin-item nn-prod-box">
+                    <a title="{{name}}" href="/{{alias}}" class="thumbnail">
+                        <div class="">
+                            <img class="img-responsive" alt="" src="{{image_path}}" />
+                            <div class="nn-prod-icon">
+                                <h4>{{name}}</h4>
+                                <span class="price">{{price_mod}}</span>
+                                <span class="item-id hidden">{{code}}</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dialog">
+                        <img alt="" src="{{image_path}}" />
+                        <a href="/{{alias}}" class="theme-name">{{name}}</a>
+                        <span class="price">{{price_mod}}</span>
+                        <div class="registration-block">
+                            <a href="/{{alias}}" class="btn-registration">Xem demo</a>
+                            <a href="/{{alias}}" class="btn-registration view-detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                {{/themes}}
+            </script>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @*<script src="~/Content/js/loadToolbarPartial.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            var priceParam = parse('price');
+            if (priceParam == 'free') {
+                $('#dvPrice a').removeClass("active");
+                $('#dvPrice a.free').addClass("active");
+            } else if (priceParam == 'paid') {
+                $('#dvPrice a').removeClass("active");
+                $('#dvPrice a.paid').addClass("active");
+            } else {
+                $('#dvPrice a').removeClass("active");
+                $('#dvPrice a.all').addClass("active");
+            }
+
+            setTimeout(function () {
+                var collectionParam = parse('collection');
+                if (collectionParam != null && collectionParam != '') {
+                    $('#CollectionId').val(collectionParam);
+                    $('#CollectionId option[value="' + collectionParam + '"]').attr('selected', 'selected');
+                    $(document).find('#dvColletion li[data-original-index="' + collectionParam + '"]').addClass('background-selected');
+                    $(document).find('#dvColletion li[data-original-index="0"]').removeClass('selected');
+                    $(document).find('#dvColletion button[data-id="CollectionId"]').attr('title', '');
+                    if ($("#CollectionId option:selected").text().length > 20) {
+                        var sel_text = $("#CollectionId option:selected").text().substr(0, 15);
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text(sel_text + "...");
+                    } else {
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text($("#CollectionId option:selected").text());
+                    }
+                    //We need to show the text inside the span that the plugin show
+
+                }
+
+                //var collectionParam = parse('collection');
+                //if (collectionParam.length) {
+                //    if(collectionParam!='0')
+                //    $('#dvColletion ul li:first').hide();
+                //}
+
+                var origin_text = $("#CollectionId").parent().find(".bootstrap-select .filter-option").text();
+                if ($(window).width() >= 992 && $(window).width() < 1200) {
+                    if (origin_text.length > 10) {
+                        var temp_text = origin_text.substr(0, 9);
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text(temp_text + "...");
+                    }
+                } else if ($(window).width() >= 1200) {
+                    if (origin_text.length > 20) {
+                        var temp_text = origin_text.substr(0, 17);
+                        $("#CollectionId").parent().find(".bootstrap-select .filter-option").text(temp_text + "...");
+                    }
+                }
+
+
+                var sortParam = parse('sort');
+                if (sortParam != null && sortParam != '') {
+                    $('#SortId').val(sortParam);
+                    $('#SortId option[value="' + sortParam + '"]').attr('selected', 'selected');
+                    $(document).find('#dvSort li[data-original-index="' + sortParam + '"]').addClass('background-selected');
+                    $(document).find('#dvSort li[data-original-index="0"]').removeClass('selected');
+                    $(document).find('#dvSort button[data-id="SortId"]').attr('title', '');
+                    //We need to show the text inside the span that the plugin show
+                    var sortText = $("#SortId option:selected").text();
+                    if ($(window).width() >= 992 && $(window).width() < 1200) {
+                        if (sortText.length > 10) {
+                            sortText = sortText.substr(0, 9);
+                        }
+                    }
+                    $("#SortId").parent().find(".bootstrap-select .filter-option").text(sortText);
+
+                }
+
+            }, 300);
+
+            var searchParam = parse('search');
+            $("#search").val(searchParam);
+
+            $("#btnSearch").click(function () {
+                $("#formSearch").submit();
+            });
+            //var dropdownList = $("#SearchId");
+
+            $("#SortId").change(function () {
+                loadTheme();
+            });
+
+            $("#CollectionId").change(function () {
+                loadTheme();
+            });
+
+            $('#dvPrice a').click(function () {
+                $('#dvPrice a').removeClass("active");
+                $(this).addClass("active");
+                //console.log('ok');
+                loadTheme();
+
+                return false;
+            });
+
+
+        });
+
+        function parse(val) {
+            var result = "",
+                tmp = [];
+            location.search
+                //.replace ( "?", "" )
+                // this is better, there might be a question mark inside
+                .substr(1)
+                .split("&")
+                .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+                });
+            return result;
+        }
+    </script>
+
+    <script>
+        var commentSwiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            paginationClickable: true,
+            preventClicks: false,
+            preventClicksPropagation: false,
+            loop: true,
+            autoplay: 5000
+        });
+
+        $(function () {
+            //$(window).resize(function () {
+            //    commentSwiper();
+            //});
+            $(document).bind('DOMMouseScroll', function (e) {
+                if (e.originalEvent.detail <= 0) {
+                    if ($(this).scrollTop() >= $('.hot-theme').offset().top) {
+                        $(".scroll-top-bar").show();
+                    }
+                    else {
+                        $(".scroll-top-bar").hide();
+                    }
+                    if ($(this).scrollTop() >= $('.guide-step').offset().top) {
+                        $(".scroll-top-bar").hide();
+                    }
+                }
+                else {
+                    $(".scroll-top-bar").hide();
+                }
+            });
+            //IE, Opera, Safari
+            $(document).bind('mousewheel', function (e) {
+                if (e.originalEvent.wheelDelta >= 0) {
+                    if ($(this).scrollTop() >= $('.hot-theme').offset().top) {
+                        $(".scroll-top-bar").show();
+                    }
+                    else {
+                        $(".scroll-top-bar").hide();
+                    }
+                    if ($(this).scrollTop() >= $('.guide-step').offset().top) {
+                        $(".scroll-top-bar").hide();
+                    }
+                }
+                else {
+                    $(".scroll-top-bar").hide();
+                }
+            });
+
+        });
+
+        function commentSwiper() {
+            if ($(window).width() < 768) {
+                var commentSwiper = new Swiper('.swiper-container', {
+                    autoplayDisableOnInteraction: false,
+                    grabCursor: true,
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    slidesPerView: 1,
+                    loop: true
+
+                });
+            }
+            else if ($(window).width() > 1199) {
+
+            }
+            else {
+                var commentSwiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    //nextButton: '.swiper-button-next',
+                    //prevButton: '.swiper-button-prev',
+                    slidesPerView: 1,
+                    loop: true,
+                    autoplayDisableOnInteraction: false
+                });
+            }
+        }
+    </script>
+
+    <script src="~/Content/js/script.js"></script>
+}

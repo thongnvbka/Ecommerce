@@ -1,0 +1,184 @@
+﻿@model TransferMeta
+@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+    var incorrect = (byte)ComplainTypeService.CardError;
+    var success = (byte)ComplainStatus.Success;
+}
+
+<div id="transferAddOrEdit" class="modal fade modal-dialog modal-lg" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save" id="transferForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <span>Create from transfer</span>
+                    </h2>
+                </div>
+                @*<div class="col-xs-3">
+        <h2 class="order-header">
+            <!-- ko if: id() > 0-->
+            <small class="pull-right"><span data-bind="text: mode() == 0 ? 'Package creation date' : 'Ngày tạo kiện gỗ'"></span>: <span data-bind="text: moment(created()).format('DD/MM/YYYY')" class="font-green"></span></small>
+            <!-- /ko -->
+        </h2>
+    </div>*@
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Destination warehouse :</label>
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(x => x.ToWarehouseId, new List<SelectListItem>(), new Dictionary<string, object>()
+                                                    {
+                                                        {"class", "form-control"},
+                                                        {"data-bind", "value: toWarehouseId, options: allWarehouse, optionsValue: 'id', optionsText: 'name', optionsCaption:'-- Select warehouse to --'"}
+                                                    })
+                                @Html.ValidationMessageFor(model => model.ToWarehouseId)
+                                <div data-bind="text: toWarehouseAddress"></div>
+                            </div>
+                            <label class="col-sm-2 control-label">transportation fee (Currency):</label>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(x => x.PriceShip, new Dictionary<string, object>()
+                                                    {
+                                                        {"class", "form-control decimal"},
+                                                        {"data-bind", "value: priceShip"}
+                                                    })
+                                @Html.ValidationMessageFor(model => model.PriceShip)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Note:</label>
+                            <div class="col-sm-3">
+                                @Html.TextAreaFor(x => x.Note, new Dictionary<string, object>()
+                                                    {
+                                                        {"class", "form-control"},
+                                                        {"data-bind", "value: note"}
+                                                    })
+                                @Html.ValidationMessageFor(model => model.Note)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Package list</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <!-- ko if: id() <= 0 || window.hasUpdateTransfer -->
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-4 mb15">
+                                            <div class="input-group">
+                                                <input placeholder="Find packages ..." id="suggetion" type="text" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button"><i class="fa fa-add"></i> Find packages</button>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center w50">Package code</th>
+                                                        <th class="text-center w50">Orders </th>
+                                                        <th class="text-center w50">Transport code</th>
+                                                        <th class="text-center w50">Package code</th>
+                                                        <th class="text-center w150">Weight</th>
+                                                        <th class="text-center w150">Weight after exchange (kg)</th>
+                                                        <th class="text-center w150">Weight charged </th>
+                                                        <th class="text-center">Note</th>
+                                                        <!-- ko if: id() == 0 || id() > 0 && window.hasUpdateTransfer -->
+                                                        <th class="text-center w50"></th>
+                                                        <!-- /ko -->
+                                                    </tr>
+                                                </thead>
+                                                <!-- ko if: items().length == 0 || isLoadingItems() -->
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="10" class="text-center">
+                                                            <!-- ko if: isLoadingItems() -->
+                                                            <i class="fa fa-spinner fa-pulse"></i> Loading data...
+                                                            <!-- /ko -->
+                                                            <!-- ko if: !isLoadingItems() && items().length == 0 -->
+                                                            There is not any package yet!
+                                                            <!-- /ko -->
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: items().length == 0 -->
+                                                <tbody data-bind="template: {name: 'packageTemplate', foreach: items}"></tbody>
+                                                <!-- /ko -->
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!-- ko if: id() <= 0 || window.hasUpdateTransfer -->
+            <button data-bind="disable: isLoading" class="btn btn-success" type="submit">
+                <i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i>
+                <span>Create form</span>
+            </button>
+            <!-- /ko -->
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var allWarehouse = @Html.Raw(ViewBag.AllWarehouses);
+        var hasUpdateTransfer = @Html.Raw(CheckPermision(EnumPage.Transfer, EnumAction.Update) ? "true": "false");
+    </script>
+    <script id="packageTemplate" type="text/template">
+        <tr data-bind="attr: {class: isHighline ? 'bg-warning' : ''}">
+            <td data-bind="text: $index()+1" class="text-center"></td>
+            <td class="text-center"><a data-bind="text: 'P'+packageCode, click: $parent.showDetailPackage.bind($data, packageId)" href="javascript:;"></a></td>
+            <td class="text-center">
+                <a data-bind="click: function() {orderTypeViewModel.showViewOrder(orderId, orderCode); }" href="javascript:;"><span data-bind="text: ReturnCode(orderCode)"></span></a>
+            </td>
+            <td data-bind="text: transportCode" class="text-center"></td>
+            <td class="text-center">
+                <a data-bind="text: 'B'+walletCode" href="javascript:;"></a>
+            </td>
+            <td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(convertedWeight, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(actualWeight, 'N2')" class="text-right"></td>
+            <td>
+                <!-- ko if: $parent.id() == 0 || $parent.id() > 0 && window.hasUpdateTransfer -->
+                <textArea data-bind="value: note" class="form-control"></textArea>
+                <!-- /ko -->
+                <!-- ko if: $parent.id() > 0 &&  window.hasUpdateTransfer == false -->
+                <span data-bind="text: note"></span>
+                <!-- /ko -->
+            </td>
+            <!-- ko if: $parent.id() == 0 || $parent.id() > 0 && window.hasUpdateTransfer -->
+            <td class="text-center">
+                <a data-bind="click: $parent.removeItem" href="javascript:;" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+            </td>
+            <!-- /ko -->
+        </tr>
+    </script>
+}

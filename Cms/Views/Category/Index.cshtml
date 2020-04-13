@@ -1,0 +1,136 @@
+﻿@model  Common.Items.ModelView<Library.DbContext.Entities.Category, Library.ViewModels.CategoryViewModel>
+
+@{
+    ViewBag.Title = "List of categories";
+}
+
+@section Styles{
+    <link href="/Content/plugins/treegrid/css/jquery.treegrid.css" rel="stylesheet" />
+}
+<section class="content-header">
+    <h1>
+        Category Manege
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Manage</a></li>
+        <li><a href="/category">Category Manege</a></li>
+        <li class="active">List of categories</li>
+    </ol>
+</section>
+
+<section class="content">
+    <form action="@Model.PageInfo.Url" id="searchForm" method="post" role="form">
+        <div class="box box-primary">
+
+            <div class="box-header with-border">
+                <div class="row">
+                    <section class="col-md-4 form-group mb0">
+                          <label for="ddlGroup">Keyword search </label>
+                        @Html.TextBoxFor(x => x.SearchInfo.Keyword, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control"},
+                            {"placeholder", "Category name, Describe,..." }
+                        })
+                        @Html.HiddenFor(x => x.PageInfo.CurrentPage)
+                    </section>
+                    <section class="col-md-3 form-group mb0">
+                        <label for="ddlGroup">Status</label>
+                        @Html.DropDownListFor(x => x.SearchInfo.Status, Model.SearchInfo.ListItems, new { @class = "form-control select-view" })
+                    </section>
+                    <section class="col-md-1 form-group mb0">
+                        <label for="ddlGroup">&nbsp;</label>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Search</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="row">
+                    <section class="col-md-12 form-group">
+                        <h3 class="box-title">List of Categories</h3>
+                        <a href="@Url.Action("Create")" role="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i>Add new</a>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-12 form-group" id="body-table">
+                        @Html.Partial("_List", Model)
+                    </section>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- /.row -->
+</section>
+
+@section Scripts{
+    <script src="/Content/plugins/treegrid/js/jquery.treegrid.min.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function pagging(currentPage) {
+            $("#PageInfo_CurrentPage").val(currentPage);
+            searchForm();
+        }
+
+        function searchForm() {
+            $("#searchForm").submit();
+        }
+
+        $(document).ready(function () {
+            var frm = $('#searchForm');
+            frm.submit(function (ev) {
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        $("#body-table").html(data);
+                    }
+                });
+
+                ev.preventDefault();
+            });
+
+            $('select').select2({
+                minimumResultsForSearch: -1
+            });
+
+            $("#body-table")
+               .on("click",
+                   "a.delete-item",
+                   function () {
+                       var $this = $(this);
+                       swal({
+                           title: 'Are you sure to delete this item?',
+                           text: 'category "' + $this.data("name") + '"',
+                           type: 'warning',
+                           showCancelButton: true,
+                           //confirmButtonColor: '#3085d6',
+                           //cancelButtonColor: '#d33',
+                          cancelButtonText: 'Cancel',
+                           confirmButtonText: 'Delete'
+                       })
+                           .then(function () {
+                               $.post($this.data("url"),
+                                   function (data) {
+                                       if (data <= 0) {
+                                           toastr.warning("Category does not exist or is deleted");
+                                           return;
+                                       }
+                                       toastr.success("Deleted successfully");
+                                       searchForm();
+                                   });
+                           }, function () { });
+                   });
+
+             
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        })
+    </script>
+}

@@ -1,0 +1,9 @@
+﻿<script type="text/html" id="tab-status">
+    <ul class="dingdan-nav clearFix">
+        <li><a href="javascript:void(0)" data-bind="click: $parent.searchStatus.bind($data, 0), attr: {class: $parent.returnAtt(0,$parent.Status())}">@Resource.Sourcing_WaitingForProgressing (<label class="shenbaojia" data-bind="text: WaitProccess"></label>)</a> </li>
+        <li><a href="javascript:void(0)" data-bind="click: $parent.searchStatus.bind($data, 1), attr: {class: $parent.returnAtt(1,$parent.Status())}">@Resource.Sourcing_Processing (<label class="shenbaojia" data-bind="text: Proccess"></label>)</a> </li>
+        <li><a href="javascript:void(0)" data-bind="click: $parent.searchStatus.bind($data, 2), attr: {class: $parent.returnAtt(2,$parent.Status())}">@Resource.Sourcing_WaitProvider (<label class="shenbaojia" data-bind="text: WaitingChoice"></label>)</a> </li>
+        <li><a href="javascript:void(0)" data-bind="click: $parent.searchStatus.bind($data, 3), attr: {class: $parent.returnAtt(3,$parent.Status())}">@Resource.Order_StatusComplete (<label class="shenbaojia" data-bind="text: Finish"></label>)</a> </li>
+        <li><a href="javascript:void(0)" data-bind="click: $parent.searchStatus.bind($data, 4), attr: {class: $parent.returnAtt(4,$parent.Status())}">@Resource.Order_StatusDestroy (<label class="shenbaojia" data-bind="text: Cancel"></label>)</a> </li>
+   </ul>
+</script>

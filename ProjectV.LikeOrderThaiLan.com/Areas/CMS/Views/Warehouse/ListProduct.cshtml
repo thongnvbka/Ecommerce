@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "ListProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+
+            <div class="dingdan">
+                <ul class="zichan-nav" id="buyOrder">
+                    <li data-id="zijin" class="lete-active"> <font class="">Danh sách yêu cầu nhập/xuất kho   </li>
+                    <li class="create-new"><a href="@Url.Action("CreateStorageRequirements","Warehouse")"><i class="fa fa-plus"></i> Thêm sản phẩm</a></li>
+                </ul>
+                <div class="search-top-storage">
+                    <div class="search-pr">
+                        <input type="text" class="form-control ng-pristine ng-valid" placeholder="Tìm mã yêu cầu">
+                    </div>
+
+                    <div class="input-warehouse">
+                        <select>
+                            <option value="1">Kho nhập</option>
+                            <option value="2">Shop 1</option>
+                            <option value="3">Bạch Đằng - HCM</option>
+                            <option value="4">Hải Châu - Đà Nẵng</option>
+                            <option value="5">Vĩnh Lộc - HCM</option>
+                            <option value="6">Quang Minh - Hà Nội</option>
+                            <option value="7">An Khánh - Hà Nội</option>
+                        </select>
+                    </div>
+
+                    <div class="out-warehouse">
+                        <select>
+                            <option value="1">Kho xuất</option>
+                            <option value="2">Shop 1</option>
+                            <option value="3">Bạch Đằng - HCM</option>
+                            <option value="4">Hải Châu - Đà Nẵng</option>
+                            <option value="5">Vĩnh Lộc - HCM</option>
+                            <option value="6">Quang Minh - Hà Nội</option>
+                            <option value="7">An Khánh - Hà Nội</option>
+                        </select>
+                    </div>
+
+                    <div class="search-input" id="btnSearchPr">
+                        <a class="btn btn-searh-pr"><i class="fa fa-search"></i> @Resource.Warehouse_Order_TimKiem</a>
+                    </div>
+                    <div class="search-radio-aj">
+                        <label>
+                            <input type="radio" checked="" name="searchPr" value="1">
+                            <label>Chỉ hiện hàng tồn</label>
+                        </label>
+                        <label>
+                            <input type="radio" name="searchPr" value="2">
+                            <label> Dưới mức tồn kho</label>
+                        </label>
+                        <label>
+                            <input type="radio" name="searchPr" value="3">
+                            <label> Đang thiếu hàng xuất kho</label>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="zichan-zijin zichan-box rs">
+                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>  Mã mặt hàng  </th>
+                                <th>  Mã BSIN  </th>
+                                <th>  Tên sản phẩm  </th>
+                                <th>  Kho hàng  </th>
+                                <th>  Giá bán  </th>
+                                <th>  Mức tồn tối thiểu  </th>
+                                <th>  Sắp nhập  </th>
+                                <th>  Chờ xuất  </th>
+                                <th>  Có thể xuất  </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="~/Content/images/icon-upproduct/24hours-online.png" width="50" height="50" /><br />
+                                    <span class="code-order"><a href="javascript:;">BX459734DD59</a> </span>
+                                </td>
+                                <td><span class="code-order"><a href="javascript:;">BX459734DD59</a> </span> </td>
+                                <td>  Tủ lạnh </td>
+                                <td>Lò Đúc</td>
+                                <td><span> 12.567.000 @Resource.Currency</span></td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

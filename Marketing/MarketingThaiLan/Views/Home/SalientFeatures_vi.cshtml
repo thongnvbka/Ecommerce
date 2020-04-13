@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "TinhNangNoiBat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+    <link href="~/Content/css/slide-theme.css" rel="stylesheet" />
+}
+
+
+ <section class="tool-list">
+    <div class="container">
+        <div class="tool-list-mobile hidden-md hidden-sm hidden-lg invisible-xs">
+            <a href="javascript:void(0);" id="btn-toollist">Tính năng nổi bật</a>
+            <div class="tool-list-mobile-nav" id="mob-toollist-content" style="display: none;">
+                <ul class="list-unstyled">
+                    <li class=""><a href="@Url.Action("SalientFeatures","Home")"><span>Tính năng nổi bật</span></a></li>
+                    <li class=""><a href="@Url.Action("SellBest","Home")"><span>Web bán hàng ưu việt</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerStore","Home")"><span>Quản lý cửa hàng</span></a></li>
+                    <li class="current"><a href="@Url.Action("CustomTheme","Home")"><span>Tùy chỉnh giao diện</span></a></li>
+                    <li class=""><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing &amp; SEO</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerProduct","Home")"><span>Quản lý sản phẩm</span></a></li>
+                    <li class=""><a href="@Url.Action("Security","Home")"><span>Mạnh mẽ &amp; Bảo mật</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-list-content hidden-xs">
+            <div id="owl-tool" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 2282px; left:0; display: block;">
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("SalientFeatures","Home")"><span>Tính năng</span><br>nổi bật</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("SellBest","Home")"><span>Web bán hàng</span><br>ưu việt</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("ManagerStore","Home")"><span>Quản lý</span><br>cửa hàng</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool current">
+                                <a href="@Url.Action("CustomTheme","Home")"><span>Tùy chỉnh</span><br>giao diện</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("MarketingSeo","Home")"><span>Marketing</span><br>&amp; SEO</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("ManagerProduct","Home")"><span>Quản lý</span><br>sản phẩm</a>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 163px;">
+                            <div class="items-tool ">
+                                <a href="@Url.Action("Security","Home")"><span>Mạnh mẽ </span><br>&amp; Bảo mật</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-controls clickable" style="display: none;">
+                    <div class="owl-pagination">
+
+                        <div class="owl-page active"><span class=""></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="customNavigation visible-sm-block">
+                <a class="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="tool-content">
+    <div class="container" style="opacity: 1; left:0;">
+        <div class="tool-content-title">
+            <h1>Những tính năng nổi bật Eziwebshop</h1>
+            <p>Chúng tôi giúp cho việc bán hàng của bạn trở nên dễ dàng hơn với một website đầy đủ các tính năng vượt trội.</p>
+        </div>
+        <div class="tool-content-info tool-page-3">
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-1.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>Tự khởi tạo website bán hàng trong vòng 1 phút</h2>
+                        <p>Thời gian và tiền là hai yếu tố mà ai cũng muốn đầu tư một cách tối ưu.&nbsp;Eziwebshop giúp bạn thực hiện cả 2 việc này: Thiết kế web bán hàng trong 1 phút, cập nhật các thông tin&nbsp; về sản phẩm, giới thiệu, liên hệ và bắt đầu bán hàng. Sử dụng miễn phí toàn bộ tính năng trong 03 tháng. Khi quyết định sử dụng, chắc chắn đầu tư của bạn đã hợp lý</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-2.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>Tùy chỉnh giao diện Shop<br> theo ý muốn</h2>
+                        <p>Kho giao diện của Eziwebshop đa dạng lĩnh vực và phong phú về số lượng được thiết kế bởi các chuyên gia sáng tạo hàng đầu, và được thiết kế cho nhiều lĩnh vực kinh doanh của bạn. Website của bạn sẽ luôn đẹp và thu hút trên mọi thiết bị giúp bạn gia tăng doanh số nhanh chóng</p>
+                        <a href="/Home/WarehouseInterface">Xem thêm kho giao diện  <i class="fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-3.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>Tùy chỉnh Marketing & SEO</h2>
+                        <p>Eziwebshop được thiết kế tối ưu về kiến trúc và liên kết cho các máy&nbsp;tìm kiếm ngay từ khi phát triển. Các liên kết trên Eziwebshop rất thân&nbsp;thiện với các bộ máy tìm kiếm (nhất là Google) Ngoài ra tính&nbsp;năng tối ưu nội dung của Eziwebshop giúp bạn tối ưu dữ liệu một&nbsp;cách dễ dàng và chủ động</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-6.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>Đặt hàng thanh toán<br>an toàn và nhanh chóng</h2>
+                        <p>Với Eziwebshop, khách hàng có thể thực hiện đặt hàng và thanh toán một cách đơn giản và an toàn. Hệ thống tích hợp các cổng thanh toán điện tử giúp việc giao dịch trở nên dễ dàng hơn bao giờ hết</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">Làm sao để gia tăng doanh số bán hàng của bạn ?</h3>
+            <span>
+                Đăng ký nhận Website bán hàng miễn phí ngay
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            @*<a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Đăng ký ngay</a>*@
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="#">Đăng ký ngay</a>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $('.tool-list-mobile #btn-toollist').click(function () {
+            $('.tool-list-mobile #mob-toollist-content').slideToggle(200);
+            $(this).toggleClass('active');
+        });
+        $('.tool-list-mobile #mob-toollist-content, .tool-list-mobile #btn-toollist').click(function (e) { e.stopPropagation(); });
+        $(document).click(function () {
+            $('.tool-list-mobile #mob-toollist-content').hide();
+            $('.tool-list-mobile #btn-toollist').removeClass('active');
+        });
+    </script>
+    <script type="text/javascript">
+ 
+        $(function () {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0, left: '0'
+                }, 500, function () {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+}
+

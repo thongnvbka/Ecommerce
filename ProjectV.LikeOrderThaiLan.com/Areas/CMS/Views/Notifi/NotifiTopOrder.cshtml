@@ -1,0 +1,34 @@
+﻿@using Library.ViewModels.Items
+@model List<OrderNotifiItem>
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@if (Model != null && Model.Any())
+{
+    <label></label><a href="/@culture/Product/Cart">@Resource.Home_Cart (<span class="show-data"> @ViewBag.CountOrderNotifi </span>)</a>
+    <div class="rs drop-cart" style="position: absolute">
+        <div class="dropdown-content menu-notification" id="style-2" style="width: 220%; margin-left: -20%; max-height: 200px;overflow-y: auto;">
+            @foreach (var item in Model)
+            {
+                <a href="javascript:void(0)">
+                    @item.Code - รอคุณสั่งซื้อ 
+                    <br />
+                    <span class="time-notifi">
+                        <i class="fa fa-calendar-check-o"></i> @string.Format("{0: dd/MM/yyyy hh:mm}", item.Created)
+                    </span>
+                </a>
+            } 
+        </div>
+        <div class="dropdown-content menu-notification" style="width: 220%; margin-left: -20%; max-height: 200px;">
+            <a href="/@culture/Product/Cart" class="view-all-notification">
+                ดูทั้งหมด 
+            </a>
+        </div>
+    </div>
+
+
+}
+else
+{
+    <label class="cart-infor"></label><a href="/@culture/Product/Cart">@Resource.Home_Cart (<span> 0 </span>)</a>
+}

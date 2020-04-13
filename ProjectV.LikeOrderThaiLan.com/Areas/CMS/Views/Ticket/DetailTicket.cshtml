@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = Resource.CreateTicket_DetailTicket;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@{
+    var order = (byte)Common.Emums.OrderType.Order;
+    var deposit = (byte)Common.Emums.OrderType.Deposit;
+}
+
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    <ul class="zy-main-top" id="topTabDetailOrder">
+        <li class="dg-caigourucang  tablinks lete-active tablinks" id="defaultOpen">
+            <span></span>
+            <a href="#">
+                @Resource.CreateTicket_DetailTicket
+            </a>
+            <label></label>
+        </li>
+    </ul>
+    <div class="zy-main-content" id="contentTabDetailComplain">
+        <div class="zy-main-content-msg tabcontent" id="inforOrder">
+            <div class="zy-main-content-msg-l" style="border-right: 1px solid rgb(241, 241, 241); float: right; border-left: 1px solid #f1f1f1;">
+                <h1 style="text-transform: none">@Resource.Product_InforOrder</h1>
+                <span>
+                    @Resource.Order_Status: &nbsp;<label data-bind="text: statusApp.complain[ticketnModel().Status()].Name,
+                                css: statusApp.complain[ticketnModel().Status()].Class"></label>
+                </span>
+                <div class="zy-main-content-msg-l-hr"></div>
+                <span> @Resource.TicketCode : <span data-bind="text:ticketnModel().Code"></span> </span><!--ma complain-->
+                <div class="zy-main-content-msg-l-hr"></div>
+                <span> @Resource.RequestsPayment_CreateDate: <span data-bind="text: moment(ticketnModel().CreateDate()).format('DD/MM/YYYY   h:mm:ss')"></span> </span><!--ngay tao-->
+                <div class="zy-main-content-msg-l-hr"></div>
+
+                <div class="zy-main-content-msg-l-hr rs"></div>
+                <div id="allAccounting" class="rs">
+                    <p style="margin-left: 0px !important; padding-left: 15px;"> @Resource.Detail_ResultTicket</p>
+                    <div class="progress" style="height: 2px; width: 92%; margin-left: 15px;">
+                        <span class="progress-bar" style="width: 40%;"></span>
+                    </div>
+
+                    <div class="rs" style="padding-left: 15px;">
+
+                        <p class="rs">
+                            <span class="left-total">
+                                @Resource.Detail_MooneyRequest :&nbsp;&nbsp;
+                            </span>
+                            <span class="right-total">
+                                <span class="order-missing" data-bind="text:(ticketnModel().RequestMoney() === undefined || ticketnModel().RequestMoney()===null) ? '--' : formatNumbericCN(ticketnModel().RequestMoney(), 'N0') +'(@Resource.Currency)' ">
+
+                                </span>
+                            </span>
+                        </p>
+                        <p class="rs">
+                            <span class="left-total">
+                                @Resource.Detail_MooneyIsCompensation :&nbsp;&nbsp;
+                            </span>
+                            <span class="right-total">
+                                <span class="order-payment" data-bind="text:(ticketnModel().BigMoney() === undefined || ticketnModel().BigMoney()===null) ? '--' : formatNumbericCN(ticketnModel().BigMoney(), 'N0') +'(@Resource.Currency)'">
+
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="chatModal" class="x rs" style="display: table;position: static;float: left; margin-top: 20px;">
+                    @*@Html.Partial("~/Areas/CMS/Views/Chat/_Chat.cshtml")*@
+                    @Html.Partial("~/Areas/CMS/Views/Chat/_ChatTicket.cshtml")
+                </div>
+            </div>
+
+            <div class="zy-main-content-msg-r">
+
+                <div class="infor-customer" style="width: 40% !important">
+                    <div class="rs">
+                        <p style="margin-left: 0 !important;">
+                            @Resource.Detail_InforTicket
+                        </p>
+                        <div class="progress" style="height: 2px; width: 70%">
+                            <span class="progress-bar" style="width: 50%;"></span>
+                        </div>
+                        <div class="inforct rs">
+                            <p class="">
+                                @Resource.Order_Exhibition : &nbsp;
+                                @*<span class="bold" data-bind="text: ticketnModel().OrderCode"></span>*@
+                                <!-- ko if: ticketnModel().OrderType() == @order -->
+                                <span class="bold" data-bind="text: 'ORD' + ticketnModel().OrderCode()"></span>
+                                <!-- /ko -->
+                                <!-- ko if: ticketnModel().OrderType() == @deposit -->
+                                <span class="bold" data-bind="text: 'DEP' + ticketnModel().OrderCode()"></span>
+                                <!-- /ko -->
+                            </p>
+                            <p class="">
+                                @Resource.Detail_TypeTicket :&nbsp;
+                                <span data-bind="text: ticketnModel().TypeServiceName"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infor-list-img">
+                    <div class="rs">
+                        <p style="margin-left: 0px !important;">
+                            @Resource.CreateTicket_Picture
+                        </p>
+                        <div class="progress" style="height: 2px; width: 70%">
+                            <span class="progress-bar" style="width: 50%;"></span>
+                        </div>
+                        <div class="inforct rs">
+                            <!-- ko if: ticketnModel().ImagePath1 !== null -->
+                            <img data-bind="attr:{src:ticketnModel().ImagePath1}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ticketnModel().ImagePath2 !== null -->
+                            <img data-bind="attr:{src:ticketnModel().ImagePath2}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ticketnModel().ImagePath3 !== null -->
+                            <img data-bind="attr:{src:ticketnModel().ImagePath3}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ticketnModel().ImagePath4 !== null -->
+                            <img data-bind="attr:{src:ticketnModel().ImagePath4}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-detail-deposit rs">
+                    <div class="rs">
+                        <p style="margin-left: 0 !important;">
+                            @Resource.Ticket_Content
+                        </p>
+                        <div class="progress" style="height: 2px; width: 70%">
+                            <span class="progress-bar" style="width: 50%;"></span>
+                        </div>
+                        <div class="rs text-note">
+                            <textarea cols="20" id="OrderDetailItem_Note" name="OrderDetailItem.Note"
+                                      data-bind="text: ticketnModel().Content" rows="3" style="width: 100%;" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-detail-deposit rs back-to-list">
+                    <a class="btn" data-bind="click:backToList"><i class="fa fa-arrow-left"></i> @Resource.TransactionHistory_ComeBack</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/Scripts/lodash.min.js"></script>
+
+    <script src="~/Content/js/jquery.datetimepicker.full.js"></script>
+    <script src="~/Content/js/datetime-piker.js"></script>
+    <script src="~/Content/plugins/select2/select2.full.min.js"></script>
+    @*//thu vien substring*@
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    @*//thu vien alert delete*@
+    <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.js"></script>
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    @Html.Partial("~/Areas/CMS/Views/Ticket/_status.cshtml")
+    @*//file js knockoutjs ViewModel*@
+    @*<script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>*@
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+    <script src="~/Areas/CMS/Scripts/models/complain/complainModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/chat/chatTicketViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/complain/detailComplainViewModel.js"></script>
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    @*//thu vien ajax*@
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+
+    <script src="~/Content/js/tab-content.js"></script>
+    <script src="~/Content/js/chat-box.js"></script>
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+
+}

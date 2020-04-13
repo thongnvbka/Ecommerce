@@ -1,0 +1,111 @@
+﻿@{
+    var groupPermission = new List<SelectListItem> { new SelectItem() { Text = "Select access permission", Value = "", Selected = true } };
+    groupPermission.AddRange((List<SelectListItem>)ViewBag.GroupPermission);
+}
+<div id="rolePermissionTab" class="form-body">
+    @Html.AntiForgeryToken()
+    <div class="row mt15">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Unit<span class="required">*</span></label>
+                <div id="rolePermission-office-tree"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Position <span class="required">*</span></label>
+                @Html.DropDownList("rolePermission-TitleId", new List<SelectListItem>()
+                {
+                    new SelectItem() {Text = "Select title", Value = "", Selected = true}
+                }, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"},
+                    {"data-bind", "value: titleId"}
+                })
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Rank <span class="required">*</span></label>
+                @Html.DropDownList("rolePermission-Type", new List<SelectListItem>()
+                {
+                    new SelectItem() {Text = "Staff", Value = "0", Selected = true},
+                    new SelectItem() {Text = "Head", Value = "1"},
+                    new SelectItem() {Text = "Management", Value = "2"},
+                    new SelectItem() {Text = "Delivery", Value = "3"}
+                }, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"},
+                    {"data-bind", "value: type"}
+                })
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Access permission</label>
+                @Html.DropDownList("rolePermission-groupPermission", groupPermission, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"},
+                    {"data-bind", "value: groupPermissionId"}
+                })
+            </div>
+        </div>
+    </div>
+    <div class="row mb15">
+        <div class="col-sm-12">
+            <button data-bind="disable: isSubmit, click: addUserPosstion" class="btn btn-primary pull-right">
+                <i data-bind="attr: {class: isSubmit() ? 'fa fa-spinner fa-pulse' : 'fa fa-plus'}" class="fa fa-plus"></i> Add concurrent responsibility
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center w50">#</th>
+                    <th class="text-center">Unit</th>
+                    <th class="text-center">Position</th>
+                    <th class="text-center">Rank</th>
+                    <th class="text-center w150">Main position</th>
+                    <th class="text-center">Access permission</th>
+                    <th class="text-center w50"></th>
+                </tr>
+                </thead>
+                <!-- ko if: isLoading() -->
+                <tbody>
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <i class="fa fa-spinner fa-pulse"></i> Loading data
+                    </td>
+                </tr>
+                </tbody>
+                <!-- /ko -->
+                <!-- ko ifnot: isLoading() -->
+                <tbody data-bind="foreach: userPositions">
+                <tr>
+                    <td data-bind="text: $index() + 1" class="text-center"></td>
+                    <td data-bind="text: officeName"></td>
+                    <td data-bind="text: titleName"></td>
+                    <td data-bind="text: type == 0 ? 'Staff' : type == 1 ? 'Head' : 'Manager'"></td>
+                    <td class="text-center">
+                        <!-- ko if: isDefault -->
+                        <i class="clip-checkmark-2 size20"></i>
+                        <!-- /ko -->
+                    </td>
+                    <td class="text-center">
+                        <a data-bind="editable: groupPermisionId, editableOptions: {pk: id, type: 'select', options: $parent.groupPermissionJson, optionsText: 'name', optionsValue: 'id', optionsCaption: 'Select access permission', showbuttons: false, placement: 'left', autotext: 'never', url: $parent.updateGroupPermisison, shown: $parent.shown }" href="javascript:;"></a>
+                        @*<a data-bind="editable: groupPermisionId, editableOptions: {pk: id, type: 'select', options: $parent.groupPermissionJson, optionsText: 'name', optionsValue: 'id', autotext: 'never', url: $parent.updateGroupPermisison}" href="javascript:;"></a>*@
+                    </td>
+                    <td class="text-center">
+                        <!-- ko ifnot: isDefault -->
+                        <a data-bind="click: $parent.removeUserPosition" class="btn btn-danger btn-xs" href="javascript:;"><i class="fa fa-times"></i> Delete  </a>
+                        <!-- /ko -->
+                    </td>
+                </tr>
+                </tbody>
+                <!-- /ko -->
+            </table>
+        </div>
+    </div>
+</div>

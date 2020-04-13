@@ -1,0 +1,91 @@
+﻿@{
+    var status = (byte)OrderStatus.WaitOrder;
+    var statusSuccess = (byte)OrderStatus.OrderSuccess;
+    var statusOrder = (byte)OrderStatus.Order;
+    var wait = (byte)OrderStatus.WaitPrice;
+    var quotes = (byte)OrderStatus.AreQuotes;
+    var inWarehouse = (byte)OrderStatus.InWarehouse;
+
+    var delete = CheckPermision(EnumAction.Delete, EnumPage.OrderDepositNew, EnumPage.OrderOrder, EnumPage.OrderDelay, EnumPage.OrderNew);
+    var update = CheckPermision(EnumAction.Update, EnumPage.OrderDepositNew, EnumPage.OrderOrder, EnumPage.OrderDelay, EnumPage.OrderNew);
+    var approvel = CheckPermision(EnumAction.Approvel, EnumPage.OrderDepositNew, EnumPage.OrderOrder, EnumPage.OrderDelay, EnumPage.OrderNew);
+}
+
+<script type="text/html" id="order-list">
+    <tr data-bind="css: CssRead">
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td>
+            @if (UserState.Type > 0 && approvel)
+            {
+                <!-- ko if: Status() == @status -->
+                <a data-bind="click: function() { $parent.assignedOrder($data); CheckRead(); }" href="javscript:;" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="right" title="Order orders for staffs" data-original-title="Order orders for staffs"><i class="fa fa-user-plus"></i></a>
+                <!-- /ko -->
+                <!-- ko if: Status() == @wait -->
+                <a data-bind="click: function() { $parent.assignedOrder($data); CheckRead(); }" href="javscript:;" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="right" title="Order orders for staffs" data-original-title="Order orders for staffs"><i class="fa fa-user-plus"></i></a>
+                <!-- /ko -->
+            }
+            @if (update)
+            {
+                <!-- ko if: Status() > @status -->
+                <a data-bind="click: function() { $parent.viewEditDetail(Id); CheckRead(); }, attr: { href: '/Purchase/Order#' + ReturnCode(Code) }" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right" title="Order transaction" data-original-title="Order transaction"><i class="fa fa-edit"></i></a>
+                <!-- /ko -->
+                <!-- ko if: Status() == @quotes -->
+                <a data-bind="click: function() { $parent.viewEditDetail(Id); CheckRead(); }" href="javscript:;" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right" title="Order transaction" data-original-title="Order transaction"><i class="fa fa-edit"></i></a>
+                <!-- /ko -->
+            }
+
+            @if (UserState.Type > 0 && approvel)
+            {
+                <!-- ko if: (UserId > 0 && Status() == @statusOrder) -->
+                <a data-bind="click: function() { $parent.orderReplyModal($data); CheckRead(); }" href="javscript:;" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="right" title="Convert staff khác" data-original-title="Convert staff khác"><i class="fa fa-reply"></i></a>
+                <!-- /ko -->
+            }
+
+            @if (delete)
+            {
+                <!-- ko if: Status() < @inWarehouse -->
+                <a data-bind="click: function() { $parent.orderClose($data); CheckRead(); }" href="javscript:;" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right" title="Cancel" data-original-title="Cancel"><i class="fa fa-times-circle"></i></a>
+                <!-- /ko -->
+            }
+        </td>
+        <td>
+            <a data-bind="click: function() { $parent.showOrderDetail(Id); CheckRead(); }, attr: { href: '/Purchase/Order#' + ReturnCode(Code) }"><strong data-bind="text: ReturnCode(Code)"></strong></a><br />
+            <span data-bind="text: '(' + formatNumberic(LinkNo(), 'N0') + ' link ' + ' - ' + formatNumberic(ProductNo(), 'N0') + ' sản phẩm' + ')'"></span>
+        </td>
+        <td class="text-left">
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').format('L LTS')" class=""></span>
+        </td>
+        <td class="text-right">
+            <span class="pull-left">CNY:</span> <b data-bind="text: formatNumberic(TotalPrice(), 'N2')"></b><br/>
+            <span class="pull-left">Baht:</span><span data-bind="text: formatNumberic(TotalExchange(), 'N2')"></span>
+        </td>
+        @*<td class="text-right">
+                <strong data-bind="text: formatNumberic(ProductNo, 'N0')"></strong>
+            </td>*@
+        <td>
+            <span data-bind="text: CustomerEmail"></span>
+        </td>
+        <!-- ko if: $parent.active() != 'order-new' -->
+        <td class="text-left">
+            <textarea data-bind="value: UserNote, click: CheckRead" class="auto-size" style="overflow-x: hidden !important; overflow-y: hidden !important; width: 100%;" rows="2"></textarea>
+        </td>
+        <!-- /ko -->
+        <td class="text-center">
+            <span data-bind="text: statusApp.order[Status()].Name, css: statusApp.order[Status()].Class"></span>
+        </td>
+        <td>
+            <!-- ko if: Chat == 0 -->
+            <a data-bind="click: function() { $parent.showChatOrder($data); CheckRead(); }" href="javascript:;" class="label label-success"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with customer"></i></a>
+            <!-- /ko -->
+            <!-- ko ifnot: Chat == 0 -->
+            <a data-bind="click: function() { $parent.showChatOrder($data); CheckRead(); }" href="javascript:;" class="label label-warning"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with customer"></i></a>
+            <!-- /ko -->
+        </td>
+        <!-- ko if: $parent.active() != 'order-new' -->
+        <td class="text-center">
+            <span class="pull-left">ĐH:</span><span data-bind="text: UserFullName"></span><br/>
+            <span class="pull-left">CSKH:</span><span data-bind="text: CustomerCareFullName"></span>
+        </td>
+        <!-- /ko -->
+    </tr>
+</script>

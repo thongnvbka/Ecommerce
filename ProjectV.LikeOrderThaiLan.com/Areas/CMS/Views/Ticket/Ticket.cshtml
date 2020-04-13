@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = Resource.Dashboard_TicketList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />
+
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<div id="viewTicketCommon">
+    <div data-bind="template: { name: templateId }"></div>
+    <!--LOAD TRANG CHÍNH CỦA TICKET-->
+    @Html.Partial("~/Areas/CMS/Views/Ticket/ListTicket.cshtml")
+    <!--LOAD LIST TICKET-->
+    @Html.Partial("~/Areas/CMS/Views/Ticket/_ListTicket.cshtml")
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/lodash.min.js"></script>
+
+    <script src="~/Content/plugins/select2/select2.full.min.js"></script>
+    
+    @Html.Partial("~/Areas/CMS/Views/Ticket/_status.cshtml")
+    @*//file js knockoutjs ViewModel*@
+    @*<script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>*@
+ 
+
+    <script src="~/Areas/CMS/Scripts/models/complain/complainStatusItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/complain/complainModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/complain/complainViewModel.js"></script>
+    @*//thu vien ajax*@
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+
+    <script src="~/Content/js/tab-content.js"></script>
+    <script src="~/Content/js/chat-box.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+
+    <script type="text/javascript">
+        var listTicketType = @Html.Raw(ViewBag.ListComplainTypeService1);
+    </script>
+
+}

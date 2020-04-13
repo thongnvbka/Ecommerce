@@ -1,0 +1,273 @@
+﻿<div id="exportWarehouseAddOrEdit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="importwarehouse">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>CREATE GOODS DISPATCH NOTE</strong>
+                                <span class="impornumber">Slip number: <strong>EXP6896253</strong></span>
+                                <small>Date of dispatch: 02/10/2016</small>
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row importwarehouse">
+                        <!-- accepted payments column -->
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">CONSIGNEE</th>
+                                        <td>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Consignee">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone</th>
+                                        <td>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Phone">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address</th>
+                                        <td><textarea class="form-control" rows="2" placeholder="Address ..."></textarea></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Consigned warehouse :</th>
+                                        <td>China warehouse No.1</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td>27th floor Yahang Wealth Center, No55, Jinhu Road, Nanning, China</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row importwarehouse">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Package sack ID</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <select class="form-control input-lg select-view" style="width: 100%;" placeholder="ssss">
+                                        <option selected="selected">- ENTER PACKAGE ID -</option>
+                                        <option>BH02012012</option>
+                                        <option>BH02011231</option>
+                                        <option>BH01241120</option>
+                                        <option>BH02230133</option>
+                                        <option>BH02264422</option>
+                                        <option>BH02024122</option>
+                                    </select>
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Gross weight (KG)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="For example: 2">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>WEIGHT CONVERTED (KG)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="For example: 2">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Volumne (m3)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="For example: 2m3">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                                    <h4><i class="icon fa fa-warning"></i> Warning !</h4>
+                                    This package has a product that is not transported to Hanoi.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Package note</label>
+                                <textarea class="form-control" rows="2" placeholder="Package contains fragile goods, please handle with care..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <button type="submit" class="col-sm-1 btn btn-primary">ACCEPT STOCK</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Table row -->
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Transport code</th>
+                                        <th class="text-center" style="color: green">Weight</th>
+                                        <th class="text-center" style="color: blue">Weight converted</th>
+                                        <th class="text-center" style="color: red">Volume (m3)</th>
+                                        <th class="text-center">Warehouse area</th>
+                                        <th class="text-center">Stock status</th>
+                                        <th class="text-center" width="20%">Stock status - note</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center"><strong>MVD0102012919</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center"><strong>MVD1242012002</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit Account</a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete Product Cart  </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center"><strong>MVD0102211002</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit Account</a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete Product Cart  </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td class="text-center"><strong>MVD01212012002</strong></td>
+                                        <td class="text-center">21.00</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center">Waiting list of stock in</td>
+                                        <th class="text-center"><span class="label label-success">Sealed and secure container</span></th>
+                                        <td class="text-center">Containers in normal, undistorted state. Containers in normal, undistorted state.</td>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit Account</a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete Product Cart  </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row signature">
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Creator</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name">Nguyễn Quốc Cử</span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Carrier</strong></h5>
+                            <span>(Sign and write full name)</span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Storekeeper</strong></h5>
+                            <span>(Sign and write full name)</span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Accountant</strong></h5>
+                            <span>(Sign and write full name)</span>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary pull-left"><i class="fa fa-print"></i> Print </a>
+                <a class="btn btn-danger"><i class="fa fa-plus"></i> Save</a>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #exportWarehouseAddOrEdit {
+        padding: 0px 10px !important;
+    }
+
+        #exportWarehouseAddOrEdit .modal-lg {
+            width: 90% !important;
+        }
+</style>

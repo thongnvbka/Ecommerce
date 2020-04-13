@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Accounting department work";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+@section Styles{
+    <link href="~/Content/plugins/tabdrop/css/tabdrop.css" rel="stylesheet" />
+    <style>
+        input.decimal:focus {
+            text-align: left !important;
+        }
+
+        input.decimal {
+            text-align: left !important;
+        }
+
+        input.decimalCN:focus {
+            text-align: left !important;
+        }
+
+        input.decimalCN {
+            text-align: left !important;
+        }
+    </style>
+}
+
+<script>
+    var treasureAddTree = @Html.Raw(ViewBag.TreasureAddTree);
+    var treasureMinusTree = @Html.Raw(ViewBag.TreasureMinusTree);
+
+    var financeFundTree = @Html.Raw(ViewBag.FinanceFundTree);
+
+    var treasureReturnJsTree = @Html.Raw(ViewBag.TreasureReturnJsTree);
+    var treasureCollectJsTree = @Html.Raw(ViewBag.TreasureCollectJsTree);
+    var payReceiveSearchTree = @Html.Raw(ViewBag.PayReceiveSearchTree);
+
+    var treasureSearchTree = @Html.Raw(ViewBag.TreasureSearchTree);
+    var financeFundSearchTree = @Html.Raw(ViewBag.FinanceFundSearchTree);
+
+    var treasureWalletSearchTree = @Html.Raw(ViewBag.TreasureWalletSearchTree);
+    var treasureWalletAddTree = @Html.Raw(ViewBag.TreasureWalletAddTree);
+    var treasureWalletMinusTree = @Html.Raw(ViewBag.TreasureWalletMinusTree);
+
+    var financeFundJsAccountTree = @Html.Raw(ViewBag.FinanceFundJsAccountTree);
+    var financeFundJsAccountantSearch = @Html.Raw(ViewBag.FinanceFundJsAccountantSearch);
+
+</script>
+
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Content/plugins/tabdrop/js/bootstrap-tabdrop.js"></script>
+    <script src="~/Scripts/common/status.@cultureJs"></script>
+    <script src="~/Scripts/jquery.redirect.js"></script>
+
+    <script type="text/html" id="originate">
+    </script>
+
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFund.cshtml")
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFundList.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/moneyfund/_MoneyFundDetail.cshtml")
+
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFundAddOrEditPlus.cshtml")
+
+    @Html.Partial("~/Views/Partial/customer/_CustomerFind.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketDetail.cshtml")
+
+    @Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderSourcingDetail.cshtml")
+
+    @Html.Partial("~/Views/Purchase/Accountant/_AccountantList.cshtml")
+    @Html.Partial("~/Views/Purchase/Accountant/_OrderAccountant.cshtml")
+
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    @Scripts.Render("~/bundles/accoutingModal")
+
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @UserState.FullName - @UserState.TitleName
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Financial Reports</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section id="accountantPage" class="content">
+    <div class="row">
+        <div class="col-xs-2 todobar2">
+            @Html.Partial("_TodoBar")
+        </div>
+        <div class="col-xs-10 view-content-box2">
+            <div data-bind="template: { name: templateId }"></div>
+        </div>
+    </div>
+    <!-- =============== Modal xử lý trao đổi với khách hàng ===================== -->
+    <div id="commentForCustomer" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Information will be sent to customers, are you sure to send!?</b></h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: feedbackComplain" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFund.cshtml")
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFundList.cshtml")
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFundAddOrEditPlus.cshtml")
+    @Html.Partial("~/Views/Accountant/MoneyFund/_MoneyFundMinus.cshtml")
+
+    @Html.Partial("~/Views/Accountant/Recharge/_Recharge.cshtml")
+    @Html.Partial("~/Views/Accountant/Recharge/_RechargeList.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/recharge/_RechargeDetail.cshtml")
+    @Html.Partial("~/Views/Accountant/Recharge/_RechargeAddOrEditMinus.cshtml")
+    @Html.Partial("~/Views/Accountant/Recharge/_RechargeAddOrEditPlus.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/Withdrawal/_MoneyWithdrawalDetail.cshtml")
+
+    @Html.Partial("~/Views/Accountant/WithDrawal/_WithDrawal.cshtml")
+    @Html.Partial("~/Views/Accountant/WithDrawal/_WithDrawalAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Accountant/WithDrawal/_WithDrawalList.cshtml")
+
+    @Html.Partial("~/Views/Accountant/Debit/_Debit.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_DebitList.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_DebitMustCollectAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_DebitMustReturnAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/mustcollect/_MustCollectDetail.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_EditDebitHistory.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_DebitHistoryDetail.cshtml")
+
+    @*Xử lý công nợ*@
+    @Html.Partial("~/Views/Accountant/Debit/_ExecuteMustReturnDebit.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_ExecuteMustCollectDebit.cshtml")
+    @Html.Partial("~/Views/Accountant/DebitOrder/_DebitOrder.cshtml")
+    @Html.Partial("~/Views/Accountant/DebitOrder/_DebitOrderList.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupport.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupportList.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_ExecuteMustReturnWallet.cshtml")
+    @Html.Partial("~/Views/Accountant/Debit/_ExecuteMustCollectWallet.cshtml")
+
+    @Html.Partial("~/Views/Partial/Ticket/_ClaimForRefundDetail.cshtml")
+    @Html.Partial("~/Views/Accountant/ClaimForRefund/_ExecuteClaimForRefund.cshtml")
+    @Html.Partial("~/Views/Ticket/ClaimForRefund/_ClaimForRefund.cshtml")
+    @Html.Partial("~/Views/Accountant/ClaimForRefund/_ClaimForRefundList.cshtml")
+
+    @Html.Partial("~/Views/Partial/customer/_CustomerFind.cshtml")
+
+    @Html.Partial("~/Views/Accountant/LiabilityReport/_LiabilityReport.cshtml")
+    @Html.Partial("~/Views/Accountant/LiabilityReport/_LiabilityReportList.cshtml")
+
+    @Html.Partial("~/Views/Accountant/Report/_AccountReportSituation.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_AccountReport.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_FundBillReport.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_RechargeReport.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_WithDrawReport.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_FundReportSituation.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_ReportBusinessOffice.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_ReportGomContOffice.cshtml")
+    @Html.Partial("~/Views/Accountant/Report/_ReportOrderOffice.cshtml")
+    <!-- =============== Modal thay đổi nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentEdit" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Update contents here:</b></h4>
+        </div>
+        <div class="modal-body">
+            <textarea data-bind="value: contentEdit" style="width:100%;min-height: 100px"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: updateContent" data-dismiss="modal">Update</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal xóa nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentDelete" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>The conversation will be deleted, are you sure you want to delete!?</b></h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: deleteContent" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal nhập lý do Hủy Refund slip ===================== -->
+    <div id="commentCancelClaim" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>@*Nhập lý do Hủy Refund khiếu nại*@Enter reason to cancel refund request :</b></h4>
+        </div>
+        <div class="modal-body">
+            <textarea data-bind="value: reasonClaim" style="width:100%;min-height: 100px"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: btnDeleteClaimForRefund" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

@@ -1,0 +1,94 @@
+﻿
+@model CustomerLoginMeta
+
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    //Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/@culture" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Generator" content="LETE v1.0">
+    <link href="~/Content/css/css-login/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/css-login/header_footer.css" rel="stylesheet" />
+    <title>@Resource.Home_Login</title>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/icon_likeorder_16x16.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <section class="login-logo">
+        <a href="/@culture">
+            <img src="~/Images/logo_likeorder_home.png" alt="logo" />
+        </a>
+    </section>
+
+    <section class="login-content">
+
+        <div class="login-content-max">
+            <form class="login-content-box" action="@Url.Action("Login", "Account")" method="post" style="padding-bottom: 0 !important;">
+                @Html.AntiForgeryToken()
+                @Html.Hidden("ReturnUrl", ViewBag.ReturnUrl as string)
+                <div>
+                    <span>@Resource.Home_Login</span><a href="@Url.Action("Register", "Account")">@Resource.Home_RegisterNow</a>
+                    @*<span>@Resource.Home_Login</span><a href="https://docs.google.com/forms/d/e/1FAIpQLScpr-5uwWL5JwOGKtH8enmq7GFH0GXLpkrbYLTRY-UiJ0VArA/viewform">@Resource.Home_RegisterNow</a>*@
+                </div>
+                <label>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </label>
+                @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>()
+            {
+                {"placeholder", Resource.Home_LoginEmail},
+                {"type", "email"},
+                //{"autocomplete","off" },
+            })
+
+                <br>
+
+                <label>
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                </label>
+                @Html.PasswordFor(x => x.Password, new Dictionary<string, object>()
+            {
+                {"placeholder", Resource.Home_LoginPass},
+                {"type", "password"},
+                 //{"autocomplete","off" },
+            })
+
+                <p class="login-content-box-forget">
+                    <input checked="checked" type="checkbox" name="" id="" value="">
+                    <label>
+                        @Resource.Home_Remember
+                    </label><a href="@Url.Action("PassForget", "Account")">@Resource.Home_ForgetPass ?</a>
+                </p>
+                <input type="hidden">
+                <input type="hidden">
+                <button type="submit">
+                    @Resource.Home_Login
+                </button>
+
+                <div class="error-login" style="padding-right: 0 !important">
+                    @Html.ValidationMessage("CustomError")<br />
+                    @Html.ValidationMessageFor(x => x.Email)<br />
+                    @Html.ValidationMessageFor(x => x.Password)
+                </div>
+            </form>
+        </div>
+    </section>
+    @* facebook *@
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.8&appId=1629596540681731";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    @Html.Partial("~/Views/Partial/_Footer.cshtml")
+</body>
+</html>

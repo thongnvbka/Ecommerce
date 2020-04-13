@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DB873E7-A28E-4972-B1CD-7DC511A6CB09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions, Version=5.0.1.16, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataAnnotationsExtensions.5.0.1.16\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FoolproofValidation, Version=0.9.5851.39121, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoolproofValidation.0.9.4518\lib\net45\FoolproofValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMappers\AutoMapperConfig.cs" />
+    <Compile Include="DbContext\Entities\ChatDetail.cs" />
+    <Compile Include="DbContext\Entities\ComplainHistory.cs" />
+    <Compile Include="DbContext\Entities\ComplainOrder.cs" />
+    <Compile Include="DbContext\Entities\ComplainType.cs" />
+    <Compile Include="DbContext\Entities\DebitReport.cs" />
+    <Compile Include="DbContext\Entities\OderServiceOther.cs" />
+    <Compile Include="DbContext\Entities\AccountantSubject.cs" />
+    <Compile Include="DbContext\Entities\App.cs" />
+    <Compile Include="DbContext\Entities\Attachment.cs" />
+    <Compile Include="DbContext\Entities\AttachmentMessage.cs" />
+    <Compile Include="DbContext\Entities\Bag.cs" />
+    <Compile Include="DbContext\Entities\BagPackage.cs" />
+    <Compile Include="DbContext\Entities\Category.cs" />
+    <Compile Include="DbContext\Entities\ChangePasswordLog.cs" />
+    <Compile Include="DbContext\Entities\ChatFilesAttach.cs" />
+    <Compile Include="DbContext\Entities\ClaimForRefund.cs" />
+    <Compile Include="DbContext\Entities\ClaimForRefundDetail.cs" />
+    <Compile Include="DbContext\Entities\Complain.cs" />
+    <Compile Include="DbContext\Entities\ComplainDetail.cs" />
+    <Compile Include="DbContext\Entities\ComplainRecoup.cs" />
+    <Compile Include="DbContext\Entities\ComplainUser.cs" />
+    <Compile Include="DbContext\Entities\ConfigLoginFailure.cs" />
+    <Compile Include="DbContext\Entities\Customer.cs" />
+    <Compile Include="DbContext\Entities\CustomerCallHistory.cs" />
+    <Compile Include="DbContext\Entities\CustomerConfigLevel.cs" />
+    <Compile Include="DbContext\Entities\CustomerLevel.cs" />
+    <Compile Include="DbContext\Entities\CustomerLog.cs" />
+    <Compile Include="DbContext\Entities\CustomerOrderPending.cs" />
+    <Compile Include="DbContext\Entities\CustomerSale.cs" />
+    <Compile Include="DbContext\Entities\CustomerType.cs" />
+    <Compile Include="DbContext\Entities\CustomerWallet.cs" />
+    <Compile Include="DbContext\Entities\Debit.cs" />
+    <Compile Include="DbContext\Entities\DebitDetailHistory.cs" />
+    <Compile Include="DbContext\Entities\DebitHistory.cs" />
+    <Compile Include="DbContext\Entities\Delivery.cs" />
+    <Compile Include="DbContext\Entities\DeliveryDetail.cs" />
+    <Compile Include="DbContext\Entities\DeliverySpend.cs" />
+    <Compile Include="DbContext\Entities\Deposit.cs" />
+    <Compile Include="DbContext\Entities\DepositDetail.cs" />
+    <Compile Include="DbContext\Entities\Dispatcher.cs" />
+    <Compile Include="DbContext\Entities\DispatcherDetail.cs" />
+    <Compile Include="DbContext\Entities\District.cs" />
+    <Compile Include="DbContext\Entities\Draw.cs" />
+    <Compile Include="DbContext\Entities\Entrepot.cs" />
+    <Compile Include="DbContext\Entities\ExportWarehouse.cs" />
+    <Compile Include="DbContext\Entities\ExportWarehouseDetail.cs" />
+    <Compile Include="DbContext\Entities\FinanceAccount.cs" />
+    <Compile Include="DbContext\Entities\FinanceFund.cs" />
+    <Compile Include="DbContext\Entities\FundBill.cs" />
+    <Compile Include="DbContext\Entities\Gift.cs" />
+    <Compile Include="DbContext\Entities\GroupChat.cs" />
+    <Compile Include="DbContext\Entities\GroupChatContent.cs" />
+    <Compile Include="DbContext\Entities\GroupChatLike.cs" />
+    <Compile Include="DbContext\Entities\GroupChatRead.cs" />
+    <Compile Include="DbContext\Entities\GroupChatUser.cs" />
+    <Compile Include="DbContext\Entities\GroupPermision.cs" />
+    <Compile Include="DbContext\Entities\HashTag.cs" />
+    <Compile Include="DbContext\Entities\HistoryPackage.cs" />
+    <Compile Include="DbContext\Entities\HistorySatu.cs" />
+    <Compile Include="DbContext\Entities\ImportWarehouse.cs" />
+    <Compile Include="DbContext\Entities\ImportWarehouseDetail.cs" />
+    <Compile Include="DbContext\Entities\Layout.cs" />
+    <Compile Include="DbContext\Entities\LockHistory.cs" />
+    <Compile Include="DbContext\Entities\LogAction.cs" />
+    <Compile Include="DbContext\Entities\CustomerLogLogin.cs" />
+    <Compile Include="DbContext\Entities\LogLogin.cs" />
+    <Compile Include="DbContext\Entities\LogSystem.cs" />
+    <Compile Include="DbContext\Entities\MessageRealTime.cs" />
+    <Compile Include="DbContext\Entities\MessageUser.cs" />
+    <Compile Include="DbContext\Entities\NotifyRealTime.cs" />
+    <Compile Include="DbContext\Entities\OrderCustomer.cs" />
+    <Compile Include="DbContext\Entities\OrderLog.cs" />
+    <Compile Include="DbContext\Entities\OrderReason.cs" />
+    <Compile Include="DbContext\Entities\OrderRefund.cs" />
+    <Compile Include="DbContext\Entities\OrderRefundDetail.cs" />
+    <Compile Include="DbContext\Entities\PackageHistory.cs" />
+    <Compile Include="DbContext\Entities\PackageNoCode.cs" />
+    <Compile Include="DbContext\Entities\PackageNote.cs" />
+    <Compile Include="DbContext\Entities\PayReceivable.cs" />
+    <Compile Include="DbContext\Entities\RequestShip.cs" />
+    <Compile Include="DbContext\Entities\SendEmail.cs" />
+    <Compile Include="DbContext\Entities\SendEmailResult.cs" />
+    <Compile Include="DbContext\Entities\Setting.cs" />
+    <Compile Include="DbContext\Entities\Transfer.cs" />
+    <Compile Include="DbContext\Entities\TransferDetail.cs" />
+    <Compile Include="DbContext\Entities\TransportMethod.cs" />
+    <Compile Include="DbContext\Entities\UserConnection.cs" />
+    <Compile Include="DbContext\Maps\ComplainHistoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ComplainOrderConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ComplainTypeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DebitReportConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderServiceOtherConfiguration.cs" />
+    <Compile Include="DbContext\Maps\AttachmentConfiguration.cs" />
+    <Compile Include="DbContext\Maps\AttachmentMessageConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ChatFilesAttachConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerCallHistoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerWalletConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DebitConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DebitHistoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\EntrepotConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GroupChatConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GroupChatContentConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GroupChatLikeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GroupChatReadConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GroupChatUserConfiguration.cs" />
+    <Compile Include="DbContext\Maps\MessageRealTimeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\MessageUserConfiguration.cs" />
+    <Compile Include="DbContext\Entities\Module.cs" />
+    <Compile Include="DbContext\Entities\Notification.cs" />
+    <Compile Include="DbContext\Entities\NotifiCommon.cs" />
+    <Compile Include="DbContext\Entities\NotifiCustomer.cs" />
+    <Compile Include="DbContext\Maps\NotifyRealTimeConfiguration.cs" />
+    <Compile Include="DbContext\Entities\Office.cs" />
+    <Compile Include="DbContext\Entities\Order.cs" />
+    <Compile Include="DbContext\Entities\OrderAddress.cs" />
+    <Compile Include="DbContext\Entities\OrderComment.cs" />
+    <Compile Include="DbContext\Entities\OrderContractCode.cs" />
+    <Compile Include="DbContext\Entities\OrderDetail.cs" />
+    <Compile Include="DbContext\Entities\OrderDetailCommon.cs" />
+    <Compile Include="DbContext\Entities\OrderDetailCounting.cs" />
+    <Compile Include="DbContext\Entities\OrderExchange.cs" />
+    <Compile Include="DbContext\Entities\OrderHistory.cs" />
+    <Compile Include="DbContext\Entities\OrderInfo.cs" />
+    <Compile Include="DbContext\Entities\OrderPackage.cs" />
+    <Compile Include="DbContext\Entities\OrderProcessItem.cs" />
+    <Compile Include="DbContext\Entities\OrderService.cs" />
+    <Compile Include="DbContext\Entities\PackageTranport.cs" />
+    <Compile Include="DbContext\Entities\PackingList.cs" />
+    <Compile Include="DbContext\Entities\Page.cs" />
+    <Compile Include="DbContext\Entities\Partner.cs" />
+    <Compile Include="DbContext\Entities\PermissionAction.cs" />
+    <Compile Include="DbContext\Entities\Position.cs" />
+    <Compile Include="DbContext\Entities\PotentialCustomer.cs" />
+    <Compile Include="DbContext\Entities\Province.cs" />
+    <Compile Include="DbContext\Entities\PutAway.cs" />
+    <Compile Include="DbContext\Entities\PutAwayDetail.cs" />
+    <Compile Include="DbContext\Entities\Recent.cs" />
+    <Compile Include="DbContext\Entities\RechargeBill.cs" />
+    <Compile Include="DbContext\Entities\RoleAction.cs" />
+    <Compile Include="DbContext\Entities\Shop.cs" />
+    <Compile Include="DbContext\Entities\Source.cs" />
+    <Compile Include="DbContext\Entities\SourceDetail.cs" />
+    <Compile Include="DbContext\Entities\SourceService.cs" />
+    <Compile Include="DbContext\Entities\SourceServiceCustomer.cs" />
+    <Compile Include="DbContext\Entities\SourceSupplier.cs" />
+    <Compile Include="DbContext\Entities\System.cs" />
+    <Compile Include="DbContext\Entities\TicketComplain.cs" />
+    <Compile Include="DbContext\Entities\Title.cs" />
+    <Compile Include="DbContext\Entities\Tracker.cs" />
+    <Compile Include="DbContext\Entities\Transaction.cs" />
+    <Compile Include="DbContext\Entities\Treasure.cs" />
+    <Compile Include="DbContext\Entities\User.cs" />
+    <Compile Include="DbContext\Entities\UserPosition.cs" />
+    <Compile Include="DbContext\Entities\Wallet.cs" />
+    <Compile Include="DbContext\Entities\WalletDetail.cs" />
+    <Compile Include="DbContext\Entities\Ward.cs" />
+    <Compile Include="DbContext\Entities\Warehouse.cs" />
+    <Compile Include="DbContext\Maps\AccountantSubjectConfiguration.cs" />
+    <Compile Include="DbContext\Maps\AppConfiguration.cs" />
+    <Compile Include="DbContext\Maps\BagConfiguration.cs" />
+    <Compile Include="DbContext\Maps\BagPackageConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CategoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ChangePasswordLogConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ClaimForRefundConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ClaimForRefundDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ComplainConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ComplainRecoupConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ComplainUserConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ConfigLoginFailureConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerConfigLevelConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerLevelConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerLogConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerSaleConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerTypeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DeliveryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DeliveryDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DeliverySpendConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DepositConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DepositDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DispatcherConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DispatcherDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DistrictConfiguration.cs" />
+    <Compile Include="DbContext\Maps\DrawConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ExportWarehouseConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ExportWarehouseDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\FinanceAccountConfiguration.cs" />
+    <Compile Include="DbContext\Maps\FinanceFundConfiguration.cs" />
+    <Compile Include="DbContext\Maps\FundBillConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GiftConfiguration.cs" />
+    <Compile Include="DbContext\Maps\GroupPermisionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\HashTagConfiguration.cs" />
+    <Compile Include="DbContext\Maps\HistoryPackageConfiguration.cs" />
+    <Compile Include="DbContext\Maps\HistorySatuConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ImportWarehouseConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ImportWarehouseDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\LayoutConfiguration.cs" />
+    <Compile Include="DbContext\Maps\LockHistoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\LogActionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\CustomerLogLoginConfiguration.cs" />
+    <Compile Include="DbContext\Maps\LogLoginConfiguration.cs" />
+    <Compile Include="DbContext\Maps\LogSystemConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ModuleConfiguration.cs" />
+    <Compile Include="DbContext\Maps\NotificationConfiguration.cs" />
+    <Compile Include="DbContext\Maps\NotifiCommonConfiguration.cs" />
+    <Compile Include="DbContext\Maps\NotifiCustomerConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OfficeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderAddressConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderCommentConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderContractCodeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderDetailCountingConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderExchangeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderHistoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderInfoConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderLogConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderPackageConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderProcessItemConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderReasonConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderRefundConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderRefundDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\OrderServiceConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PackageHistoryConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PackageNoCodeConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PackageNoteConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PackageTranportConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PackingListConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PageConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PartnerConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PayReceivableConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PermissionActionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PositionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PotentialCustomerConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ProvinceConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PutAwayConfiguration.cs" />
+    <Compile Include="DbContext\Maps\PutAwayDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\RecentConfiguration.cs" />
+    <Compile Include="DbContext\Maps\RechargeBillConfiguration.cs" />
+    <Compile Include="DbContext\Maps\RequestShipConfiguration.cs" />
+    <Compile Include="DbContext\Maps\RoleActionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SendEmailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SendEmailResultConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SettingConfiguration.cs" />
+    <Compile Include="DbContext\Maps\ShopConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SourceConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SourceDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SourceServiceConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SourceServiceCustomerConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SourceSupplierConfiguration.cs" />
+    <Compile Include="DbContext\Maps\SystemConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TitleConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TrackerConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TransactionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TransferConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TransferDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TransportMethodConfiguration.cs" />
+    <Compile Include="DbContext\Maps\TreasureConfiguration.cs" />
+    <Compile Include="DbContext\Maps\UserConfiguration.cs" />
+    <Compile Include="DbContext\Maps\UserConnectionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\UserPositionConfiguration.cs" />
+    <Compile Include="DbContext\Maps\WalletConfiguration.cs" />
+    <Compile Include="DbContext\Maps\WalletDetailConfiguration.cs" />
+    <Compile Include="DbContext\Maps\WardConfiguration.cs" />
+    <Compile Include="DbContext\Maps\WarehouseConfiguration.cs" />
+    <Compile Include="DbContext\ProjectXContextProceduce.cs" />
+    <Compile Include="DbContext\ProjectXContext.cs" />
+    <Compile Include="DbContext\Repositories\ComplainHistoryRepository.cs" />
+    <Compile Include="DbContext\Repositories\ComplainOrderRepository.cs" />
+    <Compile Include="DbContext\Repositories\DebitReportRepository.cs" />
+    <Compile Include="DbContext\Repositories\PackageHistoryRepository.cs" />
+    <Compile Include="DbContext\Repositories\ComplainTypeRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerCallHistoryRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderServiceOtherRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderRefundDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderRefundRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderReasonRepository.cs" />
+    <Compile Include="DbContext\Repositories\PackageNoCodeRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerWalletRepository.cs" />
+    <Compile Include="DbContext\Repositories\DebitHistoryRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderLogRepository.cs" />
+    <Compile Include="DbContext\Repositories\PackageNoteRepository.cs" />
+    <Compile Include="DbContext\Repositories\PayReceivableRepository.cs" />
+    <Compile Include="DbContext\Repositories\RequestShipRepository.cs" />
+    <Compile Include="DbContext\Repositories\SettingRepository.cs" />
+    <Compile Include="DbContext\Repositories\TransferDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\TransferRepository.cs" />
+    <Compile Include="DbContext\Repositories\TransportMethodRepository.cs" />
+    <Compile Include="DbContext\Repositories\EntrepotRepository.cs" />
+    <Compile Include="DbContext\Repositories\GroupChatReadRepository.cs" />
+    <Compile Include="DbContext\Repositories\GroupChatLikeRepository.cs" />
+    <Compile Include="DbContext\Repositories\GroupChatContentRepository.cs" />
+    <Compile Include="DbContext\Repositories\GroupChatUserRepository.cs" />
+    <Compile Include="DbContext\Repositories\GroupChatRepository.cs" />
+    <Compile Include="DbContext\Repositories\ChatFilesAttachRepository.cs" />
+    <Compile Include="DbContext\Repositories\UserConnectionRepository.cs" />
+    <Compile Include="DbContext\Repositories\SendEmailResultRepository.cs" />
+    <Compile Include="DbContext\Repositories\SendEmailRepository.cs" />
+    <Compile Include="DbContext\Repositories\AttachmentRepository.cs" />
+    <Compile Include="DbContext\Repositories\AttachmentMessageRepository.cs" />
+    <Compile Include="DbContext\Repositories\MessageUserRepository.cs" />
+    <Compile Include="DbContext\Repositories\MessageRealTimeRepository.cs" />
+    <Compile Include="DbContext\Repositories\NotifyRealTimeRepository.cs" />
+    <Compile Include="DbContext\Repositories\PartnerRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderInfoRepository.cs" />
+    <Compile Include="DbContext\Repositories\AppRepository.cs" />
+    <Compile Include="DbContext\Repositories\CategoryRepository.cs" />
+    <Compile Include="DbContext\Repositories\ClaimForRefundDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\ClaimForRefundRepository.cs" />
+    <Compile Include="DbContext\Repositories\ComplainRecoupRepository.cs" />
+    <Compile Include="DbContext\Repositories\ComplainRepository.cs" />
+    <Compile Include="DbContext\Repositories\ComplainUserRepository.cs" />
+    <Compile Include="DbContext\Repositories\ConfigLoginFailureRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerConfigLevelRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerLevelRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerLogRepository.cs" />
+    <Compile Include="DbContext\Repositories\ExportWarehouseDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\LayoutRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerTypeRepository.cs" />
+    <Compile Include="DbContext\Repositories\AccountantSubjectsRepository.cs" />
+    <Compile Include="DbContext\Repositories\DeliverySpendRepository.cs" />
+    <Compile Include="DbContext\Repositories\DispatcherDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\DrawRepository.cs" />
+    <Compile Include="DbContext\Repositories\FundBillRepository.cs" />
+    <Compile Include="DbContext\Repositories\DepositDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\DepositRepository.cs" />
+    <Compile Include="DbContext\Repositories\DistrictRepository.cs" />
+    <Compile Include="DbContext\Repositories\DeliveryRepository.cs" />
+    <Compile Include="DbContext\Repositories\FinanceAccountRepository.cs" />
+    <Compile Include="DbContext\Repositories\FinanceFundRepository.cs" />
+    <Compile Include="DbContext\Repositories\GroupPermissionRepository.cs" />
+    <Compile Include="DbContext\Repositories\HistoryPackageRepository.cs" />
+    <Compile Include="DbContext\Repositories\ExportWarehouseRepository.cs" />
+    <Compile Include="DbContext\Repositories\NotificationRepository.cs" />
+    <Compile Include="DbContext\Repositories\NotifiCommonRepository.cs" />
+    <Compile Include="DbContext\Repositories\NotifiCustomerRepository.cs" />
+    <Compile Include="DbContext\Repositories\RecentRepository.cs" />
+    <Compile Include="DbContext\Repositories\PotentialCustomerRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderContractCodeRepository.cs" />
+    <Compile Include="DbContext\Repositories\PutAwayDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\RechargeBillRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderProcessItemRepository.cs" />
+    <Compile Include="DbContext\Repositories\PackingListRepository.cs" />
+    <Compile Include="DbContext\Repositories\ImportWarehouseRepository.cs" />
+    <Compile Include="DbContext\Repositories\LogActionRepository.cs" />
+    <Compile Include="DbContext\Repositories\CustomerLogLoginRepository.cs" />
+    <Compile Include="DbContext\Repositories\LogLoginRepository.cs" />
+    <Compile Include="DbContext\Repositories\LogSystemRepository.cs" />
+    <Compile Include="DbContext\Repositories\ModuleRepository.cs" />
+    <Compile Include="DbContext\Repositories\OfficeRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderCommentRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderExhibitionRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderHistoryRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderPackageRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderServiceRepository.cs" />
+    <Compile Include="DbContext\Repositories\ReportBusinessRepository.cs" />
+    <Compile Include="DbContext\Repositories\SourceDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\SourceRepository.cs" />
+    <Compile Include="DbContext\Repositories\SourceServiceCustomerRepository.cs" />
+    <Compile Include="DbContext\Repositories\SourceServiceRepository.cs" />
+    <Compile Include="DbContext\Repositories\SourceSupplierRepository.cs" />
+    <Compile Include="DbContext\Repositories\TrackerRepository.cs" />
+    <Compile Include="DbContext\Repositories\PageRepository.cs" />
+    <Compile Include="DbContext\Repositories\PermissionActionRepository.cs" />
+    <Compile Include="DbContext\Repositories\PositionRepository.cs" />
+    <Compile Include="DbContext\Repositories\ProductRepository.cs" />
+    <Compile Include="DbContext\Repositories\RoleActionRepository.cs" />
+    <Compile Include="DbContext\Repositories\ShopRepository.cs" />
+    <Compile Include="DbContext\Repositories\TitleRepository.cs" />
+    <Compile Include="DbContext\Repositories\TreasureRepository.cs" />
+    <Compile Include="DbContext\Repositories\UserPositionRepository.cs" />
+    <Compile Include="DbContext\Repositories\UserRepository.cs" />
+    <Compile Include="DbContext\Repositories\WalletDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\WalletRepository.cs" />
+    <Compile Include="DbContext\Repositories\ProvinceRepository.cs" />
+    <Compile Include="DbContext\Repositories\PutAwayRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderDetailCountingRepository.cs" />
+    <Compile Include="DbContext\Repositories\WardRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderAddressRepository.cs" />
+    <Compile Include="DbContext\Repositories\OrderExchangeRepository.cs" />
+    <Compile Include="DbContext\Repositories\SystemRepository.cs" />
+    <Compile Include="DbContext\Repositories\ImportWarehouseDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\DispatcherRepository.cs" />
+    <Compile Include="DbContext\Repositories\DeliveryDetailRepository.cs" />
+    <Compile Include="DbContext\Repositories\DebitRepository.cs" />
+    <Compile Include="DbContext\Repositories\WarehouseRepository.cs" />
+    <Compile Include="DbContext\Results\DebitReportPackageResult.cs" />
+    <Compile Include="DbContext\Results\DeliveryPackageResult.cs" />
+    <Compile Include="DbContext\Results\ImportWarehouseDetailResult.cs" />
+    <Compile Include="DbContext\Results\OrderDetailCountingNotHaveRefundResult.cs" />
+    <Compile Include="DbContext\Results\AcountingLoseResult.cs" />
+    <Compile Include="DbContext\Results\ImportWarehouseDetailWalletResult.cs" />
+    <Compile Include="DbContext\Results\ImportWarehouseWalletResult.cs" />
+    <Compile Include="DbContext\Results\LadingCodeResult.cs" />
+    <Compile Include="DbContext\Results\OrderPackageDatePutAwayResult.cs" />
+    <Compile Include="DbContext\Results\OrderPackagDeliveryResult.cs" />
+    <Compile Include="DbContext\Results\OrderPackageForPackingResult.cs" />
+    <Compile Include="DbContext\Results\OrderPackageWapResult.cs" />
+    <Compile Include="DbContext\Results\OrderResult.cs" />
+    <Compile Include="DbContext\Results\OrderServiceByPackageCodeResult.cs" />
+    <Compile Include="DbContext\Results\LogResult.cs" />
+    <Compile Include="DbContext\Results\OrderCommerceServiceResult.cs" />
+    <Compile Include="DbContext\Results\OrderJoinOrderDetailResult.cs" />
+    <Compile Include="DbContext\Results\OrderReasonResult.cs" />
+    <Compile Include="DbContext\Results\OrderRefundDetailResult.cs" />
+    <Compile Include="DbContext\Results\OrderRefundResult.cs" />
+    <Compile Include="DbContext\Results\OrderServiceOtherResult.cs" />
+    <Compile Include="DbContext\Results\OrderServiceResult.cs" />
+    <Compile Include="DbContext\Results\OrderSuccessResult.cs" />
+    <Compile Include="DbContext\Results\PackageForDebitResult.cs" />
+    <Compile Include="DbContext\Results\PackageForTrackingResult.cs" />
+    <Compile Include="DbContext\Results\PackageNoCodeForReportResult.cs" />
+    <Compile Include="DbContext\Results\PackageNoCodeResult.cs" />
+    <Compile Include="DbContext\Results\PackageReportResult.cs" />
+    <Compile Include="DbContext\Results\PackageWitWalletResult.cs" />
+    <Compile Include="DbContext\Results\PutAwayDetailResult1.cs" />
+    <Compile Include="DbContext\Results\DispatcherResult.cs" />
+    <Compile Include="DbContext\Results\ImportWarehouseResult.cs" />
+    <Compile Include="DbContext\Results\OrderPackageOverDayResult.cs" />
+    <Compile Include="DbContext\Results\AppResult.cs" />
+    <Compile Include="DbContext\Results\AttachmentMessageGetByMessageIdResults.cs" />
+    <Compile Include="DbContext\Results\AttachmentObjectGetResult.cs" />
+    <Compile Include="DbContext\Results\AttachmentsGetByMessageIdResults.cs" />
+    <Compile Include="DbContext\Results\ComplainSelectUserResult.cs" />
+    <Compile Include="DbContext\Results\GroupChatContentGetListRepliesResult.cs" />
+    <Compile Include="DbContext\Results\GroupChatContentGetResult.cs" />
+    <Compile Include="DbContext\Results\GroupChatGetListTagUserResult.cs" />
+    <Compile Include="DbContext\Results\GroupChatGetListUserForNotificationResult.cs" />
+    <Compile Include="DbContext\Results\GroupChatGetUserConnectionInGroupResult.cs" />
+    <Compile Include="DbContext\Results\GroupChatReadUpdateCountResult.cs" />
+    <Compile Include="DbContext\Results\GroupPermissionResult.cs" />
+    <Compile Include="DbContext\Results\MessageGetInboxDetailByMessageIdResults.cs" />
+    <Compile Include="DbContext\Results\MessageGetNotifyResult.cs" />
+    <Compile Include="DbContext\Results\MessageSendResult.cs" />
+    <Compile Include="DbContext\Results\MessageSendResults.cs" />
+    <Compile Include="DbContext\Results\ModuleResult.cs" />
+    <Compile Include="DbContext\Results\OfficeDropdownResult.cs" />
+    <Compile Include="DbContext\Results\OrderContractCodeResult.cs" />
+    <Compile Include="DbContext\Results\OrderDetailCountingResult.cs" />
+    <Compile Include="DbContext\Results\OrderPackageForDeliveryResult.cs" />
+    <Compile Include="DbContext\Results\OrderRiskResult.cs" />
+    <Compile Include="DbContext\Results\PackingResult.cs" />
+    <Compile Include="DbContext\Results\PageResult.cs" />
+    <Compile Include="DbContext\Results\PermissionAction1Result.cs" />
+    <Compile Include="DbContext\Results\PermissionActionResult.cs" />
+    <Compile Include="DbContext\Results\ProductResult.cs" />
+    <Compile Include="DbContext\Results\PutAwayDetailResult.cs" />
+    <Compile Include="DbContext\Results\PutAwayResult.cs" />
+    <Compile Include="DbContext\Results\RoleActionResult.cs" />
+    <Compile Include="DbContext\Results\MessageGetTotalUnreadResults.cs" />
+    <Compile Include="DbContext\Results\MessageSearchInboxResults.cs" />
+    <Compile Include="DbContext\Results\NotifyGetNotifySystemByToUserIdResults.cs" />
+    <Compile Include="DbContext\Results\SendEmailSearchResults.cs" />
+    <Compile Include="DbContext\Results\SourcingBySourcingDetailResults.cs" />
+    <Compile Include="DbContext\Results\SuggetionForImportWarehouseResult.cs" />
+    <Compile Include="DbContext\Results\TitleResult.cs" />
+    <Compile Include="DbContext\Results\UserGetShortInfoByFullNameResults.cs" />
+    <Compile Include="DbContext\Results\UserOfficeResult.cs" />
+    <Compile Include="DbContext\Results\CustomerInfoResult.cs" />
+    <Compile Include="DbContext\Results\ExportWarehouseDetailResult.cs" />
+    <Compile Include="DbContext\Results\UserSuggetionResult.cs" />
+    <Compile Include="DbContext\Results\UserResult.cs" />
+    <Compile Include="DbContext\Results\WalletDetailResult.cs" />
+    <Compile Include="DbContext\Results\WalletPackageResult.cs" />
+    <Compile Include="DbContext\Results\WalletResult.cs" />
+    <Compile Include="DbContext\Results\WalletTrackerResult.cs" />
+    <Compile Include="Jobs\PackageJob.cs" />
+    <Compile Include="Jobs\PageJob.cs" />
+    <Compile Include="Migrations\202004070855005_Initializer.cs" />
+    <Compile Include="Migrations\202004070855005_Initializer.Designer.cs">
+      <DependentUpon>202004070855005_Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ComplainTypeMeta.cs" />
+    <Compile Include="Models\AssignToShipperMeta.cs" />
+    <Compile Include="Models\DeliveryBillMeta.cs" />
+    <Compile Include="Models\ChangePasswordMeta.cs" />
+    <Compile Include="Models\AccountantSubjectMeta.cs" />
+    <Compile Include="Models\AttachmentMeta.cs" />
+    <Compile Include="Models\AttachmentObjectMeta.cs" />
+    <Compile Include="Models\ClaimForRefundMeta.cs" />
+    <Compile Include="Models\CustomerChangePassMeta.cs" />
+    <Compile Include="Models\CustomerForgotMeta.cs" />
+    <Compile Include="Models\CustomerLevelData.cs" />
+    <Compile Include="Models\CustomerLevelMeta.cs" />
+    <Compile Include="Models\CustomerMeta.cs" />
+    <Compile Include="Models\CustomerNewPassMeta.cs" />
+    <Compile Include="Models\CustomerLoginMeta.cs" />
+    <Compile Include="Models\CustomerRegisterMeta.cs" />
+    <Compile Include="Models\CustomerState.cs" />
+    <Compile Include="Models\CustomerUpdateMeta.cs" />
+    <Compile Include="Models\CustomerUser.cs" />
+    <Compile Include="Models\CustomerValidateMeta.cs" />
+    <Compile Include="Models\CustomerWallitMeta.cs" />
+    <Compile Include="Models\CustumerTypeMeta.cs" />
+    <Compile Include="Models\DebitHistoryMeta.cs" />
+    <Compile Include="Models\DebitMeta.cs" />
+    <Compile Include="Models\DeliveryMeta.cs" />
+    <Compile Include="Models\DrawMeta.cs" />
+    <Compile Include="Models\ExportWarehouseMeta.cs" />
+    <Compile Include="Models\FinanceFundData.cs" />
+    <Compile Include="Models\CategoryMeta.cs" />
+    <Compile Include="Models\FundBillMeta.cs" />
+    <Compile Include="Models\GroupChatContentMeta.cs" />
+    <Compile Include="Models\GroupChatUserInfoMeta.cs" />
+    <Compile Include="Models\GroupPermissionMeta.cs" />
+    <Compile Include="Models\LayoutMeta.cs" />
+    <Compile Include="Models\MessageMeta.cs" />
+    <Compile Include="Models\DispatcherMeta.cs" />
+    <Compile Include="Models\NotifySettingMeta.cs" />
+    <Compile Include="Models\OrderAcountingMeta.cs" />
+    <Compile Include="Models\OrderRefundMeta.cs" />
+    <Compile Include="Models\PaymentRefundMeta.cs" />
+    <Compile Include="Models\PayReceivablesMeta.cs" />
+    <Compile Include="Models\PotentialCustomerMeta.cs" />
+    <Compile Include="Models\ProfitDay.cs" />
+    <Compile Include="Models\PutAwayMeta.cs" />
+    <Compile Include="Models\SendEmailMeta.cs" />
+    <Compile Include="Models\StockQuotesMeta.cs" />
+    <Compile Include="Models\TransferMeta.cs" />
+    <Compile Include="Models\UserReplyMeta.cs" />
+    <Compile Include="Models\WalletMeta.cs" />
+    <Compile Include="Models\LoginMeta.cs" />
+    <Compile Include="Models\OfficeMeta.cs" />
+    <Compile Include="Models\PageMeta.cs" />
+    <Compile Include="Models\PositionMeta.cs" />
+    <Compile Include="Models\RechargeBillMeta.cs" />
+    <Compile Include="Models\SearchMeta.cs" />
+    <Compile Include="Models\ShopData.cs" />
+    <Compile Include="Models\SystemMeta.cs" />
+    <Compile Include="Models\TitleMeta.cs" />
+    <Compile Include="Models\QuickAddUserMeta.cs" />
+    <Compile Include="Models\TreasureMeta.cs" />
+    <Compile Include="Models\UserMeta.cs" />
+    <Compile Include="Models\UserState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\NotifySetting.cs" />
+    <Compile Include="UnitOfWork\Repository.cs" />
+    <Compile Include="UnitOfWork\SettingProvider.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="ViewModels\AccountantSubjectViewModel.cs" />
+    <Compile Include="ViewModels\Accountant\DrawalViewModal.cs" />
+    <Compile Include="ViewModels\Accountant\DebitViewModal.cs" />
+    <Compile Include="ViewModels\Accountant\MustReturnViewModal.cs" />
+    <Compile Include="ViewModels\Accountant\RechargeBillViewModal.cs" />
+    <Compile Include="ViewModels\Accountant\FundBillViewModal.cs" />
+    <Compile Include="ViewModels\Account\ComplainDetailModel.cs" />
+    <Compile Include="ViewModels\Account\ComplainModel.cs" />
+    <Compile Include="ViewModels\Account\CustomerInforModel.cs" />
+    <Compile Include="ViewModels\Account\DebitHistoryModel.cs" />
+    <Compile Include="ViewModels\Account\DepositDetailModel.cs" />
+    <Compile Include="ViewModels\Account\DrawModel.cs" />
+    <Compile Include="ViewModels\Account\OrderDetailModel.cs" />
+    <Compile Include="ViewModels\Account\OrderPackageModel.cs" />
+    <Compile Include="ViewModels\Account\SourceAddModel.cs" />
+    <Compile Include="ViewModels\Account\SourceDetailModel.cs" />
+    <Compile Include="ViewModels\Complains\ClaimForRefundSearchModal.cs" />
+    <Compile Include="ViewModels\Complains\ComplainSearchModal.cs" />
+    <Compile Include="ViewModels\Complains\ComplainUserComment.cs" />
+    <Compile Include="ViewModels\ComplainTypeViewModel.cs" />
+    <Compile Include="ViewModels\Counting\CountingSearchModel.cs" />
+    <Compile Include="ViewModels\CustomerConfigLevelViewModel.cs" />
+    <Compile Include="ViewModels\CustomerLevelViewModel.cs" />
+    <Compile Include="ViewModels\CustomerTypeViewModel.cs" />
+    <Compile Include="ViewModels\CustomerWalletViewModel.cs" />
+    <Compile Include="ViewModels\Customer\PotentialCustomerSearchModal.cs" />
+    <Compile Include="ViewModels\Items\CustomerInforItem.cs" />
+    <Compile Include="ViewModels\Items\CustomerReporItem.cs" />
+    <Compile Include="ViewModels\Items\DebitItem.cs" />
+    <Compile Include="ViewModels\Items\DepositAddItem.cs" />
+    <Compile Include="ViewModels\Items\DepositDetailViewItem.cs" />
+    <Compile Include="ViewModels\Items\DepositViewItem.cs" />
+    <Compile Include="ViewModels\Items\DrawItem.cs" />
+    <Compile Include="ViewModels\Items\NotifiCommonItem.cs" />
+    <Compile Include="ViewModels\Items\NotifiOrderItem.cs" />
+    <Compile Include="ViewModels\Items\OrderAddItem.cs" />
+    <Compile Include="ViewModels\Items\OrderNotifiItem.cs" />
+    <Compile Include="ViewModels\Items\OrderPackageItem.cs" />
+    <Compile Include="ViewModels\Items\RechargeItem.cs" />
+    <Compile Include="ViewModels\Items\ShopItem.cs" />
+    <Compile Include="ViewModels\Items\SourceDetailItem.cs" />
+    <Compile Include="ViewModels\Items\SourceItem.cs" />
+    <Compile Include="ViewModels\Items\SourceServiceItem.cs" />
+    <Compile Include="ViewModels\Items\UserPermistionItem.cs" />
+    <Compile Include="ViewModels\PartnerModel.cs" />
+    <Compile Include="ViewModels\PayReceivableModel.cs" />
+    <Compile Include="ViewModels\Ship\RequestShipDetailModel.cs" />
+    <Compile Include="ViewModels\TemplateEmailJob\OverDaysOrderViewModel.cs" />
+    <Compile Include="ViewModels\VipLevel\VipLevelViewModel.cs" />
+    <Compile Include="ViewModels\Notifi\NotifiCommonModel.cs" />
+    <Compile Include="ViewModels\Notifi\NotifiOrderModel.cs" />
+    <Compile Include="ViewModels\OrderProcessItemViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerViewModal.cs" />
+    <Compile Include="ViewModels\FinanceFundViewModel.cs" />
+    <Compile Include="ViewModels\Items\ComplainItem.cs" />
+    <Compile Include="ViewModels\Items\DepositItem.cs" />
+    <Compile Include="ViewModels\Account\DepositModel.cs" />
+    <Compile Include="ViewModels\Account\OrderExhibitionModel.cs" />
+    <Compile Include="ViewModels\Items\OrderDetailItem.cs" />
+    <Compile Include="ViewModels\Items\OrderItem.cs" />
+    <Compile Include="ViewModels\Account\ShopingCartViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\OfficeFilterViewModel.cs" />
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\PositionFilterViewModel.cs" />
+    <Compile Include="ViewModels\Account\SourceModel.cs" />
+    <Compile Include="ViewModels\Account\RechargeModel.cs" />
+    <Compile Include="ViewModels\Report\ReportBusinessModel.cs" />
+    <Compile Include="ViewModels\Report\Revenue\RevenueReportViewModel.cs" />
+    <Compile Include="ViewModels\Report\ReportBusinessItem.cs" />
+    <Compile Include="ViewModels\Ticket\ClaimForRefundViewModel.cs" />
+    <Compile Include="ViewModels\TreasureViewModel.cs" />
+    <Compile Include="ViewModels\UserFilterViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\TitleFilterViewModel.cs" />
+    <Compile Include="Models\WarehouseMeta.cs" />
+    <Compile Include="ViewModels\WarehouseViewModel.cs" />
+    <Compile Include="ViewModels\Warehouse\DeliveryViewModal.cs" />
+    <Compile Include="Models\ImportWarehouseMeta.cs" />
+    <Compile Include="ViewModels\Warehouse\LayoutFilderViewModel.cs" />
+    <Compile Include="ViewModels\Warehouse\PackingListViewModal.cs" />
+    <Compile Include="ViewModels\Warehouse\ExportWarehouseViewModal.cs" />
+    <Compile Include="ViewModels\Warehouse\ImportWarehouseViewModal.cs" />
+    <Compile Include="ViewModels\Warehouse\WalletViewModal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Constants\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{e67de391-2dad-4955-8787-aa86e93d6227}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourcesLikeOrderThaiLan\ResourcesLikeOrderThaiLan.csproj">
+      <Project>{9c07aa45-e5c3-4be4-8832-e3e8aa411579}</Project>
+      <Name>ResourcesLikeOrderThaiLan</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js" />
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js" />
+    <Content Include="Client Scripts\MvcFoolproofValidation.js" />
+    <Content Include="Client Scripts\MvcFoolproofValidation.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004070855005_Initializer.resx">
+      <DependentUpon>202004070855005_Initializer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

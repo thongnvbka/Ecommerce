@@ -1,0 +1,133 @@
+﻿<script type="text/html" id="order-success">
+    <div class="box box-primary">
+        <form data-bind="submit: clickSearch" role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                        <label>Search </label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can do a search by Code orders, contract code, Lading code"></i>
+                        <input data-bind="value: keyword" class="form-control" placeholder="Code orders, contract code, Lading code" type="text">
+                        <div class="customer-checkbox">
+                            <input data-bind="checked: checkExactCode" type="checkbox" id="checkbox-1">
+                            <label for="checkbox-1"><span class="checkbox">Search text</span></label>
+                        </div>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label>Select System</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listSystem, optionsText: 'Text', optionsValue: 'Value', value: systemId"></select>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label>Status</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listStatus, optionsText: 'Text', optionsValue: 'Value', value: status"></select>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label> Order date </label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i>Start Date
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                        <label>Customer</label>
+                        <select data-bind="value: customerId" class="form-control customer-search" style="width: 100%;"></select>
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label>Order staff</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listUserOffice, optionsText: 'FullName', optionsValue: 'Id', value: userId, optionsCaption: 'All'"></select>
+                    </section>
+                    <div class="col-md-4">
+                        <label></label><br />
+                        <button data-bind="click: clickSearch" type="button" class="btn btn-danger search-list"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Finish</h3>
+                </div>
+                <div class="box-body">
+                    <div class="tabbable page-tabs">
+                        <ul data-bind="foreach : listSystemRender" class="nav nav-tabs">
+                            <li data-bind="css: Class">
+                                <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab(Value)}" data-toggle="tab">
+                                    <span data-bind="text: Text"></span>
+                                    <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active fade in" id="all-tasks">
+                                <div class="box-body table-responsive no-padding">
+                                    <div data-bind="css: isRending() == true? 'display-none' : ''">
+                                        <div class="spinner">
+                                            <div class="rect1"></div>
+                                            <div class="rect2"></div>
+                                            <div class="rect3"></div>
+                                            <div class="rect4"></div>
+                                            <div class="rect5"></div>
+                                        </div>
+                                    </div>
+                                    <div data-bind="css: isRending() == true? '' : 'display-none'" class="display-none">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center w-40">#</th>
+                                                    <th class="w-120">Code order</th>
+                                                    <th class="w-150">Status</th>
+                                                    <th class="text-center w-150">Number of complaints</th>
+                                                    <th class="w-200">Customer Information</th>
+                                                    <th class="text-center w-200">Order staff</th>
+                                                    <th class="text-center w-200">Action </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="template: { name: 'order-success-list', foreach: listOrder}"></tbody>
+                                            <tfoot data-bind="if: listOrder().length == 0">
+                                                <tr>
+                                                    <td colspan="9">No orders found</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div data-bind="if: listOrder().length > 0" class="mt15 mb100">
+                                    <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                    <ul class="pagination pagination-sm no-margin pull-right">
+                                        <li data-bind="if: pageStart">
+                                            <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                        </li>
+                                        <li data-bind="if: pageNext">
+                                            <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <!-- ko foreach: listPage -->
+                                        <li data-bind="css: Page == page ? 'active' :''  ">
+                                            <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                        </li>
+                                        <!-- /ko -->
+                                        <li data-bind="if: pagePrev">
+                                            <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <li data-bind="if: pageEnd">
+                                            <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

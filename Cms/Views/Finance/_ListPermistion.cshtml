@@ -1,0 +1,41 @@
+﻿@model  List<Library.ViewModels.Items.UserPermistionItem>
+<div class="box-body table-responsive no-padding">
+    <table id="dt_basic" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="w-40"> # </th>
+                <th class="text-center">Username</th>
+                <th class="text-center">Fullname</th>
+                <th class="text-center">Administration</th>
+            </tr>
+        </thead>
+        <tbody>          
+            @if (Model.Count <= 0)
+            {
+                <tr class="text-center">
+                    <td colspan="7" class="text-center">There are no records</td>
+                </tr>
+            }
+            else
+            {
+                var idx = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@idx</td>
+                        <td>
+                            <input type="hidden" class="item-id" value="Id" />
+                            @item.UserName
+                        </td>
+                        <td class="text-center">User Fullname</td>
+                        <td class="text-center">
+                            <a href="javascript:void(0)" onclick="DeleteUser('Id', 'User Fullname')" class="btn btn-sm btn-danger" title="Delete">Delete</a>
+                        </td>
+                    </tr>
+                    idx += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<!-- /.box-body -->

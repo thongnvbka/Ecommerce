@@ -1,0 +1,39 @@
+﻿<div id="debitReportModal" class="modal fade modal-dialog modal-sm" abindex="-1" data-focus-on="input:first" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3><i class="fa fa-cubes"></i>Packages</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="text-center w50">#</th>
+                <th class="text-center">Packages code</th>
+                <th class="text-center">MVĐ</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Weight</th>
+                <th class="text-center">Weight conversion(kg)</th>
+                <th class="text-center">Total (kg)</th>
+                <th class="text-center">Amount (Baht)</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: items">
+            <tr>
+                <td data-bind="text: $index() + 1" class="text-center"></td>
+                <td data-bind="text: 'P'+packageCode" class="text-center"></td>
+                <td data-bind="text: transportCode"></td>
+                <td class="text-center">
+                    <span data-bind="text: $parent.packageStatus()[''+status]" class="label label-info"></span>
+                </td>
+                <td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(weightConverted, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(weightActual, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(price)" class="text-right"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn">Close</button>
+    </div>
+</div>

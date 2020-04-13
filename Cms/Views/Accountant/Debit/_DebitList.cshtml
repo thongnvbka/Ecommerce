@@ -1,0 +1,212 @@
+﻿@{
+    var typeCollect = (byte)DebitType.Collect;
+    var typeReturn = (byte)DebitType.Return;
+    var check = false.ToString().ToLower();
+
+    var debitHistoryStatusCompleted = (byte)DebitHistoryStatus.Completed;
+    var debitHistoryStatusIncomplete = (byte)DebitHistoryStatus.Incomplete;
+
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+
+}
+<script type="text/html" id="debit-list">
+    <tr>
+        <td class="w-40">
+            <a data-bind="click: $parent.showChil.bind($data , Id)" class="btn btn-info btn-xs">
+                <i data-bind="css: 'chil' + Id" class="fa fa-chevron-circle-down"></i>
+                <i data-bind="css: 'chil' + Id" class="fa fa-chevron-circle-up" style="display:none"></i>
+            </a>
+        </td>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewDebitDetail" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td>
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).format('DD/MM/YYYY h:mm a')" class=""></span>
+        </td>
+        <td>
+            <span class="text-bold" data-bind="text: SubjectName"></span><br />
+            <span data-bind="text: '(' + SubjectEmail + ')'"></span>
+        </td>
+        <td class="text-center">
+            <!-- ko if: OrderType == @order-->
+            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, OrderId)" href="javascript:;">
+                <strong>
+                    <span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == @deposit-->
+            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, OrderId)" href="javascript:;">
+                <strong>
+                    <span data-bind="text: OrderCode"></span>
+                </strong>
+            </a>
+            <!-- /ko -->
+        </td>
+
+        <td class="text-right text-green">
+            <span data-bind="text: formatNumberic(MustCollectMoney, 'N2')"></span>
+        </td>
+        <td class="text-right text-red">
+            <span data-bind="text: formatNumberic((MustReturnMoney, 'N2')"></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.StatusDebitHistory[Status].Name, css: statusApp.StatusDebitHistory[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            @*<div class="btn-group">
+                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                        Function <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <!-- ko if: Status != 1 -->
+                        <li><a data-bind="click: $parent.ApprovalMustCollect" href="javascript:;"><i class="fa fa-download text-info"></i>Xác nhận</a></li>
+                        <!-- /ko -->
+
+                        <li><a data-bind="click: $parent.viewMustCollectEdit" href="javascript:;"><i class="fa fa-edit text-primary"></i>Edit</a></li>
+
+                        <!-- ko if: Status != 1 -->
+                        <li><a data-bind="click: $parent.DeleteMustCollect" href="javascript:;"><i class="fa fa-times-circle text-danger"></i> Delete</a></li>
+                        <!-- /ko -->
+                    </ul>
+                </div>*@
+        </td>
+    </tr>
+    <tr data-bind="css: 'chil' + Id" style="display:none; background-color:rgba(91, 192, 222, 0.25)">
+        <td colspan="10">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th class="text-center w-35">#</th>
+                        <th class="text-center w-140">Tracking ID</th>
+                        <th class="text-center w-100">Debit type</th>
+                        <th class="w-150">@*Định khoản*@Account</th>
+                        <th class="w-120">Object</th>
+                        <th class="text-center w-80">Order Exhibition </th>
+                        <th class="text-right text-green w-100">Receivable (Baht)</th>
+                        <th class="text-right text-red w-100">Payable (Baht)</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Note</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: ListHistory">
+                    <tr>
+                        @*<td class="text-center" data-bind="text: Id"></td>*@
+                        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+                        <td class="text-left">
+                            <a data-bind="click: $root.viewDebitHistoryDetail.bind($data,Id) " href="javascript:;"><strong data-bind="text: Code"></strong></a><br />
+                            <span data-bind="text: moment(Created).format('DD/MM/YYYY h:mm a')"></span><br />
+                        </td>
+                        <td class="text-center">
+                            <span data-bind="text: statusApp.typeDebit[DebitType].Name, css: statusApp.typeDebit[DebitType].Class"></span>
+                        </td>
+                        <td class="text-left" data-bind="text: PayReceivableIName"></td>
+                        <td class="text-left" data-bind="text: SubjectEmail"></td>
+                        <td class="text-center">
+                            <!-- ko if: OrderType == @order-->
+                            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, OrderId)" href="javascript:;">
+                                <strong>
+                                    <span data-bind="text: OrderCode"></span>
+                                </strong>
+                            </a>
+                            <!-- /ko -->
+                            <!-- ko if: OrderType == @deposit-->
+                            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, OrderId)" href="javascript:;">
+                                <strong>
+                                    <span data-bind="text: OrderCode"></span>
+                                </strong>
+                            </a>
+                            <!-- /ko -->
+                        </td>
+
+                        <td class="text-right text-green">
+                            <!-- ko if: DebitType == @typeCollect -->
+                            <span class="" data-bind="text: formatNumberic(Money, 'N2')"></span>
+                            <!-- /ko -->
+                            <!-- ko if: DebitType !== @typeCollect -->
+                            <span></span>
+                            <!-- /ko -->
+                        </td>
+                        <td class="text-right text-red">
+                            <!-- ko if: DebitType == @typeReturn -->
+                            <span class="" data-bind="text: formatNumberic(Money, 'N2')"></span>
+                            <!-- /ko -->
+                            <!-- ko if: DebitType !== @typeReturn -->
+                            <span></span>
+                            <!-- /ko -->
+                        </td>
+                        <td class="text-center">
+                            <span data-bind="text: statusApp.StatusDebitHistory[Status].Name, css: statusApp.StatusDebitHistory[Status].Class"></span>
+                        </td>
+                        <td data-bind="text: Note"></td>
+                        <td class="text-center">
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                   Choose action<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <!-- ko if: $parent.IsSystem == @check -->
+                                    @if (CheckPermision(EnumAction.Update, EnumPage.Debit))
+                                    {
+                                            <!-- ko if: DebitType == @typeCollect -->
+                                    <li><a data-bind="click: $root.viewDebitCollectEdit.bind($data,Id)" href="javascript:;"><i class="fa fa-edit text-primary"></i>Change</a></li>
+
+                                            <!-- /ko -->
+                                            <!-- ko if: DebitType == @typeReturn -->
+                                    <li><a data-bind="click: $root.viewDebitReturnEdit.bind($data,Id)" href="javascript:;"><i class="fa fa-edit text-primary"></i>Change</a></li>
+                                            <!-- /ko -->
+
+                                    }
+
+                                    <li>
+                                        @if (CheckPermision(EnumAction.Delete, EnumPage.Debit))
+                                        {
+                                        <a data-bind="click: $root.btnDeleteDebitHistory.bind($data,Id)" href="javascript:;"><i class="fa fa-times-circle text-danger"></i> Delete  </a>
+                                        }
+                                    </li>
+                                    <!-- ko if: DebitType == @typeCollect -->
+                                    <li>
+                                        @if (CheckPermision(EnumAction.Update, EnumPage.Debit))
+                                        {
+                                        <a data-bind="click: $root.viewExecuteMustCollect.bind($data,Id)" href="javascript:;"><i class="fa fa-caret-up text-green"></i>Handling receivables (Fund)</a>
+                                        }
+                                    </li>
+                                    <!-- /ko -->
+                                    <!-- ko if: DebitType == @typeReturn -->
+                                    <li>
+                                        @if (CheckPermision(EnumAction.Update, EnumPage.Debit))
+                                        {
+                                        <a data-bind="click: $root.viewExecuteMustReturn.bind($data,Id)" href="javascript:;"><i class="fa fa-caret-down text-red"></i>Handling Payables (Fund)</a>
+                                        }
+
+                                    </li>
+                                    <!-- /ko -->
+                                    <!-- /ko -->
+                                    <li>
+                                        <!-- ko if: DebitType == @typeCollect -->
+                                        @if (CheckPermision(EnumAction.Update, EnumPage.Debit))
+                                        {
+                                        <a data-bind="click: $root.viewExecuteMustCollectWallet.bind($data,Id)" href="javascript:;"><i class="fa fa-caret-up text-green"></i>Handling receivables (Wallet)</a>
+                                        }
+                                        <!-- /ko -->
+                                        <!-- ko if: DebitType == @typeReturn -->
+                                        @if (CheckPermision(EnumAction.Update, EnumPage.Debit))
+                                        {
+                                        <a data-bind="click: $root.viewExecuteMustReturnWallet.bind($data,Id)" href="javascript:;"><i class="fa fa-caret-down text-red"></i>Handling Payables (Wallet)</a>
+                                        }
+                                        <!-- /ko -->
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</script>

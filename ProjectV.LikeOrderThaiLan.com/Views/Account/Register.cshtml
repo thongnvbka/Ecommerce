@@ -1,0 +1,270 @@
+﻿@model  CustomerRegisterMeta
+@{
+    //var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var selectListProvince = new List<SelectListItem> { new SelectItem() { Value = "", Text = Resource.Select_City } };
+    var selectListDistrict = new List<SelectListItem> { new SelectItem() { Value = "", Text = Resource.Select_Distric } };
+    var selectListWard = new List<SelectListItem> { new SelectItem() { Value = "", Text = Resource.Select_Ward } };
+    var listProvince = ViewBag.ListProvince as List<SelectListItem>;
+    selectListProvince.AddRange(listProvince);
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var urlDistrict = $"/{culture}/Account/GetDistrict";
+    var urlWard = $"/{culture}/Account/GetWard";
+    //Layout = null;
+}
+<!DOCTYPE html>
+<html> 
+<head>
+    <base href="/@culture" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Generator" content="LETE v1.0">
+    <link href="~/Content/css/css-login/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/css-login/header_footer.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <title> @Resource.Dashboard_GuideRegister </title>
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/icon_likeorder_16x16.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <section class="login-logo">
+        <a href="/@culture">
+            <img src="~/Images/logo_likeorder_home.png" alt="logo" />
+        </a>
+    </section>
+
+    <section class="login-content" style="min-height: 700px;">
+
+        <div class="login-content-max" style="text-align: right;">
+            <form action="@Url.Action("Register", "Account")" method="post" class="login-content-box" id="registerAccount">
+                @Html.AntiForgeryToken()
+                @Html.Hidden("ReturnUrl", ViewBag.ReturnUrl as string)
+                <div>
+                    <p style="width: 100%; float: left">
+                        <span style="float: left; margin-left: 25px; font-size: 20px; height: 20px; color: #000">
+                            @Resource.Home_InforRegister
+                        </span>
+                        <a href="@Url.Action("Login", "Account")" style="margin-right: 35px; color: #09C">
+                            @Resource.Home_Login
+                        </a>
+                    </p>
+                </div>
+                <div class="reset-cs" style="float: right; width: 100%">
+                    <div class="login-content-box" id="leftRegister" style="padding-right: 0px;">
+                        <div class="row-rs">
+                            <!--Họ và tên-->
+
+                            <i class="fa fa-user" aria-hidden="true"></i>
+
+                            @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>()
+                        {
+                            {"type", "text"},
+                            {"placeholder",Resource.Home_RegisterName},
+                              {"autocomplete","off" },
+                        })
+                            <br />
+                            @Html.ValidationMessageFor(x => x.FullName)
+                            <br>
+                        </div><br />
+                        <div class="row-rs">
+
+                            <!--EMAIL-->
+
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+
+                            @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>()
+                        {
+
+                            {"placeholder", Resource.Home_Email},
+                            {"type", "email"},
+                              {"autocomplete","off" },
+                        })
+                            <br />
+                            @Html.ValidationMessageFor(x => x.Email)
+                            <br>
+                        </div><br />
+                        <div class="row-rs">
+                            <!--Số điện thoại-->
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+
+                            @Html.TextBoxFor(x => x.Phone, new Dictionary<string, object>()
+                        {
+                            {"type", "text"},
+                            {"placeholder",Resource.Home_RegisterNumber},
+                              {"autocomplete","off" },
+                        })
+                            <br />
+                            @Html.ValidationMessageFor(x => x.Phone)
+                            <br />
+                        </div><br />
+                        <div class="row-rs">
+                            <!--Mật khẩu-->
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+
+                            @Html.PasswordFor(x => x.Password, new Dictionary<string, object>()
+                        {
+
+                            {"placeholder",Resource.Home_Pass},
+                            {"type", "password"},
+                              {"autocomplete","off" },
+                        })
+                            <br />
+                            @Html.ValidationMessageFor(x => x.Password)
+                            <br>
+                        </div><br />
+                        <div class="row-rs">
+                            <!--Nhập lại Mật khẩu-->
+
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+
+                            @Html.PasswordFor(x => x.ConfirmPassword, new Dictionary<string, object>()
+                        {
+
+                            {"placeholder",Resource.Home_PassAgain},
+                            {"type", "password"},
+                              {"autocomplete","off" },
+                        })
+                            <br />
+                            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                            <br>
+                        </div><br />
+                        <div class="row-rs">
+
+                            <!--ĐỊA CHỈ-->
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+                            @Html.TextAreaFor(x => x.Address, new Dictionary<string, object>()
+                        {
+                            {"placeholder", Resource.Home_Address},
+                            {"rows", "4"},
+                              {"autocomplete","off" },
+                        })
+                            <br />
+                            @Html.ValidationMessageFor(x => x.Address)
+                            <br>
+                        </div><br />
+                        <div class="row-rs" style="margin-top: 20px;">
+                            <span class="login-content-box-forget">
+                                <input checked="checked" type="checkbox" name="" id="" value="">
+                                <label for="agreement">
+                                    @Html.Raw(Resource.Home_ReadRules)
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="login-content-box" id="leftRegister">
+                        @*<div class="row-rs">
+                                 <!--TỈNH THÀNH-->
+
+                                 <i class="fa fa-globe" aria-hidden="true"></i>
+
+                                 @Html.DropDownListFor(x => x.ProvinceId, selectListProvince, new
+                            {
+                                @onchange = "ProvinceChange(this,'.list-district');",
+                                @class = "form-control list-province"
+                            })
+                                 <br />
+                                 @Html.ValidationMessageFor(x => x.ProvinceId)
+
+                                 @Html.HiddenFor(x => x.ProvinceName)
+                                 <br>
+                             </div><br />
+                             <div class="row-rs">
+                                 <!--quận huyện-->
+
+                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
+
+                                 @Html.DropDownListFor(x => x.DistrictId, selectListDistrict, new
+                            {
+                                @onchange = "DistrictChange(this, '.list-ward')",
+                                @class = "form-control list-district"
+                            })
+                                 <br />
+                                 @Html.ValidationMessageFor(x => x.DistrictId)
+
+                                 @Html.HiddenFor(x => x.DistrictName)
+                                 <br>
+                             </div><br />
+                             <div class="row-rs">
+                                 <!--THỊ XÃ PHƯỜNG-->
+
+                                 <i class="fa fa-map" aria-hidden="true"></i>
+
+                                 @Html.DropDownListFor(x => x.WardId, selectListWard, new
+                            {
+                                @onchange = "WardChange(this)",
+                                @class = "form-control list-ward"
+                            })
+                                 <br />
+                                 @Html.ValidationMessageFor(x => x.WardId)
+                                 @Html.HiddenFor(x => x.WardsName)
+                                 <br>
+                             </div><br />*@
+
+
+                    </div>
+                    <br />
+                    <div id="buttonRegister">
+                        <hr style="margin-top: 20px;" />
+                        <div style="width: 100%; text-align: center;">
+                            <button type="submit" style="width: 50%">
+                                @Resource.Home_Register
+                            </button>
+                        </div>
+
+                        <div class="error-login" style="padding-right: 0 !important">
+                            @Html.ValidationMessage("CustomError")
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    @Html.Partial("~/Views/Partial/_Footer.cshtml")
+
+    <script>
+    function ProvinceChange(ddl, className) {
+        $.ajax({
+            url: '@urlDistrict',
+            type: 'GET',
+            data: { provinceId: $(ddl).val() },
+            success: function (data) {
+                if (data != null) {
+                    $('#ProvinceName').val($(ddl).find("option:selected").text());
+                    $(className).html(data);
+                }
+            }
+        });
+    }
+
+    function DistrictChange(ddl, className) {
+        $.ajax({
+            url: '@urlWard',
+            type: 'GET',
+            data: { districtId: $(ddl).val() },
+            success: function (data) {
+                if (data != null) {
+                    $('#DistrictName').val($(ddl).find("option:selected").text());
+                    $(className).html(data);
+                }
+            }
+        });
+    }
+
+    function WardChange(ddl) {
+        $('#WardsName').val($(ddl).find("option:selected").text());
+    }
+    </script>
+    @* facebook *@
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.8&appId=1629596540681731";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>

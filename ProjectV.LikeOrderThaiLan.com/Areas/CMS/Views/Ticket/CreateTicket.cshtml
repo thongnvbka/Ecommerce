@@ -1,0 +1,226 @@
+﻿@{
+    ViewBag.Title = Resource.Ticket_CreateTicket;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+
+    <link href="~/Areas/CMS/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.css" rel="stylesheet" />
+
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="dingdan">
+                <ul class="zichan-nav" id="deposit">
+                    <li data-id="zijin" class="lete-active">@Resource.Ticket_CreateTicket</li>
+                </ul>
+
+                <form class="create-complain rs" id="complain-submit">
+                    <div class="zichan-msg">
+                        <span>
+                            @Resource.CreateTicket_Notification
+                        </span>
+                    </div>
+
+                    <div class="rs form-input-complain">
+                        <div class="left-complain" style="width:40%;">
+                            <div class="rs wrap-au2">
+                                <p>
+                                    <label> @Resource.CreateTicket_SelectTypeComplaint</label>
+                                </p>
+                                <div class="progress" style="height:2px;width:100%">
+                                    <span class="progress-bar" style="width: 50%;"></span>
+                                </div>
+                            </div>
+
+                            <div class="rs list-type-order" data-bind="foreach: listTypeComplain" style="margin-top:15px;">
+                                <label>
+                                    <input type="radio" name="typeComplain" class="icheck check" data-bind="checkedValue: Value, checked: $parent.selectedService">
+                                    <span data-bind="text: Text"></span>
+                                </label>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="right-complain" style="width:60%;">
+                            <div class="rs wap-au3">
+                                <p>
+                                    <label>
+                                        @Resource.CreateTicket_DetailTicket
+                                    </label>
+                                </p>
+                                <div class="progress" style="height:2px;width:100%">
+                                    <span class="progress-bar" style="width: 40%;"></span>
+                                </div>
+                            </div>
+                            <div class="lb-complain-content rs">
+                                <label class="left-content-complain">
+                                    <span class="pull-left">
+                                        @Resource.CreateTicket_OrderTicket: (<span class="red-color">*</span>)
+                                    </span>
+                                </label>
+                                <div class="text-content-complain right-content-complain">
+                                    <input data-bind="value: ticketnModel().OrderCode" type="text" class="input-complain" placeholder="@Resource.Order_InputCodeOrder" id="txtOrderCode">
+                                    @*<select data-bind="value: ticketnModel().OrderId" class="form-control input-sm customer-search" style="width: 100%;"></select>*@
+
+                                </div>
+                                <div style="padding-top: 10px; text-align: center;" class="rs">(<span class="red-color">*</span>) @Resource.CreateTicket_Note</div>
+                            </div>
+
+                            <div class="lb-complain-content rs  first-content">
+                                <label class="left-content-complain ">
+                                    <span class="pull-left">
+                                        @Resource.CreateTicket_Content: (<span class="red-color">*</span>)
+                                    </span>
+                                </label>
+                                <div class="text-content-complain right-content-complain">
+                                    <textarea data-bind="value: ticketnModel().Content" type="text" name="Content" id="txtContent"
+                                              class="form-control" placeholder="@Resource.CreateTicket_InputContent"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="lb-complain-content rs">
+                                <label class="left-content-complain ">
+                                    <span class="pull-left">
+                                        @Resource.CreateTicket_Indemnity:
+                                    </span>
+                                </label>
+                                <div class="input-number-complain right-content-complain">
+                                    <input class="decimal" data-bind="value: ticketnModel().RequestMoney" type="text"
+                                           placeholder="@Resource.CreateTicket_AmountCompensation">
+                                </div>
+                            </div>
+
+                            <div class="lb-complain-content rs">
+                                <label class="left-content-complain ">
+                                    <span class="pull-left">
+                                        @Resource.CreateTicket_Picture: (<span class="red-color">*</span>)
+                                    </span>
+                                </label>
+                                <div class="img-complain right-content-complain">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                                        <span class="btn btn-primary btn-file btn-flat" style="color: #fff;">
+                                            <!-- ko if: isUpload()-->
+                                            <i class="fa fa-file-image-o"></i>
+                                            <!-- /ko -->
+                                            <!-- ko if: !isUpload()-->
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                            <!-- /ko -->
+                                            @Resource.CreateTicket_PhotoGoods
+                                            <input class="flieuploadImg" name="" type="file" style="width:20px;">
+                                        </span>
+                                        <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                        @*&nbsp;<i>(*Giới hạn kích thước tối đa 2MB*)</i>*@
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="lb-complain-content rs  list-img">
+                                <label class="left-content-complain "></label>
+                                <div style="margin-top: 10px;">
+                                    <div id="effect-7" class="effects clearfix">
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath1() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath1}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath1.bind($data ,'')" href="javascript:;" class="upload">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath2() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath2}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath2.bind($data ,'')" href="javascript:;" class="upload">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath3() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath3}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath3.bind($data ,'')" href="javascript:;" class="upload">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                            <!-- ko if: DetailImagePath4() !== '' -->
+                                            <img data-bind="attr: { src: DetailImagePath4}" style="width: 100%; height: 60px;" alt="" /><br />
+                                            <div class="overlay">
+                                                <a data-bind="click: DetailImagePath4.bind($data ,'')" href="javascript:;" class="upload">x</a>
+                                                <a class="close-overlay hidden">x</a>
+                                            </div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="bottom-complain">
+                        <a href="javascript:;" class="btn img-complain-upload" id="btnSubmit" data-bind="click: createTicket, enable: isSubmit">
+                            <!-- ko if: isSubmit()-->
+                            <i class="fa fa-plus"></i>
+                            <!-- /ko -->
+                            <!-- ko if: !isSubmit()-->
+                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            <!-- /ko -->
+                            @Resource.CreateTicket_CreateTicket
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<link href="~/Content/cus-autocomplete.css" rel="stylesheet" />
+
+@section scripts{
+
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/lodash.min.js"></script>
+
+    <script src="~/Content/plugins/select2/select2.full.min.js"></script>
+    @* //InputMark *@
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="~/Content/plugins/input-mask/jquery.inputmask.numeric.extensions.js"></script>
+    @*//file js knockoutjs ViewModel*@
+    <script type="text/javascript">
+            var listTicketType = @Html.Raw(ViewBag.ListComplainTypeService);
+            var orderId = @ViewBag.OrderId;
+            var orderCode = @ViewBag.OrderCode;
+    </script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/complain/complainStatusItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/complain/complainModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/complain/complainViewModel.js"></script>
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    @*//thu vien ajax*@
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+
+    
+}

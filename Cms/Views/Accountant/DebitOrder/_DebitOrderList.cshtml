@@ -1,0 +1,55 @@
+﻿@{
+    var typeCollect = (byte)DebitType.Collect;
+    var typeReturn = (byte)DebitType.Return;
+    var check = false.ToString().ToLower();
+}
+<script type="text/html" id="debitOrder-list">
+    <tr>
+        <td class="w-40">
+            <a data-bind="click: $parent.showChil.bind($data , Id)" class="btn btn-info btn-xs">
+                <i data-bind="css: 'chil' + Id" class="fa fa-chevron-circle-down"></i>
+                <i data-bind="css: 'chil' + Id" class="fa fa-chevron-circle-up" style="display:none"></i>
+            </a>
+        </td>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewDebitDetail" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td>
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).format('DD/MM/YYYY h:mm a')" class=""></span>
+        </td>
+        <td>
+            <span data-bind="text: SubjectName"></span><br />
+            <span data-bind="text: '(' + SubjectEmail + ')'"></span>
+        </td>
+        <td class="text-center" data-bind="text: OrderCode"></td>
+
+        <td class="text-right text-green">
+            <i class="fa fa-caret-up"></i> <span data-bind="text: formatNumberic(TotalMustCollectMoney , 'N2')"></span>
+        </td>
+        <td class="text-right text-red">
+            <i class="fa fa-caret-up"></i> <span data-bind="text: formatNumberic(TotalMustReturnMoney, N2)"></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.StatusDebitHistory[Status].Name, css: statusApp.StatusDebitHistory[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                    Function <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <!-- ko if: Status != 1 -->
+                    <li><a data-bind="click: $parent.ApprovalMustCollect" href="javascript:;"><i class="fa fa-download text-info"></i> Confirm</a></li>
+                    <!-- /ko -->
+
+                    <li><a data-bind="click: $parent.viewMustCollectEdit" href="javascript:;"><i class="fa fa-edit text-primary"></i>Change</a></li>
+
+                    <!-- ko if: Status != 1 -->
+                    <li><a data-bind="click: $parent.DeleteMustCollect" href="javascript:;"><i class="fa fa-times-circle text-danger"></i> Delete </a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </td>
+    </tr>
+</script>

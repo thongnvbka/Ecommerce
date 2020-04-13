@@ -1,0 +1,39 @@
+﻿<script type="text/html" id="customer-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <img alt="Avatar" style="width: 50px;" data-bind="attr:{src: Avatar}" src="/Content/img/no-avatar.png">
+        </td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewCustomerDetailModal" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: LevelName"></td>
+        <td class="text-center" data-bind="text: FullName"></td>
+        <td class="text-left" data-bind="text: Birthday == null ? '--' : moment(Birthday).format('DD/MM/YYYY')"></td>
+        <td class="text-center" data-bind="text: Phone"></td>
+        <td class="text-left" data-bind="text: Email"></td>
+        <th class="text-center">
+            <a href="#"><strong data-bind="text: UserFullName"></strong></a>
+        </th>
+        <td class="text-center">
+            <span data-bind="text: statusApp.customerOfStaffStatus[Status].Name, css: statusApp.customerOfStaffStatus[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                    Function <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    @if (CheckPermision(EnumAction.Update, EnumPage.Customer))
+                    {
+                        <li><a data-bind="click: $parent.viewEditCustomerDetail" href="javascript:;"><i class="fa fa-edit text-primary"></i>Edit</a></li>
+                    }
+                    @if (CheckPermision(EnumAction.Delete, EnumPage.Customer))
+                    {
+                        <li><a data-bind="click: $parent.removeCustomer" href="javascript:;"><i class="fa fa-times-circle text-danger"></i> Delete  </a></li>
+                    }
+                </ul>
+            </div>
+        </td>
+    </tr>
+</script>

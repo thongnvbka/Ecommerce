@@ -1,0 +1,126 @@
+﻿<div id="executeMustCollectWallet" class="modal fade modal-dialog modal-p60" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-body">
+        <section class="importwarehouse" style="border-bottom: 0">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>@*XỬ LÝ CÔNG NỢ VÍ PHẢI THU*@HANDLING RECEIVABLES</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">@*Đối tượng phải thu*@Person to collect receivables from</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Representative ID:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Representative:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Phone:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectPhone"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Receivables information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Receivable type:</th>
+                                                        <td><span data-bind="text: debitCollectModel().TypeHistoryName, css: debitCollectModel().TypeHistoryClass"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Status:</th>
+                                                        <td><span data-bind="text: debitCollectModel().StatusHistoryName, css: debitCollectModel().StatusHistoryClass"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fund name:</th>
+                                                        <td data-bind="text: debitCollectModel().FinanceFundName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Account name:</th>
+                                                        <td data-bind="text: debitCollectModel().PayReceivableIName"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-danger">
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-bold">Amount: <span class="color-red">(*)</span></label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <input  type="text" class="form-control decimal" data-bind="value: debitCollectModel().Money()" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Note:</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="value: debitCollectModel().Note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" data-bind="click: $root.ExecuteWalletMustCollect" href="javascript:;"><i class="fa fa-check"></i>Confirm</a>
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+    </div>
+</div>

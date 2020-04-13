@@ -1,0 +1,51 @@
+﻿@*@model Library.DbContext.Entities.NotifiCommon*@
+@model Library.DbContext.Entities.NotifiCommon
+
+    @{
+        ViewBag.Title = "NotificationCommon";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section styles{
+        <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+        <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+
+    }
+    @section Header{
+        @Html.Partial("~/Views/Partial/_Header.cshtml")
+    }
+    <section class="zy-main">
+        @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+        <div data-bind="template: { name: templateId }">
+        </div>
+    </section>
+
+
+    <!--list thông báo-->
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_NotifiList.cshtml")
+    <!--chi tieets notification-->
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_DetailNotitication.cshtml")
+    <!--notification-->
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_Notification.cshtml")
+
+
+
+    @Html.Partial("~/Views/Partial/_MenuShoppingCart.cshtml")
+    @section scripts{
+
+        @*//thu vien substring*@
+        <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+        @*//thu vien alert delete*@
+        <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+        @*//thu vien format date*@
+        <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+        @*//thu vien knockout*@
+        <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+        <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+        <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+        @*//file js knockoutjs ViewModel*@
+        <script src="~/Areas/CMS/Scripts/models/notification/notificationCommon.js"></script>
+        <script src="~/Areas/CMS/Scripts/viewmodels/notifi/notifiCommonViewModel.js"></script>
+        @*//thu vien ajax*@
+        <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+
+    }

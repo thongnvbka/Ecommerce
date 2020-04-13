@@ -1,0 +1,43 @@
+﻿<script type="text/html" id="withdrawal-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a href="javascript:;" data-bind="click: $parent.GetWithDrawalDetail"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center">
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(CreateDate).locale('vi').startOf().fromNow()" class=""></span>
+        </td>
+        <td class="text-right text-red">
+            <i class="fa fa-caret-down"></i> <span data-bind="text: formatNumberic(AdvanceMoney, 'N2')"></span>
+        </td>
+        <td class="text-center">
+            <span class="text-bold" data-bind="text: CustomerName"></span><br />
+            <span data-bind="text: '(' + CustomerEmail + ')'"></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.statusWithDrawal[Status].Name, css: statusApp.statusWithDrawal[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                    Function <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    @if (CheckPermision(EnumAction.Approvel, EnumPage.WithDrawal))
+                    {
+                        <!-- ko if: Status != 1 -->
+                        <li><a data-bind="click: $parent.ApprovalRechargeBill" href="javascript:;"><i class="fa fa-download text-info"></i>Approve transaction </a></li>
+                        <!-- /ko -->
+                    }
+                    <li><a data-bind="click: $parent.viewRechargeEdit" href="javascript:;"><i class="fa fa-edit text-primary"></i>Edit</a></li>
+                    @if (CheckPermision(EnumAction.Delete, EnumPage.WithDrawal))
+                    {
+                        <!-- ko if: Status != 1 -->
+                        <li><a data-bind="click: $parent.DeleteWithDrawal" href="javascript:;"><i class="fa fa-times-circle text-danger"></i> Delete</a></li>
+                        <!-- /ko -->
+                    }
+                </ul>
+            </div>
+        </td>
+    </tr>
+</script>

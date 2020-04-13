@@ -1,0 +1,31 @@
+﻿<div id="changeStatusModal" class="modal fade modal-dialog modal-sm" tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><i class="fa fa-file-o"></i> @*Chốt xử lý Tally wrong Orders *@Miscount handling  "<b data-bind="text: ReturnCode(orderCode())"></b>"</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="requestStatus">Status</label>
+                <select data-bind="value: status" id="requestStatus" class="form-control">
+                    <option value="0">New</option>
+                    <option value="1">"Processing..."</option>
+                    <option value="2">Close</option>
+                </select>
+            </div>
+            <!-- ko if: status() == 1 || status() == 2 -->
+            <div class="form-group">
+                <label for="noteProcess">@*Chốt phương án xử lý  *@Settle processing method<span class="color-red">*</span></label>
+                <textarea data-bind="value: noteProcess" id="noteProcess" class="form-control" rows="8"></textarea>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="modal-footer">
+            <button data-bind="disable: isLoading" class="btn btn-success" type="submit">
+                <i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i>
+                <span>Save</span>
+            </button>
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>

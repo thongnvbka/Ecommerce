@@ -1,0 +1,443 @@
+﻿@using Library.ViewModels.VipLevel
+@model Library.ViewModels.Account.OrderDepositViewModel
+@{
+    var provinces = new List<SelectListItem>
+    { new SelectItem() { Text = Resource.Select_City, Value = "", Selected = true } };
+    provinces.AddRange((List<SelectListItem>
+        )ViewBag.Provinces);
+    var orderIds = (string)ViewBag.OrderIds;
+
+    var order = ViewBag.Order == null ? null : (Library.DbContext.Entities.Order)ViewBag.Order;
+    var orders = ViewBag.Orders == null ? null : (List<Library.DbContext.Entities.Order>)ViewBag.Orders;
+    if (order == null)
+    {
+        var codes = string.Join(", ", orders.Select(x => "#" + x.Code));
+
+        ViewBag.Title = Resource.Title_DepositFromCart + codes;
+    }
+    else
+    {
+        ViewBag.Title = Resource.Title_DepositFromCart + order.Code;
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var vipLevel = (VipLevelViewModel)ViewBag.VipLevel;
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+
+}
+
+<section class="zy-main">
+    <div class="main-content-singlesline rs">
+        <div class="left-singlesline col-lg-7">
+            <div id="main-cart" class="ch-box">
+                <h3 class="ch-main-title bgde5b01">
+                    @Resource.Product_SelectAddress
+                </h3>
+                <div class="choose_address_page">
+                    <div id="tabs-container" class="cf">
+                        <div class="tab-wrapper">
+                            @Html.ValidationSummary(false)
+                            <form action="@Url.Action("Deposit", "Product" )" method="post" class="rs form-deposit-cart">
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("OrderIds", orderIds)
+                                <div class="shipping_wrap__border">
+                                    <div class="shipping_wrap existing_address">
+                                        <div class="clearfix address_wrapper ch-address-type-option">
+                                            <div class="radio_check">
+                                                @Html.RadioButtonFor(x => x.IsOtherAddress, false, new Dictionary<string, object>
+                                                                ()
+                                                                {
+                                                                {"id", "shipAddress"},
+                                                                {"class", "shipping"},
+                                                                {"checked", "checked"},
+                                                                {"autocomplete", "off"},
+                                                                {"name", "shipAddress"}
+                                                                })
+                                                @Html.ValidationMessageFor(x => x.IsOtherAddress)
+                                            </div>
+                                            <label class="address_info" for="shipAddress">
+                                                <div class="address">
+                                                    <p class="ch-head"> @CustomerState.FullName </p>
+                                                    <p>@ViewBag.Address</p>
+                                                    <p>@ViewBag.ProvinceAndDistrict</p>
+                                                    <p>@Resource.Account_InforPhone: @ViewBag.Phone</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="clearfix add_address ch-address-type-option">
+                                            <div class="radio_check">
+                                                @Html.RadioButtonFor(x => x.IsOtherAddress, true, new Dictionary<string, object>
+                                                                ()
+                                                                {
+                                                                {"id", "addAddress"},
+                                                                {"class", "is-new-address"},
+                                                                {"autocomplete", "off"}
+                                                                })
+                                            </div>
+                                            <label for="addAddress" class="ch-label address_info">@Resource.ThemDiaChiKhac</label>
+                                            @*<label for="addAddress" class="ch-label address_info">Thêm địa chỉ khác</label>*@
+                                            <div id='show-me' style='display: none'>
+                                                <div class="ch-shipping-new-address-wrapper">
+                                                    <div class="shipping_t_row ch-top15">
+                                                        <div class="shipping_t_label">@Resource.RequestsPayment_Name </div>
+                                                        <div class="shipping_t_input">
+                                                            @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>
+                                                                            ()
+                                                                            {
+                                                                            {"class", "form-control"},
+                                                                            {"placeholder", Resource.Home_RegisterName}
+                                                                            })
+                                                            @Html.ValidationMessageFor(x => x.FullName)
+                                                        </div>
+
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                    <div class="shipping_t_row ch-top15">
+                                                        <div class="shipping_t_label">@Resource.Home_Address </div>
+                                                        <div class="shipping_t_input">
+                                                            @Html.TextAreaFor(x => x.Address, new Dictionary<string, object>
+                                                                             ()
+                                                                             {
+                                                                             {"class", "form-control"},
+                                                                             {"placeholder", Resource.Home_Address},
+                                                                             {"rows", "3"}
+                                                                             })
+                                                            @Html.ValidationMessageFor(x => x.Address)
+                                                        </div>
+                                                        <div class="shipping_t_validation">
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                    <!--<div class="shipping_t_row ch-top15">
+                                                        <div class="shipping_t_label">Tỉnh/Thành phố</div>
+                                                        <div class="shipping_t_input">
+                                                            @Html.DropDownListFor(x => x.ProvinceId, provinces, new Dictionary<string, object>
+                                                                            ()
+                                                                            {
+                                                                            {"class", "form-control"}
+                                                                            })
+                                                            @Html.ValidationMessageFor(x => x.ProvinceId)
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                    <div class="shipping_t_row ch-top15">
+                                                        <div class="shipping_t_label">Quận/huyện</div>
+                                                        <div class="shipping_t_input">
+                                                            @Html.DropDownListFor(x => x.DistrictId, new List<SelectListItem>
+                                                                            ()
+                                                                            {
+                                                                            new SelectItem() {Text = "Chọn Quận/Huyện", Value = "", Selected = true}
+                                                                            }, new Dictionary<string, object>
+                                                                                ()
+                                                                                {
+                                                                                {"class", "form-control"}
+                                                                                })
+                                                            @Html.ValidationMessageFor(x => x.DistrictId)
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                    <div class="shipping_t_row ch-top15">
+                                                        <div class="shipping_t_label">Phường, xã</div>
+                                                        <div class="shipping_t_input">
+                                                            @Html.DropDownListFor(x => x.WardId, new List<SelectListItem>
+                                                                            ()
+                                                                            {
+                                                                            new SelectItem() {Text = "Chọn Xã/Phường", Value = "", Selected = true}
+                                                                            }, new Dictionary<string, object>
+                                                                                ()
+                                                                                {
+                                                                                {"class", "form-control"}
+                                                                                })
+                                                            @Html.ValidationMessageFor(x => x.WardId)
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>-->
+                                                    <div class="shipping_t_row ch-top15">
+                                                        <div class="ch-pleft">
+                                                            <div class="shipping_t_label">@Resource.Account_InforPhone </div>
+                                                            <div class="shipping_t_input ">
+                                                                @Html.TextBoxFor(x => x.Phone, new Dictionary<string, object>
+                                                                                ()
+                                                                                {
+                                                                                {"class", "form-control"},
+                                                                                {"placeholder", Resource.Account_InforPhone}
+
+                                                                                })
+                                                                @Html.ValidationMessageFor(x => x.Phone)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <div class="shipping_t_row ch-top15" style="text-align: center;">
+                                                        <span class="handlingfee">
+                                                            @Resource.DepositNote
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="intendTimeShip warehouse-select-deposit-cart rs">
+                                    <div class="delivery-options-title">@Resource.InforAccount_Storage:</div>
+                                    <div class="shipping_options">
+                                        <div class="shippingOptionRow">
+                                            @Html.DropDownListFor(m => m.WarehouseDeliveryId,
+                                                        new SelectList((List<Library.DbContext.Entities.Office>
+                                                            )ViewBag.ListWardDelivery, "Id", "Name"),
+                                                            new
+                                                            {
+                                                                @onchange = "WarehouseDeliveryChange(this)",
+                                                                //@class = "form-control list-district"
+                                                            })
+                                            @Html.ValidationMessageFor(x => x.WarehouseDeliveryId)
+                                            @Html.HiddenFor(m => m.WarehouseDeliveryName)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="intendTimeShip rs">
+                                    @*<div class="delivery-options-title rs">
+                                            กับระดับปัจจุบันของคุณคุณมีเงินฝาก 2 ทางเลือกสำหรับการสั่งซื้อนี้ กรุณาเลือกหนึ่งในสองตัวเลือกการฝากเงินสำหรับการสั่งซื้อ:
+                                            Với cấp độ hiện tại của bạn, bạn có 2 sự lựa chọn đặt cọc cho đơn hàng này. Vui lòng chọn 1 trong 2 lựa chọn đặt cọc cho đơn hàng:
+                                        </div>*@
+                                    <div class="shipping_options rs">
+                                        <div class="shippingOptionRow rs">
+                                            @*<div class="clearfix address_wrapper ch-address-type-option rs">
+                                                    <div class="radio_check">
+                                                        @Html.RadioButtonFor(x => x.IsLevel, false, new Dictionary<string, object>
+                                                                        ()
+                                                                        {
+                                                                        {"id", "IsLevel"},
+                                                                        {"class", "shipping"},
+                                                                        {"checked", "checked"},
+                                                                        {"autocomplete", "off"},
+                                                                        {"name", "IsLevel"},
+                                                                        {"onchange", "IsLevelChange(this)"},
+                                                                        {"idata", "0"},
+                                                                        })
+                                                        <label class="text-select-percel-deposit">
+                                                            <span>
+                                                                เงินฝากที่มีอยู่ภายใต้ระดับ
+                                                                Đặt cọc theo Level hiện tại
+                                                            </span>
+                                                            <b>(<span class="left-total-level">@vipLevel.Deposit.ToString("N0", CultureInfo)</span>%)</b>
+                                                            <span>giá trị tiền hàng : </span>
+                                                            <span>มูลค่าเงินสดเฉลี่ย : </span>
+                                                            @if (order != null)
+                                                            {
+                                                                <b><span class="left-total-price-level">@((order.TotalExchange * vipLevel.Deposit / 100).ToString("N0", CultureInfo))</span> @Resource.Currency</b>
+                                                            }
+                                                            else
+                                                            {
+                                                                if (orders != null)
+                                                                {
+                                                                    <b><span class="left-total-price-level">@((orders.Sum(x => x.TotalExchange) * vipLevel.Deposit / 100).ToString("N0", CultureInfo))</span> @Resource.Currency</b>
+                                                                }
+                                                            }
+                                                        </label>
+                                                        @Html.HiddenFor(x => x.TypeLevel)
+                                                    </div>
+                                                </div>*@
+                                            <div class="clearfix address_wrapper ch-address-type-option rs">
+                                                <div class="radio_check">
+                                                    @Html.RadioButtonFor(x => x.IsLevel, false, new Dictionary<string, object>
+                                                                    ()
+                                                                    {
+                                                                    {"id", "IsLevelFull"},
+                                                                    {"class", "shipping"},
+                                                                    {"checked", "checked"},
+                                                                    {"autocomplete", "off"},
+                                                                    {"name", "IsLevel"},
+                                                                    {"onchange", "IsLevelChange(this)"},
+                                                                    {"idata", "1"}
+                                                                    })
+                                                    <label class="text-select-percel-deposit">
+                                                        <span>
+                                                            @*Đặt cọc toàn bộ giá trị tiền hàng*@
+                                                            เงินฝากเต็มมูลค่าสินค้า:
+                                                        </span>
+                                                        @if (order != null)
+                                                        {
+                                                            <b><span class="left-total-price">@(order.TotalExchange.ToString("N0", CultureInfo))</span>  @Resource.Currency</b>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (orders != null)
+                                                            {
+                                                                <b><span class="left-total-price">@(orders.Sum(x => x.TotalExchange).ToString("N0", CultureInfo))</span> @Resource.Currency</b>
+                                                            }
+                                                        }
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear-fix"></div>
+                                <div class="intendTimeShip rs">
+                                    <div class="delivery-options-title rs">@Resource.Product_DeliveryTime:</div>
+                                    <div class="shipping_options rs">
+                                        <div class="shippingOptionRow rs">
+                                            <label class="shippingOptionLabel">
+                                                <span class="lead_date">- @Resource.Product_DeliveryTimeHN</span><br />
+                                                @*<span class="lead_date">- Hàng về Hồ Chí Minh: Từ 7 - 12 ngày</span>*@
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dat-coc bgE5EAE8 pb10 mb0 pt10 rs" style="text-align: center;">
+                                    <button type="button" class="btn btn-default btn-disposit"><i class="fa fa-check"></i> @Resource.Order_OperationDeposit </button>
+                                    @*<button type="button" class="btn btn-default"><i class="fa fa-check"></i> @Resource.Order_OperationDeposit</button>*@
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-col small-col right_module col-lg-5">
+            @if (ViewBag.Orders != null)
+            {
+                @Html.Partial("_DispositOrder");
+            }
+            @if (ViewBag.Order != null)
+            {
+                @Html.Partial("_DispositProduct");
+            }
+        </div>
+    </div>
+    <div id="delete-box" class="login zhezhao">
+        <div style="display: inline-block; vertical-align: middle; width: 30%;">
+            <div class="del-box">
+                <div class="del-box-top">
+                    Cảnh báo
+                    <button data-bind="click: hideNotifile" style="float: right; margin-right: 10px; padding-top: 5px; background: none; color: #fff; border: none" class="close-box">
+                        <i class="fa fa-times-circle" style="font-size: 20px;"></i>
+                    </button>
+                </div>
+                <div class="del-box-content warning-order">
+                    <p>
+                        Đơn hàng quý khách đặt nhỏ hơn <span class="red-color bold">1.000.000 VNĐ</span>, Quý khách xin vui lòng đặt đơn hàng lớn hơn <span class="red-color bold">1.000.000 VNĐ</span> để được giảm giá phí dịch vụ từ 12% xuống còn 4%
+                    </p>
+                    <p class="bold red-color mg-t-15">Xin chân thành cảm ơn!</p>
+                </div>
+                <div class="del-box-btn">
+                    <button id="del_s" class="close-box"> Tiếp tục đặt </button><button id="del_c" class="close-box">Hủy </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section styles{
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/css/product-cart.css" rel="stylesheet" />
+    <style>
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/vi.js"></script>
+
+    <script type="text/javascript">
+        function WarehouseDeliveryChange(e) {
+            $('#WarehouseDeliveryName').val($(e).find('option:selected').text());
+        }
+        function IsLevelChange(e) {
+            $('#TypeLevel').val($(e).attr('idata'));
+            $('.right-total-level').text('');
+            $('.right-total-price').text('');
+
+            if ($(e).attr('idata') == '0') {
+
+                $('.right-total-level').text($('.left-total-level').text());
+                $('.right-total-price').text($('.left-total-price-level').text());
+            }
+            else {
+                $('.right-total-level').text('100');
+                $('.right-total-price').text($('.left-total-price').text());
+            }
+
+        }
+        $(function () {
+            $('.btn-disposit').click(function () {
+                //var strPrice = $('.right-total-price').text();
+                //var newchar = '';
+                //strPrice = strPrice.split('.').join(newchar);
+                //var price = parseInt(strPrice);
+                //if (price < 1000000) {
+                //    $('#delete-box').fadeIn("slow");
+                //} else {
+                //    $('.form-deposit-cart').submit();
+                //}
+                $('.form-deposit-cart').submit();
+            });
+            $('#del_s').click(function () {
+                $('.form-deposit-cart').submit();
+            });
+            $('#del_c').click(function () {
+                $('#delete-box').fadeOut(300);
+            })
+            //$('#ProvinceId').change(function () {
+            //    var t = $(this);
+            //    if (t.val() !== "") {
+            //        $.get("/vi/Product/Districts/" + t.val(),
+            //            function (data) {
+            //                $("#DistrictId").val("");
+            //                $("#DistrictId option").remove();
+            //                $.each(data,
+            //                    function (idx, d) {
+            //                        $("#DistrictId").append('<option value="' + d.id + '">' + d.text + '</option>');
+            //                    });
+            //                $("#DistrictId").val("");
+            //            });
+            //    } else {
+            //        $("#DistrictId option:gt(0)").remove();
+            //        $("#DistrictId").val("");
+            //        $("#WardId option:gt(0)").remove();
+            //        $("#WardId").val("");
+            //    }
+            //});
+
+            //$("#DistrictId")
+            //    .change(function () {
+            //        var t = $(this);
+            //        if (t.val() !== "") {
+            //            $.get("/vi/Product/Wards/" + t.val(),
+            //                function (data) {
+            //                    $("#WardId").val("");
+            //                    $("#WardId option").remove();
+            //                    $.each(data,
+            //                        function (idx, d) {
+            //                            $("#WardId").append('<option value="' + d.id + '">' + d.text + '</option>');
+            //                        });
+            //                    $("#WardId").val("");
+            //                });
+            //        } else {
+            //            $("#WardId option:gt(0)").remove();
+            //            $("#WardId").val("");
+            //        }
+            //    });
+
+            // Init
+            if ($("#addAddress").is(":checked")) {
+                $('#show-me').show();
+            } else {
+                $('#show-me').hide();
+            }
+
+            // Chage Event
+            $('input[type="radio"]').click(function () {
+                if ($(this).attr('id') === 'addAddress') {
+                    $('#show-me').show();
+                }
+                else {
+                    $('#show-me').hide();
+                }
+            });
+        });
+    </script>
+}

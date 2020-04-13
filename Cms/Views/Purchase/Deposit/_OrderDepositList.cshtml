@@ -1,0 +1,82 @@
+﻿@{
+    var status = (byte)DepositStatus.WaitDeposit;
+    var finish = (byte)DepositStatus.Finish;
+    var statusSuccess = (byte)DepositStatus.Order;
+
+    //phân quyền
+    var update = CheckPermision(EnumAction.Update, EnumPage.OrderDepositNew, EnumPage.OrderDeposit, EnumPage.OrderDepositDelay);
+    var delete = CheckPermision(EnumAction.Delete, EnumPage.OrderDepositNew, EnumPage.OrderDeposit, EnumPage.OrderDepositDelay);
+}
+
+<script type="text/html" id="order-deposit-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center w-40"></td>
+        <td class="text-left">
+            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, Id), attr: { href: '/Purchase/Order#' + ReturnCode(Code) }"><strong data-bind="text: ReturnCode(Code)"></strong></a>
+        </td>
+        <td class="text-lef">
+            <!-- ko if: moment(new Date()).diff(moment(Created), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+            <!-- /ko -->
+            <!-- ko ifnot: moment(new Date()).diff(moment(Created), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').format('L LTS')" class=""></span>
+            <!-- /ko -->
+        </td>
+        <td data-bind="text: formatNumberic(ProvisionalMoney, 'N2')" class="text-right"></td>
+        <td data-bind="text: formatNumberic(PacketNumber, 'N0')" class="text-center"></td>
+        <td data-bind="text: formatNumberic(TotalWeight, 'N2')" class="text-center"></td>
+        <td>
+            <span class="text-bold" data-bind="text: ContactName"></span>
+            <span data-bind="text: '(' + CustomerEmail + ')'"></span>
+        </td>
+        <!-- ko if: $parent.active() != 'order-deposit-new' -->
+        @if (UserState.Type != 0)
+        {
+            <td class="text-center">
+                <span style="display:inline-block"><i class="fa fa-info-circle"></i>&nbsp;<span data-bind="text: UserFullName"></span></span>
+            </td>
+        }
+        <!-- /ko -->
+        <td class="text-center">
+            <span data-bind="text: statusApp.deposit[Status].Name, css: statusApp.deposit[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <!-- ko if: Chat == 0 -->
+            <a data-bind="click: $parent.showChatOrder" href="javascript:;" class="label label-success"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with customers"></i></a>
+            <!-- /ko -->
+            <!-- ko ifnot: Chat == 0 -->
+            <a data-bind="click: $parent.showChatOrder" href="javascript:;" class="label label-warning"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with customers"></i></a>
+            <!-- /ko -->
+        </td>
+        <td class="text-left">
+            <!-- ko if: Status < @finish -->
+            @if (UserState.Type > 0)
+            {
+                <!-- ko if: Status == @status -->
+                <a data-bind="click: $parent.assignedOrder" href="javscript:;" class="btn btn-success btn-xs" title="Assign to staff"><i class="fa fa-user-plus"></i></a>
+                <!-- /ko -->
+            }
+            @if (update)
+            {
+                <!-- ko if: Status > @status -->
+                <a data-bind="click: depositAddOrEditViewModel.showModalDialog.bind($data, Id), attr: { href: '/Purchase/Order#' + ReturnCode(Code) }" href="javscript:;" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> show</a>
+                <!-- /ko -->
+            }
+            @if (delete)
+            {
+                <!-- ko if: Status <= @statusSuccess -->
+                <a data-bind="click: $parent.orderClose" href="javscript:;" class="btn btn-danger btn-xs"><i class="fa fa-times-circle"></i> cancel</a>
+                <!-- /ko -->
+            }
+            @if (UserState.Type > 0)
+            {
+                <!-- ko if: Status < @statusSuccess -->
+                <!-- ko if: UserId > 0 -->
+                <a data-bind="click: $parent.orderReplyModal" href="javscript:;" class="btn btn-primary btn-xs" title="Transfer to another Staff"><i class="fa fa-reply"></i>Trip</a>
+                <!-- /ko -->
+                <!-- /ko -->
+            }
+            <!-- /ko -->
+        </td>
+    </tr>
+</script>

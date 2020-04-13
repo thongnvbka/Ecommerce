@@ -1,0 +1,54 @@
+﻿<div id="orderOtherServiceModal" class="modal fade modal-dialog modal-sm" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="fa fa-exchange"></i> Expenses incurred by the order "<b data-bind="text: orderCode"></b>"</h4>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered table-striped table-hover mb0">
+            <thead>
+            <tr>
+                <th class="text-center w50">Number order</th>
+                <th class="text-center">Time </th>
+                @*<th class="text-center">Type</th>*@
+                <th class="text-center">Amount (currency)</th>
+                <th class="text-center">Content </th>
+            </tr>
+            </thead>
+            <!-- ko if: items().length == 0 || isLoading() -->
+            <tbody>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <!-- ko if: isLoading() -->
+                    <i class="fa fa-spinner fa-pulse"></i> Loading data...
+                    <!-- /ko -->
+                    <!-- ko if: !isLoading() && items().length == 0 -->
+                    No transactions yet
+                    <!-- /ko -->
+                </td>
+            </tr>
+            </tbody>
+            <!-- /ko -->
+            <!-- ko ifnot: items().length == 0 -->
+            <tbody data-bind="foreach: items">
+            <tr>
+                <td data-bind="text: $index() + 1" class="text-center"></td>
+                <td data-bind="text: moment(created).format('L HH:mm')" class="text-right"></td>
+                @*<td class="text-center">
+                    <!-- ko if: mode == @((byte) OrderExchangeMode.Export)-->
+                    <span class="label label-success">Customers pay</span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: mode == @((byte) OrderExchangeMode.Export)-->
+                    <span class="label label-warning">Công ty hoàn trả</span>
+                    <!-- /ko -->
+                </td>*@
+                <td data-bind="text: formatNumberic(totalPrice)" class="text-right"></td>
+                <td data-bind="text: note"></td>
+            </tr>
+            </tbody>
+            <!-- /ko -->
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    </div>
+</div>

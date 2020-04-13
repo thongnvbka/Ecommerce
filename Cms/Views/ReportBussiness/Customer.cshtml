@@ -1,0 +1,426 @@
+﻿@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+
+        // Data gathered from http://populationpyramid.net/germany/2015/
+        $(function () {
+            // Age categories
+            var categories = ['0-4', '5-9', '10-14', '15-19',
+                    '20-24', '25-29', '30-34', '35-39', '40-44',
+                    '45-49', '50-54', '55-59', '60-64', '65-69',
+                    '70-74', '75-79', '80-84', '85-89', '90-94',
+                    '95-99', '100 + '];
+            $(document).ready(function () {
+                $('#container').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Sex ratio / Age of customer'
+                    },
+                    subtitle: {
+                        //text: 'Source: <a href="http://populationpyramid.net/germany/2015/">Population Pyramids of the World from 1950 to 2100</a>'
+                    },
+                    xAxis: [{
+                        categories: categories,
+                        reversed: false,
+                        labels: {
+                            liên: 1
+                        }
+                    }, { // mirror axis on right side
+                        opposite: true,
+                        reversed: false,
+                        categories: categories,
+                        linkedTo: 0,
+                        labels: {
+                            step: 1
+                        }
+                    }],
+                    yAxis: {
+                        title: {
+                            text: null
+                        },
+                        labels: {
+                            formatter: function () {
+                                return Math.abs(this.value) + '%';
+                            }
+                        }
+                    },
+
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal'
+                        }
+                    },
+
+                    tooltip: {
+                        formatter: function () {
+                            return '<b>' + this.series.name + ', Age from ' + this.point.category + '</b><br/>' +
+                                'Customer: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                        }
+                    },
+
+                    series: [{
+                        name: 'Male',
+                        data: [-2.2, -2.2, -2.3, -2.5, -2.7, -3.1, -3.2,
+                            -3.0, -3.2, -4.3, -4.4, -3.6, -3.1, -2.4,
+                            -2.5, -2.3, -1.2, -0.6, -0.2, -0.0, -0.0]
+                    }, {
+                        name: 'Female',
+                        data: [2.1, 2.0, 2.2, 2.4, 2.6, 3.0, 3.1, 2.9,
+                            3.1, 4.1, 4.3, 3.6, 3.4, 2.6, 2.9, 2.9,
+                            1.8, 1.2, 0.6, 0.1, 0.0]
+                    }]
+                });
+            });
+
+        });
+    </script>
+}
+
+<section class="content-header">
+    <h1>
+        Customer statistics
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Customer statistical </a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Business staff statistical </a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <div class="col-md-6">
+            <!-- MAP & BOX PANE -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customer statistics</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-8">
+                            <div class="pad">
+                                <!-- Map will be created here -->
+                                <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Orders</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Item</th>
+                                    <th>Status</th>
+                                    <th>Popularity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                    <td>Call of Duty IV</td>
+                                    <td><span class="label label-success">Shipped</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                    <td>Samsung Smart TV</td>
+                                    <td><span class="label label-warning">Pending</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                    <td>iPhone 6 Plus</td>
+                                    <td><span class="label label-danger">Delivered</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                    <td>Samsung Smart TV</td>
+                                    <td><span class="label label-info">Processing</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                    <td>Samsung Smart TV</td>
+                                    <td><span class="label label-warning">Pending</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                    <td>iPhone 6 Plus</td>
+                                    <td><span class="label label-danger">Delivered</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                    <td>Call of Duty IV</td>
+                                    <td><span class="label label-success">Shipped</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+            <!-- Info Boxes Style 2 -->
+            <div class="info-box bg-yellow">
+                <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Inventory</span>
+                    <span class="info-box-number">5,200</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="progress-description">
+                        50% Increase in 30 Days
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+            <div class="info-box bg-green">
+                <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Mentions</span>
+                    <span class="info-box-number">92,050</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 20%"></div>
+                    </div>
+                    <span class="progress-description">
+                        20% Increase in 30 Days
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+            <div class="info-box bg-red">
+                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Downloads</span>
+                    <span class="info-box-number">114,381</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+            <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Direct Messages</span>
+                    <span class="info-box-number">163,921</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 40%"></div>
+                    </div>
+                    <span class="progress-description">
+                        40% Increase in 30 Days
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Browser Usage</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="chart-responsive">
+                                <canvas id="pieChart" height="150"></canvas>
+                            </div>
+                            <!-- ./chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <ul class="chart-legend clearfix">
+                                <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+                                <li><i class="fa fa-circle-o text-green"></i> IE</li>
+                                <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
+                                <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
+                                <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+                                <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                            </ul>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="#">
+                                United States of America
+                                <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                China
+                                <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.footer -->
+            </div>
+            <!-- /.box -->
+            <!-- PRODUCT LIST -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Recently Added Products</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <ul class="products-list product-list-in-box">
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="~/Content/dist/img/default-50x50.gif" alt="Product Image">
+                            </div>
+                            <div class="product-info">
+                                <a href="javascript:void(0)" class="product-title">
+                                    Samsung TV
+                                    <span class="label label-warning pull-right">$1800</span>
+                                </a>
+                                <span class="product-description">
+                                    Samsung 32" 1080p 60Hz LED Smart HDTV.
+                                </span>
+                            </div>
+                        </li>
+                        <!-- /.item -->
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="~/Content/dist/img/default-50x50.gif" alt="Product Image">
+                            </div>
+                            <div class="product-info">
+                                <a href="javascript:void(0)" class="product-title">
+                                    Bicycle
+                                    <span class="label label-info pull-right">$700</span>
+                                </a>
+                                <span class="product-description">
+                                    26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                                </span>
+                            </div>
+                        </li>
+                        <!-- /.item -->
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="~/Content/dist/img/default-50x50.gif" alt="Product Image">
+                            </div>
+                            <div class="product-info">
+                                <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
+                                <span class="product-description">
+                                    Xbox One Console Bundle with Halo Master Chief Collection.
+                                </span>
+                            </div>
+                        </li>
+                        <!-- /.item -->
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="~/Content/dist/img/default-50x50.gif" alt="Product Image">
+                            </div>
+                            <div class="product-info">
+                                <a href="javascript:void(0)" class="product-title">
+                                    PlayStation 4
+                                    <span class="label label-success pull-right">$399</span>
+                                </a>
+                                <span class="product-description">
+                                    PlayStation 4 500GB Console (PS4)
+                                </span>
+                            </div>
+                        </li>
+                        <!-- /.item -->
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

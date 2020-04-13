@@ -1,0 +1,213 @@
+﻿@if (CheckPermision(EnumAction.View, EnumPage.TicketAssign, EnumPage.TicketComplain, EnumPage.TicketForMe, EnumPage.TicketLast, EnumPage.TicketSupport))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-user"></i> Customer care handling
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumAction.View, EnumPage.TicketAssign))
+                {
+                    <li data-bind="css: active() == 'assign' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('assign')}" href="/Ticket#assign">
+                            <i class="fa fa-warning text-red"></i> Ticket unresolved
+                            <span class="label label-primary pull-right" data-bind="text: totalTicketWait"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.TicketComplain))
+                {
+                    <li data-bind="css: active() == 'complain' ? 'active' : ''">
+                        <a data-bind="click: function(){clickMenu('complain')}" href="/Ticket#complain">
+                            <i class="fa fa-inbox"></i> Ticket unresolved 
+                            <span class="label label-primary pull-right" data-bind="text: totalTicket"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.TicketForMe))
+                {
+                    <li data-bind="css: active() == 'ticket' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('ticket')}" href="/Ticket#ticket">
+                            <i class="fa fa-clock-o text-orange"></i> Ticket to resolve  
+                            <span data-bind="text: totalTicketNeedFix" class="label label-warning pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.TicketLast))
+                {
+                    <li data-bind="css: active() == 'last' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('last')}" href="/Ticket#last">
+                            <i class="fa fa-hourglass-half text-red"></i> @*@Resource.TicketBiTreXuLy*@Ticket overdue (24h)
+                            <span class="label label-danger pull-right" data-bind="text: totalTicketLate"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumAction.View, EnumPage.TicketSupport))
+                {
+                    <li data-bind="css: active() == 'support' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('support')}" href="/Ticket#support">
+                            <i class="fa fa-user text-orange"></i> Ticket with help from others
+                            <span class="label label-primary pull-right" data-bind="text: totalTicketSupport"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumAction.View, EnumPage.OrderWaitNew, EnumPage.OrderWait, EnumPage.OrderCustomerCare))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-circle-o"></i> @*@Resource.XuLyDonHangChoBaoGia*@Process quotation-pending order
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (CheckPermision(EnumPage.OrderWaitNew, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-wait-new' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-wait-new')}" href="/Ticket#order-wait-new">
+                            <i class="fa fa-clock-o text-orange"></i> @*@Resource.DonHangChoBaoGia*@Quotation-pending order
+                            <span data-bind="text: totalOrderWaitNew" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+                @if (CheckPermision(EnumPage.OrderWait, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-wait' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-wait')}" href="/Ticket#order-wait">
+                            <i class="fa fa-clock-o text-orange"></i> @*@Resource.DonHangDangBaoGia*@Quotation-in-progress order
+                            <span data-bind="text: totalOrderWait" class="label label-danger pull-right"></span>
+                        </a>
+                    </li>
+                }
+
+                @if (CheckPermision(EnumPage.OrderCustomerCare, EnumAction.View))
+                {
+                    <li data-bind="css: active() == 'order-cus' ? 'active' : ''">
+                        <a data-bind="click: function() {clickMenu('order-cus')}" href="/Ticket#order-cus">
+                            <i class="fa fa-clock-o text-orange"></i> List Order
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumAction.View, EnumPage.TicketClaimforrefund))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-circle-o"></i>
+                @*Xử lý yêu cầu Refund*@ 
+                Processing refund requests
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: active() == 'claimforrefund' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('claimforrefund')}" href="/Ticket#claimforrefund">
+                        <i class="fa fa-circle-o text-yellow"></i> @*Phiếu yêu cầu Refund*@Refunding request ticket
+                        <span class="label label-danger pull-right" data-bind="text: totalClaimForRefund"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+@if (CheckPermision(EnumAction.View, EnumPage.TicketSearchCustomer))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-user"></i> Look up customer information</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: active() == 'customerfind' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('customerfind')}" href="/Ticket#customerfind">
+                        <i class="fa fa-file-text-o"></i> Look up customer information
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+@if (CheckPermision(EnumAction.View, EnumPage.TicketReportForDay))
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-area-chart"></i> X@*Thống kê CSKH*@Customer service report
+            </h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: active() == 'SupportReport' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('SupportReport')}" href="/Ticket#SupportReport">
+                        <i class="fa fa-dashboard"></i> @*Thống kê xử lý Ticket trong ngày*@Daily ticket-handling report
+                    </a>
+                </li>
+                <li data-bind="css: active() == 'reportTicketSituation' ? 'active' : ''">
+                    <a data-bind="click: function() {clickMenu('reportTicketSituation')}" href="/Ticket#reportTicketSituation">
+                        <i class="fa fa-dashboard"></i> @*Thống kê tình hình Ticket theo thời gian*@Over time ticket-handling report
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+<div class="box box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            <i class="fa fa-area-chart"></i> @*@Resource.ThongKeDonBaoGia*@Order quotation
+        </h3>
+        <div class="box-tools">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+            <li data-bind="css: active() == 'reportOrderWaitSituation' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('reportOrderWaitSituation')}" href="/Ticket#reportOrderWaitSituation">
+                    <i class="fa fa-dashboard"></i>@* Thống kê Number orders of quotations*@Number of quoted orders
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

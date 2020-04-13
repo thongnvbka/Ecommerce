@@ -1,0 +1,57 @@
+﻿@model List<Library.DbContext.Entities.PackageHistory>
+@if (Model != null && Model.Any())
+{
+    <div>
+        @foreach (var item in Model)
+        {
+            if (item.Status != 1 && item.Status != 6)
+            {
+                var txt = "ร้านค้าจีนส่งสินค้า";
+                if (item.Status == 1)
+                {
+                    txt = "โกดังที่จีนรับสินค้า";
+                }
+
+                if (item.Status == 2)
+                {
+                    txt = "อยู่ในโกดังที่จีน";
+                }
+                if (item.Status == 3)
+                {
+                    txt = "ออกจากโกดังที่จีน";
+                }
+                if (item.Status == 4)
+                {
+                    txt = "กำลัังส่งมาเมืองไทย";
+                }
+                if (item.Status == 5)
+                {
+                    txt = "อยูุ่ในโกดังไทย";
+                }
+
+                if (item.Status == 7)
+                {
+                    txt = "กำลังจัดการ";
+                }
+                if (item.Status == 8)
+                {
+                    txt = "รอจัดส่ง";
+                }
+                if (item.Status == 9)
+                {
+                    txt = "กำลังส่งสินค้า";
+                }
+                if (item.Status == 10)
+                {
+                    txt = "ส่งสินค้าแล้ว";
+                }
+                if (item.Status > 11)
+                {
+                    txt = "สินค้้าหาย";
+                }
+
+                <div style="width: 250px; font-size: 12px;border-bottom: 1px dashed #a8a8a8; padding: 5px 0px;">@txt &nbsp; &nbsp; @string.Format("{0: hh:mm dd/MM/yyyy}", item.CreateDate)</div>
+            }
+        }
+    </div>
+}

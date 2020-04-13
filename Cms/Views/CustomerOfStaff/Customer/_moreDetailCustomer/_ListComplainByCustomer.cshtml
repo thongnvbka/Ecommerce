@@ -1,0 +1,153 @@
+﻿<style>
+    .timeline-inverse li:last-child{
+
+    }
+</style>
+<script type="text/html" id="SupportHistory">
+    <!-- ko if: listComplainByCustomer().length > 0 -->
+    <div class="active tab-pane" id="SupportHistory" style="overflow-y:scroll; height:600px;">
+        <!-- The timeline -->
+        <ul class="timeline timeline-inverse" data-bind="foreach: listComplainByCustomer">
+            <!-- timeline time label -->
+                <li class="time-label">
+                    <span class="bg-red" data-bind="text: moment(CreateDate).format('DD/MM/YYYY')">
+
+                    </span>
+                </li>
+
+                <li>
+                    <i class="fa fa-comments bg-yellow"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i><span  data-bind="text: moment(CreateDate).format('HH:mm')"></span></span>
+                        <h3 class="timeline-header"><a href="#" data-bind="text: CustomerName"></a></h3>
+                        <div class="timeline-body">
+                            <label data-bind="text: Content"></label>
+                        </div>
+                        <div class="timeline-body">
+                            <!-- ko if: ImagePath1 !== null -->
+                            <img data-bind="attr:{src:ImagePath1}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ImagePath2 !== null -->
+                            <img data-bind="attr:{src:ImagePath2}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ImagePath3 !== null -->
+                            <img data-bind="attr:{src:ImagePath3}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ImagePath4 !== null -->
+                            <img data-bind="attr:{src:ImagePath4}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ImagePath5 !== null -->
+                            <img data-bind="attr:{src:ImagePath5}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                            <!-- ko if: ImagePath6 !== null -->
+                            <img data-bind="attr:{src:ImagePath6}" alt="..." class="margin" width="150" height="100">
+                            <!-- /ko -->
+                        </div>
+                        <div class="timeline-footer" style="float:right;">
+                            <a class="btn btn-primary btn-xs" id="ComplainSupport" data-bind="click: $parent.CustomerListLookUp.bind($data, Id)">Read More</a>
+                        </div>
+                        <!-- ko if: $parent.CustomerLookUpId() == Id -->
+                        <div>
+                            <div class="col-md-6">
+                                <!--ko if: $parent.complainuserinternallist().length> 0-->
+                                <h3>Change</h3>
+                                <div style="overflow-y:scroll; height:400px; margin-bottom:20px;">
+                                    <ul class="timeline timeline-inverse" data-bind="foreach : $parent.complainuserinternallist">
+                                        <li class="time-label">
+                                            <i class="fa fa-envelope bg-blue"></i>
+                                            <div class="timeline-item">
+                                                <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')"><i class="fa fa-clock-o"></i></span>
+                                                <h3 class="timeline-header"><a href="#" data-bind="text: UserName"></a> - <span data-bind="text: UserPosition"></span></h3>
+                                                <div class="timeline-body">
+                                                    <span data-bind="text: Content"></span>
+                                                </div>
+                                            </div>
+                                            
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--/ko-->
+                            </div>
+                            <div class="col-md-6">
+                                <!--ko if: $parent.complainuser().length> 0-->
+                                <h3>Change with the customer</h3>
+                                <div style="overflow-y:scroll; height:400px; margin-bottom:20px;">
+                                    <ul class="timeline timeline-inverse" data-bind="foreach : $parent.complainuser">
+                                        <!--ko if: Content!=null && UserId!=null-->
+                                        <li class="time-label">
+                                            <i class="fa fa-envelope bg-blue"></i>
+                                            <div class="timeline-item">
+                                                <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')"><i class="fa fa-clock-o"></i></span>
+                                                <h3 class="timeline-header"><a href="#" data-bind="text: UserName"></a> - <span data-bind="text: UserPosition"></span></h3>
+                                                <div class="timeline-body">
+                                                    <span data-bind="text: Content"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!--/ko-->
+                                        <!--ko if: UserId==null && Content!=null-->
+                                        <li>
+                                            <i class="fa fa-comments bg-yellow"></i>
+                                            <div class="timeline-item">
+                                                <span class="time" data-bind="text: moment(CreateDate).format(''DD/MM/YYYY HH:mm'')"><i class="fa fa-clock-o"></i></span>
+                                                <h3 class="timeline-header"><a href="#" data-bind="text: CustomerName"></a> <span data-bind="text: Content"></span></h3>
+                                                <div class="timeline-body">
+                                                    <span data-bind="text: Content"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!--/ko-->
+                                    </ul>
+                                </div>
+                                <!--/ko-->
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!--ko if: $parent.complainuserinternallist().length> 0 && $parent.complainuser().length> 0 && $parent.CustomerLookUpId() == Id-->
+                        <div class="timeline-footer" style="float: right;margin-left: 60px;margin-right: 25px;padding: 10px;">
+                            <a class="btn btn-primary btn-xs" data-bind="click: $parent.CustomerDown">Collapse</a>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </li>
+            </ul>
+        
+      
+        @*<ul class="timeline timeline-inverse" data-bind="foreach : listCustomerLookUp">
+            <!--ko if: Content!=null && UserId!=null-->
+            <li class="time-label">
+                <i class="fa fa-envelope bg-blue"></i>
+                <div class="timeline-item">
+                    <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:MM')"><i class="fa fa-clock-o"></i></span>
+                    <h3 class="timeline-header"><a href="#" data-bind="text: UserName"></a> - <span data-bind="text: UserPosition"></span></h3>
+                    <div class="timeline-body">
+                        <span data-bind="text: Content"></span>
+                    </div>
+                </div>
+            </li>
+            <!--/ko-->
+            <!--ko if: UserId==null && Content!=null-->
+            <li>
+                <i class="fa fa-comments bg-yellow"></i>
+                <div class="timeline-item">
+                    <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:MM')"><i class="fa fa-clock-o"></i></span>
+                    <h3 class="timeline-header"><a href="#" data-bind="text: CustomerName"></a> <span data-bind="text: Content"></span></h3>
+                    <div class="timeline-body">
+                        <span data-bind="text: Content"></span>
+                    </div>
+                </div>
+                <div class="timeline-footer" style="float: right;margin-left: 60px;margin-right: 25px;padding: 10px;">
+                    <a class="btn btn-primary btn-xs" data-bind="click: CustomerDown">collapse</a>
+                </div>
+            </li>
+            <!--/ko-->
+        </ul>*@
+        
+        <!--/ko-->
+    </div>
+    <!--/ko-->
+    <!-- ko ifnot: listComplainByCustomer().length > 0 -->
+    Customer does not have any complaint!
+    <!--/ko-->
+</script>
+ 

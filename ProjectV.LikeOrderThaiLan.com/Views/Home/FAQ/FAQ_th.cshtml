@@ -1,0 +1,438 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.Controllers
+@{
+    var rate = new BaseController().ExchangeRate();
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<section class="faq">
+    <div class="faq-nav">
+        <div class="faq-nav-top">
+            คำถามที่พบบ่อย
+        </div>
+        <div class="faq-nav-box">
+            <h1>คู่มือการสั่งซื้อ<span></span></h1>
+            <ul style="display: block;">
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'dathang')" idata="dathang">สร้างออเดอร์</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'kygui')" idata="kygui">สร้างออเดอร์ฝากเก็บสินค้า</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'khieunai')" idata="khieunai">ข้อร้องเรียน</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'caidatcongcu')" idata="caidatcongcu">การตั้งค่า EXTENTION</a>
+                </li>
+
+                @*<li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'naptienvidientu')">เติมเงิน</a>
+                </li>*@
+            </ul>
+        </div>
+        <div class="faq-nav-box">
+            <h1>อัตราค่าบริการ<span></span></h1>
+            <ul style="display: block;">
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'dvdathang')" idata="dvdathang">บริการสั่งซื้อ</a>
+                </li>
+                <li>
+                    <a class="tablinks" onclick="tabFAQ(event, 'dvkygui')" idata="dvkygui">บริการฝากเก็บสินค้า</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="dathang">
+        <div class="faq-content-msg">
+            <h3>วิธีสร้างออเดอร์</h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="font-17">
+                <b class="red-color">
+                    บนระบบLikeOrderจะมี 2 วิธีสร้างออเดอร์:ใช้เครื่องมือextention หรือ ส่งลิงค์และข้อมูลของสินค้าที่ระบบ ทางเราแนะนำคุณลูกค้าสร้างออเดอร์โดยใช้extentionเพื่อไม่ต้องรอพนักงานประเมินราคา
+                </b>
+            </p>
+
+            <p class="mg-t-15">
+                <a href="javascript:;" class="arr-collapse collapsed bold" id="cach1">
+                    1. ใช้ Extention สร้างออเดอร์  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+            </p>
+            <div id="gd1" class="panel-collapse collapse in" aria-expanded="true">
+
+                <p>
+                    คุณลูกค้าจะต้องติดตั้ง add-on ในเบราว์เซอร์ของตัวเอง วิธีการติดตั้งเบราว์เซอร์ตามข้างล่าง
+                    <a href="https://chrome.google.com/webstore/detail/c%C3%B4ng-c%E1%BB%A5-%C4%91%E1%BA%B7t-h%C3%A0ng-nhkd/dkodpapicpniilofliibpjfahphljjnd/related" target="_blank">here</a>
+                </p>
+                <p class="font-17">
+                    <b class="red-color mg-t-15">ขั้นตอนที่ 1:</b> หลังจากที่ติดตั้ง add-on คุณลูกค้าสามารถเข้าไปหน้าเว็บ
+                    <a href="https://taobao.com" target="_blank">taobao</a>,
+                    <a href="https://tmall.com" target="_blank">tmall</a>,
+                    <a href="https://1688.com" target="_blank">1688</a> เพื่อเลือกสินค้า
+                </p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan1.png" alt="" />
+                </p>
+
+                <p class="mg-t-15"><b class="red-color">ขั้นตอนที่ 2:</b> เข้า รถเข็น เพื่อเช็คข้อมูลสินค้า เลือกบริการอื่นๆ กด สำเร็จออเดอร์</p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan2.png" alt="" />
+                </p>
+                <p class="mg-t-15"><b class="red-color">ขั้นตอนที่ 3:</b> สร้างสินค้า</p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan3.png" alt="" />
+
+                </p>
+                <p>หลังจากที่กดสำเร็จออเดอร์ ออเดอร์ของคุณลูกค้าจะได้แสดงที่ช่อง ออเดอร์กำลังรอมัดจำในหมวด จัดการออเดอร์</p>
+                <p class="font-17"><b class="red-color">ขั้นตอนที่ 4:</b> มัดจำ คุณลูกค้าสามารถมัดจำให้แก่หนึ่งออเดอร์ หรือ ออเดอร์ทั้งหมด</p>
+                <p class="mg-t-15">
+                    <img src="/Content/images/img-guide/Huongdan4.png" alt="" />
+                </p>
+                <p class="margin-15 text-danger font-17  mg-t-15"><b class="red-color">หมายเหตุ</b></p>
+                <ul class="note-guide-faq">
+                    <li><p>- ออเดอร์เกิน  30 วันไม่ได้กดสำเร็จออเดอร์จะโดนลบจากรถเข็น</p></li>
+                    <li><p>- สำหรับออเดอร์เกิน 30 วันไม่ได้มัดจำ ระบบจะลบออเดอร์โดยอัตโนมัติ</p></li>
+                    <li><p>-  เมื่อเลือกสินค้าได้ สีสัน ขนาด ๆ เรียบร้อยแล้ว แต่พอกดเข้ารถเข็นข้อมูลกลับไม่ขึ้นมา กรุณาเก็บลิงค์ของสินค้า -> ลบสินค้านั้นออกจากรถเข็น แล้วค่อยทำใหม่ทุกขั้นตอนสั่งสินค้าเหมือนเดิม</p></li>
+                    <li style="margin-top: 30px; margin-bottom: 21px;"><p>- ถ้าในการใช้extentionเพื่อสั่งซื้อเกิดความผิดพลาด กรุณาแจ้งฝ่าย IT ของทางเรา</p></li>
+                </ul>
+            </div>
+
+            <p class="margin-15 font-17">
+                <a href="javascript:;" class="arr-collapse bold" id="cach2">2. สร้างออเดอร์บนเว็บไซต์
+                <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+            </p>
+            <div id="gd2" class="panel-collapse collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <p>วิธีนี้เหมาะสำหรับออเดอร์ที่มีจำนวนสินค้าน้อย แต่คุณลูกค้าต้องรอพนักงานบริการลูกค้าของทางเราแก้ไขแล้วคุณลูกค้าคอยมัดจำ</p>
+                    <p class="mg-t-15">
+                        ขั้นตอนที่ 1:
+                    </p>
+                    <p class="mg-t-15">
+                        <img src="/Content/images/img-more/CreateOrder2Resize.png" alt="" />
+                    </p>
+                    <br/>
+                    <p class="mg-t-15">
+                        ขั้นตอนที่ 2:
+                    </p>
+                    <p class="mg-t-15">
+                        <img src="/Content/images/img-more/CreateOrder3Resize.png" alt="" class="mg-t-15" />
+                    </p>
+                    <br/>
+
+                    <p class="mg-t-15">
+                        ลูกค้าใส่ข้อมูลสินค้าตามแบบฟอร์มแล้วกดปู่ม ส่งออเดอร์.ออเดอร์นั้นจะแสดงในช่อง รอประเมินราคาในหมวด จัดการออเดอร์.
+                        ออเดอร์หลังจากได้ประเมินจะได้แจ้งกับลูกค้าผ่านระบบ ลูกค้าสามารถมัดจำเหมือนวิธีมัดจำที่ใช้extention.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="kygui">
+        <div class="faq-content-msg">
+            <h3>
+                วิธีสร้างออเดอร์รับฝากขนส่ง
+            </h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="margin-15 font-17"><b class="red-color">ขั้นตอนที่ 1:</b> ลููกค้าส่งสินค้าเข้าโกดังของ  LikeOrder ตามที่อยู่</p>
+            <div class="row margin-15">
+                <div class="col-md-6">
+                    <p>收货地址: 广东省广州市芳村窖口大街 48号双桥9号</p>
+                    <p>收货人: 黄越开</p>
+                    <p>联系电话： 86-15625454242</p>
+                </div>
+            </div>
+            <p class="mg-t-15"><b class="red-color">ขั้นตอนที่ 2:</b> ลูกค้าเข้าหน้าหลักของLikeOrder.com สร้างออเดอร์รับฝากขนส่ง</p>
+            <p class="mg-t-15">
+
+                <img src="/Content/images/img-more/CreateDeposit1Resize.png" alt="" />
+            </p>
+            <p class="margin-15 font-17"><b class="red-color">ขั้นตอนที่ 3:</b>ใส่แบบฟอร์มเพื่อประกาศให้LikeOrderทราบ และเราจะติดตามได้ดีขึ้น</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/CreateDeposit3Resize.png" alt="" />
+            </p>
+            <p class="font-17 text-danger"><b class="red-color">หมายเหตุ</b></p>
+            <p>
+                ลููกค้าต้องใส่ข้อมูลให้ครบเพื่อพิธีการศุลกากรขาเข้าได้ดำเนินด้วยดี และ ให้การแบ่งแยกประเภทได้ดีขึ้น. ข้อมูลไม่ถูกต้องหรือไม่ครบ ทางบริษัทจะเก็บสินค้าในบริเวณ สินค้ายังไม่ได้แยกประเภท ของทางบริษัทและจะคิดค่าฝากเก็บสินค้า
+                ลูกค้าสามารถดูนโยบายฝากเก็ยสินค้าและขนส่งเพิ่มเติมที่นี่
+            </p>  <a href="/@culture/Home/Faq"><b>here</b></a>
+
+        </div>
+    </div>
+
+    <div class="faq-content tabcontent" id="khieunai">
+        <div class="faq-content-msg">
+            <h3>วิธีส่งข้อร้องเรียน</h3>
+        </div>
+        <div class="faq-content-msg">
+            <p class="bold">1. กดปุ่ม  <span class="text-primary">[ร้องเรียน]</span> เมื่อออเดอร์สำเร็จ</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/CreateTicket1.png" alt="" />
+            </p>
+            <p class="bold mg-t-15">2. ใส่ข้อมูลตามแบบฟอร์ม </p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/CreateTicket2.png" alt="" />
+            </p>
+
+            <p class="mg-t-15">
+                <b class="red-color">
+                    ลูกค้าสามารถดูนโยบายจัดการข้อร้องเรียนของบริษัทเพิ่มเติมที่นี่
+                    <a href="/@culture/Home/TermsOfService">here</a>
+                </b>
+            </p>
+
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="caidatcongcu">
+        <div class="faq-content-msg">
+            <h3>วิธีติดตั้งเครื่องมือช่วยเหลือในการสั่งซื้อ</h3>
+        </div>
+
+        <div class="faq-content-msg">
+            <p class="bold">1. กดปุ่ม <span class="text-primary">"ติดตั้งส่วนขยาย"</span></p>
+            <p class="mg-t-15">
+                <img src="~/Content/images/img-more/Setup.png" alt="" />
+            </p>
+            <p class="bold  mg-t-15">
+                2. หลังจากที่กดปุ่ม  [Add to Chrome]
+                <span class="text-primary">"ติดตั้งส่วนขยาย"</span> แล้ว -> เว็บจะแสดงหน้าเว็บเครื่องมื่อ -> ลูกค้ากดปุ่ม <span class="text-primary">[Add to Chrome]</span>
+            </p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/SetupExtensition2.png" alt="" />
+            </p>
+            <p class="bold mg-t-15"> 
+                3. หลังจากที่กดปุ่ม
+                <span class="text-primary">[Add to Chrome]</span>  -> popup จะขึ้น -> กดปุ่ม 
+             <span class="text-primary">[Add Extension]</span></p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/SetupExtensition3.png" alt="" />
+            </p>
+            <p class="bold mg-t-15">4. การติดตั้งสำเร็จ</p>
+            <p class="mg-t-15">
+                <img src="/Content/images/img-more/SetupExtensition4.png" alt="" />
+            </p>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="faq-content tabcontent" id="dvdathang" style="display: none;">
+        <div class="faq-content-msg">
+            <h3>อัตราค่าบริการสั่งซื้อ</h3>
+        </div>
+        <div class="faq-content-msg tabbable-custom rs" style="box-sizing: border-box;">
+            <ul class="nav nav-tabs border-tab nav-view rs">
+                <li class="tab-margin active" onclick="tabServiceCharge(event, &#39;phiCD&#39;)" id="defaultOpen2">
+                    <a aria-expanded="true">ค่าใช้จ่ายจำเป็น</a>
+                </li>
+                <li class="tab-margin" onclick="tabServiceCharge(event, &#39;phiDVK&#39;)">
+                    <a aria-expanded="false">ค่าบริการอื่นๆ</a>
+                </li>
+            </ul>
+            <div class="rs tabcontent2 mg-t-15" id="phiCD" style="display: block;">
+                <p>ค่าใช้จ่ายจำเป็นคือค่าใช้จ่ายที่ลูกค้าต้องจ่ายในทุกออเดอร์ ตั้งแต่ ค่าขนส่งภายในประเทศจีน (1)  ค่าขนส่งจากจีนมาไทย(2)</p>
+                <p>
+                    <span class="bold red-color">1. ค่าขนส่งภายในจีน</span> <br>
+                </p>
+                <p>
+                    คิดราคาต้ามร้านค้า ร้านค้าจะคิดตามค่าขนส่งภายในประเทศจีน ( มีการเปลี่ยนแปลงตามเวลา)
+                </p>
+                <p class="text-left">* ค่าขนส่งภายในประเทศจีน</p>
+                <div class="zichan-zijin zichan-box rs">
+                    <p class="curent-quotation">หน่วย: %</p>
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-center vertical-middle ">ขนส่งปกติ   </td>
+                                <td class="text-center vertical-middle ">กิโลแรกจะคิดตามกฎระเบียบของผู้จำหน่ายบนเว็บไซต์ เถาเป่า(Taobao) หรือ Alibaba</td>
+                                <td class="text-center vertical-middle add-style-css-th">กิโลต่อไปถ้าผู้จำหน่ายอยู่ในจังหวัดมณฑลกวางตุ้งจะคิด 4 หยวน</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center vertical-middle ">ขนส่งด่วน  </td>
+                                <td class="text-center vertical-middle">กิโลแรกจะคิดตามกฎระเบียบของผู้จำหน่ายบนเว็บไซต์ เถาเป่า(Taobao) หรือ Alibaba</td>
+                                <td class="text-center vertical-middle">ทุก 0.5 กิโลต่อไปจะคิด 5 หยวน/กิโล</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center vertical-middle">ขนส่งปกติทางรถบรรทุก</td>
+                                <td class="text-center vertical-middle" colspan="2"> ทุกกิโล  1- 2 หยวน/กิโล + 70 หยวน/ ออเดอร์</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <p class="rs mg-t-15">
+                    <span class="bold red-color">2. ค่าขนส่งตามน้ำหนักจากจีนมาไทย</span> <br>
+                </p>
+                <div class="zichan-zijin zichan-box rs">
+                    <p class="curent-quotation">หน่วย:  ฿</p>
+                    <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table table-product table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="morestandard">น้ำหนัก</th>
+                                <th class="morestandard">ค่าบริการขนส่ง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center vertical-middle">0 - 4.99 กก </td>
+                                <td class="text-center vertical-middle">75 บาท/กก </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center vertical-middle">5- 19.99 กก </td>
+                                <td class="text-center vertical-middle">65 บาท/กก </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center vertical-middle">20-49.99 กก</td>
+                                <td class="text-center vertical-middle">55 บาท/กก </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center vertical-middle">&gt;50  กก </td>
+                                <td class="text-center vertical-middle">45 บาท/กก </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="rs mg-t-15">สูตรแปลงหน่วยน้ำหนัก : น้ำหนัก = ( ยาว x กว้าง x สูง ) หาร 5000</p>
+            </div>
+            <div class="rs tabcontent2 mg-t-15" id="phiDVK" style="display: none;">
+                <p>ค่าใช้จ่ายสำรับบริการต่างๆ</p>
+                <p class="rs">
+                    <span class="bold red-color">1. ค่าบริการตรวจนับ</span> <br>
+                </p>
+                <div class="zichan-zijin zichan-box rs">
+                    <p class="curent-quotation">หน่วย: ฿/สินค้า</p>
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="morestandard"><h4> จำนวนสินค้าต่อออเดอร์  </h4></th>
+                                <th class="morestandard">
+                                    <h4>
+                                        ค่าบริการของสินค้าทั้วไป
+                                        (บาท/ 1 สินค้า)
+                                    </h4>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1-2 สินค้า</td>
+                                <td class="text-center">8 บาท</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">3-10 สินค้า</td>
+                                <td class="text-center">5 บาท</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">11-100 สินค้า</td>
+                                <td class="text-center">3 บาท</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">101-500 สินค้า</td>
+                                <td class="text-center">2 บาท</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">&gt;500 สินค้า</td>
+                                <td class="text-center">1 บาท</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <p class="rs mg-t-15">
+                    <span class="bold red-color"> 2. ค่าตีลังไม้ </span> <br>
+                </p>
+                <div class="zichan-zijin zichan-box rs">
+                    <p class="curent-quotation">หน่วย: ฿</p>
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="table table-product table-bordered">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th class="morestandard"><h4>กก แรก</h4></th>
+                                <th class="morestandard"><h4>กก ต่อไป</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">ค่าตีลังไม้</td>
+                                <td class="text-center">100 บาท</td>
+                                <td class="text-center">4 บาท</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="faq-content tabcontent" id="dvkygui" style="display: block;">
+        <div class="faq-content-msg">
+            <h3>อัตราค่าบริการฝากเก็บสินค้า</h3>
+        </div>
+
+        <div class="rs faq-content-msg mg-t-15" style="box-sizing: border-box;">
+            <p>
+                <span class="bold red-color">1. ค่าขนส่ง  </span>
+            </p>
+            <p class="text-left" style="font-weight: 700;">สูตรแปลงหน่วยน้ำหนัก : น้ำหนัก = ( ยาว x กว้าง x สูง ) หาร 5000</p>
+            <p class="text-left" style="font-weight: 700;"> ค่าขนส่ง = 150 บาท/กก แรก + ( จำนวนน้ำหนัก - 1 ) x อัตราค่าขนส่งข้างล่าง</p>
+
+            <div class="zichan-zijin zichan-box rs">
+                <p>อัตราค่าขนส่งตามน้ำหนัก</p>
+                <p class="curent-quotation">Đơn vị: ฿/Kg</p>
+                <table width="100%" cellpadding="1" cellspacing="1" border="1" class="table table-product table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="text-center">น้ำหนัก</td>
+                            <td class="text-center">ค่าบริการขนส่ง</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">0 - 4.99kg</td>
+                            <td class="text-center">75 บาท/กก</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">5- 19.99kg</td>
+                            <td class="text-center">65 บาท/กก</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">20-49.99kg</td>
+                            <td class="text-center">55 บาท/กก</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">&gt;50kg</td>
+                            <td class="text-center">45 บาท/กก</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <p class="rs mg-t-15">
+                <span class="bold red-color"> 2. ค่าตีลังไม้ </span> <br>
+            </p>
+            <div class="zichan-zijin zichan-box rs">
+                <table width="100%" border="1" cellpadding="1" cellspacing="1" class="table table-product table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="text-center"></td>
+                            <td class="text-center">กก แรก</td>
+                            <td class="text-center">กก ต่อไป</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">ค่าตีลังไม้</td>
+                            <td class="text-center">100 บาท</td>
+                            <td class="text-center">4 บาท</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</section>

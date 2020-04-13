@@ -1,0 +1,342 @@
+﻿@{
+    ViewBag.Title = "Order processing room";
+
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+@section Styles{
+    @Styles.Render("~/Content/order")
+    <link href="/Scripts/viewmodels/suggettion/PickUserModal.css" rel="stylesheet" />
+    <link href="~/Content/plugins/HenrySlider/henry-slider.css" rel="stylesheet" />
+    <link href="~/Content/plugins/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/wysiwyg/src/wysiwyg-editor.css" rel="stylesheet" />
+    <style>
+        input.decimal:focus {
+            text-align: left !important;
+        }
+    </style>
+}
+
+<section class="content-header">
+    <h1>
+        Full Name - Title Name
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> View order statistics</a></li>
+    </ol>
+</section>
+
+<section id="orderView" class="content">
+    @Html.Partial("_GroupCommentModal")
+    <div class="row">
+        <div class="col-xs-2 todobar">
+            @Html.Partial("_TodoBar")
+        </div>
+        <div class="col-xs-10 view-content-box">
+            <div data-bind="css: isLoading() == true? 'display-none' : ''" class="text-center" style="padding-top: 200px">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw text-blue"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div data-bind="css: isLoading() == true? '' : 'display-none'" class="display-none">
+                <div data-bind="template: { name: templateId }"></div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/Purchase/Order/_OrderAddOrEdit.cshtml")
+
+    <!-- =============== Modal xử lý Cancel Orders ===================== -->
+    <div id="orderCloseModal" class="modal fade modal-dialog modal-p40" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>@Resource.Warehouse_Order_HuyDonHang: <span data-bind="text: reasonCode()"></span></b></h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="customer requested cancellation" /> customer requested cancellation</label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="customer care  requested cancellation (contact customer care) " /> customer care  requested cancellation (contact customer care) </label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="shop report out" /> shop report out</label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="Can not contact with customer" /> Can not contact with customer</label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="Can not contact with shop" /> Can not contact with shop</label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="Products are in the list of companies that do not accept orders" /> Products are in the list of companies that do not accept orders</label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(false)" type="radio" name="ordsou" value="Order low value, the company is not currently traded" /> Order low value, the company is not currently traded</label>
+            </div>
+            <div class="checkbox">
+                <label><input data-bind="checked: reasonNote" onclick="checkShowReasonNote(true)" type="radio" name="ordsou" value="" /> The other reason</label>
+            </div>
+            <div id="showReasonNote">
+                <textarea data-bind="value: reasonNote" rows="4" class="form-control" required placeholder="Nhập lý do Cancel Orders"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: submitCancelOrder, enable: isSubmit" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Confirm
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal chuyển Orders cho nhân viên =================== -->
+
+    <div id="orderReplyModal" class="modal fade modal-dialog modal-p40" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Transfer orders: <span data-bind="text: ReturnCode(order().Code())"></span></b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Select the Staffs receiving</label>
+                <select class="form-control select-view" style="width: 100%;" data-bind="options: listUserOffice, optionsText: 'UserFullNameOffice', optionsValue: 'Id', value:  order().UserId"></select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: submitOrderReplyModal, enable: isSubmit" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Confirm
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- ================== Phân quyền cho nhân viên ======================== -->
+    <div id="orderAssignedModal" class="modal fade modal-dialog modal-p40" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Split orders: <span data-bind="text: assignedCode()"></span></b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Select order processing staff</label>
+                <select class="form-control select-view" style="width: 100%;" data-bind="options: listUserOffice, optionsText: 'UserFullNameOffice', optionsValue: 'Id', value: assignedUserId"></select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: submitAssignedOrder, enable: isSubmit" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Confirm
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal xử lý trao đổi với khách hàng ===================== -->
+    <div id="commentForCustomer" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Information will be sent to customers, are you sure to send!?</b></h4>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: feedbackComplain" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Partial/Ticket/_RefundTickket.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_ClaimForRefundDetail.cshtml")
+    <!-- =============== Modal thay đổi nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentEdit" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Update contents here:</b></h4>
+        </div>
+        <div class="modal-body">
+            <textarea data-bind="value: contentEdit" style="width:100%;min-height: 100px"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: updateContent" data-dismiss="modal">Updatet</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <!-- =============== Modal xóa nội dung trao đổi về khiếu nại ===================== -->
+    <div id="commentDelete" class="modal fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Exchange content will be deleted, are you sure you want to delete !?</b></h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bind="click: deleteContent" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</section>
+
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Content/plugins/HenrySlider/henry-slider.js"></script>
+    <script src="~/Content/plugins/webui-popover/jquery.webui-popover.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/wysiwyg.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/wysiwyg-editor.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/henry-editor.js"></script>
+    <script src="~/Scripts/viewmodels/GroupChatHubModal.js"></script>
+    @Scripts.Render("~/bundles/order")
+    <script src="~/Scripts/common/status.@cultureJs"></script>
+    <script id="isEmp"></script>
+    <script>
+        function checkShowReasonNote(isShow) {
+            if (isShow) {
+                $('#showReasonNote').show();
+            } else {
+                $('#showReasonNote').hide();
+            }
+            return true;
+        }
+    </script>
+
+    <!--Báo cáo-->
+    @Html.Partial("_OrderReport")
+    @Html.Partial("_OrderReportBargain")
+    @Html.Partial("_OrderReportSituation")
+    @Html.Partial("_OrderReportDeposit")
+
+    <!--Detail khiếu nại-->
+    @Html.Partial("~/Views/Partial/Ticket/_TicketDetail.cshtml")
+
+    <!--Orders Order-Extension-->
+    @Html.Partial("~/Views/Purchase/OrderNew/_OrderNew.cshtml")
+
+    @Html.Partial("~/Views/Purchase/Order/_Order.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderRetail/_OrderRetail.cshtml")
+    @Html.Partial("~/Views/Purchase/Order/_OrderAdd.cshtml")
+
+    @Html.Partial("~/Views/Purchase/Order/_OrderList.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+
+    <!--Orders bị trễ-->
+    @Html.Partial("~/Views/Purchase/OrderDelay/_OrderDelay.cshtml")
+
+    <!--Orders ký gửi-->
+    @Html.Partial("~/Views/Purchase/DepositNew/_OrderDepositNew.cshtml")
+
+    @Html.Partial("~/Views/Purchase/Deposit/_OrderDeposit.cshtml")
+
+    @Html.Partial("~/Views/Purchase/DepositDelay/_OrderDepositDelay.cshtml")
+
+    @Html.Partial("~/Views/Purchase/Deposit/_OrderDepositList.cshtml")
+    @Html.Partial("~/Views/Purchase/Deposit/_OrderDepositAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+
+    <!--Phiếu báo giá tìm nguồn-->
+    @Html.Partial("~/Views/Purchase/StockQuotesNew/_StockQuotesNew.cshtml")
+    @Html.Partial("~/Views/Purchase/StockQuotes/_StockQuotes.cshtml")
+    @Html.Partial("~/Views/Purchase/StockQuotes/_StockQuotesList.cshtml")
+    @Html.Partial("~/Views/Purchase/StockQuotes/_StockQuotesAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_StockQuotesDetail.cshtml")
+
+    <!--Orders tìm nguồn-->
+    @Html.Partial("~/Views/Purchase/OrderSourcing/_OrderSourcing.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderSourcing/_OrderSourcingList.cshtml")
+
+    @Html.Partial("~/Views/Purchase/OrderCommerce/_OrderCommerce.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderCommerce/_OrderCommerceList.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderCommerce/_OrderCommerceModal.cshtml")
+    @Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+
+    <!--Thông tin khách hàng-->
+    @Html.Partial("~/Views/Partial/customer/_CustomerFind.cshtml")
+
+    <!--Orders rủi ro cần xử lý-->
+    @Html.Partial("~/Views/Purchase/OrderRisk/_OrderRisk.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderRisk/_OrderRiskList.cshtml")
+
+    @Html.Partial("~/Views/Purchase/OrderAccountant/_OrderAccountant.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderAccountant/_OrderAccountantList.cshtml")
+
+    @Html.Partial("~/Views/Purchase/OrderWarehouse/_OrderWarehouse.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderWarehouse/_OrderWarehouseList.cshtml")
+
+    <!--Xử lý mã vận đơn-->
+    @Html.Partial("~/Views/Purchase/OrderLadingCode/_LadingCode.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderLadingCode/_LadingCodeList.cshtml")
+
+    <!--Cấu hình website-->
+    @Html.Partial("~/Views/Purchase/UserWebsite/_UserWebsite.cshtml")
+    @Html.Partial("~/Views/Purchase/UserWebsite/_UserWebsiteList.cshtml")
+
+
+    <!--Hỗ trợ xử lý khiếu nại-->
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupport.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupportList.cshtml")
+
+    <!-- Chat -->
+    @Html.Partial("~/Views/Partial/accountant/moneyfund/_MoneyFundDetail.cshtml")
+    @Html.Partial("~/Views/Partial/accountant/recharge/_RechargeDetail.cshtml")
+    @Html.Partial("~/Views/Purchase/Accountant/_OrderAccountant.cshtml")
+    @Html.Partial("~/Views/Purchase/Accountant/_AccountantList.cshtml")
+
+    <!--Hoàn tiền khiếu nại-->
+    @Html.Partial("~/Views/Ticket/ClaimForRefund/_ClaimForRefund.cshtml")
+    @Html.Partial("~/Views/Ticket/ClaimForRefund/_ClaimForRefundList.cshtml")
+
+    @Html.Partial("~/Views/Purchase/OrderSuccess/_OrderSuccess.cshtml")
+    @Html.Partial("~/Views/Purchase/OrderSuccess/_OrderSuccessList.cshtml")
+
+    <script>
+        var listStastus = @Html.Raw(ViewBag.ListStatus);
+        var listSystem = @Html.Raw(ViewBag.ListSystem);
+
+        var totalOrderNew = '@ViewBag.TotalOrderNew';
+        var totalOrderWait = '@ViewBag.TotalOrderWait';
+        var totalOrder = '@ViewBag.TotalOrder';
+        var totalOrderLate = '@ViewBag.TotalOrderLate';
+
+        var totalOrderDepositNew = '@ViewBag.TotalOrderDepositNew';
+        var totalOrderDeposit = '@ViewBag.TotalOrderDeposit';
+        var totalOrderDepositLate = '@ViewBag.TotalOrderDepositLate';
+
+        var totalStockQuoesNew = '@ViewBag.TotalStockQuoesNew';
+        var totalStockQuoes = '@ViewBag.TotalStockQuoes';
+        var totalOrderSourcing = '@ViewBag.TotalOrderSourcing';
+
+        var totalOrderRisk = '@ViewBag.TotalOrderRisk';
+        var totalOrderAccountant = '@ViewBag.TotalOrderAccountant';
+        var totalOrderNoWarehouse = '@ViewBag.TotalOrderNoWarehouse';
+
+        var listWarehouse = @Html.Raw(ViewBag.ListWarehouse);
+        var listWarehouseVN = @Html.Raw(ViewBag.ListWarehouseVN);
+        var categoryJsTree = @Html.Raw(ViewBag.ListCategory);
+        var listUser = @Html.Raw(ViewBag.ListUser);
+        var listReason = @Html.Raw(ViewBag.ListReason);
+        var listReasonNoCodeOfLading = @Html.Raw(ViewBag.ListReasonNoCodeOfLading);
+        var listReasonNotEnoughInventory = @Html.Raw(ViewBag.ListReasonNotEnoughInventory);
+        var listBargainType = @Html.Raw(ViewBag.ListBargainType);
+
+        var exchangeRate = @Html.Raw(ViewBag.ExchangeRate);
+        var listOrderService = @Html.Raw(ViewBag.ListOrderService);
+
+        var listcomplainType = @Html.Raw(ViewBag.ListcomplainType);
+    </script>
+    <script src="~/Scripts/models/accountant/rechargeBillModel.js"></script>
+    @Scripts.Render("~/bundles/orderModel")
+
+}

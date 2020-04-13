@@ -1,0 +1,175 @@
+﻿@{
+    var completed = (byte)DebitHistoryStatus.Completed;
+}
+<div id="mustCollectDebitAddOrEdit" class="modal fade modal-dialog modal-p70" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>RECEIVABLES</strong>
+                        @*<span class="impornumber">Slip number: <strong>CT012012</strong></span>
+                            <small>Date of implementation: 02/10/2016</small>*@
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Person to collect receivables from<span class="color-red">(*)</span></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <!-- ko if: AddOrEdit() == 0 -->
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <select data-bind="value: debitCollectModel().SubjectId" class="form-control subject-search customer-fund-bill-model" style="width: 100%;"></select>
+                                        </div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Representative ID:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Representative:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Phone:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectPhone"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Enter account type <span class="color-red">(*)</span></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-usd"></i>
+                                            </div>
+                                            <div id="debitCollect_treasure_tree"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Account name:</th>
+                                                        <td data-bind="text: debitCollectModel().PayReceivableIName"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- ko if: mustReturnOption() != 0 -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="false">&times;</button>
+                            <h4><i class="icon fa fa-warning"></i>Staff pay attention!</h4>
+                            <span>                                Upon confirmation of the "Checking fund collect" of the Debt, the system will automatically "create debit slip" in accordance to corresponding receivabe information on this slip! Please check the corresponding debit slip to verify the information!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Enter amount<span class="color-red">(*)</span></h3>
+                        </div>
+
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+
+                                    <label for="inputPassword3" class="col-sm-3 control-label text-red text-bold">Payables (Baht):</label>
+
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <!-- ko if: debitCollectModel().Status() == @completed -->
+                                            <input type="text" class="form-control decimal" data-bind="value: debitCollectModel().Money" disabled>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: debitCollectModel().Status() == @completed -->
+                                            <input type="text" class="form-control decimal" data-bind="value: debitCollectModel().Money">
+                                            <!-- /ko -->
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label"Note:</label>
+                                    <div class="col-sm-9">
+                                        <!-- ko if: debitCollectModel().Status() == @completed -->
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance Note..." data-bind="value: debitCollectModel().Note" disabled></textarea>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: debitCollectModel().Status() == @completed -->
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance Note..." data-bind="value: debitCollectModel().Note"></textarea>
+                                        <!-- /ko -->
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-danger" data-bind="click: btnCreateCollectOrEditDebit" href="javascript:;"><i class="fa fa-check"></i>Confirm</a>
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+    </div>
+</div>
+

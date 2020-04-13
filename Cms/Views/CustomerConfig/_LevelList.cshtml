@@ -1,0 +1,61 @@
+﻿@model  ModelView<Library.DbContext.Entities.CustomerLevel, CustomerLevelViewModel>
+<div class="box-body">
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-bordered table-hover"> 
+            <thead>
+                <tr>
+                    <th class="text-center w-40">#</th>
+                    <th class="text-center w-120"> level</th>
+                    <th class="text-center w-300">Describe</th>
+                    <th class="text-center w-120">Status</th>
+                    <th class="text-center w-350">Revenue level(VND)</th>
+                    <th class="text-center w-250">Percent of deposit(%)</th>
+                    <th class="text-center w-200">Manipulation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (!Model.Items.Any())
+                {
+                    <tr>
+                        <td colspan="7" class="text-center">No Record</td>
+                    </tr>
+                }
+                else
+                {
+                    var idx = 1;
+                    foreach (var item in Model.Items)
+                    {
+
+                        <tr>
+
+                            <td class="text-center">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.PageSize + idx)</td>
+                            <td class="text-center"><strong>@item.Name</strong></td>
+                            <td>@item.Description</td>
+                            <td>
+                                @if (item.Status == true)
+                                {
+                                    <text>Activity</text>
+                                }
+                                else
+                                {
+                                    <text>Pause</text>
+                                }
+                            </td>
+
+                            <td>From @item.StartMoney.ToString("#,###") - @item.EndMoney.ToString("#,###") (Baht)</td>
+                            <td>From @item.PercentDeposit (%)</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("EditCustomerLevel", new {id = item.Id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                <a href="javascript:;" data-url="@Url.Action("DeleteCustomerLevel", new {id = item.Id})" data-name="@item.Name" class="btn btn-danger btn-sm delete-item"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        idx += 1;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Paging", Model.PageInfo)

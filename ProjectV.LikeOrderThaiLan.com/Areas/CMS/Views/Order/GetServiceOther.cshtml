@@ -1,0 +1,10 @@
+﻿@model List<Library.DbContext.Entities.OrderServiceOther>
+@if (Model != null && Model.Any())
+{
+    var total0 = Model.Where(m => m.Mode == 0).Sum(m => m.TotalPrice);
+    var total1 = Model.Where(m => m.Mode == 1).Sum(m => m.TotalPrice);
+    <div>
+        <div style="width: 230px; font-size: 12px;border-bottom: 1px dashed #a8a8a8; padding: 5px 0px;">@Resource.ShipTQCao @*ค่าขนส่งภายในจีน*@: &nbsp; &nbsp;&nbsp; @string.Format("{0: #,###} BAHT", total0)</div>
+        <div style="width: 230px; font-size: 12px;border-bottom: 1px dashed #a8a8a8; padding: 5px 0px;">@Resource.PhiNangXe @*Phí xe nâng*@: &nbsp; &nbsp;&nbsp; @string.Format("{0: #,###} BAHT", total1)</div>
+    </div>
+}

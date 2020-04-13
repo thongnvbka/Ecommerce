@@ -1,0 +1,32 @@
+--------- 16:57:38 ---------
+Ref URL: https://projectv.com/Purchase/Order
+Host: projectv.com
+URL: /Order/EditContractCode
+IP: 127.0.0.1
+Error: A potentially dangerous Request.Form value was detected from the client (note="...217) #TM 
+<XL> Tách kiện, Chỉn...").
+Source: System.Web
+Trace:    at System.Web.HttpRequest.ValidateString(String value, String collectionKey, RequestValidationSource requestCollection)
+   at System.Web.HttpValueCollection.EnsureKeyValidated(String key)
+   at System.Web.HttpValueCollection.GetValues(String name)
+   at System.Web.Mvc.NameValueCollectionValueProvider.ValueProviderResultPlaceholder.GetResultFromCollection(String key, NameValueCollection collection, CultureInfo culture)
+   at System.Web.Mvc.NameValueCollectionValueProvider.GetValue(String key, Boolean skipValidation)
+   at System.Web.Mvc.ValueProviderCollection.GetValue(String key, Boolean skipValidation)
+   at System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+InnerException : 
+GetBaseException : System.Web.HttpRequestValidationException (0x80004005): A potentially dangerous Request.Form value was detected from the client (note="...217) #TM 
+<XL> Tách kiện, Chỉn...").
+   at System.Web.HttpRequest.ValidateString(String value, String collectionKey, RequestValidationSource requestCollection)
+   at System.Web.HttpValueCollection.EnsureKeyValidated(String key)
+   at System.Web.HttpValueCollection.GetValues(String name)
+   at System.Web.Mvc.NameValueCollectionValueProvider.ValueProviderResultPlaceholder.GetResultFromCollection(String key, NameValueCollection collection, CultureInfo culture)
+   at System.Web.Mvc.NameValueCollectionValueProvider.GetValue(String key, Boolean skipValidation)
+   at System.Web.Mvc.ValueProviderCollection.GetValue(String key, Boolean skipValidation)
+   at System.Web.Mvc.DefaultModelBinder.BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValue(ControllerContext controllerContext, ParameterDescriptor parameterDescriptor)
+   at System.Web.Mvc.ControllerActionInvoker.GetParameterValues(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+TargetSite : Void ValidateString(System.String, System.String, System.Web.Util.RequestValidationSource)

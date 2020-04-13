@@ -1,0 +1,124 @@
+﻿<script type="text/html" id="customerfind">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Select customer</h3>
+            <div class="box-tools pull-right">
+                <div class="has-feedback" style="width:300px">
+                    <select data-bind="value: customerId" class="form-control input-sm customer-search" style="width: 100%;"></select>
+                </div>
+
+            </div>
+        </div>
+        <!-- ko if: customerId() > 0 -->
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img  class="profile-user-img img-responsive img-circle" data-bind="attr:{src: customerModel().Avatar()}"  alt="User profile picture">
+                            <h3 class="profile-username text-center" data-bind="text: customerModel().FullName()"></h3>
+                            <p class="text-muted text-center" data-bind="text: customerModel().SystemName()"></p>
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Customer ID</b> <a class="pull-right" data-bind="text: customerModel().Code()"></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Account type</b> <a class="pull-right"><span class="label label-danger" data-bind="text: customerModel().LevelName()"></span></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Current balance</b> <a class="pull-right" data-bind="text: formatNumberic(customerModel().BalanceAvalible(), 'N2')"></a>
+                                </li>
+                                @*<li class="list-group-item">
+                                        <b>Frozen amount</b> <a class="pull-right" >200,000,000 đ</a>
+                                    </li>*@
+                                <li class="list-group-item">
+                                    <b>The amount spent</b> <a class="pull-right" data-bind="text: formatNumberic(customerModel().Balance(), 'N2')"></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Unit price to be deposited</b> <a class="pull-right" data-bind="text: formatNumberic(customerModel().DepositPrice(), 'N2')"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Personal information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <strong><i class="fa fa-book margin-r-5"></i> Full name</strong>
+                            <p class="text-muted" data-bind="text: customerModel().FullName()">
+                                Vũ Minh Tú
+                            </p>
+                            <hr>
+                            @*<strong><i class="fa fa-book margin-r-5"></i> Birthday</strong>
+                                <p class="text-muted">
+                                    02/9/1982
+                                </p>
+                                <hr>*@
+                            <strong><i class="fa fa-book margin-r-5"></i>Phone</strong>
+                            <p class="text-muted" data-bind="text: customerModel().Phone()">
+                                0912349258
+                            </p>
+                            <hr>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+                            <p class="text-muted" data-bind="text: customerModel().Email()">hanoibanhcuon@gmail.com</p>
+                            <hr>
+                            <strong><i class="fa fa-book margin-r-5"></i>Address</strong>
+                            <p class="text-muted" data-bind="text: customerModel().Address()">
+                                No 3 Nguyen Ngoc Khang, Ba Dinh, Hanoi. No 3 Nguyen Ngoc Khang, Ba Dinh, Hanoi
+                            </p>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li data-bind="css: active2() == 'customerDetail' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail('customerDetail')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-user"></i> Customer information
+                                </a>
+                            </li>
+                            <li data-bind="css: active2() == 'SupportHistory' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail('SupportHistory')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-history"></i> Customer support history
+                                </a>
+                            </li>
+                            <li data-bind="css: active2() == 'OrderHistory' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail('OrderHistory')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-inbox"></i> Order history
+                                </a>
+                            </li>
+                            <li data-bind="css: active2() == 'OrderMoney' ? 'active' : ''">
+                                <a data-bind="click: function() {clickMenuDetail('OrderMoney')}" href="javascript:;" data-toggle="tab">
+                                    <i class="fa fa-money"></i> E-wallet
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div data-bind="template: { name: templateId2 }"></div>
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!--/ko-->
+    </div>
+    @Html.Partial("~/Views/CustomerOfStaff/Customer/_moreDetailCustomer/_InforCustomer.cshtml")
+    @Html.Partial("~/Views/Partial/customer/_ListOrderByCustomer.cshtml")
+    @Html.Partial("~/Views/Partial/customer/_ListOrderMoneyByCustomer.cshtml")
+    @Html.Partial("~/Views/CustomerOfStaff/Customer/_moreDetailCustomer/_ListComplainByCustomer.cshtml")
+   
+
+   
+</script>
+

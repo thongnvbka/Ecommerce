@@ -1,0 +1,267 @@
+﻿@model EnumPage
+@{
+    var hasPackage = CheckPermision(EnumPage.Package, EnumAction.View);
+    var hasImportWarehouse = CheckPermision(EnumPage.ImportWarehouse, EnumAction.View);
+    var hasWallet = CheckPermision(EnumPage.Wallet, EnumAction.View);
+    var hasPutAway = CheckPermision(EnumPage.PutAway, EnumAction.View);
+    var hasPackingList = CheckPermision(EnumPage.PackingList, EnumAction.View);
+    var hasDispatcher = CheckPermision(EnumPage.Dispatcher, EnumAction.View);
+    var hasDelivery = CheckPermision(EnumPage.Delivery, EnumAction.View);
+    var hasExportWarehouse = CheckPermision(EnumPage.ExportWarehouse, EnumAction.View);
+    var hasExportWarehouseApprovel = CheckPermision(EnumPage.ExportWarehouseApprovel, EnumAction.View);
+    var hasOrderDetailAcounting = CheckPermision(EnumPage.OrderDetailAcounting, EnumAction.View);
+    var hasWalletTracker = CheckPermision(EnumPage.WalletTracker, EnumAction.View);
+    var hasPacking = CheckPermision(EnumPage.Packing, EnumAction.View);
+}
+
+@if (hasPackage)
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-mail-forward"></i> Package management</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="@(Model == EnumPage.Package ? "active" : "")">
+                    <a href="@Url.Action("Index", "Package")">
+                        <i class="fa fa-cubes text-yellow"></i>List of package
+                    </a>
+                </li>
+                <li class="@(Model == EnumPage.PackageNoCode ? "active" : "")">
+                    <a href="@Url.Action("Index", "PackageNoCode")">
+                        <i class="fa fa-barcode text-yellow"></i> Order lost code
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+@if (hasPutAway || hasImportWarehouse || hasOrderDetailAcounting || hasPacking)
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-mail-forward"></i> Enter the store</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (hasImportWarehouse)
+                {
+                    <li class="@(Model == EnumPage.ImportWarehouse ? "active" : "")">
+                        <a href="@Url.Action("Index", "ImportWarehouse")">
+                            <i class="fa fa-file-o text-yellow"></i> Receipt
+                        </a>
+                    </li>
+                }
+                
+                @if (hasOrderDetailAcounting)
+                {
+                    <li class="@(Model == EnumPage.OrderDetailAcounting ? "active" : "")">
+                        <a href="@Url.Action("Index", "OrderDetailAcounting")">
+                            <i class="fa fa-check text-yellow"></i> Cargo tally
+                        </a>
+                    </li>
+                }
+
+                @if (hasPutAway)
+                {
+                    <li class="@(Model == EnumPage.PutAway ? "active" : "")">
+                        <a href="@Url.Action("Index", "PutAway")">
+                            <i class="fa fa-braille text-yellow"></i> Putaway warehouse
+                        </a>
+                    </li>
+                }
+                
+                @if (hasPacking)
+                {
+                    <li class="@(Model == EnumPage.Packing ? "active" : "")">
+                        <a href="@Url.Action("Index", "Packing")">
+                            <i class="fa fa-cube text-yellow"></i> Baled wood
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+
+@if (hasWallet || hasExportWarehouse || hasExportWarehouseApprovel)
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-reply"></i> Export warehouse</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (hasWallet)
+                {
+                    <li class="@(Model == EnumPage.Wallet ? "active" : "")">
+                        <a href="@Url.Action("Index", "Wallet")">
+                            <i class="fa fa-archive text-yellow"></i> List of covers
+                        </a>
+                    </li>
+                }
+                @if (hasExportWarehouse)
+                {
+                    <li class="@(Model == EnumPage.ExportWarehouse ? "active" : "")">
+                        <a href="@Url.Action("Index", "ExportWarehouse")">
+                            <i class="fa fa-file-o text-yellow"></i> Export warehouse coupons
+                        </a>
+                    </li>
+                }
+                @if (hasExportWarehouseApprovel)
+                {
+                    <li class="@(Model == EnumPage.ExportWarehouseApprovel ? "active" : "")">
+                        <a href="@Url.Action("Index", "ExportWarehouseApprovel")">
+                            <i class="fa fa-check-square-o text-yellow"></i> Confirm the export warehouse coupons
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+
+@if (hasPackingList || hasDispatcher)
+{
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-truck"></i> Commodity coordination</h3>
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                @if (hasPackingList)
+                {
+                    <li class="@(Model == EnumPage.PackingList ? "active" : "")">
+                        <a href="@Url.Action("Index", "PackingList")">
+                            <i class="fa fa-circle-o text-yellow"></i> Packing List
+                        </a>
+                    </li>
+                }
+                @if (hasDispatcher)
+                {
+                    <li class="@(Model == EnumPage.Dispatcher ? "active" : "")">
+                        <a href="@Url.Action("Index", "Dispatcher")">
+                            <i class="fa fa-file-o text-yellow"></i> Commodity coordination
+                        </a>
+                    </li>
+                }
+                @if (hasWalletTracker)
+                {
+                    <li class="@(Model == EnumPage.WalletTracker ? "active" : "")">
+                        <a href="@Url.Action("Index", "WalletTracker")">
+                            <i class="fa fa-eye text-yellow"></i> Track & Control
+                        </a>
+                    </li>
+                }
+                @if (hasDelivery)
+                {
+                    <li class="@(Model == EnumPage.Delivery ? "active" : "")">
+                        <a href="@Url.Action("Index", "Delivery")">
+                            <i class="fa fa-truck text-yellow"></i> Delivery slip for guests
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+}
+
+<div class="box box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-support"></i> Help</h3>
+        <div class="box-tools">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a data-bind="click: function() {clickMenu('warehousewarning')}" href="javascript:;">
+                    <i class="fa fa-circle-o text-yellow"></i> Warehouse operation forecast
+                    <span class="label label-danger pull-right">100</span>
+                </a>
+            </li>
+            <li data-bind="css: active() == 'ticket-support' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('ticket-support')}" href="javascript:;">
+                    <i class="fa fa-circle-o text-yellow"></i> Support to resolve complaints
+                    <span class="label label-danger pull-right">100</span>
+                </a>
+            </li>
+            <li data-bind="css: active() == '' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('')}" href="javascript:;">
+                    <i class="fa fa-circle-o text-yellow"></i> Handle risky orders
+                    <span class="label label-danger pull-right">100</span>
+                </a>
+            </li>
+            <li data-bind="css: active() == 'customerfind' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('customerfind')}" href="javascript:;">
+                    <i class="fa fa-user"></i> Look up customer information
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="box box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-area-chart"></i> Warehouse statistics</h3>
+        <div class="box-tools">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+            <li data-bind="css: active() == 'importwarehouse-report' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('importwarehouse-report')}" href="javascript:;">
+                    <i class="fa fa-inbox"></i> Statistics warehouse
+                    <span class="label label-danger pull-right"></span>
+                </a>
+            </li>
+            <li data-bind="css: active() == 'exportwarehouse-report' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('exportwarehouse-report')}" href="javascript:;">
+                    <i class="fa fa-clock-o"></i> Inventory statistics
+                    <span class="label label-danger pull-right"></span>
+                </a>
+            </li>
+            <li data-bind="css: active() == 'transport-report' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('transport-report')}" href="javascript:;">
+                    <i class="fa fa-truck"></i> Transportation Statistics
+                    <span class="label label-primary pull-right"></span>
+                </a>
+            </li>
+            <li data-bind="css: active() == 'delivery-report' ? 'active' : ''">
+                <a data-bind="click: function() {clickMenu('delivery-report')}" href="javascript:;">
+                    <i class="fa fa-inbox"></i> Statistics delivery
+                    <span class="label label-primary pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

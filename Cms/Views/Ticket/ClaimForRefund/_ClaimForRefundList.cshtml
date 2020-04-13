@@ -1,0 +1,100 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var isCustomerCare = CheckOfficeType(UserState.OfficeId.Value, OfficeType.CustomerCare);
+    var isOrder = CheckOfficeType(UserState.OfficeId.Value, OfficeType.Order);
+    var customer = (byte)ClaimForRefundStatus.CustomerCareWait;
+    var accountantWait = (byte)ClaimForRefundStatus.AccountantWait;
+    var orderWait = (byte)ClaimForRefundStatus.OrderWait;
+    var approvalWait = (byte)ClaimForRefundStatus.ApprovalWait;
+    var type = UserState.Type;
+}
+<script type="text/html" id="claimforrefund-list">
+    <tr data-bind="css: CssRead">
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center" ></td>
+        <td class="text-center" >
+            <!-- ko if: Status < @accountantWait-->
+
+            @if (isOrder)
+            {
+                <!-- ko if: Status == @orderWait-->
+                <a data-bind="click: function() { $parent.btnViewRefundMoneyModalContinute($data); CheckRead();}" href="javscript:;" class="btn btn-success btn-xs" title="Change">
+                    <i class="fa fa-plus-square" data-toggle="tooltip" data-placement="right" title="" data-original-title="Refund processing"></i>
+                </a>
+                <!-- /ko -->
+            }
+            else
+            {
+                //Cho phép xử lý khi trạng thái là: chờ CSKH, Chờ Đặt hàng, Chờ phê duyệt(nếu là Ban giám đốc hoặc Trưởng phòng CSKH)
+
+                <!-- ko if: Status == @customer || Status == @orderWait || (Status == @approvalWait && @type > 0)-->
+                <a data-bind="click: function() { $parent.btnViewRefundMoneyModalContinute($data); CheckRead();}" href="javscript:;" class="btn btn-success btn-xs" title="Change">
+                    <i class="fa fa-plus-square" data-toggle="tooltip" data-placement="right" title="" data-original-title="Refund processing"></i>
+                </a>
+                <!-- /ko -->
+                <!-- ko if: Status == @customer-->
+                <a data-bind="click: function() { $parent.btnViewRefundMoneyModalBack(Id); CheckRead();}" href="javscript:;" class="btn btn-success btn-xs" title="Back">
+                    <i class="fa fa fa-reply" data-toggle="tooltip" data-placement="right" title="" data-original-title="Back"></i>
+                </a>
+                <!-- /ko -->
+                <a href="javscript:;" data-bind="click: function() {$parent.viewDeleteClaimForRefund($data); CheckRead();}" class="btn btn-danger btn-xs">
+                    <i class="fa fa-times-circle" data-toggle="tooltip" data-placement="right" title="" data-original-title="Cancel"></i>
+                </a>
+            }
+            <!-- /ko -->
+        </td>
+       
+        <td class="text-center">
+            <ul class="tbl-list">
+                <li data-toggle="tooltip" data-placement="right" title="" data-original-title="Order ID">
+                    <!-- ko if: OrderType == @order-->
+                    <a data-bind="click: function() {orderDetailViewModel.viewOrderDetail(OrderId); CheckRead();}, attr: { href: '/Ticket#' + ReturnCode(OrderCode) }" href="javascript:;">
+                        <span data-bind="text: ReturnCode(OrderCode)"></span>
+                    </a>
+                    <!-- /ko -->
+                    <!-- ko if: OrderType == @deposit-->
+                    <a data-bind="click: function() {depositDetailViewModel.showModalDialog(OrderId); CheckRead(); }, attr: { href: '/Ticket#' + ReturnCode(OrderCode) }" href="javascript:;">
+                        <span data-bind="text: ReturnCode(OrderCode)"></span>
+                    </a>
+                    <!-- /ko -->
+                </li>
+                <li data-toggle="tooltip" data-placement="right" title="" data-original-title="Ticket ID">
+                    <a data-bind="click: function() { $parent.GetTicketDetailView(TicketId); CheckRead();}, attr: { href: '/Ticket/#TK' + TicketCode}" href="javascript:;">
+
+                        <span data-bind="text: TicketCode"></span>
+
+                    </a>
+                </li>
+                <li data-toggle="tooltip" data-placement="right" title="" data-original-title="Refund note ID">
+                    <a data-bind="click: function() { $parent.btnViewClaimForRefundDetail($data); CheckRead();}" href="javascript:;">
+                        <strong>
+                            <span data-bind="text: Code"></span>
+                        </strong>
+                    </a>
+                </li>
+            </ul>
+            
+        </td>
+        <td class="text-center" >
+            <span data-bind="text: statusApp.statusClaimForRefund[Status].Name, css: statusApp.statusClaimForRefund[Status].Class">Status</span>
+            <span data-bind="text: moment(LastUpdated).format('DD/MM/YYYY HH:mm')"></span>
+        </td>
+        <td class="mailbox-name" >
+            <p data-bind="text: 'Quotation: ' + $parent.stringName(CustomerCareFullName)"></p>
+            <p data-bind="text: 'Complaint handling: ' + $parent.stringName(UserName)"></p>
+            <p data-bind="text: 'Order now: ' + $parent.stringName(OrderUserFullName)"></p>ZZ
+            <p data-bind="text: 'Refund slip: ' + $parent.stringName(SupportFullName)"></p>
+        </td>
+        <td >
+            <span  data-bind="text: CustomerFullName"></span>
+            <p data-bind="text: CustomerPhone"></p>
+            <p data-bind="text: CustomerEmail"></p>
+        </td>
+       
+        <td class="text-center" data-bind="text: formatNumberic(SupporterMoneyRequest, 'N0')" ></td>
+        <td class="text-center" data-bind="text: formatNumberic(CurrencyDiscount, 'N0')" ></td>
+        <td class="text-center" data-bind="text: formatNumberic(RealTotalRefund, 'N0')" ></td>
+        <td class="text-center" data-bind="text: ReasonCancel" ></td>
+        
+    </tr>
+</script>

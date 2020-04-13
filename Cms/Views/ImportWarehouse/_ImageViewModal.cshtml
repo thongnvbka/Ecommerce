@@ -1,0 +1,45 @@
+﻿<div id="viewImageModal" class="modal fade modal-dialog modal-p50" tabindex="-1" role="dialog">
+    <div class="modal-body">
+        <div class="row mb15">
+            <div class="col-xs-4">
+                <button data-bind="click: previous, disable: images().length <= 1" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Save</button>
+            </div>
+            <div class="col-xs-4">
+                <div class="text-center">
+                   Show<span data-bind="text: currentNo"></span>/<span data-bind="text: images().length"></span> Image
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <button data-bind="click: next, disable: images().length <= 1" class="btn btn-sm btn-primary pull-right">Next <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="row mb15">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <!-- ko ifnot: isUrlAbsolute -->
+                    <img data-bind="attr: {src: '/images/'+ image() +'_1000x1000_0'}" style="width: 100%" src="" alt="Image">
+                    <!-- /ko -->
+                    <!-- ko if: isUrlAbsolute -->
+                    <img data-bind="attr: {src: image }" style="width: 100%" src="" alt="Image">
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <button data-bind="click: previous, disable: images().length <= 1" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Previous</button>
+            </div>
+            <div class="col-xs-4">
+                <div class="text-center">
+                 Show<span data-bind="text: currentNo"></span>/<span data-bind="text: images().length"></span> Image
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <button data-bind="click: next, disable: images().length <= 1" class="btn btn-sm btn-primary pull-right">Next <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+</div>

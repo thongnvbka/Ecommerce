@@ -1,0 +1,50 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<script type="text/html" id="ticket-support-list">
+    <tr data-bind="css: CssRead">
+        <td rowspan="2" data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        @*<td rowspan="2" class="mailbox-star text-center">
+                <a href="#"><i class="fa fa-star text-yellow"></i></a>
+            </td>*@
+        <td class="mailbox-name middle-table text-center" data-bind="click: function() { $parent.viewTicketDetail($data); CheckRead();}"><a href="javascript:;" data-bind="text: Code"></a></td>
+        <td rowspan="2" class="mailbox-name middle-table">
+            <span data-bind="click: CheckRead, editable: ContentInternalOrder, editableOptions: {name: 'note', pk: Id, url: '', type: 'textarea', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not noted'}"></span>
+        </td>
+        <td rowspan="2" class="mailbox-name middle-table">
+            <span data-bind="text: ContentInternal"></span>
+        </td>
+        <td rowspan="2" class="mailbox-subject width-370 middle-table">
+            <b data-bind="text: CustomerName"></b> :
+            <!-- ko if: Content !== null-->
+            <span data-bind="text: Content.substring(0, 30)+'...'"></span>
+            <!-- /ko -->
+        </td>
+        <td rowspan="2" class="mailbox-name middle-table">
+            <span data-bind="text: UserName"></span>
+        </td>
+        <td rowspan="2" class="text-center middle-table">
+            <i class="fa fa-clock-o mg-right-5"></i><span data-bind="text: moment(CreateDate).format('DD/MM/YYYY')" class=""></span>
+        </td>
+        <td rowspan="2" class="text-center middle-table">
+            <span data-bind="text: statusApp.statusComplain[Status].Name, css: statusApp.statusComplain[Status].Class"></span>
+        </td>
+    </tr>
+    <tr data-bind="css: CssRead">
+        <td class="mailbox-name middle-table text-center">
+            <!-- ko if: OrderType == @order-->
+            <a data-bind="click: function() {orderDetailViewModel.viewOrderDetail(OrderId); CheckRead();}" href="javascript:;">
+                <span data-bind="text: ReturnCode(OrderCode)"></span>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == @deposit-->
+            <a data-bind="click: function() {depositDetailViewModel.showModalDialog(OrderId); CheckRead(); }" href="javascript:;">
+
+                <span data-bind="text: ReturnCode(OrderCode)"></span>
+
+            </a>
+            <!-- /ko -->
+        </td>
+    </tr>
+</script>

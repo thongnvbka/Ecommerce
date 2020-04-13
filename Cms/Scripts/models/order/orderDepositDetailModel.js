@@ -1,0 +1,19 @@
+﻿var orderDepositDetailModel = function () {
+    this.Id = ko.observable();
+    this.CreateDate = ko.observable();
+    this.UpdateDate = ko.observable();
+    this.DepositId = ko.observable();
+    this.LadingCode = ko.observable();
+    this.Weight = ko.observable();
+    this.CategoryId = ko.observable();
+    this.CategoryName = ko.observable();
+    this.ProductName = ko.observable();
+    this.Quantity = ko.observable();
+    this.Size = ko.observable();
+    this.Image = ko.observable();
+    this.Note = ko.observable();
+    this.PacketNumber = ko.observable();
+    this.Long = ko.observable();
+    this.High = ko.observable();
+    this.Wide = ko.observable();
+};

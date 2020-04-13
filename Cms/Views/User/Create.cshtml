@@ -1,0 +1,61 @@
+﻿@model UserMeta
+
+@{
+    ViewBag.Title = "Add staff";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Add staff
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Category</a></li>
+        <li><a href="@Url.Action("Index")">List of staff</a></li>
+        <li class="active">Add new staff</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("Create")" method="post" class="horizontal-form" id="frmCreate">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_Update", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("Index")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <button type="button" id="btnAdd" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add staff</button>
+            </div>
+        </form>
+    </div>
+</section>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alert(1);
+            $('#btnAdd').click(function () {
+                alert(1);
+                var startDate = $('#StartDate').val();
+                if (startDate.length > 0) {
+                    var arrStart = startDate.split('/');
+                    if (arrStart.length == 3) {
+                        startDate = arrStart[1] + '/' + arrStart[0] + '/' + arrStart[2] + ' 00:00:00 AM';
+                        $('#StartDate').val(startDate);
+                    }
+                }
+                var finishDate = $('#Birthday').val();
+                if (finishDate.length > 0) {
+                    var arrFinish = finishDate.split('/');
+                    if (arrFinish.length == 3) {
+                        finishDate = arrFinish[1] + '/' + arrFinish[0] + '/' + arrFinish[2] + ' 11:59:00 PM';
+                        $('#Birthday').val(finishDate);
+                    }
+                }
+                $('#frmCreate').submit(function () {
+                    alert(1);
+                });
+            })
+        })
+    </script>
+}

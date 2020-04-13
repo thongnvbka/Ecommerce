@@ -1,0 +1,118 @@
+﻿// Variables
+@screen-vxs-max: 480px;
+@screen-xs-min: 481px;
+@screen-xs-max: 767px;
+@screen-sm-min: 768px;
+@screen-sm-max: 991px;
+@screen-md-min: 992px;
+@screen-md-max: 1999px;
+@screen-lg-min: 1200px;
+@border-size: 1px;
+@border-color: #ddd;
+@whiteBackground: white;
+@common-padding: 10px;
+@overlay-index: 9999;
+
+.wrapper-pick-user-component .component-content {
+    border: @border-size solid @border-color;
+    background: @whiteBackground;
+    width: 450px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: @overlay-index + 1;
+    margin: 30px auto;
+}
+
+.wrapper-pick-user-component .component-content .header, .wrapper-pick-user-component .component-content .body, .wrapper-pick-user-component .component-content .footer {
+    padding: @common-padding;
+}
+
+.wrapper-pick-user-component .component-content .tab-content{
+    max-height: 350px;
+    overflow: auto;
+}
+
+.wrapper-pick-user-component .component-content .header {
+    border-bottom: @border-size solid @border-color;
+}
+
+.wrapper-pick-user-component .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    z-index: @overlay-index;
+    border: none;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li {
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li:last-child {
+    border-bottom: none;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li:hover {
+    cursor: pointer;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li a:hover, .pick-user-component ul.media-list li a:focus, .pick-user-component ul.media-list li a:visited {
+    text-decoration: none;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li a.select {
+    position: absolute;
+    top: 10px; right: 0;
+}
+
+.wrapper-pick-user-component .component-content ul.media-list li p{
+    font-size: 14px;
+}
+
+.wrapper-pick-user-component .wrapper-input{
+    position: relative;
+}
+
+.wrapper-pick-user-component a.remove{
+    position: absolute;
+    color: rgb(85, 85, 85);
+}
+
+.wrapper-pick-user-component .wrapper-input a.remove{
+    top: 0; right: 10px;
+}
+
+.wrapper-pick-user-component .wrapper-input-group a.remove{
+    right: 40px;
+}
+
+@media (max-width: @screen-vxs-max) {
+    .wrapper-pick-user-component .component-content {
+        width: auto;
+    }
+}
+
+@media (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+    
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+}
+
+@media (min-width: @screen-lg-min) {
+}

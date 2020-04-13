@@ -1,0 +1,52 @@
+﻿
+@model AccountantSubjectMeta
+<link href="~/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">@*Mã ghi nhận ID*@ID record code </label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.IDD, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.IDD)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Name of subject <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.SubjectName, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.SubjectName)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Describe</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextAreaFor(x => x.SubjectNote, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.SubjectNote)
+    </div>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript">
+        function submitForm() {
+            $("#submitForm").submit();
+        }
+    </script>
+}

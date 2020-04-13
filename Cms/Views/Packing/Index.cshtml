@@ -1,0 +1,269 @@
+﻿@{
+    ViewBag.Title = Resource.Warehouse_Toolbar_DongKienGo;
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+}
+
+<section class="content-header">
+    <h1>
+        Baled wood
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Baled wood</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        @*<div class="col-sm-3 col-md-2">
+                @Html.Partial("_WarehouseSidebar", EnumPage.Packing)
+            </div>
+            <div class="col-sm-9 col-md-10">*@
+        <div class="col-sm-12">
+            <!-- Main content -->
+            <div id="packing">
+                @Html.Partial("_GroupCommentModal")
+                <div class="box box-success">
+                    <div class="box-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li data-bind="attr: {class: mode() == 0 ? 'active': ''}" role="presentation" class="active"><a data-bind="click: changeMode.bind($data, 0)" href="#packingTab" role="tab" data-toggle="tab">All <span data-bind="text: allNo" class="label label-primary"></span></a></li>
+                            <li data-bind="attr: {class: mode() == 1 ? 'active': ''}" role="presentation"><a data-bind="click: changeMode.bind($data, 1)" href="#packingTab" role="tab" data-toggle="tab">Wait for wooden bales <span data-bind="text: waitNo" class="label label-warning"></span></a></li>
+                            <li data-bind="attr: {class: mode() == 2 ? 'active': ''}" role="presentation"><a data-bind="click: changeMode.bind($data, 2)" href="#packingTab" role="tab" data-toggle="tab">Wood bales <span data-bind="text: completeNo" class="label label-info"></span></a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="packingTab">
+                                <div>
+                                    <div class="box-body pad table-responsive">
+                                        <form data-bind="submit: search.bind($data, 1)" id="searchForm" method="get" role="form" class="form-inline">
+                                            <!-- ko if: window['warehouses'] && window['systems'] -->
+                                            <div class="form-group">
+                                                <select data-bind="value: warehouseIdPath, options: warehouses, optionsValue:'idPath', optionsText:'name', optionsCaption:'-- Select archive --'" class="form-control"></select>
+                                            </div>
+                                            <!-- /ko -->
+                                            <div class="form-group">
+                                                <select data-bind="value: orderType, options: orderTypes, optionsValue:'id', optionsText: 'name', optionsCaption:'-- Select the order type --'" class="form-control"></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <button type="button" class="btn btn-default pull-right" id="forcastDate-btn">
+                                                        <span>
+                                                            <i class="fa fa-calendar"></i> Filing date
+                                                        </span>
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input data-bind="value: keyword" placeholder="Search ..." type="text" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-search'}" class="fa fa-search"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                @if (CheckPermision(EnumPage.Packing, EnumAction.Add))
+                                                {
+                                                    <div class="form-group">
+                                                        <button data-bind="enable: hasItemChecked, click: addBill" type="button" role="button" class="btn btn-success"><i class="fa fa-ticket"></i> Wooden bales </button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12" id="body-table">
+                                        <div class="box">
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover tree">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center w50">
+                                                                    <a data-bind="click: changeIsCheckedAll" class="font-checkbox" href="javascript:;">
+                                                                        <i data-bind="attr: {class: isCheckedAll() ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'}" class="clip-checkbox-unchecked-2"></i>
+                                                                    </a>
+                                                                </th>
+                                                                <th class="text-center w-40">#</th>
+                                                                <th class="text-center w-200">Package code / Created Date/ Transport code</th>
+                                                                <th class="text-center w-150">Wood Events</th>
+                                                                @*<th class="text-center">Customer</th>*@
+                                                                <th class="text-center w-200">Warehouse VN/ Weight / Exchangei</th>
+                                                                <th class="text-center w-150">Weigh the wood (kg)</th>
+                                                                <th class="text-center w-150">Cash (kg)</th>
+                                                                <th class="text-center w-200">Note</th>
+                                                                @*<th class="text-center">Weight</th>
+                                                                    <th class="text-center">Weight converted (kg)</th>
+                                                                    <th class="text-center">Weight to charge customer </th>*@
+                                                                <th class="text-center w-150">Status</th>
+                                                                <th class="text-center w-80">Comment</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <!-- ko if: packages().length == 0 -->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="8" class="text-center">There are no records</td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <!-- /ko -->
+                                                        <!-- ko ifnot: packages().length == 0 -->
+                                                        <tbody data-bind="template: {name: 'packagesTemplate', foreach: packages}"></tbody>
+                                                        <!-- /ko -->
+                                                    </table>
+                                                </div>
+
+                                                <div class="row mt15">
+                                                    <div class="col-sm-6">
+                                                        <div id="sumaryPagerPackage" class="henry-paging mt5"></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div id="pagerPackage"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.content -->
+        </div>
+    </div>
+</section>
+
+@Html.Partial("~/Views/wallet/_WalletModal.cshtml")
+@Html.Partial("~/Views/Wallet/_WalletDetailModal.cshtml")
+@*@Html.Partial("~/Views/Package/_PackageDetail.cshtml")*@
+@Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+
+@Html.Partial("_OrderServiceOtherModal")
+
+@section Styles{
+    <link href="/Scripts/viewmodels/suggettion/PickUserModal.css" rel="stylesheet" />
+    <link href="~/Content/plugins/HenrySlider/henry-slider.css" rel="stylesheet" />
+    <link href="~/Content/plugins/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/wysiwyg/src/wysiwyg-editor.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        @if (ViewBag.Warehouses != null)
+        {
+            <text>
+        var warehouses = @Html.Raw(ViewBag.Warehouses);
+        var systems = @Html.Raw(ViewBag.Systems);
+        </text>
+        }
+
+        var states = @Html.Raw(ViewBag.States);
+        var orderType = @Html.Raw(ViewBag.OrderType);
+        var orderTypes = @Html.Raw(ViewBag.OrderTypes);
+
+        var allWarehouses = @Html.Raw(ViewBag.AllWarehouses);
+        var orderPackageStates = @Html.Raw(ViewBag.OrderPackageStates);
+        var walletStates = @Html.Raw(ViewBag.WalletStates);
+    </script>
+
+    <script src="~/Content/plugins/HenrySlider/henry-slider.js"></script>
+    <script src="~/Content/plugins/webui-popover/jquery.webui-popover.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/wysiwyg.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/wysiwyg-editor.js"></script>
+    <script src="~/Content/plugins/wysiwyg/src/henry-editor.js"></script>
+    <script src="~/Scripts/viewmodels/GroupChatHubModal.js"></script>
+    <script src="/Scripts/common/status.@cultureJs"></script>
+    
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/order/depositDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderCommerceDetailViewModel.js"></script>
+    
+    <script src="~/Scripts/viewmodels/wallet/walletDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/wallet/walletAddModel.js"></script>
+    <script src="~/Scripts/viewmodels/orderServiceOther/orderServiceOtherModel.js"></script>
+    <script src="/Scripts/viewmodels/packing/packingModel.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="packagesTemplate" type="text/template">
+        <!-- ko if: isFirst -->
+        <tr class="bg-info">
+            <th colspan="10">
+                <span data-bind="text: window.orderType[orderType+'']"></span>: <a data-bind="text: ReturnCode(orderCode), click: function() {orderTypeViewModel.showViewOrder(orderId, orderCode); }" href="javascript:;"></a>                
+                <span data-bind="text: customerName"></span> - <span data-bind="text: customerLevelName"></span>(<span data-bind="text: customerUserName"></span>)
+                - Number of package(s) : <span data-bind="text: formatNumberic(packageNo,'N0');"></span>,
+                <span data-bind="text: orderServices"></span>
+            </th>
+        </tr>
+        <!-- /ko -->
+        <tr>
+            <td class="text-center">
+                <!-- ko if: walletId == null -->
+                <a data-bind="click: $parent.changeIsChecked" class="font-checkbox" href="javascript:;">
+                    <i data-bind="attr: {class: isChecked() ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'}" class="clip-checkbox-unchecked-2"></i>
+                </a>
+                <!-- /ko -->
+            </td>
+            <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+            <td>
+                <ul class="tbl-list">
+                    <li><i class="fa fa-user"></i> <a href="javascript:;"><b data-bind="text: 'P' + code, click: $parent.showDetail"></b></a></li>
+                    <li><i class="fa fa-clock-o"></i> <span data-bind="text: moment(created).format('DD/MM/YYYY HH:mm')"></span></li>
+                    <li><i class="fa fa-truck"></i> <span data-bind="text: transportCode"></span></li>
+                </ul>
+            </td>
+            <td>
+                <!-- ko if: walletId != null -->
+                <ul class="tbl-list">
+                    <li><i class="fa fa-cube"></i> <a data-bind="click: $parent.showWalletDetail.bind($data, walletId)" href="javascript:;"><b data-bind="text: 'B' + walletCode"></b></a></li>
+                    <li><i class="fa fa-user"></i> <span data-bind="text: walletUserFullName"></span></li>
+                    <li><i class="fa fa-clock-o"></i> <span data-bind="text: moment(walletCreated).format('DD/MM/YYYY HH:mm')"></span></li>
+                </ul>
+                <!-- /ko -->
+            </td>
+            @*<td>
+                    <ul class="tbl-list">
+                        <li><i class="fa fa-user"></i> <a href="javascript:;"><b data-bind="text: customerName"></b></a></li>
+                        <li><i class="fa fa-envelope-o"></i> <span data-bind="text: customerUserName"></span></li>
+                        <li><i class="fa fa-level-up"></i> <span data-bind="text: customerLevelName"></span></li>
+                    </ul>
+                </td>*@
+            <td>
+                <ul class="tbl-list">
+                    <li><i class="fa fa-cubes"></i> <span data-bind="text: customerWarehouseName"></span></li>
+                    <li>Weight : <span data-bind="text: formatNumberic(weight, 'N2')"></span> (kg)</li>
+                    <li>Convert: <span data-bind="text: formatNumberic(weightConverted, 'N2')"></span> (kg)</li>
+                </ul>
+            </td>
+            <td data-bind="text:  formatNumberic(weightWapper, 'N2')" class="text-right"></td>
+            <td data-bind="text:  formatNumberic(weightActual, 'N2')" class="text-right"></td>
+            <td>
+                <span data-bind="text: note" class="color-red"></span>
+            </td>
+            @*<td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(weightConverted, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(weightActual, 'N2')" class="text-right"></td>*@
+            <td class="text-center">
+                <span data-bind="text: statusText, attr: {class: statusClass}"></span>
+            </td>
+            <td class="text-center">
+                <a data-bind="click: $parent.comment" class="btn btn-success" href="javascript:;"><i class="fa fa-comments"></i></a>
+            </td>
+        </tr>
+    </script>
+}

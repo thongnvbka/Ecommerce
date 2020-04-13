@@ -1,0 +1,24 @@
+﻿<script type="text/html" id="rechargeList">
+    <tr>
+        <td data-bind="text: moment(Created).format('DD/MM/YYYY   h:mm:ss')"></td>
+        <!-- ko if:Type==1 -->
+        <td>@Resource.TransactionHistory_Payment</td>
+        <!-- /ko -->
+        <!-- ko if:Type==0 -->
+        <td>@Resource.TransactionHistory_Withdrawal</td>
+        <!-- /ko -->
+        <td data-bind="text:Note"></td>
+        <!-- ko if:Type==1 -->
+        <td class="red-color" data-bind="text:formatNumberic(CurrencyFluctuations,'N4')">- </td>
+        <!-- /ko -->
+        <!-- ko if:Type==0 -->
+        <td class="green-color" data-bind="text:formatNumberic(CurrencyFluctuations,'N4')">+ </td>
+        <!-- /ko -->
+        <!-- ko if:Type==0 -->
+        <td class="green-color" data-bind="text:formatNumberic(CurencyEnd,'N4')"><i class="fa fa-sort-asc"></i></td>
+        <!-- /ko -->
+        <!-- ko if:Type==1 -->
+        <td class="red-color" data-bind="text:formatNumberic(CurencyEnd,'N4')"><i class="fa fa-sort-asc"></i></td>
+        <!-- /ko -->
+    </tr>
+</script>

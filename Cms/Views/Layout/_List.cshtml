@@ -1,0 +1,76 @@
+﻿@model  ModelView<Library.DbContext.Entities.Layout, Library.ViewModels.Warehouse.LayoutFilderViewModel>
+
+<div class="box">
+
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover tree">
+                <thead>
+                    <tr>
+                        <th class="text-center w-350">#</th>
+                        <th class="text-center w-110">Transport layout code </th>
+                        <th class="text-center w-210">Warehouse</th>
+                        <th class="text-center w-150">Status</th>
+                        <th class="text-center w-350">Describe</th>
+                        <th class="text-center w-150">Created Date</th>
+                        <th class="text-center w-150"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center">There are no records</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        var idx = 1;
+
+                        foreach (var m in Model.Items)
+                        {
+                            <tr class="@("treegrid-" + m.Id) @(m.ParentLayoutId != null ? "treegrid-parent-" + m.ParentLayoutId.Value : "")">
+                                <td>@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.TotalRecord + idx). @m.Name</td>
+                                <td>@m.Code</td>
+                                <td>@m.WarehouseName</td>
+                                <td class="text-center">
+                                    @if (m.Status == 0)
+                                    {
+                                        <span class="label label-warning">Newly created</span>
+                                    }
+                                    else if (m.Status == 1)
+                                    {
+                                        <span class="label label-success">current</span>
+                                    }
+                                    else if (m.Status == 2)
+                                    {
+                                        <span class="label label-info">Not use</span>
+                                    }
+                                </td>
+                                <td>@m.Description</td>
+                                <td class="text-right">@m.Created.ToString("g")</td>
+                                <td class="text-center">
+                                    <a href="@Url.Action("Edit", new {id = m.Id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                    <a href="javascript:;" data-url="@Url.Action("Delete", new {id = m.Id})" data-name="@m.Name" class="btn btn-sm btn-danger delete-item"><i class="fa fa-times"></i> Delete  </a>
+                                </td>
+                            </tr>
+                            idx += 1;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @Html.Partial("_Paging", Model.PageInfo)
+    </div>
+
+    <!-- /.box-body -->
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        $('.tree').treegrid();
+    </script>
+}

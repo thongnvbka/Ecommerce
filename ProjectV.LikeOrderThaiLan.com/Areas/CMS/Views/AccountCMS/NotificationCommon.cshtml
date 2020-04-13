@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = Resource.Dashboard_NotificationSystemAccount;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+    @*<link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />*@
+    @*<style>
+            .btn-danger {
+                color: #fff !important;
+            }
+
+                .btn-danger > i {
+                    margin-right: 5px !important;
+                }
+        </style>*@
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    <div class="user-r">
+        
+        <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <div class="user-r-main display-none" data-bind="css: isRending() === true? '' : 'display-none'">
+            <div data-bind="template: { name: templateId }">
+            </div>
+        </div>
+    </div>
+</section>
+<!--list thông báo-->
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_NotifiListCommon.cshtml")
+<!--chi tieets notification-->
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_DetailNotiticationCommon.cshtml")
+<!--notification-->
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_NotificationCommon.cshtml")
+
+@section scripts{
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+
+    @*//file js knockoutjs ViewModel*@
+    <script src="~/Areas/CMS/Scripts/models/notification/notificationCommon.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/notifi/notifiCommonViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+
+}

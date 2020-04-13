@@ -1,0 +1,432 @@
+﻿@{
+    ViewBag.Title = "Track the package";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+}
+
+<section class="content-header">
+    <h1>
+        Track the package
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Track the package</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="trackingPackage">
+                @Html.AntiForgeryToken()
+                <div class="box box-primary">
+                    <div class="box-body pad">
+                        <form data-bind="submit: search.bind($data, 1, false)" id="searchForm" method="get" role="form" class="form-inline">
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default btn-block dropdown-toggle dropdown-toggle-custome" type="button" id="drpChangeOrderType" aria-haspopup="false" aria-expanded="false">
+                                        Orders Type
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul data-bind="foreach: listOrderType" class="dropdown-menu btn-block drp-custom" aria-labelledby="drpChangeOrderType">
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default btn-block dropdown-toggle dropdown-toggle-custome" type="button" id="drpChangeOrderService" aria-haspopup="false" aria-expanded="false">
+                                       Service
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul data-bind="foreach: listOrderService" class="dropdown-menu btn-block drp-custom" aria-labelledby="drpChangeOrderService">
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default btn-block dropdown-toggle dropdown-toggle-custome" type="button" id="drpChangeOrderType" aria-haspopup="false" aria-expanded="false">
+                                        Warehouse orders destination
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul data-bind="foreach: listWarehouse" class="dropdown-menu btn-block drp-custom" aria-labelledby="drpChangeOrderType">
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default btn-block dropdown-toggle dropdown-toggle-custome" type="button" id="drpOrderStatus" aria-haspopup="false" aria-expanded="false">
+                                        Orders status
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu btn-block drp-custom" aria-labelledby="drpOrderStatus">
+                                        <li class="text-center">
+                                            <div class="mb5 mt5">
+                                                <b>-- Orders --</b>
+                                            </div>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <!-- ko foreach: listOrderStatus -->
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                        <!-- /ko -->
+                                        <li role="separator" class="divider"></li>
+                                        <li class="text-center">
+                                            <div class="mb5 mt5">
+                                                <b>-- Order Consignment --</b>
+                                            </div>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <!-- ko foreach: listDepositStatus -->
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                        <!-- /ko -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default btn-block dropdown-toggle dropdown-toggle-custome" type="button" id="drpChangeOrderType" aria-haspopup="false" aria-expanded="false">
+                                        Package status
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul data-bind="foreach: listPackageStatus" class="dropdown-menu btn-block drp-custom" aria-labelledby="drpChangeOrderType">
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <button class="btn btn-default btn-block dropdown-toggle dropdown-toggle-custome" type="button" id="drpChangeOrderType" aria-haspopup="false" aria-expanded="false">
+                                        Type time
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul data-bind="foreach: listTimeType" class="dropdown-menu btn-block drp-custom" aria-labelledby="drpChangeOrderType">
+                                        <li>
+                                            <a data-bind="click: $parent.changeCheck" href="javascript:;">
+                                                <span data-bind="text: name"></span>
+                                            </a>
+                                            <a href="javascript:;" data-bind="click: $parent.changeCheck" class="size18 isCheckbox last-child">
+                                                <i data-bind="css: checked() ? 'clip-checkbox-checked color-green':'clip-checkbox-unchecked-2'"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-default pull-right" id="forcastDate-btn">
+                                        <span>
+                                            <i class="fa fa-calendar"></i>Time 
+                                        </span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span data-bind="text: searchTypeText"></span> <span class="caret"></span></button>
+                                        <ul data-bind="foreach: searchTypes" class="dropdown-menu">
+                                            <li data-bind="click: $parent.changeSearchType"><a data-bind="text: name" href="javascript:;"></a></li>
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                    <input data-bind="value: keyword, attr: {'placeholder': searchPlaceholder }" placeholder="Nhập từ khóa..." type="text" class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-search'}" class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group pull-right">
+                                <div class="input-group">
+                                    <span class="input-group-btn" >
+                                        <a class="btn btn-primary" data-bind="click: ExcelTrackingPackage" ><i class="fa fa-file-excel-o"></i> Export report</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="body-table">
+                        <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center w50">#</th>
+                                                <th class="text-center">Order information</th>
+                                                <th class="text-center">Package information</th>
+                                                <th class="text-center">history of package</th>
+                                                <th class="text-center">Note</th>
+                                                <th class="text-center w50"></th>
+                                            </tr>
+                                        </thead>
+                                        <!-- ko if: packages().length == 0 -->
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="7" class="text-center">There are no records</td>
+                                            </tr>
+                                        </tbody>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: packages().length == 0 -->
+                                        <tbody data-bind="template: {name: 'packagesTemplate', foreach: packages}"></tbody>
+                                        <!-- /ko -->
+                                    </table>
+                                </div>
+
+                                <div class="row mt15">
+                                    <div class="col-sm-6">
+                                        <div id="sumaryPagerTrackingPackage" class="henry-paging mt5"></div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div id="pagerTrackingPackage"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.content -->
+        </div>
+    </div>
+</section>
+
+@Html.Partial("_TransferPackage")
+@Html.Partial("~/Views/Wallet/_WalletDetailModal.cshtml")
+@*@Html.Partial("~/Views/Package/_PackageDetail.cshtml")*@
+@Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+@Html.Partial("~/Views/TrackingDebt/_OrderExchangeModal.cshtml")
+@Html.Partial("~/Views/TrackingDebt/_OrderOtherServiceModal.cshtml")
+@Html.Partial("~/Views/Wallet/_WalletDetailModal.cshtml")
+@Html.Partial("~/Views/Package/_UpdateWeight.cshtml")
+
+@section Styles{
+    <style type="text/css">
+        .dropdown-toggle {
+            border-radius: 0 !important;
+        }
+
+        .drp-custom {
+            padding: 0 !important;
+            -ms-border-radius: 0 !important;
+            border-radius: 0 !important;
+            min-width: 250px;
+            max-height: 300px !important;
+            overflow-x: auto;
+        }
+
+            .drp-custom li {
+                position: relative;
+            }
+
+                .drp-custom li a {
+                    padding: 10px 10px !important;
+                    display: inline-block !important;
+                    width: 100%;
+                }
+
+                    .drp-custom li a.last-child {
+                        position: absolute !important;
+                        font-size: 18px !important;
+                        padding: 7px 12px !important;
+                        right: 0;
+                        top: 0;
+                        width: 50px;
+                    }
+
+        .color-green {
+            color: #327B00 !important;
+        }
+    </style>
+}
+
+@section Scripts{
+    <script>
+        var states = @Html.Raw(ViewBag.States);
+        var allWarehouses = @Html.Raw(ViewBag.AllWarehouses);
+        var orderPackageStates = @Html.Raw(ViewBag.OrderPackageStates);
+        var walletStates = @Html.Raw(ViewBag.WalletStates);
+    </script>
+    <script src="/Scripts/common/status.@cultureJs"></script>
+    <script src="/Scripts/viewmodels/suggettion/SuggetionOrderInputComponents.js"></script>
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/order/depositDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/order/orderCommerceDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/wallet/walletDetailModel.js"></script>
+    <script src="~/Scripts/viewmodels/TrackingPackage/updateWeightModel.js"></script>
+    <script src="/Scripts/viewmodels/TrackingPackage/transferPackageModel.js"></script>
+    <script src="/Scripts/viewmodels/trackingPackage/trackingPackageModel.js"></script>
+    <script src="/Scripts/viewmodels/trackingPackage/trackingPackagePageModel.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="packagesTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+            <td>
+                <ul class="tbl-list">
+                    <li>Customer: <a href="javascript:;"><b data-bind="text: customerName"></b></a></li>
+                    <li>Email: <a href="javascript:;"><b data-bind="text: customerUserName"></b></a></li>
+                    <li>SĐT: <a href="javascript:;"><b data-bind="text: customerPhone"></b></a></li>
+                    <li>
+                        Packages code: <a data-bind="text: 'P'+code, click: $parent.showPackageDetail" href="javascript:;"></a>,
+                        Waybill code: <span data-bind="text: transportCode"></span>
+                    </li>
+                    <li>
+                        Orders code: 
+                        <a data-bind="click: function() {orderTypeViewModel.showViewOrder(orderId, orderCode); }" href="javascript:;"><span data-bind="text: ReturnCode(orderCode)"></span></a>
+                        <!-- ko if: walletCode -->
+                        , Package code: <a data-bind="text: 'B'+walletCode, click: $parent.showWalletDetail.bind($data, walletId)" href="javascript:;"></a>
+                        <!-- /ko -->
+                    </li>
+                    <li>
+                       Type:
+                        <!-- ko if: orderType == @((byte)OrderType.Deposit)-->
+                        <span data-bind="text: $parent.orderType()[orderType+'']" class="label label-warning"></span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: orderType == @((byte)OrderType.Deposit)-->
+                        <span data-bind="text: $parent.orderType()[orderType+'']" class="label label-success"></span>
+                        <!-- /ko -->
+                    </li>
+                    <li>
+                        Package status: <span data-bind="text: $parent.packageStatus()[status+'']" class="label label-info"></span>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="tbl-list">
+                    <li>Actual weight: <span data-bind="text: formatNumberic(weight, 'N2')"></span> (kg)</li>
+                    <li>Weight conversion: <span data-bind="text: formatNumberic(weightConverted, 'N2')"></span> (kg)</li>
+                    <li>Total: <span data-bind="text: formatNumberic(weightActual, 'N2')"></span> (kg)</li>
+                    <li>
+                        Wooden package: <i data-bind="css: $data['service_@((byte)OrderServices.Packing)'] ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'" class="clip-checkbox-checked"></i>
+                        <!-- ko if: walletPackagePackageNo && walletPackagePackageNo > 1 -->
+                        <a data-bind="click: $parent.showWalletDetail.bind($data, walletPackageId)" href="javascript:;">In-common packaging</a>
+                        <!-- /ko -->
+                    </li>
+                    <li>Kiểm đếm: <i data-bind="css: $data['service_@((byte)OrderServices.Audit)'] ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'" class="clip-checkbox-checked"></i></li>
+                    <li>Đường bay: <i data-bind="css: $data['service_@((byte)OrderServices.FastDelivery)'] ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'" class="clip-checkbox-checked"></i></li>
+                    <li>Warehouse customer select: <span data-bind="text: customerWarehouseName"></span></li>
+                </ul>
+            </td>
+            <td>
+                <ul class="tbl-list">
+                    <!-- ko if: $data['status_'+@((byte)OrderPackageStatus.ShopDelivery)]-->
+                    <li>
+                        <span data-bind="text: $parent.packageStatus()[''+@((byte)OrderPackageStatus.ShopDelivery)]" class="label label-default"></span>:
+                        <span data-bind="text: moment($data['status_'+@((byte)OrderPackageStatus.ShopDelivery)].createDate).format('HH:ss DD/MM/YYYY')"></span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: $data['status_'+@((byte)OrderPackageStatus.ChinaReceived)]-->
+                    <li>
+                        <span data-bind="text: $parent.packageStatus()[''+@((byte)OrderPackageStatus.ChinaReceived)]" class="label label-default"></span>:
+                        <span data-bind="text: moment($data['status_'+@((byte)OrderPackageStatus.ChinaReceived)].createDate).format('HH:ss DD/MM/YYYY')"></span>
+                        - <span data-bind="text: $data['status_'+@((byte)OrderPackageStatus.ChinaReceived)].userFullName"></span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: $data['status_'+@((byte)OrderPackageStatus.PartnerDelivery)]-->
+                    <li>
+                        <span data-bind="text: $parent.packageStatus()[''+@((byte)OrderPackageStatus.PartnerDelivery)]" class="label label-default"></span>:
+                        <span data-bind="text: moment($data['status_'+@((byte)OrderPackageStatus.PartnerDelivery)].createDate).format('HH:ss DD/MM/YYYY')"></span>
+                        - <span data-bind="text: $data['status_'+@((byte)OrderPackageStatus.PartnerDelivery)].userFullName"></span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: status != @((byte)OrderPackageStatus.Transferring) && $data['status_'+@((byte)OrderPackageStatus.InStock)]-->
+                    <li>
+                        <span data-bind="text: $parent.packageStatus()[''+@((byte)OrderPackageStatus.InStock)]" class="label label-default"></span>:
+                        <span data-bind="text: moment($data['status_'+@((byte)OrderPackageStatus.InStock)].createDate).format('HH:ss DD/MM/YYYY')"></span>
+                        - <span data-bind="text: $data['status_'+@((byte)OrderPackageStatus.InStock)].userFullName"></span>
+                        <br />
+                        Position: <span data-bind="text: $data['status_'+@((byte)OrderPackageStatus.InStock)].data.layoutName"></span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: $data['status_'+@((byte)OrderPackageStatus.GoingDelivery)]-->
+                    <li>
+                        <span data-bind="text: $parent.packageStatus()[''+@((byte)OrderPackageStatus.GoingDelivery)]" class="label label-default"></span>:
+                        <span data-bind="text: moment($data['status_'+@((byte)OrderPackageStatus.GoingDelivery)].createDate).format('HH:ss DD/MM/YYYY')"></span>
+                        - <span data-bind="text: $data['status_'+@((byte)OrderPackageStatus.GoingDelivery)].userFullName"></span>
+                        <br />
+                        @Resource.Code_Transition: <span data-bind="text: $data['status_'+@((byte)OrderPackageStatus.GoingDelivery)].data.deliveryCode"></span>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </td>
+            <td>
+                <!-- ko if: $data['packageNotes'] && $data['packageNotes'].length > 0-->
+                <ul data-bind="foreach: $data['packageNotes']" class="tbl-list">
+                    <li>
+                        <span data-bind="text: $parent.packageNoteMode[mode+'']" class="label label-default"></span>: 
+                        <span data-bind="text: content"></span>
+                    </li>
+                </ul>
+                <!-- /ko -->
+            </td>
+            @*<td data-bind="text: note"></td>*@
+            <td class="text-center">
+                @if (CheckPermision(EnumAction.Update, EnumPage.TrackingPackage))
+                {
+                    <a data-bind="click: updateWeightModelView.showUpdateForm" class="btn btn-primary btn-sm" title="Update weight" href="javascript:;"><i class="fa fa-edit"></i></a>
+                }
+                @if (CheckPermision(EnumAction.Approvel, EnumPage.TrackingPackage))
+                {
+                    <a data-bind="click: $parent.showTransferPackage" class="btn btn-warning btn-sm" title="Transfer goods to other orders" href="javascript:;"><i class="fa fa-edit"></i></a>
+                }
+            </td>
+        </tr>
+    </script>
+}

@@ -1,0 +1,753 @@
+﻿@using Common.Emums
+@{
+    var statusFinish = (byte)DepositStatus.Finish;
+    var statusWaitOrder = (byte)DepositStatus.WaitOrder;
+    var statusPendingPrice = (byte)DepositStatus.PendingPrice;
+    var statusProcessing = (byte)DepositStatus.Processing;
+    var statusCancel = (byte)DepositStatus.Cancel;
+    var statusOrder = (byte)DepositStatus.Order;
+    var statusInWarehouse = (byte)DepositStatus.InWarehouse;
+    var statusPending = (byte)DepositStatus.Pending;
+    var other = (byte)OrderServices.Other;
+
+    //phân quyền
+    var delete = CheckPermision(EnumAction.Delete, EnumPage.OrderDepositNew, EnumPage.OrderDeposit, EnumPage.OrderDepositDelay);
+    var approvel = CheckPermision(EnumAction.Approvel, EnumPage.OrderDepositNew, EnumPage.OrderDeposit, EnumPage.OrderDepositDelay);
+}
+
+<script>
+    function serviceOthe(type) {
+        return type == 0 ? 'transport feeShop' : 'Forklift fee';
+    }
+</script>
+
+<div id="orderDepositAddOrEdit" class="modal fade modal-dialog modal-p80" tabindex="-1" data-backdrop="static" role="dialog">
+    <div class="modal-body">
+        <form id="formOrderDeposit">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <!-- ko if: Code() != undefined -->
+                        <i class="fa fa-globe"></i> Order code: <strong data-bind="text: ReturnCode(Code())" style="color: red"></strong>
+                        <span data-bind="text: statusApp.deposit[Status()].Name, css: statusApp.deposit[Status()].Class"></span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <small data-bind="text: 'Start Date :' + moment(CreateDate()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                        <!-- ko if: Status() != @statusFinish-->
+                        <small class="pull-right">Date of completion: --/--/----</small>
+
+                        <!-- /ko -->
+                        <!-- ko if: Status() == @statusFinish-->
+                        <small data-bind="text: 'Date of completion: ' + moment(UpdateDate()).format('DD/MM/YYYY')" class="pull-right"></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Note client</h3>
+                        </div>
+                        <div class="box-body">
+                            <p data-bind="text: Note()"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 class="box-title">Staff notes</h3>
+                        </div>
+
+                        <div class="box-body">
+                            <!-- ko if: Status() < @statusFinish -->
+                            <textarea data-bind="value: Description," class="form-control"></textarea>
+                            <!-- /ko -->
+                            <!-- ko ifnot: Status() < @statusFinish -->
+                            <p data-bind="text: Description,"></p>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row importwarehouse">
+                <div class="col-xs-4">
+                    <strong class="strong-title"> Cutomer information </strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Customer :</label>
+                                <div class="col-sm-9">
+                                    <select data-bind="value: CustomerId, enable: Status() < @statusOrder" class="form-control customer-search-add" style="width: 100%;"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Full name :</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: CustomerName()" class="control-label" style="text-align: left !important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Phone:</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: CustomerPhone()" class="control-label" style="text-align: left !important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email:</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: CustomerEmail()" class="control-label" style="text-align: left !important"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Address :</label>
+                                <div class="col-sm-9">
+                                    <label data-bind="text: CustomerAddress()" class="control-label" style="text-align: left !important"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <strong class="strong-title">Receiver information</strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Fullname :<span class="color-red">*</span></label>
+                                <div class="col-sm-9">
+                                    <!-- ko if: Status() < @statusOrder -->
+                                    <input data-bind="value: ContactName" name="ContactName" type="text" class="form-control" required>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status() < @statusOrder -->
+                                    <label data-bind="text: ContactName" class="control-label" style="text-align: left !important"></label>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Phone:<span class="color-red">*</span></label>
+                                <div class="col-sm-9">
+                                    <!-- ko if: Status() < @statusOrder -->
+                                    <input data-bind="value: ContactPhone" name="ContactPhone" type="text" class="form-control" required>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status() < @statusOrder -->
+                                    <label data-bind="text: ContactPhone" class="control-label" style="text-align: left !important"></label>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email:</label>
+                                <div class="col-sm-9">
+                                    <!-- ko if: Status() < @statusOrder -->
+                                    <input data-bind="value: ContactEmail" name="ContactEmail" type="text" class="form-control" required>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status() < @statusOrder -->
+                                    <label data-bind="text: ContactEmail" class="control-label" style="text-align: left !important"></label>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Address :<span class="color-red">*</span></label>
+                                <div class="col-sm-9">
+                                    <!-- ko if: Status() < @statusOrder -->
+                                    <input data-bind="value: ContactAddress" name="ContactAddress" type="text" class="form-control" required>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: Status() < @statusOrder -->
+                                    <label data-bind="text: ContactAddress" class="control-label" style="text-align: left !important"></label>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <strong class="strong-title">More information</strong>
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Exchange rate is applied:</label>
+                                <div class="col-sm-8">
+                                    <label data-bind="text: '1 CNY = ' + formatNumberic( isAdd() == true? exchangeRate() : ExchangeRate(), 'N2') + ' Baht'" class="control-label">Tỷ giá đang áp dụng:</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Warehouse deposit:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control select-view" style="width: 100%;" data-bind="options: listWarehouseDeposit, optionsText: 'Name', optionsValue: 'Id', value: WarehouseId, optionsCaption: '-- Chọn kho --', enable: Status() < @statusFinish "></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Warehouse delivery:</label>
+                                <div class="col-sm-8">
+                                    @if (UserState.Type == 1 || UserState.Type == 2)
+                                    {
+                                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listWarehouseDelivery, optionsText: 'Name', optionsValue: 'Id', value: WarehouseDeliveryId, optionsCaption: '-- Chọn kho --', enable: @statusPending >= Status() "></select>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listWarehouseDelivery, optionsText: 'Name', optionsValue: 'Id', value: WarehouseDeliveryId, optionsCaption: '-- Chọn kho --', enable: @statusPendingPrice >= Status()"></select>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Identifier code:</label>
+                                <div class="col-sm-8">
+                                    <label data-bind="text: codeOw" class="control-label"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form id="formDepositDetail">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong class="strong-title">commodity information</strong>
+                    <span data-bind="if: listDetail().length != 0">
+                        <span colspan="10"> Total link: <b data-bind="text: listDetail().length"></b> - Total customer order: <b data-bind="text: formatNumbericCN(_.sumBy(listDetail(), function(o) { return  Globalize.parseFloat(o.Quantity + ''); }),'N0')"></b> - Total product set: <b data-bind="text: formatNumbericCN(_.sumBy(listDetail(), function(o) { return  o.Status != 1 ? Globalize.parseFloat(o.QuantityBooked + '') : 0; }),'N0')"></b></span>
+                    </span>
+                    <button data-bind="click: showAddDetail" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Detail Orders</button>
+                    <br />
+                    <br />
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-40">#</th>
+                                        <th class="text-center">Image</th>
+                                        <th class="text-center">commodity name</th>
+                                        <th class="text-center">branch</th>
+                                        <th class="text-center">Describe</th>
+                                        <th class="text-center">Quantity </th>
+                                        <th class="text-center">Size (cm)</th>
+                                        <th class="text-center">Weight(Kg)</th>
+                                        <th class="text-center">Package quantity</th>
+                                        <th class="text-center">Ship TQ (yuan)</th>
+                                        <th class="text-center">Bill of Lading</th>
+                                        <th class="text-center w-140">Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: listDetail">
+                                    <tr>
+                                        <td data-bind="text: $index()+1" class="text-center"></td>
+                                        <td class="text-center">
+                                            <img data-bind="attr: { src: Image}" alt="" style="width: 50px;">
+                                        </td>
+                                        <td data-bind="text: ProductName"></td>
+                                        <td data-bind="text: CategoryName" class="text-center"></td>
+                                        <td data-bind="text: Note" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(Quantity, 'N0')" class="text-center"></td>
+                                        <td data-bind="text: Size" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(Weight, 'N2')" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(PacketNumber, 'N2')" class="text-center"></td>
+                                        <td data-bind="text: formatNumberic(ShipTq + '', 'N2')" class="text-center"></td>
+                                        <td data-bind="text: ListCode" class="text-center"></td>
+                                        <td class="text-center">
+                                            <a data-bind="click: $parent.showEditDetail" href="javascript:;" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit </a>
+                                            <a data-bind="click: $parent.removeDetail" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot data-bind="if: listDetail().length == 0">
+                                    <tr>
+                                        <td class="text-center" colspan="12">
+                                            There are no signed line items
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <strong class="strong-title">Staff Processed</strong>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-xs-4">
+                <div class="form-horizontal">
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label">Ship CN (yuan)</label>
+                        <div class="col-sm-9">
+                            <input data-bind="value: FeeShip, valueUpdate: 'blur'" type="text" class="form-control decimal">
+                            <br />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label">Price approved (Baht)<span class="color-red">*</span></label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                @if (UserState.Type == 1 || UserState.Type == 2)
+                                {
+                                    <input data-bind="value: ApprovelPrice, valueUpdate: 'blur', disable: @statusInWarehouse < Status()" type="text" class="text-right form-control decimal" aria-label="Text input with dropdown button" />
+                                }
+                                else
+                                {
+                                    <input data-bind="value: ApprovelPrice, valueUpdate: 'blur', disable: @statusPendingPrice < Status()" type="text" class="text-right form-control decimal" aria-label="Text input with dropdown button" />
+                                }
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span data-bind="text: '/' + ApprovelUnit()"></span>&nbsp;<i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a data-bind="click: selectUnit.bind($data, 'Weight')" class="dropdown-item" href="javascript:;">Weight</a>
+                                        <a data-bind="click: selectUnit.bind($data, 'Weight converted')" class="dropdown-item" href="javascript:;">Weight converted</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9" style="padding-left: 36px;">
+                            <label class="checkbox">
+                                <input data-bind="checked: DepositType" type="checkbox" /> Have a pin
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9" style="padding-left: 36px;">
+                            <label class="checkbox">
+                                <input data-bind="checked: OrderInfoId" type="checkbox" /> Go to work
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                        <label class="col-sm-3 control-label">Service: </label>
+                        <div class="col-sm-9" style="padding-left: 36px;">
+                            <div data-bind="foreach:  listOrderServiceCheck">
+                                <label class="checkbox">
+                                    <input data-bind="checked: Checked" type="checkbox" /> <span data-bind="text: ServiceName"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="table-responsive" style="width: 100%">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Sum package number</th>
+                            <td data-bind="text:  formatNumberic(PacketNumber(), 'N0')" class="text-right"></td>
+                        </tr>
+                        <tr>
+                            <th>Total weight</th>
+                            <td data-bind="text:  formatNumberic(TotalWeight(), 'N2')" class="text-right"></td>
+                        </tr>
+                        @*<tr>
+                                <th class="col-md-4">Total money dịch vụ (Baht)</th>
+                                <th data-bind="text:  formatNumberic(ProvisionalMoney(), 'N2')" class="text-right"></th>
+                            </tr>*@
+                        <tr>
+                            <th class="col-md-4">
+                                Sum Provisional money (Baht):<br />
+                                <i>According to customer data provided</i>
+                            </th>
+                            <th data-bind="text: formatNumberic(ProvisionalMoney(), 'N2')" class="text-right"></th>
+                        </tr>
+                        <tr>
+                            <th class="col-md-4">Sum money (Baht)</th>
+                            <th data-bind="text: formatNumberic(_.sumBy(listOrderService(), function(o) { return o.TotalPrice; }),'N2')" class="text-right"></th>
+                        </tr>
+                    </table>
+                    <hr />
+                    <h4>Service rate: </h4>
+                    <table class="table table-bordered table-hover">
+                        <tbody data-bind="foreach: listOrderService">
+                            <!-- ko if: ServiceId == @other -->
+                            @*<tr>
+                                    <td>
+                                        <span data-bind="text:  ServiceName + ' (Baht)'"></span> <a class="btn btn-xs btn-info">Detail</a>
+                                    </td>
+                                    <td data-bind="text:  formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                                </tr>*@
+                            <!-- ko foreach: $parent.listOrderServiceOther -->
+                            <tr>
+                                <td data-bind="text:  serviceOthe(Mode) + ' (Baht)'"></td>
+                                <td data-bind="text:  formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                            </tr>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- ko if: ServiceId != @other -->
+                            <tr>
+                                <td data-bind="text:  ServiceName + ' (Baht)'"></td>
+                                <td data-bind="text:  formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                            </tr>
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div data-bind="with: viewBoxChat" id="divShowBoxChat" class="col-md-4 view-chat-box">
+                <div data-bind="template: { name: templateChatId }"></div>
+            </div>
+        </div>
+
+        <!-- ko ifnot: isModelAdd  -->
+        <!-- ko if: Status() > @statusWaitOrder -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <!-- ko if: Status() < @statusCancel -->
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <input data-bind="value: codePackage" type="text" class="form-control" placeholder="Enter the bill of lading">
+                                    <span class="input-group-btn">
+                                        <button data-bind="click: addPackage, enable: isSubmit" class="btn btn-info" type="button">
+                                            <!-- ko if: isSubmit()-->
+                                            <i class="fa fa-check"></i>
+                                            <!-- /ko -->
+                                            <!-- ko if: !isSubmit()-->
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                            <!-- /ko -->
+                                            Add bill of lading
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <span><strong class="strong-title">Package List :</strong></span>
+                        <span data-bind="if: listPackageView().length != 0">
+                            <span colspan="10">
+                                Đơn <b>
+                                    <strong data-bind="text: ReturnCode(Code())" style="color: red"></strong>
+                                </b> có: <b data-bind="text: listPackageView().length"></b> Package - Sum Actual weight:
+                                <b data-bind="text: formatNumberic(_.sumBy(listPackageView(), function(o) { return Globalize.parseFloat(o.Weight() + '');}),'N2')"></b> (kg)
+                                - Sum Weight conversion: <b data-bind="text: formatNumberic(_.sumBy(listPackageView(), function(o) { return  o.WeightConverted;}),'N2')"></b>(kg)
+                                - Sum Weight charged: <b data-bind="text: formatNumberic(_.sumBy(listPackageView(), function(o) { return  o.WeightActual;}),'N2')"></b>(kg)
+                            </span>
+                        </span>
+                        <!-- /ko -->
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center w-40">#</th>
+                                    <th class="text-center"><i class="fa fa-cube"></i> Package code</th>
+                                    <th class="text-center w-100"><i class="fa fa-code"></i> Transport code</th>
+                                    <th class="text-center w-100"><i class="fa fa-calendar"></i> Date of entry into the warehouse </th>
+                                    <th class="text-center">Size (Cm) (Lengthx Width x Height)</th>
+                                    <th>Actual weight</th>
+                                    <th>Weight converted (kg)</th>
+                                    <th>Weight to charge customer </th>
+                                    <th class="text-center"><i class="fa fa-thumb-tack"></i> Status</th>
+                                    <th class="text-center w-80"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: listPackageView">
+                                <tr>
+                                    <td data-bind="text: $index()+1" class="text-center"></td>
+                                    <td data-bind="text: 'P' + Code" class="text-center"></td>
+                                    <td class="text-center">
+                                        <input data-bind="value: TransportCode" class="form-control" />
+                                    </td>
+                                    <td class="text-center">
+                                        <!-- ko if: ForcastDate() != '' -->
+                                        <input data-bind="value: ForcastDate, valueUpdate: 'blur'" class="form-control datepicker" />
+                                        <!-- /ko -->
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input data-bind="value: Length" class="text-right form-control decimal" placeholder="length" /></td>
+                                                <td>x</td>
+                                                <td><input data-bind="value: Width" class="text-right form-control decimal" placeholder="width" /></td>
+                                                <td>x</td>
+                                                <td><input data-bind="value: Height" class="text-right form-control decimal" placeholder="height" /></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <input data-bind="value: Weight" class="text-right form-control decimal" />
+                                    </td>
+                                    <td>
+                                        <span data-bind="text: formatNumberic(WeightConverted, 'N2')"></span>
+                                    </td>
+                                    <td data-bind="text: formatNumberic(WeightActual, 'N2')"></td>
+                                    <td class="text-center">
+                                        <span data-bind="text: statusApp.orderPackage[Status].Name, css: statusApp.orderPackage[Status].Class"></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a data-bind="click: $parent.deletePackage" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot data-bind="if: listPackageView().length == 0">
+                                <tr>
+                                <tr>
+                                    <td colspan="8">There is currently no bill of lading!</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="timeline timeline-inverse">
+                    <li class="time-label">
+                        <span>
+                            <strong class="strong-title">Order history:</strong>
+                            <a data-bind="click: checkShowHistory" href="javascript:;" class="pull-right btn btn-info btn-xs ml15">
+                                <!-- ko ifnot: isShowHistory -->
+                                View <i class="fa fa-chevron-down"></i>
+                                <!-- /ko -->
+                                <!-- ko if: isShowHistory -->
+                                Close <i class="fa fa-chevron-up"></i>
+                                <!-- /ko -->
+                            </a>
+                        </span>
+                    </li>
+                    <!-- ko if: isShowHistory -->
+                    <!-- ko foreach: listHistory -->
+                    <li>
+                        <i data-bind="css: statusApp.order[Status].Ifa"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-calendar-check-o"></i> <span data-bind="text: moment(CreateDate).format('L LTS')"></span></span>
+                            <!-- ko if: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: CustomerName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                            <!-- ko ifnot: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: UserFullName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">
+            Order staff:
+            <!-- ko if: (userOrder() != null && userOrder() != undefined && userOrder() != '') -->
+            <b><span data-bind="text: userOrder().FullName + '-' + userOrder().TitleName"></span></b><i>(<span data-bind="text: userOrder().Email"></span>)</i>
+            <!-- /ko-->
+            <!-- ko ifnot: (userOrder() != null && userOrder() != undefined && userOrder() != '') -->
+            --
+            <!-- /ko-->
+        </div>
+        <!-- ko if: Status() < @statusFinish -->
+        <button data-bind="click: save, enable: isSubmit" class="btn btn-primary" type="button">
+            <!-- ko if: isSubmit()-->
+            <i class="fa fa-print"></i>
+            <!-- /ko -->
+            <!-- ko if: !isSubmit()-->
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <!-- /ko -->
+            Save order
+        </button>
+        @*<button data-bind="click: save" type="button" class="btn btn-primary"><i class="fa fa-print"></i> Lưu Orders</button>*@
+        <!-- /ko -->
+        <!-- ko if: !isModelAdd() -->
+        <!-- ko if: Status() == @statusWaitOrder -->
+        @*<button data-bind="click: singles" type="button" class="btn btn-success"><i class="fa fa-send"></i> Kết đơn</button>*@
+
+        <button data-bind="click: singles, enable: isSubmit" class="btn btn-success" type="button">
+            <!-- ko if: isSubmit()-->
+            <i class="fa fa-send"></i>
+            <!-- /ko -->
+            <!-- ko if: !isSubmit()-->
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <!-- /ko -->
+            single latch
+        </button>
+
+        <!-- /ko -->
+        <!-- ko if: Status() == @statusProcessing -->
+        @*<button data-bind="click: sendPendingPrice" type="button" class="btn btn-primary"><i class="fa fa-send"></i> Xử lý xong gửi duyệt giá</button>*@
+
+        <button data-bind="click: sendPendingPrice, enable: isSubmit" class="btn btn-primary" type="button">
+            <!-- ko if: isSubmit()-->
+            <i class="fa fa-send"></i>
+            <!-- /ko -->
+            <!-- ko if: !isSubmit()-->
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <!-- /ko -->
+            Processing finished sending price
+        </button>
+
+        <!-- /ko -->
+        @if (approvel)
+        {
+        <!-- ko if: Status() == @statusPendingPrice -->
+            @*<button data-bind="click: sendQuotes" type="button" class="btn btn-primary"><i class="fa fa-send"></i> Duyệt giá và gửi báo giá</button>*@
+
+            <button data-bind="click: sendQuotes, enable: isSubmit" class="btn btn-primary" type="button">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-send"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Browse price and send quotation
+            </button>
+
+        <!-- /ko -->
+        }
+        <!-- /ko -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
+    </div>
+
+    <div id="addOrEditDepositDetailModal" class="modal fade modal-dialog modal-p60" tabindex="-1" data-backdrop="static" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Detail exhibition</b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-horizontal">
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">commodity name<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: depositDetailProductName" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">branch<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <div id="category_tree"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Sum Package<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: depositDetailPacketNumber" class="text-right form-control decimal" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Image<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <div class="timeline-item">
+                                            <div class="timeline-body">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                                                    <span class="btn btn-primary btn-file btn-flat">
+                                                        <!-- ko if: isUpload()-->
+                                                        <i class="fa fa-file-image-o"></i>
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !isUpload()-->
+                                                        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                                        <!-- /ko -->
+                                                        Picture commodity
+                                                        <input class="flieuploadImg" name="" type="file">
+                                                    </span>
+                                                    <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                                </div>
+
+                                                <!-- ko if: depositDetailImage() != undefined -->
+                                                <img alt="Tải ảnh lên" data-bind="attr: { src: depositDetailImage() }" style="height: 80px; padding-top: 5px;">
+                                                <!-- /ko -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Product Description</label>
+                                    <div class="col-sm-9">
+                                        <textarea data-bind="value: depositDetailNote" class="form-control" type="text" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Quantity </label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: depositDetailQuantity" class="text-right form-control decimal" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Sum weight(Kg)</label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: depositDetailWeight" class="text-right form-control decimal" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Size (Cm)</label>
+                                    <div class="col-sm-9">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td>
+                                                    <input data-bind="value: depositDetailLong" class="text-right form-control decimal" type="text" placeholder="length" />
+                                                </td>
+                                                <td>x</td>
+                                                <td>
+                                                    <input data-bind="value: depositDetailWide" class="text-right form-control decimal" type="text" placeholder="width" />
+                                                </td>
+                                                <td>x</td>
+                                                <td>
+                                                    <input data-bind="value: depositDetailHigh" class="text-right form-control decimal" type="text" placeholder="height" />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Bill of Lading</label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: depositDetailListCode" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Shipping fee (yuan)</label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: depositShipTq" class="form-control decimal" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: saveDetail, enable: isSubmit" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Lưu
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model CustomerWallitMeta
+@{
+    ViewBag.Title = "Add new e-wallet balances";
+}
+<script>
+    var walletJsTree = @Html.Raw(ViewBag.walletJsTree);
+</script>
+<section class="content-header">
+    <h1>
+        Add new e-wallet balances
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("AccountingWallet")">List of electronic wallets</a></li>
+        <li class="active">Add new e-wallet balances</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("CreateWallet")" method="post" class="form-horizontal" id="submitForm">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_UpdateWallet", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("AccountingWallet")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to lis</a>
+                <button type="button" class="btn btn-info pull-right" onclick="submitForm()"><i class="fa fa-plus"></i> Add a term</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<!-- /.content -->
+

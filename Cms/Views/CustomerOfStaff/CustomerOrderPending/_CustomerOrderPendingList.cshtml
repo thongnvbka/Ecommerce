@@ -1,0 +1,22 @@
+﻿<script type="text/html" id="orderPending-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <img data-bind="attr:{src:Avatar}" alt="..." class="margin" width="50" ></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewCustomerDetailModal" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: LevelName"></td>
+        <td class="text-center" data-bind="text: Email"></td>
+        <th class="text-center">
+            <a href="#"><strong data-bind="text: UserFullName"></strong></a>
+        </th>
+        <td class="text-center">
+            <span data-bind="text: statusApp.customerOfStaffStatus[Status].Name, css: statusApp.customerOfStaffStatus[Status].Class"></span>
+        </td>
+        <td class="text-center decimal" data-bind="text: formatNumberic(TotalOrder, 'N2')">
+            
+        </td>
+        <td class="text-center decimal" data-bind="text: formatNumberic(TotalOrderAverage, 'N2')"></td>
+    </tr>
+</script>

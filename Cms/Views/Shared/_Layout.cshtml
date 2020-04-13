@@ -1,0 +1,260 @@
+﻿@{
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Ionicons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/plugin")
+
+    @RenderSection("Styles", false)
+
+    @Styles.Render("~/Content/theme")
+
+</head>
+<body class="hold-transition skin-red sidebar-mini">
+    <div class="wrapper">
+        @Html.Partial("_Header")
+
+        @Html.Partial("_Sidebar")
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+
+        @Html.Partial("_Footer")
+        @Html.Partial("_ControlSidebar")
+        @Html.Partial("~/Views/Partial/Chat/_Chat.cshtml")
+        @Html.Partial("~/Views/Package/_PackageDetail.cshtml")
+        <div id="view-order-type"></div>
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    @Html.Partial("_NotificationCenter")
+    <script type="text/javascript">
+        var currentUser =
+        {
+            UserName: '@Html.Raw(UserState.UserName)',
+            FullName: '@Html.Raw(UserState.FullName)',
+            Image: '@Html.Raw(UserState.Avatar)',
+            UserId: '@UserState.UserId',
+            TitleId: '@UserState.TitleId',
+            OfficeId: '@UserState.OfficeId',
+            OfficeIdPath: '@Html.Raw(UserState.OfficeIdPath)',
+            OfficeName: '@Html.Raw(UserState.OfficeName)',
+            TitleName: '@Html.Raw(UserState.TitleName)',
+            IsLeader: '@UserState.Type',
+            OfficeType: '@UserState.OfficeType',
+        }
+
+        @if (ViewBag.Notifications != null)
+        {
+            <text>
+                var notifications = @Html.Raw(ViewBag.Notifications);
+                var listMessage = @Html.Raw(ViewBag.ListMessage);
+                var messageDetail = @Html.Raw(ViewBag.MessageDetail);
+                var totalInboxUnread = @ViewBag.TotalInboxUnread;
+                var totalStarUnread = @ViewBag.TotalStarUnread;
+                var totalDraft = @ViewBag.TotalDraft;
+                var maxFileLength = @ViewBag.MaxFileLength;
+                var blackListExtensions = @Html.Raw(ViewBag.BlackListExtensions);
+            </text>
+        }
+                function DoubleScroll(element) {
+                    var elementAdd = document.getElementById('doublescrollAdd');
+                    if (element && !elementAdd) {
+                        var scrollbar = document.createElement('div');
+                        scrollbar.appendChild(document.createElement('div'));
+                        scrollbar.id = 'doublescrollAdd';
+                        scrollbar.style.overflow = 'auto';
+                        scrollbar.style.overflowY = 'hidden';
+                        scrollbar.firstChild.style.width = element.scrollWidth + 'px';
+                        scrollbar.firstChild.style.paddingTop = '1px';
+                        scrollbar.firstChild.appendChild(document.createTextNode('\xA0'));
+                        scrollbar.onscroll = function () {
+                            element.scrollLeft = scrollbar.scrollLeft;
+                        };
+                        element.onscroll = function () {
+                            scrollbar.scrollLeft = element.scrollLeft;
+                        };
+                        element.parentNode.insertBefore(scrollbar, element);
+                    }
+                }
+    </script>
+    <!-- ./wrapper -->
+
+    <script id="isEmp"></script>
+    @Scripts.Render("~/Content/script")
+
+    <script src="~/Scripts/resources/Common.@cultureJs"></script>
+<script src="~/Scripts/resources/InternalEmail.@cultureJs"></script>
+    
+    @Scripts.Render("~/Content/themescript")
+
+    @if (ViewBag.Notifications != null)
+    {
+        <script src="~/Scripts/viewmodels/NotificationCenterViewModel.js"></script>
+        <script src="~/Scripts/viewmodels/LastMyNotifications.js"></script>
+        <script src="~/Scripts/viewmodels/notifyHub.js"></script>
+        <script src="~/Scripts/viewmodels/viewOrderTyperViewModel.js"></script>
+    }
+
+    @RenderSection("Scripts", false)
+
+    <script src="~/signalr/hubs"></script>
+
+    @*<script src="@Url.Content("~/signalr/hubs")"></script>*@
+    @RenderSection("pagespecific", required: false)
+
+    @Html.WriteScriptBlocks()
+
+    <script type="text/javascript">
+        $(function () {
+            //Initialize Select2 Elements
+            $(".select-view").select2();
+
+            //Datemask dd/mm/yyyy
+            $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
+            //Money Euro
+            $("[data-mask]").inputmask();
+
+            //Date range picker
+            $('#reservation').daterangepicker();
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' });
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'Today' : [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        '7 days ago': [moment().subtract(6, 'days'), moment()],
+                        '30 days ago': [moment().subtract(29, 'days'), moment()],
+                        'This month': [moment().startOf('month'), moment().endOf('month')],
+                        'Tháng trước': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    $('#daterange-btn span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+                }
+            );
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            });
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            });
+
+            //Timepicker
+            $(".timepicker").timepicker({
+                showInputs: false
+            });
+
+            //TODO [Gioi] Fix tooggle
+            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (width > 768) {
+                $('#offcanvas').click(function() {
+                    $.cookie('toggleBtn', $("body").hasClass('sidebar-collapse'), { expires: 365 });
+                });
+            }
+            if ($.cookie('toggleBtn') == "false") {
+                $("body").addClass('sidebar-collapse').trigger('expanded.pushMenu');
+            }
+
+            $('li.dropdown.user-menu a').on('click', function (event) {
+                $(this).parent().toggleClass("open");
+            });
+
+            $('body').on('click', function (e) {
+                if (!$('li.dropdown.user-menu').is(e.target) && $('li.dropdown.user-menu').has(e.target).length == 0 && $('.open').has(e.target).length == 0) {
+                    $('li.dropdown.user-menu').removeClass('open');
+                }
+            });
+
+            $(".select-view-lang").val('@UserState.Culture');
+            $(".select-view-lang").select2({
+                minimumResultsForSearch: -1
+            }).on("change", function(e) {
+                var value = $(e.currentTarget).val();
+                $.post('/Account/ChooseLanguage',{culture: value },function(result) {
+                    if (result.status == 1) {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $('.popper').popover({
+            placement: 'bottom',
+            container: 'body',
+            html: true,
+            content: function () {
+                return $(this).next('.popper-content').html();
+            }
+        });
+
+        //$('.todobar-nav')
+        //    .click(function() {
+        //        $('.todobar').toggle();
+        //    });
+    </script>
+
+    <script type="text/javascript">
+        //$(function () {
+        //    // Declare a proxy to reference the hub.
+        //    var chat = $.connection.chatHub;
+        //    // Create a function that the hub can call to broadcast messages.
+        //    chat.client.broadcastMessage = function (name, message) {
+        //        // Html encode display name and message.
+        //        var encodedName = $('<div />').text(name).html();
+        //        var encodedMsg = $('<div />').text(message).html();
+        //        // Add the message to the page.
+        //        $('#discussion').append('<li><strong>' + encodedName
+        //            + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+        //    };
+        //    // Get the user name and store it to prepend to messages.
+        //    $('#displayname').val(prompt('Enter your name:', ''));
+        //    // Set initial focus to message input box.
+        //    $('#message').focus();
+        //    // Start the connection.
+        //    $.connection.hub.start().done(function () {
+        //        $('#sendmessage').click(function () {
+        //            // Call the Send method on the hub.
+        //            chat.server.send($('#displayname').val(), $('#message').val());
+        //            // Clear text box and reset focus for next comment.
+        //            $('#message').val('').focus();
+        //        });
+        //    });
+        //});
+    </script>
+</body>
+</html>

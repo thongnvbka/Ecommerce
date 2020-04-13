@@ -1,0 +1,420 @@
+﻿@{
+    var statuswait = (byte)ComplainStatus.Wait;
+    var statussuccess = (byte)ComplainStatus.Success;
+    var userId = UserState.UserId;
+    var type = UserState.Type;
+    var isCustomerCare = CheckOfficeType(UserState.OfficeId.Value, OfficeType.CustomerCare);
+    var text = (byte)CommentType.Text;
+    var image = (byte)CommentType.Image;
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<div id="ticketDetailModal" class="modal fade modal-dialog modal-p80" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ticket information</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <span class="hidden" id="complainID" data-bind="text: complainModel().Id()"></span>
+                    <i class="fa fa-globe"></i> TICKET ID: <strong style="color: red" data-bind="text: complainModel().Code()"></strong>
+                    <span class="label label-success" data-bind="text: statusApp.statusComplain[complainModel().Status()].Name,
+                                css: statusApp.statusComplain[complainModel().Status()].Class"></span>
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <small class="pull-right">Innitiated date:<span data-bind="text: moment(complainModel().CreateDate()).format('DD/MM/YYYY')"></span> </small><br />
+                    <small class="pull-right">Date of completion: <span data-bind="text: moment(complainModel().LastUpdateDate()).format('DD/MM/YYYY')"></span></small><br />
+                    <small class="pull-right">Customer care staff: <span data-bind="text: complainDetailModel().UserName()"></span></small>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <div class="col-sm-4">
+                            <img class="profile-user-img img-responsive img-circle" src="/Content/dist/img/user2-160x160.jpg" alt="User profile picture">
+
+                            <p class="text-muted text-center"><span class="label label-danger" data-bind="text: customerLevel"></span></p>
+                        </div>
+                        <div class="col-sm-8">
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item row">
+                                    <b>Type: </b> <a class="pull-right" data-bind="text: complainModel().TypeServiceName"></a>
+                                </li>
+                                <li class="list-group-item row">
+                                    <b>Orders: </b> 
+                                    <!-- ko if: complainModel().OrderType() == @order-->
+                                    <a class="pull-right" data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, complainModel().OrderId()), attr: { href: '/Ticket#' + ReturnCode(complainModel().OrderCode()) }" href="javascript:;">
+                                        <span data-bind="text: ReturnCode(complainModel().OrderCode())"></span>
+                                    </a>
+                                    <!-- /ko -->
+                                    <!-- ko if: complainModel().OrderType() == @deposit-->
+                                    <a class="pull-right" data-bind="click: depositDetailViewModel.showModalDialog.bind($data, complainModel().OrderId()), attr: { href: '/Ticket#' + ReturnCode(complainModel().OrderCode()) }" href="javascript:;">
+                                        <span data-bind="text: ReturnCode(complainModel().OrderCode())"></span>
+                                    </a>
+                                    <!-- /ko -->
+                                    @*<a class="pull-right" data-bind="text: complainModel().OrderCode()"></a>*@
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-user"></i> Customer information</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body box-profile">
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Customer ID</b> <a class="pull-right" data-bind="text: complainModel().CustomerId"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Full name</b> <a class="pull-right" data-bind="text: complainModel().CustomerName"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Phone</b> <a class="pull-right" data-bind="text: customerPhone"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Email</b> <a class="pull-right" data-bind="text: customerEmail"></a>
+                            </li>
+                            <li class="row col-md-12">
+                                <b>Address</b> <a class="pull-right" data-bind="text: customerAddress"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-user"></i>Staff in charge</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="list-group list-group-unbordered">
+                            <b>Responsible for customer care</b>  <label class="pull-right">
+                                <a data-bind="text: complainDetailModel().UserName()"></a>
+                            </label>
+                        </div>
+
+                        <ul class="list-group list-group-unbordered col-md-12" data-bind="foreach : complainuser1">
+                            <li class="list-group-item row">
+                                <div class="col-md-10">
+                                    <b>Help</b>  <label class="pull-right">
+                                        <a data-bind="text: UserName"></a><br />
+                                        (<span data-bind="text: OfficeName" style="font-weight:400"></span>)
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <a style="color: red;" data-bind="click: $parent.deleteSupport.bind($data, UserId)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 form-group">
+                        <label>Add member support</label>
+                        <select class="col-md-10 form-group select-view" id="userList" data-bind="options: listUserDetail, optionsText: 'Text', optionsValue: 'Value', value: complainDetailModel().UserRequestId" style="width: 100%;"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <label></label>
+                        <button type="button" class="btn btn-default" data-bind="click: AddUserSupport">Add</button>
+                    </div>
+                </div>
+                <div>
+                    <label>Internal notes</label>
+                    <textarea data-bind="value: complainModel().ContentInternal" style="width:100%;min-height: 100px"></textarea>
+                    <button type="button" class="btn btn-default" data-bind="click: NoteClose">Internal notes</button>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#SupportHistory" data-toggle="tab">Customer support history</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="active tab-pane row" id="">
+                            <ul class="timeline timeline-inverse">
+                                <li class="time-label">
+                                    <span class="bg-red" data-bind="text: moment(complainModel().CreateDate()).format('DD/MM/YYYY')">
+
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-comments bg-yellow"></i>
+                                    <div class="timeline-item">
+                                        <span class="time">
+                                            <i class="fa fa-clock-o"></i>
+                                            <span data-bind="text: moment(complainModel().CreateDate()).format('HH:mm')"></span>
+                                        </span>
+                                        <h3 class="timeline-header"><a href="#" data-bind="text: complainModel().CustomerName()"></a></h3>
+                                        <div class="timeline-body">
+                                            <label data-bind="text: complainModel().Content()"></label>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <!-- ko if: complainModel().ImagePath1 !== null -->
+                                            <img data-bind="attr:{src:complainModel().ImagePath1}" alt="..." class="margin chatImg" width="150" onclick="showImgChat(this)" height="100">
+                                            <!-- /ko -->
+                                            <!-- ko if: complainModel().ImagePath2 !== null -->
+                                            <img data-bind="attr:{src:complainModel().ImagePath2}" alt="..." class="margin chatImg" width="150" onclick="showImgChat(this)" height="100">
+                                            <!-- /ko -->
+                                            <!-- ko if: complainModel().ImagePath3 !== null -->
+                                            <img data-bind="attr:{src:complainModel().ImagePath3}" alt="..." class="margin chatImg" width="150" onclick="showImgChat(this)" height="100">
+                                            <!-- /ko -->
+                                            <!-- ko if: complainModel().ImagePath4 !== null -->
+                                            <img data-bind="attr:{src:complainModel().ImagePath4}" alt="..." class="margin chatImg" width="150" onclick="showImgChat(this)" height="100">
+                                            <!-- /ko -->
+                                            <!-- ko if: complainModel().ImagePath5 !== null -->
+                                            <img data-bind="attr:{src:complainModel().ImagePath5}" alt="..." class="margin chatImg" width="150" onclick="showImgChat(this)" height="100">
+                                            <!-- /ko -->
+                                            <!-- ko if: complainModel().ImagePath6 !== null -->
+                                            <img data-bind="attr:{src:complainModel().ImagePath6}" alt="..." class="margin chatImg" width="150" onclick="showImgChat(this)" height="100">
+                                            <!-- /ko -->
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div data-bind="if: listComplainOrder().length > 0" class="timeline-item" style="overflow-y:scroll; max-height:400px; margin-bottom:20px;">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    @*<th class="text-center">#</th>*@
+                                                    <th class="text-center">Code</th>
+                                                    <th class="text-center"><i class="fa fa-ticket"></i> Product name</th>
+                                                    <th class="text-center"><i class="fa fa-ticket"></i>Image</th>
+                                                    <th class="text-center"><i class="fa fa-thumb-tack"></i> Link</th>
+                                                    <th class="text-center"><i class="fa fa-hand-pointer-o"></i>Quantity </th>
+                                                    <th class="text-center"><i class="fa fa-hand-pointer-o"></i>Price(CNY)</th>
+                                                    <th class="text-center w-250"><i class="fa fa-ticket"></i>Content </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: listComplainOrder">
+                                                <tr>
+                                                    <td data-bind="text: Id"></td>
+                                                    <td data-bind="text: Name"></td>
+                                                    <td><img data-bind="attr:{src: Image}" alt="..." class="margin chatImg" width="50" onclick="showImgChat(this)" /></td>
+                                                    <td data-bind="text: Link"></td>
+                                                    <td data-bind="text: Quantity"></td>
+                                                    <td data-bind="text: formatNumberic(Price,'N2')"></td>
+                                                    <td data-bind="text: ComplainNote"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="col-md-6">
+                                <h3>Internal exchange</h3>
+                                <div style="overflow-y:scroll; height:400px; margin-bottom:20px;" class="customercomplain">
+                                    <ul class="timeline timeline-inverse" data-bind="foreach : complainuserinternallist">
+                                        <li class="time-label">
+                                            <i class="fa fa-envelope bg-blue"></i>
+                                            <div class="timeline-item">
+                                                <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')"><i class="fa fa-clock-o"></i></span>
+                                                <h3 class="timeline-header"><a href="#" data-bind="text: UserName"></a> - <span data-bind="text: UserPosition"></span></h3>
+                                                <div class="timeline-body">
+                                                    <!-- ko foreach: ListObj -->
+                                                    <!-- ko if: CommentType == @text -->
+                                                    <span data-bind="text: Content"></span><br />
+                                                    <!-- /ko -->
+                                                    <!-- ko if: CommentType == @image -->
+                                                    <img alt="" data-bind="attr: { src: Content }" style="height: 40px;" class="chatImg" onclick="showImgChat(this)"><br />
+                                                    <!-- /ko -->
+                                                    <div style="float: right;">
+                                                        <!-- ko if: _.last($root.complainuserinternallist()).Id == Id -->
+                                                        <!--ko if: @type > 0 || @userId == UserId-->
+                                                        <a data-bind="click: $root.editContentUser">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a style="color: red;" data-bind="click: $root.deleteContentUser">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                        <!--/ko-->
+                                                        <!--/ko-->
+                                                    </div>
+                                                    <!-- /ko -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="time-label" style="width: 93%;min-height: 100px;margin-left: 5%;">
+                                    <textarea id="feedbackuser" data-bind="value: contentUser" style="width:100%;min-height: 100px"></textarea>
+                                    <label id="requireUser" style="color:red; display:none;">You must enter information before responding!</label>
+
+                                    <button class="btn btn-primary" data-bind="click: feedbackUser">Send information</button>
+                                    <span class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImageDetail.bind($data,0)" style="margin-left: 5px">
+                                        <span class="btn btn-primary btn-file btn-flat">
+                                            <!-- ko if: isUpload()-->
+                                            <i class="fa fa-file-image-o"></i>
+                                            <!-- /ko -->
+                                            <!-- ko if: !isUpload()-->
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                            <!-- /ko -->
+                                            <input class="flieuploadImg" name="" type="file">
+                                        </span>
+                                        <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Exchanges with customers</h3>
+                                <div style="overflow-y:scroll; height:400px; margin-bottom:20px;" class="customercomplain">
+                                    <ul class="timeline timeline-inverse" data-bind="foreach : complainuser">
+                                        <!--ko if: Content!=null && UserId!=null-->
+                                        <li class="time-label">
+                                            <i class="fa fa-envelope bg-blue"></i>
+                                            <div class="timeline-item">
+                                                <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')"><i class="fa fa-clock-o"></i></span>
+                                                <h3 class="timeline-header"><a href="#" data-bind="text: UserName"></a> - <span data-bind="text: UserPosition"></span></h3>
+                                                <div class="timeline-body">
+                                                    <!-- ko foreach: ListObj -->
+                                                    <!-- ko if: CommentType == @text -->
+                                                    <span data-bind="text: Content"></span><br />
+                                                    <!-- /ko -->
+                                                    <!-- ko if: CommentType == @image -->
+                                                    <img alt="" data-bind="attr: { src: Content }" style="height: 40px;" class="chatImg" onclick="showImgChat(this)"><br />
+                                                    <!-- /ko -->
+                                                    <div style="float: right;">
+                                                        <!-- ko if: _.last($root.complainuser()).Id == Id -->
+                                                        <!--ko if: @type > 0 || @userId == UserId-->
+                                                        <a data-bind="click: $root.editContentUser">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a style="color: red;" data-bind="click: $root.deleteContentUser">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                        <!--/ko-->
+                                                        <!--/ko-->
+                                                    </div>
+                                                    <!-- /ko -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!--/ko-->
+                                        <!--ko if: UserId==null && Content!=null-->
+                                        <li>
+                                            <i class="fa fa-comments bg-yellow"></i>
+                                            <div class="timeline-item">
+                                                
+                                                <span class="time" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')"><i class="fa fa-clock-o"></i></span>
+                                                <h3 class="timeline-header"><a href="#" data-bind="text: CustomerName"></a> @*<span data-bind="text: UserPosition"></span>*@</h3>
+                                                <div class="timeline-body">
+                                                    <!-- ko foreach: ListObj -->
+                                                    <!-- ko if: CommentType == @text -->
+                                                    <span data-bind="text: Content"></span><br />
+                                                    <!-- /ko -->
+                                                    <!-- ko if: CommentType == @image -->
+                                                    <img alt="" data-bind="attr: { src: Content }" style="height: 40px;" class="chatImg" onclick="showImgChat(this)"><br />
+                                                    <!-- /ko -->
+                                                    <!-- /ko -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!--/ko-->
+                                    </ul>
+                                </div>
+                                <div class="time-label" style="width: 93%;min-height: 100px;margin-left: 5%;">
+                                    <textarea id="feedback" data-bind="value: contentCustomer" style="width:100%;min-height: 100px"></textarea>
+                                    <label id="requireCustomer" style="color:red; display:none;">You must enter information before responding!</label>
+
+                                    <button class="btn btn-primary" data-bind="click: feedbackComplainModal">Send information</button>
+                                    <span class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImageDetail.bind($data,1)" style="margin-left: 5px">
+                                        <span class="btn btn-primary btn-file btn-flat">
+                                            <!-- ko if: isUpload()-->
+                                            <i class="fa fa-file-image-o"></i>
+                                            <!-- /ko -->
+                                            <!-- ko if: !isUpload()-->
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                            <!-- /ko -->
+                                            <input class="flieuploadImg" name="" type="file">
+                                        </span>
+                                        <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+        @*@if (isCustomerCare)
+            {*@
+        <!-- ko if: complainModel().Status() == @statuswait -->
+        <button class="btn btn-info" data-bind="click: receiveFixTicket" data-dismiss="modal">Accept to process</button>
+        <!-- /ko -->
+        <!-- ko if: complainModel().Status() != @statussuccess -->
+        <button class="btn btn-success" data-bind="click: request" data-dismiss="modal">Complete</button>
+        <!-- /ko -->
+        <button class="btn btn-danger" data-bind="click: requestCancel" data-dismiss="modal">Cancel</button>
+        @*}*@
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+    @* ========== *@
+    <div id="ticketDetailModalMini" class="modal fade modal-dialog modal-p30" role="dialog">
+        <div class="modal-body">
+            <label class="text-center">
+                Ticket <span data-bind="text: complainModel().Code()"></span> does not exist or has been deleted!
+            </label>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <div id="requestComplain" class="modal fade modal-dialog modal-p30" role="dialog">
+        <div class="modal-body">
+            <label class="text-center">
+                Are you sure you want to finish Ticket <span data-bind="text: complainModel().Code()"></span> or not?
+            </label>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-success" data-bind="click: finishComplain" data-dismiss="modal">Complete</a>
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <div id="cancelComplain" class="modal fade modal-dialog modal-p30" role="dialog">
+        <div class="modal-body">
+            <label class="text-center">
+                Are you sure you want to cancel Ticket <span data-bind="text: complainModel().Code()"></span> or not?
+            </label>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-success" data-bind="click: cancelComplain" data-dismiss="modal">Cancel</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+
+</div>
+<div id="imgShowView">
+    <div id="showImgModal" class="modal">
+        <span class="close" onclick="document.getElementById('showImgModal').style.display = 'none'">&times;</span>
+        <img class="modal-content" id="imgShow" alt="">
+        <div id="caption"></div>
+    </div>
+</div>

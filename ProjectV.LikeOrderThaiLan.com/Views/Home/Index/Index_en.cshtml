@@ -1,0 +1,65 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.Controllers
+@{
+    var rate = new BaseController().ExchangeRate();
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+ <section class="home-tool">
+    <div class="home-tool-main">
+        <div class="home-tool-main-top">
+            <span>
+                @Resource.Home_HeplYou
+            </span>
+        </div>
+        <ul class="home-tool-main-tcontent clearFix">
+            <li data-id="daigou" class="lete-active">
+                <img src="~/Content/images/icon-home-master/home_daigou_icon.png" alt="" />
+                <h1>
+                    @Resource.Home_ServiceOrder
+                </h1>
+                <p>
+                    @Resource.Home_ServiceOrderContent
+                </p>
+                <span></span>
+            </li>
+            <li data-id="zhuanyun" style="min-height: 395px;">
+                <span style="left: 49% !important"></span>
+                <img src="~/Content/images/icon-home-master/home_zhuanyun_icon.png" alt="" />
+                <h1>
+                    @Resource.Home_ServiceDepositOrder
+                </h1>
+                <p>
+                    @Resource.Home_ServiceDepositOrderContent
+                </p>
+            </li>
+
+            <li data-id="dingzhi" style="min-height: 395px;">
+                <img src="~/Content/images/icon-home-master/home_dingzhi_icon.png" alt="" />
+                <span style="left: 49% !important"></span>
+                <h1>
+                    @Resource.Home_ServiceSourcing
+                </h1>
+                <p>
+                    @Resource.Home_ServiceSourcingContent
+                </p>
+            </li>
+        </ul>
+        <div class="home-tool-main-tcontent-box daigou_msg lete-active" style="display: block;">
+            <a class="home-tool-main-tcontent-box-a" href="/@culture/CMS/Order/CreateOrder">
+                @Resource.Home_OrderNow
+            </a>
+            <label></label>
+        </div>
+
+        <div class="home-tool-main-tcontent-box zhuanyun_msg " style="display: none;">
+            <label></label>
+            <a class="home-tool-main-tcontent-box-a" href="/@culture/CMS/Order/CreateDeposit" style="background: #dd2727; color: #fff;   padding: 10px; font-size: 14px; box-sizing: border-box;  border-radius: 5px;">
+                @Resource.Home_CreateDeposit
+            </a>
+        </div>
+
+        <div class="home-tool-main-tcontent-box dingzhi_msg" style="display: none;">
+            <label></label>
+            <a class="home-tool-main-tcontent-box-a" href="/@culture">@Resource.Home_CreateSourcingOrder</a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,4406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dashboard_Account" xml:space="preserve">
+    <value>จัดการบัญชี</value>
+  </data>
+  <data name="Dashboard_ChangePass" xml:space="preserve">
+    <value>เปลี่ยนรหัสผ่าน</value>
+  </data>
+  <data name="Dashboard_CreateSourcing" xml:space="preserve">
+    <value>ร้องขอค้นหาแหล่งสินค้า</value>
+  </data>
+  <data name="Dashboard_CreateStorage" xml:space="preserve">
+    <value>ร้องขอฝากเก็บสินค้า</value>
+  </data>
+  <data name="Dashboard_CreateTicket" xml:space="preserve">
+    <value>สร้างข้อร้องเรียน</value>
+  </data>
+  <data name="Dashboard_Day" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="Dashboard_DDeposit" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="Dashboard_DeliveryRequirements" xml:space="preserve">
+    <value>ร้องขอส่งสินค้า</value>
+  </data>
+  <data name="Dashboard_Deposit" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="Dashboard_DepositMin" xml:space="preserve">
+    <value>มัดจำขั้นต่ำ</value>
+  </data>
+  <data name="Dashboard_DOrder" xml:space="preserve">
+    <value>ใบออเดอร์</value>
+  </data>
+  <data name="Dashboard_ElectricWallet" xml:space="preserve">
+    <value>จัดการกระเป๋าเงินอิเล็กทรอนิกส์</value>
+  </data>
+  <data name="Dashboard_GuideAccount" xml:space="preserve">
+    <value>คู่มือการบัญชี</value>
+  </data>
+  <data name="Dashboard_GuideBaledGoods" xml:space="preserve">
+    <value>แพ็คเกจลังสินค้า</value>
+  </data>
+  <data name="Dashboard_GuideCheckGoods" xml:space="preserve">
+    <value>ตรวจนับสินค้า</value>
+  </data>
+  <data name="Dashboard_GuideCompensationInsurance" xml:space="preserve">
+    <value>ประกันชดใช้</value>
+  </data>
+  <data name="Dashboard_GuideConvertSizes" xml:space="preserve">
+    <value>แปลงขนาด</value>
+  </data>
+  <data name="Dashboard_GuideCurrencyConverter" xml:space="preserve">
+    <value>การแปลงสกุลเงิน</value>
+  </data>
+  <data name="Dashboard_GuideCustomsDuties" xml:space="preserve">
+    <value>ภาษีศุลกากร</value>
+  </data>
+  <data name="Dashboard_GuideDeposit" xml:space="preserve">
+    <value>ส่งสินค้า</value>
+  </data>
+  <data name="Dashboard_GuideEarnPoints" xml:space="preserve">
+    <value>เก็บสะสมคะแนน</value>
+  </data>
+  <data name="Dashboard_GuideEstimatedCost" xml:space="preserve">
+    <value>ราคาประเมิน</value>
+  </data>
+  <data name="Dashboard_GuideFeesServices" xml:space="preserve">
+    <value>ค่าธรรมเนียมบริการ</value>
+  </data>
+  <data name="Dashboard_GuideGoodsDistribution" xml:space="preserve">
+    <value>กระจายสินค้า</value>
+  </data>
+  <data name="Dashboard_GuideLimitedgoods" xml:space="preserve">
+    <value>สินค้าที่จำกัดนำเข้า</value>
+  </data>
+  <data name="Dashboard_GuideLogisticsPolicy" xml:space="preserve">
+    <value>นโยบายโลจิสติกส์</value>
+  </data>
+  <data name="Dashboard_GuideOtherServicesFees" xml:space="preserve">
+    <value>บริการอื่นๆ</value>
+  </data>
+  <data name="Dashboard_GuidePackageService" xml:space="preserve">
+    <value>ติดตามเซอร์วิสแพ็ค</value>
+  </data>
+  <data name="Dashboard_GuidePayment" xml:space="preserve">
+    <value>ชำระ</value>
+  </data>
+  <data name="Dashboard_GuidePaymentByChannel" xml:space="preserve">
+    <value>ชำระผ่านช่อง</value>
+  </data>
+  <data name="Dashboard_GuidePaymentInternational" xml:space="preserve">
+    <value>ชำระผ่านบัตรนานาชาติ</value>
+  </data>
+  <data name="Dashboard_GuidePaymentPaypal" xml:space="preserve">
+    <value>ชำระผ่าน Paypal</value>
+  </data>
+  <data name="Dashboard_GuideReceivingGoods" xml:space="preserve">
+    <value>รับสินค้า</value>
+  </data>
+  <data name="Dashboard_GuideRecharge" xml:space="preserve">
+    <value>คู่มือการเติ่มเงิน</value>
+  </data>
+  <data name="Dashboard_GuideRegister" xml:space="preserve">
+    <value>ลงทะเบียนบัญชี</value>
+  </data>
+  <data name="Dashboard_GuideService" xml:space="preserve">
+    <value>บริการ</value>
+  </data>
+  <data name="Dashboard_GuideServiceLogicstics" xml:space="preserve">
+    <value>บริการโลจิสติกส์</value>
+  </data>
+  <data name="Dashboard_GuideServiceReturn" xml:space="preserve">
+    <value>บริการคืนสินค้า</value>
+  </data>
+  <data name="Dashboard_GuideShopping" xml:space="preserve">
+    <value>คู่มือการสั่งซื้อ</value>
+  </data>
+  <data name="Dashboard_GuideShoppingNow" xml:space="preserve">
+    <value>ช้อปปิ้ง</value>
+  </data>
+  <data name="Dashboard_GuideStatusOrder" xml:space="preserve">
+    <value>สถานะออเดอร์</value>
+  </data>
+  <data name="Dashboard_GuideTimeStorage" xml:space="preserve">
+    <value>กำหนดเวลาเก็บสินค้า</value>
+  </data>
+  <data name="Dashboard_InfoVIP" xml:space="preserve">
+    <value>ข้อมูลระดับบุคคลสำคัญ V.I.P</value>
+  </data>
+  <data name="Dashboard_LevelNext" xml:space="preserve">
+    <value>ขื้นระดับต่อไปต้องการ</value>
+  </data>
+  <data name="Dashboard_Liabilities" xml:space="preserve">
+    <value>นี้สิน</value>
+  </data>
+  <data name="Dashboard_ManagementOrder" xml:space="preserve">
+    <value>จัดการออเดอร์</value>
+  </data>
+  <data name="Dashboard_ManagementPackage" xml:space="preserve">
+    <value>ลังสินค้า</value>
+  </data>
+  <data name="Dashboard_ManagementShipOrder" xml:space="preserve">
+    <value>จัดการส่งสินค้า</value>
+  </data>
+  <data name="Dashboard_ManagementTicket" xml:space="preserve">
+    <value>จัดการข้อร้องเรียน</value>
+  </data>
+  <data name="Dashboard_ManagementTransport" xml:space="preserve">
+    <value>จัดการขนส่ง</value>
+  </data>
+  <data name="Dashboard_LastMonth" xml:space="preserve">
+    <value>1เดือนก่อน</value>
+  </data>
+  <data name="Dashboard_MyAccount" xml:space="preserve">
+    <value>บัญชีของฉัน</value>
+  </data>
+  <data name="Dashboard_Order" xml:space="preserve">
+    <value>ออเดอร์</value>
+  </data>
+  <data name="Dashboard_Payment" xml:space="preserve">
+    <value>ร้องขอถอนเงิน</value>
+  </data>
+  <data name="Dashboard_Point" xml:space="preserve">
+    <value>คะแนน</value>
+  </data>
+  <data name="Dashboard_Product" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="Dashboard_ProgressLevel" xml:space="preserve">
+    <value>กระบวนการระดับ</value>
+  </data>
+  <data name="Dashboard_PurchaseDiscount" xml:space="preserve">
+    <value>ส่วนลดค่าซื้อของ</value>
+  </data>
+  <data name="Dashboard_PurchaseDiscountTransport" xml:space="preserve">
+    <value>ส่วนลดค่าขนส่งจากจีนถึงไทย</value>
+  </data>
+  <data name="Dashboard_Recharge" xml:space="preserve">
+    <value>เติมเงิน</value>
+  </data>
+  <data name="Dashboard_Setting" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="Dashboard_SettingAccount" xml:space="preserve">
+    <value>องค์ประกอบบัญชี</value>
+  </data>
+  <data name="Dashboard_ShippingTracking" xml:space="preserve">
+    <value>ติดตามการขนส่ง</value>
+  </data>
+  <data name="Dashboard_Statistical" xml:space="preserve">
+    <value>สถิติ</value>
+  </data>
+  <data name="Dashboard_StatisticalOrder" xml:space="preserve">
+    <value>สถิติออเดอร์ซื้อสินค้า</value>
+  </data>
+  <data name="Dashboard_StatisticalShipOrder" xml:space="preserve">
+    <value>สถิติขนส่งสินค้า</value>
+  </data>
+  <data name="Dashboard_StatisticalStorage" xml:space="preserve">
+    <value>สถิติฝากเก็บสินค้า</value>
+  </data>
+  <data name="Dashboard_StorageManagement" xml:space="preserve">
+    <value>จัดการฝากเก็บสินค้า</value>
+  </data>
+  <data name="Dashboard_Subscribelevy" xml:space="preserve">
+    <value>ติดตามการเก็บเงินปลายทาง COD</value>
+  </data>
+  <data name="Dashboard_SupportService" xml:space="preserve">
+    <value>ช่วยเหลือ/บริการอื่นๆ</value>
+  </data>
+  <data name="Dashboard_Surplus" xml:space="preserve">
+    <value>ยอดที่เหลือ</value>
+  </data>
+  <data name="Dashboard_Ticket" xml:space="preserve">
+    <value>ข้อร้องเรียน</value>
+  </data>
+  <data name="Dashboard_TicketList" xml:space="preserve">
+    <value>รายชื่อข้อร้องเรียน</value>
+  </data>
+  <data name="Dashboard_ToolCarrier" xml:space="preserve">
+    <value>เครื่องมือขนส่ง</value>
+  </data>
+  <data name="Dashboard_TotalExchange" xml:space="preserve">
+    <value>สะสมรวมการซื้อขาย</value>
+  </data>
+  <data name="Dashboard_TransactionHistory" xml:space="preserve">
+    <value>ประวัติการธุรกรรม</value>
+  </data>
+  <data name="Dashboard_VIP" xml:space="preserve">
+    <value>บุคคลสำคัญ V.I.P</value>
+  </data>
+  <data name="Dashboard_Year" xml:space="preserve">
+    <value>ปี</value>
+  </data>
+  <data name="Home_Address" xml:space="preserve">
+    <value>ที่อยู่</value>
+  </data>
+  <data name="Home_Cart" xml:space="preserve">
+    <value>ตะกร้าสินค้า</value>
+  </data>
+  <data name="Home_ComeBack" xml:space="preserve">
+    <value>กลับมาแล้ว</value>
+  </data>
+  <data name="Home_Contact" xml:space="preserve">
+    <value>ติดต่อ</value>
+  </data>
+  <data name="Home_ContentTop" xml:space="preserve">
+    <value>&lt;p&gt;กว่า &lt;span&gt;1065,098 &lt;/span&gt; สินค้าได้ดำเนินการธุรกรรมต่อวันที่ Likeorder 
+ ธุรกรรมด้วยความรวดเร็ว
+ ขนส่งอย่างรวจเร็วกว่า ถูกกว่า และปลอดภัยกว่า &lt;/p&gt;</value>
+  </data>
+  <data name="Home_CreateDeposit" xml:space="preserve">
+    <value>สร้างออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="Home_Email" xml:space="preserve">
+    <value>อิเมล</value>
+  </data>
+  <data name="Home_ExchangeRate" xml:space="preserve">
+    <value>อัตราแลกเปลี่ยน</value>
+  </data>
+  <data name="Home_Exit" xml:space="preserve">
+    <value>ออกจากระบบ</value>
+  </data>
+  <data name="Home_Faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="Home_FooterInforCompany" xml:space="preserve">
+    <value>Likeorder Thailand CO.,LTD</value>
+  </data>
+  <data name="Home_FooterSolugan" xml:space="preserve">
+    <value>ให้มูลค่าที่ดีที่สุดให้ผลกำไรของคุณ</value>
+  </data>
+  <data name="Home_ForgetPass" xml:space="preserve">
+    <value>ลืมรหัสผ่าน</value>
+  </data>
+  <data name="Home_ForgotpassContent" xml:space="preserve">
+    <value>กรุณาเข้าอีเมลของคุณเพื่อเอาคืนรหัสผ่าน</value>
+  </data>
+  <data name="Home_Guide" xml:space="preserve">
+    <value>คู่มือการสั่งซื้อ</value>
+  </data>
+  <data name="Home_Hello" xml:space="preserve">
+    <value>สวัสดีค่ะ</value>
+  </data>
+  <data name="Home_HeplYou" xml:space="preserve">
+    <value>ทางเราสามารถช่วยเหลืออะไรให้คุณลูกค้าคะ</value>
+  </data>
+  <data name="Home_Home" xml:space="preserve">
+    <value>หน้าแรก</value>
+  </data>
+  <data name="Home_InforRegister" xml:space="preserve">
+    <value>ข้อมูลการสมัคร</value>
+  </data>
+  <data name="Home_Introduce" xml:space="preserve">
+    <value>แนะนำ</value>
+  </data>
+  <data name="Home_Juridical" xml:space="preserve">
+    <value>เกี่ยวกับกฏหมาย</value>
+  </data>
+  <data name="Home_Login" xml:space="preserve">
+    <value>เข้าสู่ระบบ</value>
+  </data>
+  <data name="Home_LoginEmail" xml:space="preserve">
+    <value>กรุณาใส่อีเมล</value>
+  </data>
+  <data name="Home_LoginPass" xml:space="preserve">
+    <value>กรุณาใส่รหัสผ่าน</value>
+  </data>
+  <data name="Home_Map" xml:space="preserve">
+    <value>แผนที่</value>
+  </data>
+  <data name="Home_More" xml:space="preserve">
+    <value>ดูเพิ่มเติ่มที่นี่</value>
+  </data>
+  <data name="Home_MyWarehouse" xml:space="preserve">
+    <value>สต็อกของฉัน</value>
+  </data>
+  <data name="Home_Notification" xml:space="preserve">
+    <value>ประกาศ</value>
+  </data>
+  <data name="Home_OrderNow" xml:space="preserve">
+    <value>สั่งซื้อเลยต้อนนี้</value>
+  </data>
+  <data name="Home_Partner" xml:space="preserve">
+    <value>คู่ค้า</value>
+  </data>
+  <data name="Home_Pass" xml:space="preserve">
+    <value>รหัสผ่าน</value>
+  </data>
+  <data name="Home_PassAgain" xml:space="preserve">
+    <value>คอนเฟิร์มรหัสผ่าน</value>
+  </data>
+  <data name="Home_PrivacyPolicy" xml:space="preserve">
+    <value>นโยบายความเป็นส่วนตัว</value>
+  </data>
+  <data name="Home_QualityService" xml:space="preserve">
+    <value>รับรองคุณภาพบริการ</value>
+  </data>
+  <data name="Home_ReadMore" xml:space="preserve">
+    <value>ดูเพิ่มเติม</value>
+  </data>
+  <data name="Home_ReadRules" xml:space="preserve">
+    <value>อ่านเรียบร้อยและตกลงกับเงือนไขนี้ &lt;a href="/th/Home/TermsOfService" style="color: blue" target="_blank"&lt;here&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="Home_Register" xml:space="preserve">
+    <value>สมัครสมาชิกใหม่</value>
+  </data>
+  <data name="Home_RegisterActive" xml:space="preserve">
+    <value>คอนเฟิร์มบัญชี</value>
+  </data>
+  <data name="Home_RegisterActiveSuccess" xml:space="preserve">
+    <value>คอนเฟิร์มบัญชีสำเร็จ</value>
+  </data>
+  <data name="Home_RegisterContentSuccess" xml:space="preserve">
+    <value>กรุณาคลิกลิ้งค์ที่ได้ส่งเขาอีเมลของคุณเพื่อเปิดใช้งานบัญชี</value>
+  </data>
+  <data name="Home_RegisterName" xml:space="preserve">
+    <value>กรุณาใส่ชื่อและนามสกุล</value>
+  </data>
+  <data name="Home_RegisterNow" xml:space="preserve">
+    <value>สมัครสมาชิกใหม่</value>
+  </data>
+  <data name="Home_RegisterNumber" xml:space="preserve">
+    <value>เบอร์โทร</value>
+  </data>
+  <data name="Home_RegisterSuccess" xml:space="preserve">
+    <value>ลงทะเบียนสำเร็จ</value>
+  </data>
+  <data name="Home_Remember" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="Home_RetrievalPass" xml:space="preserve">
+    <value>เอาคืนรหัสผ่าน</value>
+  </data>
+  <data name="Home_Search" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="Home_SearchLink" xml:space="preserve">
+    <value>ใส่ลิ้งค์สินค้า</value>
+  </data>
+  <data name="Home_SelectServiceShopping" xml:space="preserve">
+    <value>ช้อปปิ้ง</value>
+  </data>
+  <data name="Home_ServiceAgreement" xml:space="preserve">
+    <value>ข้อตกลงบริการ</value>
+  </data>
+  <data name="Home_ServiceBuyProduct" xml:space="preserve">
+    <value>บริการสั่งซื้อสินค้าแทน</value>
+  </data>
+  <data name="Home_ServiceBuyProductContent" xml:space="preserve">
+    <value>ช่วยเหลือการเจรจารและการทำสัญญาการค้าระหว่างประเทศ</value>
+  </data>
+  <data name="Home_ServiceDepositOrder" xml:space="preserve">
+    <value>บริการฝากเก็บสินค้า</value>
+  </data>
+  <data name="Home_ServiceDepositOrderContent" xml:space="preserve">
+    <value>ช่วยเหลือการขนส่งสินค้าจากจีนมาไทย</value>
+  </data>
+  <data name="Home_ServiceExchange" xml:space="preserve">
+    <value>&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;ธุรกรรมอย่างปลอดภัย&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;รับรองรักษาความปลอดภัยเครือข่าย&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;ธุรกรรมอย่างรวดเร็ว&lt;/p&gt;</value>
+  </data>
+  <data name="Home_ServiceOrder" xml:space="preserve">
+    <value>บริการสั่งซื้อ</value>
+  </data>
+  <data name="Home_ServiceOrderContent" xml:space="preserve">
+    <value>ช่วยเหลือการธุรกรรมที่1688.com, alibaba.com, tmall.com,...!</value>
+  </data>
+  <data name="Home_ServiceOur" xml:space="preserve">
+    <value>บริการของเรา</value>
+  </data>
+  <data name="Home_ServiceSourcing" xml:space="preserve">
+    <value>ช่วยเหลือค้นหาแหล่งสินค้า</value>
+  </data>
+  <data name="Home_ServiceSourcingContent" xml:space="preserve">
+    <value>ช่วยเหลือค้นหาแหล่งสินค้ามี่ค่าขายส่งถูก สินค้ามีคุณภาพดี กับหาแหล่งผลิตมีความน่าเชื่อถือที่จีน</value>
+  </data>
+  <data name="Home_ServiceStorage" xml:space="preserve">
+    <value>&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;สต็อกเก็บของต้นเอง&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;กล้องวงจรปิด&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;สถิติสินค้าค้างอยู่ในสต็อก&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;ธุรกรรมอย่างรวดเร็ว&lt;/p&gt;</value>
+  </data>
+  <data name="Home_ServiceSupport" xml:space="preserve">
+    <value>&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;ช่วยเหลือลูกค้า 24/24&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;ผู้สั่งซื้อมีมืออาชิพ&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;◇&lt;/span&gt;ผู้จำหน่ายผูกขาดด้วยจำนวนมาก&lt;/p&gt;</value>
+  </data>
+  <data name="Home_SologanShopping" xml:space="preserve">
+    <value>บริการดีที่สุด</value>
+  </data>
+  <data name="Home_TermsOfService" xml:space="preserve">
+    <value>เงือนไขบริการ</value>
+  </data>
+  <data name="Home_Transport" xml:space="preserve">
+    <value>ขนส่ง</value>
+  </data>
+  <data name="NewPass_ChangePass" xml:space="preserve">
+    <value>เปลี่ยนรหัสผ่าน</value>
+  </data>
+  <data name="NewPass_InputNewPass" xml:space="preserve">
+    <value>ใส่รหัสผ่านใหม่</value>
+  </data>
+  <data name="NewPass_Note" xml:space="preserve">
+    <value>&lt;p&gt;
+                        &lt;b&gt; เคล็ดลับ: &lt;/b&gt; คุณผ่านการคอนเฟิร์มทางอีเมล๋เรียบร้อยแล้ว ขอตั้งรหัสผ่านใหม่
+                    &lt;/p&gt;</value>
+  </data>
+  <data name="NewPass_NoteContent" xml:space="preserve">
+    <value>เพื่อความปลอดภัยข้อมูล ของตัวคุณเอง กรุณาย่าให้ใครรู้รหัสผ่านใหม่ของคุณ</value>
+  </data>
+  <data name="Order_CodeOrder" xml:space="preserve">
+    <value>รหัสออเดอร์</value>
+  </data>
+  <data name="Product_Actions" xml:space="preserve">
+    <value>การยกเลิก</value>
+  </data>
+  <data name="Product_Amount" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="Product_Color" xml:space="preserve">
+    <value>สี</value>
+  </data>
+  <data name="Product_DeleteProductCart" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="Product_DeliveryTime" xml:space="preserve">
+    <value>ประเมินเวลาส่งสินค้า</value>
+  </data>
+  <data name="Product_DeliveryTimeHCM" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Product_DeliveryTimeHN" xml:space="preserve">
+    <value>สินค้ามาถึงไทยประมาณ 4-6 วัน</value>
+  </data>
+  <data name="Product_Deposit" xml:space="preserve">
+    <value>มัดจำ</value>
+  </data>
+  <data name="Product_InforOrder" xml:space="preserve">
+    <value>ข้อมูลของออเดอร์</value>
+  </data>
+  <data name="Product_MoneyDeposit" xml:space="preserve">
+    <value>เงินมัดจำ</value>
+  </data>
+  <data name="Product_MoneyProduct" xml:space="preserve">
+    <value>จำนวนเงินสินค้า</value>
+  </data>
+  <data name="Product_NotIncludingShipping" xml:space="preserve">
+    <value>(ยังไม่รวมค่าขนส่ง)</value>
+  </data>
+  <data name="Product_Number" xml:space="preserve">
+    <value>จำนวน</value>
+  </data>
+  <data name="Product_NumberProduct" xml:space="preserve">
+    <value>จำนวนสินค้า</value>
+  </data>
+  <data name="Product_Product" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="Product_ProvisionalAmount" xml:space="preserve">
+    <value>จำนวนเงินประเมิน</value>
+  </data>
+  <data name="Product_SelectAddress" xml:space="preserve">
+    <value>เลือกที่อยู่เพื่อส่งสินค้า</value>
+  </data>
+  <data name="Product_SelectAll" xml:space="preserve">
+    <value>เลือกทั้งหมด</value>
+  </data>
+  <data name="Product_ServiceBaled" xml:space="preserve">
+    <value>บริการตีลังไม้</value>
+  </data>
+  <data name="Product_ServiceChargeBaled" xml:space="preserve">
+    <value>ค่าบริการตีลังไม้</value>
+  </data>
+  <data name="Product_ServiceChargeFastAir" xml:space="preserve">
+    <value>ราคาบริการขนส่งด่วน(ทางอากาศ)</value>
+  </data>
+  <data name="Product_ServiceChargeFeeHome" xml:space="preserve">
+    <value>ค่าบริการขนส่งมาถึงบ้าน</value>
+  </data>
+  <data name="Product_ServiceChargePurchases" xml:space="preserve">
+    <value>ค่าบริการซื้อสินค้า</value>
+  </data>
+  <data name="Product_ServiceChargeTally" xml:space="preserve">
+    <value>ค่าบริการตรวจนับ</value>
+  </data>
+  <data name="Product_ServiceChargeToVN" xml:space="preserve">
+    <value>ค่าบริการขนส่งมาเมืองไทย</value>
+  </data>
+  <data name="Product_ServiceChargeTransport" xml:space="preserve">
+    <value>ค่าบริการร้านค้าขนส่ง</value>
+  </data>
+  <data name="Product_ServiceFastAir" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Product_ServiceTally" xml:space="preserve">
+    <value>บริการตรวจนับ</value>
+  </data>
+  <data name="Product_ShopName" xml:space="preserve">
+    <value>ชื่อร้านค้า</value>
+  </data>
+  <data name="Product_Size" xml:space="preserve">
+    <value>ขนาด</value>
+  </data>
+  <data name="Product_TotalLink" xml:space="preserve">
+    <value>จำนวลิงค์ทั้งหมด</value>
+  </data>
+  <data name="Product_TotalMoney" xml:space="preserve">
+    <value>จำนวนเงินทั้งหมด</value>
+  </data>
+  <data name="Product_TotalMoneyProduct" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="Product_TotalOrder" xml:space="preserve">
+    <value>จำนวนออเดอร์ทั้งหมด</value>
+  </data>
+  <data name="Product_TotalProduct" xml:space="preserve">
+    <value>จำนวสินค้าทั้งหมด</value>
+  </data>
+  <data name="Home_CreateSourcingOrder" xml:space="preserve">
+    <value>การสร้างการร้องขอการจัดหา</value>
+  </data>
+  <data name="ChangePass_PassNew" xml:space="preserve">
+    <value>รหัสผ่านใหม่</value>
+  </data>
+  <data name="ChangePass_PassOld" xml:space="preserve">
+    <value>รหัสผ่านเดิม</value>
+  </data>
+  <data name="Account_Infor" xml:space="preserve">
+    <value>ข้อมูลบัญชี</value>
+  </data>
+  <data name="Account_InforAccountHolders" xml:space="preserve">
+    <value>ผู้ถือบัญชี</value>
+  </data>
+  <data name="Account_InforBanks" xml:space="preserve">
+    <value>ธนาคาร</value>
+  </data>
+  <data name="Account_InforCardNumber" xml:space="preserve">
+    <value>เลขที่บัญชี</value>
+  </data>
+  <data name="Account_InforCity" xml:space="preserve">
+    <value>เมือง / จังหวัด</value>
+  </data>
+  <data name="Account_InforCountry" xml:space="preserve">
+    <value>ประเทศ</value>
+  </data>
+  <data name="Account_InforDistric" xml:space="preserve">
+    <value>เขต / อำเภอ</value>
+  </data>
+  <data name="Account_InforEmail" xml:space="preserve">
+    <value>บัญชีอีเมล</value>
+  </data>
+  <data name="Account_InforName" xml:space="preserve">
+    <value>ชื่อเจ้าของบัญชี</value>
+  </data>
+  <data name="Account_InforPhone" xml:space="preserve">
+    <value>โทรศัพท์</value>
+  </data>
+  <data name="Account_InforUpdate" xml:space="preserve">
+    <value>อัพเดทข้อมูล</value>
+  </data>
+  <data name="Dashboard_Month" xml:space="preserve">
+    <value>เดือน</value>
+  </data>
+  <data name="Select_City" xml:space="preserve">
+    <value>เลือกเมือง</value>
+  </data>
+  <data name="Select_Distric" xml:space="preserve">
+    <value>เลือกเขต / อำเภอ</value>
+  </data>
+  <data name="Select_Ward" xml:space="preserve">
+    <value>เลือกจังหวัด / วอร์ด</value>
+  </data>
+  <data name="Home_HeaderSologan" xml:space="preserve">
+    <value>กว่า 1065,098 ผลิตภัณฑ์
+&lt;br/&gt;
+ได้ส่งมาจากต่างประเทศ!</value>
+  </data>
+  <data name="Home_HeaderTransport" xml:space="preserve">
+    <value>การขนส่ง
+&lt;br/&gt;
+ระหว่างประเทศ</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Baht</value>
+  </data>
+  <data name="Liabilities_AmountMoney" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="Liabilities_Clause" xml:space="preserve">
+    <value>ประเภทบัญชี</value>
+  </data>
+  <data name="Liabilities_CodeLiabilities" xml:space="preserve">
+    <value>รหัสหนี้สิน</value>
+  </data>
+  <data name="Liabilities_DayTrading" xml:space="preserve">
+    <value>วันธุระกรรม</value>
+  </data>
+  <data name="Liabilities_List" xml:space="preserve">
+    <value>รายชื่อรายการต้องชำระ</value>
+  </data>
+  <data name="Order_Status" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
+  <data name="RequestsPayment_AmountMoney" xml:space="preserve">
+    <value>ใส่จำนวนเงินที่จะถอน</value>
+  </data>
+  <data name="RequestsPayment_AmountRequest" xml:space="preserve">
+    <value>จำนวนเงินที่ร้องขอ</value>
+  </data>
+  <data name="RequestsPayment_Bank" xml:space="preserve">
+    <value>ธนาคาร</value>
+  </data>
+  <data name="RequestsPayment_BankId" xml:space="preserve">
+    <value>ใส่หมายเลขบัตรธนาคาร</value>
+  </data>
+  <data name="RequestsPayment_BranchBank" xml:space="preserve">
+    <value>ใส่ชื่อของสาขาธนาคาร</value>
+  </data>
+  <data name="RequestsPayment_CardId" xml:space="preserve">
+    <value>ใส่หมายเลขบัตร</value>
+  </data>
+  <data name="RequestsPayment_CreateDate" xml:space="preserve">
+    <value>วันที่สร้าง</value>
+  </data>
+  <data name="RequestsPayment_GiveName" xml:space="preserve">
+    <value>ใส่ชื่อและนามสกุลของผู้รับ</value>
+  </data>
+  <data name="RequestsPayment_MoneyMax" xml:space="preserve">
+    <value>จำนวนเงินที่คุณใส่จะต้องน้อยกว่า 3 ล้านบาท</value>
+  </data>
+  <data name="RequestsPayment_Name" xml:space="preserve">
+    <value>ชื่อและนามสกุล</value>
+  </data>
+  <data name="RequestsPayment_NoData" xml:space="preserve">
+    <value>รายชื่อรายการต้องชำระ</value>
+  </data>
+  <data name="RequestsPayment_Note" xml:space="preserve">
+    <value>&lt;p style="margin-left: 50px;"&gt;
+                            &lt;span class="red-color"&gt;* หมายเหตุ :&lt;/span&gt;  นอกจากนี้คุณสามารถถอนเงินเองโดยตรงที่สำนักงานในเวลาทำการ กรุณาติดต่ออีเมล์: Ketoannhkd@gmail.com เพื่อได้รับการช่วยเหลือ
+                        &lt;/p&gt;</value>
+  </data>
+  <data name="TransactionHistory" xml:space="preserve">
+    <value>ประวัติการธุรกรรม</value>
+  </data>
+  <data name="TransactionHistory_ComeBack" xml:space="preserve">
+    <value>กลับ</value>
+  </data>
+  <data name="TransactionHistory_Content" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="TransactionHistory_IsRead" xml:space="preserve">
+    <value>อ่านแล้ว</value>
+  </data>
+  <data name="TransactionHistory_NoRead" xml:space="preserve">
+    <value>ยังไม่อ่าน</value>
+  </data>
+  <data name="TransactionHistory_NoteNotification" xml:space="preserve">
+    <value>แจ้งเตือนแต่ละรายการรวมถึงข้อมูลการชำระเงินและค่าใช้จ่ายที่เกิดขึ้น และการเปลี่ยนแปลงการเงิน</value>
+  </data>
+  <data name="TransactionHistory_NotificationNoRead" xml:space="preserve">
+    <value>การแจ้งเตือนยังไม่ได้อ่าน</value>
+  </data>
+  <data name="TransactionHistory_Option" xml:space="preserve">
+    <value>ตัวเลือก</value>
+  </data>
+  <data name="TransactionHistory_Time" xml:space="preserve">
+    <value>เวลา</value>
+  </data>
+  <data name="TransactionHistory_TimeUp" xml:space="preserve">
+    <value>โพสต์ที่</value>
+  </data>
+  <data name="TransactionHistory_Title" xml:space="preserve">
+    <value>หัวข้อ</value>
+  </data>
+  <data name="TransactionHistory_Total" xml:space="preserve">
+    <value>ทั้งหมด</value>
+  </data>
+  <data name="TransactionHistory_TotalTransaction" xml:space="preserve">
+    <value>ประวัติการธุรกรรมรวม</value>
+  </data>
+  <data name="TransactionHistory_TransactionType" xml:space="preserve">
+    <value>ประเภทของการทำธุรกรรม</value>
+  </data>
+  <data name="TransactionHistory_Value" xml:space="preserve">
+    <value>มูลค่า</value>
+  </data>
+  <data name="TransactionHistory_Payment" xml:space="preserve">
+    <value>ถอนเงิน</value>
+  </data>
+  <data name="TransactionHistory_Withdrawal" xml:space="preserve">
+    <value>ชำระ</value>
+  </data>
+  <data name="Deposit_StatusPendingApplication" xml:space="preserve">
+    <value>รอสรุปออเดอร์</value>
+  </data>
+  <data name="Deposit_StatusTrading" xml:space="preserve">
+    <value>กำลังธุรกรรม</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="Order_CreateOrder" xml:space="preserve">
+    <value>สร้างออเดอร์</value>
+  </data>
+  <data name="Order_Delivery" xml:space="preserve">
+    <value>ขนส่ง</value>
+  </data>
+  <data name="Order_Exhibition" xml:space="preserve">
+    <value>ออเดอร์</value>
+  </data>
+  <data name="Order_InputCodeOrder" xml:space="preserve">
+    <value>ใส่รหัสออเดอร์</value>
+  </data>
+  <data name="Order_LinkShop" xml:space="preserve">
+    <value>ลิงค์ร้านค้า</value>
+  </data>
+  <data name="Order_ListOrder" xml:space="preserve">
+    <value>รายชื่อออเดอร์</value>
+  </data>
+  <data name="Order_Missing" xml:space="preserve">
+    <value>ยังขาด</value>
+  </data>
+  <data name="Order_Operation" xml:space="preserve">
+    <value>การยกเลิก</value>
+  </data>
+  <data name="Order_OperationDeposit" xml:space="preserve">
+    <value>มัดจำ</value>
+  </data>
+  <data name="Order_OperationDepositAll" xml:space="preserve">
+    <value>มัดจำทั้งหมด</value>
+  </data>
+  <data name="Order_OperationDestroy" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Order_Payment" xml:space="preserve">
+    <value>ชำระ</value>
+  </data>
+  <data name="Order_Product" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="Order_Search" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="Order_StatusAll" xml:space="preserve">
+    <value>รายชื่อพนักงาน</value>
+  </data>
+  <data name="Order_StatusComplete" xml:space="preserve">
+    <value>สำเร็จ</value>
+  </data>
+  <data name="Order_StatusDestroy" xml:space="preserve">
+    <value>ยกเลิกแล้ว</value>
+  </data>
+  <data name="Order_StatusOnOrder" xml:space="preserve">
+    <value>กำลังซื้อเสร็จ</value>
+  </data>
+  <data name="Order_StatusOrdersComplete" xml:space="preserve">
+    <value>สั่งซื้อเสร็จ</value>
+  </data>
+  <data name="Order_StatusPaid" xml:space="preserve">
+    <value>ชำระแล้ว</value>
+  </data>
+  <data name="Order_StatusPendingDeposit" xml:space="preserve">
+    <value>รอมัดจำ</value>
+  </data>
+  <data name="Order_StatusPendingFinalize" xml:space="preserve">
+    <value>รอชำระเงินที่เหลือ</value>
+  </data>
+  <data name="Order_StatusThroat" xml:space="preserve">
+    <value>สินค้าเสียหายหรือหายไป</value>
+  </data>
+  <data name="Order_StatusTransport" xml:space="preserve">
+    <value>กำลังขนส่ง</value>
+  </data>
+  <data name="Order_StatusTransportComplete" xml:space="preserve">
+    <value>ส่งสินค้าสำเร็จ</value>
+  </data>
+  <data name="Order_StatusWaitDelivery" xml:space="preserve">
+    <value>รอส่งสินค้า</value>
+  </data>
+  <data name="Order_StatusWaitOrder" xml:space="preserve">
+    <value>รอสั่งซื้อ</value>
+  </data>
+  <data name="Order_StatusWaitQuotes" xml:space="preserve">
+    <value>รอประเมินราคา</value>
+  </data>
+  <data name="Order_TimeCreateOrder" xml:space="preserve">
+    <value>เวลาสร้าง</value>
+  </data>
+  <data name="Order_TotalMoney" xml:space="preserve">
+    <value>เงินทั้งหมด</value>
+  </data>
+  <data name="Order_TotalRecord" xml:space="preserve">
+    <value>ทั้งหมดมี 14 บันทึก</value>
+  </data>
+  <data name="Package_CoolCode" xml:space="preserve">
+    <value>หายรหัส</value>
+  </data>
+  <data name="Package_CoolItems" xml:space="preserve">
+    <value>หายสินค้า</value>
+  </data>
+  <data name="Package_Size" xml:space="preserve">
+    <value>ขนาด</value>
+  </data>
+  <data name="Package_Stock" xml:space="preserve">
+    <value>กำลังอยู่ในโกดัง</value>
+  </data>
+  <data name="Package_Storage" xml:space="preserve">
+    <value>โกดัง</value>
+  </data>
+  <data name="Package_Transferred" xml:space="preserve">
+    <value>กำลังได้ขนส่ง</value>
+  </data>
+  <data name="Package_WaitWarehousing" xml:space="preserve">
+    <value>รอเข้าโกดัง</value>
+  </data>
+  <data name="Package_Weight" xml:space="preserve">
+    <value>น้ำหนัก (Kg)</value>
+  </data>
+  <data name="Sourcing_BenefitPackage" xml:space="preserve">
+    <value>แพคเกจบริการ</value>
+  </data>
+  <data name="Sourcing_CreateSourcingOrder" xml:space="preserve">
+    <value>สร้างออเดอร์ค้นหาแหล่งสินค้า</value>
+  </data>
+  <data name="Sourcing_Processing" xml:space="preserve">
+    <value>กำลังจัดการ</value>
+  </data>
+  <data name="Sourcing_WaitingForProgressing" xml:space="preserve">
+    <value>รอจัดการ</value>
+  </data>
+  <data name="Sourcing_WaitProvider" xml:space="preserve">
+    <value>รอลูกค้าเลือกผู้ผลิต</value>
+  </data>
+  <data name="Status_Processed" xml:space="preserve">
+    <value>จัดการเรียบร้อยแล้ว</value>
+  </data>
+  <data name="Claim_PassLogin" xml:space="preserve">
+    <value>รหัสผ่านเข้าสู่ระบบ</value>
+  </data>
+  <data name="Available_Balances" xml:space="preserve">
+    <value>ยอดเงินคงเหลือ</value>
+  </data>
+  <data name="History_Transaction" xml:space="preserve">
+    <value>ดูประวัติ</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>จาก</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>ถึง</value>
+  </data>
+  <data name="Deposit_NumberPackage" xml:space="preserve">
+    <value>จำนวนลังสินค้า</value>
+  </data>
+  <data name="Deposit_ListDeposit" xml:space="preserve">
+    <value>รายชื่อออเดอร์ฝากเก็บ</value>
+  </data>
+  <data name="Deposit_ProvisionalAmount" xml:space="preserve">
+    <value>จำนวนเงินโดยประมาณ</value>
+  </data>
+  <data name="Deposit_TotalWeight" xml:space="preserve">
+    <value>น้ำหนักรวม(kg)</value>
+  </data>
+  <data name="Pakage_ListPakage" xml:space="preserve">
+    <value>รายชื่อลังสินค้า</value>
+  </data>
+  <data name="Sourcing_CreateSourcing" xml:space="preserve">
+    <value>สร้างออเดอร์หาแหล่งสินค้า</value>
+  </data>
+  <data name="Sourcing_ListSourcing" xml:space="preserve">
+    <value>รายชื่อออเดอร์ค้นหาแหล่งสินค้า</value>
+  </data>
+  <data name="Ticket_Code" xml:space="preserve">
+    <value>รหัสจำเป็น/ วันที่สร้างออเดอร์</value>
+  </data>
+  <data name="Ticket_Content" xml:space="preserve">
+    <value>เนื้อหาข้อร้องเรียน</value>
+  </data>
+  <data name="Ticket_CreateTicket" xml:space="preserve">
+    <value>สร้างข้อร้องเรียน</value>
+  </data>
+  <data name="Ticket_EmployeeFeedback" xml:space="preserve">
+    <value>เนื้อหาคำตอบล่าสุด</value>
+  </data>
+  <data name="CreateTicket_AmountCompensation" xml:space="preserve">
+    <value>จำนวนเงินคาดจะได้ชดใช้</value>
+  </data>
+  <data name="CreateTicket_Content" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="CreateTicket_CreateTicket" xml:space="preserve">
+    <value>สร้างข้อร้องขอ</value>
+  </data>
+  <data name="CreateTicket_DetailTicket" xml:space="preserve">
+    <value>รายละเอียด</value>
+  </data>
+  <data name="CreateTicket_Indemnity" xml:space="preserve">
+    <value>จำนวนเงินชดใช้</value>
+  </data>
+  <data name="CreateTicket_InputContent" xml:space="preserve">
+    <value>เขียนรายละเอียดของเนื้อหาที่นี่</value>
+  </data>
+  <data name="CreateTicket_Note" xml:space="preserve">
+    <value>หมายเหตุ:เขียนเฉพาะรหัสข้อร้องเรียน</value>
+  </data>
+  <data name="CreateTicket_OrderTicket" xml:space="preserve">
+    <value>ข้อร้องเรียน</value>
+  </data>
+  <data name="CreateTicket_PhotoGoods" xml:space="preserve">
+    <value>รูปภาพสินค้า</value>
+  </data>
+  <data name="CreateTicket_Picture" xml:space="preserve">
+    <value>ภาพ</value>
+  </data>
+  <data name="CreateTicket_SelectOrder" xml:space="preserve">
+    <value>เลือกออเดอร์</value>
+  </data>
+  <data name="CreateTicket_SelectTypeComplaint" xml:space="preserve">
+    <value>เลือกประเภทของการร้องเรียน</value>
+  </data>
+  <data name="CreateTicket_Notification" xml:space="preserve">
+    <value>ลูกค้าโปรดกรอกข้อมูลรายละเอียดของปัญหาในการสั่งซื้อ เพื่อที่จะได้รับการช่วยเหลือที่ถูกต้องที่สุด จำนวนเงินค่าทดแทนที่จะนำไปใช้ตามนโยบายของลูกค้า</value>
+  </data>
+  <data name="Notificommon" xml:space="preserve">
+    <value>ประกาศทั่วโลก</value>
+  </data>
+  <data name="AccoumtLogin_ErrorAccountNotActive" xml:space="preserve">
+    <value>บัญชีนี้ยังไม่ได้รับการคอนเฟิร์ม</value>
+  </data>
+  <data name="AccoumtLogin_ErrorEmailMaxString" xml:space="preserve">
+    <value>อีเมล์จะต้องสั้นกว่า 50 ตัวอักษร</value>
+  </data>
+  <data name="AccoumtLogin_ErrorEmailPass" xml:space="preserve">
+    <value>อีเมล์หรือรหัสผ่านไม่ถูกต้อง</value>
+  </data>
+  <data name="AccoumtLogin_ErrorNotEmail" xml:space="preserve">
+    <value>อีเมลไม่ถูกต้อง</value>
+  </data>
+  <data name="AccoumtLogin_ErrorNullEmail" xml:space="preserve">
+    <value>ขอใส่อีเมล</value>
+  </data>
+  <data name="AccoumtLogin_ErrorNullPass" xml:space="preserve">
+    <value>ขอใส่รหัสผ่าน</value>
+  </data>
+  <data name="AccoumtLogin_ErrorPassMin" xml:space="preserve">
+    <value>รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร</value>
+  </data>
+  <data name="AccountActive_AccountActiveComplete" xml:space="preserve">
+    <value>การคอนเฟิร์มบัญชีสําเร็จ</value>
+  </data>
+  <data name="AccountActive_AccountIsActive" xml:space="preserve">
+    <value>บัญชีได้รับการคอนเฟิร์มแล้ว</value>
+  </data>
+  <data name="AccountActive_NotLink" xml:space="preserve">
+    <value>ลิงค์คอนเฟิร์มไม่ถูกต้อง</value>
+  </data>
+  <data name="AccountPassForget_ChangePassComplete" xml:space="preserve">
+    <value>การเปลี่ยนหัสผ่านได้สำเร็จเรียบร้อย</value>
+  </data>
+  <data name="AccountPassForget_ChangePassError" xml:space="preserve">
+    <value>เกิดความผิดพลาดระหว่างการเปลี่ยนรหัสผ่าน โปรดลองอีกครั้ง</value>
+  </data>
+  <data name="AccountPassForget_EmailChangePass" xml:space="preserve">
+    <value>กรุณาเข้าสู่อีเมล์เพื่อรับรหัสผ่านคืน</value>
+  </data>
+  <data name="AccountPassForget_NotAccount" xml:space="preserve">
+    <value>บัญชีไม่มีอยู่ หรือยังไม่ได้ลงทะเบียน กรุณาตรวดสอบอีกครั้ง</value>
+  </data>
+  <data name="AccountRegister_DuplicateEmail" xml:space="preserve">
+    <value>อีเมล์ได้ลงทะเบียนเรียบร้อย</value>
+  </data>
+  <data name="AccountRegister_ErrorRegister" xml:space="preserve">
+    <value>ลงทะเบียนไม่สําเร็จ</value>
+  </data>
+  <data name="Home_FooterContent" xml:space="preserve">
+    <value>
+      LikeOrder.com เป็นเว็บไซต์สั่งซื้อสินค้าที่ดีที่สุด ทางเรามีบริการสั่งซื้อสินค้าจากประเทศจีนที่จะ ขนส่งสินค้ามายังประเทศไทย  อีกทั้งยังมีบริการ ฝากเก็บสินค้าที่สะดวกที่สุด (ทางเราไม่รับสินค้าที่ห้ามนำเข้า และ ห้ามขนส่งตามกฏหมายของประเทศไทย)นอกจากนั้น ทางเรายังมีบริการให้คำแนะนำการสั่งซื้อสินค้าต่างๆ ที่มีคุณภาพ และ ราคาไม่แพง
+    </value>
+  </data>
+  <data name="Home_Camketcldv" xml:space="preserve">
+    <value>ข้อผูกพันคุณภาพของบริการ</value>
+  </data>
+  <data name="Home_TablePriceService" xml:space="preserve">
+    <value>อัตราค่าบริการ</value>
+  </data>
+  <data name="Dashboard_EditAccount" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="Dashboard_ExchargeNow" xml:space="preserve">
+    <value>เติมเงิน</value>
+  </data>
+  <data name="Dashboard_IndexAccount" xml:space="preserve">
+    <value>ข้้อมูลบัญชี</value>
+  </data>
+  <data name="Dashboard_InforAccount" xml:space="preserve">
+    <value>ข้อมูลส่วนตัว</value>
+  </data>
+  <data name="Dashboard_LevelAccount" xml:space="preserve">
+    <value>ระดับสมาชิก</value>
+  </data>
+  <data name="Dashboard_ManagementGoods" xml:space="preserve">
+    <value>จัดการสินค้า</value>
+  </data>
+  <data name="Dashboard_NotificationAccountNew" xml:space="preserve">
+    <value>การแจ้งเตือนเกี่ยวกับบัญชี</value>
+  </data>
+  <data name="Dashboard_NotificationLikeOrder" xml:space="preserve">
+    <value>LikeOrder ขอแจ้งข่าว:</value>
+  </data>
+  <data name="Dashboard_NotificationSystemAccount" xml:space="preserve">
+    <value>การแจ้งเตือนเกี่ยวกับระบบ</value>
+  </data>
+  <data name="Dashboard_TotalInAccount" xml:space="preserve">
+    <value>จำนวนเงินทั้งหมดที่บัญชี</value>
+  </data>
+  <data name="Header_CreateOrder" xml:space="preserve">
+    <value>สร้างออเดอร์สั่งซื้อสินค้า</value>
+  </data>
+  <data name="Header_OrderNow" xml:space="preserve">
+    <value>สั่งซื้อ</value>
+  </data>
+  <data name="Header_SetupExtenstion" xml:space="preserve">
+    <value>ติดตั้งส่วนขยาย</value>
+  </data>
+  <data name="Create_DepositNew" xml:space="preserve">
+    <value>สร้างออเดอร์ฝากเก็บสินค้าใหม่</value>
+  </data>
+  <data name="Create_OrderNew" xml:space="preserve">
+    <value>สร้างออเดอร์สั่งซื้อสินค้า</value>
+  </data>
+  <data name="Deposit_GoodsInStorage" xml:space="preserve">
+    <value>สินค้าในโกดัง</value>
+  </data>
+  <data name="Deposit_WaitGoodsStorage" xml:space="preserve">
+    <value>รอสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="Has" xml:space="preserve">
+    <value>มี</value>
+  </data>
+  <data name="List_Order" xml:space="preserve">
+    <value>รายชื่อออเดอร์ซื้อแทนสินค้า</value>
+  </data>
+  <data name="MenuShopping_Account" xml:space="preserve">
+    <value>บัญชี</value>
+  </data>
+  <data name="Order_StatusCool" xml:space="preserve">
+    <value>หาย</value>
+  </data>
+  <data name="Order_StatusDelivered" xml:space="preserve">
+    <value>กำลังส่งสินค้า</value>
+  </data>
+  <data name="Order_StatusLikeOrderGiveGoods" xml:space="preserve">
+    <value>LikeOrder รับสินค้า</value>
+  </data>
+  <data name="Package_DeliveredTransport" xml:space="preserve">
+    <value>กำลังจัดการ</value>
+  </data>
+  <data name="Package_GoodsCool" xml:space="preserve">
+    <value>สินค้้าหาย</value>
+  </data>
+  <data name="Package_PendingDelivery" xml:space="preserve">
+    <value>รอจัดส่ง</value>
+  </data>
+  <data name="Package_ReturnsGoods" xml:space="preserve">
+    <value>ส่งสินค้าแล้ว</value>
+  </data>
+  <data name="Package_TQnhanhang" xml:space="preserve">
+    <value>โกดังที่จีนรับสินค้า</value>
+  </data>
+  <data name="Package_TQphathang" xml:space="preserve">
+    <value>ร้านค้าจีนส่งสินค้า</value>
+  </data>
+  <data name="Package_TrongkhoTQ" xml:space="preserve">
+    <value>อยู่ในโกดังที่จีน</value>
+  </data>
+  <data name="Package_TrongkhoVN" xml:space="preserve">
+    <value>อยู่ในโกดังไทย</value>
+  </data>
+  <data name="Package_VeVN" xml:space="preserve">
+    <value>กำลังส่งมาเมืองไทย</value>
+  </data>
+  <data name="Package_XuatkhoTQ" xml:space="preserve">
+    <value>ออกจากโกดังที่จีน</value>
+  </data>
+  <data name="Static_Order" xml:space="preserve">
+    <value>สถิติออเดอร์</value>
+  </data>
+  <data name="StepByStep_Delivery" xml:space="preserve">
+    <value>รถกระบะ</value>
+  </data>
+  <data name="StepByStep_Order" xml:space="preserve">
+    <value>สั่งซื้อ</value>
+  </data>
+  <data name="Top_Balances" xml:space="preserve">
+    <value>ยอดเงินคงเหลือ</value>
+  </data>
+  <data name="Top_Package" xml:space="preserve">
+    <value>แพคเกจของฉัน</value>
+  </data>
+  <data name="CreateOrder_AddNewOrder" xml:space="preserve">
+    <value>เพิ่มเข้าออเดอร์</value>
+  </data>
+  <data name="CreateOrder_AddNewProduct" xml:space="preserve">
+    <value>เพิ่มสินค้า</value>
+  </data>
+  <data name="CreateOrder_CreateOrderFromWebsite" xml:space="preserve">
+    <value>สร้างออเดอร์จากระบบเว็บไซต์</value>
+  </data>
+  <data name="CreateOrder_GuideCreateOrder" xml:space="preserve">
+    <value>คู่มือการสร้างออเดอร์สั่งซื้อแทน</value>
+  </data>
+  <data name="CreateOrder_InforImage" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="CreateOrder_InforPrice" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="CreateOrder_InforProduct" xml:space="preserve">
+    <value>ข้อมูลสินค้า</value>
+  </data>
+  <data name="CreateOrder_InforUnit" xml:space="preserve">
+    <value>หน่วย</value>
+  </data>
+  <data name="CreateOrder_InputLinkProduct" xml:space="preserve">
+    <value>ลิงค์สินค้า</value>
+  </data>
+  <data name="CreateOrder_InputNameProduct" xml:space="preserve">
+    <value>ชื่อสินค้า</value>
+  </data>
+  <data name="CreateOrder_InputSize" xml:space="preserve">
+    <value>ใส่ไซส์</value>
+  </data>
+  <data name="CreateOrder_NoteCreateLink" xml:space="preserve">
+    <value>&lt;h3&gt;กรุณาใส่ลิงค์สินค้าที่ต้องการซื้อ อย่างเช่น : &lt;a href="https://detail.1688.com/offer/1198639059.html?spm=a262cb.8273506.iwvw1fn0.4.LT2bA9"&gt;https://detail.1688.com/offer/1198639059.html?spm=a262cb.8273506.iwvw1fn0.4.LT2bA9&lt;/a&gt;&lt;/h3&gt;&lt;br /&gt;
+                &lt;span class="red-color" style="line-height: 1.8em;"&gt;ณ บัด นี้ทางเราให้ได้แค่ข้อมูลสินค้าจากเว็บไซต์  Alibaba.com, Tmall.com, 1688.com,... &lt;/span&gt;&lt;br /&gt;
+                &lt;span class="red-color"&gt;สินค้าต้องการซื้อจากเว็บอื่นๆ กรุณาใส่ข้อมูลรายละเอียดเพื่อการสร้างออเดอร์&lt;/span&gt;</value>
+  </data>
+  <data name="CreateOrder_NotProduct" xml:space="preserve">
+    <value>ยังไม่มีสินค้าในออเดอร์นี้</value>
+  </data>
+  <data name="CreateOrder_Payment" xml:space="preserve">
+    <value>ชำระ (มัดจำ)</value>
+  </data>
+  <data name="CreateOrder_SeeOrder" xml:space="preserve">
+    <value>ดูออเดอร์</value>
+  </data>
+  <data name="CreateOrder_SelectInfor" xml:space="preserve">
+    <value>หาข้อมูล</value>
+  </data>
+  <data name="CreateOrder_SelectInforProduct" xml:space="preserve">
+    <value>ข้อมูลสินค้า</value>
+  </data>
+  <data name="CreateOrder_SelectService" xml:space="preserve">
+    <value>เลือกประเภทบริการ</value>
+  </data>
+  <data name="CreateOrder_SelectServiceStorage" xml:space="preserve">
+    <value>เลือกบริการ และโกดัง</value>
+  </data>
+  <data name="CreateOrder_SelectStorage" xml:space="preserve">
+    <value>เลือกโกดังรับสินค้า</value>
+  </data>
+  <data name="CreateOrder_Warning" xml:space="preserve">
+    <value>ข้อแจ้งเตือน</value>
+  </data>
+  <data name="CreateOrder_WarningPause" xml:space="preserve">
+    <value>&lt;p style="text-align: center; color: red; font-size: 14px; line-height: 1.6em"&gt;
+                    &lt;span&gt;ณ บัด นี้ทางเรายังหาข้อมูลสินค้าตามลิงค์ที่ลูกค้าใส่ไม่ได้&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;กรุณาโหลดหน้าเว็บอีกครั้งเพื่อระบบจะพยายามหาข้อมูลสินค้าอีกครั้ง หรือใส่ข้อมูลสินค้าตามแบบฟอร์มข้างลาง&lt;/span&gt;
+                &lt;/p&gt;</value>
+  </data>
+  <data name="InforAccount_DateOfBirth" xml:space="preserve">
+    <value>วันเกิด :</value>
+  </data>
+  <data name="InforAccount_Image" xml:space="preserve">
+    <value>รูปประจำตัว :</value>
+  </data>
+  <data name="InforAccount_SelectImage" xml:space="preserve">
+    <value>เลือกรูปภาพ</value>
+  </data>
+  <data name="InforAccount_Sex" xml:space="preserve">
+    <value>เพศ :</value>
+  </data>
+  <data name="InforAccount_Storage" xml:space="preserve">
+    <value>เลือกโกดังที่จะนำเข้าสินค้า :</value>
+  </data>
+  <data name="Create_ExchargeCN" xml:space="preserve">
+    <value>ราคาแปลง</value>
+  </data>
+  <data name="Create_WaittingLoadding" xml:space="preserve">
+    <value>กรุณารอสักครู่</value>
+  </data>
+  <data name="Still" xml:space="preserve">
+    <value>ยังคง :</value>
+  </data>
+  <data name="Chat_InputContent" xml:space="preserve">
+    <value>คุณลูกค้าสามารถแลกเปลี่ยนข้อมูลที่นี่</value>
+  </data>
+  <data name="Chat_NotMessager" xml:space="preserve">
+    <value>ไม่มีการแลกเปลี่ยนข้อมูลใดๆ</value>
+  </data>
+  <data name="Chat_Send" xml:space="preserve">
+    <value>ส่ง</value>
+  </data>
+  <data name="Chat_TalkWithUs" xml:space="preserve">
+    <value>แลกเปลี่ยนข้อมูลกับทางเรา</value>
+  </data>
+  <data name="Code_Transition" xml:space="preserve">
+    <value>รหัสคูปอง</value>
+  </data>
+  <data name="Create_TotalMoneyExcharge" xml:space="preserve">
+    <value>แปลงรวมเงินสด</value>
+  </data>
+  <data name="DetailDeposit_Title" xml:space="preserve">
+    <value>รายละเอียดออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="DetailOrder_Title" xml:space="preserve">
+    <value>รายละเอียดออเดอร์ซื้อแทนสินค้า</value>
+  </data>
+  <data name="DetaiOrder_Bill" xml:space="preserve">
+    <value>ค่าธรรมเนียม</value>
+  </data>
+  <data name="DetaiOrder_CodeOrder" xml:space="preserve">
+    <value>รหัสออเดอร์</value>
+  </data>
+  <data name="DetaiOrder_CodePackage" xml:space="preserve">
+    <value>รหัสตู้สินค้า</value>
+  </data>
+  <data name="DetaiOrder_CompanyReturn" xml:space="preserve">
+    <value>บริษัทจะต้องคืน</value>
+  </data>
+  <data name="DetaiOrder_Excharge" xml:space="preserve">
+    <value>ธุรกรรม</value>
+  </data>
+  <data name="DetaiOrder_Incurred" xml:space="preserve">
+    <value>ค่าใช้จ่ายอื่นๆ</value>
+  </data>
+  <data name="DetaiOrder_InforOrder" xml:space="preserve">
+    <value>ข้อมูลจัดส่ง</value>
+  </data>
+  <data name="DetaiOrder_NoteOrder" xml:space="preserve">
+    <value>โน๊ตของออเดอร์</value>
+  </data>
+  <data name="DetaiOrder_NumberLink" xml:space="preserve">
+    <value>ลิงค์:</value>
+  </data>
+  <data name="DetaiOrder_PriceBuyOrder" xml:space="preserve">
+    <value>ค่าบริการสั่งซื้อ:</value>
+  </data>
+  <data name="DetaiOrder_PriceProduct" xml:space="preserve">
+    <value>ราคาต่อหน่วย</value>
+  </data>
+  <data name="DetaiOrder_ProductName" xml:space="preserve">
+    <value>จำนวนสินค้า</value>
+  </data>
+  <data name="DetaiOrder_ProductNumber" xml:space="preserve">
+    <value>สินค้าบางชนิด</value>
+  </data>
+  <data name="DetaiOrder_ServiceOrder" xml:space="preserve">
+    <value>บริการออเดอร์</value>
+  </data>
+  <data name="DetaiOrder_StorageGetOut" xml:space="preserve">
+    <value>โกดังที่สินค้าเข้า</value>
+  </data>
+  <data name="DetaiOrder_Ticket" xml:space="preserve">
+    <value>ข้อร้องเรียน</value>
+  </data>
+  <data name="DetaiOrder_TotakMonetOrder" xml:space="preserve">
+    <value>จำนวนค่าสินค้าทั้งหมด</value>
+  </data>
+  <data name="DetaiOrder_Total" xml:space="preserve">
+    <value>ชำระเงินที่เหลือ</value>
+  </data>
+  <data name="DetaiOrder_TotalPriceOrder" xml:space="preserve">
+    <value>ค่าใช้จ่ายของออเดอร์ทั้งมด</value>
+  </data>
+  <data name="DetaiOrder_TransportTQ" xml:space="preserve">
+    <value>ค่าขนส่งภายในจีน</value>
+  </data>
+  <data name="DetaiOrder_TransportTQVN" xml:space="preserve">
+    <value>ค่าขนส่ง จีน- ไทย</value>
+  </data>
+  <data name="DetaiOrder_TransportVN" xml:space="preserve">
+    <value>ค่าขนส่งภายในไทย</value>
+  </data>
+  <data name="Detail_InforTicket" xml:space="preserve">
+    <value>ข้อมูลการร้องเรียน</value>
+  </data>
+  <data name="Detail_MooneyIsCompensation" xml:space="preserve">
+    <value>จำนวนเงินที่ี่ได้ชดเชย</value>
+  </data>
+  <data name="Detail_MooneyRequest" xml:space="preserve">
+    <value>จำนวนเงินที่ร้องขอชดเชย</value>
+  </data>
+  <data name="Detail_Notification" xml:space="preserve">
+    <value>รายละเอียดข้อมูลแจ้งเตื่อน</value>
+  </data>
+  <data name="Detail_ResultTicket" xml:space="preserve">
+    <value>ผลการร้องเรียน</value>
+  </data>
+  <data name="Detail_TypeTicket" xml:space="preserve">
+    <value>ปัญหาของการร้องเรียน</value>
+  </data>
+  <data name="TicketCode" xml:space="preserve">
+    <value>รหัสข้อร้องเรียน</value>
+  </data>
+  <data name="Cancel_Order" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="DetailDeposit_InforContact" xml:space="preserve">
+    <value>ข้อมูลของผู้ติดต่อ</value>
+  </data>
+  <data name="Note_DepositOrder" xml:space="preserve">
+    <value>กรุณาติดต่อกับพนักงานเพื่อสร้างออเดอร์ LikeOrder.com ขอขอบพรุคุณทุกท่านที่ได้ใช้บริการของทางเรา</value>
+  </data>
+  <data name="Orther" xml:space="preserve">
+    <value>อื่นๆ</value>
+  </data>
+  <data name="DetailDeposit_CodeVD" xml:space="preserve">
+    <value>รหัสใบตราส่งสินค้า</value>
+  </data>
+  <data name="DetailDeposit_CreateOrderKD" xml:space="preserve">
+    <value>สร้างสินค้า</value>
+  </data>
+  <data name="DetailDeposit_Detail" xml:space="preserve">
+    <value>รายละเอียด</value>
+  </data>
+  <data name="DetailDeposit_MoneyExcharge" xml:space="preserve">
+    <value>ค่าน้ำหนักได้แปลงหน่วย</value>
+  </data>
+  <data name="DetailDeposit_PackageContent" xml:space="preserve">
+    <value>&lt;span&gt;
+                                โปรดทราบ รายชื่อลังสินค้าข้างบนเป็นรายชื่อคุณลูกค้าร้องขอสร้างออเดอร์ฝากเก็บสินค้า รายชือลังสินค้าเราได้รับตามจริงได้แสดงใน tab &lt;b&gt;[ลังสินค้า]&lt;/b&gt;
+                            &lt;/span&gt;</value>
+  </data>
+  <data name="DetailDeposit_StorageGiveOD" xml:space="preserve">
+    <value>โกดังรับสินค้า</value>
+  </data>
+  <data name="DetailDeposit_StorageSendOD" xml:space="preserve">
+    <value>โกดังส่งสินค้า</value>
+  </data>
+  <data name="DetailDeposit_WeightExcharge" xml:space="preserve">
+    <value>น้ำหนักได้แปลงหน่วย</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Undefined</value>
+  </data>
+  <data name="PassForget_PassConfirm" xml:space="preserve">
+    <value>ต้องใส่รหัสผ่านเพื่อเข้าสู่</value>
+  </data>
+  <data name="PassForget_PassConfirmNotTrue" xml:space="preserve">
+    <value>ยืนยันรหัสผ่านจะต้องป้อน</value>
+  </data>
+  <data name="PassForget_PassMin6" xml:space="preserve">
+    <value>รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร</value>
+  </data>
+  <data name="PassForget_PassShort50" xml:space="preserve">
+    <value>รหัสผ่านจะต้องสั้นกว่า 50 ตัวอักษร</value>
+  </data>
+  <data name="Register_EmailObligatory" xml:space="preserve">
+    <value>อีเมล์จะต้องป้อน</value>
+  </data>
+  <data name="Register_ErrorAddressObligatory" xml:space="preserve">
+    <value>ที่อยู่จะต้องป้อน</value>
+  </data>
+  <data name="Register_ErrorAddressShort" xml:space="preserve">
+    <value>ที่อยู่จะต้องสั้นกว่า 600 ตัวอักษร</value>
+  </data>
+  <data name="Register_ErrorDistricObligatory" xml:space="preserve">
+    <value>หัวเมืองจะต้องเลือก</value>
+  </data>
+  <data name="Register_ErrorEmailFormat" xml:space="preserve">
+    <value>อีเมลไม่ถูกต้อง</value>
+  </data>
+  <data name="Register_ErrorEmailShort" xml:space="preserve">
+    <value>อีเมล์จะต้องสั้นกว่า 50 ตัวอักษร</value>
+  </data>
+  <data name="Register_ErrorFullnameShort" xml:space="preserve">
+    <value>พวกเขามีชื่อที่สั้นลงถึง 90 ตัวอักษร</value>
+  </data>
+  <data name="Register_ErrorProvinceObligatory" xml:space="preserve">
+    <value>จังหวัดจะต้องเลือก</value>
+  </data>
+  <data name="Register_ErrorWardsObligatory" xml:space="preserve">
+    <value>หอผู้ป่วยจะต้องเลือก</value>
+  </data>
+  <data name="Register_FullNameObligatory" xml:space="preserve">
+    <value>พวกเขาจะต้องใส่ชื่อ</value>
+  </data>
+  <data name="Register_PassConfirmError" xml:space="preserve">
+    <value>ยืนยันรหัสผ่านข้อผิดพลาด</value>
+  </data>
+  <data name="Register_PassConfirmNotTrue" xml:space="preserve">
+    <value>ยืนยันรหัสผ่านไม่ถูกต้อง</value>
+  </data>
+  <data name="Register_PhoneNumberObligatory" xml:space="preserve">
+    <value>หมายเลขโทรศัพท์ต้องป้อน</value>
+  </data>
+  <data name="Register_PhoneNumberShort" xml:space="preserve">
+    <value>หมายเลขโทรศัพท์จะต้องสั้นกว่า 50 ตัวอักษร</value>
+  </data>
+  <data name="Account_locked" xml:space="preserve">
+    <value>บัญชีถูกล็อก</value>
+  </data>
+  <data name="CreateAccountNewFromCMS" xml:space="preserve">
+    <value>สร้างบัญชีใหม่</value>
+  </data>
+  <data name="ErrorCreateAccount_Contact" xml:space="preserve">
+    <value>ติดต่อฝ่ายบริการลูกค้าที่จะได้รับการสนับสนุนที่ดี</value>
+  </data>
+  <data name="ErrorCreateAccount_LinkRequestTimeOut" xml:space="preserve">
+    <value>ลิงก์สร้างบัญชีไม่ถูกต้อง﻿</value>
+  </data>
+  <data name="Error_CreateAccount" xml:space="preserve">
+    <value>เกิดความผิดพลาดในการสร้างบัญชี</value>
+  </data>
+  <data name="Register_Compele" xml:space="preserve">
+    <value>ลงทะเบียนสำเร็จ</value>
+  </data>
+  <data name="Register_CompleteRegister" xml:space="preserve">
+    <value>จบการสร้างบัญชีในเว็บไซต์</value>
+  </data>
+  <data name="Register_NoteHomeRegister" xml:space="preserve">
+    <value>คุณสามารถเข้าสู่เว็บไซต์ที่มีอีเมลและรหัสผ่านของคุณเข้ามา!</value>
+  </data>
+  <data name="Title_ActiveAccount" xml:space="preserve">
+    <value>เปิดใช้งานบัญชี</value>
+  </data>
+  <data name="Title_CreateAccountComplete" xml:space="preserve">
+    <value>สร้างบัญชีสำเร็จ</value>
+  </data>
+  <data name="Title_DepositFromCart" xml:space="preserve">
+    <value>มัดจำออเดอร์</value>
+  </data>
+  <data name="Title_Guide" xml:space="preserve">
+    <value>วิธีการสั่งซื้อ</value>
+  </data>
+  <data name="OrderGiveProducts" xml:space="preserve">
+    <value>ลูกค้าสั่งซื้อ /ซื้อได้ / ลูกค้ารับ﻿</value>
+  </data>
+  <data name="PriceList_PriceList" xml:space="preserve">
+    <value>อัตราค่าบริการ</value>
+  </data>
+  <data name="Introduce_AboutUs" xml:space="preserve">
+    <value>เกี่ยวกับเรา</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Anh" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="BangGiaShipHang" xml:space="preserve">
+    <value>อัตราค่าขนส่ง</value>
+  </data>
+  <data name="BanGiamDoc" xml:space="preserve">
+    <value>คณะผู้บริหาร</value>
+  </data>
+  <data name="BaoHang" xml:space="preserve">
+    <value>กระสอบสินค้า</value>
+  </data>
+  <data name="BatBuoc" xml:space="preserve">
+    <value>บังคับ</value>
+  </data>
+  <data name="BieuTuong" xml:space="preserve">
+    <value>สัญลักษณ์</value>
+  </data>
+  <data name="BinhThuong" xml:space="preserve">
+    <value>ธรรมดา</value>
+  </data>
+  <data name="BiXoa" xml:space="preserve">
+    <value>ถูกลบ</value>
+  </data>
+  <data name="Btn_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Btn_Add_Customer_Potential" xml:space="preserve">
+    <value>เติมบัญชีใหม่ของลูกค้าที่มีศักยภาพ</value>
+  </data>
+  <data name="Btn_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Btn_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Btn_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Btn_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Btn_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Btn_Official" xml:space="preserve">
+    <value>Official</value>
+  </data>
+  <data name="Btn_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="CapNhatCanNang" xml:space="preserve">
+    <value>อัพเดทน้ำหนัก</value>
+  </data>
+  <data name="CapNhatDon" xml:space="preserve">
+    <value>อัพเดทน้ำหนัก</value>
+  </data>
+  <data name="CauHinhWebsiteChoNhanVien" xml:space="preserve">
+    <value>อินเตอร์เฟซเว็บไซต์สำหรับพนักงาน</value>
+  </data>
+  <data name="ChamXuLy" xml:space="preserve">
+    <value>จัดการช้า</value>
+  </data>
+  <data name="ChiTienQuy" xml:space="preserve">
+    <value>จ่ายจากกองทุน</value>
+  </data>
+  <data name="ChiTienVi" xml:space="preserve">
+    <value>จ่ายจากกระเป๋า</value>
+  </data>
+  <data name="ChoBaoGia" xml:space="preserve">
+    <value>รอเเจ้งราคา</value>
+  </data>
+  <data name="ChoChuyenChinhThuc" xml:space="preserve">
+    <value>รอเปลี่ยนเเปลง</value>
+  </data>
+  <data name="ChoCSKHXuLy" xml:space="preserve">
+    <value>รอฝ่ายดูเเลลูกค้าจัดการ</value>
+  </data>
+  <data name="ChoDatCoc" xml:space="preserve">
+    <value>รอชำระ</value>
+  </data>
+  <data name="ChoDatHang" xml:space="preserve">
+    <value>รอจัดการสั่งของ</value>
+  </data>
+  <data name="ChoDatHangXuLy" xml:space="preserve">
+    <value>รอจัดการสั่งของ</value>
+  </data>
+  <data name="ChoDuyet" xml:space="preserve">
+    <value>รอตรวจสอบ</value>
+  </data>
+  <data name="ChoDuyetGia" xml:space="preserve">
+    <value>รอคอนเฟิร์มราคา</value>
+  </data>
+  <data name="ChoGiaoHang" xml:space="preserve">
+    <value>รอส่งของ</value>
+  </data>
+  <data name="ChoKetDon" xml:space="preserve">
+    <value>รอสร้างออเดอร์</value>
+  </data>
+  <data name="ChoKeToanThanhToan" xml:space="preserve">
+    <value>รอฝ่ายบัญชีชำระ</value>
+  </data>
+  <data name="ChoKeToanTT" xml:space="preserve">
+    <value>รอฝ่ายบัญชีชำระ</value>
+  </data>
+  <data name="ChoKeToanXuLy" xml:space="preserve">
+    <value>รอฝ่ายบัญชีจัดการ</value>
+  </data>
+  <data name="ChoKhachChonNCC" xml:space="preserve">
+    <value>รอลูกค้าเลือกเเหน่งให้สินค้า</value>
+  </data>
+  <data name="ChoKiemDem" xml:space="preserve">
+    <value>รอตรวจนับ</value>
+  </data>
+  <data name="ChoNhanHang" xml:space="preserve">
+    <value>รอรับสินค้า</value>
+  </data>
+  <data name="ChoPheDuyet" xml:space="preserve">
+    <value>รอคอนเฟิร์ม</value>
+  </data>
+  <data name="ChoThanhToan" xml:space="preserve">
+    <value>รอชำระ</value>
+  </data>
+  <data name="ChoThu" xml:space="preserve">
+    <value>รอชำระเงิน</value>
+  </data>
+  <data name="ChoTra" xml:space="preserve">
+    <value>รอคืนเงิน</value>
+  </data>
+  <data name="ChoXacNhan" xml:space="preserve">
+    <value>รอคอนเฟิร์ม</value>
+  </data>
+  <data name="ChoXuLy" xml:space="preserve">
+    <value>รอจัดการ</value>
+  </data>
+  <data name="ChuaChonLyDo" xml:space="preserve">
+    <value>ยังไม่เลือกเหตุผล</value>
+  </data>
+  <data name="ChuaCoKho" xml:space="preserve">
+    <value>ไม่มีโกดัง</value>
+  </data>
+  <data name="ChuaCoMaVanDon" xml:space="preserve">
+    <value>ยังไม่มีรหัสใบตราส่งสินค้า</value>
+  </data>
+  <data name="ChuaCoMVD" xml:space="preserve">
+    <value>ยังไม่มีรหัสใบตราส่งสินค้า</value>
+  </data>
+  <data name="ChuaDuKienVeKho" xml:space="preserve">
+    <value>สินค้าเข้าโกดังไม่ครบ</value>
+  </data>
+  <data name="ChuaHoanThanh" xml:space="preserve">
+    <value>ยังไม่เสร็จ</value>
+  </data>
+  <data name="ChuaMacCa" xml:space="preserve">
+    <value>ยังไม่ต่อรอง</value>
+  </data>
+  <data name="ChuyenHangNhamKho" xml:space="preserve">
+    <value>ส่งสินค้าผิดโกดัง</value>
+  </data>
+  <data name="ChuyenMucNganhHang" xml:space="preserve">
+    <value>ประเภทสินค้า</value>
+  </data>
+  <data name="CongNoPhaiThu" xml:space="preserve">
+    <value>หนี้สินต้องเรียกเก็บ</value>
+  </data>
+  <data name="CongNoPhaiTra" xml:space="preserve">
+    <value>หนี้สินต้องจ่าย</value>
+  </data>
+  <data name="CongTyTuVanChuyen" xml:space="preserve">
+    <value>บริษทขนส่งเอง</value>
+  </data>
+  <data name="CSKH" xml:space="preserve">
+    <value>ดูเเลลูกค้า</value>
+  </data>
+  <data name="Cu" xml:space="preserve">
+    <value>เก่า</value>
+  </data>
+  <data name="CungCap" xml:space="preserve">
+    <value>อุปทาน</value>
+  </data>
+  <data name="Customer_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Customer_Avartar" xml:space="preserve">
+    <value>Avartar</value>
+  </data>
+  <data name="Customer_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Customer_Detail_Potential" xml:space="preserve">
+    <value>ข้อมูลรายละเอียดของลูกค้าที่มีศักยภาพ</value>
+  </data>
+  <data name="Customer_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Customer_FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Customer_List_Potential_Room" xml:space="preserve">
+    <value>รายชื่องลูกค้าที่มีศักยภาพของฝ่ายขายสินค้า</value>
+  </data>
+  <data name="Customer_Menu_Information_Search" xml:space="preserve">
+    <value>ค้นหาข้อมูลลูกค้า</value>
+  </data>
+  <data name="Customer_Menu_List_Official" xml:space="preserve">
+    <value>รายชื่องลูกค้าประจำ</value>
+  </data>
+  <data name="Customer_Menu_List_Official_User" xml:space="preserve">
+    <value>ลูกค้าประจำของทางเรา</value>
+  </data>
+  <data name="Customer_Menu_List_Potential" xml:space="preserve">
+    <value>รายชื่องลูกค้าที่มีศักยภาพของฝ่ายขายสินค้า</value>
+  </data>
+  <data name="Customer_Menu_List_Potential_User" xml:space="preserve">
+    <value>ลูกค้าที่มีศักยภาพของทางเรา</value>
+  </data>
+  <data name="Customer_Menu_Management_Official" xml:space="preserve">
+    <value>บริหารลูกค้าประจำ</value>
+  </data>
+  <data name="Customer_Menu_Management_Potential" xml:space="preserve">
+    <value>บริหารลูกค้าที่มีศักยภาพ</value>
+  </data>
+  <data name="Customer_Menu_Statistcal_OverTime" xml:space="preserve">
+    <value>Customer_Menu_Statistcal_OverTime</value>
+  </data>
+  <data name="Customer_Menu_Statistical" xml:space="preserve">
+    <value>สถิติลูกค้า</value>
+  </data>
+  <data name="Customer_Menu_Statistical_Receiving_Order" xml:space="preserve">
+    <value>สถิติลูกค้าสั่งของช้า</value>
+  </data>
+  <data name="Customer_Menu_Statistical_Sales" xml:space="preserve">
+    <value>สถิติยอดขายของพนักงาน</value>
+  </data>
+  <data name="Customer_Menu_Support" xml:space="preserve">
+    <value>ช่วยเหลือ</value>
+  </data>
+  <data name="Customer_Menu_Support_Complain" xml:space="preserve">
+    <value>ช่วยเเก้ไขข้อร้องเรียน</value>
+  </data>
+  <data name="Customer_Nickname" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="Customer_Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Customer_Sex" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="Customer_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Customer_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Customer_User_Charge" xml:space="preserve">
+    <value>พนักงานsalesดูเเล</value>
+  </data>
+  <data name="Customer_Worker" xml:space="preserve">
+    <value>พนักงานปฏิบัติงาน</value>
+  </data>
+  <data name="DaCoKho" xml:space="preserve">
+    <value>มีโกดัง</value>
+  </data>
+  <data name="DaDuyet" xml:space="preserve">
+    <value>ตรวจสอบเเล้ว</value>
+  </data>
+  <data name="DaHoanThanh" xml:space="preserve">
+    <value>้เสร็จสิ้น</value>
+  </data>
+  <data name="DaHuy" xml:space="preserve">
+    <value>ยกเลิกเเล้ว</value>
+  </data>
+  <data name="DaKiemDem" xml:space="preserve">
+    <value>ตรวจนับเรียบร้อย</value>
+  </data>
+  <data name="DaKyNhanChoXNKho" xml:space="preserve">
+    <value>สมัครเเล้ว รอคอนเฟิร์มจากโกดัง</value>
+  </data>
+  <data name="DangBaoGia" xml:space="preserve">
+    <value>กำลังเเจ้งราคา</value>
+  </data>
+  <data name="DangDatHang" xml:space="preserve">
+    <value>กำลังมัดจำ</value>
+  </data>
+  <data name="DangDieuChuyen" xml:space="preserve">
+    <value>กำลังสั่งขนส่ง</value>
+  </data>
+  <data name="DangDiGiaoHang" xml:space="preserve">
+    <value>กำลังส่งสินค้า</value>
+  </data>
+  <data name="DangDoiTien" xml:space="preserve">
+    <value>กำลังทวงเงิน</value>
+  </data>
+  <data name="DangGiaoHang" xml:space="preserve">
+    <value>กำลังส่งของ</value>
+  </data>
+  <data name="DangLienHeShop" xml:space="preserve">
+    <value>กำลังติดต่อร้านขายของ</value>
+  </data>
+  <data name="DangMo" xml:space="preserve">
+    <value>กำลังเปิด</value>
+  </data>
+  <data name="DangSuDung" xml:space="preserve">
+    <value>กำลังใช้อยู่</value>
+  </data>
+  <data name="DangTrenDuongVanChuyen" xml:space="preserve">
+    <value>กำลังขนส่งอยู่</value>
+  </data>
+  <data name="DangTrongKhoTQ" xml:space="preserve">
+    <value>กำลังอยู่ในโกดังที่จีน</value>
+  </data>
+  <data name="DangVanChuyen" xml:space="preserve">
+    <value>กำลังขนส่ง</value>
+  </data>
+  <data name="DangXuLy" xml:space="preserve">
+    <value>กำลังจัดการ</value>
+  </data>
+  <data name="DanhSachDonHang" xml:space="preserve">
+    <value>รายการออเดอร์</value>
+  </data>
+  <data name="DanhSachNap_TruTienQuy" xml:space="preserve">
+    <value>รายการเติม/ลบเงินจากกองทุน</value>
+  </data>
+  <data name="DanhSachNap_TruTienVi" xml:space="preserve">
+    <value>รายการเติม/ลบเงินจากกระเป๋า</value>
+  </data>
+  <data name="DanhSachQuy" xml:space="preserve">
+    <value>รายการกองทุน</value>
+  </data>
+  <data name="DanhSachShop" xml:space="preserve">
+    <value>รายชื่อShop</value>
+  </data>
+  <data name="DanhSachXuLyYeuCauRutTien" xml:space="preserve">
+    <value>รายการจัดการข้อร้องขอถอนเงิน</value>
+  </data>
+  <data name="Dasboard" xml:space="preserve">
+    <value>แดชบอร์ด</value>
+  </data>
+  <data name="DatDuocHang" xml:space="preserve">
+    <value>สั่งของเรียบร้อย</value>
+  </data>
+  <data name="DatHang" xml:space="preserve">
+    <value>สั่งสินค้า</value>
+  </data>
+  <data name="DatHangChoSanXuat" xml:space="preserve">
+    <value>สินค้าสั่ง รอผลิต</value>
+  </data>
+  <data name="DatHangKiemTraLai" xml:space="preserve">
+    <value>สั่งของ ตรวจของ</value>
+  </data>
+  <data name="DatHangPhanHoi" xml:space="preserve">
+    <value>สั่ังของ ตอบกลับ</value>
+  </data>
+  <data name="DatHangTiepNhan" xml:space="preserve">
+    <value>สั่งของถึงแผนกต้อนรับ</value>
+  </data>
+  <data name="DatHangXong" xml:space="preserve">
+    <value>สั่งของเสร็จสิ้นเเล้ว</value>
+  </data>
+  <data name="DaThanhToan" xml:space="preserve">
+    <value>ชำระเเล้ว</value>
+  </data>
+  <data name="DaTraHang" xml:space="preserve">
+    <value>สินค้าถึงลูกค้าเรียบร้อย</value>
+  </data>
+  <data name="DaXacNhan" xml:space="preserve">
+    <value>คอนเฟิร์มเเล้ว</value>
+  </data>
+  <data name="DaXuatGiao" xml:space="preserve">
+    <value>ส่งของเรียบร้อย</value>
+  </data>
+  <data name="DaXuLy" xml:space="preserve">
+    <value>จัดการเรียบร้อยเเล้ว</value>
+  </data>
+  <data name="DCDonHang" xml:space="preserve">
+    <value>มัดจำออเดอร์</value>
+  </data>
+  <data name="DCNgoaiGioHC" xml:space="preserve">
+    <value>มัดจำนอกเวลา</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="DetailTicket_DiaChi" xml:space="preserve">
+    <value>ที่อยู่</value>
+  </data>
+  <data name="DetailTicket_DienThoai" xml:space="preserve">
+    <value>โทรศัพท์</value>
+  </data>
+  <data name="DHGiaTriLon" xml:space="preserve">
+    <value>ออเดอร์สินค้าที่มีค่า</value>
+  </data>
+  <data name="DHGuiYeuCauShop" xml:space="preserve">
+    <value>สั่งของ ส่งข้อขอร้องให้ร้านขายของ</value>
+  </data>
+  <data name="DHThuongMai" xml:space="preserve">
+    <value>ออเดอร์ขายย่อย</value>
+  </data>
+  <data name="DHXacNhanThongTin" xml:space="preserve">
+    <value>ออเดอร์ที่เเจ้งคุยกับshopเเล้ว รอคอนเฟิร์มจากทั้งสองฝ่าย</value>
+  </data>
+  <data name="DienVan" xml:space="preserve">
+    <value>ใบตราขนส่ง</value>
+  </data>
+  <data name="DieuChuyenNoiBo" xml:space="preserve">
+    <value>ใบตราขนส่งภายในระบบ</value>
+  </data>
+  <data name="DinhKhoanCongNo" xml:space="preserve">
+    <value>บันทึกรายการหนี้สินต่างๆ</value>
+  </data>
+  <data name="DinhKhoanQuy" xml:space="preserve">
+    <value>บันทึกรายการกองทุนต่างๆ</value>
+  </data>
+  <data name="DinhKhoanVi" xml:space="preserve">
+    <value>บันทึกรายการกระเป๋าเงินต่างๆ</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="DoiKhachXacNhanPhiShip" xml:space="preserve">
+    <value>รอลูกค้าคอนเฟิร์ฺมค่าขนส่ง ความเสี่ยงของออเดอร์</value>
+  </data>
+  <data name="DoiTacKho" xml:space="preserve">
+    <value>คู่ค้าโกดัง</value>
+  </data>
+  <data name="DoiTraHang" xml:space="preserve">
+    <value>เปลียน คืน สินค้า</value>
+  </data>
+  <data name="DoiTuongKeToan" xml:space="preserve">
+    <value>การบัญชี</value>
+  </data>
+  <data name="DoiTuongKH" xml:space="preserve">
+    <value>ลูกค้า</value>
+  </data>
+  <data name="DongBao" xml:space="preserve">
+    <value>บรรจุใส่กระสอบ</value>
+  </data>
+  <data name="DongKienGo" xml:space="preserve">
+    <value>ตีลังไม้</value>
+  </data>
+  <data name="DonHang" xml:space="preserve">
+    <value>ออเดอร์</value>
+  </data>
+  <data name="DonHangChoBaoGia" xml:space="preserve">
+    <value>ออเดอร์รอเเจ้งราคา</value>
+  </data>
+  <data name="DonHangCuaCSKH" xml:space="preserve">
+    <value>ออเดอร์</value>
+  </data>
+  <data name="DonHangDangBaoGia" xml:space="preserve">
+    <value>ออเดอร์กำลังเเจ้งราคา</value>
+  </data>
+  <data name="DonHangKyGui" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสิน</value>
+  </data>
+  <data name="DonHangKyGuiChuaNhanXuLy" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสินค้ายังไม่คอนเฟิร์มจัดการ</value>
+  </data>
+  <data name="DonHangKyGuiTreXuLy" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสินค้าดำเนินการช้า</value>
+  </data>
+  <data name="DonHangLe" xml:space="preserve">
+    <value>ออเดอร์ย่อย</value>
+  </data>
+  <data name="DonHangOrder" xml:space="preserve">
+    <value>ออเดอร์สั่งซื้อ</value>
+  </data>
+  <data name="DonHangOrderChoBaoGia" xml:space="preserve">
+    <value>ออเดอร์กำลังรอประเมินราคา</value>
+  </data>
+  <data name="DonHangOrderChoBaoGiaMoi" xml:space="preserve">
+    <value>ออเดอร์สั่งซื้อรอประเมินราคาใหม่</value>
+  </data>
+  <data name="DonHangOrderChuaNhanXuLy" xml:space="preserve">
+    <value>ออเดอร์สั่งซื้อยังไม่ได้ดำเนินการ</value>
+  </data>
+  <data name="DonHangOrderTreXuLy" xml:space="preserve">
+    <value>ออเดอร์สั่งซื้อถูกดำเนินการช้า</value>
+  </data>
+  <data name="DonHangRuiRo" xml:space="preserve">
+    <value>ออเดอร์ที่มีความเสี่ยงสูง</value>
+  </data>
+  <data name="DonHangTimNguon" xml:space="preserve">
+    <value>ออเดอร์ค้นหาแหล่งสินค้า</value>
+  </data>
+  <data name="DonHangTimNguonMoi" xml:space="preserve">
+    <value>ออเดอร์ค้นหาแหล่งสินค้าใหม่</value>
+  </data>
+  <data name="DonHangTimNguonTreXuLy" xml:space="preserve">
+    <value>ออเดอร์ค้นหาแหล่งสินค้าถูกจัดการช้า</value>
+  </data>
+  <data name="DonKyGui" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="DonNhieuLinkNhieuSP" xml:space="preserve">
+    <value>ออเดอร์มีหลายลิงห์ หลายสินค้า</value>
+  </data>
+  <data name="DonNhieuYeuCau" xml:space="preserve">
+    <value>ออเดอร์มีข้อขอร้องหลายอย่าง ต้องโน๊ตจัดการยาก</value>
+  </data>
+  <data name="DonThayDoiGiaSoLuong" xml:space="preserve">
+    <value>ออเดอร์เปลียนเเปลงราคา เปลี่ยนจำนวน</value>
+  </data>
+  <data name="DonTimNguon" xml:space="preserve">
+    <value>ออเดอร์หาสินค้า</value>
+  </data>
+  <data name="DuLieuJS" xml:space="preserve">
+    <value>ข้อมูลjson</value>
+  </data>
+  <data name="DuLieuThongThuong" xml:space="preserve">
+    <value>ข้อมูลทั่วไป</value>
+  </data>
+  <data name="GiamCuocDoiTraChoKhach" xml:space="preserve">
+    <value>ลดราคาบริการบริการเปลี่ยนคืนของให้ลูกค้า</value>
+  </data>
+  <data name="GiamCuocVaPDVDoTraHangMuon" xml:space="preserve">
+    <value>ลดราคาบริการเพราะสินค้ามาถึงช้า</value>
+  </data>
+  <data name="GiaoHang" xml:space="preserve">
+    <value>ส่งสินค้า</value>
+  </data>
+  <data name="GoiDienGiaoHang" xml:space="preserve">
+    <value>โทรหาลูกค้าเพื่อส่งของ</value>
+  </data>
+  <data name="GoiHai" xml:space="preserve">
+    <value>แพคเกจ ที่ ๒</value>
+  </data>
+  <data name="GoiKinhDoanh" xml:space="preserve">
+    <value>แพคเกจขายชอบ</value>
+  </data>
+  <data name="GoiMot" xml:space="preserve">
+    <value>แพคเกจ ที่ ๑</value>
+  </data>
+  <data name="GoiTieuDung" xml:space="preserve">
+    <value>แพคเกจบริโภค</value>
+  </data>
+  <data name="GuiKeToanXacNhan" xml:space="preserve">
+    <value>ส่งให้ฝ่ายบัญชีคอนเฟิร์ม</value>
+  </data>
+  <data name="HangBiMat" xml:space="preserve">
+    <value>สินค้าหาย</value>
+  </data>
+  <data name="HangBiMatDaXuLy" xml:space="preserve">
+    <value>สินค้าหายได้จัดการเเล้ว</value>
+  </data>
+  <data name="HangBiMatMa" xml:space="preserve">
+    <value>สินค้าหายรหัส</value>
+  </data>
+  <data name="HangHoaVeCham" xml:space="preserve">
+    <value>สินค้ามาช้า</value>
+  </data>
+  <data name="HangHong" xml:space="preserve">
+    <value>สินค้าเสีย</value>
+  </data>
+  <data name="HangHongDoNgamNuoc" xml:space="preserve">
+    <value>สินค้าเสียเพราะติดน้ำ</value>
+  </data>
+  <data name="HangVeSaiQuyCach" xml:space="preserve">
+    <value>สินค้าผิดข้อกำหนด</value>
+  </data>
+  <data name="HienTai" xml:space="preserve">
+    <value>ปัจุบัน</value>
+  </data>
+  <data name="HoanPhiDongKienGo" xml:space="preserve">
+    <value>คืนเงินบริการตีลังไม้</value>
+  </data>
+  <data name="HoanPhieu" xml:space="preserve">
+    <value>คืนใบตรา</value>
+  </data>
+  <data name="HoanTat" xml:space="preserve">
+    <value>เสร็จสิ้น</value>
+  </data>
+  <data name="HoanTatThu" xml:space="preserve">
+    <value>ชำระเงินเรียบร้อย</value>
+  </data>
+  <data name="HoanTatTra" xml:space="preserve">
+    <value>คืนเงินเรียบร้อย</value>
+  </data>
+  <data name="HoanThanh" xml:space="preserve">
+    <value>เสร็จสิ้น</value>
+  </data>
+  <data name="HoanThanhDH" xml:space="preserve">
+    <value>ออเดอร์เสร็จสิ้น</value>
+  </data>
+  <data name="HoanThanhDon" xml:space="preserve">
+    <value>จบออเดอร์</value>
+  </data>
+  <data name="HoanTienDH" xml:space="preserve">
+    <value>คืนเงินออเดอร์</value>
+  </data>
+  <data name="HoanTienDonHang" xml:space="preserve">
+    <value>คืนเงินออเดอร์</value>
+  </data>
+  <data name="HoanTienMacCa" xml:space="preserve">
+    <value>คืนเงินต่อรอง</value>
+  </data>
+  <data name="HoanTienXuLyKNDH" xml:space="preserve">
+    <value>ิคืนเงินที่จัดการการขอร้องออเดอร์</value>
+  </data>
+  <data name="HoanTra" xml:space="preserve">
+    <value>คืนเงิน</value>
+  </data>
+  <data name="HongMat" xml:space="preserve">
+    <value>ของเสีย หาย</value>
+  </data>
+  <data name="HoTroGiaiQuyetKhieuNai" xml:space="preserve">
+    <value>ช่วยเเก้ไขข้อร้องเรียน</value>
+  </data>
+  <data name="HoTroGiaiQuyetKN" xml:space="preserve">
+    <value>ช่วยเเก้ไขข้อร้องเรียน</value>
+  </data>
+  <data name="Huy" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="HuyHoanBoi" xml:space="preserve">
+    <value>ยกเลิก คืนของ ชดใช้</value>
+  </data>
+  <data name="Incompetent" xml:space="preserve">
+    <value>ไม่สามารถเข้าสู่ระบบ</value>
+  </data>
+  <data name="Indonesia" xml:space="preserve">
+    <value>อินโดนีเซีย</value>
+  </data>
+  <data name="KeToan" xml:space="preserve">
+    <value>ฝ่ายบัญชี</value>
+  </data>
+  <data name="KeToanDaHoanTien" xml:space="preserve">
+    <value>ฝ่ายบัญชีคืนเงินเเล้ว</value>
+  </data>
+  <data name="KeToanDangThanhToan" xml:space="preserve">
+    <value>ฝ่ายบัญชีกำลังชำระ</value>
+  </data>
+  <data name="KeToanThanhToanTienDH" xml:space="preserve">
+    <value>ฝ่ายบัญชีชำระค่าสินค้า</value>
+  </data>
+  <data name="KhachHangMacCa" xml:space="preserve">
+    <value>ลูกค้าต่อรอง</value>
+  </data>
+  <data name="KHChinhThuc" xml:space="preserve">
+    <value>ลูกค้าประจำ</value>
+  </data>
+  <data name="KHChinhThucDangPhuTrach" xml:space="preserve">
+    <value>ลูกค้าประจำกำลังดูเเล</value>
+  </data>
+  <data name="KhieuNaiHangLoiKyThuat" xml:space="preserve">
+    <value>ร้องเรียนสินค้าที่ผิดพลาด</value>
+  </data>
+  <data name="Kho" xml:space="preserve">
+    <value>โกดัง</value>
+  </data>
+  <data name="KhoMoiTao" xml:space="preserve">
+    <value>โกดังเพิ่งเปิด</value>
+  </data>
+  <data name="KhongKichHoat" xml:space="preserve">
+    <value>ปิดใช้งาน</value>
+  </data>
+  <data name="KhongLienLacDuocVoiKhach" xml:space="preserve">
+    <value>ไม่สามารถติดต่อกับลูกค้า</value>
+  </data>
+  <data name="KhongXuLyDuoc" xml:space="preserve">
+    <value>จัดการไม่ได้</value>
+  </data>
+  <data name="KhoTQNhanHang" xml:space="preserve">
+    <value>โกดังที่จีนรับสินค้า</value>
+  </data>
+  <data name="KHTiemNang" xml:space="preserve">
+    <value>บริหารลูกค้าที่มีศักยภาพ</value>
+  </data>
+  <data name="KHTiemNangDangPhuTrach" xml:space="preserve">
+    <value>ลูกค้ามีศักยภาพที่กำลังดูแล</value>
+  </data>
+  <data name="KichHoat" xml:space="preserve">
+    <value>เปิดใช้งาน</value>
+  </data>
+  <data name="KiemDemHangHoa" xml:space="preserve">
+    <value>ตรวจนับสินค้า</value>
+  </data>
+  <data name="KiemDemSai" xml:space="preserve">
+    <value>ตรวจนับผิด</value>
+  </data>
+  <data name="KiemDemThieuHang" xml:space="preserve">
+    <value>ตรวจนับสินค้า</value>
+  </data>
+  <data name="KiemSai" xml:space="preserve">
+    <value>ตรวจนับผิด</value>
+  </data>
+  <data name="KienHangChoXuatGiao" xml:space="preserve">
+    <value>ลังสินค้ารอออกจากโกดังเเละส่งให้ลูกค้า</value>
+  </data>
+  <data name="KienHangMatMa" xml:space="preserve">
+    <value>สินค้าหายรหัส</value>
+  </data>
+  <data name="KienHangMatThongTin" xml:space="preserve">
+    <value>ลังสินค้าหายข้อมูล</value>
+  </data>
+  <data name="KinhDoanh" xml:space="preserve">
+    <value>sale</value>
+  </data>
+  <data name="KinhDoanhMacCa" xml:space="preserve">
+    <value>Seller ต่อรอง</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LayoutKho" xml:space="preserve">
+    <value>Layout โกดัง</value>
+  </data>
+  <data name="LevelKhachHang" xml:space="preserve">
+    <value>ระดับลูกค้า</value>
+  </data>
+  <data name="LienQuan" xml:space="preserve">
+    <value>เกี่ยวข้อง</value>
+  </data>
+  <data name="LoaiKhhieuNaiKhachHang" xml:space="preserve">
+    <value>ประเภทร้องเรียนของลูกค้า</value>
+  </data>
+  <data name="LuongDonNhieuTiepNhanMuon" xml:space="preserve">
+    <value>จำนวนออเดอร์เยอะ ได้รับช้า</value>
+  </data>
+  <data name="LyDoCaNhan" xml:space="preserve">
+    <value>เหตุผลที่ลูกค้าตกลง</value>
+  </data>
+  <data name="LyDoDienMang" xml:space="preserve">
+    <value>เหตุผลจากไฟฟ้า อินเทอร์เน็ต คอมพิวเทอร์ บัญชี</value>
+  </data>
+  <data name="LyDoKhac" xml:space="preserve">
+    <value>เหตุผลอื่นๆ</value>
+  </data>
+  <data name="MaAo" xml:space="preserve">
+    <value>รหัสไม่จริง</value>
+  </data>
+  <data name="Mat" xml:space="preserve">
+    <value>หาย</value>
+  </data>
+  <data name="MatHangDoBiThu" xml:space="preserve">
+    <value>สินค้าหายเพราะโดนจับ</value>
+  </data>
+  <data name="MatHangDoShopDongKienChung" xml:space="preserve">
+    <value>สินค้าหายเพราะshop ใส่ของในลังเดียวกัน</value>
+  </data>
+  <data name="MatHangTrangKho" xml:space="preserve">
+    <value>สินค้าหายในโกดัง</value>
+  </data>
+  <data name="MatHangTrenDuongVanChuyen" xml:space="preserve">
+    <value>สินค้าหายในเวลาขนส่ง</value>
+  </data>
+  <data name="MaTrungChoXuLy" xml:space="preserve">
+    <value>รหัสเหมือนกัน</value>
+  </data>
+  <data name="Moi" xml:space="preserve">
+    <value>ใหม่</value>
+  </data>
+  <data name="MoiKhoiTao" xml:space="preserve">
+    <value>เพิ่งเปิด</value>
+  </data>
+  <data name="MoiTao" xml:space="preserve">
+    <value>เปิดใหม่</value>
+  </data>
+  <data name="NapTienChoKhacTuNV" xml:space="preserve">
+    <value>้เติมเงินให้ลูกค้าโดยพนักงานส่งของ</value>
+  </data>
+  <data name="NapTienQuy" xml:space="preserve">
+    <value>เพิ่มเงินเข้ากองทุน</value>
+  </data>
+  <data name="NapTienVi" xml:space="preserve">
+    <value>เติมเงินกระเป๋า</value>
+  </data>
+  <data name="Nguoidung" xml:space="preserve">
+    <value>Nguoidung</value>
+  </data>
+  <data name="NhacNho" xml:space="preserve">
+    <value>เเจ้งเตือน</value>
+  </data>
+  <data name="NhanHang" xml:space="preserve">
+    <value>รับสินค้า</value>
+  </data>
+  <data name="NhanVien" xml:space="preserve">
+    <value>พนักงาน</value>
+  </data>
+  <data name="NhanVienGiaoHang" xml:space="preserve">
+    <value>พนักงานส่งสินค้า</value>
+  </data>
+  <data name="NhapKhoTQ" xml:space="preserve">
+    <value>ส่งเข้าโกดังจีน</value>
+  </data>
+  <data name="NhapKhoVN" xml:space="preserve">
+    <value>ส่งของเข้าโกดังเวียดนาม</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>เเจ้งเตือนจากระบบ</value>
+  </data>
+  <data name="No_Data" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>ลังสินค้า</value>
+  </data>
+  <data name="PDVChuyenHangVeVN" xml:space="preserve">
+    <value>ค่าบริการขนส่งสินค้ากลับไทย</value>
+  </data>
+  <data name="PDVDongKien" xml:space="preserve">
+    <value>ค่าบริการตีลังไม้</value>
+  </data>
+  <data name="PDVGiaoHangTaiNha" xml:space="preserve">
+    <value>ค่าบริการส่งของถึงบ้าน</value>
+  </data>
+  <data name="PDVKiemDem" xml:space="preserve">
+    <value>ค่าบริการตรวจนับ</value>
+  </data>
+  <data name="PDVMuaHang" xml:space="preserve">
+    <value>ค่าบริการซื้อสินค้า</value>
+  </data>
+  <data name="PDVPhatSinh" xml:space="preserve">
+    <value>ค่าบริการอื่น</value>
+  </data>
+  <data name="PDVVanChuyenNhanh" xml:space="preserve">
+    <value>ค่าบริการขนส่งสินค้าด่วน (ทางอากาศ)</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>เปอร์เซ็นต์</value>
+  </data>
+  <data name="PhaiThu" xml:space="preserve">
+    <value>จำเป็นต้องเก็บ</value>
+  </data>
+  <data name="PhaiThuTienDongKienDH" xml:space="preserve">
+    <value>ต้องเก็บค่าตีลังสินค้าออเดอร์</value>
+  </data>
+  <data name="PhaiThuTienNoPhieuXuatHang" xml:space="preserve">
+    <value>ต้องเก็บหนี้สินใบออกสินค้า</value>
+  </data>
+  <data name="PhaiThuTienThieuDonHang" xml:space="preserve">
+    <value>ต้องเก็บเงินขาดออเดอร์</value>
+  </data>
+  <data name="PhaiThuTienVanChuyen" xml:space="preserve">
+    <value>ต้องเก็บค่าขนส่ง PS เพิ่มจากจีน</value>
+  </data>
+  <data name="PhaiThuTienVanChuyenHangVeVN" xml:space="preserve">
+    <value>ต้องเก็บค่าขนส่งสินค้าจากจีนไปเวียดนาม</value>
+  </data>
+  <data name="PhaiThuTienVanChuyenTaiVN" xml:space="preserve">
+    <value>ต้องเก็บค่าขนส่งสินค้าในประเทศไทย</value>
+  </data>
+  <data name="PhaiTra" xml:space="preserve">
+    <value>จำเป็นต้องคืน</value>
+  </data>
+  <data name="PhaiTraDoHuyToanBoDonHang" xml:space="preserve">
+    <value>ต้องคืนเพราะลูกค้ายกเลิกออเดอร์ทั้งหมด</value>
+  </data>
+  <data name="PhaiTraDoThieuLink" xml:space="preserve">
+    <value>ต้องคืนเพราะขาดลิงห์</value>
+  </data>
+  <data name="Phanquyen_CapNhat" xml:space="preserve">
+    <value>อัพเดท</value>
+  </data>
+  <data name="Phanquyen_Duyet" xml:space="preserve">
+    <value>ตกลง</value>
+  </data>
+  <data name="Phanquyen_ThemMoi" xml:space="preserve">
+    <value>เพิ่มใหม่</value>
+  </data>
+  <data name="Phanquyen_View" xml:space="preserve">
+    <value>ดู</value>
+  </data>
+  <data name="Phanquyen_Xoa" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="PhiDongBao" xml:space="preserve">
+    <value>ค่าตีลังไม้</value>
+  </data>
+  <data name="PhieuBaoGiaTimNguon" xml:space="preserve">
+    <value>ใบประเมินราคาค้นหาแหล่งสินค้า</value>
+  </data>
+  <data name="PhieuBaoGiaTimNguonChuaNhanXuLy" xml:space="preserve">
+    <value>ใบประเมินราคาค้นหาแหล่งสินค้ายังไม่ได้รับการจัดการ</value>
+  </data>
+  <data name="PhieuChuyenNoiBo" xml:space="preserve">
+    <value>ใบตราขนส่งสินค้าภายในระบบบริษัท</value>
+  </data>
+  <data name="PhieuDieuVan" xml:space="preserve">
+    <value>ใบตราขนส่งสินค้า</value>
+  </data>
+  <data name="PhieuGiaoHang" xml:space="preserve">
+    <value>ใบส่งสินค้า</value>
+  </data>
+  <data name="PhieuTheoDoiDoiTra" xml:space="preserve">
+    <value>ใบติดตามการเปลี่ยนแปลงสินค้า</value>
+  </data>
+  <data name="PhieuTheoDoiHoanTien" xml:space="preserve">
+    <value>ใบติดตามการคืนเงิน</value>
+  </data>
+  <data name="PhieuTimNguon" xml:space="preserve">
+    <value>ใบหาสินค้า</value>
+  </data>
+  <data name="PhieuYeuCauHoanTien" xml:space="preserve">
+    <value>ใบร้องเรียนขอคืนเงิน</value>
+  </data>
+  <data name="PhiHangLe" xml:space="preserve">
+    <value>ค่าสินค้าย่อย</value>
+  </data>
+  <data name="PhiLuuKho" xml:space="preserve">
+    <value>ค่าเก็บของที่โกดัง</value>
+  </data>
+  <data name="PhiPhatSinh" xml:space="preserve">
+    <value>ค่าใช้จ่ายเพิ่ม</value>
+  </data>
+  <data name="PhiShopVanChuyen" xml:space="preserve">
+    <value>ค่าShop ขนส่ง</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="Province" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="PutawayVN" xml:space="preserve">
+    <value>Putaway ที่เวียดนาม</value>
+  </data>
+  <data name="PutKhoTQ" xml:space="preserve">
+    <value>Putaway ที่จีน</value>
+  </data>
+  <data name="QuanLyMaVanDon" xml:space="preserve">
+    <value>จัดการรหัสใบตราส่งสินค้า</value>
+  </data>
+  <data name="Regency" xml:space="preserve">
+    <value>ตำเเหน่ง</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>บทบาท</value>
+  </data>
+  <data name="SaiHang" xml:space="preserve">
+    <value>เอาสินค้าผิด</value>
+  </data>
+  <data name="SaiLechPhiVanChuyen" xml:space="preserve">
+    <value>ผิดพลาดตรงค่าขนส่ง</value>
+  </data>
+  <data name="Search_Customer_Keyword_Placeholder" xml:space="preserve">
+    <value>Mã KH, Tên tài khoản, Họ tên, Số điện thoại, Email...</value>
+  </data>
+  <data name="Search_Customer_Keyword_Title" xml:space="preserve">
+    <value>Bạn có thể thực hiện tìm kiếm theo Mã tài khoản, Tên tài khoản, Họ tên, Số điện thoại, Email,.. của khách hàng.</value>
+  </data>
+  <data name="Search_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Search_Keyword" xml:space="preserve">
+    <value>Keyword</value>
+  </data>
+  <data name="Search_Sex" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="Search_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Search_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="SelectOp" xml:space="preserve">
+    <value>ตัวเลือก</value>
+  </data>
+  <data name="SettingNotifi" xml:space="preserve">
+    <value>ตั้งค่าการเเจ้งเตือน</value>
+  </data>
+  <data name="SettingPage" xml:space="preserve">
+    <value>การตั้งค่า Pages</value>
+  </data>
+  <data name="ShopCoNgayDuLienPhatHang" xml:space="preserve">
+    <value>ร้านขายของมีการเเจ้งล้วงหน้าวันออกของ</value>
+  </data>
+  <data name="ShopKhongGuiHang" xml:space="preserve">
+    <value>ร้านค้าไม่ส่งสินค้า  ไม่คืนเงิน หรือทางบริษัทช่วยเหลือลูกค้าเพราะร้านค้าไม่น่าเชื่อถือ</value>
+  </data>
+  <data name="ShopKhongOnline" xml:space="preserve">
+    <value>ร้านขายของไม่online เคยติดต่อหลายครั้งเเล้ว</value>
+  </data>
+  <data name="ShopPhatHang" xml:space="preserve">
+    <value>Shop ส่งของ</value>
+  </data>
+  <data name="ShopTQPhatHang" xml:space="preserve">
+    <value>Shop จีน ส่งสินค้า</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TamNgung" xml:space="preserve">
+    <value>หยุด</value>
+  </data>
+  <data name="TatToanMuaHang" xml:space="preserve">
+    <value>ชำระเงิน</value>
+  </data>
+  <data name="ThaiDoPhucVuCuaNhanVien" xml:space="preserve">
+    <value>ทัศนคติการให้บริการของพนักงาน</value>
+  </data>
+  <data name="ThaiLan" xml:space="preserve">
+    <value>ไทย</value>
+  </data>
+  <data name="ThanhToan" xml:space="preserve">
+    <value>ชำระ</value>
+  </data>
+  <data name="ThanhToanTienDatHang" xml:space="preserve">
+    <value>ชำระค่าสั่งสินค้า</value>
+  </data>
+  <data name="ThaoTac" xml:space="preserve">
+    <value>การปฏิบัติ</value>
+  </data>
+  <data name="TheoDoiCongNoDH" xml:space="preserve">
+    <value>ติดตามหนี้สี้นของออเดอร์</value>
+  </data>
+  <data name="TheoDoiKhachHang" xml:space="preserve">
+    <value>ติดตามลูกค้า</value>
+  </data>
+  <data name="TheoDoiKienHang" xml:space="preserve">
+    <value>ติดตามลังสินค้า</value>
+  </data>
+  <data name="TheoDoiPhiPhatSinh" xml:space="preserve">
+    <value>ติดตามค่าใช้จ่ายต่างๆที่อาจเกิดขึ้น</value>
+  </data>
+  <data name="TheoDoiTienPhaiThu" xml:space="preserve">
+    <value>ติดตามเงินต้องเก็บ</value>
+  </data>
+  <data name="ThieuSanPham" xml:space="preserve">
+    <value>สินค้าขาด</value>
+  </data>
+  <data name="ThoiGianDatHangLau" xml:space="preserve">
+    <value>เวลาสั่งสินค้านาน</value>
+  </data>
+  <data name="ThongBao" xml:space="preserve">
+    <value>ข้อเเจ้งเตือน</value>
+  </data>
+  <data name="ThongKeCongNo" xml:space="preserve">
+    <value>สถิติหนี้สี้น</value>
+  </data>
+  <data name="ThongKeDoanhSoNV" xml:space="preserve">
+    <value>สถิติยอดขายของพนักงาน</value>
+  </data>
+  <data name="ThongKeKH" xml:space="preserve">
+    <value>สถิติลูกค้า</value>
+  </data>
+  <data name="ThongKeKHChamDH" xml:space="preserve">
+    <value>สถิติลูกค้าสั่งของช้า</value>
+  </data>
+  <data name="ThongKeQuy" xml:space="preserve">
+    <value>สถิติกองทุน</value>
+  </data>
+  <data name="ThongKeThuChi" xml:space="preserve">
+    <value>สถิติเงินเข้า เงินออก</value>
+  </data>
+  <data name="ThongKeTienMacCaDDH" xml:space="preserve">
+    <value>สถิติเงินต่อรองของออเดอร์</value>
+  </data>
+  <data name="ThongKeTinhHinhDonHang" xml:space="preserve">
+    <value>สถิติสถานการณ์ของออเดอร์</value>
+  </data>
+  <data name="ThongKeTongTienDDH" xml:space="preserve">
+    <value>สถิติเงินสั่งสินค้าทั้งหมด</value>
+  </data>
+  <data name="ThongTinTaiKhoan" xml:space="preserve">
+    <value>ข้อมุลเกี่ยวกับบัญชี</value>
+  </data>
+  <data name="ThuTienPhieuGiaoHang" xml:space="preserve">
+    <value>เก็บเงินจากใบส่งสินค้า</value>
+  </data>
+  <data name="TichketReportTheoNgay" xml:space="preserve">
+    <value>Ticket Report ตามวัน</value>
+  </data>
+  <data name="TicketBiTreXuLy" xml:space="preserve">
+    <value>Ticket จัดการช้า</value>
+  </data>
+  <data name="TicketChuaNhanXuLy" xml:space="preserve">
+    <value>Ticket ยังไม่รับจัดการ</value>
+  </data>
+  <data name="TicketCoNguoiHoTro" xml:space="preserve">
+    <value>Ticket มีคนช่วย สนับสนุน</value>
+  </data>
+  <data name="TicketKhieuNai" xml:space="preserve">
+    <value>Ticket ขอร้องเรียน</value>
+  </data>
+  <data name="TicketToiCanXuLy" xml:space="preserve">
+    <value>Ticket ต้องจัดการ</value>
+  </data>
+  <data name="TicketTraCuuThongTinKH" xml:space="preserve">
+    <value>Ticket หาข้อมุลของลูกค้า</value>
+  </data>
+  <data name="TicketYeuCauHoanTien" xml:space="preserve">
+    <value>Ticket ขอร้องการคืนเงิน</value>
+  </data>
+  <data name="TienAlipay" xml:space="preserve">
+    <value>เงินAlipay</value>
+  </data>
+  <data name="TienChuyenHangToiNha" xml:space="preserve">
+    <value>ค่าส่งของถึงบ้าน</value>
+  </data>
+  <data name="TienDongKienGo" xml:space="preserve">
+    <value>ค่าตีลังไม้</value>
+  </data>
+  <data name="TienHangChuyenVeVietNam" xml:space="preserve">
+    <value>ค่าขนส่งสินค้ากลับไทย</value>
+  </data>
+  <data name="TienHangHoa" xml:space="preserve">
+    <value>ค่าสินค้า</value>
+  </data>
+  <data name="TienKhachThanhToan" xml:space="preserve">
+    <value>เงินลูกค้าชำระ</value>
+  </data>
+  <data name="TienKiemDemHangHoa" xml:space="preserve">
+    <value>ค่าตรวจนับสินค้า</value>
+  </data>
+  <data name="TienMuaHangHo" xml:space="preserve">
+    <value>ค่าซื้อสินค้าเเทน</value>
+  </data>
+  <data name="TienMy" xml:space="preserve">
+    <value>เงินเหรียญสหรัฐ</value>
+  </data>
+  <data name="TienShopChuyenHang" xml:space="preserve">
+    <value>เงินร้านขายของขนส่งของ</value>
+  </data>
+  <data name="TienThai" xml:space="preserve">
+    <value>ไทยบาท</value>
+  </data>
+  <data name="TienTrung" xml:space="preserve">
+    <value>เงิน</value>
+  </data>
+  <data name="TienViet" xml:space="preserve">
+    <value>เงินเวียดนามดอง</value>
+  </data>
+  <data name="TraCuuThongTinKH" xml:space="preserve">
+    <value>เช็คข้อมุลของลูกค้า</value>
+  </data>
+  <data name="TraCuuThongTinKhachHang" xml:space="preserve">
+    <value>เช็คข้อมุลของลูกค้า</value>
+  </data>
+  <data name="TrangChu" xml:space="preserve">
+    <value>หน้าหลัก</value>
+  </data>
+  <data name="TrenDuongVeVN" xml:space="preserve">
+    <value>กำลังขนส่งกลับไทย</value>
+  </data>
+  <data name="TrongKho" xml:space="preserve">
+    <value>สินค้าในโกดัง</value>
+  </data>
+  <data name="TrungMVD" xml:space="preserve">
+    <value>รหัสใบตราส่งสินค้าช้ำ</value>
+  </data>
+  <data name="TrungQuoc" xml:space="preserve">
+    <value>จีน</value>
+  </data>
+  <data name="TruSaiTienViDienTu" xml:space="preserve">
+    <value>หักเงินผิดจากกระเป๋าเงินอิเล็กทรอนิกส์</value>
+  </data>
+  <data name="TTPhieuGiaoHang" xml:space="preserve">
+    <value>ชำระใบส่งของ</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="User_Object_Types_Required" xml:space="preserve">
+    <value>Object types required to select</value>
+  </data>
+  <data name="UuDaiKhachHang" xml:space="preserve">
+    <value>โปรโมชั่นสำหรับลูกค้า</value>
+  </data>
+  <data name="VanChuyen" xml:space="preserve">
+    <value>ขนส่ง</value>
+  </data>
+  <data name="VietNam" xml:space="preserve">
+    <value>เวียดนาม</value>
+  </data>
+  <data name="VoHong" xml:space="preserve">
+    <value>สินค้าเเตกเเยก หัก เสีย</value>
+  </data>
+  <data name="Ward" xml:space="preserve">
+    <value>Ward</value>
+  </data>
+  <data name="Warehouse_Order_GhiChu" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="Warehouse_Order_MaDonHang" xml:space="preserve">
+    <value>รหัสออเดอร์</value>
+  </data>
+  <data name="Warehouse_Order_TacVu" xml:space="preserve">
+    <value>ปฏิบัติการ</value>
+  </data>
+  <data name="Warehouse_Order_ThoiGian" xml:space="preserve">
+    <value>เวลา</value>
+  </data>
+  <data name="Warehouse_Order_TrangThai" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
+  <data name="Warehouse_Order_TuKhoaTimKiem" xml:space="preserve">
+    <value>คีย์เวิร์ดต้องค้นหา</value>
+  </data>
+  <data name="XacNhanKienHang" xml:space="preserve">
+    <value>คอนเฟิร์มลังสินค้า</value>
+  </data>
+  <data name="XacNhanPhieuXuatKho" xml:space="preserve">
+    <value>คอนเฟิร์มสินค้าออกจากโกดั</value>
+  </data>
+  <data name="XuatKhoTQ" xml:space="preserve">
+    <value>สินค้าออกจากโกดังจีน</value>
+  </data>
+  <data name="XuLyDonHang" xml:space="preserve">
+    <value>จัดการออเดอร์</value>
+  </data>
+  <data name="XuLyYeuCauHoanTien" xml:space="preserve">
+    <value>จัดการข้อขอร้องคืนเงิน</value>
+  </data>
+  <data name="YeuCauNhapKho_Package" xml:space="preserve">
+    <value>ให้สินค้าเข้าโกดัง (ลัง)</value>
+  </data>
+  <data name="YeuCauNhapKho_packaging" xml:space="preserve">
+    <value>ให้สินค้าเข้าโกดัง (กระสอบ)</value>
+  </data>
+  <data name="YeuCauXuatKho" xml:space="preserve">
+    <value>ร้องขอให้สินค้าออกจากโกดัง</value>
+  </data>
+  <data name="YinhSaiCanNang" xml:space="preserve">
+    <value>คิดผิดน้ำหนัก</value>
+  </data>
+  <data name="LuaChonGioiTinh" xml:space="preserve">
+    <value>เลือกเพศของคุณ</value>
+  </data>
+  <data name="ChangePassError" xml:space="preserve">
+    <value>การเปลี่ยนหัสผ่านไม่สำเร็จ</value>
+  </data>
+  <data name="EmailChinhXac" xml:space="preserve">
+    <value>อีเมลที่ถูกต้อง</value>
+  </data>
+  <data name="EmailKhongTonTai" xml:space="preserve">
+    <value>อีเมล์ไม่มีอยู่หรือถูกล็อคโปรดติดต่อเราเพื่อสอบถามข้อมูล!</value>
+  </data>
+  <data name="KichHoatTaiKhoan" xml:space="preserve">
+    <value>เปิดใช้งานบัญชี</value>
+  </data>
+  <data name="LinkActive" xml:space="preserve">
+    <value>คลิกที่ลิงค์เพื่อเปิดใช้งานบัญชีของคุณใน LikeOrder.com</value>
+  </data>
+  <data name="LinkDaDuocSuDung" xml:space="preserve">
+    <value>ลิงห์ได้ใช้เเล้ว</value>
+  </data>
+  <data name="TaiKhoanBiKhoa" xml:space="preserve">
+    <value>บัญชีโดนล็อค</value>
+  </data>
+  <data name="XacThucTaiKhoan" xml:space="preserve">
+    <value>คอนเฟิร์มบัญชีในระบบของ</value>
+  </data>
+  <data name="YCLayLaiMK" xml:space="preserve">
+    <value>ต้องการขอรหัสใน </value>
+  </data>
+  <data name="DatCoToanBo" xml:space="preserve">
+    <value>มัดจำเต็มเต็มมูลค่าสินค้า</value>
+  </data>
+  <data name="DepositNote" xml:space="preserve">
+    <value>LikeOrder.com จะติดต่อลูกค้าตามหมายเลขโทรศัพย์ที่ลูกค้าได้ให้ไว้เพื่อยืนยันการสั่งซื่อเเละเเจ้งการส่งของ</value>
+  </data>
+  <data name="DHKhongTonTaiHoacBiXoa" xml:space="preserve">
+    <value>สั่งซื้อสินค้าที่ไม่มีอยู่หรือถูกลบออก</value>
+  </data>
+  <data name="ThemDiaChiKhac" xml:space="preserve">
+    <value>ที่อยู่สำรอง</value>
+  </data>
+  <data name="CapNhatSPThanhCong" xml:space="preserve">
+    <value>การปรับปรุงผลิตภัณฑ์ที่ประสบความสำเร็จ</value>
+  </data>
+  <data name="ChiTiet" xml:space="preserve">
+    <value>รายละเอียด</value>
+  </data>
+  <data name="ChotDonHang" xml:space="preserve">
+    <value>สร้างออเดอร์</value>
+  </data>
+  <data name="DatCocThanhCongDH" xml:space="preserve">
+    <value>มัดจำออเดอร์ประสบความสำเร็จ</value>
+  </data>
+  <data name="DeDatCoc" xml:space="preserve">
+    <value>เพื่อจัดสั่งซื้อสินค้า</value>
+  </data>
+  <data name="DeDCThanhCong" xml:space="preserve">
+    <value>เพื่อจัดสั่งซื้อสินค้าอย่างสำเร็จ</value>
+  </data>
+  <data name="DinhDangDuLieuKhongDung" xml:space="preserve">
+    <value>รูปแบบข้อมูลไม่ถูกต้อง</value>
+  </data>
+  <data name="GhiChuRieng" xml:space="preserve">
+    <value>บันทึกส่วนตัว</value>
+  </data>
+  <data name="HongVo" xml:space="preserve">
+    <value>ชำรุด สูญเสีย</value>
+  </data>
+  <data name="KhongDuTienDatCoc" xml:space="preserve">
+    <value>จำนวนเงินในบัญชีของคุณไม่พอ ไม่สามารถมัดจำออเดอร์นี้</value>
+  </data>
+  <data name="LuaChonKhoKyGui" xml:space="preserve">
+    <value>เลือกโกดังฝากสินค้า</value>
+  </data>
+  <data name="PhiNangXe" xml:space="preserve">
+    <value>ค่าธรรมเนียมยกของ</value>
+  </data>
+  <data name="ShipTQCao" xml:space="preserve">
+    <value>ค่าขนส่งภายในจีนสูง</value>
+  </data>
+  <data name="SoLuongNhoHonSLCuaShop" xml:space="preserve">
+    <value>ปริมาณที่น้อยกว่าที่จำเป็นจำนวนขั้นต่ำของร้าน</value>
+  </data>
+  <data name="SoLuongSanPhamShopConLa" xml:space="preserve">
+    <value>จำนวนสินค้าที่เหลือของร้านขายของคือ</value>
+  </data>
+  <data name="SPKhongTonTaiHoacBiXoa" xml:space="preserve">
+    <value>สินค้านี้ไม่มีอยู่หรือถูกลบออก</value>
+  </data>
+  <data name="TaoYCKyGui" xml:space="preserve">
+    <value>สร้างออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="ThanhToanLucDCDH" xml:space="preserve">
+    <value>ชำระในเวลาชำระเงินออเดอร์</value>
+  </data>
+  <data name="ThongSoHangHoa" xml:space="preserve">
+    <value>พารามิเตอร์ของสินค้า</value>
+  </data>
+  <data name="TKCuaBanConThieu" xml:space="preserve">
+    <value>บัญชีของคุณขาด</value>
+  </data>
+  <data name="TKCuaBanDangBiKhoa" xml:space="preserve">
+    <value>บัญชีของคุณกำลังล็อคอยู่ ไม่สามารถจัดการได้</value>
+  </data>
+  <data name="TKCuaBanKhongDu" xml:space="preserve">
+    <value>บัญชีของคุณไม่พอ</value>
+  </data>
+  <data name="TongCanNang" xml:space="preserve">
+    <value>น้ำหนักรวม</value>
+  </data>
+  <data name="TruTienDCDonHang" xml:space="preserve">
+    <value>หักเงินมัดจำของออเดอร์</value>
+  </data>
+  <data name="VanChuyenHang" xml:space="preserve">
+    <value>ขนส่งสินค้า</value>
+  </data>
+  <data name="XoaSanPhamThanhCong" xml:space="preserve">
+    <value>ลบสินค้าเสร็จเรียบร้อย</value>
+  </data>
+  <data name="Cao" xml:space="preserve">
+    <value>ความสูง</value>
+  </data>
+  <data name="Dai" xml:space="preserve">
+    <value>ความยาว</value>
+  </data>
+  <data name="Rong" xml:space="preserve">
+    <value>ความกว้าง</value>
+  </data>
+  <data name="CommentChoKN" xml:space="preserve">
+    <value>เเสดงความคิดเห็นให้ตั๋ว</value>
+  </data>
+  <data name="CommentDonHang" xml:space="preserve">
+    <value>เเสดงความคิดเห็นสำหรับออเดอร์นี้</value>
+  </data>
+  <data name="HoanTienDatCoc" xml:space="preserve">
+    <value>ขึ้นเงินมัดจำ</value>
+  </data>
+  <data name="KHHuySuDungDV" xml:space="preserve">
+    <value>ลูกค้ากำลังยกเลิกบริการ</value>
+  </data>
+  <data name="KHKhongTonTai" xml:space="preserve">
+    <value>ลูกค้าไม่มีข้อมูลหรือถูกบล็อกออกเเล้ว</value>
+  </data>
+  <data name="LayDSTBThanhCong" xml:space="preserve">
+    <value>เอารายชื่อข้อเเจ้งเตือนอย่างสำเร็จ</value>
+  </data>
+  <data name="LayThongTinLoi" xml:space="preserve">
+    <value>รับข้อมูลผิดพลาด</value>
+  </data>
+  <data name="LayThongTinThanhCong" xml:space="preserve">
+    <value>รับข้อมูลสำเร็จ</value>
+  </data>
+  <data name="SoDuVDTBiTru" xml:space="preserve">
+    <value>เงินในกระเป๋าอิเล็กทรอนิกส์ของคุณได้หักเรียบร้อยเเล้ว</value>
+  </data>
+  <data name="TTDatCocDonHang" xml:space="preserve">
+    <value>มัดจำออเดอร์</value>
+  </data>
+  <data name="TTTienConThieu" xml:space="preserve">
+    <value>ชำระเงินที่เหลือ</value>
+  </data>
+  <data name="YCRutTien" xml:space="preserve">
+    <value>ต้องการถอนเงิน เเละโอนเข้าบัญชีธนาคาร</value>
+  </data>
+  <data name="KhongTheLayThongTinDonHang" xml:space="preserve">
+    <value>ไม่สามารถหาข้อมูลสินค้า</value>
+  </data>
+  <data name="KhongTheThemDHKyGui" xml:space="preserve">
+    <value>ไม่สามารถสร้างเพิ่มออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="KhongTheThemDonHang" xml:space="preserve">
+    <value>สร้างออเดอร์สำเร็จ</value>
+  </data>
+  <data name="ThanhToanTienTamTinhDKG" xml:space="preserve">
+    <value>ชำระเงินงวดที่หนึ่ง</value>
+  </data>
+  <data name="ThemLinkThanhCong" xml:space="preserve">
+    <value>เพิ่มลิงห์สำเร็จ</value>
+  </data>
+  <data name="ThemThanhCongDHKG" xml:space="preserve">
+    <value>สร้างเพิ่มออเดอร์สำเร็จ</value>
+  </data>
+  <data name="ThemThanhCongDonHang" xml:space="preserve">
+    <value>ไม่สามารถสร้างออเดอร์</value>
+  </data>
+  <data name="TongSoSanPham" xml:space="preserve">
+    <value>จำนวนเงินรวมของสินค้า</value>
+  </data>
+  <data name="BanVuiLongNhapSoLuong" xml:space="preserve">
+    <value>Bạn vui lòng nhập lại số lượng</value>
+  </data>
+  <data name="ManagePackage_QuanLyKienHang" xml:space="preserve">
+    <value>บริหารจัดการสินค้า</value>
+  </data>
+  <data name="SoLuongShopCon" xml:space="preserve">
+    <value>จำนวนสินค้าที่เหลือของร้านขายของคือ</value>
+  </data>
+  <data name="Warehouse_All" xml:space="preserve">
+    <value>รายชื่อพนักงาน</value>
+  </data>
+  <data name="Warehouse_Greeting" xml:space="preserve">
+    <value>ยินดีต้อนรับเข้าสู่ระบบบริหารProjectV</value>
+  </data>
+  <data name="Warehouse_Order_ChoDatHang" xml:space="preserve">
+    <value>รอสั่งซื้อสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_ChoGiaoHang" xml:space="preserve">
+    <value>รอส่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_ChoKeToanThanhToan" xml:space="preserve">
+    <value>รอฝ่ายบัญชีชำระ</value>
+  </data>
+  <data name="Warehouse_Order_ChuyenDonChoNhanVien" xml:space="preserve">
+    <value>เปลี่ยนออเดอร์ให้พนักงานอื่น</value>
+  </data>
+  <data name="Warehouse_Order_DangDatHang" xml:space="preserve">
+    <value>กำลังซื้อเสร็จ</value>
+  </data>
+  <data name="Warehouse_Order_DangGiaoHang" xml:space="preserve">
+    <value>กำลังส่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_DatHangXong" xml:space="preserve">
+    <value>สั่งซื้อเสร็จ</value>
+  </data>
+  <data name="Warehouse_Order_GiaoDichDon" xml:space="preserve">
+    <value>ธุรกรรมออเดอร์</value>
+  </data>
+  <data name="Warehouse_Order_HeThongYeuCau" xml:space="preserve">
+    <value>ระบบต้องการสิธท์เข้าสู่อพเดทหนึ่งในบรรดาpagesออเดอร์ที่ยังไม่ได้จัดการ</value>
+  </data>
+  <data name="Warehouse_Order_HoanThanh" xml:space="preserve">
+    <value>สำเร็จ</value>
+  </data>
+  <data name="Warehouse_Order_HoTro" xml:space="preserve">
+    <value>ช่วยเหลือ</value>
+  </data>
+  <data name="Warehouse_Order_Huy" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Warehouse_Order_HuyDonHang" xml:space="preserve">
+    <value>ยกเลิกออเดอร์</value>
+  </data>
+  <data name="Warehouse_Order_KeToanDangThanhToan" xml:space="preserve">
+    <value>ฝ่ายบัญชีชำระกำลังชำระ</value>
+  </data>
+  <data name="Warehouse_Order_KhacHang" xml:space="preserve">
+    <value>ลูกค้า</value>
+  </data>
+  <data name="Warehouse_Order_KhongCoQuyenTruyCap" xml:space="preserve">
+    <value>คุณไม่มีสิทธิ์เข้าสู่ระบบ</value>
+  </data>
+  <data name="Warehouse_Order_ListOrder" xml:space="preserve">
+    <value>รายชื่อออเดอร์</value>
+  </data>
+  <data name="Warehouse_Order_NgayDatHang" xml:space="preserve">
+    <value>วันสั่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_NhanHang" xml:space="preserve">
+    <value>รับสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_NhanVienDatHang" xml:space="preserve">
+    <value>พนักงานสั่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_NhapNhieuHonMotKyTu" xml:space="preserve">
+    <value>กรุณากรอกมากกว่า 1 ตัวอักษร</value>
+  </data>
+  <data name="Warehouse_Order_NullOrder" xml:space="preserve">
+    <value>หาไม่เจอออเดอร์ใดๆ</value>
+  </data>
+  <data name="Warehouse_Order_PhanDonChoNhanVien" xml:space="preserve">
+    <value>ส่งออเดอร์ให้พนักงาน</value>
+  </data>
+  <data name="Warehouse_Order_SeachText" xml:space="preserve">
+    <value>ค้นหารหัสออเดอร์อย่างเเม่นยำ</value>
+  </data>
+  <data name="Warehouse_Order_ShopPhatHang" xml:space="preserve">
+    <value>ร้านค้าส่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_ThuocHeThong" xml:space="preserve">
+    <value>ของระบบ</value>
+  </data>
+  <data name="Warehouse_Order_TienHang" xml:space="preserve">
+    <value>จำนวนเงินสินค้า</value>
+  </data>
+  <data name="Warehouse_Order_TimKiem" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="Warehouse_Order_VanChuyen" xml:space="preserve">
+    <value>ขนส่ง</value>
+  </data>
+  <data name="Warehouse_Title" xml:space="preserve">
+    <value>จัดการโกดัง</value>
+  </data>
+  <data name="Warehouse_Toolbar_CheckCode" xml:space="preserve">
+    <value>คอนเฟิร์มลังสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_Deposit" xml:space="preserve">
+    <value>ออเดอร์ฝากเก็บสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_DieuPhoiHang" xml:space="preserve">
+    <value>จัดการเส้นทางขนส่ง</value>
+  </data>
+  <data name="Warehouse_Toolbar_DoiTacKho" xml:space="preserve">
+    <value>คู่ค้าโกดัง</value>
+  </data>
+  <data name="Warehouse_Toolbar_DongKienGo" xml:space="preserve">
+    <value>ตีลังไม้</value>
+  </data>
+  <data name="Warehouse_Toolbar_GiaoHang" xml:space="preserve">
+    <value>ส่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_KiemDemHangHoa" xml:space="preserve">
+    <value>ตรวจนับสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_KiemDemSai" xml:space="preserve">
+    <value>ตรวจนับสินค้าผิด</value>
+  </data>
+  <data name="Warehouse_Toolbar_KienHangChoXuatPhat" xml:space="preserve">
+    <value>ลังสินค้ากำลังรอขนส่ง</value>
+  </data>
+  <data name="Warehouse_Toolbar_LayoutKho" xml:space="preserve">
+    <value>Layout โกดัง</value>
+  </data>
+  <data name="Warehouse_Toolbar_LeavesWarehouse" xml:space="preserve">
+    <value>สินค้าออกจากโกดัง</value>
+  </data>
+  <data name="Warehouse_Toolbar_LossInformation" xml:space="preserve">
+    <value>ลังสินค้าไม่มีีข้อมูล</value>
+  </data>
+  <data name="Warehouse_Toolbar_ManagerPacket" xml:space="preserve">
+    <value>บริหารลังสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_Online" xml:space="preserve">
+    <value>ออนไลน์</value>
+  </data>
+  <data name="Warehouse_Toolbar_Order" xml:space="preserve">
+    <value>ออเดอร์จัดซื้อสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_Package" xml:space="preserve">
+    <value>ลังสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuDieuVan" xml:space="preserve">
+    <value>ใบตราจัดการการขนส่ง</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuGiaoHang" xml:space="preserve">
+    <value>ใบตราส่งสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuNhapBao" xml:space="preserve">
+    <value>ใบตราสินค้าเข้าโกดัง(กระสอบ)</value>
+  </data>
+  <data name="Warehouse_Toolbar_PhieuNhapKien" xml:space="preserve">
+    <value>ใบตราสินค้าเข้าโกดัง(ลังไม้)</value>
+  </data>
+  <data name="Warehouse_Toolbar_ProcessingOrder" xml:space="preserve">
+    <value>จัดการออเดอร์</value>
+  </data>
+  <data name="Warehouse_Toolbar_PutAwayNhapKho" xml:space="preserve">
+    <value>PutAway เข้าโกดัง</value>
+  </data>
+  <data name="Warehouse_Toolbar_QuanLyBaoHang" xml:space="preserve">
+    <value>จััดการกระสอบสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_QuanLyPhieuChuyen" xml:space="preserve">
+    <value>ใบตราขนส่งภายในบริษัท</value>
+  </data>
+  <data name="Warehouse_Toolbar_RequestRefund" xml:space="preserve">
+    <value>ใบตราขอคืนเงิน</value>
+  </data>
+  <data name="Warehouse_Toolbar_Setting" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="Warehouse_Toolbar_SettingWarehouse" xml:space="preserve">
+    <value>การตั้งค่าโกดัง</value>
+  </data>
+  <data name="Warehouse_Toolbar_SupportTicket" xml:space="preserve">
+    <value>ช่วยเเก้ไขเรืองร้องเรียน</value>
+  </data>
+  <data name="Warehouse_Toolbar_TakesCode" xml:space="preserve">
+    <value>ลังสินค้าไม่มีรหัส</value>
+  </data>
+  <data name="Warehouse_Toolbar_TheoDoiDieuVan" xml:space="preserve">
+    <value>ติดตาม เเละจัดการเส้นทางขนส่ง</value>
+  </data>
+  <data name="Warehouse_Toolbar_TheoDoiPhatSinh" xml:space="preserve">
+    <value>ติดตามค่าใช้จ่ายต่างๆที่อาจเกิดขึ้น</value>
+  </data>
+  <data name="Warehouse_Toolbar_TrackingPackage" xml:space="preserve">
+    <value>ติดตามลังสินค้า</value>
+  </data>
+  <data name="Warehouse_Toolbar_TrackingRefund" xml:space="preserve">
+    <value>ติดตามการคืนเงิน</value>
+  </data>
+  <data name="Warehouse_Toolbar_TrackingRefunding" xml:space="preserve">
+    <value>ติดตามการเปลี่ยนคืนของ</value>
+  </data>
+  <data name="Warehouse_Toolbar_TradeOrders" xml:space="preserve">
+    <value>ออเดอร์ขายย่อย</value>
+  </data>
+  <data name="Warehouse_Toolbar_Warehousing" xml:space="preserve">
+    <value>สินค้าเข้าโกดัง</value>
+  </data>
+  <data name="XemChiTiet" xml:space="preserve">
+    <value>ดูรายละเอียด</value>
+  </data>
+  <data name="DetailOrder_Anh" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="DetailOrder_CanNangQuyDoi" xml:space="preserve">
+    <value>น้ำหนักได้แปลงหน่วย(Kg)</value>
+  </data>
+  <data name="DetailOrder_CanNangThucTe" xml:space="preserve">
+    <value>น้ำหนักจริง(kg)</value>
+  </data>
+  <data name="DetailOrder_CanNangTinhTien" xml:space="preserve">
+    <value>น้ำหนักต้องคิดเงิน(kg)</value>
+  </data>
+  <data name="DetailOrder_ChiTietDonHang" xml:space="preserve">
+    <value>รายละเอียดของออเดอร์</value>
+  </data>
+  <data name="DetailOrder_CongTyThanhToan" xml:space="preserve">
+    <value>บริษัทชำระ(BAHT)</value>
+  </data>
+  <data name="DetailOrder_DanhSachKienHang" xml:space="preserve">
+    <value>รายชื่อลังสินค้า</value>
+  </data>
+  <data name="DetailOrder_DatDuoc" xml:space="preserve">
+    <value>สั่งได้</value>
+  </data>
+  <data name="DetailOrder_DichVuSuDung" xml:space="preserve">
+    <value>บริการใช้อยู่</value>
+  </data>
+  <data name="DetailOrder_Gui" xml:space="preserve">
+    <value>ส่ง</value>
+  </data>
+  <data name="DetailOrder_KhachConThanhToan" xml:space="preserve">
+    <value>ลูกค้าที่ต้องชำระ</value>
+  </data>
+  <data name="DetailOrder_KhachDat" xml:space="preserve">
+    <value>ลูกค้าสั่ง</value>
+  </data>
+  <data name="DetailOrder_KhachGhiChu" xml:space="preserve">
+    <value>ลูกค้าโน๊ตไว้</value>
+  </data>
+  <data name="DetailOrder_KhachThanhToan" xml:space="preserve">
+    <value>ลูกค้าชำระ</value>
+  </data>
+  <data name="DetailOrder_KhoHangVe" xml:space="preserve">
+    <value>เลือกโกดังที่จะนำเข้าสินค้า</value>
+  </data>
+  <data name="DetailOrder_LíchuDonHang" xml:space="preserve">
+    <value>ประวัติออเดอร์</value>
+  </data>
+  <data name="DetailOrder_LíchuThaoTac" xml:space="preserve">
+    <value>ประวัติการจัดการ</value>
+  </data>
+  <data name="DetailOrder_MaHopdong" xml:space="preserve">
+    <value>รหัสสัญญา</value>
+  </data>
+  <data name="DetailOrder_MaVanDon" xml:space="preserve">
+    <value>รหัสใบตราส่งสินค้า</value>
+  </data>
+  <data name="DetailOrder_NgayDuKienVeKho" xml:space="preserve">
+    <value>วันกำหนดสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="DetailOrder_NhanVienDatHangXuLy" xml:space="preserve">
+    <value>พนักงานสั่งของจัดการ</value>
+  </data>
+  <data name="DetailOrder_PhiShip" xml:space="preserve">
+    <value>ค่าขนส่ง</value>
+  </data>
+  <data name="DetailOrder_TenSanPham" xml:space="preserve">
+    <value>ชื่อสินค้า</value>
+  </data>
+  <data name="DetailOrder_ThanhTien" xml:space="preserve">
+    <value>จำนวนเงิน(BAHT)</value>
+  </data>
+  <data name="DetailOrder_ThongTinKien" xml:space="preserve">
+    <value>ข้อมูลสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="DetailOrder_ThongTinThem" xml:space="preserve">
+    <value>ข้อมูลเพิ่มเติม</value>
+  </data>
+  <data name="DetailOrder_ThuocTinh" xml:space="preserve">
+    <value>ลักษณะของสินค้า</value>
+  </data>
+  <data name="DetailOrder_TienHang" xml:space="preserve">
+    <value>จำนวนเงินสินค้า</value>
+  </data>
+  <data name="DetailOrder_TienMacCa" xml:space="preserve">
+    <value>เงินต่อรอง</value>
+  </data>
+  <data name="DetailOrder_TongTien" xml:space="preserve">
+    <value>จำนวนเงินทั้งหมด</value>
+  </data>
+  <data name="DetailOrder_TongTienDichVu" xml:space="preserve">
+    <value>ค่าบริการทั้งหมด</value>
+  </data>
+  <data name="DetailOrder_TongTienTamTinh" xml:space="preserve">
+    <value>รวมเงินงวดเเรก</value>
+  </data>
+  <data name="DetailOrder_TongTienthanhToan" xml:space="preserve">
+    <value>รวมเงินชำระทั้งหมด</value>
+  </data>
+  <data name="DetailOrder_Total" xml:space="preserve">
+    <value>จำนวนเงิน (BATH) ค่าสินค้า + ค่าขนส่ง</value>
+  </data>
+  <data name="DetailPackage_CanNangChuyenDoi" xml:space="preserve">
+    <value>น้ำหนักที่เเลกเปล่สบ</value>
+  </data>
+  <data name="DetailPackage_CapDoKhachHang" xml:space="preserve">
+    <value>ระดับสมาชิก</value>
+  </data>
+  <data name="DetailPackage_InPhieu" xml:space="preserve">
+    <value>Print ใบตรา</value>
+  </data>
+  <data name="DetailPackage_KhoTiepNhan" xml:space="preserve">
+    <value>โกดังรับสินค้า</value>
+  </data>
+  <data name="DetailPackage_KhoTLTiepNhan" xml:space="preserve">
+    <value>โกดังไทยรับสินค้า</value>
+  </data>
+  <data name="DetailPackage_KichThuoc" xml:space="preserve">
+    <value>ขนาด</value>
+  </data>
+  <data name="DetailPackage_KienTrongKho" xml:space="preserve">
+    <value>สินค้าอยู่ในโกดัง</value>
+  </data>
+  <data name="DetailPackage_LSGhiChu" xml:space="preserve">
+    <value>ประวัตฺิโน๊ต</value>
+  </data>
+  <data name="DetailPackage_LSTrangThai" xml:space="preserve">
+    <value>ประวัตฺิ</value>
+  </data>
+  <data name="DetailPackage_NgayTaoKien" xml:space="preserve">
+    <value>วันออกลัง</value>
+  </data>
+  <data name="DetailPackage_NhanVien" xml:space="preserve">
+    <value>พนักงาน</value>
+  </data>
+  <data name="DetailPackage_NoiDung" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="DetailPackage_TaiKhoan" xml:space="preserve">
+    <value>บัญชี</value>
+  </data>
+  <data name="DetailPackage_ThongTinKho" xml:space="preserve">
+    <value>ข้อมูลลังสินค้า</value>
+  </data>
+  <data name="DetailPackage_ThongTinKien" xml:space="preserve">
+    <value>ข้อมูลลังสินค้า</value>
+  </data>
+  <data name="DetailPackage_ThuocDonHang" xml:space="preserve">
+    <value>ของออเดอร์</value>
+  </data>
+  <data name="DetailTicket_Dong" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="DetailTicket_GhiChuNoiBo" xml:space="preserve">
+    <value>โน๊ตภายในบริษัท</value>
+  </data>
+  <data name="DetailTicket_GuiThongTin" xml:space="preserve">
+    <value>ส่งข้อมูล</value>
+  </data>
+  <data name="DetailTicket_HoTen" xml:space="preserve">
+    <value>ชื่อและนามสกุล</value>
+  </data>
+  <data name="DetailTicket_LichSuHoTroKhachHang" xml:space="preserve">
+    <value>ประวัติช่วยเหลือลูกค้า</value>
+  </data>
+  <data name="DetailTicket_LoaiKhieuNai" xml:space="preserve">
+    <value>เลือกประเภทของการร้องเรียน</value>
+  </data>
+  <data name="DetailTicket_MaKhachHang" xml:space="preserve">
+    <value>รหัสลูกค้า</value>
+  </data>
+  <data name="DetailTicket_NgayHoanTat" xml:space="preserve">
+    <value>วันทำเสร็จเรียบร้อย</value>
+  </data>
+  <data name="DetailTicket_NhanVienCSKH" xml:space="preserve">
+    <value>พนักงานบริการลูกค้า</value>
+  </data>
+  <data name="DetailTicket_NhanVienPhuTrach" xml:space="preserve">
+    <value>พนักงานรับผิดชอบ</value>
+  </data>
+  <data name="DetailTicket_PhuTrachCSKH" xml:space="preserve">
+    <value>รับผิดชอบฝ่ายบริการลูกค้า</value>
+  </data>
+  <data name="DetailTicket_Them" xml:space="preserve">
+    <value>เพิ่ม</value>
+  </data>
+  <data name="DetailTicket_ThemThanhVienHoTro" xml:space="preserve">
+    <value>เพิ่มสมาชิกช่วยเหลือ</value>
+  </data>
+  <data name="DetailTicket_ThôngTinKhieuNai" xml:space="preserve">
+    <value>ข้อมูลละเอียดของข้อร้องเรียน</value>
+  </data>
+  <data name="DetailTicket_TraoDoiNoiBo" xml:space="preserve">
+    <value>เเลกเปลี่ยนในระบบ</value>
+  </data>
+  <data name="DetailTicket_TraoDoiVoiKhach" xml:space="preserve">
+    <value>เเลกเปลี่ยนความคิดกับลูกค้า</value>
+  </data>
+  <data name="FormRefunds_ChietKhauVIP" xml:space="preserve">
+    <value>ลดราคา ตามระดับของลูกค้า</value>
+  </data>
+  <data name="FormRefunds_CSKHYeuCauTraKhach" xml:space="preserve">
+    <value>ฝ่ายดูเเลลูกค้าขอคืนเงินให้ลูกค้า</value>
+  </data>
+  <data name="FormRefunds_CuocCanNang" xml:space="preserve">
+    <value>ค่าบริการน้ำหนักจริง</value>
+  </data>
+  <data name="FormRefunds_DatCoc" xml:space="preserve">
+    <value>มัดจำ</value>
+  </data>
+  <data name="FormRefunds_DuKienHoanTien" xml:space="preserve">
+    <value>กำหนดวันคืนเงิน</value>
+  </data>
+  <data name="FormRefunds_KeToanXuLy" xml:space="preserve">
+    <value>ฝ่ายบัญชีจัดการ</value>
+  </data>
+  <data name="FormRefunds_NgayTaoDon" xml:space="preserve">
+    <value>วันสร้างออเดอร์</value>
+  </data>
+  <data name="FormRefunds_NhanVienCSKHGhiChu" xml:space="preserve">
+    <value>พนักงานดูเเลลูกค้าโน๊ตไว้</value>
+  </data>
+  <data name="FormRefunds_NhanVienDatHangGhiChu" xml:space="preserve">
+    <value>พนักงานสั่งสินค้าโน๊ตไว้</value>
+  </data>
+  <data name="FormRefunds_NhanVienKeToanGhiChu" xml:space="preserve">
+    <value>ฝ่ายบัญชีโน๊ตไว้</value>
+  </data>
+  <data name="FormRefunds_PhiDichVu" xml:space="preserve">
+    <value>ค่าบริการ</value>
+  </data>
+  <data name="FormRefunds_QuyCachSanPham" xml:space="preserve">
+    <value>รูปเเบบสินค้า</value>
+  </data>
+  <data name="FormRefunds_SanPhamPhaiHoanTien" xml:space="preserve">
+    <value>สินค้าที่ต้องคืนเงิน</value>
+  </data>
+  <data name="FormRefunds_SoLuongLoi" xml:space="preserve">
+    <value>จำนวนผิด</value>
+  </data>
+  <data name="FormRefunds_SoTienDatHangDoiShop" xml:space="preserve">
+    <value>จำนวนเงินสั่งสินค้าขอร้านขายสินค้าคืนให้</value>
+  </data>
+  <data name="FormRefunds_SoTienDatHangMacCa" xml:space="preserve">
+    <value>จำนวนเงินต่อรองได้</value>
+  </data>
+  <data name="FormRefunds_SoTienDuKienTrakhach" xml:space="preserve">
+    <value>จำนวนเงินงวดเเรก</value>
+  </data>
+  <data name="FormRefunds_SoTienGiamTruTraKhach" xml:space="preserve">
+    <value>จำนวนเงินลดลงที่ต้องคืนให้ลูกค้า</value>
+  </data>
+  <data name="FormRefunds_SoTienKeToanThucNhan" xml:space="preserve">
+    <value>จำนวนเงินจริงๆที่ฝ่ายบัญชีต้องคืนให้ลูกค้า</value>
+  </data>
+  <data name="FormRefunds_SoTIenKhac" xml:space="preserve">
+    <value>จำนวนเงินอื่นๆ</value>
+  </data>
+  <data name="FormRefunds_ThongTinCSKH" xml:space="preserve">
+    <value>ข้อมูลการดูเเลลูกค้า</value>
+  </data>
+  <data name="FormRefunds_ThongTinDonHang" xml:space="preserve">
+    <value>ข้อมูลออเดอร์</value>
+  </data>
+  <data name="FormRefunds_ThongTinPhieuYeuCau" xml:space="preserve">
+    <value>ข้อมูลใบตราขอร้องการคืนเงินร้องเรียน</value>
+  </data>
+  <data name="FormRefunds_TienDichVu" xml:space="preserve">
+    <value>ค่าบริการ</value>
+  </data>
+  <data name="FormRefunds_TinhTienHoanTra" xml:space="preserve">
+    <value>คิดจำนวนเงินต้องคืน</value>
+  </data>
+  <data name="FormRefunds_TongTienDonHang" xml:space="preserve">
+    <value>จำนวนเงินทั้งหมด</value>
+  </data>
+  <data name="FormRefunds_TongTienKhachDaThanhToan" xml:space="preserve">
+    <value>จำนวนเงินทั้งหมดลูกค้าชำระเเ</value>
+  </data>
+  <data name="ManagePackage_BinhLuan" xml:space="preserve">
+    <value>เเสดงความคิดเห็น</value>
+  </data>
+  <data name="ManagePackage_ChonKhoLuu" xml:space="preserve">
+    <value>เลือกโกดังเก็บสินค้า</value>
+  </data>
+  <data name="ManagePackage_ChonLoaiDonHang" xml:space="preserve">
+    <value>เลือกประเภทออเดอร์</value>
+  </data>
+  <data name="ManagePackage_ChonQuaNgayChuaNhapKho" xml:space="preserve">
+    <value>ยังไม่ได้นำเข้าโกดัง</value>
+  </data>
+  <data name="ManagePackage_ChonTrangThai" xml:space="preserve">
+    <value>เลือกสถานะ</value>
+  </data>
+  <data name="ManagePackage_DanhSachSanPham" xml:space="preserve">
+    <value>รายชื่อสินค้า</value>
+  </data>
+  <data name="ManagePackage_DonVi" xml:space="preserve">
+    <value>ยูนิท (ของฝ่ายไหน)</value>
+  </data>
+  <data name="ManagePackage_DuKienKhoVe" xml:space="preserve">
+    <value>กำหนดวันสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="ManagePackage_DuongBay" xml:space="preserve">
+    <value>ทางอากาศ</value>
+  </data>
+  <data name="ManagePackage_Gia" xml:space="preserve">
+    <value>ราคาขาย</value>
+  </data>
+  <data name="ManagePackage_HinhAnh" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="ManagePackage_HoanTra" xml:space="preserve">
+    <value>คืนเงิน</value>
+  </data>
+  <data name="ManagePackage_KhoDichDonHang" xml:space="preserve">
+    <value>โกดังสุดท้ายของออเดอร์</value>
+  </data>
+  <data name="ManagePackage_KhoHienTai" xml:space="preserve">
+    <value>โกดังปัจุบัน</value>
+  </data>
+  <data name="ManagePackage_KhoKhachChon" xml:space="preserve">
+    <value>โกดังที่ลูกค้าเลือก</value>
+  </data>
+  <data name="ManagePackage_KhoNhanHang" xml:space="preserve">
+    <value>โกดังรับสินค้า</value>
+  </data>
+  <data name="ManagePackage_KhoTao" xml:space="preserve">
+    <value>โกดังสร้างขึ้น</value>
+  </data>
+  <data name="ManagePackage_KhoThaiLan" xml:space="preserve">
+    <value>โกดังที่ไทย</value>
+  </data>
+  <data name="ManagePackage_KiemDem" xml:space="preserve">
+    <value>ตรวจนับ</value>
+  </data>
+  <data name="ManagePackage_CanTinhTien" xml:space="preserve">
+    <value>คิดราคาตามน้ำหนักที่ชั่งได้</value>
+  </data>
+  <data name="ManagePackage_LichSuKien" xml:space="preserve">
+    <value>ประวัติลัง</value>
+  </data>
+  <data name="ManagePackage_LoaiSai" xml:space="preserve">
+    <value>ประเภทผิด</value>
+  </data>
+  <data name="ManagePackage_LoaiThoiGian" xml:space="preserve">
+    <value>ประเภทเวลา</value>
+  </data>
+  <data name="ManagePackage_Mau" xml:space="preserve">
+    <value>สี</value>
+  </data>
+  <data name="ManagePackage_NgayTaoPhieu" xml:space="preserve">
+    <value>วันสร้างใบติดตามการคืนเงิน</value>
+  </data>
+  <data name="ManagePackage_NgayXuLy" xml:space="preserve">
+    <value>วันจัดการ</value>
+  </data>
+  <data name="ManagePackage_NgungNhanThongBao" xml:space="preserve">
+    <value>หยุดรับข้อความเเจ้งเตือน</value>
+  </data>
+  <data name="ManagePackage_NhanThongBao" xml:space="preserve">
+    <value>รับข้อความเเจ้งเตือน</value>
+  </data>
+  <data name="ManagePackage_NhanVienTao" xml:space="preserve">
+    <value>เจ้าหน้าที่สร้างขึ้น</value>
+  </data>
+  <data name="ManagePackage_NhapNoiDung" xml:space="preserve">
+    <value>กรอกข้อความ</value>
+  </data>
+  <data name="ManagePackage_NhapTuKhoa" xml:space="preserve">
+    <value>ใส่คีย์เวิร์ด</value>
+  </data>
+  <data name="ManagePackage_NVDuyetPhieu" xml:space="preserve">
+    <value>พนักงานคอนเฟิร์มใบติดตามการคืนเงิน</value>
+  </data>
+  <data name="ManagePackage_NVTaoPhieu" xml:space="preserve">
+    <value>พนักงานสร้างใบติดตามการคืนเงิน</value>
+  </data>
+  <data name="ManagePackage_PhieuTheoDoiDoiTra" xml:space="preserve">
+    <value>ใบติดตามการเปลี่ยนเเปลง</value>
+  </data>
+  <data name="ManagePackage_PhieuTheoDoiHoanTien" xml:space="preserve">
+    <value>ใบติดตามการคืนเงิน</value>
+  </data>
+  <data name="ManagePackage_QuanLyKienHangMatMa" xml:space="preserve">
+    <value>บริหารจัดการสินค้าหายรหัส</value>
+  </data>
+  <data name="ManagePackage_SoLuongDat" xml:space="preserve">
+    <value>จำนวนสั่งซื้อ</value>
+  </data>
+  <data name="ManagePackage_SoSai" xml:space="preserve">
+    <value>จำนวนสินค้าผิดพลาด</value>
+  </data>
+  <data name="ManagePackage_SoTienHoan" xml:space="preserve">
+    <value>จำนวนเงินต้องคืน (CNY)</value>
+  </data>
+  <data name="ManagePackage_ThongTinPhieu" xml:space="preserve">
+    <value>ข้อมูลของใบติดตามการคืนเงิน</value>
+  </data>
+  <data name="ManagePackage_ToiNhapXuLy" xml:space="preserve">
+    <value>ฉันจะจัดการเอง</value>
+  </data>
+  <data name="ManagePackage_ToiTao" xml:space="preserve">
+    <value>ฉัน/ผม สร้างขึ้น</value>
+  </data>
+  <data name="ManagePackage_TongTienHoan" xml:space="preserve">
+    <value>จำนวนเงินทั้งหมดต้องคืน</value>
+  </data>
+  <data name="ManagePackage_TrangThaiDonHang" xml:space="preserve">
+    <value>สภาพออเดอร์</value>
+  </data>
+  <data name="ManagePackage_TrangThaiKienHang" xml:space="preserve">
+    <value>สภาพลังสินค้า</value>
+  </data>
+  <data name="ManagePackage_TriGiaSai" xml:space="preserve">
+    <value>มูลค่าสินค้าที่ผิดพลาด</value>
+  </data>
+  <data name="Packaging_BanCoMuonXoa" xml:space="preserve">
+    <value>คุณเเน่ใจจะลบข้อมูลรหัสที่หายนี้ไหม</value>
+  </data>
+  <data name="Packaging_BaoHang" xml:space="preserve">
+    <value>กระสอบสินค้า</value>
+  </data>
+  <data name="Packaging_CanPhuBiGO" xml:space="preserve">
+    <value>ชั่งน้ำหนักรวมลังไม้</value>
+  </data>
+  <data name="Packaging_Cao" xml:space="preserve">
+    <value>ความสูง</value>
+  </data>
+  <data name="Packaging_CapNhatCanNangKienHang" xml:space="preserve">
+    <value>อพเดทน้ำหนักลังสินค้า</value>
+  </data>
+  <data name="Packaging_ChonKhoLuu" xml:space="preserve">
+    <value>เลือกโกดังเก็บสินค้า</value>
+  </data>
+  <data name="Packaging_ChuaCoAnhSO" xml:space="preserve">
+    <value>ยังไม่มีรูปสำหรับลังสินค้านี้</value>
+  </data>
+  <data name="Packaging_ChuaCoBao" xml:space="preserve">
+    <value>ยังไม่มีกระสอบสินค้า</value>
+  </data>
+  <data name="Packaging_Dai" xml:space="preserve">
+    <value>ความยาว</value>
+  </data>
+  <data name="Packaging_DSKienBao" xml:space="preserve">
+    <value>รายชื่อลัง/กระสอบสินค้า</value>
+  </data>
+  <data name="Packaging_GanDay" xml:space="preserve">
+    <value>ล่าสุด</value>
+  </data>
+  <data name="Packaging_GhiChuBaoHang" xml:space="preserve">
+    <value>บันทึกกระสอบสินค้า</value>
+  </data>
+  <data name="Packaging_GhiChuPhieuNhap" xml:space="preserve">
+    <value>โน๊ตใบนำสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="Packaging_GiaTriBao" xml:space="preserve">
+    <value>มูลค่าของกระสอบสินค้า</value>
+  </data>
+  <data name="Packaging_HangMatMa" xml:space="preserve">
+    <value>สินค้ารหัสหาย</value>
+  </data>
+  <data name="Packaging_KhoBaoHangSeDen" xml:space="preserve">
+    <value>โกดังสินค้าจะมา</value>
+  </data>
+  <data name="Packaging_KhoChuaBaoHang" xml:space="preserve">
+    <value>โกดังเก็บสินค้าใส่ในกระสอบ</value>
+  </data>
+  <data name="Packaging_KhoDen" xml:space="preserve">
+    <value>สินค้าจะเข้าโกดังชื่อว่า</value>
+  </data>
+  <data name="Packaging_KhoHang" xml:space="preserve">
+    <value>โกดัง</value>
+  </data>
+  <data name="Packaging_KhoTaoBao" xml:space="preserve">
+    <value>โกดังที่ตีสินค้าเป็นกระสอบ</value>
+  </data>
+  <data name="Packaging_KhoTaoBaoHang" xml:space="preserve">
+    <value>โกดังที่ทำกระสอบสินค้า</value>
+  </data>
+  <data name="Packaging_KienMatMa" xml:space="preserve">
+    <value>ลังสินค้ารหัสหาย</value>
+  </data>
+  <data name="Packaging_Loai" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="Packaging_LuuLai" xml:space="preserve">
+    <value>บันทึกไว้</value>
+  </data>
+  <data name="Packaging_MoTa" xml:space="preserve">
+    <value>บรรยาย</value>
+  </data>
+  <data name="Packaging_NgayTaoBao" xml:space="preserve">
+    <value>วันที่สินค้าใส่กระสอบ</value>
+  </data>
+  <data name="Packaging_NguoiGiaoHang" xml:space="preserve">
+    <value>ผู้ส่งของ</value>
+  </data>
+  <data name="Packaging_NhanVienTaoBao" xml:space="preserve">
+    <value>พนักงานใส่สินค้าเป็นกระสอบ</value>
+  </data>
+  <data name="Packaging_PhiPhatSinh" xml:space="preserve">
+    <value>ค่าใช้จ่ายต่างๆอาจจะเกิดขึ้น</value>
+  </data>
+  <data name="Packaging_QLPhieuNhap" xml:space="preserve">
+    <value>จัดการใบตราให้สินค้าเข้าโกดัง(กระสอบ)</value>
+  </data>
+  <data name="Packaging_QuanLyPhieuNhapKho" xml:space="preserve">
+    <value>จัดการใบตรานำสินค้าเข้าโกดัง(ลัง)</value>
+  </data>
+  <data name="Packaging_Rong" xml:space="preserve">
+    <value>ความกว้าง</value>
+  </data>
+  <data name="Packaging_SauKhiXoa" xml:space="preserve">
+    <value>หลังจากลบเป็นไปไม่ได้ที่จะกู้คืน</value>
+  </data>
+  <data name="Packaging_TaoPhieuNhapKho" xml:space="preserve">
+    <value>สร้างใบนำสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="Packaging_TenKho" xml:space="preserve">
+    <value>ชื่อโกดัง</value>
+  </data>
+  <data name="Packaging_ThemAnhMatMa" xml:space="preserve">
+    <value>เพิ่มรูปให้สินค้าที่รหัสหาย</value>
+  </data>
+  <data name="Packaging_ThemBaoHang" xml:space="preserve">
+    <value>เพิ่มสินค้า</value>
+  </data>
+  <data name="Packaging_ThemKien" xml:space="preserve">
+    <value>เพิ่มลัง</value>
+  </data>
+  <data name="Packaging_ThemKienChoDon" xml:space="preserve">
+    <value>เพิ่มลังให้ออเดอร์</value>
+  </data>
+  <data name="Packaging_ThemKienHangMatMa" xml:space="preserve">
+    <value>เพิ่มลังสินค้าเข้าประเภทสินค้าหายรหัส</value>
+  </data>
+  <data name="Packaging_ThemVaoHangMatMa" xml:space="preserve">
+    <value>เพิ่้มเข้าสินค้าที่รหัสหาย</value>
+  </data>
+  <data name="Packaging_ThongTinPhieu" xml:space="preserve">
+    <value>ข้อมูลใบส่งของ</value>
+  </data>
+  <data name="Packaging_TimKiemDon" xml:space="preserve">
+    <value>ค้นหาออเดอร์</value>
+  </data>
+  <data name="Packaging_TimKiemDon1" xml:space="preserve">
+    <value>ค้นหาออเดอร์</value>
+  </data>
+  <data name="Packaging_ViTri" xml:space="preserve">
+    <value>ที่อยู่</value>
+  </data>
+  <data name="Packaging_Xoa" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="Warehouse_Deposit_BayNgay" xml:space="preserve">
+    <value>๗ วันที่เเล้ว</value>
+  </data>
+  <data name="Warehouse_Deposit_CanNang" xml:space="preserve">
+    <value>น้ำหนัก (Kg)</value>
+  </data>
+  <data name="Warehouse_Deposit_DanhSachDonKyGui" xml:space="preserve">
+    <value>รายชื่อออเดอร์ฝากเก็บ</value>
+  </data>
+  <data name="Warehouse_Deposit_DuTinh" xml:space="preserve">
+    <value>ราคาประมาณ (VND)</value>
+  </data>
+  <data name="Warehouse_Deposit_HomNay" xml:space="preserve">
+    <value>วันนี้</value>
+  </data>
+  <data name="Warehouse_Deposit_HomQua" xml:space="preserve">
+    <value>เมื่อวาน</value>
+  </data>
+  <data name="Warehouse_Deposit_KhongThayDonKyGui" xml:space="preserve">
+    <value>หาไม่ได้ออเดอร์ฝากเก็บสินค้าใดๆ</value>
+  </data>
+  <data name="Warehouse_Deposit_MotThang" xml:space="preserve">
+    <value>๓๐ วันที่เเล้ว</value>
+  </data>
+  <data name="Warehouse_Deposit_NgayKhoiTao" xml:space="preserve">
+    <value>วันที่สร้างออเดอร์</value>
+  </data>
+  <data name="Warehouse_Deposit_NhanVienXuLy" xml:space="preserve">
+    <value>พนักงานจัดการ</value>
+  </data>
+  <data name="Warehouse_Deposit_SoKien" xml:space="preserve">
+    <value>จำนวนลังสินค้า</value>
+  </data>
+  <data name="Warehouse_Deposit_ThangNay" xml:space="preserve">
+    <value>เดือนนี้</value>
+  </data>
+  <data name="Warehouse_Deposit_ThongTinKhachHang" xml:space="preserve">
+    <value>ข้อมูลลูกค้า</value>
+  </data>
+  <data name="Warehouse_Deposit_TuanNay" xml:space="preserve">
+    <value>สับดีนี้</value>
+  </data>
+  <data name="Warehouse_Deposit_TuyChon" xml:space="preserve">
+    <value>ตัวเลือก</value>
+  </data>
+  <data name="Warehouse_Order_DongLai" xml:space="preserve">
+    <value>ปิดการใช้งาน</value>
+  </data>
+  <data name="Warehouse_Order_NhanNhanhDonHang" xml:space="preserve">
+    <value>รับ 5 ออเดอร์จัดซื้ออย่างรวดเร็ว</value>
+  </data>
+  <data name="Warehouse_Order_NhanVienKho" xml:space="preserve">
+    <value>พนักงาน (เจ้าหน้าที่สโตร์)</value>
+  </data>
+  <data name="Warehouse_Order_XemThongKe" xml:space="preserve">
+    <value>ดูสถิติออเดอร์</value>
+  </data>
+  <data name="Warehouse_RequestRefund_ChoCSKHXuLy" xml:space="preserve">
+    <value>รอฝ่ายบริการลูกค้าจัดการ</value>
+  </data>
+  <data name="Warehouse_RequestRefund_ChoDatHangXuLy" xml:space="preserve">
+    <value>รอฝ่ายสั่งสินค้าจัดการ</value>
+  </data>
+  <data name="Warehouse_RequestRefund_ChoKeToanXuLy" xml:space="preserve">
+    <value>รอฝ่ายบัญชีจัดการ</value>
+  </data>
+  <data name="Warehouse_RequestRefund_GiamTru" xml:space="preserve">
+    <value>ส่วนลบ (บาท) ลดในจำนวนเงินที่ร้องขอ"</value>
+  </data>
+  <data name="Warehouse_RequestRefund_HoanTienThucTe" xml:space="preserve">
+    <value>จำนวนเงินที่ได้คืนจริงๆ</value>
+  </data>
+  <data name="Warehouse_RequestRefund_MaYeuCauHoanTien" xml:space="preserve">
+    <value>รหััสร้องเรียนขอคืนเงิน</value>
+  </data>
+  <data name="Warehouse_RequestRefund_NguoiTao" xml:space="preserve">
+    <value>ผู้สร้าง</value>
+  </data>
+  <data name="Warehouse_RequestRefund_SoTien" xml:space="preserve">
+    <value>จำนวนเงินต้องการคืน</value>
+  </data>
+  <data name="Warehouse_RequestRefund_XuatBaoCao" xml:space="preserve">
+    <value>ออกรายการ</value>
+  </data>
+  <data name="Warehouse_SupportTicket_DanhSachKieuNai" xml:space="preserve">
+    <value>รายชื่อข้อร้องเรียนต้องจัดการ</value>
+  </data>
+  <data name="Warehouse_SupportTicket_GhiChuNoiBo" xml:space="preserve">
+    <value>บันทึกภายในบริษัท</value>
+  </data>
+  <data name="Warehouse_SupportTicket_MaKienHang" xml:space="preserve">
+    <value>รหัสตู้สินค้า</value>
+  </data>
+  <data name="Warehouse_SupportTicket_NgayKhieuNai" xml:space="preserve">
+    <value>วันร้องเรียน</value>
+  </data>
+  <data name="Warehouse_SupportTicket_NguoiPhuTrach" xml:space="preserve">
+    <value>ผู้ดูเเล</value>
+  </data>
+  <data name="Warehouse_Trade_DánhachDonThuongMai" xml:space="preserve">
+    <value>รายชื่อออเดอร์ขายย่อย</value>
+  </data>
+  <data name="Warehouse_Trade_ThemMoi" xml:space="preserve">
+    <value>เพิ่มใหม่</value>
+  </data>
+  <data name="Warehouse_Trade_TriGia" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="ChuaCoBanGhiNao" xml:space="preserve">
+    <value>ไม่มีการบันทึกใดๆ</value>
+  </data>
+  <data name="Dong_Close" xml:space="preserve">
+    <value>ไม่มีลังสินค้าใดๆ</value>
+  </data>
+  <data name="KienChoNhapKho" xml:space="preserve">
+    <value>ลังสินค้ารอเข้าโกดัง</value>
+  </data>
+  <data name="KienTrongKho" xml:space="preserve">
+    <value>ลังสินค้าในโกดัง</value>
+  </data>
+  <data name="NgayNhapKho" xml:space="preserve">
+    <value>วันที่สินค้าเข้าโกดัง</value>
+  </data>
+  <data name="XNKienHangMatMa" xml:space="preserve">
+    <value>คอนเฟิร์มลังสินค้าหายรหัส</value>
+  </data>
+  <data name="XacNhan" xml:space="preserve">
+    <value>คอนเฟิอร์ม</value>
+  </data>
+  <data name="GanDon" xml:space="preserve">
+    <value>ราคาออเดอร์</value>
+  </data>
+  <data name="KhoVN" xml:space="preserve">
+    <value>โกดังเวียดนาม</value>
+  </data>
+  <data name="QLPhieuTheoDoiHoanTien" xml:space="preserve">
+    <value>จัดการใบตราติดตามการคืนเงิน</value>
+  </data>
+  <data name="QLPhieuTheoDoiTraHang" xml:space="preserve">
+    <value>จัดการใบตราติดตามการเปลี่ยนสินค้า</value>
+  </data>
+  <data name="TenKhachHang" xml:space="preserve">
+    <value>ชื่ลูกค้า</value>
+  </data>
+  <data name="TienHoanKhach" xml:space="preserve">
+    <value>เงินคืนลูกค้า</value>
+  </data>
+  <data name="TienShipHoan" xml:space="preserve">
+    <value>ค่าขนส่งต้องคืน</value>
+  </data>
+  <data name="QuaPackage" xml:space="preserve">
+    <value>เกิน</value>
+  </data>
+  <data name="HienThi" xml:space="preserve">
+    <value>แสดง</value>
+  </data>
+  <data name="Packaging_ChoDongKienGo" xml:space="preserve">
+    <value>รอตีลังไม้</value>
+  </data>
+  <data name="Packaging_DaDongKienGo" xml:space="preserve">
+    <value>ตีลังไม้เรียบร้อย</value>
+  </data>
+  <data name="Packaging_DatHang" xml:space="preserve">
+    <value>สั่งซื้อ</value>
+  </data>
+  <data name="Packaging_KiemTra" xml:space="preserve">
+    <value>ตรวจสอบ</value>
+  </data>
+  <data name="Packaging_KienGo" xml:space="preserve">
+    <value>ลังไม้</value>
+  </data>
+  <data name="Packaging_PhieuPutAway" xml:space="preserve">
+    <value>ใบ PUTAWAY</value>
+  </data>
+  <data name="Packaging_PhuongAnXuLY" xml:space="preserve">
+    <value>วิธีจัดการ</value>
+  </data>
+  <data name="Packaging_QuanLyPhieuPutAway" xml:space="preserve">
+    <value>จัดการใบputawayให้สินค้าเข้าโกดัง</value>
+  </data>
+  <data name="Packaging_SoLuongDung" xml:space="preserve">
+    <value>จำนวนถูกต้อง</value>
+  </data>
+  <data name="Packaging_SoLuongThieu" xml:space="preserve">
+    <value>จำนวนขาด</value>
+  </data>
+  <data name="Packaging_Tiep" xml:space="preserve">
+    <value>ต่อไป</value>
+  </data>
+  <data name="Packaging_ToiGuiYeuCau" xml:space="preserve">
+    <value>ฉันส่งข้อความขอร้อง</value>
+  </data>
+  <data name="Packaging_ToiXuLy" xml:space="preserve">
+    <value>ฉันจัดการเอง</value>
+  </data>
+  <data name="Packaging_TroVe" xml:space="preserve">
+    <value>ย้อนกลับ</value>
+  </data>
+  <data name="Packaging_YeuCauXuLyKiemDemSai" xml:space="preserve">
+    <value>ขอร้องจัดการการตรวจนับผิด</value>
+  </data>
+  <data name="HoVaTen" xml:space="preserve">
+    <value>ชื่อเเละนามสกุล</value>
+  </data>
+  <data name="Packaging_CapNhatTTMatMaKien" xml:space="preserve">
+    <value>อฟเดทข้อมูลที่ลังหายรหัส</value>
+  </data>
+  <data name="Packaging_ChonHeTrangThai" xml:space="preserve">
+    <value>เลือกสถนะ</value>
+  </data>
+  <data name="Packaging_ChuaCoKienHangNao" xml:space="preserve">
+    <value>ยังไม่มีลังสินค้า</value>
+  </data>
+  <data name="Packaging_LuiLai" xml:space="preserve">
+    <value>ถอนไป</value>
+  </data>
+  <data name="Packaging_MaBao" xml:space="preserve">
+    <value>รหัสกระสอบ</value>
+  </data>
+  <data name="Packaging_NhapDonHang" xml:space="preserve">
+    <value>รับสินค้า</value>
+  </data>
+  <data name="Packaging_STT" xml:space="preserve">
+    <value>ลำดับ</value>
+  </data>
+  <data name="Packaging_TaiFileLen" xml:space="preserve">
+    <value>อัปโหลดไฟล์</value>
+  </data>
+  <data name="Packaging_ThemKienHang" xml:space="preserve">
+    <value>เพิ่มลังสินค้า</value>
+  </data>
+  <data name="Packaging_TimKienHang" xml:space="preserve">
+    <value>ค้าหาลังสินค้า</value>
+  </data>
+  <data name="Transport_BaoChoNhapKho" xml:space="preserve">
+    <value>กระสอบสินค้ารอนำเข้าโกดัง</value>
+  </data>
+  <data name="Transport_BaoKhoTao" xml:space="preserve">
+    <value>กระสอบสินค้าที่โกดังทำขึ้น</value>
+  </data>
+  <data name="Transport_BaoTrongKho" xml:space="preserve">
+    <value>กระสอบสินค้าในโกดัง</value>
+  </data>
+  <data name="Transport_KhoDich" xml:space="preserve">
+    <value>โกดังสุุดท้าย</value>
+  </data>
+  <data name="Transport_KhoDichCuaPhieu" xml:space="preserve">
+    <value>โกดังสุดท้ายของออเดอร์</value>
+  </data>
+  <data name="Transport_KhoTaoPhieu" xml:space="preserve">
+    <value>โกดังที่สร้างใบตรา</value>
+  </data>
+  <data name="Transport_NgayDuyet" xml:space="preserve">
+    <value>วันคอนเฟิร์ม</value>
+  </data>
+  <data name="Transport_SoBao" xml:space="preserve">
+    <value>จำนวนกระสอบ</value>
+  </data>
+  <data name="Transport_TaoBaoHang" xml:space="preserve">
+    <value>สร้างกระสอบสินค้า</value>
+  </data>
+  <data name="Transport_TaoPhieu" xml:space="preserve">
+    <value>สร้างใบตรา</value>
+  </data>
+  <data name="Transport_TaoPhieuDieuChuyen" xml:space="preserve">
+    <value>สร้างใบตราการขนส่ง</value>
+  </data>
+  <data name="Transport_TienVanChuyen" xml:space="preserve">
+    <value>ค่าขนส่ง</value>
+  </data>
+  <data name="Transport_TongCan" xml:space="preserve">
+    <value>น้ำหนักทั้งหมด</value>
+  </data>
+  <data name="Packaging_CapNhat" xml:space="preserve">
+    <value>อพเดท</value>
+  </data>
+  <data name="Packaging_CapNhatGhiChu" xml:space="preserve">
+    <value>อพเดทโน๊ต</value>
+  </data>
+  <data name="Packaging_CapNhatGhiChuPPS" xml:space="preserve">
+    <value>อพเดทโน๊ตของค่าใช้จ่ายต่างๆอาจจะเกิดขึ้น</value>
+  </data>
+  <data name="Packaging_CapNhatSoTienPPS" xml:space="preserve">
+    <value>อพเดทค่าใช้จ่ายต่างๆอาจจะเกิดขึ้น</value>
+  </data>
+  <data name="Packaging_CapNhatTien" xml:space="preserve">
+    <value>อพเดทเงิน</value>
+  </data>
+  <data name="Packaging_LoaiPhi" xml:space="preserve">
+    <value>ประเภทค่าบริการ</value>
+  </data>
+  <data name="Packaging_SoTien" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="Packaging_Tien" xml:space="preserve">
+    <value>เงิน</value>
+  </data>
+  <data name="Transport_DichVu" xml:space="preserve">
+    <value>บริการ</value>
+  </data>
+  <data name="Transport_DiemTrungChuyen" xml:space="preserve">
+    <value>ศูนย์กลางรับส่งสินค้า</value>
+  </data>
+  <data name="Transport_LoaiBao" xml:space="preserve">
+    <value>ประเภทกระสอบ</value>
+  </data>
+  <data name="BanMaKiemTra" xml:space="preserve">
+    <value>ทำรหัสตรวจสอบลังสินค้า</value>
+  </data>
+  <data name="ChoDongKienGo" xml:space="preserve">
+    <value>รอตีลังไม้</value>
+  </data>
+  <data name="ChonKhoTao" xml:space="preserve">
+    <value>เลือกโกดัง</value>
+  </data>
+  <data name="ChuyenDoi" xml:space="preserve">
+    <value>นำหนักที่เเลกเปลี่ยน</value>
+  </data>
+  <data name="DaDongKienGo" xml:space="preserve">
+    <value>ตีลังไม้เสร็จเรียบร้อย</value>
+  </data>
+  <data name="NgayKiemDem" xml:space="preserve">
+    <value>วันตรวจนับ</value>
+  </data>
+  <data name="QLLayoutKhoHang" xml:space="preserve">
+    <value>จัดการlayout โกดัง</value>
+  </data>
+  <data name="SoLuongNhan" xml:space="preserve">
+    <value>จำนวนรับ</value>
+  </data>
+  <data name="SoLuongSai" xml:space="preserve">
+    <value>จำนวนผิด</value>
+  </data>
+  <data name="SoLuongYeuCau" xml:space="preserve">
+    <value>จำนวนต้องการ</value>
+  </data>
+  <data name="TaoKienGo" xml:space="preserve">
+    <value>สร้างลังไม้</value>
+  </data>
+  <data name="TaoPhieuNhapBao" xml:space="preserve">
+    <value>สร้างใบตราให้สินค้าเข้ากระสอบ</value>
+  </data>
+  <data name="TimBaoHang" xml:space="preserve">
+    <value>ค้นหากระสอบสินค้า</value>
+  </data>
+  <data name="TinhTien" xml:space="preserve">
+    <value>คิดราคา</value>
+  </data>
+  <data name="Transport_KhoBaoTao" xml:space="preserve">
+    <value>โกดังตีสินค้าเข้ากระสอบ</value>
+  </data>
+  <data name="Transport_KhoChoNhap" xml:space="preserve">
+    <value>โกดังรอรับสินค้า</value>
+  </data>
+  <data name="Transport_NgayVanChuyen" xml:space="preserve">
+    <value>วันขนส่ง</value>
+  </data>
+  <data name="Transport_NhaVanChuyen" xml:space="preserve">
+    <value>บริษิทขนส่ง</value>
+  </data>
+  <data name="Transport_TheTich" xml:space="preserve">
+    <value>ปริมาณ</value>
+  </data>
+  <data name="Transport_CanNangToiDa" xml:space="preserve">
+    <value>น้ำหนักสูงสุด</value>
+  </data>
+  <data name="Transport_ChiTietTien" xml:space="preserve">
+    <value>รายละเอียดการเงิน</value>
+  </data>
+  <data name="Transport_ConThieu" xml:space="preserve">
+    <value>ยังขาด</value>
+  </data>
+  <data name="Transport_DaThanhToan" xml:space="preserve">
+    <value>ชำระแล้ว</value>
+  </data>
+  <data name="Transport_DSNhaVanChuyen" xml:space="preserve">
+    <value>รายชื่อบริษัทขนส่ง</value>
+  </data>
+  <data name="Transport_GoiDienLanCuoi" xml:space="preserve">
+    <value>โทรหาครั้งสุดท้าย</value>
+  </data>
+  <data name="Transport_Kho" xml:space="preserve">
+    <value>โกดัง</value>
+  </data>
+  <data name="Transport_KhoHang" xml:space="preserve">
+    <value>โกดัง</value>
+  </data>
+  <data name="Transport_LayOutCha" xml:space="preserve">
+    <value>Layout พ่อ</value>
+  </data>
+  <data name="Transport_LoaiDonVi" xml:space="preserve">
+    <value>ประเภทยูนิท</value>
+  </data>
+  <data name="Transport_MaLayOut" xml:space="preserve">
+    <value>รหัสlayout</value>
+  </data>
+  <data name="Transport_MaNhaVC" xml:space="preserve">
+    <value>รหัสขนส่ง</value>
+  </data>
+  <data name="Transport_NhanViepShip" xml:space="preserve">
+    <value>พนักงานขนส่ง</value>
+  </data>
+  <data name="Transport_NoKyTruoc" xml:space="preserve">
+    <value>หนี้สินครั้งที่เเล้ว</value>
+  </data>
+  <data name="Transport_NVHoanThanh" xml:space="preserve">
+    <value>พนักงานปิดท้าย</value>
+  </data>
+  <data name="Transport_PhiLuuKho" xml:space="preserve">
+    <value>ค่าเก็บสินค้าในโกดัง</value>
+  </data>
+  <data name="Transport_QLKienHangChoXuat" xml:space="preserve">
+    <value>จัดการลังสินค้ารอส่งให้ลูกค้า</value>
+  </data>
+  <data name="Transport_QLPhieuGiaoHang" xml:space="preserve">
+    <value>จัดการใบตราส่งสินค้า</value>
+  </data>
+  <data name="Transport_TenLayOut" xml:space="preserve">
+    <value>ชื่อlayout</value>
+  </data>
+  <data name="Transport_TenNhaVC" xml:space="preserve">
+    <value>ชื่อบริษัทขนส่ง</value>
+  </data>
+  <data name="Transport_ThongTinCongNo" xml:space="preserve">
+    <value>ข้อมูลหนี้สิน</value>
+  </data>
+  <data name="Transport_tHUtU" xml:space="preserve">
+    <value>ลำดับ</value>
+  </data>
+  <data name="Transport_TienPhaiThu" xml:space="preserve">
+    <value>เงินต้องเก็บ</value>
+  </data>
+  <data name="Transport_TienPhieu" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transport_TongTienPhieu" xml:space="preserve">
+    <value>จำนวนเงินต้องจ่ายทั้งหมด</value>
+  </data>
+  <data name="BaoTai" xml:space="preserve">
+    <value>กระสอบ</value>
+  </data>
+  <data name="CapNhatCanNangBH" xml:space="preserve">
+    <value>อัฟเดทน้ำหนักกระสอบสินค้า</value>
+  </data>
+  <data name="ChiPhiPSCuaKienHang" xml:space="preserve">
+    <value>ค่าใช้จ่ายอาจจะเกิดขึ้นของลังสินค้า</value>
+  </data>
+  <data name="ChonKhoDen" xml:space="preserve">
+    <value>เลือกโกดังสินค้าจะมา</value>
+  </data>
+  <data name="ChonLoaiBao" xml:space="preserve">
+    <value>เลือกประเภทกระสอบ</value>
+  </data>
+  <data name="DChonDiemTrungChuyen" xml:space="preserve">
+    <value>เลือกศูนย์กลางรับส่งสินค้า</value>
+  </data>
+  <data name="LoaiChiPhi" xml:space="preserve">
+    <value>ประเภทค่าใช้จ่าย</value>
+  </data>
+  <data name="NgayDongKien" xml:space="preserve">
+    <value>วันตีลังไม้</value>
+  </data>
+  <data name="NgayNhap" xml:space="preserve">
+    <value>วันสร้างใบตราขนส่ง</value>
+  </data>
+  <data name="NgayNhapBao" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="NhanVienNhap" xml:space="preserve">
+    <value>เจ้าหน้าทีรับ</value>
+  </data>
+  <data name="PhieuDieuChuyen" xml:space="preserve">
+    <value>ใบตราขนส่ง</value>
+  </data>
+  <data name="PhiVanChuyenShop" xml:space="preserve">
+    <value>ค่าขนส่งจ่ายให้ให้ร้านขายของ</value>
+  </data>
+  <data name="QuanLyPhieuDieuChuyenNoiBo" xml:space="preserve">
+    <value>จัดการใบตราขนส่งในระบบ</value>
+  </data>
+  <data name="QuanLyPhieuDieuVan" xml:space="preserve">
+    <value>จัดการใบตราขนส่ง</value>
+  </data>
+  <data name="TaoPhieuDieuVan" xml:space="preserve">
+    <value>สร้างใบตราขนส่ง</value>
+  </data>
+  <data name="ThemPhiPhatSinh" xml:space="preserve">
+    <value>เพิ่่มค่าใช้จ่ายอื่นๆ</value>
+  </data>
+  <data name="ThongTinBaoHang" xml:space="preserve">
+    <value>ข้อมูลกระสอบสินค้า</value>
+  </data>
+  <data name="TienShip" xml:space="preserve">
+    <value>ค่าShip</value>
+  </data>
+  <data name="TrangThaiTien" xml:space="preserve">
+    <value>สถนะเงิน</value>
+  </data>
+  <data name="XacNhanHangVeKho" xml:space="preserve">
+    <value>ยืนยันสินค้าเข้าโกดัง</value>
+  </data>
+  <data name="PhiXeNang" xml:space="preserve">
+    <value>ค่าธรรมเนียมยกของ</value>
+  </data>
+  <data name="DoiTac" xml:space="preserve">
+    <value>คู่ค้า</value>
+  </data>
+  <data name="ToiKho" xml:space="preserve">
+    <value>ถึงโกดัง</value>
+  </data>
+  <data name="TuKho" xml:space="preserve">
+    <value>จากโกดัง</value>
+  </data>
+  <data name="CanNangChotVC" xml:space="preserve">
+    <value>น้ำหนักสินค้าเมื่อนำออกไปขนส่ง</value>
+  </data>
+  <data name="ChonKhoDich" xml:space="preserve">
+    <value>เลือกโกดังสินค้าถึง</value>
+  </data>
+  <data name="DanhSachBaoHang" xml:space="preserve">
+    <value>รายชื่อกระสอบสินค้า</value>
+  </data>
+  <data name="DoiTacVanChuyen" xml:space="preserve">
+    <value>คู่ค้าการขนส่ง</value>
+  </data>
+  <data name="DSLayoutKhoHang" xml:space="preserve">
+    <value>รายชื่อ layout ของโกดัง</value>
+  </data>
+  <data name="GiaVon" xml:space="preserve">
+    <value>ราคาต้นทุน</value>
+  </data>
+  <data name="HinhThucTinhTien" xml:space="preserve">
+    <value>รูปเเบบการคิดราคา</value>
+  </data>
+  <data name="MoTaBao" xml:space="preserve">
+    <value>บรรยายละเอียดกระสอบ</value>
+  </data>
+  <data name="PhieuDieVan" xml:space="preserve">
+    <value>ใบตราขนส่ง</value>
+  </data>
+  <data name="PhuongThucVanChuyen" xml:space="preserve">
+    <value>ประเภทขนส่ง</value>
+  </data>
+  <data name="TheoDoiBaoHangVaDieuVan" xml:space="preserve">
+    <value>ติดตามกระสอบสินค้าเเละขนส่ง</value>
+  </data>
+  <data name="CacYeuCauXuLyKiemDemSai" xml:space="preserve">
+    <value>ข้อร้องเรียนต่างๆสำหรับการจัดการตรวจนับผิดพลาดของออเดอร์</value>
+  </data>
+  <data name="CanNangThucTe" xml:space="preserve">
+    <value>น้ำหนักจริง</value>
+  </data>
+  <data name="ChuaCoKienHangNao" xml:space="preserve">
+    <value>ยังไม่มีลังหรือกระสอบสินค้าใด</value>
+  </data>
+  <data name="DSDoiTacVanChuyen" xml:space="preserve">
+    <value>รายชื่อคู่ค้าขนส่ง</value>
+  </data>
+  <data name="MaLayoutKho" xml:space="preserve">
+    <value>รหัสlayout ของโกดัง</value>
+  </data>
+  <data name="NhanVienDuyet" xml:space="preserve">
+    <value>พนักงานคอนเฟิร์ม</value>
+  </data>
+  <data name="NhanVienKho" xml:space="preserve">
+    <value>พนักงานโกดัง</value>
+  </data>
+  <data name="PhiDongGo" xml:space="preserve">
+    <value>ค่าตีลังไม้</value>
+  </data>
+  <data name="PhieuDieuChuyenNoiBo" xml:space="preserve">
+    <value>ใบตราขนส่งภายในระบบ</value>
+  </data>
+  <data name="PhiVanChuyen" xml:space="preserve">
+    <value>ค่าขนส่ง</value>
+  </data>
+  <data name="SoDon" xml:space="preserve">
+    <value>จำนวนออเดอร์</value>
+  </data>
+  <data name="TheTichChotVC" xml:space="preserve">
+    <value>ปริมาณสินค้าเมื่อนำสินค้าออกจากโกดัง</value>
+  </data>
+  <data name="ThieuTien" xml:space="preserve">
+    <value>เงินที่ขาด</value>
+  </data>
+  <data name="ThongTinKienGo" xml:space="preserve">
+    <value>ข้อมูลลังไม้</value>
+  </data>
+  <data name="TienPhieu" xml:space="preserve">
+    <value>เงินที่ีข้างชำระ</value>
+  </data>
+  <data name="ThongKeDonBaoGia" xml:space="preserve">
+    <value>สถิติออเดอร์ที่ต้องเเจ้งราคา</value>
+  </data>
+  <data name="XuLyDonHangChoBaoGia" xml:space="preserve">
+    <value>จัดการออเดอร์ รอเเจ้งราคา</value>
+  </data>
+  <data name="NgayTaoTicket" xml:space="preserve">
+    <value>วันสร้าง Ticket</value>
+  </data>
+  <data name="ElectronicWallet" xml:space="preserve">
+    <value>กระเป๋าอิเล็กทรอนิกส์</value>
+  </data>
+  <data name="TraoDoiTrenDon" xml:space="preserve">
+    <value>trao đổi trên đơn</value>
+  </data>
+</root>

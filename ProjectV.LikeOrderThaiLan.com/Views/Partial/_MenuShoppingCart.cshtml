@@ -1,0 +1,37 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.ViewEngine
+@{ var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant(); }
+<div class="lete-toolbar" style="right: 0px;">
+    <a href="/@culture/CMS/AccountCMS" class="shoppingcart-bar">
+        <img src="~/Content/images/icon-home/userr_icon.png" alt="" /> 
+        <span>@Resource.MenuShopping_Account</span>
+    </a>
+    <a href="/@culture/Product/Cart" class="cart shoppingcart-bar">
+        <img src="~/Content/images/icon-home/shopcarr.png" alt="" />
+        <span>@Resource.Home_Cart</span> 
+    </a>
+    <a href="/@culture" class="kefu shoppingcart-bar">
+        <img src="~/Content/images/icon-home/kefur_icon.png" alt="" /> 
+        <span>@Resource.Home_Contact</span>
+    </a>
+    <a href="/@culture/CMS/Wallet/ElectronicWallet" class="shoppingcart-bar">
+        <i class="fa fa-usd" aria-hidden="true" style="color: #fff; height: 35px; padding-top: 10px; box-sizing: border-box;"></i>
+        <span>@Resource.Dashboard_ExchargeNow</span>
+    </a>
+    <a href="https://chrome.google.com/webstore/detail/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%ADlikeord/apjnchoiielmahpmdoaijdoodohjlfmd" class="shoppingcart-bar" target="_blank">
+        <img src="~/Content/images/icon-home/saomar_icon.png" alt="">
+        <span style="width: 120px; left: -120px;">@Resource.Header_SetupExtenstion</span>
+    </a>
+    <div class="lete-toolbar-bottpm">
+        <a id="toTop">
+            <img src="~/Content/images/icon-home/totopr_icon.png" alt="" />
+            <span>Top</span>
+        </a>
+    </div>
+</div>
+
+@*<div class="vbar-sub" style="right: 0px; opacity: 1; display: block;" id="show-menushoppingcart">
+        <div class="vbar-tools" title="Lên đầu trang">
+            <a href="javascript:;" id="toTopOnHideToolBar"></a>
+        </div>
+        <div class="vbar-show" id="showMenuBar" title="Mở"></div>
+    </div>*@ 

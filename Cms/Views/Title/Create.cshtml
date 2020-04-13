@@ -1,0 +1,31 @@
+﻿@model TitleMeta
+
+@{
+    ViewBag.Title = "Add new position";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Add new position
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Category</a></li>
+        <li><a href="@Url.Action("Index")">List of positions</a></li>
+        <li class="active">Add new position</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <form action="@Url.Action("Create")" method="post" class="form-horizontal">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                @Html.Partial("_Update", Model)
+            </div>
+            <div class="box-footer">
+                <a href="@Url.Action("Index")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <button type="submit" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add position</button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "ShippingOrderStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    <div class="user-r">
+        <div class="dingdan">
+            <div class="dingdan-top">
+                <ul class="dingdan-nav clearFix">
+                    <li><a href="" class="lete-active">转运订单</a><span>|</span></li>
+                    <li><a href="">待审核</a><span>|</span></li>
+                    <li><a href="">待入仓</a><span>|</span></li>
+                    <li><a href="">待选物流方案</a><span>|</span></li>
+                    <li><a href="">待发货</a><span>|</span></li>
+                    <li><a href="">待收货</a><span>|</span></li>
+                    <li><a href="">待评价</a><span>|</span></li>
+                    <li><a href="">交易完成</a><span>|</span></li>
+                    <li><a href="">退货退款</a></li>
+                    <li><a href="">订单失效</a></li>
+                </ul>
+            </div>
+
+            <div class="dingdan-content">
+                <ul class="dingdan-content-top">
+                    <li><input type="checkbox" name="" id="" value=""><label>订单编号/时间</label></li>
+                    <li>订单明细</li>
+                    <li>申报价</li>
+                    <li>订单状态</li>
+                    <li>国际寄运（费）</li>
+                    <li>操作</li>
+                </ul>
+                <ul class="dingdan-content-box">
+                    <li>
+                        <input type="checkbox" name="" id="" value=""><span>
+                            <a href="@Url.Action("ShippingOrderDetail","Transport")">2016110170285</a>
+                            <p>2016-11-01 15:15:43</p>
+                        </span>
+                    </li>
+                    <li>
+                        <div class="dingdan-content-box-goodimg">
+                            <img src="~/Content/images/icon-transport/zhuanyun_icon.jpg" />
+                        </div>
+                        <div class="dingdan-content-box-goodmsg">
+                            <p>https://detail.1688.com/offer/41087791440.html?spm=a261y.7663282.0.0.V6Z0MM</p>
+                            <p>(1/2)<a href="@Url.Action("ShippingOrderDetail","Transport")">查看全部商品</a></p>
+                        </div>
+                    </li>
+                    <li><label class="shenbaojia" data-num="231313.00">￥231313.00</label></li>
+                    <li><p>订单取消</p><a href="@Url.Action("ShippingOrderDetail","Transport")">订单详情</a></li>
+                    <li><p>暂无</p></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

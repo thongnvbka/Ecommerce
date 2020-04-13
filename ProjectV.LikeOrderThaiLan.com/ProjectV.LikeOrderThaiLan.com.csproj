@@ -1,0 +1,2156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{48E0AEEB-D635-4E8D-952E-A4148079A122}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectV.LikeOrderThaiLan.com</RootNamespace>
+    <AssemblyName>ProjectV.LikeOrderThaiLan.com</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44391</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fizzler, Version=0.1.15619.0, Culture=neutral, PublicKeyToken=4ebff4844e382110, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fizzler.1.0.0\lib\net35\Fizzler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fizzler.Systems.HtmlAgilityPack, Version=0.1.15619.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fizzler.Systems.HtmlAgilityPack.1.0.0\lib\net35\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.6.9\lib\net45\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.6.9\lib\net45\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizer, Version=3.0.0.0, Culture=neutral, PublicKeyToken=61c49a1a9e79cc28, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlSanitizer.3.4.156\lib\net45\HtmlSanitizer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\ModelBinderConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\CMS\CMSAreaRegistration.cs" />
+    <Compile Include="Areas\CMS\Controllers\AccountCMSController.cs" />
+    <Compile Include="Areas\CMS\Controllers\ChatController.cs" />
+    <Compile Include="Areas\CMS\Controllers\DeliveryController.cs" />
+    <Compile Include="Areas\CMS\Controllers\GuideController.cs" />
+    <Compile Include="Areas\CMS\Controllers\NotifiController.cs" />
+    <Compile Include="Areas\CMS\Controllers\OrderController.cs" />
+    <Compile Include="Areas\CMS\Controllers\StatisticalController.cs" />
+    <Compile Include="Areas\CMS\Controllers\TicketController.cs" />
+    <Compile Include="Areas\CMS\Controllers\TransportController.cs" />
+    <Compile Include="Areas\CMS\Controllers\WalletController.cs" />
+    <Compile Include="Areas\CMS\Controllers\WarehouseController.cs" />
+    <Compile Include="Binders\BooleanModelBinder.cs" />
+    <Compile Include="Binders\DateModelBinder.cs" />
+    <Compile Include="Binders\DecimalModelBinder.cs" />
+    <Compile Include="Binders\DoubleArrayBinder.cs" />
+    <Compile Include="Binders\DoubleModelBinder.cs" />
+    <Compile Include="Binders\IntArrayBinder.cs" />
+    <Compile Include="Binders\IntegerModelBinder.cs" />
+    <Compile Include="Binders\LongModelBinder.cs" />
+    <Compile Include="Binders\StringArrayBinder.cs" />
+    <Compile Include="Binders\StringModelBinder.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MrkController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Items\ActiveEmail.cs" />
+    <Compile Include="Items\ForgetEmail.cs" />
+    <Compile Include="PasswordEncrypt\PasswordEncrypt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewEngine\BaseViewPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\CMS\css\AdminLTE.css" />
+    <Content Include="Areas\CMS\css\bootstrap.min.css" />
+    <Content Include="Areas\CMS\css\custom.css" />
+    <Content Include="Areas\CMS\css\styleView.css" />
+    <Content Include="Areas\CMS\css\toastr.min.css" />
+    <Content Include="Areas\CMS\css\website\taobao.css" />
+    <Content Include="Areas\CMS\css\website\tmall.css" />
+    <Content Include="Areas\CMS\css\website\w1688.css" />
+    <Content Include="Areas\CMS\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\CMS\Scripts\common\common.js" />
+    <Content Include="Areas\CMS\Scripts\common\messagerAddNewOrder.th.js" />
+    <Content Include="Areas\CMS\Scripts\common\messagerAddNewOrder.vi.js" />
+    <Content Include="Areas\CMS\Scripts\common\status.js" />
+    <Content Include="Areas\CMS\Scripts\globinfo\globalize.culture.en-US.js" />
+    <Content Include="Areas\CMS\Scripts\globinfo\globalize.culture.vi-VN.js" />
+    <Content Include="Areas\CMS\Scripts\globinfo\globalize.js" />
+    <Content Include="Areas\CMS\Scripts\highchart\exporting.js" />
+    <Content Include="Areas\CMS\Scripts\highchart\highcharts.js" />
+    <Content Include="Areas\CMS\Scripts\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Areas\CMS\Scripts\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Areas\CMS\Scripts\jquery-ui\popover.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.inputmask.date.extensions.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.inputmask.extensions.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.inputmask.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.inputmask.phone.extensions.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.mask.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.mask.min.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.maskedinput.min.js" />
+    <Content Include="Areas\CMS\Scripts\jquery.redirect.js" />
+    <Content Include="Areas\CMS\Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Areas\CMS\Scripts\knockout-3.4.0.js" />
+    <Content Include="Areas\CMS\Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Areas\CMS\Scripts\knockout.mapping-latest.js" />
+    <Content Include="Areas\CMS\Scripts\models\account\customerModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\dashboard\dashboardModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\orderStatusItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\notification\notidicationModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\notification\notificationCommon.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\sourcingProduct.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\depositDetail.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\sourcingDetail.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\orderDetail.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\orderModel.js" />
+    <Content Include="Areas\CMS\Scripts\modernizr-2.8.3.js" />
+    <Content Include="Areas\CMS\Scripts\moment-with-locales.js" />
+    <Content Include="Areas\CMS\Scripts\moment-with-locales.min.js" />
+    <Content Include="Areas\CMS\css\sweetalert2.css" />
+    <Content Include="Areas\CMS\Scripts\sweetalert2.js" />
+    <Content Include="Areas\CMS\css\sweetalert2.min.css" />
+    <Content Include="Areas\CMS\Scripts\sweetalert2.min.js" />
+    <Content Include="Areas\CMS\Scripts\toastr.min.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\account\accountViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\chat\chatTicketViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\chat\chatViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\complain\complainViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\complain\detailComplainViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\dashboard\dashboardViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\debit\debitViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\notifi\notifiCommonViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\notifi\notifiDetail.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\deposit\createDepositViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\deposit\depositPopupModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\deposit\depositViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\deposit\detailDepositViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\detailOrdertViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\orderAddViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\orderPopupModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\orderViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\sourcing\createSourcingViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\sourcing\detailSourcingViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\order\sourcing\sourcingViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\package\packageViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\recharge\rechargeViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\recharge\drawViewModel.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\status.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\status.th.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\status.vi.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\wallet\walletViewModel.js" />
+    <Content Include="ContentMrk\css-marketing\css-marketing.css" />
+    <Content Include="ContentMrk\css-marketing\css-vs-z.com.css" />
+    <Content Include="ContentMrk\css-marketing\m_page.min.css" />
+    <Content Include="ContentMrk\css-marketing\sell_at_website.min.css" />
+    <Content Include="ContentMrk\css-marketing\style.min-help.css" />
+    <Content Include="ContentMrk\css-marketing\style.vs-marketing.css" />
+    <Content Include="ContentMrk\css-marketing\style2.css" />
+    <Content Include="ContentMrk\css\default.min.vs.1.5.5.css" />
+    <Content Include="ContentMrk\css\default.min.vs1.3.3.css" />
+    <Content Include="ContentMrk\css\font-awesome.css" />
+    <Content Include="ContentMrk\css\font-awesome.min.css" />
+    <Content Include="ContentMrk\css\live-chat.css" />
+    <Content Include="ContentMrk\css\slide-theme.css" />
+    <Content Include="ContentMrk\css\style-help.css" />
+    <Content Include="ContentMrk\css\style.min.css" />
+    <Content Include="ContentMrk\default.min.css" />
+    <Content Include="ContentMrk\font-awesome\css\font-awesome.min.css" />
+    <Content Include="ContentMrk\fonts\fontawesome-webfont.svg" />
+    <Content Include="ContentMrk\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ContentMrk\image-marketing\landingpage\11335923-0-icon1.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\11338473-0-icon-4.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\11362938-0-footer-background.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\11393048-0-banner-1920x580.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\11517713-0-logo-2.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\11517738-0-logo-zcom-01.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\12000123-0-bg.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\12002288-0-sp-2.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\12003983-0-icon-1.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\12003988-0-icon-2.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\12007253-0-bg--2.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\4c03cb226fff8fabd1951f67a238640d.jpeg" />
+    <Content Include="ContentMrk\image-marketing\landingpage\8932273-0-Check.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\highlight_styles.png" />
+    <Content Include="ContentMrk\image-marketing\landingpage\loading_circle.svg" />
+    <Content Include="ContentMrk\images\404.jpg" />
+    <Content Include="ContentMrk\images\aboutus\bg-about-us-banner.jpg" />
+    <Content Include="ContentMrk\images\aboutus\bg-about-us.jpg" />
+    <Content Include="ContentMrk\images\aboutus\icon-customer.png" />
+    <Content Include="ContentMrk\images\aboutus\icon-employee.png" />
+    <Content Include="ContentMrk\images\aboutus\icon-income.png" />
+    <Content Include="ContentMrk\images\aboutus\icon-quote-left.png" />
+    <Content Include="ContentMrk\images\aboutus\icon-quote-right.png" />
+    <Content Include="ContentMrk\images\aboutus\img-about-us-intro.png" />
+    <Content Include="ContentMrk\images\aboutus\img-about-us-question.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block1-bg.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block1-quote1.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block1-quote2.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block1-quote3.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block1-tablet-bg.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block2-icon1.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block2-icon2.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block2-icon3.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block2-icon4.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block3-img1.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block3-img2.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block4-bg.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block4-img1.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block5-icon1.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block5-icon2.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block5-icon3.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-block5-icon4.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-crown.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-mobile-quote.png" />
+    <Content Include="ContentMrk\images\affiliate\affiliate-quote-mobile-2.png" />
+    <Content Include="ContentMrk\images\affiliate\banner.jpg" />
+    <Content Include="ContentMrk\images\affiliate\banner.png" />
+    <Content Include="ContentMrk\images\affiliate\bottom_body.jpg" />
+    <Content Include="ContentMrk\images\affiliate\key.png" />
+    <Content Include="ContentMrk\images\affiliate\money.png" />
+    <Content Include="ContentMrk\images\affiliate\promote-bg.png" />
+    <Content Include="ContentMrk\images\affiliate\questions.jpg" />
+    <Content Include="ContentMrk\images\affiliate\ruler_pencil.png" />
+    <Content Include="ContentMrk\images\affiliate\share.png" />
+    <Content Include="ContentMrk\images\affiliate\star.png" />
+    <Content Include="ContentMrk\images\affiliate\step-1.png" />
+    <Content Include="ContentMrk\images\affiliate\step-2.png" />
+    <Content Include="ContentMrk\images\affiliate\step-3.png" />
+    <Content Include="ContentMrk\images\affiliate\sub-comment-2.png" />
+    <Content Include="ContentMrk\images\affiliate\sub-comment.png" />
+    <Content Include="ContentMrk\images\affiliate\theme.png" />
+    <Content Include="ContentMrk\images\app_check.png" />
+    <Content Include="ContentMrk\images\arrow-next.png" />
+    <Content Include="ContentMrk\images\arrow-prev.png" />
+    <Content Include="ContentMrk\images\arrow-up.png" />
+    <Content Include="ContentMrk\images\asset2\bg-info.jpg" />
+    <Content Include="ContentMrk\images\asset2\bg-list.jpg" />
+    <Content Include="ContentMrk\images\asset2\bg-parther.jpg" />
+    <Content Include="ContentMrk\images\asset2\bg-themepartner.jpg" />
+    <Content Include="ContentMrk\images\asset2\bg-top.jpg" />
+    <Content Include="ContentMrk\images\asset2\folder.png" />
+    <Content Include="ContentMrk\images\asset2\iconbat.jpg" />
+    <Content Include="ContentMrk\images\asset2\iconbook.jpg" />
+    <Content Include="ContentMrk\images\asset2\iconcar.jpg" />
+    <Content Include="ContentMrk\images\asset2\iconcircle.jpg" />
+    <Content Include="ContentMrk\images\asset2\iconfree.jpg" />
+    <Content Include="ContentMrk\images\asset2\iconmario.jpg" />
+    <Content Include="ContentMrk\images\asset2\laptop.png" />
+    <Content Include="ContentMrk\images\asset2\newspaper.png" />
+    <Content Include="ContentMrk\images\asset2\paper.png" />
+    <Content Include="ContentMrk\images\asset2\puzzle.png" />
+    <Content Include="ContentMrk\images\asset2\support24.png" />
+    <Content Include="ContentMrk\images\asset2\toolkit.png" />
+    <Content Include="ContentMrk\images\backgroud-support.png" />
+    <Content Include="ContentMrk\images\background2.png" />
+    <Content Include="ContentMrk\images\backgrounf-how-to-sales.png" />
+    <Content Include="ContentMrk\images\banner\12000488-0-san-pham.png" />
+    <Content Include="ContentMrk\images\banner\banner-partner2.png" />
+    <Content Include="ContentMrk\images\banner\banner_doitac_dieukhoan.jpg" />
+    <Content Include="ContentMrk\images\banner\bg-enom-ext.jpg" />
+    <Content Include="ContentMrk\images\banner\bg-video.jpg" />
+    <Content Include="ContentMrk\images\banner\bg-vn-ext.jpg" />
+    <Content Include="ContentMrk\images\banner\bg_app_store.png" />
+    <Content Include="ContentMrk\images\banner\bg_app_store_sm.png" />
+    <Content Include="ContentMrk\images\banner\bg_customer_comments.png" />
+    <Content Include="ContentMrk\images\banner\cart.png" />
+    <Content Include="ContentMrk\images\banner\desc_management.png" />
+    <Content Include="ContentMrk\images\banner\desc_seo.png" />
+    <Content Include="ContentMrk\images\banner\desc_style.png" />
+    <Content Include="ContentMrk\images\banner\ghn.png" />
+    <Content Include="ContentMrk\images\banner\i.jpg" />
+    <Content Include="ContentMrk\images\banner\icon-check.jpg" />
+    <Content Include="ContentMrk\images\banner\icon-down-g.png" />
+    <Content Include="ContentMrk\images\banner\icon-down.png" />
+    <Content Include="ContentMrk\images\banner\icon-download-hover.jpg" />
+    <Content Include="ContentMrk\images\banner\icon-download.jpg" />
+    <Content Include="ContentMrk\images\banner\icon-item.png" />
+    <Content Include="ContentMrk\images\banner\icon-submenu.png" />
+    <Content Include="ContentMrk\images\banner\icon-veiw.png" />
+    <Content Include="ContentMrk\images\banner\iconhongke.jpg" />
+    <Content Include="ContentMrk\images\banner\lighter.jpg" />
+    <Content Include="ContentMrk\images\banner\lock.jpg" />
+    <Content Include="ContentMrk\images\banner\mail.jpg" />
+    <Content Include="ContentMrk\images\banner\marketing.png" />
+    <Content Include="ContentMrk\images\banner\phone.jpg" />
+    <Content Include="ContentMrk\images\banner\play-hover.png" />
+    <Content Include="ContentMrk\images\banner\sapo.png" />
+    <Content Include="ContentMrk\images\banner\search-banner.jpg" />
+    <Content Include="ContentMrk\images\banner\ship.png" />
+    <Content Include="ContentMrk\images\banner\tag.png" />
+    <Content Include="ContentMrk\images\banner\vht.png" />
+    <Content Include="ContentMrk\images\banner\zopim.png" />
+    <Content Include="ContentMrk\images\banner_icon1.png" />
+    <Content Include="ContentMrk\images\banner_icon2.png" />
+    <Content Include="ContentMrk\images\bg-4.jpg" />
+    <Content Include="ContentMrk\images\bg-pattern-2.jpg" />
+    <Content Include="ContentMrk\images\bg-pattern-3.jpg" />
+    <Content Include="ContentMrk\images\bg_aboutus.png" />
+    <Content Include="ContentMrk\images\bg_registration.png" />
+    <Content Include="ContentMrk\images\bg_top_new.jpg" />
+    <Content Include="ContentMrk\images\bizweb.png" />
+    <Content Include="ContentMrk\images\bizweb_banner.png" />
+    <Content Include="ContentMrk\images\bizweb_new_logo_short.png" />
+    <Content Include="ContentMrk\images\bizweb_old_logo.png" />
+    <Content Include="ContentMrk\images\bizweb_old_logo_short.png" />
+    <Content Include="ContentMrk\images\bizweb_price_logo.png" />
+    <Content Include="ContentMrk\images\bocongthuong.png" />
+    <Content Include="ContentMrk\images\cafebiz-logo.png" />
+    <Content Include="ContentMrk\images\contact\img-contact-map.png" />
+    <Content Include="ContentMrk\images\contact\map-maker.png" />
+    <Content Include="ContentMrk\images\customer-image-video.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-banner-bg.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-banner.jpg" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block1-bg.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block1-img.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-cup.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-handshake.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-icon.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-img1.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-img2.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-img3.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-img4.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-number1.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block2-number2.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block3-img1.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block3-img2.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block3-img3.png" />
+    <Content Include="ContentMrk\images\Domain\domain-free-block3-img7.png" />
+    <Content Include="ContentMrk\images\Domain\icon-domain-support.png" />
+    <Content Include="ContentMrk\images\Domain\refresh.png" />
+    <Content Include="ContentMrk\images\Domain\register-success.png" />
+    <Content Include="ContentMrk\images\fsvecom.png" />
+    <Content Include="ContentMrk\images\func\bg-tab_02.jpg" />
+    <Content Include="ContentMrk\images\func\cloud.png" />
+    <Content Include="ContentMrk\images\func\icon-mob-nav.png" />
+    <Content Include="ContentMrk\images\func\icontab1-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab1.png" />
+    <Content Include="ContentMrk\images\func\icontab10-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab10.png" />
+    <Content Include="ContentMrk\images\func\icontab2-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab2.png" />
+    <Content Include="ContentMrk\images\func\icontab3-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab3.png" />
+    <Content Include="ContentMrk\images\func\icontab4-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab4.png" />
+    <Content Include="ContentMrk\images\func\icontab5-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab5.png" />
+    <Content Include="ContentMrk\images\func\icontab6-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab6.png" />
+    <Content Include="ContentMrk\images\func\icontab7-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab7.png" />
+    <Content Include="ContentMrk\images\func\icontab8-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab8.png" />
+    <Content Include="ContentMrk\images\func\icontab9-hover.png" />
+    <Content Include="ContentMrk\images\func\icontab9.png" />
+    <Content Include="ContentMrk\images\func\tab1-1.png" />
+    <Content Include="ContentMrk\images\func\tab1-2.png" />
+    <Content Include="ContentMrk\images\func\tab1-3.png" />
+    <Content Include="ContentMrk\images\func\tab1-4.png" />
+    <Content Include="ContentMrk\images\func\tab1-5.png" />
+    <Content Include="ContentMrk\images\func\tab1-6.png" />
+    <Content Include="ContentMrk\images\func\tab1-7.png" />
+    <Content Include="ContentMrk\images\func\tab2-1.jpg" />
+    <Content Include="ContentMrk\images\func\tab2-2.jpg" />
+    <Content Include="ContentMrk\images\func\tab2-3.jpg" />
+    <Content Include="ContentMrk\images\func\tab2-4.jpg" />
+    <Content Include="ContentMrk\images\func\tab2-5.jpg" />
+    <Content Include="ContentMrk\images\func\tab2-6.jpg" />
+    <Content Include="ContentMrk\images\func\tab3-1.jpg" />
+    <Content Include="ContentMrk\images\func\tab3-2.jpg" />
+    <Content Include="ContentMrk\images\func\tab3-3.jpg" />
+    <Content Include="ContentMrk\images\func\tab3-4.jpg" />
+    <Content Include="ContentMrk\images\func\tab3-5.jpg" />
+    <Content Include="ContentMrk\images\func\tab3-6.jpg" />
+    <Content Include="ContentMrk\images\func\tab4-1.jpg" />
+    <Content Include="ContentMrk\images\func\tab4-2.jpg" />
+    <Content Include="ContentMrk\images\func\tab4-3.jpg" />
+    <Content Include="ContentMrk\images\func\tab4-4.jpg" />
+    <Content Include="ContentMrk\images\func\tab5-1.jpg" />
+    <Content Include="ContentMrk\images\func\tab5-2.jpg" />
+    <Content Include="ContentMrk\images\func\tab5-3.jpg" />
+    <Content Include="ContentMrk\images\func\tab5-4.jpg" />
+    <Content Include="ContentMrk\images\func\tab5-5.jpg" />
+    <Content Include="ContentMrk\images\func\tab5-6.jpg" />
+    <Content Include="ContentMrk\images\func\tab6-1.jpg" />
+    <Content Include="ContentMrk\images\func\tab6-2.jpg" />
+    <Content Include="ContentMrk\images\func\tab6-3.jpg" />
+    <Content Include="ContentMrk\images\func\tab6-4.jpg" />
+    <Content Include="ContentMrk\images\func\tab7-1.jpg" />
+    <Content Include="ContentMrk\images\func\tab7-2.jpg" />
+    <Content Include="ContentMrk\images\func\tab7-3.jpg" />
+    <Content Include="ContentMrk\images\func\tab7-4.jpg" />
+    <Content Include="ContentMrk\images\func\tab7-5.jpg" />
+    <Content Include="ContentMrk\images\func\tab7-6.jpg" />
+    <Content Include="ContentMrk\images\icon-arrow.png" />
+    <Content Include="ContentMrk\images\icon-clock.png" />
+    <Content Include="ContentMrk\images\icon-cup.png" />
+    <Content Include="ContentMrk\images\icon-down-g.png" />
+    <Content Include="ContentMrk\images\icon-home.png" />
+    <Content Include="ContentMrk\images\icon-left.png" />
+    <Content Include="ContentMrk\images\icon-lock.png" />
+    <Content Include="ContentMrk\images\icon-popup-close.png" />
+    <Content Include="ContentMrk\images\icon-right.png" />
+    <Content Include="ContentMrk\images\icon-submenu.png" />
+    <Content Include="ContentMrk\images\icon-theme.png" />
+    <Content Include="ContentMrk\images\icon-theme2.png" />
+    <Content Include="ContentMrk\images\icon-toogle-black.png" />
+    <Content Include="ContentMrk\images\icon-toogle.png" />
+    <Content Include="ContentMrk\images\icon3.png" />
+    <Content Include="ContentMrk\images\icon_cloud.png" />
+    <Content Include="ContentMrk\images\icon_email.png" />
+    <Content Include="ContentMrk\images\icon_file_att.png" />
+    <Content Include="ContentMrk\images\icon_newspaper.png" />
+    <Content Include="ContentMrk\images\icon_phone.png" />
+    <Content Include="ContentMrk\images\icon_step.png" />
+    <Content Include="ContentMrk\images\img-video-1.jpg" />
+    <Content Include="ContentMrk\images\img-video-2.jpg" />
+    <Content Include="ContentMrk\images\img-video-3.jpg" />
+    <Content Include="ContentMrk\images\img-video-4.jpg" />
+    <Content Include="ContentMrk\images\index\banner.png" />
+    <Content Include="ContentMrk\images\index\border_guide_default_horizontal.png" />
+    <Content Include="ContentMrk\images\index\border_guide_default_vertical.png" />
+    <Content Include="ContentMrk\images\index\border_guide_hover_horizontal.png" />
+    <Content Include="ContentMrk\images\index\border_guide_hover_vertical.png" />
+    <Content Include="ContentMrk\images\index\FhHRx-Spinner.gif" />
+    <Content Include="ContentMrk\images\index\icon-back.png" />
+    <Content Include="ContentMrk\images\index\icon-blog.png" />
+    <Content Include="ContentMrk\images\index\icon-document.png" />
+    <Content Include="ContentMrk\images\index\icon-forum.png" />
+    <Content Include="ContentMrk\images\index\icon-manual.png" />
+    <Content Include="ContentMrk\images\index\icon-phone.png" />
+    <Content Include="ContentMrk\images\index\icon-step.png" />
+    <Content Include="ContentMrk\images\index\icon-user-guide.png" />
+    <Content Include="ContentMrk\images\index\icon_ask.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_config.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_config_hover.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_content.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_content_hover.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_custom.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_custom_hover.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_other.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_other_hover.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_store.png" />
+    <Content Include="ContentMrk\images\index\icon_guide_store_hover.png" />
+    <Content Include="ContentMrk\images\index\icon_help.png" />
+    <Content Include="ContentMrk\images\index\icon_register.png" />
+    <Content Include="ContentMrk\images\index\icon_search.png" />
+    <Content Include="ContentMrk\images\index\icon_video1.png" />
+    <Content Include="ContentMrk\images\index\ipad.png" />
+    <Content Include="ContentMrk\images\index\product1.png" />
+    <Content Include="ContentMrk\images\index\product2.png" />
+    <Content Include="ContentMrk\images\intimate\banner.png" />
+    <Content Include="ContentMrk\images\intimate\bg-bottom.png" />
+    <Content Include="ContentMrk\images\intimate\bg.png" />
+    <Content Include="ContentMrk\images\intimate\flag.png" />
+    <Content Include="ContentMrk\images\intimate\img1.png" />
+    <Content Include="ContentMrk\images\intimate\img2.png" />
+    <Content Include="ContentMrk\images\intimate\img3.png" />
+    <Content Include="ContentMrk\images\intimate\img4.png" />
+    <Content Include="ContentMrk\images\intimate\img5.png" />
+    <Content Include="ContentMrk\images\intimate\img6.png" />
+    <Content Include="ContentMrk\images\intimate\pay.png" />
+    <Content Include="ContentMrk\images\intimate\pen.png" />
+    <Content Include="ContentMrk\images\intimate\pic.png" />
+    <Content Include="ContentMrk\images\iphone.png" />
+    <Content Include="ContentMrk\images\kangaroo-video.png" />
+    <Content Include="ContentMrk\images\landing-arrow.png" />
+    <Content Include="ContentMrk\images\landingpage\ban-ve-may-bay.jpg" />
+    <Content Include="ContentMrk\images\landingpage\ban_tranh.jpg" />
+    <Content Include="ContentMrk\images\landingpage\bat-dong-san-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Bat_dong_san.jpg" />
+    <Content Include="ContentMrk\images\landingpage\bg-website-landing-intro.png" />
+    <Content Include="ContentMrk\images\landingpage\c-food-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\car1.png" />
+    <Content Include="ContentMrk\images\landingpage\car2.png" />
+    <Content Include="ContentMrk\images\landingpage\clock-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\comment-mobile-bg.png" />
+    <Content Include="ContentMrk\images\landingpage\conclusion-footer.jpg" />
+    <Content Include="ContentMrk\images\landingpage\conclusion-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\content-sales.png" />
+    <Content Include="ContentMrk\images\landingpage\dien-thoai-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\dien-tu-am-thanh-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\DienTu_AmThanh.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Dien_thoai.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Doanh-nghibp.jpg" />
+    <Content Include="ContentMrk\images\landingpage\doanh-nghiep-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Dongho.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Do_an_vat.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Do_choi_tre_em.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Do_gia_dinh.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Do_luu_niem.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Do_the_thao.jpg" />
+    <Content Include="ContentMrk\images\landingpage\du-lich-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\DuLich.jpg" />
+    <Content Include="ContentMrk\images\landingpage\duoc-pham-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\ecommerce-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\email.png" />
+    <Content Include="ContentMrk\images\landingpage\fashion-header.png" />
+    <Content Include="ContentMrk\images\landingpage\fast-food-footer.jpg" />
+    <Content Include="ContentMrk\images\landingpage\fast-food-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\flower-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\free-site-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block1-icon.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block1-img.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block2-bg.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block2-bg3.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block2-icon1.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block2-icon2.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block2-icon3.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block2-img.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block3-img1.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block3-img2.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block3-img3.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block3-img4.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block3-img5.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block4-img1.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block4-img2.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block4-img3.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block5-bg.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block6-img1.png" />
+    <Content Include="ContentMrk\images\landingpage\free-site-block6-img2.png" />
+    <Content Include="ContentMrk\images\landingpage\furniture-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\gia-dung-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\gia-re-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Giaydep.jpg" />
+    <Content Include="ContentMrk\images\landingpage\hand-bag-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Hoa-tuoi.jpg" />
+    <Content Include="ContentMrk\images\landingpage\icon-expert-cooperation.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-friendly-fuction.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-highly-customizable.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-huge-appstore.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-left.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-right.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-save-unlimited.png" />
+    <Content Include="ContentMrk\images\landingpage\icon-support-all-time.png" />
+    <Content Include="ContentMrk\images\landingpage\image2.jpg" />
+    <Content Include="ContentMrk\images\landingpage\image3.jpg" />
+    <Content Include="ContentMrk\images\landingpage\jewelry-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\khach-san-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Khach-spn.jpg" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block1-bg.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block1-img1.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block2-img1.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block2-img2.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block2-img3.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block2-img4.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block2-img5.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block2-img6.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block3-bg.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block4-img1.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block4-img2.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block4-img3.png" />
+    <Content Include="ContentMrk\images\landingpage\landing-zalo-block4-img4.png" />
+    <Content Include="ContentMrk\images\landingpage\my-nghe-header.png" />
+    <Content Include="ContentMrk\images\landingpage\mypham-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Mz-phxm.jpg" />
+    <Content Include="ContentMrk\images\landingpage\new-mobile-home-content.png" />
+    <Content Include="ContentMrk\images\landingpage\nha-hang-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Nha-hang.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Nti-thtt.jpg" />
+    <Content Include="ContentMrk\images\landingpage\o-to-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Oto.jpg" />
+    <Content Include="ContentMrk\images\landingpage\partner-mobile-bg.png" />
+    <Content Include="ContentMrk\images\landingpage\pet-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Phf-kibn-dt.jpg" />
+    <Content Include="ContentMrk\images\landingpage\phone-accessory-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\phone-call.png" />
+    <Content Include="ContentMrk\images\landingpage\picture-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\plane-ticket-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\prenant-fashion-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\recruitment-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\register-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\sale-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\sale-block2-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\sneaker-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\souvenir-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\spa-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\spa.jpg" />
+    <Content Include="ContentMrk\images\landingpage\the-thao-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\Thh-c_25C3_25B4ng-mz-nghb.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Thoi_trang.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Thrc-phxm-sach.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Thu-cung.jpg" />
+    <Content Include="ContentMrk\images\landingpage\thuong_mai_dien_tu.jpg" />
+    <Content Include="ContentMrk\images\landingpage\tk-web-gia-rp.jpg" />
+    <Content Include="ContentMrk\images\landingpage\toihienmau.png" />
+    <Content Include="ContentMrk\images\landingpage\toy-header.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Trang-sjc.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Tui-xach.jpg" />
+    <Content Include="ContentMrk\images\landingpage\tuyen-dung.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Van-phong-phxm.jpg" />
+    <Content Include="ContentMrk\images\landingpage\Vay-cuvi.jpg" />
+    <Content Include="ContentMrk\images\landingpage\vpp-banner.png" />
+    <Content Include="ContentMrk\images\landingpage\website-by-industry-banner.jpg" />
+    <Content Include="ContentMrk\images\landingpage\wedding-dress-header.jpg" />
+    <Content Include="ContentMrk\images\landing\customer-comment-slide-next-hv.png" />
+    <Content Include="ContentMrk\images\landing\customer-comment-slide-next.png" />
+    <Content Include="ContentMrk\images\landing\customer-comment-slide-prev-hv.png" />
+    <Content Include="ContentMrk\images\landing\customer-comment-slide-prev.png" />
+    <Content Include="ContentMrk\images\landing\demo1.png" />
+    <Content Include="ContentMrk\images\landing\demo2.png" />
+    <Content Include="ContentMrk\images\landing\demo3.png" />
+    <Content Include="ContentMrk\images\landing\dribbble-24_1x.png" />
+    <Content Include="ContentMrk\images\landing\icon-cup.png" />
+    <Content Include="ContentMrk\images\landing\icon-submenu.png" />
+    <Content Include="ContentMrk\images\landing\icon-view-zoom.png" />
+    <Content Include="ContentMrk\images\landing\img-adayroi-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-bizweb-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-face-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-khachhang-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-pos-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-sendo-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-websitekhac-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\img-zalo-ldbztkwbh.png" />
+    <Content Include="ContentMrk\images\landing\line-vertor-animation.png" />
+    <Content Include="ContentMrk\images\landing\line-vertor-mobile.png" />
+    <Content Include="ContentMrk\images\landing\line-vertor-tablet.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-banner-image.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-banner.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-1-bg.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-1-index-1.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-1-index-2.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-1-index-3.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-1-index-4.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-icon-connect.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-icon-mobile.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-icon-theme.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-icon-time.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-image-1.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-image-2.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-image-3.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-2-image-4.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-3-icon-arrow.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-3-image-1.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-3.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-4.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-icon-email.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-icon-item.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-icon-message.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-icon-phone.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-image-email.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-image-message.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-image-phone.png" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5-mobile.jpg" />
+    <Content Include="ContentMrk\images\landing\thietkewebsitebanhang-block-5.jpg" />
+    <Content Include="ContentMrk\images\lanling\baner-sapo.jpg" />
+    <Content Include="ContentMrk\images\lanling\banner-ga.jpg" />
+    <Content Include="ContentMrk\images\lanling\beemart.jpg" />
+    <Content Include="ContentMrk\images\lanling\bg-module1.jpg" />
+    <Content Include="ContentMrk\images\lanling\bg-module2.jpg" />
+    <Content Include="ContentMrk\images\lanling\bg-module3.jpg" />
+    <Content Include="ContentMrk\images\lanling\bg-module4.jpg" />
+    <Content Include="ContentMrk\images\lanling\cart.jpg" />
+    <Content Include="ContentMrk\images\lanling\check-sapo.png" />
+    <Content Include="ContentMrk\images\lanling\cloud.png" />
+    <Content Include="ContentMrk\images\lanling\ecommerce-landing-1page-design.png" />
+    <Content Include="ContentMrk\images\lanling\img1.png" />
+    <Content Include="ContentMrk\images\lanling\img2.png" />
+    <Content Include="ContentMrk\images\lanling\img3.png" />
+    <Content Include="ContentMrk\images\lanling\img4.png" />
+    <Content Include="ContentMrk\images\lanling\img5.png" />
+    <Content Include="ContentMrk\images\lanling\img6.png" />
+    <Content Include="ContentMrk\images\lanling\iPhone-web-design-inspiration-3.jpg" />
+    <Content Include="ContentMrk\images\lanling\landingpagedesign1.gif" />
+    <Content Include="ContentMrk\images\lanling\pay.jpg" />
+    <Content Include="ContentMrk\images\lanling\report-w.png" />
+    <Content Include="ContentMrk\images\lanling\report.jpg" />
+    <Content Include="ContentMrk\images\lanling\security.png" />
+    <Content Include="ContentMrk\images\laptop.png" />
+    <Content Include="ContentMrk\images\line.png" />
+    <Content Include="ContentMrk\images\loading.gif" />
+    <Content Include="ContentMrk\images\logo_Dantri_Mau.png" />
+    <Content Include="ContentMrk\images\logo_ictnews_mau.png" />
+    <Content Include="ContentMrk\images\logo_VietnamPlus_mau.png" />
+    <Content Include="ContentMrk\images\logo_vnxpress_mau.png" />
+    <Content Include="ContentMrk\images\logo_vtv_mau.png" />
+    <Content Include="ContentMrk\images\marketing\11362938-0-footer-background.png" />
+    <Content Include="ContentMrk\images\marketing\khuyenmai-thang2-full.png" />
+    <Content Include="ContentMrk\images\marketing\khuyenmai-thang2-small.png" />
+    <Content Include="ContentMrk\images\mpage\background-mpage-adv-left.png" />
+    <Content Include="ContentMrk\images\mpage\banner-new-mpage.png" />
+    <Content Include="ContentMrk\images\mpage\close.png" />
+    <Content Include="ContentMrk\images\mpage\custom-hieu.jpg" />
+    <Content Include="ContentMrk\images\mpage\custom-lam.jpg" />
+    <Content Include="ContentMrk\images\mpage\custom-last.png" />
+    <Content Include="ContentMrk\images\mpage\divider.png" />
+    <Content Include="ContentMrk\images\mpage\icon-auto-cmt.png" />
+    <Content Include="ContentMrk\images\mpage\icon-auto-hide.png" />
+    <Content Include="ContentMrk\images\mpage\icon-cup.png" />
+    <Content Include="ContentMrk\images\mpage\icon-free.png" />
+    <Content Include="ContentMrk\images\mpage\icon-human-mpage-mobile.png" />
+    <Content Include="ContentMrk\images\mpage\icon-human-mpage-tab.png" />
+    <Content Include="ContentMrk\images\mpage\icon-human-mpage.png" />
+    <Content Include="ContentMrk\images\mpage\icon-manager-cmt.png" />
+    <Content Include="ContentMrk\images\mpage\icon-manager-fanpage.png" />
+    <Content Include="ContentMrk\images\mpage\icon-manager-product.png" />
+    <Content Include="ContentMrk\images\mpage\icon-number-1.png" />
+    <Content Include="ContentMrk\images\mpage\icon-number-2.png" />
+    <Content Include="ContentMrk\images\mpage\icon-number-3.png" />
+    <Content Include="ContentMrk\images\mpage\icon-play-video.png" />
+    <Content Include="ContentMrk\images\mpage\icon-sale-in-pos.png" />
+    <Content Include="ContentMrk\images\mpage\icon-sale-in-web.png" />
+    <Content Include="ContentMrk\images\mpage\icon-sale-in-web2.png" />
+    <Content Include="ContentMrk\images\mpage\img-box-cmt.png" />
+    <Content Include="ContentMrk\images\mpage\mpage-header.png" />
+    <Content Include="ContentMrk\images\mpage\new_logo.png" />
+    <Content Include="ContentMrk\images\new-search.png" />
+    <Content Include="ContentMrk\images\newindex\arrow-blue.png" />
+    <Content Include="ContentMrk\images\newindex\arrow-down-1.png" />
+    <Content Include="ContentMrk\images\newindex\arrow-down-2.png" />
+    <Content Include="ContentMrk\images\newindex\bee-customer.png" />
+    <Content Include="ContentMrk\images\newindex\bw-feedback-bg.png" />
+    <Content Include="ContentMrk\images\newindex\bw-help-bg.png" />
+    <Content Include="ContentMrk\images\newindex\bw-staff-bg.png" />
+    <Content Include="ContentMrk\images\newindex\Checked.svg" />
+    <Content Include="ContentMrk\images\newindex\Facebook.svg" />
+    <Content Include="ContentMrk\images\newindex\gento-customer.png" />
+    <Content Include="ContentMrk\images\newindex\gento-image.png" />
+    <Content Include="ContentMrk\images\newindex\handshake.png" />
+    <Content Include="ContentMrk\images\newindex\hero-arrow.svg" />
+    <Content Include="ContentMrk\images\newindex\index-banner-bg.png" />
+    <Content Include="ContentMrk\images\newindex\ipad.png" />
+    <Content Include="ContentMrk\images\newindex\kangaroo-customer.png" />
+    <Content Include="ContentMrk\images\newindex\kangaroo-image.png" />
+    <Content Include="ContentMrk\images\newindex\Money.svg" />
+    <Content Include="ContentMrk\images\newindex\open-quote.png" />
+    <Content Include="ContentMrk\images\newindex\people.png" />
+    <Content Include="ContentMrk\images\newindex\phone-call.png" />
+    <Content Include="ContentMrk\images\newindex\Phone.svg" />
+    <Content Include="ContentMrk\images\newindex\quote-bg.png" />
+    <Content Include="ContentMrk\images\newindex\Search.svg" />
+    <Content Include="ContentMrk\images\newindex\single-people.png" />
+    <Content Include="ContentMrk\images\newindex\Web.svg" />
+    <Content Include="ContentMrk\images\newlandingpage\bg-banhangonline.jpg" />
+    <Content Include="ContentMrk\images\newlandingpage\bg-kd-bandotreem-block2.jpg" />
+    <Content Include="ContentMrk\images\newlandingpage\content-block-1-bg-mobile.png" />
+    <Content Include="ContentMrk\images\newlandingpage\content-block-1-bg-tablet.png" />
+    <Content Include="ContentMrk\images\newlandingpage\content-block-1-bg.png" />
+    <Content Include="ContentMrk\images\newlandingpage\icon-item.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-content-4loikhuyentoiuuchiphi1.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-content-4loikhuyentoiuuchiphi2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-content-4loikhuyentoiuuchiphi3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-content-4loikhuyentoiuuchiphi4.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-head-4loikhuyentoiuuchiphi1.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-head-4loikhuyentoiuuchiphi2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-head-4loikhuyentoiuuchiphi3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\img-head-4loikhuyentoiuuchiphi4.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-ad-img.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-banner-bg.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-bw-theme-bg.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-device-white.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-device.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-money-white.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-money.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-people-white.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-people.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-slide-white.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-icon-slide.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-money-img.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-1.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-3a.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-4.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-7.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-8.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-profession-icon-9.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-report-icon-1.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-report-icon-2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-report-icon-3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-report-icon-4.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-step-2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-step-3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-step-4.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-step-bg.png" />
+    <Content Include="ContentMrk\images\newlandingpage\kd-online-tablet-banner.png" />
+    <Content Include="ContentMrk\images\newlandingpage\order-number.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon1.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon4.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon5.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon6.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon7.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon8.png" />
+    <Content Include="ContentMrk\images\newlandingpage\other-web-icon9.png" />
+    <Content Include="ContentMrk\images\newlandingpage\red-arrow.png" />
+    <Content Include="ContentMrk\images\newlandingpage\sell-other-web-banner.png" />
+    <Content Include="ContentMrk\images\newlandingpage\sell-other-web-img-content.png" />
+    <Content Include="ContentMrk\images\newlandingpage\tag1.png" />
+    <Content Include="ContentMrk\images\newlandingpage\tag2.png" />
+    <Content Include="ContentMrk\images\newlandingpage\tag3.png" />
+    <Content Include="ContentMrk\images\newlandingpage\tag5.png" />
+    <Content Include="ContentMrk\images\newlandingpage\white-arrow.png" />
+    <Content Include="ContentMrk\images\newlogo\5-star.png" />
+    <Content Include="ContentMrk\images\newlogo\bizweb_logo_new.svg" />
+    <Content Include="ContentMrk\images\newlogo\bizweb_logo_old.svg" />
+    <Content Include="ContentMrk\images\newlogo\landing-arrow.png" />
+    <Content Include="ContentMrk\images\newlogo\line.png" />
+    <Content Include="ContentMrk\images\newlogo\spinner.gif" />
+    <Content Include="ContentMrk\images\newlogo\step-1.png" />
+    <Content Include="ContentMrk\images\newlogo\step-2.png" />
+    <Content Include="ContentMrk\images\newlogo\step-3.png" />
+    <Content Include="ContentMrk\images\partner-background-logopartner.png" />
+    <Content Include="ContentMrk\images\partner\bg_foundation.png" />
+    <Content Include="ContentMrk\images\partner\bg_foundation_bottom.png" />
+    <Content Include="ContentMrk\images\partner\ceo.png" />
+    <Content Include="ContentMrk\images\partner\icon_app_partner.png" />
+    <Content Include="ContentMrk\images\partner\icon_control.png" />
+    <Content Include="ContentMrk\images\partner\icon_discount.png" />
+    <Content Include="ContentMrk\images\partner\icon_marketing.png" />
+    <Content Include="ContentMrk\images\partner\icon_marketing_partner.png" />
+    <Content Include="ContentMrk\images\partner\icon_optimal.png" />
+    <Content Include="ContentMrk\images\partner\icon_partner.png" />
+    <Content Include="ContentMrk\images\partner\icon_seo.png" />
+    <Content Include="ContentMrk\images\partner\icon_support.png" />
+    <Content Include="ContentMrk\images\partner\icon_theme_partner.png" />
+    <Content Include="ContentMrk\images\partner\img_foundation2.png" />
+    <Content Include="ContentMrk\images\partner\logo-crm-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-crm-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-epacific-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-epacific-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-giaohangnhanh-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-giaohangnhanh-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-giaohangtietkiem-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-giaohangtietkiem-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-sapo-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-sapo-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-sc-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-sc-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-sendo-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-sendo-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-shipchung-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-shipchung-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-usedata-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-usedata-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-vecom-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-vecom-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-vht-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-vht-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-viam-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-viam-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-vietguys-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-vietguys-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-viettel-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-viettel-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-vinalink-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-vinalink-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-webcall-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-webcall-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-websosanh-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-websosanh-gray.png" />
+    <Content Include="ContentMrk\images\partner\logo-wiindi-color.png" />
+    <Content Include="ContentMrk\images\partner\logo-wiindi-gray.png" />
+    <Content Include="ContentMrk\images\popup-divider.png" />
+    <Content Include="ContentMrk\images\popup\bt_close.png" />
+    <Content Include="ContentMrk\images\popup\bt_close_2.png" />
+    <Content Include="ContentMrk\images\price\arrow-down.png" />
+    <Content Include="ContentMrk\images\price\arrow-up.png" />
+    <Content Include="ContentMrk\images\price\bg-seperate-price.png" />
+    <Content Include="ContentMrk\images\price\bw-plus.png" />
+    <Content Include="ContentMrk\images\price\icon-crown.png" />
+    <Content Include="ContentMrk\images\price\icon-price-info.png" />
+    <Content Include="ContentMrk\images\price\icon_diamond_new.png" />
+    <Content Include="ContentMrk\images\price\icon_new.png" />
+    <Content Include="ContentMrk\images\price\icon_price_comment.png" />
+    <Content Include="ContentMrk\images\price\icon_price_diamond_new.png" />
+    <Content Include="ContentMrk\images\price\icon_price_remove.png" />
+    <Content Include="ContentMrk\images\price\icon_title_diamond.png" />
+    <Content Include="ContentMrk\images\price\icon_view_detail.png" />
+    <Content Include="ContentMrk\images\price\ico_enflag_new.png" />
+    <Content Include="ContentMrk\images\price\ico_vnflag_new.png" />
+    <Content Include="ContentMrk\images\price\new_line.png" />
+    <Content Include="ContentMrk\images\price\price-comment-next-hv.png" />
+    <Content Include="ContentMrk\images\price\price-comment-next.png" />
+    <Content Include="ContentMrk\images\price\price-comment-prev-hv.png" />
+    <Content Include="ContentMrk\images\price\price-comment-prev.png" />
+    <Content Include="ContentMrk\images\price\register-block-bg.png" />
+    <Content Include="ContentMrk\images\price\thai.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-beauty-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-beauty.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-electric-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-electric.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-equipment-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-equipment.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-family-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-family.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-featured-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-featured.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-furniture-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-furniture.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-other-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-other.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-service-hover.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-service.png" />
+    <Content Include="ContentMrk\images\referwebsite\icon-view-zoom.png" />
+    <Content Include="ContentMrk\images\register_roof.png" />
+    <Content Include="ContentMrk\images\Sapo\sapo-logo.png" />
+    <Content Include="ContentMrk\images\search-404.png" />
+    <Content Include="ContentMrk\images\sell-at-store-banner-bg.png" />
+    <Content Include="ContentMrk\images\Step\fpage-step-1.png" />
+    <Content Include="ContentMrk\images\Step\fpage-step-2.png" />
+    <Content Include="ContentMrk\images\Step\fpage-step-3.png" />
+    <Content Include="ContentMrk\images\Step\sendo-step-1.png" />
+    <Content Include="ContentMrk\images\Step\sendo-step-2.png" />
+    <Content Include="ContentMrk\images\Step\sendo-step-3.png" />
+    <Content Include="ContentMrk\images\Step\zalo-step-1.png" />
+    <Content Include="ContentMrk\images\Step\zalo-step-2.png" />
+    <Content Include="ContentMrk\images\Step\zalo-step-3.png" />
+    <Content Include="ContentMrk\images\support_avar.png" />
+    <Content Include="ContentMrk\images\talinpa-logo.jpg" />
+    <Content Include="ContentMrk\images\theme\ARfabric.png" />
+    <Content Include="ContentMrk\images\theme\Chowy fashionable.png" />
+    <Content Include="ContentMrk\images\theme\comulateplus.png" />
+    <Content Include="ContentMrk\images\theme\Fresh Me.png" />
+    <Content Include="ContentMrk\images\theme\Globalfood.png" />
+    <Content Include="ContentMrk\images\theme\Globalfood_mobile.png" />
+    <Content Include="ContentMrk\images\theme\GM Energy mobile.png" />
+    <Content Include="ContentMrk\images\theme\GM Energy.png" />
+    <Content Include="ContentMrk\images\theme\import-bag-center.png" />
+    <Content Include="ContentMrk\images\theme\Leader_in.png" />
+    <Content Include="ContentMrk\images\theme\logo_color.png" />
+    <Content Include="ContentMrk\images\theme\logo_white.png" />
+    <Content Include="ContentMrk\images\theme\Marine Food.png" />
+    <Content Include="ContentMrk\images\theme\MShopping.png" />
+    <Content Include="ContentMrk\images\theme\NARA.png" />
+    <Content Include="ContentMrk\images\theme\Pokamaka.png" />
+    <Content Include="ContentMrk\images\theme\shopcar.png" />
+    <Content Include="ContentMrk\images\theme\showcase-mobile.png" />
+    <Content Include="ContentMrk\images\theme\showcase.png" />
+    <Content Include="ContentMrk\images\theme\sofitshop.com.png" />
+    <Content Include="ContentMrk\images\theme\to-b-shop.png" />
+    <Content Include="ContentMrk\images\theme\TRAVEL.png" />
+    <Content Include="ContentMrk\images\theme\zenith.png" />
+    <Content Include="ContentMrk\images\totop.png" />
+    <Content Include="ContentMrk\images\toyota.jpg" />
+    <Content Include="ContentMrk\images\vans.png" />
+    <Content Include="ContentMrk\images\vicc.png" />
+    <Content Include="ContentMrk\images\video-reg-fancybg.png" />
+    <Content Include="ContentMrk\images\vision\banner.png" />
+    <Content Include="ContentMrk\images\vision\bg-core-value.png" />
+    <Content Include="ContentMrk\images\vision\icon-quote-left.png" />
+    <Content Include="ContentMrk\images\vision\icon-quote-right.png" />
+    <Content Include="ContentMrk\images\vobfvecom.png" />
+    <Content Include="ContentMrk\images\vomf.png" />
+    <Content Include="ContentMrk\js\add-new-shop.js" />
+    <Content Include="ContentMrk\js\default.js" />
+    <Content Include="ContentMrk\js\loadToolbarPartial.js" />
+    <Content Include="ContentMrk\js\moment.js" />
+    <Content Include="ContentMrk\js\script.js" />
+    <Content Include="ContentMrk\swiper3\ans-swiper.css" />
+    <Content Include="ContentMrk\swiper3\ans-swiper.js" />
+    <Content Include="ContentMrk\swiper3\ans-swiper.min.css" />
+    <Content Include="ContentMrk\swiper3\ans-swiper.min.js" />
+    <Content Include="ContentMrk\swiper3\css\swiper.css" />
+    <Content Include="ContentMrk\swiper3\css\swiper.min.css" />
+    <Content Include="ContentMrk\swiper3\demos\01-default.html" />
+    <Content Include="ContentMrk\swiper3\demos\02-responsive.html" />
+    <Content Include="ContentMrk\swiper3\demos\03-vertical.html" />
+    <Content Include="ContentMrk\swiper3\demos\04-space-between.html" />
+    <Content Include="ContentMrk\swiper3\demos\05-slides-per-view.html" />
+    <Content Include="ContentMrk\swiper3\demos\06-slides-per-view-auto.html" />
+    <Content Include="ContentMrk\swiper3\demos\07-centered.html" />
+    <Content Include="ContentMrk\swiper3\demos\08-centered-auto.html" />
+    <Content Include="ContentMrk\swiper3\demos\09-freemode.html" />
+    <Content Include="ContentMrk\swiper3\demos\10-slides-per-column.html" />
+    <Content Include="ContentMrk\swiper3\demos\11-nested.html" />
+    <Content Include="ContentMrk\swiper3\demos\12-grab-cursor.html" />
+    <Content Include="ContentMrk\swiper3\demos\13-scrollbar.html" />
+    <Content Include="ContentMrk\swiper3\demos\14-nav-arrows.html" />
+    <Content Include="ContentMrk\swiper3\demos\15-infinite-loop.html" />
+    <Content Include="ContentMrk\swiper3\demos\16-effect-fade.html" />
+    <Content Include="ContentMrk\swiper3\demos\17-effect-cube.html" />
+    <Content Include="ContentMrk\swiper3\demos\18-effect-coverflow.html" />
+    <Content Include="ContentMrk\swiper3\demos\19-keyboard-control.html" />
+    <Content Include="ContentMrk\swiper3\demos\20-mousewheel-control.html" />
+    <Content Include="ContentMrk\swiper3\demos\21-autoplay.html" />
+    <Content Include="ContentMrk\swiper3\demos\22-dynamic-slides.html" />
+    <Content Include="ContentMrk\swiper3\demos\23-thumbs-gallery-loop.html" />
+    <Content Include="ContentMrk\swiper3\demos\23-thumbs-gallery.html" />
+    <Content Include="ContentMrk\swiper3\demos\24-multiple-swipers.html" />
+    <Content Include="ContentMrk\swiper3\demos\25-hash-navigation.html" />
+    <Content Include="ContentMrk\swiper3\demos\26-rtl.html" />
+    <Content Include="ContentMrk\swiper3\demos\27-jquery.html" />
+    <Content Include="ContentMrk\swiper3\demos\28-parallax.html" />
+    <Content Include="ContentMrk\swiper3\demos\29-custom-pagination.html" />
+    <Content Include="ContentMrk\swiper3\demos\30-lazy-load-images.html" />
+    <Content Include="ContentMrk\swiper3\demos\31-custom-plugin.html" />
+    <Content Include="ContentMrk\swiper3\demos\32-scroll-container.html" />
+    <Content Include="ContentMrk\swiper3\demos\32-slideable-menu.html" />
+    <Content Include="ContentMrk\swiper3\demos\33-responsive-breakpoints.html" />
+    <Content Include="ContentMrk\swiper3\demos\34-autoheight.html" />
+    <Content Include="ContentMrk\swiper3\demos\35-effect-flip.html" />
+    <Content Include="ContentMrk\swiper3\demos\36-pagination-fraction.html" />
+    <Content Include="ContentMrk\swiper3\demos\37-pagination-progress.html" />
+    <Content Include="ContentMrk\swiper3\demos\38-history.html" />
+    <Content Include="ContentMrk\swiper3\demos\38-jquery-ie9-loop.html" />
+    <Content Include="ContentMrk\swiper3\demos\39-zoom.html" />
+    <Content Include="ContentMrk\swiper3\js\swiper.jquery.js" />
+    <Content Include="ContentMrk\swiper3\js\swiper.jquery.min.js" />
+    <Content Include="ContentMrk\swiper3\js\swiper.jquery.umd.js" />
+    <Content Include="ContentMrk\swiper3\js\swiper.jquery.umd.min.js" />
+    <Content Include="ContentMrk\swiper3\js\swiper.js" />
+    <Content Include="ContentMrk\swiper3\js\swiper.min.js" />
+    <Content Include="ContentMrk\swiper3\sample-swiper.css" />
+    <Content Include="ContentMrk\swiper3\sample-swiper.min.css" />
+    <Content Include="ContentMrk\swiper3\___version.txt" />
+    <Content Include="Content\bootstrap-toastr\toastr.css" />
+    <Content Include="Content\bootstrap-toastr\toastr.js" />
+    <Content Include="Content\bootstrap-toastr\toastr.min.css" />
+    <Content Include="Content\bootstrap-toastr\toastr.min.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\npm.js" />
+    <Content Include="Content\clip-font.css" />
+    <Content Include="Content\css\AdminLTE.css" />
+    <Content Include="Content\css\css-home\cart.css" />
+    <Content Include="Content\css\css-home\upproduct.css" />
+    <Content Include="Content\css\css-home\user.css" />
+    <Content Include="Content\css\css-login\header_footer.css" />
+    <Content Include="Content\css\css-login\reset.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\jquery.datetimepicker.css" />
+    <Content Include="Content\css\product-cart.css" />
+    <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\css\slick\ajax-loader.gif" />
+    <Content Include="Content\css\slick\fonts\slick.svg" />
+    <Content Include="Content\css\slick\slick-theme.css" />
+    <Content Include="Content\css\slick\slick.css" />
+    <Content Include="Content\css\slick\slick.js" />
+    <Content Include="Content\css\slick\slick.min.js" />
+    <Content Include="Content\css\styles.css" />
+    <Content Include="Content\cus-autocomplete.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\clip-font.svg" />
+    <Content Include="Content\images\icon-css\1111_1.1.png" />
+    <Content Include="Content\images\icon-css\1111_1.2.png" />
+    <Content Include="Content\images\icon-css\1111_2.1.png" />
+    <Content Include="Content\images\icon-css\1111_2.2.png" />
+    <Content Include="Content\images\icon-css\1111_3.1.png" />
+    <Content Include="Content\images\icon-css\1111_4.1.png" />
+    <Content Include="Content\images\icon-css\1111_5.1.png" />
+    <Content Include="Content\images\icon-css\1111_6.1.png" />
+    <Content Include="Content\images\icon-css\1111_6.2.png" />
+    <Content Include="Content\images\icon-css\1111_jiao.png" />
+    <Content Include="Content\images\icon-css\daigou_baozhang.png" />
+    <Content Include="Content\images\icon-css\Deposit.png" />
+    <Content Include="Content\images\icon-css\how_zhuanyun.png" />
+    <Content Include="Content\images\icon-css\icon.png" />
+    <Content Include="Content\images\icon-css\liucheng_jiao_icon.png" />
+    <Content Include="Content\images\icon-css\Order.png" />
+    <Content Include="Content\images\icon-css\ring.gif" />
+    <Content Include="Content\images\icon-css\Sourcing.png" />
+    <Content Include="Content\images\icon-css\user_daigou_icon.png" />
+    <Content Include="Content\images\icon-css\user_zhuanyun_icon.png" />
+    <Content Include="Content\images\icon-dashboard\2-FinDealBaoGia.png" />
+    <Content Include="Content\images\icon-dashboard\icon_naptien.png" />
+    <Content Include="Content\images\icon-dashboard\icon_naptien2.png" />
+    <Content Include="Content\images\icon-dashboard\icon_ruttien.png" />
+    <Content Include="Content\images\icon-dashboard\icon_ruttien2.png" />
+    <Content Include="Content\images\icon-guide\turorial-breadcrumb.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon1.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon2.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon3.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon4.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon5.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon6.png" />
+    <Content Include="Content\images\icon-guide\tutorial-icon7.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img1.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img2.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img3.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img4.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img5.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img6.png" />
+    <Content Include="Content\images\icon-guide\tutorial-img7.png" />
+    <Content Include="Content\images\icon-guide\tutorial-stepline.png" />
+    <Content Include="Content\images\icon-home\banks1.jpg" />
+    <Content Include="Content\images\icon-home\banks3.jpg" />
+    <Content Include="Content\images\icon-home\banks2.jpg" />
+    <Content Include="Content\images\icon-home\PAY10.jpg" />
+    <Content Include="Content\images\icon-home\close.png" />
+    <Content Include="Content\images\icon-home\comodositeseal.png" />
+    <Content Include="Content\images\icon-home\google-play-store-4-5-10.png" />
+    <Content Include="Content\images\icon-home\showShoppingcart.png" />
+    <Content Include="Content\images\icon-home\skype.png" />
+    <Content Include="Content\images\icon-home\totopr2_icon.png" />
+    <Content Include="Content\images\icon-rechange\deposit-direct.jpg" />
+    <Content Include="Content\images\icon-css\arrow_icon.png" />
+    <Content Include="Content\images\icon-css\bg_icon.png" />
+    <Content Include="Content\images\icon-css\celan_weixin_bd.png" />
+    <Content Include="Content\images\icon-css\close.png" />
+    <Content Include="Content\images\icon-css\dg_item_c.jpg" />
+    <Content Include="Content\images\icon-css\dot_icon.png" />
+    <Content Include="Content\images\icon-css\email_icon.png" />
+    <Content Include="Content\images\icon-css\email_s_icon.png" />
+    <Content Include="Content\images\icon-css\home_jiao1.png" />
+    <Content Include="Content\images\icon-css\icon-active.png" />
+    <Content Include="Content\images\icon-css\icon-passforget.png" />
+    <Content Include="Content\images\icon-css\img-150x100.png" />
+    <Content Include="Content\images\icon-css\kefu_icon.png" />
+    <Content Include="Content\images\icon-css\kefu_s_icon.png" />
+    <Content Include="Content\images\icon-css\map.png" />
+    <Content Include="Content\images\icon-css\product1.jpg" />
+    <Content Include="Content\images\icon-css\radio_icon.png" />
+    <Content Include="Content\images\icon-css\shoppingcar_icon.png" />
+    <Content Include="Content\images\icon-css\shoppingcar_s_icon.png" />
+    <Content Include="Content\images\icon-css\tequan1_icon.png" />
+    <Content Include="Content\images\icon-css\tequan2_icon.png" />
+    <Content Include="Content\images\icon-css\touxiang.jpg" />
+    <Content Include="Content\images\icon-css\user_bianji_icon.png" />
+    <Content Include="Content\images\icon-css\user_chat_icon.png" />
+    <Content Include="Content\images\icon-css\user_jiao_icon.png" />
+    <Content Include="Content\images\icon-css\user_notice_icon.png" />
+    <Content Include="Content\images\icon-css\yunfei_icon.png" />
+    <Content Include="Content\images\icon-home-master\dialog_icon.png" />
+    <Content Include="Content\images\icon-home-master\home_daigouimg.png" />
+    <Content Include="Content\images\icon-home-master\home_daigou_icon.png" />
+    <Content Include="Content\images\icon-home-master\home_daigou_icon_s.png" />
+    <Content Include="Content\images\icon-home-master\home_dingzhiimg.png" />
+    <Content Include="Content\images\icon-home-master\home_dingzhi_icon.png" />
+    <Content Include="Content\images\icon-home-master\home_dingzhi_icon_s.png" />
+    <Content Include="Content\images\icon-home-master\home_gongju1.png" />
+    <Content Include="Content\images\icon-home-master\home_gongju2.png" />
+    <Content Include="Content\images\icon-home-master\home_gongju3.png" />
+    <Content Include="Content\images\icon-home-master\home_gongju_icon.png" />
+    <Content Include="Content\images\icon-home-master\home_gongju_icon_s.png" />
+    <Content Include="Content\images\icon-home-master\home_jiao1.png" />
+    <Content Include="Content\images\icon-home-master\home_jiao2.png" />
+    <Content Include="Content\images\icon-home-master\home_zhuanyunimg.png" />
+    <Content Include="Content\images\icon-home-master\home_zhuanyun_icon.png" />
+    <Content Include="Content\images\icon-home-master\home_zhuanyun_icon_s.png" />
+    <Content Include="Content\images\icon-home-master\lv1.png" />
+    <Content Include="Content\images\icon-home-master\lv2.png" />
+    <Content Include="Content\images\icon-home-master\lv3.png" />
+    <Content Include="Content\images\icon-home-master\lv4.png" />
+    <Content Include="Content\images\icon-home-master\lv5.png" />
+    <Content Include="Content\images\icon-home-master\me_dengji_icon.png" />
+    <Content Include="Content\images\icon-home-master\P1.png" />
+    <Content Include="Content\images\icon-home-master\P2.png" />
+    <Content Include="Content\images\icon-home-master\P3.png" />
+    <Content Include="Content\images\icon-home-master\pingjia_star2_icon.png" />
+    <Content Include="Content\images\icon-home\beian_icon.png" />
+    <Content Include="Content\images\icon-home\chongzhir_icon.png" />
+    <Content Include="Content\images\icon-home\kefur_icon.png" />
+    <Content Include="Content\images\icon-home\lete-weixin.jpg" />
+    <Content Include="Content\images\icon-home\logo-_likeorder_262x79.png" />
+    <Content Include="Content\images\icon-home\logo3.png" />
+    <Content Include="Content\images\icon-home\logo4.gif" />
+    <Content Include="Content\images\icon-home\logo4.png" />
+    <Content Include="Content\images\icon-home\lv1.png" />
+    <Content Include="Content\images\icon-home\no.jpg" />
+    <Content Include="Content\images\icon-home\pay2_icon.png" />
+    <Content Include="Content\images\icon-home\pay3_icon.png" />
+    <Content Include="Content\images\icon-home\pay4_icon.png" />
+    <Content Include="Content\images\icon-home\pay5_icon.png" />
+    <Content Include="Content\images\icon-home\pay6_icon.png" />
+    <Content Include="Content\images\icon-home\saomar_icon.png" />
+    <Content Include="Content\images\icon-home\search_icon.png" />
+    <Content Include="Content\images\icon-home\shopcarr.png" />
+    <Content Include="Content\images\icon-home\Timnguon1.png" />
+    <Content Include="Content\images\icon-home\Timnguon2.png" />
+    <Content Include="Content\images\icon-home\Timnguon3.png" />
+    <Content Include="Content\images\icon-home\Timnguon4.png" />
+    <Content Include="Content\images\icon-home\Timnguon5.png" />
+    <Content Include="Content\images\icon-home\totopr_icon.png" />
+    <Content Include="Content\images\icon-home\userr_icon.png" />
+    <Content Include="Content\images\icon-home\user_hot_icon.png" />
+    <Content Include="Content\images\icon-home\user_new_icon.png" />
+    <Content Include="Content\images\icon-home\user_qq_icon.png" />
+    <Content Include="Content\images\icon-home\user_renzheng_icon.png" />
+    <Content Include="Content\images\icon-home\user_weixin_icon.png" />
+    <Content Include="Content\images\icon-home\wangzhan1_icon.png" />
+    <Content Include="Content\images\icon-home\wangzhan3_icon.png" />
+    <Content Include="Content\images\icon-home\yunshu_icon.png" />
+    <Content Include="Content\images\icon-home\zhuanyun2_icon.png" />
+    <Content Include="Content\images\icon-home\zicanr_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhifu._daojiao_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhifu._pay1_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhifu._pay2_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhifu._pay3_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhifu._pay5_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhifu._submit_icon.png" />
+    <Content Include="Content\images\icon-rechange\zhuayun_notice_icon.png" />
+    <Content Include="Content\images\icon-rechange\zichan_change_icon.png" />
+    <Content Include="Content\images\icon-rechange\zichan_jisuan_icon.png" />
+    <Content Include="Content\images\icon-guide\baoxian.png" />
+    <Content Include="Content\images\icon-guide\cangku.png" />
+    <Content Include="Content\images\icon-service\car_none.png" />
+    <Content Include="Content\images\icon-guide\chengzhong.png" />
+    <Content Include="Content\images\icon-service\weight_msg.png" />
+    <Content Include="Content\images\icon-transport\chima.png" />
+    <Content Include="Content\images\icon-guide\chundang.png" />
+    <Content Include="Content\images\icon-service\daigoucar_shop_icon.png" />
+    <Content Include="Content\images\icon-service\dingdan_shaixuan_icon.png" />
+    <Content Include="Content\images\icon-transport\genzhong.png" />
+    <Content Include="Content\images\icon-transport\huilv.png" />
+    <Content Include="Content\images\icon-guide\jiagu.png" />
+    <Content Include="Content\images\icon-service\liucheng_icon.png" />
+    <Content Include="Content\images\icon-service\liucheng_jiao_icon.png" />
+    <Content Include="Content\images\icon-guide\maishou.png" />
+    <Content Include="Content\images\icon-service\shoppingingcar_icon.png" />
+    <Content Include="Content\images\icon-transport\xianzhi.png" />
+    <Content Include="Content\images\icon-guide\yanhuo.png" />
+    <Content Include="Content\images\icon-transport\yunfei.png" />
+    <Content Include="Content\images\icon-service\yunfei_icon.png" />
+    <Content Include="Content\images\icon-transport\zhuanyun_icon.jpg" />
+    <Content Include="Content\images\icon-service\zy_notice_icon.png" />
+    <Content Include="Content\images\icon-upproduct\131129-x.jpg" />
+    <Content Include="Content\images\icon-upproduct\24hours-online.png" />
+    <Content Include="Content\images\icon-upproduct\advancement.png" />
+    <Content Include="Content\images\icon-upproduct\alipay.png" />
+    <Content Include="Content\images\icon-upproduct\bg_cu_2_on.png" />
+    <Content Include="Content\images\icon-upproduct\btn_addtocart_2.gif" />
+    <Content Include="Content\images\icon-upproduct\btn_pro_cart_jiesuan.png" />
+    <Content Include="Content\images\icon-upproduct\buy_calculate.png" />
+    <Content Include="Content\images\icon-upproduct\buy_delivered.png" />
+    <Content Include="Content\images\icon-upproduct\buy_limit.png" />
+    <Content Include="Content\images\icon-upproduct\buy_process.jpg" />
+    <Content Include="Content\images\icon-upproduct\buy_process.png" />
+    <Content Include="Content\images\icon-upproduct\buy_protocol.png" />
+    <Content Include="Content\images\icon-upproduct\buy_shipping.png" />
+    <Content Include="Content\images\icon-upproduct\buy_unclear.png" />
+    <Content Include="Content\images\icon-upproduct\buy_warehouse.png" />
+    <Content Include="Content\images\icon-upproduct\carticon1117.png" />
+    <Content Include="Content\images\icon-upproduct\compensation.png" />
+    <Content Include="Content\images\icon-upproduct\go.gif" />
+    <Content Include="Content\images\icon-upproduct\iconWord2.png" />
+    <Content Include="Content\images\icon-upproduct\insurance_cover.png" />
+    <Content Include="Content\images\icon-upproduct\international-bank.png" />
+    <Content Include="Content\images\icon-upproduct\loading1020.gif" />
+    <Content Include="Content\images\icon-upproduct\loading1117.gif" />
+    <Content Include="Content\images\icon-upproduct\okicon-1.png" />
+    <Content Include="Content\images\icon-upproduct\one-to-one-service.png" />
+    <Content Include="Content\images\icon-upproduct\paypal.png" />
+    <Content Include="Content\images\icon-upproduct\Product_cart_bg.png" />
+    <Content Include="Content\images\icon-upproduct\return_refund.png" />
+    <Content Include="Content\images\icon-upproduct\t_page_pic_1.png" />
+    <Content Include="Content\images\icon-upproduct\unionpay.png" />
+    <Content Include="Content\images\icon-upproduct\value-added-Service.png" />
+    <Content Include="Content\images\icon-upproduct\wepay.png" />
+    <Content Include="Content\images\icon-upproduct\yinying0828-1.png" />
+    <Content Include="Content\images\img-guide\Huongdan1.png" />
+    <Content Include="Content\images\img-guide\Huongdan2.png" />
+    <Content Include="Content\images\img-guide\Huongdan3.png" />
+    <Content Include="Content\images\img-guide\Huongdan4.png" />
+    <Content Include="Content\images\img-more\CreateDeposit1.png" />
+    <Content Include="Content\images\img-more\CreateOrder1.png" />
+    <Content Include="Content\images\img-more\CreateOrder3.png" />
+    <Content Include="Content\images\img-more\CreateDeposit1Resize.png" />
+    <Content Include="Content\images\img-more\CreateDeposit3Resize.png" />
+    <Content Include="Content\images\img-more\CreateDeposit4.png" />
+    <Content Include="Content\images\img-more\CreateOrder2.png" />
+    <Content Include="Content\images\img-more\CreateOrder2Resize.png" />
+    <Content Include="Content\images\img-more\CreateOrder3Resize.png" />
+    <Content Include="Content\images\img-more\CreateOrder4.png" />
+    <Content Include="Content\images\img-more\CreateOrder5.png" />
+    <Content Include="Content\images\img-more\CreateOrder6.png" />
+    <Content Include="Content\images\img-more\CreateTicket1.png" />
+    <Content Include="Content\images\img-more\CreateTicket2.png" />
+    <Content Include="Content\images\img-more\CreateDeposit2.png" />
+    <Content Include="Content\images\img-more\CreateDeposit3.png" />
+    <Content Include="Content\images\img-more\Setupe.png" />
+    <Content Include="Content\images\img-more\Setup.png" />
+    <Content Include="Content\images\img-more\SetupExtensition2.png" />
+    <Content Include="Content\images\img-more\SetupExtensition3.png" />
+    <Content Include="Content\images\img-more\daigou_banner.png" />
+    <Content Include="Content\images\img-more\daigou_icon1.png" />
+    <Content Include="Content\images\img-more\diybuy_icon.png" />
+    <Content Include="Content\images\img-more\how_zhuanyun.png" />
+    <Content Include="Content\images\img-more\ic-arrow-left.png" />
+    <Content Include="Content\images\img-more\ic-arrow-right.png" />
+    <Content Include="Content\images\img-more\SetupExtensition.png" />
+    <Content Include="Content\images\img-more\SetupExtensition4.png" />
+    <Content Include="Content\images\login\beian_icon.png" />
+    <Content Include="Content\images\login\forget_email.png" />
+    <Content Include="Content\images\login\forget_queren.png" />
+    <Content Include="Content\images\login\forget_shezhi.png" />
+    <Content Include="Content\images\login\forget_yanzheng.png" />
+    <Content Include="Content\images\login\login_bg.png" />
+    <Content Include="Content\images\login\login_password.png" />
+    <Content Include="Content\images\login\login_user.png" />
+    <Content Include="Content\images\login\logo2.png" />
+    <Content Include="Content\images\login\logo3.png" />
+    <Content Include="Content\images\login\register.png" />
+    <Content Include="Content\images\login\tick_green.png" />
+    <Content Include="Content\images\login\wangzhan1_icon.png" />
+    <Content Include="Content\images\login\wangzhan3_icon.png" />
+    <Content Include="Content\images\login\zhuce_ad.png" />
+    <Content Include="Content\images\icon-rechange\transfer-banks.jpg" />
+    <Content Include="Content\img\no-avatar.png" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\js\analytics.js" />
+    <Content Include="Content\js\chat-box.js" />
+    <Content Include="Content\js\create-delivery.js" />
+    <Content Include="Content\js\datetime-piker.js" />
+    <Content Include="Content\js\jquery-3.1.0.min.js" />
+    <Content Include="Content\js\jquery.datetimepicker.full.js" />
+    <Content Include="Content\js\jquery.SuperSlide.2.1.1.js" />
+    <Content Include="Content\js\jssor.slider-22.2.10.min.js" />
+    <Content Include="Content\js\public.js" />
+    <Content Include="Content\js\tab-content.js" />
+    <Content Include="Content\js\tab.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\bootstrap3-editable\img\clear.png" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\bootstrap3-editable\img\loading.gif" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\bootstrap3-editable\js\bootstrap-editable.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\bootstrap3-editable\js\bootstrap-editable.min.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\CHANGELOG.txt" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\address\address.css" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\address\address.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\typeaheadjs\lib\typeahead.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\typeaheadjs\lib\typeahead.js-bootstrap.css" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\typeaheadjs\typeaheadjs.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.css" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.min.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.min.js" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\inputs-ext\wysihtml5\wysihtml5.js" />
+    <Content Include="Content\plugins\input-mask\jquery.inputmask.date.extensions.js" />
+    <Content Include="Content\plugins\input-mask\jquery.inputmask.extensions.js" />
+    <Content Include="Content\plugins\input-mask\jquery.inputmask.js" />
+    <Content Include="Content\plugins\input-mask\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Content\plugins\input-mask\jquery.inputmask.phone.extensions.js" />
+    <Content Include="Content\plugins\input-mask\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Content\plugins\input-mask\phone-codes\readme.txt" />
+    <Content Include="Content\plugins\jQueryFileUpload\app.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\cors\jquery.postmessage-transport.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\cors\jquery.xdr-transport.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-angular.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-audio.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-image.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-process.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-ui.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload-video.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.fileupload.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\jquery.iframe-transport.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\main.js" />
+    <Content Include="Content\plugins\jQueryFileUpload\vendor\jquery.ui.widget.js" />
+    <Content Include="Content\plugins\jstree\dist\jquery.dropdownjstree.js" />
+    <Content Include="Content\plugins\jstree\dist\jstree.js" />
+    <Content Include="Content\plugins\jstree\dist\jstree.min.js" />
+    <Content Include="Content\plugins\jstree\dist\themes\default-dark\32px.png" />
+    <Content Include="Content\plugins\jstree\dist\themes\default-dark\40px.png" />
+    <Content Include="Content\plugins\jstree\dist\themes\default-dark\style.css" />
+    <Content Include="Content\plugins\jstree\dist\themes\default-dark\style.min.css" />
+    <Content Include="Content\plugins\jstree\dist\themes\default-dark\throbber.gif" />
+    <Content Include="Content\plugins\jstree\dist\themes\default\32px.png" />
+    <Content Include="Content\plugins\jstree\dist\themes\default\32px_line.png" />
+    <Content Include="Content\plugins\jstree\dist\themes\default\32px_original.png" />
+    <Content Include="Content\plugins\jstree\dist\themes\default\40px.png" />
+    <Content Include="Content\plugins\jstree\dist\themes\default\style.css" />
+    <Content Include="Content\plugins\jstree\dist\themes\default\throbber.gif" />
+    <Content Include="Content\plugins\select2\i18n\ar.js" />
+    <Content Include="Content\plugins\select2\i18n\az.js" />
+    <Content Include="Content\plugins\select2\i18n\bg.js" />
+    <Content Include="Content\plugins\select2\i18n\ca.js" />
+    <Content Include="Content\plugins\select2\i18n\cs.js" />
+    <Content Include="Content\plugins\select2\i18n\da.js" />
+    <Content Include="Content\plugins\select2\i18n\de.js" />
+    <Content Include="Content\plugins\select2\i18n\el.js" />
+    <Content Include="Content\plugins\select2\i18n\en.js" />
+    <Content Include="Content\plugins\select2\i18n\es.js" />
+    <Content Include="Content\plugins\select2\i18n\et.js" />
+    <Content Include="Content\plugins\select2\i18n\eu.js" />
+    <Content Include="Content\plugins\select2\i18n\fa.js" />
+    <Content Include="Content\plugins\select2\i18n\fi.js" />
+    <Content Include="Content\plugins\select2\i18n\fr.js" />
+    <Content Include="Content\plugins\select2\i18n\gl.js" />
+    <Content Include="Content\plugins\select2\i18n\he.js" />
+    <Content Include="Content\plugins\select2\i18n\hi.js" />
+    <Content Include="Content\plugins\select2\i18n\hr.js" />
+    <Content Include="Content\plugins\select2\i18n\hu.js" />
+    <Content Include="Content\plugins\select2\i18n\id.js" />
+    <Content Include="Content\plugins\select2\i18n\is.js" />
+    <Content Include="Content\plugins\select2\i18n\it.js" />
+    <Content Include="Content\plugins\select2\i18n\ja.js" />
+    <Content Include="Content\plugins\select2\i18n\km.js" />
+    <Content Include="Content\plugins\select2\i18n\ko.js" />
+    <Content Include="Content\plugins\select2\i18n\lt.js" />
+    <Content Include="Content\plugins\select2\i18n\lv.js" />
+    <Content Include="Content\plugins\select2\i18n\mk.js" />
+    <Content Include="Content\plugins\select2\i18n\ms.js" />
+    <Content Include="Content\plugins\select2\i18n\nb.js" />
+    <Content Include="Content\plugins\select2\i18n\nl.js" />
+    <Content Include="Content\plugins\select2\i18n\pl.js" />
+    <Content Include="Content\plugins\select2\i18n\pt-BR.js" />
+    <Content Include="Content\plugins\select2\i18n\pt.js" />
+    <Content Include="Content\plugins\select2\i18n\ro.js" />
+    <Content Include="Content\plugins\select2\i18n\ru.js" />
+    <Content Include="Content\plugins\select2\i18n\sk.js" />
+    <Content Include="Content\plugins\select2\i18n\sr-Cyrl.js" />
+    <Content Include="Content\plugins\select2\i18n\sr.js" />
+    <Content Include="Content\plugins\select2\i18n\sv.js" />
+    <Content Include="Content\plugins\select2\i18n\th.js" />
+    <Content Include="Content\plugins\select2\i18n\tr.js" />
+    <Content Include="Content\plugins\select2\i18n\uk.js" />
+    <Content Include="Content\plugins\select2\i18n\vi.js" />
+    <Content Include="Content\plugins\select2\i18n\zh-CN.js" />
+    <Content Include="Content\plugins\select2\i18n\zh-TW.js" />
+    <Content Include="Content\plugins\select2\select2.css" />
+    <Content Include="Content\plugins\select2\select2.full.js" />
+    <Content Include="Content\plugins\select2\select2.full.min.js" />
+    <Content Include="Content\plugins\select2\select2.js" />
+    <Content Include="Content\plugins\select2\select2.min.css" />
+    <Content Include="Content\plugins\select2\select2.min.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\sweetalert2\sweetalert2.css" />
+    <Content Include="Content\sweetalert2\sweetalert2.js" />
+    <Content Include="Content\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Content\sweetalert2\sweetalert2.min.js" />
+    <Content Include="EmailTemplates\account\activeAccount.html" />
+    <Content Include="EmailTemplates\account\forgetAccount.html" />
+    <Content Include="EmailTemplates\Order\Yc_DatCocDonHang.html" />
+    <Content Include="ErrorPage\Error404.html" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\custom.css" />
+    <Content Include="icon_likeorder_16x16.ico" />
+    <Content Include="Images\add-img.png" />
+    <Content Include="Images\Add Image-96.png" />
+    <Content Include="Images\arrow-icon.png" />
+    <Content Include="Images\DeleteDeposit.png" />
+    <Content Include="Images\divide_bg.png" />
+    <Content Include="Images\extention_icon.png" />
+    <Content Include="Images\face.png" />
+    <Content Include="Images\Flat_Thailand.png" />
+    <Content Include="Images\Flat_Vietnam.png" />
+    <Content Include="Images\forum.jpg" />
+    <Content Include="Images\icon-deal.png" />
+    <Content Include="Images\icon_likeorder_128.png" />
+    <Content Include="Images\icon_likeorder_128x128.png" />
+    <Content Include="Images\icon_likeorder_16x16.png" />
+    <Content Include="Images\icon_likeorder_200.png" />
+    <Content Include="Images\icon_likeorder_200x200 - 2.png" />
+    <Content Include="Images\icon_likeorder_200x200---2.png" />
+    <Content Include="Images\icon_likeorder_200x200.png" />
+    <Content Include="Images\icon_likeorder_32x32.png" />
+    <Content Include="Images\icon_likeorder_64x64.png" />
+    <Content Include="Images\logo_likeorder_262x79.png" />
+    <Content Include="Images\logo_likeorder.png" />
+    <Content Include="Images\logo_likeorder_home.png" />
+    <Content Include="Images\shopping-cart-294547_960_720.png" />
+    <Content Include="Images\signin-sc-both.jpg" />
+    <Content Include="Images\success-icon-10.png" />
+    <Content Include="Images\faq1.png" />
+    <Content Include="logo-trangchu.ico" />
+    <Content Include="Scripts\account-uploadimage\upload-image.vi.js" />
+    <Content Include="Scripts\account-uploadimage\upload-image.zh.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\CMS\Views\web.config" />
+    <Content Include="Areas\CMS\Views\Ticket\Ticket.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\BuyOrder.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\DepositOrder.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\Sourcing.cshtml" />
+    <Content Include="Areas\CMS\Views\Statistical\DeliveryStatistics.cshtml" />
+    <Content Include="Areas\CMS\Views\Statistical\OrdersStatistics.cshtml" />
+    <Content Include="Areas\CMS\Views\Statistical\WarehouseStatistics.cshtml" />
+    <Content Include="Areas\CMS\Views\Transport\Package.cshtml" />
+    <Content Include="Areas\CMS\Views\Transport\SendTraffic.cshtml" />
+    <Content Include="Areas\CMS\Views\Transport\ShippingOrderDetail.cshtml" />
+    <Content Include="Areas\CMS\Views\Transport\ShippingOrderStatus.cshtml" />
+    <Content Include="Areas\CMS\Views\Warehouse\CreateStorageRequirements.cshtml" />
+    <Content Include="Areas\CMS\Views\Warehouse\ListProduct.cshtml" />
+    <Content Include="Areas\CMS\Views\Warehouse\StorageRequirements.cshtml" />
+    <Content Include="Scripts\custom\home.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.formatCurrency-1.4.0.js" />
+    <Content Include="Scripts\jquery.sticky.js" />
+    <Content Include="Scripts\js.cookie.js" />
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Areas\CMS\Scripts\viewmodels\notifi\notifiViewModel.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout.x-editable.js" />
+    <Content Include="Scripts\knockout.x-editable.min.js" />
+    <Content Include="Scripts\lodash.js" />
+    <Content Include="Scripts\lodash.min.js" />
+    <Content Include="Areas\CMS\Scripts\models\complain\complainItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\complain\complainModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\complain\complainStatusItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\complain\complainUserModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\debit\debitHistoryModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\debit\debitItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\DepositDetailViewItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\depositItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\depositStatusItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\depositViewItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\orderCommentItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\deposit\OrderDetailItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\orderPackage\orderPackageItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\orderPackage\orderPackageStatusItem.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\orderAutoItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\orderDetailCountItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\orderItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\order\orderStatusItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\recharge\drawItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\recharge\rechargeItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\source\sourceItemModel.js" />
+    <Content Include="Areas\CMS\Scripts\models\source\sourceStatusItemModel.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\notifi.top.js" />
+    <Content Include="Scripts\resource\resource.th.js" />
+    <Content Include="Scripts\resource\resource.vi.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\shoping-cart\app.html" />
+    <Content Include="Scripts\vi.js" />
+    <Content Include="Scripts\viewmodels\complainDetailViewModel.js" />
+    <Content Include="systemjs.config.js" />
+    <Content Include="upload\2016\12\14\14122016011257240_tải xuống.jpg" />
+    <Content Include="upload\2016\12\14\14122016014722870_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016088245719_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016094168165_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016094297222_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016122996946_tải xuống.jpg" />
+    <Content Include="upload\2016\12\14\14122016146643604_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016146790060_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016155078797_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016160276295_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016167300856_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016178214568_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016196363370_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016212081065_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016231007134_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016248458909_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016248824430_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016257851203_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016259045776_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016285086700_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016297833827_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016312868685_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016324221853_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016342987872_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016356300956_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016365970153_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016413941254_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016445465342_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016455441037_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016459068571_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\14\14122016471609444_tải xuống.jpg" />
+    <Content Include="upload\2016\12\14\14122016489258656_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016020950789_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016050181060_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016058028277_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016067423232_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016077838509_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016097219910_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016121040029_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016141614405_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016144324254_tải xuống.jpg" />
+    <Content Include="upload\2016\12\15\15122016194177796_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016194845730_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016227548763_tải xuống.jpg" />
+    <Content Include="upload\2016\12\15\15122016235319097_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016258230597_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016273667933_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016367226633_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016433181110_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016443580543_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016453369800_tải xuống.jpg" />
+    <Content Include="upload\2016\12\15\15122016488408570_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016491400281_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016506908379_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016571826699_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016577286937_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016585916050_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016595586353_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\15\15122016598349488_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016000781725_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016004086129_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016006004451_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016015615293_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016017659239_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016026810737_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016037819707_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016051484344_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016053592952_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016073991895_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016078182025_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016087281061_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016087318984_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016092614937_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016096034792_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016099043005_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016104203269_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016106772772_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016112117821_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016127797712_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016138108978_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016140662168_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016146191667_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016149034043_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016151184765_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016154510964_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016168341645_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016177281763_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016181955690_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016194009594_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016211022729_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016216134271_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016221586413_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016239147112_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016283303100_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016286837439_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016289256057_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016297742737_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016306939080_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016320023463_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016322531052_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016324319471_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016331936532_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016334546741_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016344732431_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016347996328_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016351164062_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016372655350_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016378306832_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016379720469_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016390486647_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016397511453_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016413777139_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016417463508_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016419754591_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016422280411_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016430219251_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016454677070_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016458227261_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016462624109_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016479539341_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016486803315_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016492721944_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016495930783_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016505554884_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016523485315_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016529146542_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016531470046_tải xuống %283%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016553372545_tải xuống %282%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016560934998_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016576113511_tải xuống.jpg" />
+    <Content Include="upload\2016\12\16\16122016577664317_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016582317939_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\16\16122016584195567_tải xuống %281%29.jpg" />
+    <Content Include="upload\2016\12\17\17122016049502932_tải xuống %281%29.jpg" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Areas\CMS\Views\Delivery\CreateDelivery.cshtml" />
+    <Content Include="Areas\CMS\Views\Guide\Guide.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\AnswerMessage.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Claim.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\DiscountCodes.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\ListTotalRecharge.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notification.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Point.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Rechange.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\CreateOrder.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\DetailOrder.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\DetailDeposit.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\CreateSourcing.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\DetailSourcing.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\CreateDeposit.cshtml" />
+    <Content Include="Areas\CMS\Views\Ticket\DetailTicket.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Index.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notificommon\_NotifiList.cshtml" />
+    <Content Include="package.json" />
+    <Content Include="Content\bootstrap-toastr\README.md" />
+    <Content Include="Content\bootstrap-toastr\toastr.min.js.map" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Liabilitie.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\order\_OrderList.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Claim\_ClaimList.cshtml" />
+    <Content Include="Areas\CMS\Views\Ticket\_ListTicket.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Dashboard\_report.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notificommon\_DetailNotitication.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notificommon\_Notification.cshtml" />
+    <Content Include="Areas\CMS\Views\Ticket\ListTicket.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\ListRecharge\_RechargeList.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\sourcing\_SourcingList.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\deposit\_DepositList.cshtml" />
+    <Content Include="Areas\CMS\Views\Transport\_status.cshtml" />
+    <Content Include="Areas\CMS\Views\Transport\_listPackage.cshtml" />
+    <Content Include="Content\fonts\clip-font.eot" />
+    <Content Include="Content\fonts\clip-font.eot%40" />
+    <Content Include="Content\fonts\clip-font.ttf" />
+    <Content Include="Content\fonts\clip-font.woff" />
+    <Content Include="Content\fonts\clip-fontd41d.eot" />
+    <Content Include="Areas\CMS\Views\Ticket\CreateTicket.cshtml" />
+    <Content Include="Areas\CMS\Views\Ticket\_status.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\sourcing\_status.cshtml" />
+    <Content Include="Areas\CMS\Views\Wallet\ElectronicWallet.cshtml" />
+    <Content Include="Content\plugins\input-mask\phone-codes\phone-be.json" />
+    <Content Include="Content\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\CMS\Views\Wallet\claim\Claim.cshtml" />
+    <Content Include="Areas\CMS\Views\Wallet\listRecharge\ListRecharge.cshtml" />
+    <Content Include="Areas\CMS\Views\Wallet\listRecharge\_RechargeList.cshtml" />
+    <Content Include="Areas\CMS\Views\Wallet\claim\_ClaimList.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\deposit\_status.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\order\_status.cshtml" />
+    <Content Include="Views\Home\Guide\Guide_th.cshtml" />
+    <Content Include="Views\Home\Guide\Guide_vi.cshtml" />
+    <Content Include="Views\Home\Guide\Guide_en.cshtml" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\LICENSE-MIT" />
+    <Content Include="Content\plugins\bootstrap3-editable-1.5.1\README.md" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Index\IndexTableVip_th.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Index\IndexTableVip_vi.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Recharge\Recharge_th.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Recharge\Recharge_vi.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Debit\_DebitList.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\GetDataByOrderId.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notificommon\_DetailNotiticationCommon.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notificommon\_NotificationCommon.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\Notificommon\_NotifiListCommon.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\NotificationCommon.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\order\_Order.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\deposit\_Deposit.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\sourcing\_Sourcing.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\IndexAccount\_InforAccount.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\IndexAccount\_InforNotifi.cshtml" />
+    <Content Include="Areas\CMS\Views\Chat\_Chat.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\order\_popup.cshtml" />
+    <Content Include="Areas\CMS\Views\Chat\_ChatTicket.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\deposit\_popup.cshtml" />
+    <Content Include="Areas\CMS\Views\Notifi\NotifiTopOrder.cshtml" />
+    <Content Include="Areas\CMS\Views\Notifi\OrderNotifiTop.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\DetailNotitication.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\GetPackageHistory.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\GetServiceOther.cshtml" />
+    <Content Include="Areas\CMS\Views\Order\GetPackageWallet.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\IndexAccount\_InforAccount_vi.cshtml" />
+    <Content Include="Areas\CMS\Views\AccountCMS\IndexAccount\_InforAccount_th.cshtml" />
+    <Content Include="Content\css\slick\config.rb" />
+    <Content Include="Content\css\slick\fonts\slick.eot" />
+    <Content Include="Content\css\slick\fonts\slick.ttf" />
+    <Content Include="Content\css\slick\fonts\slick.woff" />
+    <Content Include="Content\css\slick\slick-theme.less" />
+    <Content Include="Content\css\slick\slick-theme.scss" />
+    <Content Include="Content\css\slick\slick.less" />
+    <Content Include="Content\css\slick\slick.scss" />
+    <Content Include="ContentMrk\font-awesome\fonts\fontawesome-webfont.eot%40" />
+    <Content Include="ContentMrk\font-awesome\fonts\fontawesome-webfont.eot%40v=4.3.0" />
+    <Content Include="ContentMrk\font-awesome\fonts\fontawesome-webfont.svg%40v=4.3.0" />
+    <Content Include="ContentMrk\font-awesome\fonts\fontawesome-webfont.ttf%40v=4.3.0" />
+    <Content Include="ContentMrk\font-awesome\fonts\fontawesome-webfont.woff%40v=4.3.0" />
+    <Content Include="ContentMrk\font-awesome\fonts\fontawesome-webfont.woff2%40v=4.3.0" />
+    <Content Include="ContentMrk\font-roboto\fonts\Roboto-Bold.ttf" />
+    <Content Include="ContentMrk\font-roboto\fonts\Roboto-Light.ttf" />
+    <Content Include="ContentMrk\font-roboto\fonts\Roboto-Medium.ttf" />
+    <Content Include="ContentMrk\font-roboto\fonts\Roboto-Regular.ttf" />
+    <Content Include="ContentMrk\fonts\fontawesome-webfont.eot" />
+    <Content Include="ContentMrk\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ContentMrk\fonts\fontawesome-webfont.woff" />
+    <Content Include="ContentMrk\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ContentMrk\fonts\FontAwesome.otf" />
+    <Content Include="ContentMrk\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ContentMrk\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ContentMrk\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ContentMrk\fonts\HELVETICANEUE.TTF" />
+    <Content Include="ContentMrk\fonts\HELVETICANEUEBOLD.TTF" />
+    <Content Include="ContentMrk\fonts\UTMNEOSANSINTEL.TTF" />
+    <Content Include="ContentMrk\fonts\UTMNEOSANSINTELBOLD.TTF" />
+    <Content Include="ContentMrk\images\affiliate\promote-img.png%40v=100" />
+    <Content Include="ContentMrk\images\favicon.ico%40v1" />
+    <Content Include="ContentMrk\images\newindex\bw-feedback-bg.png%40v=5" />
+    <Content Include="ContentMrk\swiper3\ans-swiper.less" />
+    <Content Include="ContentMrk\swiper3\js\maps\swiper.jquery.min.js.map" />
+    <Content Include="ContentMrk\swiper3\js\maps\swiper.jquery.umd.min.js.map" />
+    <Content Include="ContentMrk\swiper3\js\maps\swiper.min.js.map" />
+    <Content Include="ContentMrk\swiper3\less\core.less" />
+    <Content Include="ContentMrk\swiper3\less\effects.less" />
+    <Content Include="ContentMrk\swiper3\less\mixins.less" />
+    <Content Include="ContentMrk\swiper3\less\navigation-f7.less" />
+    <Content Include="ContentMrk\swiper3\less\navigation.less" />
+    <Content Include="ContentMrk\swiper3\less\preloader-f7.less" />
+    <Content Include="ContentMrk\swiper3\less\preloader.less" />
+    <Content Include="ContentMrk\swiper3\less\scrollbar.less" />
+    <Content Include="ContentMrk\swiper3\less\swiper.less" />
+    <Content Include="ContentMrk\swiper3\less\zoom.less" />
+    <Content Include="ContentMrk\swiper3\sample-swiper.less" />
+    <Content Include="ContentMrk\swiper3\___sample.cshtml" />
+    <None Include="Properties\PublishProfiles\likeorder.com.pubxml" />
+    <Content Include="Scripts\account-uploadimage\upload-image.th.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Partial\_Footer.cshtml" />
+    <Content Include="Views\Partial\_Toolbar.cshtml" />
+    <Content Include="Views\Partial\_Header.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\Upproduct.cshtml" />
+    <Content Include="Views\Partial\_MenuShoppingCart.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Partial\_FooterLogin.cshtml" />
+    <Content Include="Views\Account\PassForget.cshtml" />
+    <Content Include="Views\Account\NewPass.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\TermsOfService.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
+    <Content Include="Views\Account\Active.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\GetWard.cshtml" />
+    <Content Include="Views\Account\GetDistrictByCity.cshtml" />
+    <Content Include="Views\Account\GetDistrict.cshtml" />
+    <Content Include="Views\Account\GetCityByCountry.cshtml" />
+    <Content Include="Views\Product\_DispositOrder.cshtml" />
+    <Content Include="Views\Product\_DispositProduct.cshtml" />
+    <Content Include="Views\Product\Cart.cshtml" />
+    <Content Include="Views\Product\Deposit.cshtml" />
+    <Content Include="tsconfig.json" />
+    <Content Include="Views\Account\ChangePass.cshtml" />
+    <Content Include="Views\Account\Infor.cshtml" />
+    <Content Include="Views\Home\FAQ\FAQ_th.cshtml" />
+    <Content Include="Views\Home\FAQ\FAQ_en.cshtml" />
+    <Content Include="Views\Home\FAQ\FAQ_vi.cshtml" />
+    <Content Include="Views\Home\Guide.cshtml" />
+    <Content Include="Views\Home\TermsOfService\TermsOfService_vi.cshtml" />
+    <Content Include="Views\Home\TermsOfService\TermsOfService_th.cshtml" />
+    <Content Include="Views\Notification\_HomeNotification_vi.cshtml" />
+    <Content Include="Views\Notification\_HomeNotification_th.cshtml" />
+    <Content Include="Views\Home\SearchProduct.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Account\CreateAccountError.cshtml" />
+    <Content Include="Views\Account\CreateAccountSuccess.cshtml" />
+    <Content Include="Views\Account\RegisterLook.cshtml" />
+    <Content Include="Views\Home\Notification.cshtml" />
+    <Content Include="Views\Home\Index\Index_vi.cshtml" />
+    <Content Include="Views\Home\Index\Index_th.cshtml" />
+    <Content Include="Views\Home\Index\Index_en.cshtml" />
+    <Content Include="Views\ShareMrk\_LayoutMrk.cshtml" />
+    <Content Include="Views\Mrk\ForBuyer.cshtml" />
+    <Content Include="Views\ShareMrk\_Footer.cshtml" />
+    <Content Include="Views\ShareMrk\_Header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\CMS\Content\avatar\" />
+    <Folder Include="Areas\CMS\Models\" />
+    <Folder Include="Areas\CMS\Views\Base\" />
+    <Folder Include="Areas\CMS\Views\Comment\" />
+    <Folder Include="Common\" />
+    <Folder Include="Models\" />
+    <Folder Include="Scripts\models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{e67de391-2dad-4955-8787-aa86e93d6227}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{2db873e7-a28e-4972-b1cd-7dc511a6cb09}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourcesLikeOrderThaiLan\ResourcesLikeOrderThaiLan.csproj">
+      <Project>{9c07aa45-e5c3-4be4-8832-e3e8aa411579}</Project>
+      <Name>ResourcesLikeOrderThaiLan</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\shoping-cart\app.component.ts" />
+    <TypeScriptCompile Include="Scripts\shoping-cart\app.module.ts" />
+    <TypeScriptCompile Include="Scripts\shoping-cart\main.ts" />
+    <TypeScriptCompile Include="Scripts\shoping-cart\numberic.pipe.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_likeorder_16x16.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2962</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44389/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,284 @@
+﻿<div id="ExportWarehouseAddModel" class="modal modal-dialog modal-lg fade" role="dialog">
+    <form data-bind="submit: save" id="ExportWarehouseAddModelForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <!-- ko if: id() > 0 -->
+                        <span>DELIVERY BILL "#<b data-bind="text: 'E'+code()" style="color: red"></b>"</span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: id() > 0 -->
+                        <span>CREATE BILL</span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <!-- ko if: id() > 0-->
+                        <small class="pull-right"> Slip creation date :<span data-bind="text: moment(created()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <!-- ko if: id() > 0 -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">staffs create</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Staff:</label>
+                                        <div class="col-sm-8">
+                                            <!-- ko ifnot: id() == 0 -->
+                                            <div data-bind="text: userFullName" class="form-control-static"></div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Staff account:</label>
+                                        <div class="col-sm-8">
+                                            <!-- ko ifnot: id() == 0 -->
+                                            <div data-bind="text: userName" class="form-control-static"></div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Infomation bill</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Warehouse name:</label>
+                                        <div class="col-sm-8">
+                                            <!-- ko ifnot: id() == 0 -->
+                                            <div data-bind="text: warehouseName" class="form-control-static"></div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Warehouse address:</label>
+                                        <div class="col-sm-8">
+                                            <!-- ko ifnot: id() == 0 -->
+                                            <div data-bind="text: warehouseAddress" class="form-control-static"></div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- /ko -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Order ListOrder</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <!-- ko if: id() <= 0 -->
+                                    <div class="row mb15">
+                                        <div class="col-sm-6 col-lg-4">
+                                            <div class="input-group">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Find an order
+                                                    </button>
+                                                </div><!-- /btn-group -->
+                                                <input placeholder="Nhập từ khóa..." id="suggetion" type="text" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button"><i class="fa fa-plus"></i> <span>Add an order</span></button>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center">Order Exhibition </th>
+                                                        <th class="text-center">Customer</th>
+                                                        <th class="text-center">Address delivery</th>
+                                                        <th class="text-center w150">Distance (km)</th>
+                                                        <th class="text-center w150">Money ship (Baht)</th>
+                                                        <th class="text-center w150">Money Ship real (Baht)</th>
+                                                        <th class="text-center">Note</th>
+                                                        <th class="text-center w50">Status</th>
+                                                        <!-- ko if: id() <= 0 -->
+                                                        <th class="w50"></th>
+                                                        <!-- /ko -->
+                                                    </tr>
+                                                </thead>
+                                                <!-- ko if: orders().length == 0 || isLoadingItems() -->
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="10" class="text-center">
+                                                            <!-- ko if: isLoadingItems() -->
+                                                            <i class="fa fa-spinner fa-pulse"></i> Loading...
+                                                            <!-- /ko -->
+                                                            <!-- ko if: orders().length == 0 && !isLoadingItems() -->
+                                                            There are no orders
+                                                            <!-- /ko -->
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: orders().length == 0 -->
+                                                <tbody data-bind="template: {name: 'deliveryPackageTemplate', foreach: orders}"></tbody>
+                                                <!-- /ko -->
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<a class="btn btn-primary pull-left"><i class="fa fa-print"></i> Print </a>*@
+            <!-- ko if: id() <= 0 -->
+            <button data-bind="disable: isLoading" class="btn btn-success" type="submit"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i> <span data-bind="text: id() > 0 ? 'Save' : 'Create delivery note'"></span></button>
+            <!-- /ko -->
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var hasUpdate = @Html.Raw(CheckPermision(EnumPage.ImportWarehouse, EnumAction.Update) ? "true": "false");
+    </script>
+    <script id="deliveryPackageTemplate" type="text/template">
+        <tr class="bg-info">
+            <td data-bind="text: $index() + 1, attr: {rowspan: isShowDetail() ?  2 : 1 }" class="text-center"></td>
+            <td>
+                <a data-bind="click: changeShowDetail" href="javascript:;" class="btn btn-xs btn-default pull-left mr10">
+                    <i data-bind="attr: {class: isShowDetail() ? 'fa fa-minus' : 'fa fa-plus'}" class="fa fa-minus"></i>
+                </a>
+                <ul class="tbl-list pull-left">
+                    <li><i class="fa fa fa-barcode"></i> <b data-bind="text: ReturnCode(orderCode)"></b></li>
+                    <li>Pack: <span data-bind="text: orderPackageNo"></span>/<span data-bind="text: orderTotalPackageNo"></span></li>
+                    <li>Deposit weightg: <span data-bind="text: formatNumberic(orderWeightActual, 'N2')"></span></li>
+                </ul>
+            </td>
+            <td>
+                <ul class="tbl-list pull-left">
+                    <li><i class="fa fa-user"></i> <b data-bind="text: customerFullName"></b></li>
+                    <li><i class="fa fa-envelope-o"></i> <span data-bind="text: customerUserName"></span></li>
+                    <li><i class="fa fa-phone"></i> <span data-bind="text: customerPhone"></span></li>
+                </ul>
+            </td>
+            <td data-bind="text: customerAddress"></td>
+            <td class="text-right">
+                <!-- ko if: $parent.id() <= 0 -->
+                <input data-bind="value: customerDistance" type="text" class="form-control decimal" />
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 -->
+                <span data-bind="text: formatNumberic(customerDistance, 'N2')"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-right">
+                <!-- ko if: $parent.id() <= 0 -->
+                <input data-bind="value: orderShip" type="text" class="form-control decimal" />
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 -->
+                <span data-bind="text: formatNumberic(orderShip, 'N2')"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-right">
+                <!-- ko if: $parent.id() <= 0 -->
+                <input data-bind="value: orderShipActual" type="text" class="form-control decimal" />
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 -->
+                <span data-bind="text: formatNumberic(orderShipActual, 'N2')"></span>
+                <!-- /ko -->
+            </td>
+            <td>
+                <!-- ko if: $parent.id() <= 0 -->
+                <textarea data-bind="value: orderNote" class="form-control"></textarea>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 -->
+                <span data-bind="text: orderNote"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-center">
+                <!-- ko if: status == 0 -->
+                <span class="label label-warning">Wait for confirmation</span>
+                <!-- /ko -->
+                <!-- ko if: status == 1 -->
+                <span class="label label-success">Confirmed</span>
+                <!-- /ko -->
+            </td>
+            <!-- ko if: $parent.id() <= 0 -->
+            <td class="text-center">
+                <a data-bind="click: $parent.removeItem" href="javascript:;" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
+            </td>
+            <!-- /ko -->
+        </tr>
+        <!-- ko if: isShowDetail -->
+        <tr>
+            <td colspan="9" class="p0">
+                <table class="table table-bordered m0">
+                    <thead>
+                        <tr>
+                            <td class="text-center w50">#</td>
+                            <td class="text-center w80">Warehouse SupportTicket MaKienHang</td>
+                            <td class="text-center w100">DetailOrder Written code</td>
+                            <td class="text-center w200">DetailPackage Size (cm)</td>
+                            <td class="text-center w100">Weight (kg)</td>
+                            <td class="text-center w100">Weight converted (kg)</td>
+                            <td class="text-center w100">Weight real (kg)</td>
+                            <td class="text-center">Note</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: packages -->
+                        <tr>
+                            <td data-bind="text: $index() + 1" class="text-center"></td>
+                            <td data-bind="text: 'P'+packageCode" class="text-center">
+                                @*<a data-bind="text: 'P'+packageCode, click: $parents[1].showDetail.bind($data, packageId)" href="javascript:;"></a>*@
+                            </td>
+                            <td data-bind="text: packageTransportCode" class="text-center"></td>
+                            <td data-bind="text: packageSize"></td>
+                            <td data-bind="text: formatNumberic(packageWeight, 'N2')" class="text-right"></td>
+                            <td data-bind="text: formatNumberic(packageWeightConverted, 'N2')" class="text-right"></td>
+                            <td data-bind="text: formatNumberic(packageWeightActual, 'N2')" class="text-right"></td>
+                            <td data-bind="text: note"></td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-right">Total: </td>
+                            <td data-bind="text: formatNumberic(orderWeight, 'N2')" class="text-right"></td>
+                            <td data-bind="text: formatNumberic(orderWeightConverted, 'N2')" class="text-right"></td>
+                            <td data-bind="text: formatNumberic(orderWeightActual, 'N2')" class="text-right"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </td>
+        </tr>
+        <!-- /ko -->
+    </script>
+}

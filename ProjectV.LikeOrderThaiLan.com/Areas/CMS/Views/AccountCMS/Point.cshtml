@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Point";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="jifen">
+                <ul class="jifen-nav">
+                    <li data-id="mingxi" class="lete-active">Chi tiết tích điểm mua hàng </li>
+                </ul>
+                <div class="jifen-msg">
+                    <span>Điểm hiện có： <a>300</a> điểm</span>
+                    <p>Điểm có thể được sử dụng để thanh toán số tiền đưcọ khấu trừ phải nộp, 100 điểm tương đương với 1 nhân dân tệ</p>
+                </div>
+                <div class="jifen-mingxi jifen-box">
+                    <h1>
+                        Thời gian truy vấn：
+                        <select name="">
+                            <option value="">Điểm ghi nhận trong vòng 3 tháng</option>
+                        </select>
+                        <button>Lọc</button>
+                    </h1>
+                    <table border="0" cellspacing="" cellpadding="">
+                        <tbody>
+                            <tr>
+                                <th>Thời gian</th>
+                                <th>Nguồn/Sử dụng</th>
+                                <th>Loại</th>
+                                <th>Số lượng (điểm)</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>2016-10-31 15:47:03</p>
+                                </td>
+                                <td>
+                                    <p>Đăng ký nhận được điểm</p>
+                                </td>
+                                <td>
+                                    Lợi tức
+                                </td>
+                                <td>300</td>
+                                <td>Được công vào</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form name="selectPageForm" action="/user.php" method="get">
+                        <div class="zichan-chongzhi-history-btn">
+                            <p>
+                                <span id="total_num2">Tổng số 1 bản ghi</span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

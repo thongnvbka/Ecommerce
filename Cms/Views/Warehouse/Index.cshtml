@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Stock management room";
+}
+@section Styles{
+    <link href="~/Content/plugins/tabdrop/css/tabdrop.css" rel="stylesheet" />
+}
+
+
+
+@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Content/plugins/tabdrop/js/bootstrap-tabdrop.js"></script>
+    <script src="~/Scripts/common/status.js"></script>
+    <script type="text/html" id="originate">
+    </script>
+
+
+
+    <!-->Báo cáo & Thống kê<!-->
+    @Html.Partial("~/Views/Warehouse/Report/_ImportWarehouseReport.cshtml")
+
+    <!-->Xử lý package<!-->
+    @Html.Partial("~/Views/Warehouse/Package/_Package.cshtml")
+    @Html.Partial("~/Views/Warehouse/Package/_PackageList.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/Package/_PackageDetail.cshtml")
+
+    <!-->Xử lý nhập kho<!-->
+    @Html.Partial("~/Views/Warehouse/ImportWarehouse/_ImportWarehouse.cshtml")
+    @Html.Partial("~/Views/Warehouse/ImportWarehouse/_ImportWarehouseList.cshtml")
+    @Html.Partial("~/Views/Warehouse/ImportWarehouse/_ImportWarehouseAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/importwarehouse/_ImportWarehouseDetail.cshtml")
+
+    <!-->Xử lý putaway<!-->
+    @Html.Partial("~/Views/Warehouse/Putaway/_Putaway.cshtml")
+    @Html.Partial("~/Views/Warehouse/Putaway/_PutawayList.cshtml")
+
+    <!-->Xử lý Wallet<!-->
+    @Html.Partial("~/Views/Warehouse/Wallet/_Wallet.cshtml")
+    @Html.Partial("~/Views/Warehouse/Wallet/_WalletList.cshtml")
+    @Html.Partial("~/Views/Warehouse/Wallet/_WalletAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/wallet/_WalletDetail.cshtml")
+
+    <!-->Xử lý Note of stock out<!-->
+    @Html.Partial("~/Views/Warehouse/ExportWarehouse/_ExportWarehouse.cshtml")
+    @Html.Partial("~/Views/Warehouse/ExportWarehouse/_ExportWarehouseList.cshtml")
+    @Html.Partial("~/Views/Warehouse/ExportWarehouse/_ExportWarehouseAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/exportwarehouse/_ExportWarehouseDetail.cshtml")
+
+    <!--PackingList<!-->
+    @Html.Partial("~/Views/Warehouse/Packing/_Packing.cshtml")
+    @Html.Partial("~/Views/Warehouse/Packing/_PackingList.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/packing/_PackingDetail.cshtml")
+
+    <!--Điều phối giao vận - Transport<!-->
+    @Html.Partial("~/Views/Warehouse/Transport/_Transport.cshtml")
+    @Html.Partial("~/Views/Warehouse/Transport/_TransportList.cshtml")
+    @Html.Partial("~/Views/Warehouse/Transport/_TransportAddOrEdit.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/transport/_TransportDetail.cshtml")
+
+    <!--Delivery cho khách - Delivery<!-->
+    @Html.Partial("~/Views/Warehouse/Delivery/_Delivery.cshtml")
+    @Html.Partial("~/Views/Warehouse/Delivery/_DeliveryList.cshtml")
+    @Html.Partial("~/Views/Partial/warehouse/delivery/_DeliveryDetail.cshtml")
+
+    <!-->Cảnh báo hoạt động kho hàng - WarehouseWarning<!-->
+    @Html.Partial("~/Views/Warehouse/WarehouseWarning/_WarehouseWarning.cshtml")
+    @Html.Partial("~/Views/Warehouse/WarehouseWarning/_WarehouseWarningList.cshtml")
+
+    <!-->Hỗ trợ xử lý khiếu nại<!-->
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupport.cshtml")
+    @Html.Partial("~/Views/Partial/Ticket/_TicketSupportList.cshtml")
+
+    <!-->Xử lý Orders rủi ro<!-->
+    <!-->Tra cứu thông tin khách hàng<!-->
+    @Html.Partial("~/Views/Partial/customer/_CustomerFind.cshtml")
+
+
+    <script src="~/Scripts/models/warehouse/importWarehouseModel.js"></script>
+    <script src="~/Scripts/models/warehouse/WalletModel.js"></script>
+    <script src="~/Scripts/models/warehouse/exportWarehouseModel.js"></script>
+    <script src="~/Scripts/models/warehouse/deliveryModel.js"></script>
+    <script src="~/Scripts/models/warehouse/packingListModel.js"></script>
+    <script src="~/Scripts/viewmodels/warehouse/warehouseViewModel.js"></script>
+
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Vũ Thị Huệ - Head of Stock management
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Warehouse report</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-3">
+            @Html.Partial("_TodoBar")
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-9">
+            <div data-bind="template: { name: templateId }"></div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

@@ -1,0 +1,85 @@
+﻿@using System.Globalization
+@model List<Library.DbContext.Entities.DebitHistory>
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@if (Model.Any())
+{
+    var idx = 0;
+    <tr idata="@string.Format("{0}-{1}", Model[0].DebitId, 1)">
+        <td colspan="7">
+            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th style="min-width: 20px;">#</th>
+                        <th> @Resource.Order_Exhibition </th>
+                        <th> @Resource.Liabilities_DayTrading </th>
+                        <th> @Resource.Liabilities_Clause </th>
+                        <th> @Resource.Liabilities_AmountMoney (@Resource.Currency) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        idx++;
+                        <tr>
+                            <td>
+                                @idx
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.OrderCode))
+                                {
+                                    switch (item.OrderType)
+                                    {
+
+                                        case 0:
+                                            <p>
+                                                <a target="_blank" role="menuitem" tabindex="-1" href="@string.Format("/{1}/tai-khoan/chi-tiet-order-{0}", item.OrderId, culture)" class="color-a color-code-order">
+                                                    @item.OrderCode
+                                                </a>
+                                            </p>
+
+                                            break;
+                                        case 1:
+                                            <p>
+                                                <a target="_blank" role="menuitem" tabindex="-1" href="@string.Format("/{1}/tai-khoan/chi-tiet-ky-gui-{0}", item.OrderId, culture)" class="color-a color-code-order">
+                                                    @item.OrderCode
+                                                </a>
+                                            </p>
+
+                                            break;
+                                        case 2:
+                                            <p>
+                                                <a target="_blank" role="menuitem" tabindex="-1" href="@string.Format("/{1}/tai-khoan/chi-tiet-tim-nguon-{0}", item.OrderId, culture)" class="color-a color-code-order">
+                                                    @item.OrderCode
+                                                </a>
+                                            </p>
+                                            break;
+                                        case 3:
+                                            <p>
+                                                <a target="_blank" role="menuitem" tabindex="-1" href="@string.Format("/{1}/tai-khoan/chi-tiet-khieu-nai-{0}", item.OrderId, culture)" class="color-a color-code-order">
+                                                    @item.OrderCode
+                                                </a>
+                                            </p>
+
+                                            break;
+                                    }
+                                }
+                            </td>
+                            <td>
+                                <p class="opacity-icon">@string.Format("{0:dd/MM/yyyy hh:mm}", item.Created)</p>
+                            </td>
+                            <td>
+                                @item.PayReceivableIName
+                            </td>
+                            <td data-th="Giá">
+                                @string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:#,###}", item.Money)
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </td>
+    </tr>
+}

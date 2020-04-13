@@ -1,0 +1,23 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<script type="text/html" id="Notificommon">
+
+    <div class="user-r-main-r-gonggao">
+        <div class="user-r-main-r-gonggao-msg" style="min-height: 65px;">
+            <div class="user-r-main-r-gonggao-title">
+                <span>@Resource.Home_Notification</span>
+            </div>
+          
+            <h1 data-bind="text: window.substring(notificationModel().Title(), 30)" style="margin-top: 20px;"></h1><br>
+
+            <p>@Resource.Dashboard_NotificationLikeOrder</p>
+            <p data-bind="text: substring(notificationModel().Description(),150)">
+            </p>
+
+            <a href="/@culture/CMS/AccountCMS/NotificationCommon" class="red-color"> >>@Resource.Home_ReadMore</a>
+           
+        </div>
+    </div> 
+</script>

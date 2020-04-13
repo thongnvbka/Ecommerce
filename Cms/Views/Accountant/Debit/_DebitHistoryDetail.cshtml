@@ -1,0 +1,146 @@
+﻿<div id="debitHistoryDetailModal" class="modal fade modal-dialog modal-p60" role="dialog">
+    <div class="modal-body">
+        <section class="importwarehouse">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="page-header">
+                        <strong>LIABILITY DETAILS</strong>
+                        <span class="impornumber">Tracking number: <strong data-bind="text: debitCollectModel().Code()"></strong></span>
+                        <small data-bind="text: 'Created date: ' + moment(debitCollectModel().Created()).format('DD/MM/YYYY')"></small>
+                        <small data-bind="text: 'Updated date: ' + moment(debitCollectModel().LastUpdated()).format('DD/MM/YYYY')"></small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Debtors/Creditors</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Representative ID:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Representative:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Phone:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectPhone"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Email:</th>
+                                                        <td data-bind="text: debitCollectModel().SubjectEmail"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Debt information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Debit type</th>
+                                                        <td><span data-bind="text: debitCollectModel().TypeHistoryName, css: debitCollectModel().TypeHistoryClass" ></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Status:</th>
+                                                        <td><span data-bind="text: debitCollectModel().StatusHistoryName, css: debitCollectModel().StatusHistoryClass" ></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fund name:</th>
+                                                        <td data-bind="text: debitCollectModel().FinanceFundName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Account name:</th>
+                                                        <td data-bind="text: debitCollectModel().PayReceivableIName"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Amount <span class="color-red">(*)</span></h3>
+                        </div>
+
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+
+                                    <label for="inputPassword3" class="col-sm-3 control-label text-red text-bold">Receivables/Payables(Baht):</label>
+
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-money"></i>
+                                            </div>
+                                            <input type="text" class="form-control decimal" style="text-align: right;" data-bind="value: debitCollectModel().Money" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Note:</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="value: debitCollectModel().Note" disabled></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+    </div>
+</div>
+
+<style>
+    #DebitHistoryDetailModal {
+        padding: 0px 10px !important;
+    }
+
+        #DebitHistoryDetailModal .modal-lg {
+            width: 80% !important;
+        }
+</style>

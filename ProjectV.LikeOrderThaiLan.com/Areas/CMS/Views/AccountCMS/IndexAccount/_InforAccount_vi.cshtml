@@ -1,0 +1,121 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<div class="user-r-main-l-tip">
+    <h1>Nhắc nhở</h1>
+    <div class="user-r-main-l-tip-content">
+        <div class="user-r-main-l-tip-content-box">
+            <h2>Có thể bạn cần lưu ý</h2>
+
+            <dl>
+                <dt>Các đơn hàng chưa tiến hành đặt hàng：</dt>
+                <dd><a href="/@culture/CMS/Order/BuyOrder">Bạn đang có（<label data-bind="text: orderAwait"></label>）đơn hàng chờ bạn đặt cọc !</a></dd>
+
+            </dl>
+        </div>
+        <ul>
+            <li>
+                <img src="/Content/images/icon-css/user_zhuanyun_icon.png" alt="" />
+                <span>
+                    Có（<label data-bind="text: notification"></label>）thông báo thay đổi số dư ví điện tử của bạn.
+                    <a href="/@culture/CMS/AccountCMS/Notification">Vui lòng đọc nó ngay！</a>
+                </span>
+            </li>
+            <li>
+                <img src="/Content/images/icon-css/user_daigou_icon.png" alt="" />
+                <span>
+                    Có（<label data-bind="text: orderNew"></label>）đơn hàng trong giỏ hàng của bạn
+                    <a href="/@culture/Product/Cart">Tiến hành đặt hàng ngay！</a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="user-r-main-l-faq">
+    <h1>Câu hỏi thường gặp</h1>
+    <ul class="user-r-main-l-faq-nav clearFix" id="clicktabTicket">
+        <li class="tablinks lete-active" onclick="ticket(event, 'buy')" id="defaultOpen"><a>Nạp tiền </a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'transport')"><a>Mua hàng</a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'rechange')"><a>Vận chuyển</a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'ship')"><a>Giao hàng</a> <span></span></li>
+        <li class="tablinks" onclick="ticket(event, 'afterBuy')"><a>Sau mua hàng</a><span></span></li>
+    </ul>
+
+    <div id="buy" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: block">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">Ví điện tử là gì ?</a></li>
+                <li><a href="javascript:;">Làm thế nào để tôi nạp tiền vào ví điện tử của tôi ?</a></li>
+                <li><a href="javascript:;">Đối soát số dư ví điện tử khi mua hàng ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">Theo dõi số dư ví điện tử ?</a></li>
+                <li><a href="javascript:;">Làm thế nào để rút ví điện tử ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="transport" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">Làm thế nào để mua hàng ?</a></li>
+                <li><a href="javascript:;">Extension là gì ?</a></li>
+                <li><a href="javascript:;">Có thể mua hàng bằng những cách nào ?</a></li>
+                <li><a href="javascript:;">Các loại chi phí phải trả trong đơn hàng ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">Tỷ giá mua hàng là gì ?</a></li>
+                <li><a href="javascript:;">Theo dõi tình trạng đơn hàng ?</a></li>
+                <li><a href="javascript:;">Quyết toán đơn hàng ?</a></li>
+                <li><a href="javascript:;">Theo dõi công nợ đơn hàng ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="rechange" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">Kiện hàng là gì ?</a></li>
+                <li><a href="javascript:;">Theo dõi các kiện hàng như thế nào ?</a></li>
+                <li><a href="javascript:;">Thời gian hàng về ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">Ký gửi hàng hóa ?</a></li>
+                <li><a href="javascript:;">Khi nào được nhận hàng ?</a></li>
+                <li><a href="javascript:;">Rủi ro trong quá trình vận chuyển ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="ship" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">Giao hàng và thanh toán tiền còn lại ?</a></li>
+                <li><a href="javascript:;">Thanh toán tiền còn lại sau mua hàng ?</a></li>
+                <li><a href="javascript:;">Yêu cầu giao hàng ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">Làm thế nào để nhận hàng khi hàng về tới nơi ?</a></li>
+                <li><a href="javascript:;">Chính sách hoàn tiền khi hàng hóa không đảm bảo ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="afterBuy" class="user-r-main-l-faq-msg clearFix tabcontent" style="display: none">
+        <div class="user-r-main-l-faq-msg-l">
+            <ul>
+                <li><a href="javascript:;">Xử lý khiếu nại hàng hóa ?</a></li>
+                <li><a href="javascript:;">Chính sách hoàn bồi và khiếu nại ?</a></li>
+            </ul>
+        </div>
+        <div class="user-r-main-l-faq-msg-r">
+            <ul>
+                <li><a href="javascript:;">Thanh toán các chi phí phát sinh ?</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

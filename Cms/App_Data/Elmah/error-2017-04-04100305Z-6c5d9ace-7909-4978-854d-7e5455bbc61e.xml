@@ -1,0 +1,168 @@
+﻿<error errorId="6c5d9ace-7909-4978-854d-7e5455bbc61e" application="/LM/W3SVC/5/ROOT" host="DESKTOP-M7UUKHV" type="System.Web.HttpException" message="The controller for path '/Scripts/viewmodels/viewOrderTyperViewModel.js' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/Scripts/viewmodels/viewOrderTyperViewModel.js' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2017-04-04T10:03:05.8760040Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:vi,en;q=0.8&#xD;&#xA;HTTP_COOKIE:.AspNet.ApplicationCookie=zZz6LV3_8f8oAkWofT0XT4I9IwGC2utbqxTp_eZn6OYlfXeVzk9kJ5BQbC33o8AQ9AMd4eNQtW2rM2IRhea4JFac6xwhVf2buTz7sXaaDm18fRUPu_1EDjnXgqBFGZ2F5BpdcrB-JW5kWtu4XpzYdgMD41vbl9nbm-sogPI2IH9wglzJqHXMX1aqjxWjEi-31awHHWvxNXHVVCPKXWv5DuZMmEoMlWkZbnNUK0CVZ1YW4640TZTDHmzRy93ns4RwNBCaa14nWnr3Ne0yQeVzaUgXHgJSCA2g8N4nLZHPFLx2wD_57_hQ7xyQdxhVjyo7yEB-iznUy7kDG4sCcTKhv3acajSfGxM6eyb36F_rQHcki6Epc2EpELH0TvebmXaaZcdYzgVEA0TQROvRCygorT0N8fzi4zt59xz1hrtXv7lOjr-YEdDIHxtJRdbrM2DBYzIEQiprTZZprkJJEo_KNbISTZ5QMZxDwMcWRp_ZVeGZGN2Vp_TNSFq1DxHUpmT3A8KWq0SJC0kUbA_vDzt4_ZtVhcEtklLE4F-qFaEJWvbsSe5_Xj5HBLngzOxHdOIJ6yLbSdmqpj5QBCjVEKQ5Rg; toggleBtn=true; __RequestVerificationToken=cNiJ88wO3kZQcTJ9Qv0NlYAyreYuEfXwSQZLhdkHbRJDbO0BPCtYmp4jixchwRIcHUC4ilCfBGUVvk6ftivckh5W7mef7s4jm3U_5Os7Ek81&#xD;&#xA;HTTP_HOST:cms.finorderthailan.com&#xD;&#xA;HTTP_REFERER:https://cms.finorderthailan.com/customerofstaff&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/61.4.120 Chrome/55.4.2883.120 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: vi,en;q=0.8&#xD;&#xA;Cookie: .AspNet.ApplicationCookie=zZz6LV3_8f8oAkWofT0XT4I9IwGC2utbqxTp_eZn6OYlfXeVzk9kJ5BQbC33o8AQ9AMd4eNQtW2rM2IRhea4JFac6xwhVf2buTz7sXaaDm18fRUPu_1EDjnXgqBFGZ2F5BpdcrB-JW5kWtu4XpzYdgMD41vbl9nbm-sogPI2IH9wglzJqHXMX1aqjxWjEi-31awHHWvxNXHVVCPKXWv5DuZMmEoMlWkZbnNUK0CVZ1YW4640TZTDHmzRy93ns4RwNBCaa14nWnr3Ne0yQeVzaUgXHgJSCA2g8N4nLZHPFLx2wD_57_hQ7xyQdxhVjyo7yEB-iznUy7kDG4sCcTKhv3acajSfGxM6eyb36F_rQHcki6Epc2EpELH0TvebmXaaZcdYzgVEA0TQROvRCygorT0N8fzi4zt59xz1hrtXv7lOjr-YEdDIHxtJRdbrM2DBYzIEQiprTZZprkJJEo_KNbISTZ5QMZxDwMcWRp_ZVeGZGN2Vp_TNSFq1DxHUpmT3A8KWq0SJC0kUbA_vDzt4_ZtVhcEtklLE4F-qFaEJWvbsSe5_Xj5HBLngzOxHdOIJ6yLbSdmqpj5QBCjVEKQ5Rg; toggleBtn=true; __RequestVerificationToken=cNiJ88wO3kZQcTJ9Qv0NlYAyreYuEfXwSQZLhdkHbRJDbO0BPCtYmp4jixchwRIcHUC4ilCfBGUVvk6ftivckh5W7mef7s4jm3U_5Os7Ek81&#xD;&#xA;Host: cms.finorderthailan.com&#xD;&#xA;Referer: https://cms.finorderthailan.com/customerofstaff&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/61.4.120 Chrome/55.4.2883.120 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/5/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="F:\FinSoft\SourceCode\FinOrder\FinOrderTL\Cms\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="5" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/5" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Scripts/viewmodels/viewOrderTyperViewModel.js" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="F:\FinSoft\SourceCode\FinOrder\FinOrderTL\Cms\Scripts\viewmodels\viewOrderTyperViewModel.js" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="60104" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Scripts/viewmodels/viewOrderTyperViewModel.js" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="cms.finorderthailan.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Scripts/viewmodels/viewOrderTyperViewModel.js" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="vi,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.ApplicationCookie=zZz6LV3_8f8oAkWofT0XT4I9IwGC2utbqxTp_eZn6OYlfXeVzk9kJ5BQbC33o8AQ9AMd4eNQtW2rM2IRhea4JFac6xwhVf2buTz7sXaaDm18fRUPu_1EDjnXgqBFGZ2F5BpdcrB-JW5kWtu4XpzYdgMD41vbl9nbm-sogPI2IH9wglzJqHXMX1aqjxWjEi-31awHHWvxNXHVVCPKXWv5DuZMmEoMlWkZbnNUK0CVZ1YW4640TZTDHmzRy93ns4RwNBCaa14nWnr3Ne0yQeVzaUgXHgJSCA2g8N4nLZHPFLx2wD_57_hQ7xyQdxhVjyo7yEB-iznUy7kDG4sCcTKhv3acajSfGxM6eyb36F_rQHcki6Epc2EpELH0TvebmXaaZcdYzgVEA0TQROvRCygorT0N8fzi4zt59xz1hrtXv7lOjr-YEdDIHxtJRdbrM2DBYzIEQiprTZZprkJJEo_KNbISTZ5QMZxDwMcWRp_ZVeGZGN2Vp_TNSFq1DxHUpmT3A8KWq0SJC0kUbA_vDzt4_ZtVhcEtklLE4F-qFaEJWvbsSe5_Xj5HBLngzOxHdOIJ6yLbSdmqpj5QBCjVEKQ5Rg; toggleBtn=true; __RequestVerificationToken=cNiJ88wO3kZQcTJ9Qv0NlYAyreYuEfXwSQZLhdkHbRJDbO0BPCtYmp4jixchwRIcHUC4ilCfBGUVvk6ftivckh5W7mef7s4jm3U_5Os7Ek81" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="cms.finorderthailan.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://cms.finorderthailan.com/customerofstaff" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/61.4.120 Chrome/55.4.2883.120 Safari/537.36" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="zZz6LV3_8f8oAkWofT0XT4I9IwGC2utbqxTp_eZn6OYlfXeVzk9kJ5BQbC33o8AQ9AMd4eNQtW2rM2IRhea4JFac6xwhVf2buTz7sXaaDm18fRUPu_1EDjnXgqBFGZ2F5BpdcrB-JW5kWtu4XpzYdgMD41vbl9nbm-sogPI2IH9wglzJqHXMX1aqjxWjEi-31awHHWvxNXHVVCPKXWv5DuZMmEoMlWkZbnNUK0CVZ1YW4640TZTDHmzRy93ns4RwNBCaa14nWnr3Ne0yQeVzaUgXHgJSCA2g8N4nLZHPFLx2wD_57_hQ7xyQdxhVjyo7yEB-iznUy7kDG4sCcTKhv3acajSfGxM6eyb36F_rQHcki6Epc2EpELH0TvebmXaaZcdYzgVEA0TQROvRCygorT0N8fzi4zt59xz1hrtXv7lOjr-YEdDIHxtJRdbrM2DBYzIEQiprTZZprkJJEo_KNbISTZ5QMZxDwMcWRp_ZVeGZGN2Vp_TNSFq1DxHUpmT3A8KWq0SJC0kUbA_vDzt4_ZtVhcEtklLE4F-qFaEJWvbsSe5_Xj5HBLngzOxHdOIJ6yLbSdmqpj5QBCjVEKQ5Rg" />
+    </item>
+    <item name="toggleBtn">
+      <value string="true" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="cNiJ88wO3kZQcTJ9Qv0NlYAyreYuEfXwSQZLhdkHbRJDbO0BPCtYmp4jixchwRIcHUC4ilCfBGUVvk6ftivckh5W7mef7s4jm3U_5Os7Ek81" />
+    </item>
+  </cookies>
+</error>

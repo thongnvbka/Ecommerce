@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Sourcing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    <div data-bind="template: { name: templateId }">
+    </div>
+</section>
+@Html.Partial("~/Areas/CMS/Views/Order/sourcing/_SourcingList.cshtml")
+@Html.Partial("~/Areas/CMS/Views/Order/sourcing/_Sourcing.cshtml")
+
+@section scripts{
+    <script src="~/Content/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="~/Content/plugins/jstree/dist/jquery.dropdownjstree.js"></script>    
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    @Html.Partial("~/Areas/CMS/Views/Order/sourcing/_status.cshtml")
+    <script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/sourcingProduct.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/sourcingDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/source/sourceStatusItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/sourcing/sourcingViewModel.js"></script>
+}

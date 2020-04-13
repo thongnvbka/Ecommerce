@@ -1,0 +1,280 @@
+﻿<section class="car rs">
+    <h1 class="rs" style="text-align: center; font-size: 20px; padding-bottom: 10px;">{{ resource.listOrder }}</h1>
+    <span class="nh-divide rs" style="margin-bottom: 20px;"></span>
+    <div class="car-main">
+        <ul class="car-main-top top-product-order">
+            <li class="car-main-top-name" style="width: 25%; text-align: left; padding: 0 10px 0 0; box-sizing: border-box;">
+                <!--<label (click)="changeCheckAllOrder()">
+                    <i [class]="checkedAll ? 'clip-checkbox-checked font-1_3em' : 'clip-checkbox-unchecked-2 font-1_3em'"></i>
+                    {{ resource.shopName }}
+                </label>-->
+                <label>
+                    {{ resource.shopName }}
+                </label>
+            </li>
+            <li class="car-main-top-danjia" style="width: 10%; text-align: left; padding: 0 10px; box-sizing: border-box; text-align: center;">Link shop </li>
+            <li class="car-main-top-sum" style="width: 16%; padding: 0 10px; box-sizing: border-box;"> {{ resource.numberProduct }} </li>
+            <li class="car-main-top-total" style="width: 16%; padding: 0 10px; box-sizing: border-box;"> {{ resource.moneyProduct }} </li>
+            <li class="car-main-top-action" style="width: 33%; padding: 0 10px; box-sizing: border-box;">{{ resource.actions }} </li>
+        </ul>
+        <div class="car-main-none" style="width: 100%; float: left; box-sizing: border-box;">
+            <div *ngIf="isLoading" class="row">
+                <div class="col-sm-12 text-center">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+                    <span class="sr-only">{{resource.isLoading}}</span>
+                </div>
+            </div>
+
+            <div *ngIf="orders.length > 0" class="rs car-main-none-box" style="padding: 2px; box-sizing: border-box;">
+                <table *ngFor="let o of orders" class="table table-hover panel panel-default table-cart rs mg-bottom-0">
+                    <thead class="order-header ">
+                        <tr>
+                            <th style="font-size: 13px">
+                                <div class="row">
+                                    <div class="col-sm-3" style="width: 25% !important">
+                                        <div class="text-left text-quantity">
+                                            <label (click)="changeCheckOrder(o)">
+                                                <i [class]="o.checked ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'" style="margin-right: 10px"></i>
+                                                <span class="text-center">{{o.shopName}}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1" style="width: 10% !important">
+                                        <div class="text-center text-quantity">
+                                            <span class="text-center">{{ o.linkNo | numberic }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" style="width: 16% !important">
+                                        <div class="text-center text-quantity">
+                                            <span class="text-center">{{o.productNo | numberic }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 pl0" style="width: 18% !important">
+                                        <div class="text-center text-quantity">
+                                            <span class="text-center">{{ o.total | numberic }}</span> {{ resource.unit }}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl0" style="text-align: right; float: right;width: 31% !important">
+                                        <div class="text-right" style="padding-top: 2px; box-sizing: border-box;">
+                                            <a (click)="removeOrder(o)" class="btn btn-default btn-deleteOrder" href="javascript:;" style="text-transform: none !important; margin-top: 0;">
+                                                <i class="fa fa-trash-o"></i><span> {{ resource.deleteProduct }} </span>
+                                            </a>
+                                            <a (click)="finishOne(o)" href="javascript:;" class="btn btn-default bg-blue-1 text-normal" style="text-transform: none !important; margin-top: 0;">
+                                                <i class="fa fa-check"></i><span>
+                                                    {{ resource.depositOrder }}
+                                                </span>
+                                            </a>
+                                            <span (click)="o.showDetail = !o.showDetail" class="btn btn-default bg-detail text-normal "><i [class]="o.showDetail ? 'fa fa-angle-up fa-lg' : 'fa fa-angle-down fa-lg'"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="panel-body">
+                        <template [ngIf]="o.showDetail">
+                            <tr *ngFor="let p of o.products; let idx = index">
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-7 padding-left-none">
+                                            <div class="row">
+                                                <div class="col-sm-3 padding-left-none">
+                                                    <div class="text-quantity cart-thumb ">
+                                                        <b style="vertical-align: middle;display: table-cell;">{{idx+1}}.</b>
+                                                        <a [attr.href]="p.link" target="_blank">
+                                                            <img [attr.src]="p.image" alt="Ảnh"/>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-9 padding-left-none">
+                                                    <div class="text-order">
+                                                        <div class="text-justify name-pro mb15">
+                                                            <a [attr.href]="p.link" target="_blank" class="text-blue">
+                                                                <span>{{p.name}}</span>
+                                                            </a>
+                                                        </div>
+                                                        <h5 *ngFor="let prop of p.propeties" class="mb10"><b>{{prop.label}}: </b><span>{{prop.text}}</span></h5>
+                                                        <a (click)="deleteProduct(p, o)" class="btn btn-delete" href="javascript:;">
+                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 padding-right-none ">
+                                            <div class="row">
+                                                <div class="col-sm-4 number-pro">
+                                                    <input [(ngModel)]="p.quantity" [attr.min]="p.hasOwnProperty('beginAmount') ? p.beginAmount : 1" [attr.max]="p.max" (blur)="blurQuantity(p, o)" type="number" class="input-mini text-right">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="text-center p-cus-guide">
+                                                        <p class="text-right">
+                                                            <span>{{p.exchangePrice | numberic }}</span> {{ resource.unit }}
+                                                        </p>
+                                                        <p class="text-right"><span>¥</span><span>{{p.price | numberic : 'N2' }}</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="text-right p-cus-guide">
+                                                        <p class="text-right">
+                                                            <span>{{p.totalExchange | numberic }}</span> {{ resource.unit }}
+                                                        </p>
+                                                        <p class="text-right"><span>¥</span><span>{{p.totalPrice  | numberic : 'N2' }}</span> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="rs note-pro">
+                                                        <textarea [(ngModel)]="p.note" (change)="updateProduct(p)" class="note-pro col-sm-12 mt5" placeholder="{{resource.noteProductPlaceholder}}"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                    <tfoot *ngIf="o.showDetail" class="order-footer">
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <template ngFor let-s [ngForOf]="o.services" index-idx>
+                                            <div *ngIf="s.serviceId === 0 || s.serviceId === 1 || s.serviceId === 6" [class]="idx === 0 ? 'checkbox btn-group mt10 pl0' : 'checkbox btn-group mt10'" style="float: left; min-width: 20%;">
+                                                <label (click)="changeService(o, s)" style="float: left;">
+                                                    <i [class]="s.checked ? 'clip-checkbox-checked font-1_3em' : 'clip-checkbox-unchecked-2 font-1_3em'"></i>
+                                                    <b>{{s.serviceName.replace("Phí dịch", "Dịch")}}</b>
+                                                </label>
+                                                <a title="อธิบายละเอียด" class="note-icon-service" target="_blank" style="color: #217d7b"><i class="fa fa-question-circle"></i></a>
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <!--<div class="col-sm-6">
+                                        <div class="checkbox btn-group mt10 pl0">
+                                            <label (click)="changeServiceType(o, 0)"><i [class]="o.serviceType == 0 ? 'clip-radio-checked font-1_3em' : 'clip-radio-unchecked font-1_3em'"></i> <b>Gói 1</b></label> <a title="อธิบายละเอียด" class="note-icon" href="/th/Home/FAQ" target="_blank"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                        <div class="checkbox btn-group mt10">
+                                            <label (click)="changeServiceType(o, 1)"><i [class]="o.serviceType == 1 ? 'clip-radio-checked font-1_3em' : 'clip-radio-unchecked font-1_3em'"></i> <b>Gói 2</b></label> <a title="อธิบายละเอียด" class="note-icon" href="/th/Home/FAQ" target="_blank"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="text-left fee">
+                                            <table class="table bd-none">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-left">
+                                                            {{ resource.moneyProduct }}
+                                                            <a title="อธิบายละเอียด" class="note-icon" target="_blank" style="color: #217d7b"><i class="fa fa-question-circle"></i></a>
+                                                        </td>
+                                                        <td class="td_fee text-right">
+                                                            <b>
+                                                                {{ o.totalExchange | numberic }}
+                                                                {{ resource.unit }}
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr *ngFor="let s of o.services">
+                                                        <td class="text-left">{{s.serviceName}} <a title="อธิบายละเอียด" class="note-icon" target="_blank" style="color: #217d7b"><i class="fa fa-question-circle"></i></a></td>
+                                                        <td *ngIf="s.serviceId < 2" class="text-right"><b>{{s.totalPrice | numberic }}</b> {{ resource.unit }} </td>
+                                                        <td *ngIf="s.serviceId > 1" class="text-right"><b>-</b> {{ resource.unit }} </td>
+                                                    </tr>
+
+                                                    <!--<tr>
+                                                        <td>Phí kiểm hàng</td>
+                                                        <td class="text-right"><b>{{o.orderCountPrice  | numberic : 'N2'  }}</b> vnd</td>
+                                                    </tr>-->
+                                                    <!--<tr>
+                                                        <td>Phí đóng kiện <a title="อธิบายละเอียด" class="note-icon" href="/th/Home/FAQ" target="_blank"><i class="fa fa-question-circle"></i></a></td>
+                                                        <td class="text-right"><span class="text-red">20 tệ/kg đầu tiên, 0.5 tệ/kg sau</span></td>
+                                                    </tr>-->
+                                                    <tr>
+                                                        <td>
+                                                            <span data-toggle="tooltip" title="" data-original-title="รวมเงินงวดเเรก">
+                                                                {{ resource.totalMoney }}
+                                                            </span>
+                                                        </td>
+                                                        <td class="text-right"><b>{{o.total | numberic }}</b> {{ resource.unit }} </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="comment-title mb5 text-left">
+                                            <b>
+                                                {{ resource.noteCustomer }}
+                                            </b> <a title="อธิบายละเอียด" class="note-icon" target="_blank" style="color: #217d7b"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                        <div class="note-user note-pro">
+                                            <textarea [(ngModel)]="o.note" (change)="updateOrder(o)" class="form-control"
+                                                      placeholder="{{ resource.notePlaceholder }}"></textarea>
+                                        </div>
+                                        <div class="comment-title mt15 mb5 text-left">
+                                            <b>
+                                                {{ resource.employeeContent }}
+                                            </b>
+                                            <a title="อธิบายละเอียด" class="note-icon" target="_blank" style="color: #217d7b">
+                                                <i class="fa fa-question-circle"></i>
+                                            </a>
+                                        </div>
+                                        <div class="note-user note-pro">
+                                            <textarea [(ngModel)]="o.privateNote" (change)="updateOrder(o)" class="form-control" placeholder="{{ resource.employeePlaceholder }}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="clear-fix"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div *ngIf="orders.length <= 0" class="rs car-main-none-box" style="box-sizing: border-box;">
+                <img src="/Content/images/icon-service/car_none.png" alt="" />
+                <span>
+                    <h1> {{ resource.noteNoneOrder }} </h1>
+                    <p><a href="/th/CMS/Order/CreateOrder"> {{ resource.orderNow }} </a></p>
+                    <p><a href="/th/CMS/AccountCMS"> {{ resource.accountComeback }} </a></p>
+                </span>
+            </div>
+        </div>
+        <div class="car-main-bottom rs">
+            <div class="car-main-bottom-all" style="padding-left: 20px; box-sizing: border-box;">
+                <label (click)="changeCheckAllOrder()">
+                    <i [class]="checkedAll ? 'clip-checkbox-checked font-1_3em' : 'clip-checkbox-unchecked-2 font-1_3em'"></i>
+                    {{resource.selectAll}}
+                </label>
+            </div>
+            <div class="car-main-bottom-msg bottom-cart-product">
+                <p>
+                    {{resource.totalOrder}} :<b>{{orderNo | numberic }}</b>
+                </p>
+                <p>
+                    {{resource.totalLink}} : <b>{{linkNo | numberic }}</b>
+                </p>
+                <p>
+                    {{resource.totalProduct}} : <b>{{productNo | numberic }}</b>
+                </p>
+                <p>
+                    {{resource.totalMoney}} : <b>{{totalPrice | numberic }}</b> {{ resource.unit }}
+                </p>
+                <button [style.visibility]="orderNo > 0 ? 'visible' : 'hidden'" (click)="removeOrderSelected()" class="btn btn-default btn-deleteOrder" style="text-transform: none !important; margin-top: 0;">
+                    <i class="fa fa-trash-o"></i>{{resource.deleteall}}  
+                </button>
+                <button [disabled]="orderNo === 0" (click)="finishMutiple()" class="btn btn-default bg-blue-1 text-normal" style="text-transform: none !important; margin-top: 0;">
+                    <i class="fa fa-check"></i><span>
+                        {{resource.deposit}}
+                        <template [ngIf]="orderNo > 0">
+                            {{orderNo | numberic }} {{resource.order}}
+                        </template>
+                    </span>
+                </button>
+                <!--<button id="jiesuan" title="Bạn cần kiểm tra em bé thanh toán" disabled="disabled" style="cursor: not-allowed; background-color: rgb(153, 153, 153);"> Thanh toán </button>-->
+            </div>
+        </div>
+    </div>
+</section>

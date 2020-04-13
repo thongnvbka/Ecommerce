@@ -1,0 +1,521 @@
+﻿@{
+    var statusFinish = (byte)SourceStatus.Success;
+    var statusWat = (byte)SourceStatus.WaitingChoice;
+}
+
+<div id="stockQuotesAddOrEdit" class="modal fade modal-dialog modal-p80" tabindex="-1" data-backdrop="static" role="dialog">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <i class="fa fa-globe"></i>  Ticket id find the source : <strong data-bind="text: 'SOU' + Code()" style="color: red"></strong>
+                    <span data-bind="text: statusApp.source[Status()].Name, css: statusApp.source[Status()].Class"></span>
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <small data-bind="text: 'Start Date :' + moment(CreateDate()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                    <!-- ko if: Status !== @statusFinish-->
+                    <small class="pull-right">Date of completion: --/--/----</small>
+                    <!-- /ko -->
+                    <!-- ko if: Status == @statusFinish-->
+                    <small data-bind="text: 'Date of completion: ' + moment(UpdateDate()).format('DD/MM/YYYY')" class="pull-right"></small>
+                    <!-- /ko -->
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Customer notes</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="callout callout-info" style="height: 125px;">
+                            @*<p data-bind="text: order().Note()"></p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">Staff's note"</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="callout callout-info">
+                            <textarea data-bind="value: UserNote" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-xs-4">
+                <strong class="strong-title"> Customer Information </strong>
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Customer:</label>
+                            <div class="col-sm-9">
+                                <select data-bind="value: CustomerId" class="form-control customer-search-add-stock" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Full name :</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: CustomerName()" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Phone:</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: CustomerPhone()" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email:</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: CustomerEmail()" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Address :</label>
+                            <div class="col-sm-9">
+                                <label data-bind="text: CustomerAddress()" class="control-label" style="text-align: left !important"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div data-bind="with: viewBoxChat" id="divShowBoxChat" class="col-md-4 view-chat-box">
+                <div data-bind="template: { name: templateChatId }"></div>
+            </div>
+
+        </div>
+
+
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Details offer sourcing:</b>
+                    <!-- ko if: listDetail().length == 0 -->
+                    <a data-bind="click: showAddDetail" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i> Add details</a>
+                    <br />
+                    <br />
+                    <!--/ko -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                <th class="text-center"><i class="fa fa-cube"></i> Product name</th>
+                                <th class="text-center"><i class="fa fa-cube"></i> Branch</th>
+                                <th class="text-center"><i class="fa fa-exclamation-circle"></i>Property</th>
+                                <th class="text-center"><i class="fa fa-sticky-note-o"></i>Describe product</th>
+                                <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i> Order customer</th>
+                                <th class="text-center w-140"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: listDetail">
+                            <tr>
+                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                <td class="text-center">
+                                    <img data-bind="attr: { src: ImagePath1}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                    <img data-bind="attr: { src: ImagePath2}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                    <img data-bind="attr: { src: ImagePath3}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                    <img data-bind="attr: { src: ImagePath4}" style="width: 40px; height: 40px; padding-right: 5px;" alt="" />
+                                </td>
+                                <td>
+                                    <a data-bind="text: Name, attr: { href: Link}" href="javascript:;" target="_blank"></a>
+                                </td>
+                                <td data-bind="text: CategoryName"></td>
+                                <td data-bind="text: Properties"></td>
+                                <td data-bind="text: Note"></td>
+                                <td data-bind="text: Quantity" class="text-right"></td>
+                                <td class="text-center">
+                                    <a data-bind="click: $parent.showEditDetail" href="javascript:;" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                    <a data-bind="click: $parent.removeDetail" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot data-bind="if: listDetail().length == 0">
+                            <tr>
+                                <td colspan="10">The source voucher has no product details</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row importwarehouse">
+            <div class="col-xs-12 table-responsive">
+                <div data-bind="css: isDetailRending() == true? 'display-none' : ''">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <div data-bind="css: isDetailRending() == true? '' : 'display-none'" class="display-none">
+                    <b class="strong-title">Supplier list:</b>
+                    <!-- ko if: listSupplier().length < 3 -->
+                    <a data-bind="click: showAddSupplier" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i>Add Supplier</a>
+                    <br />
+                    <br />
+                    <!--/ko -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center"><i class="fa fa-file-text-o"></i> Supplier name</th>
+                                <th class="text-center"><i class="fa fa-link"></i> Link</th>
+                                <th class="text-center"><i class="fa fa-exclamation-circle"></i>Describe</th>
+                                <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i>Quantity :</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-money"></i> Product price (CNY)</th>
+                                <th class="text-center" style="color: red"><i class="fa fa-superscript"></i> Total (CNY)</th>
+                                <th class="text-center w-140"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: listSupplier">
+                            <tr>
+                                <td data-bind="text: $index()+1" class="text-center"></td>
+                                <td data-bind="text: Name" class="text-center"></td>
+                                <td>
+                                    <a data-bind="text: Link, attr: { href: Link}" href="javascript:;" target="_blank"></a>
+                                </td>
+                                <td data-bind="text: Description"></td>
+                                <td data-bind="text: formatNumberic(Quantity, 'N2')" class="text-right"></td>
+                                <td data-bind="text: formatNumberic(Price, 'N2')" class="text-right"></td>
+                                <td data-bind="text: formatNumberic(TotalPrice, 'N2')" class="text-right"></td>
+                                <td class="text-center">
+                                    <a data-bind="click: $parent.showEditSupplier" href="javascript:;" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                    <a data-bind="click: $parent.removeSupplier" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot data-bind="if: listSupplier().length == 0">
+                            <tr>
+                                <td colspan="9">No list of suppliers</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    <div class="row importwarehouse">
+        <div class="col-xs-12 table-responsive">
+            <div>
+                <b class="strong-title">Staff handling:</b>
+                <div class="form-horizontal">
+                    <div class="col-md-12">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">analyze supplier<span class="color-red">*</span></label>
+                                <div class="col-sm-10">
+                                    <textarea data-bind="value: AnalyticSupplier" type="text" class="form-control" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="timeline timeline-inverse">
+                    <li class="time-label">
+                        <span>
+                            <strong class="strong-title">Order history:</strong>
+                            <a data-bind="click: checkShowHistory" href="javascript:;" class="pull-right btn btn-info btn-xs ml15">
+                                <!-- ko ifnot: isShowHistory -->
+                               View <i class="fa fa-chevron-down"></i>
+                                <!-- /ko -->
+                                <!-- ko if: isShowHistory -->
+                               Close <i class="fa fa-chevron-up"></i>
+                                <!-- /ko -->
+                            </a>
+                        </span>
+                    </li>
+                    <!-- ko if: isShowHistory -->
+                    <!-- ko foreach: listHistory -->
+                    <li>
+                        <i data-bind="css: statusApp.order[Status].Ifa"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-calendar-check-o"></i> <span data-bind="text: moment(CreateDate).format('L LTS')"></span></span>
+                            <!-- ko if: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: CustomerName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                            <!-- ko ifnot: UserFullName == null -->
+                            <h3 class="timeline-header no-border">
+                                <a data-bind="text: UserFullName + ': '" href="javascript:;"></a> <span data-bind="html: Content"></span>
+                            </h3>
+                            <!-- /ko -->
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="modal-footer">
+    <div class="pull-left">
+        Order staff:
+        <!-- ko if: userOrder() !== null -->
+        <b><span data-bind="text: userOrder().FullName + '-' + userOrder().TitleName"></span></b><i>(<span data-bind="text: userOrder().Email"></span>)</i>
+        <!-- /ko-->
+        <!-- ko ifnot: userOrder() !== null -->
+        --
+        <!-- /ko-->
+    </div>
+    <button data-bind="click: save.bind($data, 1), enable: isSubmit" type="button" class="btn btn-primary">
+        <!-- ko if: isSubmit()-->
+        <i class="fa fa-save"></i>
+        <!-- /ko -->
+        <!-- ko if: !isSubmit()-->
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        <!-- /ko -->
+        Save
+    </button>
+    <!-- ko if: !isModelAdd() -->
+    <!-- ko if: Status() < @statusWat -->
+    <button data-bind="click: save.bind($data, 2), enable: isSubmit" type="button" class="btn btn-primary">
+        <!-- ko if: isSubmit()-->
+        <i class="fa fa-send"></i>
+        <!-- /ko -->
+        <!-- ko if: !isSubmit()-->
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        <!-- /ko -->
+        Gửi lại cho khách
+    </button>
+    <!-- /ko -->
+    <!-- /ko -->
+    <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
+</div>
+
+    <div id="addOrEditSourceDetailModal" class="modal fade modal-dialog modal-p60" tabindex="-1" data-backdrop="static" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>detail</b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-horizontal">
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> Product name<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailName" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Link product<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailLink" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Describe</label>
+                                    <div class="col-sm-9">
+                                        <textarea data-bind="value: DetailNote" type="text" class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Image</label>
+                                    <div class="col-sm-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                                            <span class="btn btn-primary btn-file btn-flat">
+                                                <!-- ko if: isUpload()-->
+                                                <i class="fa fa-file-image-o"></i>
+                                                <!-- /ko -->
+                                                <!-- ko if: !isUpload()-->
+                                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                                <!-- /ko -->
+                                                Goods image
+                                                <input class="flieuploadImg" name="" type="file">
+                                            </span>
+                                            <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                                        </div>
+                                        <br />
+
+                                        <div id="effect-4" class="effects clearfix">
+                                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                                <!-- ko if: DetailImagePath1() !== '' -->
+                                                <img data-bind="attr: { src: DetailImagePath1}" style="width: 100%; height: 60px;" alt=""/><br/>
+                                                <div class="overlay">
+                                                    <a data-bind="click: DetailImagePath1.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                    <a class="close-overlay hidden">x</a>
+                                                </div>
+                                                <!-- /ko -->
+                                            </div>
+                                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                                <!-- ko if: DetailImagePath2() !== '' -->
+                                                <img data-bind="attr: { src: DetailImagePath2}" style="width: 100%; height: 60px;" alt=""/><br/>
+                                                <div class="overlay">
+                                                    <a data-bind="click: DetailImagePath2.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                    <a class="close-overlay hidden">x</a>
+                                                </div>
+                                                <!-- /ko -->
+                                            </div>
+                                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                                <!-- ko if: DetailImagePath3() !== '' -->
+                                                <img data-bind="attr: { src: DetailImagePath3}" style="width: 100%; height: 60px;" alt=""/><br/>
+                                                <div class="overlay">
+                                                    <a data-bind="click: DetailImagePath3.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                    <a class="close-overlay hidden">x</a>
+                                                </div>
+                                                <!-- /ko -->
+                                            </div>
+                                            <div class="img" style="float: left; text-align: center; margin-right: 5px;">
+                                                <!-- ko if: DetailImagePath4() !== '' -->
+                                                <img data-bind="attr: { src: DetailImagePath4}" style="width: 100%; height: 60px;" alt=""/><br/>
+                                                <div class="overlay">
+                                                    <a data-bind="click: DetailImagePath4.bind($data ,'')" href="javascript:;" class="expand">x</a>
+                                                    <a class="close-overlay hidden">x</a>
+                                                </div>
+                                                <!-- /ko -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Branch<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <div id="category_tree_source"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Quantity <span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: DetailQuantity" type="text" class="text-right form-control decimal">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Property</label>
+                                    <div class="col-sm-9">
+                                        <textarea data-bind="value: DetailProperties" type="text" class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: saveDetail, enable: isSubmit" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Lưu
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <div id="addOrEditStockDetailModal" class="modal fade modal-dialog modal-p60" tabindex="-1" data-backdrop="static" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-danger"><b>Supplier Detail </b></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-horizontal">
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Supplier name<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: SupplierName" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Link<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: SupplierLink" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Describe<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <textarea data-bind="value: SupplierDescription" type="text" class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Quantity <span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: SupplierQuantity" type="text" class="text-right form-control decimal">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Product price<span class="color-red">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: SupplierPrice" type="text" class="text-right form-control decimal">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Exchange rate</label>
+                                    <div class="col-sm-9">
+                                        <input disabled="disabled" data-bind="value: formatNumberic(exchangeRate(), 'N2')" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button data-bind="click: saveSupplier, enable: isSubmit" type="button" class="btn btn-primary">
+                <!-- ko if: isSubmit()-->
+                <i class="fa fa-check"></i>
+                <!-- /ko -->
+                <!-- ko if: !isSubmit()-->
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                <!-- /ko -->
+                Save
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

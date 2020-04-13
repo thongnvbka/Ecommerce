@@ -1,0 +1,200 @@
+﻿<script type="text/html" id="moneyfund">
+
+    <div class="box box-primary">
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                          <label for="ddlGroup">Keyword search </label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can perform searches by customer's account ID, account name, real name, phone number, email, .."></i>
+                        <input class="form-control" placeholder="Transaction code, transaction note..." type="text" value="" data-bind="value: SearchFundBillModal().Keyword">
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label for="ddlPage">Creator (staff)</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listUserToOffice, optionsText: 'FullName', optionsValue: 'Id', value: SearchFundBillModal().UserId, optionsCaption: '-  All-'"></select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Transaction type</label>
+                        <select class="form-control select-view" style="width: 100%;" data-bind="options: listFundBillType, optionsText: 'Text', optionsValue: 'Value', value: SearchFundBillModal().TypeId"></select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Person of concern</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;" data-bind="options: listAccountantSubject, optionsText: 'Text', optionsValue: 'Value', value: SearchFundBillModal().AccountantSubjectId"></select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Status</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;" data-bind="options: listFundBillStatus, optionsText: 'Text', optionsValue: 'Value', value: SearchFundBillModal().Status"></select>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-3 form-group">
+                        <label>Amount of money incurred</label>
+                        <input class="form-control decimal" id="SearchInfo_Keyword" name="SearchInfo.Keyword" placeholder="Transaction incurring expenses" type="text" data-bind="value: SearchFundBillModal().CurrencyFluctuations">
+                    </section>
+                    <section class="col-md-3 form-group">
+                        <label for="ddlPage">Choose fund</label>
+                        <div id="financeFundSearch_tree"></div>
+                    </section>
+
+                    <section class="col-md-3 form-group">
+                        <label for="ddlPage">Account</label>
+                        <div id="treasureSearch_tree"></div>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <!-- Date and time range -->
+                        <label>Incurring date</label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> Choose incurring date
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                    <section class="col-md-12 form-group">
+                        <button data-bind="click: clickSearch" class="btn btn-danger search-list"><i class="fa fa-search"></i> Search</button>
+                        <button data-bind="click: ExcelReport" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                    </section>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">List of receipts/disbursement vouchers</h3>
+                    <button data-bind="click: viewMoneyFundMinus" href="javascript:;" class="btn btn-danger pull-right" style="margin-right:5px"><i class="fa fa-minus"></i> Withdraw money</button>
+                    <button data-bind="click: viewMoneyFundAddOrEditPlus" href="javascript:;" class="btn btn-success pull-right" style="margin-right:5px"><i class="fa fa-plus"></i> Deposit money</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-6">
+                                        <div class="description-block border-right">
+                                            <h3 class="description-header text-green decimal" data-bind="text: formatNumberic(totalCollectMoney(), 'N2')"></h3>
+                                            <span class="description-text text-bold">Total revenue</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-6">
+                                        <div class="description-block border-right">
+                                            <h3 class="description-header text-red decimal" data-bind="text: formatNumberic(totalReturnMoney(), 'N2')"></h3>
+                                            <span class="description-text text-bold">Total expenditure</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-6">
+                                        <div class="description-block border-right">
+                                            <h3 class="description-header text-green decimal" data-bind="text: formatNumberic(totalMinusMoney(), 'N2')"></h3>
+                                            <span class="description-text text-bold">Net (Revenue - Expenditure)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+               
+                <div class="box-body">
+                    <!-- /page tabs -->
+                    <div class="tabbable page-tabs">
+                        <ul data-bind="foreach : listSystemWallet" class="nav nav-tabs">
+                            <li data-bind="css: Class">
+                                <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab(Value)}" data-toggle="tab">
+                                    <span data-bind="text: Text"></span>
+                                    <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                       
+                        @*<ul class="nav nav-tabs">
+                                <li class="active"><a href="#all-tasks" data-toggle="tab">Tất cả <span class="label label-danger">100</span></a></li>
+                                <li><a href="#active" data-toggle="tab">Approved</a></li>
+                                <li><a href="#closed" data-toggle="tab">Chưa duyệt</a></li>
+                            </ul>*@
+                        <div class="tab-content">
+                            <!-- First tab -->
+                            <div class="tab-pane active fade in" id="all-tasks">
+                                <!-- Tasks table -->
+                                <div class="box-body table-responsive no-padding">
+                                    <div data-bind="css: isRending() == true? 'display-none' : ''">
+                                        <div class="spinner">
+                                            <div class="rect1"></div>
+                                            <div class="rect2"></div>
+                                            <div class="rect3"></div>
+                                            <div class="rect4"></div>
+                                            <div class="rect5"></div>
+                                        </div>
+                                    </div>
+                                    <div data-bind="css: isRending() == true? '' : 'display-none'" class="display-none">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center w-10">#</th>
+                                                    <th class="text-center w-90">Transaction type</th>
+                                                    <th class="text-center w-90">Transaction code</th>
+                                                    <th class="text-left w-100">Incurring date</th>
+                                                    <th class="text-left w-100">Code order</th>
+                                                    <th class="text-left w-140">Person of concern</th>
+                                                    <th class="text-left w-170">Transaction fund</th>
+                                                    <th class="text-left w-150">Type of entry</th>
+                                                    <th class="text-right w-120 text-green">REVENUE (+)</th>
+                                                    <th class="text-right w-120 text-red">EXPENSE (-)</th>
+                                                    <th class="text-center w-100">Status</th>
+                                                    <th class="text-center"> Action </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="template: { name: 'moneyfund-list', foreach: listFundBill }"></tbody>
+                                            <tfoot data-bind="if: listFundBill().length == 0">
+                                                <tr>
+                                                    <td colspan="8">No Data</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                                <!-- /tasks table -->
+                                <div data-bind="if: listFundBill().length > 0" class="mt15">
+                                    <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                    <ul class="pagination pagination-sm no-margin pull-right">
+                                        <li data-bind="if: pageStart">
+                                            <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                        </li>
+                                        <li data-bind="if: pageNext">
+                                            <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <!-- ko foreach: listPage -->
+                                        <li data-bind="css: Page == page ? 'active' :''  ">
+                                            <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                        </li>
+                                        <!-- /ko -->
+                                        <li data-bind="if: pagePrev">
+                                            <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                        </li>
+                                        <li data-bind="if: pageEnd">
+                                            <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!-- /first tab -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+</script>

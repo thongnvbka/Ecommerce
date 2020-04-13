@@ -1,0 +1,42 @@
+﻿<script type="text/html" id="ListNoti">
+    <tr>
+   
+        <td data-bind="text: (page-1)*pagesize + $index()+1"> </td>
+        <td class="text-left"><a data-bind="click: $parent.detailNotification"><span data-bind="text: substring(Title,40,'[Hệ thống]')"></span></a> </td>
+        
+        <td class="text-center" data-bind="text: moment(CreateDate).format('DD/MM/YYYY   hh:mm:ss')"></td>
+        <!-- ko if: IsRead==1 -->
+        <td class="text-center td-text-left" data-bind="text: substring(Description,40)" style="font-weight: normal !important"> </td>
+        <!-- /ko -->
+        <!-- ko if: IsRead==0 -->
+        <td class="text-center td-text-left" data-bind="text: substring(Description,40)"> </td>
+        <!-- /ko -->
+        <!-- ko if: IsRead==1 -->
+        <td class="text-center" style="font-weight: normal !important">
+            @Resource.TransactionHistory_IsRead
+        </td>
+        <!-- /ko -->
+        <!-- ko if: IsRead==0 -->
+        <td class="text-center">
+            @Resource.TransactionHistory_NoRead
+        </td>
+        <!-- /ko -->
+        <td class="text-center">
+            <!-- ko if: OrderType == 0 -->
+            <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailOrder?orderId=' + OrderId}" class="td-text-left link-shop"><span>@Resource.DetailOrder_ChiTietDonHang </span></a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == 1 -->
+            <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailDeposit?depositId=' + OrderId}" class="td-text-left link-shop"><span>@Resource.DetailOrder_ChiTietDonHang </span></a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == 2 -->
+            <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Order/DetailSourcing?sourcingId=' + OrderId}" class="td-text-left link-shop"><span>@Resource.DetailOrder_ChiTietDonHang </span></a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == 3 -->
+            <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket?ticketId=' + OrderId}" class="td-text-left link-shop"><span>@Resource.CreateTicket_DetailTicket</span></a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == 4 -->
+            <a target="_blank" data-bind="attr: {href: '/' + window.culture + '/CMS/Wallet/ElectronicWallet'}" class="td-text-left link-shop"><span>@Resource.ElectronicWallet </span></a>
+            <!-- /ko -->
+        </td>
+</tr>
+</script>

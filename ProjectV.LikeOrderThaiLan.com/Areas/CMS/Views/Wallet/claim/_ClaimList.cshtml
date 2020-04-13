@@ -1,0 +1,19 @@
+﻿<script type="text/html" id="ListClaim">
+    <tr>
+        
+        <td data-bind="text: (page-1)*pagesize + $index()+1"> </td>
+        <td data-bind="text: Code"></td>
+        <td data-bind="text: moment(CreateDate).format('DD/MM/YYYY   h:mm:ss')"> </td>
+        <td data-bind="text: CardName"></td>
+        <td data-bind="text: CardId"></td>
+        <td data-bind="text: formatNumberic(AdvanceMoney, 'N4')"></td>
+        <!-- ko if: Status == 0 -->
+        <td> @Resource.Sourcing_WaitingForProgressing</td>
+        <!-- /ko -->
+        <!-- ko if: Status !== 0 -->
+        <td>     @Resource.Status_Processed </td>
+        <!-- /ko -->
+
+        <td data-bind="html: Note"></td>
+    </tr>
+</script>

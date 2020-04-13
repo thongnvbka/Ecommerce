@@ -1,0 +1,29 @@
+﻿<script type="text/html" id="customer-by-staff-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewCustomerDetailModal" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: LevelName"></td>
+
+        <td class="text-center" data-bind="text: FullName"></td>
+        <td class="text-left" data-bind="text: Birthday == null ? '--' : moment(Birthday).format('DD/MM/YYYY')"></td>
+        <td class="text-center" data-bind="text: Phone"></td>
+        <td class="text-center" data-bind="text: Email"></td>
+        <th class="text-center"><a href="#"><strong data-bind="text: UserFullName"></strong></a></th>
+        <td class="text-center">
+            <span data-bind="text: statusApp.customerOfStaffStatus[Status].Name, css: statusApp.customerOfStaffStatus[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            @if (CheckPermision(EnumAction.Update, EnumPage.CustomerbyStaff))
+            {
+                <a data-bind="click: $parent.viewEditCustomerByStaff" href="javascript:;" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+            }
+            @if (CheckPermision(EnumAction.Delete, EnumPage.CustomerbyStaff))
+            {
+                <a data-bind="click: $parent.removeCustomer" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+            }
+        </td>
+    </tr>
+</script>

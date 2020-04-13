@@ -1,0 +1,117 @@
+﻿<script type="text/html" id="liabilityreport">
+    <div class="box box-primary">
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <section class="col-md-2 form-group">
+                        <label for="ddlGroup">Search keyword</label>
+                        <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="BYou can perform searches by customer's account ID, account name, real name, phone number, email, .."></i>
+                        <input class="form-control" placeholder="Transaction code, transaction note..." type="text" value="">
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlWarehouse">Select fund type</label>
+                        <select class="form-control select-view" id="ddlWarehouse" style="width: 100%;">
+                            <option value="1" selected="selected">- All -</option>
+                            <option value="2">Renminbi cash fund</option>
+                            <option value="4">Alipay fund</option>
+                            <option value="7">Chinese bank fund</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Select customer </label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">Nguyễn Phong Doãn</option>
+                            <option value="50">Phạm Bình Minh</option>
+                            <option value="150">Nguyễn Phú Trọng</option>
+                            <option value="200">Trương Thanh Hoa</option>
+                            <option value="300">Phạm Bình Minh</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Transaction type</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">Deposit fund</option>
+                            <option value="50">Withdraw fund</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <label for="ddlPage">Status</label>
+                        <select class="form-control select-view" id="ddlPage" style="width: 100%;">
+                            <option value="10" selected="selected">- All -</option>
+                            <option value="25">Recently created</option>
+                            <option value="50">Approved</option>
+                        </select>
+                    </section>
+                    <section class="col-md-2 form-group">
+                        <!-- Date and time range -->
+                        <label> Slip create date</label>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> Choose create date
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Search keyword</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="body-table">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">To record payables </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <!-- /page tabs -->
+                    <div class="tabbable page-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#all-tasks" data-toggle="tab">Payable <span class="label label-danger">100</span></a></li>
+                            <li><a href="#closed" data-toggle="tab">Receivable</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- First tab -->
+                            <div class="tab-pane active fade in" id="all-tasks">
+                                <!-- Tasks table -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th class="text-center">Tracking ID</th>
+                                                <th class="text-center">Transaction History  </th>
+                                                <th class="text-center">Transaction type</th>
+                                                <th>Amount (Baht)</th>
+                                                <th class="text-center">Transaction fund</th>
+                                                <th class="text-center">Account type</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-bind="template: { name: 'liabilityreport-list' }"></tbody>
+                                    </table>
+                                </div>
+                                <!-- /tasks table -->
+                            </div>
+                            <!-- /first tab -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+</script>

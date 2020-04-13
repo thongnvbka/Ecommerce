@@ -1,0 +1,181 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.Controllers
+@{
+    var rate = new BaseController().ExchangeRate();
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://www.lete.com/user.php -->
+<html>
+<head>
+    <base href="/@culture" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Generator" content="LETE v1.0">
+    <title>@ViewBag.Title</title>
+    <!--Font-family-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="shortcut icon" href="/icon_likeorder_16x16.ico" type="image/x-icon" />
+    @Styles.Render("~/css")
+    @RenderSection("styles", false)
+    <script>
+        var culture = '@culture';
+    </script>
+    @* Xuân thêm *@
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 882155439;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/882155439/?guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+
+</head>
+
+<body>
+    <header>
+        <nav class="header-nav clearFix">
+            <ul class="header-nav-list clearFix" style="float: right !important">
+                <li class="dropdown">
+                    <a id="flagShow" onclick="getFlag('th')" href="javascript:;">
+                        <img src="~/Images/Flat_Thailand.png" alt="" />
+                    </a>
+
+                    @*<div class="dropdown-content flag-country" style="position: absolute !important">
+                            <a id="flag-vi" onclick="getFlag('vi')" href="javascript:;">
+                                <img src="~/Images/Flat_Vietnam.png" alt="" />
+                            </a>
+                            <a id="flag-th" onclick="getFlag('th')" href="javascript:;">
+                                <img src="~/Images/Flat_Thailand.png" alt="" />
+                            </a>
+                        </div>*@
+                </li>
+                <li>
+                    <a href="/@culture/Home/FAQ">@Resource.Home_Guide</a>
+                </li>
+                <li>
+                    <a href="/@culture/Home/Guide">
+                        @Resource.Home_Introduce
+                    </a>
+                </li>
+                <li>
+                    <a href="/@culture/Home/TermsOfService">@Resource.Home_TermsOfService</a>
+                </li>
+            </ul>
+
+            <ul class="header-nav-list clearFix" style="float: left !important">
+                @if (!Request.IsAuthenticated)
+            {
+                    <li>
+                        <a href="javascript:;">@Resource.Home_ExchangeRate: 1¥ = @rate.ToString("N2") </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "Account")" target="_blank">@Resource.Home_Register</a>
+                        @*<a href="https://docs.google.com/forms/d/e/1FAIpQLScpr-5uwWL5JwOGKtH8enmq7GFH0GXLpkrbYLTRY-UiJ0VArA/viewform" target="_blank">@Resource.Home_Register</a>*@
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login", "Account")">@Resource.Home_Login</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="javascript:;">@Resource.Top_Balances: <span id="toolbar-money"></span> </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">@Resource.Home_ExchangeRate: 1¥ = @rate.ToString("N2") </a>
+                    </li>
+                    <li>
+                        <a href="/@culture/CMS/Transport/Package">@Resource.Top_Package !</a>
+                    </li>
+                    <li class="dropdown" id="notifi-card">
+                        <label></label><a href="/@culture/Product/Cart">@Resource.Home_Cart (<span class="show-data"> 0 </span>)</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "AccountCMS", new {Area = "CMS"})">
+                            @Resource.Home_Hello : <span class="f4_b" style="color: #ff0000; font-weight: bold;">@CustomerState.FullName</span> @Resource.Home_ComeBack
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/@culture/Account/Logout">@Resource.Home_Exit</a>
+                    </li>
+                    <li class="dropdown" id="notifi-private">
+                        <a href="@Url.Action("Notification", "AccountCMS", new {Area = "CMS"})">@Resource.Home_Notification (<span id="weidu_num2" class="show-data"> 0</span> )</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </header>
+    @RenderSection("Header", false)
+
+    <section class="user" style="position: relative;">
+        @RenderBody()
+    </section>
+
+    @Html.Partial("~/Views/Partial/_Footer.cshtml")
+    @Html.Partial("~/Views/Partial/_MenuShoppingCart.cshtml")
+    @Scripts.Render("~/jquery")
+    <script src="~/Areas/CMS/Scripts/bootstrap.min.js"></script>
+    @* facebook *@
+    <div id="fb-root"></div> 
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.8&appId=1629596540681731";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <script src="~/Content/js/jquery.datetimepicker.full.js"></script>
+    <script src="~/Content/js/datetime-piker.js"></script>
+    @*//thu vien globinfo*@
+    <script src="~/Areas/CMS/Scripts/globinfo/globalize.js"></script>
+    <script src="~/Areas/CMS/Scripts/globinfo/globalize.culture.vi-VN.js"></script>
+    @*//thu vien alert delete*@
+    <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.js"></script>
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    @*//thu vien substring*@
+    @*<script src="~/Areas/CMS/Scripts/viewmodels/status.js"></script>*@
+    <script src="~/Areas/CMS/Scripts/viewmodels/status.@cultureJs"></script>
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    @*//thu vien ajax*@
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+
+    @* Xuân thêm *@
+
+    @RenderSection("notification", false)
+    @RenderSection("scripts", false)
+
+    <script src="~/Scripts/js.cookie.js"></script>
+
+    <script src="~/Content/js/public.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnSend').click(function () {
+                var url = $('#inputLinkOrder').val();
+                location.href = "/" + window.culture + "/CMS/Order/CreateOrder?url=" + url;
+            });
+        })
+    </script>
+    <script src="~/Scripts/notifi.top.js"></script>
+</body>
+</html>

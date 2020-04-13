@@ -1,0 +1,20 @@
+﻿var debitViewItemModel = function () {
+    this.Id = ko.observable("");
+    this.Code = ko.observable("");
+    this.CreateDate = ko.observable("");
+    this.UpdateDate = ko.observable("");
+    this.CustomerName = ko.observable("");
+    this.CustomerEmail = ko.observable("");
+    this.CustomerPhone = ko.observable("");
+    this.CustomerAddress = ko.observable("");
+    this.Note = ko.observable("");
+    this.WarehouseName = ko.observable("");
+    this.ContactName = ko.observable("");
+    this.ContactPhone = ko.observable("");
+    this.ContactAddress = ko.observable("");
+    this.ContactEmail = ko.observable("");
+    this.PacketNumber = ko.observable("");
+    this.Status = ko.observable("");
+    this.TotalAdvance = ko.observable("");
+    this.ProvisionalMoney = ko.observable("");
+};

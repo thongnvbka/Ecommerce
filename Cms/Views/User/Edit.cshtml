@@ -1,0 +1,98 @@
+﻿@model UserMeta
+
+@{
+    ViewBag.Title = string.Format("Staff status update \"{0}\"", Model.FirstName);
+}
+
+@section Styles{
+<style type="text/css">
+    .popover.editable-popup {
+        max-width: initial !important;
+    }
+</style>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Category</a></li>
+        <li><a href="@Url.Action("Index")">List of staff</a></li>
+        <li class="active">Staff status update</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box box-info">
+        <div class="box-body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#accountInfo" aria-controls="home" role="tab" data-toggle="tab">Account information</a></li>
+                <li role="presentation"><a href="#titleAndPermission" aria-controls="profile" role="tab" data-toggle="tab">Concurrent posistion/Access permission</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="accountInfo">
+                    <div class="col-sm-12">
+                        <!-- form start -->
+                        <form action="@Url.Action("Edit")" method="post" class="horizontal-form" id="frmCreate">
+                            @Html.AntiForgeryToken()
+                            <div>
+                                @Html.Partial("_Update", Model)
+                            </div>
+                            <!-- /.box-body -->
+                            <div>
+                                <a href="@Url.Action("Index")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                                <button type="button" id="btnAdd" class="btn btn-info pull-right"><i class="fa fa-save"></i>Save</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="titleAndPermission">
+                    <div class="col-sm-12">
+                        <div>
+                            @Html.Partial("_RolePermission")
+                        </div>
+                        <div>
+                            <a href="@Url.Action("Index")" role="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var groupPermissionJson = @Html.Raw(ViewBag.GroupPermissionJson);
+        $(document).ready(function() {
+            $('#btnAdd').click(function() {
+                var startDate = $('#StartDate').val();
+                if (startDate.length > 0) {
+                    var arrStart = startDate.split('/');
+                    if (arrStart.length == 3) {
+                        startDate = arrStart[1] + '/' + arrStart[0] + '/' + arrStart[2] + ' 00:00:00 AM';
+                        $('#StartDate').val(startDate);
+                    }
+                }
+                var finishDate = $('#Birthday').val();
+                if (finishDate.length > 0) {
+                    var arrFinish = finishDate.split('/');
+                    if (arrFinish.length == 3) {
+                        finishDate = arrFinish[1] + '/' + arrFinish[0] + '/' + arrFinish[2] + ' 11:59:00 PM';
+                        $('#Birthday').val(finishDate);
+                    }
+                }
+                $('#frmCreate').submit();
+            });
+        });
+    </script>
+    <script src="/Scripts/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script src="/Scripts/knockout.x-editable.js"></script>
+    <script src="/Scripts/viewmodels/rolePermissionModel.js"></script>
+}

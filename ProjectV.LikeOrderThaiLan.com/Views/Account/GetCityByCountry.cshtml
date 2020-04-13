@@ -1,0 +1,9 @@
+﻿@model List<Library.DbContext.Entities.Province>
+@if (Model != null && Model.Any())
+{
+    <option value="-1">-- @Resource.Select_City @Model.Count---</option>
+    foreach (var item in Model)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+}

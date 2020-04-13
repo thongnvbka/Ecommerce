@@ -1,0 +1,9 @@
+﻿@model List<Library.DbContext.Entities.District>
+@if (Model != null && Model.Any())
+{
+    <option value="-1">-- @Resource.Select_Distric---</option>
+    foreach (var item in Model)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+}

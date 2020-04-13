@@ -1,0 +1,161 @@
+﻿<div id="exportWarehouseDetailModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="importwarehouse">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>TRANSMITTING STOCK EXCHANGE RATE</strong>
+                                <span class="impornumber">Slip number: <strong data-bind="text: exportModel().Code()"></strong></span>
+                                <small data-bind="text: 'Date of dispatch: ' + moment(exportModel().Created()).format('DD/MM/YYYY')"></small>
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row importwarehouse">
+                        <!-- accepted payments column -->
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Consignee:</th>
+                                        <td data-bind="text: exportModel().ReceiverName()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone:</th>
+                                        <td data-bind="text: exportModel().ReveiverPhone()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td data-bind="text: exportModel().ReveiverAddress()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th width="25%">Warehouse:</th>
+                                        <td data-bind="text: exportModel().WarehouseName()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address :</th>
+                                        <td data-bind="text: exportModel().WarehouseAddress()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Transport code (internal)</th>
+                                        <th class="text-center">Code(packing/package)orders</th>
+                                        <th class="text-center" style="color: green">Gross weight</th>
+                                        <th class="text-center" style="color: blue">Gross weight converted</th>
+                                       
+                                        
+                                       
+                                        <th class="text-center" style="color: red">Volume (m3)</th>
+                                        <th class="text-center" width="20%">Note shipping note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">MVDNB0102012919</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Fragile, recommended shipping carefully.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center">MVDNB1242012002</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Fragile, recommended shipping carefully.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">MVDNB1242012002</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td class="text-center">MVDNB0121212120</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Merchandise of many customers, when the goods on the package for guests.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row signature">
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>The person making the votes</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: exportModel().UserFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Carrier</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: exportModel().UserFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Storekeepers</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: exportModel().WarehouseManagerFullName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Accountant</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: exportModel().WarehouseAccountantFullName()"></span>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary"><i class="fa fa-print"></i> Print </a>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #exportWarehouseDetailModal {
+        padding: 0px 10px !important;
+    }
+
+        #exportWarehouseDetailModal .modal-lg {
+            width: 90% !important;
+        }
+</style>

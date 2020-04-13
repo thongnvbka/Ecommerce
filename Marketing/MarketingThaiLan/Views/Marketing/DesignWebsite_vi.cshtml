@@ -1,0 +1,1295 @@
+﻿
+@{
+    ViewBag.Title = "DesignWebsite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+ {
+    @Html.Partial("_Header")
+}
+
+@section styles
+ {
+    <link href="~/Content/css-marketing/sell_at_website.min.css" rel="stylesheet" />
+
+}
+<div class="ld-thietkewebsitebanhang">
+    <div class="thietkewebsitebanhang-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 title">
+                    <h1>Tự thiết kế <br>Website bán hàng trong 30s</h1>
+                    <p class="desc">Hơn 23,000 chủ shop và doanh nghiệp đã <br>trải nghiệm và tin dùng</p>
+                    <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Dùng thử miễn phí</a>
+                </div>
+                <div class="col-md-6 image-banner">
+                    <img src="/Content/images/landing/thietkewebsitebanhang-banner-image.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-1">
+        <div class="container">
+            <h2>Tại sao hơn 23,000 chủ shop và doanh nghiệp Việt Nam <br>đã tin tưởng Bizweb để thiết kế website bán hàng?</h2>
+            <div class="row">
+                <div class="swiper-container swiper-container-horizontal">
+                    <div class="swiper-wrapper" style="transform: translate3d(-2340px, 0, 0); transition-duration: 0;">
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-3.jpg">
+                                <h3>Vì website giúp xây dựng uy tín thương hiệu</h3>
+                                <p class="desc">
+                                    Khi thiết kế website bán hàng với giao diện chuyên nghiệp, hỗ trợ <br>
+                                    mua sắm tiện lợi sẽ khiến cho khách hàng yêu quý, tin tưởng hơn <br>
+                                    vào các sản phẩm và thương hiệu của bạn.
+                                </p>
+                            </div>
+                        </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-4.jpg">
+                                <h3>Vì website giúp chăm sóc khách hàng 24/7</h3>
+                                <p class="desc">
+                                    Khi bán hàng trên website, khách hàng sẽ xem và đặt hàng bất cứ <br>
+                                    lúc nào trong ngày. Tạo một website là bạn đã có thể tư vấn cho khách <br>
+                                    hàng 24/7. Từ đó, doanh thu của bạn sẽ tăng lên nhanh chóng.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-swiper-slide-index="0" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-1.jpg">
+                                <h3>Vì 61% người tiêu dùng mua hàng trên website</h3>
+                                <p class="desc">
+                                    Mặc dù xu hướng mua hàng trên mạng xã hội này ngày càng cao, <br>
+                                    nhất là Facebook và Zalo, thế nhưng theo nghiên cứu của Moore, <br>
+                                    khách hàng vẫn tin tưởng lựa chọn website là nơi mua sắm uy tín.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-2.jpg">
+                                <h3>Vì website là trung tâm các hoạt động quảng cáo</h3>
+                                <p class="desc">
+                                    Nhờ tính ổn định và bảo mật, mọi hoạt động quảng cáo trực tuyến <br>
+                                    cần lấy website làm trung tâm, gốc rễ. Thiết kế website bán hàng <br>
+                                    tốt sẽ làm tăng hiệu quả SEO và quảng cáo, tăng tỉ lệ chuyển đổi.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-3.jpg">
+                                <h3>Vì website giúp xây dựng uy tín thương hiệu</h3>
+                                <p class="desc">
+                                    Khi thiết kế website bán hàng với giao diện chuyên nghiệp, hỗ trợ <br>
+                                    mua sắm tiện lợi sẽ khiến cho khách hàng yêu quý, tin tưởng hơn <br>
+                                    vào các sản phẩm và thương hiệu của bạn.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-4.jpg">
+                                <h3>Vì website giúp chăm sóc khách hàng 24/7</h3>
+                                <p class="desc">
+                                    Khi bán hàng trên website, khách hàng sẽ xem và đặt hàng bất cứ <br>
+                                    lúc nào trong ngày. Tạo một website là bạn đã có thể tư vấn cho khách <br>
+                                    hàng 24/7. Từ đó, doanh thu của bạn sẽ tăng lên nhanh chóng.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-1.jpg">
+                                <h3>Vì 61% người tiêu dùng mua hàng trên website</h3>
+                                <p class="desc">
+                                    Mặc dù xu hướng mua hàng trên mạng xã hội này ngày càng cao, <br>
+                                    nhất là Facebook và Zalo, thế nhưng theo nghiên cứu của Moore, <br>
+                                    khách hàng vẫn tin tưởng lựa chọn website là nơi mua sắm uy tín.
+                                </p>
+                            </div>
+                        </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" style="width: 585px;">
+                            <div class="block-info">
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-1-index-2.jpg">
+                                <h3>Vì website là trung tâm các hoạt động quảng cáo</h3>
+                                <p class="desc">
+                                    Nhờ tính ổn định và bảo mật, mọi hoạt động quảng cáo trực tuyến <br>
+                                    cần lấy website làm trung tâm, gốc rễ. Thiết kế website bán hàng <br>
+                                    tốt sẽ làm tăng hiệu quả SEO và quảng cáo, tăng tỉ lệ chuyển đổi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+                <div class="swiper-button-prev hidden-xs">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </div>
+                <div class="swiper-button-next hidden-xs">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-2">
+        <div class="container">
+            <h2>Tự thiết kế website bán hàng trong 30s</h2>
+            <p class="desc">Không cần biết thiết kế hay lập trình bạn vẫn có thể tự tạo website cho riêng mình với Bizweb</p>
+        </div>
+        <div class="swiper-container hidden visible-lg swiper-container-horizontal">
+            <div class="swiper-wrapper" style="transform: translate3d(-5709px, 0, 0); transition-duration: 0;">
+                <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" style="width: 1903px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 block-info">
+                                <i class="icon-connect"></i>
+                                <h3>Kết nối tự động với các đơn vị <br>giao hàng, thanh toán trực tuyến</h3>
+                                <p class="desc">
+                                    Bizweb hỗ trợ tối đa cho các website thương mại điện tử thông qua <br>
+                                    việc kết nối với các đơn vị thanh toán trực tuyến hàng đầu như <br>
+                                    Paypal, Napas, OnePay... giúp cho người mua hàng có thể thanh <br>
+                                    toán ngay trên website 24/7. Ngoài ra, website bán hàng Bizweb còn <br>
+                                    liên kết với các đơn vị vận chuyển giúp bạn tiết kiệm tối đa chi phí <br>
+                                    giao hàng như: Giao hàng nhanh, Giao hàng tiết kiệm, Viettel Post...
+                                </p>
+                                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                            </div>
+                            <div class="col-md-6 block-image">
+                                <img class="block-image-4" src="/Content/images/landing/thietkewebsitebanhang-block-2-image-4.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-swiper-slide-index="0" style="width: 1903px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 block-info">
+                                <i class="icon-time"></i>
+                                <h3>Tự thiết kế và sử dụng website sau 30s</h3>
+                                <p class="desc">
+                                    Với Bizweb, bạn không cần biết thiết kế, không cần biết lập trình <br>
+                                    nhưng vẫn có thể tự tạo website bán hàng chỉ sau 30s. Website bán <br>
+                                    hàng Bizweb cung cấp kho giao diện khổng lồ giúp bạn có thể tự mình <br>
+                                    chỉnh sửa, thay đổi giao diện theo ý muốn. Đồng thời, kho ứng dụng <br>
+                                    của Bizweb sẽ giúp bạn thêm các tiện ích cho website như gửi SMS <br>
+                                    marketing, email marketing, tạo chương trình khuyến mại ...
+                                </p>
+                                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                            </div>
+                            <div class="col-md-6 block-image">
+                                <img class="block-image-1" src="/Content/images/landing/thietkewebsitebanhang-block-2-image-1.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 1903px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 block-info block-info-2">
+                                <i class="icon-theme"></i>
+                                <h3>200+ giao diện Responsive đẹp mắt</h3>
+                                <p class="desc">
+                                    Kho giao diện của Bizweb được đầu tư thiết kế tỉ mỉ và đa dạng. <br>
+                                    Với hơn 200 giao diện, thiết kế website bán hàng với Bizweb sẵn <br>
+                                    sàng đáp ứng nhu cầu của hơn 30 ngành nghề khác nhau. Đặc biệt, <br>
+                                    tất cả giao diện này đều được thiết kế với công nghệ Responsive <br>
+                                    nên có thể hiển thị tối ưu trên mọi thiết bị. Dù cho khách hàng của <br>
+                                    bạn online bằng thiết bị gì, máy tính, máy tính bảng hay điện thoại di <br>
+                                    động thì website đều hiển thị đẹp mắt.
+                                </p>
+                                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                            </div>
+                            <div class="col-md-6 block-image">
+                                <img class="block-image-2" src="/Content/images/landing/thietkewebsitebanhang-block-2-image-2.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 1903px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 block-info">
+                                <i class="icon-mobile"></i>
+                                <h3>Tốc độ truy cập dưới 1s <br>website hỗ trợ tối ưu cho mobile</h3>
+                                <p class="desc">
+                                    Các website Bizweb đều có tốc độ truy cập dưới 1s. Điều này không <br>
+                                    những giúp khách hàng có trải nghiệm mua sắm tuyệt vời trên <br>
+                                    website mà còn giúp website được Google đánh giá cao hơn.<br>
+                                    Điểm đặc biệt là các website của Bizweb được tối ưu cho điện thoại <br>
+                                    di động và máy tính bảng với giao diện được thiết kế riêng, các nút <br>
+                                    bấm có kích thước hỗ trợ cảm ứng.
+                                </p>
+                                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                            </div>
+                            <div class="col-md-6 block-image">
+                                <img class="block-image-3" src="/Content/images/landing/thietkewebsitebanhang-block-2-image-3.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" style="width: 1903px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 block-info">
+                                <i class="icon-connect"></i>
+                                <h3>Kết nối tự động với các đơn vị <br>giao hàng, thanh toán trực tuyến</h3>
+                                <p class="desc">
+                                    Bizweb hỗ trợ tối đa cho các website thương mại điện tử thông qua <br>
+                                    việc kết nối với các đơn vị thanh toán trực tuyến hàng đầu như <br>
+                                    Paypal, Napas, OnePay... giúp cho người mua hàng có thể thanh <br>
+                                    toán ngay trên website 24/7. Ngoài ra, website bán hàng Bizweb còn <br>
+                                    liên kết với các đơn vị vận chuyển giúp bạn tiết kiệm tối đa chi phí <br>
+                                    giao hàng như: Giao hàng nhanh, Giao hàng tiết kiệm, Viettel Post...
+                                </p>
+                                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                            </div>
+                            <div class="col-md-6 block-image">
+                                <img class="block-image-4" src="/Content/images/landing/thietkewebsitebanhang-block-2-image-4.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 1903px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 block-info">
+                                <i class="icon-time"></i>
+                                <h3>Tự thiết kế và sử dụng website sau 30s</h3>
+                                <p class="desc">
+                                    Với Bizweb, bạn không cần biết thiết kế, không cần biết lập trình <br>
+                                    nhưng vẫn có thể tự tạo website bán hàng chỉ sau 30s. Website bán <br>
+                                    hàng Bizweb cung cấp kho giao diện khổng lồ giúp bạn có thể tự mình <br>
+                                    chỉnh sửa, thay đổi giao diện theo ý muốn. Đồng thời, kho ứng dụng <br>
+                                    của Bizweb sẽ giúp bạn thêm các tiện ích cho website như gửi SMS <br>
+                                    marketing, email marketing, tạo chương trình khuyến mại ...
+                                </p>
+                                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                            </div>
+                            <div class="col-md-6 block-image">
+                                <img class="block-image-1" src="/Content/images/landing/thietkewebsitebanhang-block-2-image-1.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <div class="container">
+                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+                    <div class="swiper-button-prev hidden-xs">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="swiper-button-next hidden-xs">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block-mobile hidden-lg">
+            <div class="container">
+                <div class="block-info">
+                    <div class="title">
+                        <h3>Tự thiết kế và sử dụng website sau 30s</h3>
+                        <i class="fa fa-plus hidden" aria-hidden="true"></i>
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </div>
+                    <div class="content">
+                        <p>
+                            Với Bizweb, bạn không cần biết thiết kế, không cần biết lập trình nhưng vẫn có thể tự tạo website bán hàng chỉ sau 30s. Website bán hàng Bizweb cung cấp kho giao diện khổng lồ giúp bạn có thể tự mình chỉnh sửa, thay đổi giao diện theo ý muốn. Đồng thời, kho ứng dụng của  Bizweb sẽ giúp bạn thêm các tiện ích cho website như gửi SMS marketing, email marketing, tạo chương trình khuyến mại ...
+                        </p>
+                    </div>
+                </div>
+                <div class="block-info">
+                    <div class="title">
+                        <h3>200+ giao diện Responsive đẹp mắt</h3>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-minus hidden" aria-hidden="true"></i>
+                    </div>
+                    <div class="content hidden">
+                        <p>
+                            Kho giao diện của Bizweb được đầu tư thiết kế tỉ mỉ và đa dạng. Với hơn 200 giao diện, thiết kế website bán hàng với Bizweb sẵn sàng đáp ứng nhu cầu của hơn 30 ngành nghề khác nhau. Đặc biệt, tất cả giao diện này đều được thiết kế với công nghệ Responsive nên có thể hiển thị tối ưu trên mọi thiết bị. Dù cho khách hàng của bạn online bằng thiết bị gì, máy tính, máy tính bảng hay điện thoại di động thì website đều hiển thị đẹp mắt.
+                        </p>
+                    </div>
+                </div>
+                <div class="block-info">
+                    <div class="title">
+                        <h3>Tốc độ truy cập dưới 1s webiste hỗ trợ tối ưu cho mobile</h3>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-minus hidden" aria-hidden="true"></i>
+                    </div>
+                    <div class="content hidden">
+                        <p>
+                            Các website Bizweb đều có tốc độ truy cập dưới 1s. Điều này không những giúp khách hàng có trải nghiệm mua sắm tuyệt vời trên website mà còn giúp website được Google đánh giá cao hơn. Điểm đặc biệt là các website của Bizweb được tối ưu cho điện thoại di động và máy tính bảng với giao diện được thiết kế riêng, các nút bấm có kích thước hỗ trợ cảm ứng.
+                        </p>
+                    </div>
+                </div>
+                <div class="block-info">
+                    <div class="title">
+                        <h3>Kết nối tự động với các đơn vị giao hàng, thanh toán trực tuyến</h3>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-minus hidden" aria-hidden="true"></i>
+                    </div>
+                    <div class="content hidden">
+                        <p>
+                            Bizweb hỗ trợ tối đa cho các website thương mại điện tử thông qua việc kết nối với các đơn vị thanh toán trực tuyến hàng đầu như Paypal, Napas, OnePay... giúp cho người mua hàng có thể thanh toán ngay trên website 24/7. Ngoài ra, website bán hàng  Bizweb còn liên kết với các đơn vị vận chuyển giúp bạn tiết kiệm tối đa chi phí giao hàng như: Giao hàng nhanh, Giao hàng tiết kiệm, Viettel Post...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Thiết kế website ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-down hidden visible-lg">
+            <a href="javascript:;" class="scroll-down-button">
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-3">
+        <div class="container">
+            <div class="row">
+                <p class="desc">Làm sao để có đến hàng trăm đơn hàng mỗi ngày từ website?</p>
+                <h2>Website bán hàng Bizweb giúp bạn <br class="hidden-lg hidden-xs">tối ưu hiệu quả SEO và quảng cáo</h2>
+                <div class="clearfix">
+                    <div class="col-md-5 block-image hidden visible-lg">
+                        <img src="/Content/images/landing/thietkewebsitebanhang-block-3-image-1.png">
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 block-info">
+                        <ul>
+                            <li>
+                                <i class="icon-arrow"></i>
+                                <h3>Hỗ trợ tối ưu cho SEO</h3>
+                                <p>
+                                    Không cần phải là một chuyên gia SEO bạn vẫn có thể đưa website bán hàng của <br>
+                                    mình lên top1 Google. Thiết kế website chuẩn SEO với Bizweb không chỉ giúp <br>
+                                    tối ưu SEO trên từng danh mục mà còn cho phép tối ưu SEO của từng trang chi tiết <br>
+                                    sản phẩm. Bạn có thể tùy chỉnh thẻ tiêu đề (Title), mô tả (Meta Description) và <br>
+                                    URL trong website, thêm thẻ alt của hình ảnh. Ngoài ra, tạo website bán hàng với <br>
+                                    Bizweb còn cung cấp ứng dụng Tùy chỉnh SEO giúp quản lý SEO cho trang web <br>
+                                    nhanh và dễ dàng hơn.
+                                </p>
+                            </li>
+                            <li>
+                                <i class="icon-arrow"></i>
+                                <h3>Tăng hiệu quả quảng cáo</h3>
+                                <p>
+                                    Bên cạnh việc hỗ trợ quảng bá web tự nhiên như SEO và SEO mạng xã hội, website <br>
+                                    Bizweb còn giúp bạn tạo ra một trang đích tuyệt vời nhằm phát huy tốt nhất hiệu <br>
+                                    quả quảng cáo trả phí như Google Adwords hay Facebook Ads. Phương pháp này <br>
+                                    giúp cho website bán hàng ngay lập tức tiếp cận đến khách hàng tiềm năng, <br>
+                                    đồng thời hỗ trợ để các chiến dịch quảng bá tự nhiên hiệu quả hơn.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-4">
+        <div class="container">
+            <h2>Bán hàng khắp mọi nơi trên Internet với Bizweb</h2>
+            <p class="desc">
+                Với website Bizweb bạn có thể cùng lúc bán hàng trên nhiều kênh khác nhau
+            </p>
+            <div class="animation-element slide-left testimonial hidden visible-lg">
+                <div class="wrap-content">
+                    <img class="line-vector" src="/Content/images/landing/line-vertor-animation.png" alt="">
+                    <a href="https://apps.bizweb.vn/kenh-ban-hang-adayroi" target="_blank">
+                        <img class="adayroi-img" src="/Content/images/landing/img-adayroi-ldbztkwbh.png" alt="">
+                    </a>
+                    <a href="/" target="_blank">
+                        <img class="websitekhac-img" src="/Content/images/landing/img-websitekhac-ldbztkwbh.png" alt="">
+                    </a>
+                    <a href="/" target="_blank">
+                        <img class="sendo-img" src="/Content/images/landing/img-sendo-ldbztkwbh.png" alt="">
+                    </a>
+                    <a href="/" target="_blank">
+                        <img class="face-img" src="/Content/images/landing/img-face-ldbztkwbh.png" alt="">
+                    </a>
+                    <a href="/" target="_blank">
+                        <img class="pos-img" src="/Content/images/landing/img-pos-ldbztkwbh.png" alt="">
+                    </a>
+                    <a href="/" target="_blank">
+                        <img class="zalo-img" src="/Content/images/landing/img-zalo-ldbztkwbh.png" alt="">
+                    </a>
+                    <a href="/" target="_blank">
+                        <img class="bizweb-img" src="/Content/images/landing/img-bizweb-ldbztkwbh.png" alt="">
+                    </a>
+                    <img class="khachhang-img faa-pulse animated" src="/Content/images/landing/img-khachhang-ldbztkwbh.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="text-center hidden-lg">
+            <img src="/Content/images/landing/line-vertor-tablet.png" class="hidden-xs">
+            <img src="/Content/images/landing/line-vertor-mobile.png" class="hidden-sm hidden-md">
+        </div>
+
+        <div class="scroll-down hidden visible-lg">
+            <a href="javascript:;" class="scroll-down-button">
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-5">
+        <div class="container">
+            <p class="desc">Với công nghệ vượt trội và tính năng khác biệt,</p>
+            <h2>
+                Thiết kế website bán hàng Bizweb giúp bạn <br class="hidden visible-sm"> bán hàng 24/7
+            </h2>
+            <div class="row hidden-xs">
+                <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12 block-info">
+                    <ul>
+                        <li class="first">
+                            <h3>Tích hợp phần mềm chatlive</h3>
+                            <p class="desc">
+                                Các website Bizweb được tích hợp sẵn sàng với các phần mềm live chat <br>
+                                hàng đầu như Zopim, Subiz ..., giúp chủ cửa hàng chat với khách hàng <br>
+                                ngay trên website bất cứ khi nào.
+                            </p>
+                        </li>
+                        <li class="second">
+                            <h3>Quy trình đặt hàng tự động</h3>
+                            <p class="desc">
+                                Khách hàng có thể tiến hành đặt hàng trên web bất cứ khi nào. Quy trình <br>
+                                đặt hàng tự động giúp khách hàng sở hữu món đồ ưa thích chỉ sau một <br>
+                                vài thao tác đơn giản mà không cần phải gọi điện hay nhắn tin cho chủ <br>
+                                shop.
+                            </p>
+                        </li>
+                        <li class="third">
+                            <h3>Ứng dụng Bizweb trên mobile</h3>
+                            <p class="desc">
+                                Với ứng dụng Bizweb trên iOS và Android, khi có đơn hàng hay tin nhắn từ <br>
+                                khách hàng, hệ thống sẽ gửi thông báo đến điện thoại của bạn ngay lập tức. <br>
+                                Ngoài ra bạn cũng có thể up sản phẩm mới trực tiếp từ điện thoại lên <br>
+                                website mà không cần thông qua máy tính.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 block-image hidden visible-lg">
+                    <div class="image-phone">
+                        <div class="bg-phone"></div>
+                        <img src="/Content/images/landing/thietkewebsitebanhang-block-5-icon-phone.png">
+                    </div>
+                    <div class="image-message">
+                        <div class="bg-message"></div>
+                        <img src="/Content/images/landing/thietkewebsitebanhang-block-5-icon-message.png">
+                    </div>
+                    <div class="image-email">
+                        <div class="bg-email"></div>
+                        <img src="/Content/images/landing/thietkewebsitebanhang-block-5-icon-email.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-mobile hidden visible-xs">
+                <div class="swiper-container swiper-container-horizontal">
+                    <div class="swiper-wrapper" style="transition-duration: 0;">
+                        <div class="swiper-slide swiper-slide-prev">
+                            <h3>Tích hợp phần mềm chatlive</h3>
+                            <p class="desc">
+                                Các website Bizweb được tích hợp sẵn sàng với các phần mềm live chat <br>
+                                hàng đầu như Zopim, Subiz ..., giúp chủ cửa hàng chat với khách hàng <br>
+                                ngay trên website bất cứ khi nào.
+                            </p>
+                            <div class="image-message">
+                                <div class="bg-message"></div>
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-5-icon-message.png">
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active">
+                            <h3>Quy trình đặt hàng tự động</h3>
+                            <p class="desc">
+                                Khách hàng có thể tiến hành đặt hàng trên web bất cứ khi nào. Quy trình <br>
+                                đặt hàng tự động giúp khách hàng sở hữu món đồ ưa thích chỉ sau một <br>
+                                vài thao tác đơn giản mà không cần phải gọi điện hay nhắn tin cho chủ <br>
+                                shop.
+                            </p>
+                            <div class="image-phone">
+                                <div class="bg-phone"></div>
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-5-icon-phone.png">
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next">
+                            <h3>Ứng dụng Bizweb trên mobile</h3>
+                            <p class="desc">
+                                Với ứng dụng Bizweb trên iOS và Android, khi có đơn hàng hay tin nhắn từ <br>
+                                khách hàng, hệ thống sẽ gửi thông báo đến điện thoại của bạn ngay lập tức. <br>
+                                Ngoài ra bạn cũng có thể up sản phẩm mới trực tiếp từ điện thoại lên <br>
+                                website mà không cần thông qua máy tính.
+                            </p>
+                            <div class="image-email">
+                                <div class="bg-email"></div>
+                                <img src="/Content/images/landing/thietkewebsitebanhang-block-5-icon-email.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Dùng thử miễn phí</a>
+            </div>
+            <div class="scroll-down hidden visible-lg">
+                <a href="javascript:;" class="scroll-down-button">
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-6">
+        <div class="container">
+            <h2>Tham khảo bí kíp thiết kế Website</h2>
+            <ul class="row">
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web phụ kiện điện thoại</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web bán đồng hồ</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web bán túi xách</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web bán giày dép</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web bán trang sức</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web nhà hàng</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web nội thất</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item">
+                    <a target="_blank" href="/">Thiết kế web du lịch</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden-sm">
+                    <a target="_blank" href="/">Thiết kế web thời trang</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web thương mại điện tử</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bất động sản</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web doanh nghiệp</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán đồ chơi</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán đồ ăn vặt</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán hoa</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán áo cưới</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán đồ bà bầu</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web khách sạn</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web Spa</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web dược phẩm</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán ô tô</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web văn phòng phẩm</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán thực phẩm sạch</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web giá rẻ</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web thủ công mỹ nghệ</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán đồ lưu niệm</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web đồ điện tử âm thanh</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán thú cưng</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán tranh</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán vé máy bay</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web tuyển dụng</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web bán mỹ phẩm</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web cửa hàng điện thoại</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web đồ gia dụng</a>
+                </li>
+                <li class="col-md-4 col-sm-6 landing-item hidden hidden-item">
+                    <a target="_blank" href="/">Thiết kế web đồ thể thao</a>
+                </li>
+            </ul>
+        </div>
+        <div class="view-more">
+            <a href="javascript:;">xem thêm  +</a>
+        </div>
+        <div class="hide-more hidden">
+            <a href="javascript:;">thu gọn  -</a>
+        </div>
+    </div>
+    <div class="thietkewebsitebanhang-block-7">
+        <div class="top-refer-website">
+            <div class="container">
+                <h2>Các website đẹp của khách hàng Bizweb</h2>
+                <div class="row hidden-xs">
+                    <div class="col-md-4 col-sm-6 refer-item">
+                        <div class="website-item">
+                            <div class="item-infomation">
+                                <div class="item-thumbnail">
+                                    <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                        <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/2/458411362ca610684db6401a6b096c0c.jpg" alt="sachdoanhnhan" class="item-img">
+                                    </a>
+                                </div>
+                                <div class="hidden-info">
+                                    <div class="description">
+                                        Sachdoanhnhan.vn luôn cập nhật những đầu sách mới nhất, chọn lọc những cuốn sách giá trị nhất để bổ sung cho một danh mục đa dạng, phong phú, chuyên sâu trong các lĩnh vực về kinh tế và quản trị kinh doanh như: sách Kinh tế học, sách kế toán, sách kinh doanh, sách marketing, sách tài chính, ...
+                                    </div>
+                                    <div class="view-zoom">
+                                        <a href="http://sachdoanhnhan.vn/" class="zoom" target="_blank" rel="nofollow">
+                                            <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://sachdoanhnhan.vn/">
+                                        </a>
+                                    </div>
+                                    <div class="view-detail">
+                                        <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                            Xem chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="website-name">
+                                <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                    sachdoanhnhan.vn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 refer-item">
+                        <div class="website-item">
+                            <div class="item-infomation">
+                                <div class="item-thumbnail">
+                                    <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                        <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/10/47b573f9624b8792cde0ce4f27c62d5e.png" alt="Trường mầm non quốc tế song ngữ O'Hana" class="item-img">
+                                    </a>
+                                </div>
+                                <div class="hidden-info">
+                                    <div class="description">
+                                        Được thành lập từ năm 2005, O'Hana tự hào là trường mầm non song ngữ cung cấp dịch vụ chăm sóc và giáo dục chất lượng tiêu chuẩn quốc tế hàng đầu tại Hà Nội với một chế độ chăm sóc kỹ lưỡng cùng giáo trình giảng dạy hoàn hảo.
+                                    </div>
+                                    <div class="view-zoom">
+                                        <a href="http://ohana.vn/" class="zoom" target="_blank" rel="nofollow">
+                                            <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://ohana.vn/">
+                                        </a>
+                                    </div>
+                                    <div class="view-detail">
+                                        <a href="http://ohana.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                            Xem chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="website-name">
+                                <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                    ohana.vn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 refer-item">
+                        <div class="website-item">
+                            <div class="item-infomation">
+                                <div class="item-thumbnail">
+                                    <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                        <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/11/34ee7e24aa519fd0ffd9aca85a209199.png" alt="Khu đô thị Vinhomes Riverside" class="item-img">
+                                    </a>
+                                </div>
+                                <div class="hidden-info">
+                                    <div class="description">
+                                        Vinhomes Riverside là một trong những khu đô thị hiện đại và đẳng cấp đầu tiên tại Việt Nam thiết kế theo mô hình thành phố Venice - Italia, tọa lạc tại cửa ngõ phía Đông Bắc thủ đô Hà Nội, cách hồ Hoàn Kiếm chưa đầy 6,5km, cách chân cầu Chương Dương 5,5km.
+                                    </div>
+                                    <div class="view-zoom">
+                                        <a href="http://vinlandlongbien.vn/" class="zoom" target="_blank" rel="nofollow">
+                                            <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://vinlandlongbien.vn/">
+                                        </a>
+                                    </div>
+                                    <div class="view-detail">
+                                        <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                            Xem chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="website-name">
+                                <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                    vinlandlongbien.vn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block-mobile hidden visible-xs">
+                    <div class="swiper-container swiper-container-horizontal">
+                        <div class="swiper-wrapper" style="transition-duration: 0;">
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/2/458411362ca610684db6401a6b096c0c.jpg" alt="sachdoanhnhan" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Sachdoanhnhan.vn luôn cập nhật những đầu sách mới nhất, chọn lọc những cuốn sách giá trị nhất để bổ sung cho một danh mục đa dạng, phong phú, chuyên sâu trong các lĩnh vực về kinh tế và quản trị kinh doanh như: sách Kinh tế học, sách kế toán, sách kinh doanh, sách marketing, sách tài chính, ...
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://sachdoanhnhan.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://sachdoanhnhan.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                            sachdoanhnhan.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/10/47b573f9624b8792cde0ce4f27c62d5e.png" alt="Trường mầm non quốc tế song ngữ O'Hana" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Được thành lập từ năm 2005, O'Hana tự hào là trường mầm non song ngữ cung cấp dịch vụ chăm sóc và giáo dục chất lượng tiêu chuẩn quốc tế hàng đầu tại Hà Nội với một chế độ chăm sóc kỹ lưỡng cùng giáo trình giảng dạy hoàn hảo.
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://ohana.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://ohana.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://ohana.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                            ohana.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/11/34ee7e24aa519fd0ffd9aca85a209199.png" alt="Khu đô thị Vinhomes Riverside" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Vinhomes Riverside là một trong những khu đô thị hiện đại và đẳng cấp đầu tiên tại Việt Nam thiết kế theo mô hình thành phố Venice - Italia, tọa lạc tại cửa ngõ phía Đông Bắc thủ đô Hà Nội, cách hồ Hoàn Kiếm chưa đầy 6,5km, cách chân cầu Chương Dương 5,5km.
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://vinlandlongbien.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://vinlandlongbien.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                            vinlandlongbien.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/2/458411362ca610684db6401a6b096c0c.jpg" alt="sachdoanhnhan" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Sachdoanhnhan.vn luôn cập nhật những đầu sách mới nhất, chọn lọc những cuốn sách giá trị nhất để bổ sung cho một danh mục đa dạng, phong phú, chuyên sâu trong các lĩnh vực về kinh tế và quản trị kinh doanh như: sách Kinh tế học, sách kế toán, sách kinh doanh, sách marketing, sách tài chính, ...
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://sachdoanhnhan.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://sachdoanhnhan.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                            sachdoanhnhan.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/10/47b573f9624b8792cde0ce4f27c62d5e.png" alt="Trường mầm non quốc tế song ngữ O'Hana" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Được thành lập từ năm 2005, O'Hana tự hào là trường mầm non song ngữ cung cấp dịch vụ chăm sóc và giáo dục chất lượng tiêu chuẩn quốc tế hàng đầu tại Hà Nội với một chế độ chăm sóc kỹ lưỡng cùng giáo trình giảng dạy hoàn hảo.
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://ohana.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://ohana.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://ohana.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                            ohana.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/11/34ee7e24aa519fd0ffd9aca85a209199.png" alt="Khu đô thị Vinhomes Riverside" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Vinhomes Riverside là một trong những khu đô thị hiện đại và đẳng cấp đầu tiên tại Việt Nam thiết kế theo mô hình thành phố Venice - Italia, tọa lạc tại cửa ngõ phía Đông Bắc thủ đô Hà Nội, cách hồ Hoàn Kiếm chưa đầy 6,5km, cách chân cầu Chương Dương 5,5km.
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://vinlandlongbien.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://vinlandlongbien.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                            vinlandlongbien.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/2/458411362ca610684db6401a6b096c0c.jpg" alt="sachdoanhnhan" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Sachdoanhnhan.vn luôn cập nhật những đầu sách mới nhất, chọn lọc những cuốn sách giá trị nhất để bổ sung cho một danh mục đa dạng, phong phú, chuyên sâu trong các lĩnh vực về kinh tế và quản trị kinh doanh như: sách Kinh tế học, sách kế toán, sách kinh doanh, sách marketing, sách tài chính, ...
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://sachdoanhnhan.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://sachdoanhnhan.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://sachdoanhnhan.vn/" target="_blank" rel="nofollow" title="sachdoanhnhan">
+                                            sachdoanhnhan.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/10/47b573f9624b8792cde0ce4f27c62d5e.png" alt="Trường mầm non quốc tế song ngữ O'Hana" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Được thành lập từ năm 2005, O'Hana tự hào là trường mầm non song ngữ cung cấp dịch vụ chăm sóc và giáo dục chất lượng tiêu chuẩn quốc tế hàng đầu tại Hà Nội với một chế độ chăm sóc kỹ lưỡng cùng giáo trình giảng dạy hoàn hảo.
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://ohana.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://ohana.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://ohana.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://ohana.vn/" target="_blank" rel="nofollow" title="Trường mầm non quốc tế song ngữ O'Hana">
+                                            ohana.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2">
+                                <div class="website-item">
+                                    <div class="item-infomation">
+                                        <div class="item-thumbnail">
+                                            <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                                <img src="https://www.bizweb.vn/Upload/ReferWebsites/2016/11/34ee7e24aa519fd0ffd9aca85a209199.png" alt="Khu đô thị Vinhomes Riverside" class="item-img">
+                                            </a>
+                                        </div>
+                                        <div class="hidden-info">
+                                            <div class="description">
+                                                Vinhomes Riverside là một trong những khu đô thị hiện đại và đẳng cấp đầu tiên tại Việt Nam thiết kế theo mô hình thành phố Venice - Italia, tọa lạc tại cửa ngõ phía Đông Bắc thủ đô Hà Nội, cách hồ Hoàn Kiếm chưa đầy 6,5km, cách chân cầu Chương Dương 5,5km.
+                                            </div>
+                                            <div class="view-zoom">
+                                                <a href="http://vinlandlongbien.vn/" class="zoom" target="_blank" rel="nofollow">
+                                                    <img src="/Content/images/referwebsite/icon-view-zoom.png" alt="http://vinlandlongbien.vn/">
+                                                </a>
+                                            </div>
+                                            <div class="view-detail">
+                                                <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" class="btn-registration">
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="website-name">
+                                        <a href="http://vinlandlongbien.vn/" target="_blank" rel="nofollow" title="Khu đô thị Vinhomes Riverside">
+                                            vinlandlongbien.vn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a class="btn-registration" href=@Url.Action("WarehouseInterface","Home")" target="_blank" >Xem thêm website khác</a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var referSwiper = new Swiper('.top-refer-website .swiper-container', {
+                slidesPerView: 'auto',
+                paginationClickable: true,
+                spaceBetween: 30,
+                autoplay: '5000',
+                loop: true
+            });
+        </script>
+    </div>
+    <div class="thietkewebsitebanhang-block-8">
+        <div class="customer-comment-landing">
+            <div class="container">
+                <h2>23,000+ khách hàng nói về Bizweb</h2>
+                <p class="desc">Sự hài lòng của khách hàng chính là thành công lớn nhất của chúng tôi</p>
+                <div class="col-md-8 col-md-offset-2 list-comment">
+                    <div class="swiper-container swiper-container-horizontal">
+                        <div class="swiper-wrapper" style="transform: translate3d(-2190px, 0, 0); transition-duration: 0;">
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" style="width: 730px;">
+                                <div class="comment-info">
+                                    <div class="image-thumb">
+                                        <img src="/Content/images/newindex/gento-customer.png">
+                                    </div>
+                                    <div class="person-info">
+                                        Ông: Nguyễn Minh Đức <a href="http://gento.vn/" target="_blank" rel="nofollow">- http://gento.vn/ -</a>
+                                    </div>
+                                    <div class="comment-content">
+                                        Website Bizweb rất dễ sử dụng. Tuy không phải là một lập trình viên chuyên nghiệp nhưng tôi vẫn có thể tự quản trị website của mình.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="0" style="width: 730px;">
+                                <div class="comment-info">
+                                    <div class="image-thumb">
+                                        <img src="/Content/images/newindex/bee-customer.png">
+                                    </div>
+                                    <div class="person-info">
+                                        Bà: Tống Ngọc Ánh <a href="https://www.beemart.vn/" target="_blank" rel="nofollow">- https://www.beemart.vn/ -</a>
+                                    </div>
+                                    <div class="comment-content">
+                                        Tạo website với Bizweb giúp chúng tôi thay đổi cách bán hàng, không chỉ bán hàng trực tiếp như trước đây mà còn bán trên website, Facebook và Sendo nữa. Khách hàng cũng nhiều hơn!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 730px;">
+                                <div class="comment-info">
+                                    <div class="image-thumb">
+                                        <img src="/Content/images/newindex/kangaroo-customer.png">
+                                    </div>
+                                    <div class="person-info">
+                                        Chị: Ngô Tuyết Nhung <a href="http://www.kangaroohanoi.vn/" target="_blank" rel="nofollow">- http://www.kangaroohanoi.vn/ -</a>
+                                    </div>
+                                    <div class="comment-content">
+                                        Là đối tác lâu năm của Bizweb, tôi nhận thấy một phong cách làm việc chuyên nghiệp, nhiệt tình ở các bạn. Chúc Bizweb sẽ ngày một phát triển hơn nữa.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 730px;">
+                                <div class="comment-info">
+                                    <div class="image-thumb">
+                                        <img src="/Content/images/newindex/gento-customer.png">
+                                    </div>
+                                    <div class="person-info">
+                                        Ông: Nguyễn Minh Đức <a href="http://gento.vn/" target="_blank" rel="nofollow">- http://gento.vn/ -</a>
+                                    </div>
+                                    <div class="comment-content">
+                                        Website Bizweb rất dễ sử dụng. Tuy không phải là một lập trình viên chuyên nghiệp nhưng tôi vẫn có thể tự quản trị website của mình.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0" style="width: 730px;">
+                                <div class="comment-info">
+                                    <div class="image-thumb">
+                                        <img src="/Content/images/newindex/bee-customer.png">
+                                    </div>
+                                    <div class="person-info">
+                                        Bà: Tống Ngọc Ánh <a href="https://www.beemart.vn/" target="_blank" rel="nofollow">- https://www.beemart.vn/ -</a>
+                                    </div>
+                                    <div class="comment-content">
+                                        Tạo website với Bizweb giúp chúng tôi thay đổi cách bán hàng, không chỉ bán hàng trực tiếp như trước đây mà còn bán trên website, Facebook và Sendo nữa. Khách hàng cũng nhiều hơn!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
+                    <div class="swiper-button-prev hidden-sm hidden-xs"></div>
+                    <div class="swiper-button-next hidden-sm hidden-xs"></div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var blockComment = new Swiper('.customer-comment-landing .swiper-container', {
+                pagination: '.customer-comment-landing .swiper-pagination',
+                paginationClickable: true,
+                nextButton: '.customer-comment-landing .swiper-button-next',
+                prevButton: '.customer-comment-landing .swiper-button-prev',
+                autoplay: '5000',
+                loop: true
+            });
+        </script>
+    </div>
+    <div class="thietkewebsitebanhang-block-9">
+        <div class="block-register">
+            <div class="container">
+                <h3>ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+                <span class="sub-text">สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้</span>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 button-block">
+                    <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+ {
+    <script type="text/javascript">
+        var flagTop = false;
+        var flagBot = false;
+
+        $(function () {
+            $(".thietkewebsitebanhang-block-6 .view-more").click(function () {
+                $(".thietkewebsitebanhang-block-6 li").removeClass("hidden");
+                $(".thietkewebsitebanhang-block-6 .hide-more").removeClass("hidden");
+                $(".thietkewebsitebanhang-block-6 .view-more").addClass("hidden");
+                $(".thietkewebsitebanhang-block-6 li:nth-of-type(9)").removeClass("hidden-sm");
+            });
+
+            $(".thietkewebsitebanhang-block-6 .hide-more").click(function () {
+                $(".thietkewebsitebanhang-block-6 li.hidden-item").addClass("hidden");
+                $(".thietkewebsitebanhang-block-6 .hide-more").addClass("hidden");
+                $(".thietkewebsitebanhang-block-6 .view-more").removeClass("hidden");
+                $(".thietkewebsitebanhang-block-6 li:nth-of-type(9)").addClass("hidden-sm");
+            });
+
+            $(".block-mobile .block-info .title").each(function () {
+                $(this).click(function () {
+                    $(".block-mobile .block-info .title .fa-plus").removeClass("hidden");
+                    $(".block-mobile .block-info .title .fa-minus").removeClass("hidden").addClass("hidden");
+                    $(".block-mobile .block-info .content").removeClass("hidden").addClass("hidden");
+
+                    $(this).find(".fa-plus").toggleClass("hidden");
+                    $(this).find(".fa-minus").toggleClass("hidden");
+                    $(this).parent().find(".content").toggleClass("hidden");
+                });
+            });
+
+            $(".thietkewebsitebanhang-block-2 .scroll-down-button").click(function () {
+                $('html, body').animate({
+                    scrollTop: $(".thietkewebsitebanhang-block-3").offset().top
+                }, 500);
+            });
+
+            $(".thietkewebsitebanhang-block-4 .scroll-down-button").click(function () {
+                $('html, body').animate({
+                    scrollTop: $(".thietkewebsitebanhang-block-5").offset().top
+                }, 500);
+            });
+
+            $(".thietkewebsitebanhang-block-5 .scroll-down-button").click(function () {
+                $('html, body').animate({
+                    scrollTop: $(".thietkewebsitebanhang-block-6").offset().top
+                }, 500);
+            });
+        });
+
+        if ($(window).width() < 1199) {
+            var blockSwiper1 = new Swiper('.thietkewebsitebanhang-block-1 .swiper-container', {
+                pagination: '.thietkewebsitebanhang-block-1 .swiper-pagination',
+                slidesPerView: 1,
+                paginationClickable: true,
+                nextButton: '.thietkewebsitebanhang-block-1 .swiper-button-next',
+                prevButton: '.thietkewebsitebanhang-block-1 .swiper-button-prev',
+                autoplay: '20000',
+                loop: true
+            });
+        }
+        else {
+            var blockSwiper1 = new Swiper('.thietkewebsitebanhang-block-1 .swiper-container', {
+                pagination: '.thietkewebsitebanhang-block-1 .swiper-pagination',
+                slidesPerView: 2,
+                paginationClickable: true,
+                nextButton: '.thietkewebsitebanhang-block-1 .swiper-button-next',
+                prevButton: '.thietkewebsitebanhang-block-1 .swiper-button-prev',
+                autoplay: '20000',
+                loop: true,
+                preventClicks: false,
+                preventClicksPropagation: false,
+                simulateTouch: false
+            });
+        }
+
+        var blockSwiper5 = new Swiper('.thietkewebsitebanhang-block-5 .swiper-container', {
+            pagination: '.thietkewebsitebanhang-block-5 .swiper-pagination',
+            slidesPerView: 1,
+            paginationClickable: true,
+            autoplay: '5000'
+        });
+
+        var blockSwiper2 = new Swiper('.thietkewebsitebanhang-block-2 .swiper-container', {
+            pagination: '.thietkewebsitebanhang-block-2 .swiper-pagination',
+            slidesPerView: 1,
+            paginationClickable: true,
+            nextButton: '.thietkewebsitebanhang-block-2 .swiper-button-next',
+            prevButton: '.thietkewebsitebanhang-block-2 .swiper-button-prev',
+            loop: true,
+            autoplay: '20000',
+            preventClicks: false,
+            preventClicksPropagation: false,
+            simulateTouch: false
+        });
+
+        var $animation_elements = $('.animation-element');
+        var $window = $(window);
+
+        function check_if_in_view() {
+            var window_height = $window.height();
+            var window_top_position = $window.scrollTop();
+            var window_bottom_position = (window_top_position + window_height);
+
+            $.each($animation_elements, function () {
+                var $element = $(this);
+                var element_height = $element.outerHeight();
+                var element_top_position = $element.offset().top;
+                var element_bottom_position = (element_top_position + element_height);
+
+                //check to see if this current container is within viewport
+                if ((element_bottom_position >= window_top_position) &&
+                    (element_top_position <= window_bottom_position)) {
+                    $element.addClass('in-view');
+                } else {
+                    $element.removeClass('in-view');
+                }
+            });
+        }
+
+        $window.on('scroll resize', check_if_in_view);
+        $window.trigger('scroll');
+    </script>
+}

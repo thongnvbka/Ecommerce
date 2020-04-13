@@ -1,0 +1,467 @@
+﻿@model DeliveryMeta
+
+<div id="DeliveryUpdateModalBinding">
+    <div id="moneyRechargeModal" class="modal fade modal-dialog" data-backdrop="static" tabindex="-1" data-focus-on="input:first" role="dialog">
+        <form data-bind="submit: submitMoneyRecharge">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3><i class="fa fa-money"></i> Recharge and complete the delivery "<strong data-bind="text: 'D' + code()"></strong>"</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="moneyRechargeForComplete">Amount</label>
+                    <div class="input-group">
+                        <input data-bind="value: rechargeMoney, valueUpdate:'keydown'" id="moneyRechargeForComplete" type="text" class="form-control decimal text-right" placeholder="Enter the deposit amount">
+                        <span class="input-group-addon" id="basic-addon2">Baht</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-bind="disable: isSubmiting, click: submitMoneyRecharge, " type="submit" class="btn btn-primary">
+                    <i data-bind="attr: {class: isSubmiting() ? 'fa fa-spinner fa-pulse' : 'fa fa-money'}" class="fa fa-money"></i>
+                    Recharge and complete the form
+                </button>
+                <button type="button" data-dismiss="modal" class="btn">Not</button>
+            </div>
+        </form>
+    </div>
+
+<div id="DeliveryUpdateModal" class="modal fade modal-dialog modal-p90" tabindex="-1" data-backdrop="static" role="dialog">
+<div class="modal-body">
+@Html.AntiForgeryToken()
+<div class="row">
+    <div class="col-xs-9">
+        <h2 class="order-header">
+            <i class="fa fa-globe"></i> Code Transition: <strong data-bind="text: 'D' + code()" style="color: red"></strong>
+            <!-- ko if: deliveryStatusGroup[status() + ''] && deliveryStatusGroup[status() + ''][0]-->
+            <span data-bind="text: deliveryStatusGroup[status() + ''][0].name, css: statusClass" class="label label-warning"></span>
+            <!-- /ko -->
+        </h2>
+    </div>
+    <div class="col-xs-3">
+        <button type="button" class="btn btn-default pull-right ml15" data-dismiss="modal"><b>x</b></button>
+        <h2 class="order-header pull-right">
+            <small data-bind="text: 'Start Date :' + moment(createdTime()).format('DD/MM/YYYY')" class="pull-right"></small><br>
+            <!-- ko if: status() === 0 -->
+            <small class="pull-right">'Date of approval: --/--/----</small>
+            <!-- /ko -->
+            <!-- ko if: status() === 1 -->
+            <small class="pull-right">Date of approval: <span data-bind="text: moment(approvelTime()).format('DD/MM/YYYY')"></span></small>
+            <!-- /ko -->
+            <!-- ko if: status() === 2 -->
+            <small class="pull-right">Date of delivery: <span data-bind="text: moment(shipperTime()).format('DD/MM/YYYY')"></span></small>
+            <!-- /ko -->
+            <!-- ko ifnot: status() === 0 || status() === 1 || status() === 2 -->
+            <small class="pull-right">Finish day: <span data-bind="text: moment(expertiseTime()).format('DD/MM/YYYY')"></span></small>
+            <!-- /ko -->
+        </h2>
+    </div>
+</div>
+<div class="row importwarehouse mb10 p0">
+    <div class="col-md-3">
+        <strong class="strong-title">staffs create</strong>
+        <div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th class="w-40"><i class="fa fa-user"></i></th>
+                    <td>
+
+                        <span data-bind="text: createdUserFullName"></span> (<span data-bind="text: createdUserUserName"></span>)
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-home"></i></th>
+                    <td data-bind="text: createdOfficeName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-male"></i></th>
+                    <td data-bind="text: createdUserTitleName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-clock-o"></i></th>
+                    <td data-bind="text: moment(createdTime()).format('DD/MM/YYYY HH:ss')"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <strong class="strong-title">Staff review</strong>
+        <div>
+            <!-- ko if: approvelUserId() != null -->
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th class="w-40"><i class="fa fa-user"></i></th>
+                    <td>
+                        <span data-bind="text: approvelFullName"></span> (<span data-bind="text: approvelUserUserName"></span>)
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-home"></i></th>
+                    <td data-bind="text: approvelOfficeName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-male"></i></th>
+                    <td data-bind="text: approvelUserTitleName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-clock-o"></i></th>
+                    <td data-bind="text: moment(approvelTime()).format('DD/MM/YYYY HH:ss')"></td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="col-md-3">
+        <strong class="strong-title">Shipper</strong>
+        <div>
+            <table class="table">
+                <tbody>
+                @if (CheckPermision(EnumPage.Delivery, EnumAction.Add))
+                {
+                    <!-- ko if: shipperUserId() != null || (status() != @((byte) DeliveryStatus.Complete) && status() != @((byte) DeliveryStatus.Cancel) && status() != @((byte) DeliveryStatus.New)) -->
+                    <tr>
+                        <th class="w-40"><i class="fa fa-user"></i></th>
+                        <td>
+
+                            <!-- ko if: status() != @((byte) DeliveryStatus.Complete) && status() != @((byte) DeliveryStatus.Cancel) && status() != @((byte) DeliveryStatus.New) -->
+                            <suggetion-staff-input-component params="{prefix: 'implementers', userName: shipperUserUserName, fullName: shipperFullName, text: 'Choose shipper', callback: addShipper}"></suggetion-staff-input-component>
+                            <!-- /ko -->
+                            <!-- ko if: shipperUserId() != null && (status() == @((byte) DeliveryStatus.Complete) || status() == @((byte) DeliveryStatus.Cancel) || status() == @((byte) DeliveryStatus.New))-->
+                            <span data-bind="text: shipperFullName"></span> (<span data-bind="text: shipperUserUserName"></span>)
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                }
+                else
+                {
+                    <!-- ko if: shipperUserId() != null -->
+                    <tr>
+                        <th class="w-40"><i class="fa fa-user"></i></th>
+                        <td>
+                            <span data-bind="text: shipperFullName"></span> (<span data-bind="text: shipperUserUserName"></span>)
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                }
+
+                <!-- ko if: shipperUserId() != null -->
+                <tr>
+                    <th><i class="fa fa-home"></i></th>
+                    <td data-bind="text: shipperOfficeName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-male"></i></th>
+                    <td data-bind="text: shipperUserTitleName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-clock-o"></i></th>
+                    <td data-bind="text: moment(shipperTime()).format('DD/MM/YYYY HH:ss')"></td>
+                </tr>
+                <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <strong class="strong-title">Staff completed</strong>
+        <div>
+            <!-- ko if: expertiseUserId() != null -->
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th class="w-40"><i class="fa fa-user"></i></th>
+                    <td>
+                        <span data-bind="text: expertiseUserFullName"></span> (<span data-bind="text: expertiseUserUserName"></span>)
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-home"></i></th>
+                    <td data-bind="text: expertiseOfficeName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-male"></i></th>
+                    <td data-bind="text: expertiseUserTitleName"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-clock-o"></i></th>
+                    <td data-bind="text: moment(expertiseTime()).format('DD/MM/YYYY HH:ss')"></td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<div class="row importwarehouse mb10 pb0">
+    <div class="col-md-3">
+        <strong class="strong-title">Customer information</strong>
+        <div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th class="w-40"><i class="fa fa-user"></i></th>
+                    <td>
+                        <span data-bind="text: customerVipName" class="label label-danger"></span>
+                        <span data-bind="text: customerFullName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-envelope-o"></i></th>
+                    <td data-bind="text: customerEmail"></td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-phone"></i></th>
+                    <td data-bind="text: customerPhone">0987123467</td>
+                </tr>
+                <tr>
+                    <th><i class="fa fa-map-marker"></i></th>
+                    <td data-bind="text: customerAddress"></td>
+                </tr>
+                    <tr>
+                        <th><i class="fa fa-home"></i></th>
+                        <td data-bind="text: warehouseName"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <strong class="strong-title">Total</strong>
+        <div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td style="width: 50%">Total amount of money:</td>
+                    <td class="text-right">
+                        <b data-bind="text: formatNumberic(total())"></b> (Baht)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Deposited amount :</td>
+                    <td class="text-right">
+                        <b data-bind="text: formatNumberic(pricePayed())"></b> (Baht)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Missing :</td>
+                    <td class="text-right">
+                        <b data-bind="text: formatNumberic(debit())"></b> (Baht)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Rollover amount:</td>
+                    <td class="text-right">
+                        <b data-bind="text: formatNumberic(debitPre())"></b> (Baht)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Account receivable:</td>
+                    <td class="text-right">
+                        <b data-bind="text: formatNumberic(receivable())"></b> (Baht)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <strong class="strong-title">Money details</strong>
+        <div class="row">
+            <div class="col-md-4 mb20">
+                <div>Finish:</div>
+                <div class="text-right">
+                    <b data-bind="text: formatNumberic(priceOrder())"></b> (Currency)
+                </div>
+            </div>
+            <div class="col-md-4 mb20">
+                <div>transport fee:</div>
+                <div class="text-right">
+                    <b data-bind="text: formatNumberic(priceWeight())"></b> (Currency)
+                </div>
+            </div>
+            <div class="col-md-4 mb20">
+                <div>Wooden packaging fee:</div>
+                <div class="text-right">
+                    <b data-bind="text: formatNumberic(pricePacking())"></b> (Currency)
+                </div>
+            </div>
+            <div class="col-md-4 mb20">
+                <div>Incurred fee:</div>
+                <div class="text-right">
+                    <b data-bind="text: formatNumberic(priceOther())"></b> (Currency)
+                </div>
+            </div>
+            <div class="col-md-4 mb20">
+                <div>Warehouse storage fee:</div>
+                <div class="text-right">
+                    <b data-bind="text: formatNumberic(priceStored())"></b> (Currency)
+                </div>
+            </div>
+            <div class="col-md-4 mb20">
+                <div>Shipping fee:</div>
+                <div class="text-right">
+                    <b data-bind="text: formatNumberic(priceShip())"></b> (Currency)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <strong class="strong-title">Note</strong>
+        <div data-bind="text: note"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <strong class="strong-title">Package details</strong>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center w50">#</th>
+                    <th class="text-center">Package box ID</th>
+                    <th class="text-center">Transport code</th>
+                    <th class="text-center">Package sack ID</th>
+                    <th class="text-center">Invoice </th>
+                    <th class="text-center">Weight</th>
+                    <th class="text-center">Weight converted (kg)</th>
+                    <th class="text-center">Total (kg)</th>
+                    <th class="text-center">Price (Baht)</th>
+                    <th class="text-center">Finish (Baht)</th>
+                    <th class="text-center">Deposited amount (Baht)</th>
+                    <th class="text-center">% Discount/<br />Shipping rate (by weight) (Baht)</th>
+                    <th class="text-center">Wooden packaging fee (Baht)</th>
+                    <th class="text-center">Incurred fee (Baht)</th>
+                    <th class="text-center">Shipping fee (Baht)</th>
+                    <th class="text-center">Warehouse storage fee (Baht)</th>
+                    <th class="text-center">Layout</th>
+                </tr>
+                </thead>
+                <!-- ko if: packages().length === 0 || isLoading() -->
+                <tbody>
+                <tr>
+                    <td colspan="14" class="text-center">
+                        <!-- ko if: isLoading() -->
+                        <i class="fa fa-spinner fa-pulse"></i> Loading...
+                        <!-- /ko -->
+                        <!-- ko if: packages().length === 0 -->
+                   No Packge
+                        <!-- /ko -->
+                    </td>
+                </tr>
+                </tbody>
+                <!-- /ko -->
+                <!-- ko ifnot: packages().length === 0 || isLoading() -->
+                <tbody data-bind="template: {name: 'deliveryModelPackageTemplate', foreach: packages}"></tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="5" class="text-right">Total: </th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'weight'), 'N2')" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'weightConverted'), 'N2')" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'weightActual'), 'N2')" class="text-right"></th>
+                    <th class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(_.filter(packages(), function(it){ return it.isFirst; }), 'priceOrder'))" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(_.filter(packages(), function(it){ return it.isFirst; }), 'pricePayed'))" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'priceWeight'))" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'pricePacking'))" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'priceOther'))" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'priceShip'))" class="text-right"></th>
+                    <th data-bind="text: formatNumberic(_.sumBy(packages(), 'priceStored'))" class="text-right"></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </tfoot>
+                <!-- /ko -->
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal-footer">
+    @if (CheckPermision(EnumPage.Delivery, EnumAction.Approvel))
+    {
+        <!-- ko if: status() === @((byte) DeliveryStatus.Approved) -->
+        <button data-bind="disable: isSubmiting() || formatNumberic(receivable()) != 0 || status() === @((byte) DeliveryStatus.Complete), click: completed" class="btn btn-info" type="submit">
+            <i data-bind="attr: {class: isSubmiting() ? 'fa fa-spinner fa-pulse' : 'fa fa-check'}" class="fa fa-check"></i>
+            <span>Hoàn thành phiếu</span>
+        </button>
+        @*<button data-bind="disable: isSubmiting() || formatNumberic(receivable()) == 0 || status() === @((byte) DeliveryStatus.Complete), click: rechargeForComplete" class="btn btn-primary" type="submit">
+        <i data-bind="attr: {class: isSubmiting() ? 'fa fa-spinner fa-pulse' : 'fa fa-money'}" class="fa fa-money"></i>
+        <span>Nạp tiền & Hoàn thành phiếu</span>
+    </button>*@
+        <button data-bind="disable: isSubmiting() || formatNumberic(receivable()) == 0 || status() === @((byte) DeliveryStatus.Complete), click: deductForComplete" class="btn btn-success" type="submit">
+            <i data-bind="attr: {class: isSubmiting() ? 'fa fa-spinner fa-pulse' : 'fa fa-minus-circle'}" class="fa fa-minus-circle"></i>
+            <span>Subtract & Complete the coupon</span>
+        </button>
+        <!-- /ko -->
+    }
+    <!-- ko if: status() !== @((byte) DeliveryStatus.New) -->
+    <!-- Single button -->
+    <div class="btn-group dropup">
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-print"></i> Print coupon <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+            <li><a data-bind="click: print.bind($data, 1)" href="javascript:;">Point 1 (Warehouse storage)</a></li>
+            <li><a data-bind="click: print.bind($data, 2)" href="javascript:;">Point 2 (Accountant)</a></li>
+            <li><a data-bind="click: print.bind($data, 3)" href="javascript:;">Point 3 (Customer)</a></li>
+        </ul>
+    </div>
+    <!-- /ko -->
+    @if (CheckPermision(EnumPage.Delivery, EnumAction.Approvel))
+    {
+        <!-- ko if: status() === @((byte) DeliveryStatus.New) -->
+        <button data-bind="disable: isSubmiting, click: approvel" class="btn btn-info" type="submit">
+            <i data-bind="attr: {class: isSubmiting() ? 'fa fa-spinner fa-pulse' : 'fa fa-check'}" class="fa fa-check"></i>
+            <span>Validate votes</span>
+        </button>
+        <!-- /ko -->
+    }
+    <a class="btn btn-default" data-dismiss="modal">Close</a>
+</div>
+</div>
+
+@Html.Partial("_DeliveryPrintModal")
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var hasUpdateDelivery = @(CheckPermision(EnumPage.Delivery, EnumAction.Update) ? "true" : "false");
+    </script>
+    <script id="deliveryModelPackageTemplate" type="text/template">
+            <tr>
+                <td data-bind="text: $index() + 1" class="text-center"></td>
+                <td data-bind="text: 'P'+packageCode" class="text-center"></td>
+                <td data-bind="text: transportCode" class="text-center"></td>
+                <td data-bind="text: 'B'+walletCode" class="text-center"></td>
+                <!-- ko if: isFirst -->
+                <td data-bind="text: ReturnCode(orderCode), attr: {rowspan: totalPackageNo}" class="text-center"></td>
+                <!-- /ko -->
+                <td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(weightConverted, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(weightActual, 'N2')" class="text-right"></td>
+                <td data-bind="text: formatNumberic(price)" class="text-right"></td>
+                <!-- ko if: isFirst -->
+                <td data-bind="text: formatNumberic(priceOrder), attr: {rowspan: totalPackageNo}" class="text-right"></td>
+                <td data-bind="text: formatNumberic(pricePayed), attr: {rowspan: totalPackageNo}" class="text-right"></td>
+                <!-- /ko -->
+                <td class="text-right">
+                    -<span data-bind="text: formatNumberic(shipDiscount, 'N2')"></span>%
+                    <br />
+                    <span data-bind="text: formatNumberic(priceWeight)"></span>
+                </td>
+                <td data-bind="text: formatNumberic(pricePacking)" class="text-right"></td>
+                <td data-bind="text: formatNumberic(priceOther)" class="text-right"></td>
+                <td data-bind="text: formatNumberic(priceShip)" class="text-right"></td>
+                <td data-bind="text: formatNumberic(priceStored)" class="text-right"></td>
+                <td data-bind="text: layoutName" class="text-center"></td>
+            </tr>
+        </script>
+}
+</div>
+

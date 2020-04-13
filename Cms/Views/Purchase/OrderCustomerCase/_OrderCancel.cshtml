@@ -1,0 +1,22 @@
+﻿<div id="orderCloseModal" class="modal fade modal-dialog modal-p40" tabindex="-1" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-danger"><b>Cancel order: <span data-bind="text: reasonCode()"></span></b></h4>
+    </div>
+    <div class="modal-body">
+        <textarea data-bind="value: reasonNote" rows="4" class="form-control" required placeholder="Enter reason to cancel orders"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button data-bind="click: submitCancelOrder, enable: isSubmit" type="button" class="btn btn-primary">
+            <!-- ko if: isSubmit()-->
+            <i class="fa fa-check"></i>
+            <!-- /ko -->
+            <!-- ko if: !isSubmit()-->
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <!-- /ko -->
+            Confirm
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+

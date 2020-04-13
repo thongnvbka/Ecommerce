@@ -1,0 +1,513 @@
+﻿@model UserMeta
+@{
+    var groupPermission = new List<SelectListItem> {new SelectItem() {Text = "Select access permission", Value = "", Selected = true}};
+    groupPermission.AddRange((List<SelectListItem>)ViewBag.GroupPermission);
+
+    var listAccSub = new List<SelectListItem> { new SelectItem() { Text = "Select type of subject", Value = "", Selected = true } };
+    listAccSub.AddRange((List<SelectListItem>)ViewBag.ListAccSub);
+}
+<div class="form-body">
+<h4 class="form-section mt0 mb10">Account management </h4>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="media">
+                <div class="media-left">
+                    <a href="javascript:;">
+                        @*<img id="imgAvatar" alt="Avatar" class="media-object" src="@(Model == null ? "/content/dist/img/user2-160x160.jpg": string.Format("/images/{0}_50x50_1", Model.Avatar))" style="width: 50px;">*@
+                    </a>
+                    @Html.HiddenFor(x=> x.Avatar)
+                    @Html.HiddenFor(x=> x.Id)
+                </div>
+                <div class="media-body">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <span class="btn btn-primary btn-file">
+                                <i id="loadingUpload" class="fa fa-spinner fa-pulse" style="display: none;"></i>
+                                <span class="fileinput-new"> Choose photo </span>
+                                <span class="fileinput-exists"> Change </span>
+                                <input id="FlieuploadAvatar" name="" type="file">
+                            </span>
+                        <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Account <span class="required">*</span></label>
+            @Html.TextBoxFor(x => x.UserName, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.UserName)
+        </div>
+    </div>
+    @if (Model == null || Model.Id <= 0)
+    {
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Password <span class="required">*</span></label>
+                @Html.TextBoxFor(x => x.Password, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Last name <span class="required">*</span></label>
+            @Html.TextBoxFor(x => x.LastName, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.LastName)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Middle name</label>
+            @Html.TextBoxFor(x => x.MidleName, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.MidleName)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">First name <span class="required">*</span></label>
+            @Html.TextBoxFor(x => x.FirstName, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.FirstName)
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label class="control-label">@*Unit*@Office <span class="required">*</span></label>
+            <div id="staff-modal-office-tree"></div>
+            @Html.HiddenFor(x=> x.OfficeId)
+            @Html.ValidationMessageFor(x => x.OfficeId)
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label class="control-label">Position <span class="required">*</span></label>
+            @Html.DropDownListFor(x => x.TitleId, new List<SelectListItem>()
+            {
+                new SelectItem() { Text = "Choose title", Value = "", Selected = true}
+            }, new Dictionary<string, object>()
+            {
+                {"class", "form-control" }
+            })
+            @Html.ValidationMessageFor(x => x.TitleId)
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label class="control-label">Rank <span class="required">*</span></label>
+            @Html.DropDownListFor(x => x.Type, new List<SelectListItem>()
+            {
+                new SelectItem() { Text =  "Staff", Value = "0", Selected = true},
+                new SelectItem() { Text = "Head", Value = "1"},
+                new SelectItem() { Text = "Manager", Value = "2"},
+                new SelectItem() { Text = "Shipper", Value = "3"},
+                new SelectItem() { Text = "Special staff", Value = "4"}
+            }, new Dictionary<string, object>()
+            {
+                {"class", "form-control" }
+            })
+            @Html.ValidationMessageFor(x => x.Type)
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label class="control-label">Access permission</label>
+            @Html.DropDownListFor(x => x.GroupPermisionId, groupPermission, new Dictionary<string, object>()
+            {
+                {"class", "form-control" }
+            })
+            @Html.ValidationMessageFor(x => x.GroupPermisionId)
+        </div>
+    </div>
+</div>
+<h4 class="form-section mt0 mb10">Staff</h4>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Status <span class="required">*</span></label>
+            @Html.DropDownListFor(x => x.Status, new List<SelectListItem>()
+            {
+                new SelectItem() { Text = "Probation", Value = "0" },
+                new SelectItem() { Text = "Normal", Value = "1", Selected = true},
+                new SelectItem() { Text = "Sick leave", Value = "2" },
+                new SelectItem() { Text = "Holiday leave", Value = "3" },
+                new SelectItem() { Text = "Maternity leave", Value = "4" },
+                new SelectItem() { Text = "Resignation", Value = "5" },
+                new SelectItem() { Text = "Retired", Value = "6" }
+            }, new Dictionary<string, object>()
+            {
+                {"class", "form-control" }
+            })
+            @Html.ValidationMessageFor(x => x.Status)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Starting date</label>
+            @Html.TextBoxFor(x => x.StartDate, "{0:dd/MM/yyyy}", new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.StartDate)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Email <span class="required">*</span></label>
+            @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Birthday</label>
+            @Html.TextBoxFor(x => x.Birthday, "{0:dd/MM/yyyy}", new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.Birthday)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Phone</label>
+            @Html.TextBoxFor(x => x.Phone, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.Phone)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Mobile phone</label>
+            @Html.TextBoxFor(x => x.Mobile, new Dictionary<string, object>
+            {
+                {"class", "form-control"}
+            })
+            @Html.ValidationMessageFor(x => x.Mobile)
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Gender</label>
+            @Html.DropDownListFor(x => x.Gender, new List<SelectListItem>()
+            {
+                new SelectItem() { Text = "Male", Value = "1", Selected = true },
+                new SelectItem() { Text = "Female", Value = "0"},
+                new SelectItem() { Text = "Other", Value = "2" },
+            }, new Dictionary<string, object>()
+            {
+                {"class", "form-control" }
+            })
+            @Html.ValidationMessageFor(x => x.Status)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="control-label">Type of subject <span class="required">*</span></label>
+            @Html.DropDownListFor(x => x.TypeId, listAccSub, new Dictionary<string, object>()
+            {
+                {"class", "form-control" }
+            })
+            @Html.ValidationMessageFor(x => x.TypeId)
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <label class="control-label"></label>
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(x => x.IsCompany) @*Company's sales Staff*@Company's sales Staff
+            </label>
+        </div>
+    </div>
+    
+</div>
+@*<div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Identification (ID) card number</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Ngày cấp</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Nơi cấp</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Số TKNH</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Bank</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Chi nhánh</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Mỗ số thuế</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Tình trạng Hôn nhân</label>
+                <select class="form-control">
+                    <option>Chưa kết hôn</option>
+                    <option>Đã kết hôn</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Quốc tịch</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label">Dân tộc</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+    </div>
+    <h4 class="form-section mt0 mb10">Address</h4>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Nguyên quán</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Tỉnh/TP</label>
+                <select class="form-control">
+                    <option>Chọn Tỉnh/TP</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Quận/Huyện</label>
+                <select class="form-control">
+                    <option>Chọn Quận/Huyện</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Thường trú</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Tỉnh/TP</label>
+                <select class="form-control">
+                    <option>Chọn Tỉnh/TP</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Quận/Huyện</label>
+                <select class="form-control">
+                    <option>Chọn Quận/Huyện</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Địa chỉ hiện tại</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Tỉnh/TP</label>
+                <select class="form-control">
+                    <option>Chọn Tỉnh/TP</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label">Quận/Huyện</label>
+                <select class="form-control">
+                    <option>Chọn Quận/Huyện</option>
+                </select>
+            </div>
+        </div>
+    </div>*@
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/jQueryFileUpload/vendor/jquery.ui.widget.js"></script>
+    <script src="/Content/plugins/jQueryFileUpload/jquery.iframe-transport.js"></script>
+    <script src="/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+
+    <script type="text/javascript">
+        // OfficeJsTre
+        var officesTree = @Html.Raw(ViewBag.officeJsTree);
+        $(function () {
+            // Khởi tạo Jstree
+            $("#staff-modal-office-tree")
+                .dropdownjstree({
+                    source: window.officesTree,
+                    dropdownLabel: 'Choose office',
+                    dropdownLabelClick: () => {
+                        $("#OfficeId").val("1");
+                        quickAddChangeOfficeId(1);
+                    },
+                    selectedNode: '@(Model != null ? Model.OfficeId : 1)',
+                    selectNote: (node, selected) => {
+                        $("#OfficeId").val(selected.selected[0]);
+                        quickAddChangeOfficeId(selected.selected[0]);
+                    } //,
+                    //ready: () => {
+                    //    console.log("ready");
+                    //}
+                });
+
+            // Sự kiện thay đổi đơn vị
+            var firstLoad = true;
+            function quickAddChangeOfficeId(officeId) {
+                $("#TitleId").attr('disabled', 'disabled');
+
+                $.get("@Url.Action("PossitionByOffice", "Position")?officeId=" + officeId,
+                    function(data) {
+                        var options = '<option value="" selected>Choose title</option>';
+                        $.each(data,
+                            function(idx, item) {
+                                options = options +
+                                    '<option value="' +
+                                    item.id +
+                                    '">' +
+                                    item.name +
+                                    '</option>';
+                            });
+                        $("#TitleId").html(options);
+                        $("#TitleId").removeAttr('disabled');
+
+                        @if (Model != null)
+                        {
+                            <text>
+                                if (firstLoad)
+                                {
+                                    $("#TitleId").val("@Model.TitleId");
+                                    firstLoad = false;
+                                }
+                            </text>
+                        }
+                    });
+            }
+
+            var validateBlackListExtensions = function (file) {
+                var ext = file.substring(file.lastIndexOf(".")).toLowerCase();
+                return !_.some([".jpg", ".jpeg", ".gif", ".png"], function (item) { return item == ext; });
+            };
+
+            var maxFileLength = @ViewBag.MaxFileLength;
+
+            // Init jquery upload ajax
+            $("#FlieuploadAvatar").fileupload({
+                url: "/Upload/UploadImages",
+                sequentialUploads: true,
+                dataType: "json",
+                add: function (e, data) {
+                    var file = data.files[0];
+                    var msg = "";
+                    if (maxFileLength && file.size > maxFileLength) {
+                        if (msg) {
+                            msg += "<br/>";
+                        }
+                        msg += file.name + ": The size is too large";
+                    } else if (validateBlackListExtensions(file.name)) {
+                        if (msg) {
+                            msg += "<br/>";
+                        }
+                        msg += file.name + ": Undefined file format";
+                    }
+                    if (msg !== "") {
+                        toastr.error(msg);
+                    } else {
+                        data.submit();
+                    }
+                },
+                done: function (e, data) {
+                    if (data.result == -5) {
+                        toastr.error("This file is not allowed");
+                        return;
+                    }
+
+                    $("#Avatar").val(data.result[0].url);
+                    $("#imgAvatar").attr("src", "/images/"+ data.result[0].url  +"_50x50_1");
+                    $("#loadingUpload").hide();
+                },
+                send: function () {
+                    $("#loadingUpload").show();
+                }, fail: function () {
+                    $("#loadingUpload").hide();
+                }
+            });
+
+            // Thông báo Message
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        });
+    </script>
+}

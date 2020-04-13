@@ -1,0 +1,176 @@
+﻿<div id="walletDetailModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="importwarehouse">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>Information shipments</strong>
+                                <span class="impornumber">Package sack ID: <strong data-bind="text: walletModel().Code()"></strong></span>
+                                <small data-bind="text: 'Creation date: ' + moment(walletModel().Created()).format('DD/MM/YYYY')"></small>
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row importwarehouse">
+                        <!-- accepted payments column -->
+                        <div class="col-xs-4">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>In stock:</th>
+                                        <td data-bind="text: walletModel().CurrentWarehouseName()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Area:</th>
+                                        <td data-bind="text: walletModel().CurrentZone()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>Total value of commodity:</th>
+                                        <td data-bind="text: walletModel().TotalValue()"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total weight (commodity):</th>
+                                        <td data-bind="text: walletModel().TotalWeight() + ' (kg)'"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total weight (reality):</th>
+                                        <td data-bind="text: walletModel().TotalActualWeight() + ' (kg)'"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total weight converted:</th>
+                                        <td data-bind="text: walletModel().TotalConversionWeight() + ' (kg)'"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Volume (m3):</th>
+                                        <td data-bind="text: walletModel().TotalVolume() + ' (m3)'"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>Status:</th>
+                                        <td>Recently created</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row importwarehouse">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Transport code (Internal)</th>
+                                        <th class="text-center">Code (packing/package) order</th>
+                                        <th class="text-center" style="color: green">Gross weight</th>
+                                        <th class="text-center" style="color: blue">Gross weight converted</th>
+                                        <th class="text-center" style="color: red">Volume (m3)</th>
+                                        <th class="text-center" width="20%">Note shipping note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">MVDNB0102012919</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Fragile, recommended shipping carefully.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center">MVDNB1242012002</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Fragile, recommended shipping carefully.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">MVDNB1242012002</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td class="text-center">MVDNB0121212120</td>
+                                        <td class="text-center">BH0102122</td>
+                                        <td class="text-center">22.00</td>
+                                        <td class="text-center">--</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Merchandise of many customers, when the goods on the package for guests.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row signature">
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>The person making the votes</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: walletModel().UserName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Carrier</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: walletModel().UserName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Storekeepers</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: walletModel().CreatedWarehouseManagerName()"></span>
+                        </div>
+
+                        <div class="col-sm-3" align="center">
+                            <h5><strong>Accountant</strong></h5>
+                            <span class="description">(Sign and write full name)</span>
+                            <span class="name" data-bind="text: walletModel().CreatedWarehouseAccountantName()"></span>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary"><i class="fa fa-print"></i> Print </a>
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #walletDetailModal {
+        padding: 0px 10px !important;
+    }
+
+        #walletDetailModal .modal-lg {
+            width: 90% !important;
+        }
+</style>

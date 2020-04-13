@@ -1,0 +1,381 @@
+﻿@{
+    ViewBag.Title = @Resource.Transport_TienPhaiThu +"/Payable";
+    var cultureJs = string.Format("{0}.js", UserState.Culture);
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+}
+
+<section class="content-header">
+    <h1>
+       Money to be collected/  to pay
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Money to be collected/  to pay</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Main content -->
+            <div id="debitReport">
+                <div class="box box-success">
+                    <div class="box-body">
+                        <h3 class="text-center mb10">Estimated revenue - Receivable - Payables of the order</h3>
+                        <!-- ko if: isLoading -->
+                        <div>
+                            <i class="fa fa-spinner fa-pulse"></i> Loading
+                        </div>
+                        <!-- /ko -->
+                        <div data-bind="visible: !isLoading()" style="display: none;">
+                            <!-- ko ifnot: isLoading -->
+                            <div class="mb10 clearfix">
+                                <button data-bind="click: ExportDebit" class="btn btn-sm btn-success pull-right"><i class="fa fa-file-excel-o"></i> Export report</button>
+                            </div>
+                            <div data-bind="with: debitReport">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"></th>
+                                            <!-- ko foreach: services -->
+                                            <th data-bind="text: serviceName" class="text-center"></th>
+                                            <!-- /ko -->
+                                            <th class="text-center">Deposit</th>
+                                            <th class="text-center">Excess money</th>
+                                            <th class="text-center">sum</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-right">Expected revenue (Baht):</td>
+                                            <!-- ko foreach: services -->
+                                            <td class="text-right">
+                                                <a data-bind="text: formatNumberic($parent.priceFeatureOrder[''+serviceId]), click: $root.detail.bind($data, serviceId, 1)" href="javascript:;"></a>
+                                            </td>
+                                            <!-- /ko -->
+                                            <td class="text-right"></td>
+                                            <td class="text-right"></td>
+                                            <th class="text-right bg-danger">
+                                                <a data-bind="text: formatNumberic(priceFeature), click: $root.detail.bind($data, -1, 1)" href="javascript:;"></a>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-right">Receivables (Baht):</td>
+                                            <!-- ko foreach: services -->
+                                            <td class="text-right">
+                                                <a data-bind="text: formatNumberic($parent.priceRequiredOrder[''+serviceId]), click: $root.detail.bind($data, serviceId, 2)" href="javascript:;"></a>
+                                            </td>
+                                            <!-- /ko -->
+                                            <td class="text-right"></td>
+                                            <td class="text-right"></td>
+                                            <th class="text-right bg-danger">
+                                                <a data-bind="text: formatNumberic(priceRequired), click: $root.detail.bind($data, -1, 2)" href="javascript:;"></a>
+                                            </th>
+                                        </tr>
+                                        <tr class="bg-info">
+                                            <th class="text-right">Total revenue (Baht):</th>
+                                            <!-- ko foreach: services -->
+                                            <td class="text-right">
+                                                <a data-bind="text: formatNumberic($parent.priceFeatureOrder[''+serviceId] + $parent.priceRequiredOrder[''+serviceId]), click: $root.detail.bind($data, serviceId, 0)" href="javascript:;"></a>
+                                            </td>
+                                            <!-- /ko -->
+                                            <th class="text-right"></th>
+                                            <th class="text-right"></th>
+                                            <th class="text-right bg-danger">
+                                                <a data-bind="text: formatNumberic(priceFeature + priceRequired), click: $root.detail.bind($data, -1, 0)" href="javascript:;"></a>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-right">Must return (Baht):</td>
+                                            <td colspan="8"></td>
+                                            <td class="text-right">
+                                                <a data-bind="text:formatNumberic(priceDeposit), click: $root.detail.bind($data, 253, 3)" href="javascript:;"></a>
+                                            </td>
+                                            <td class="text-right">
+                                                <a data-bind="text:formatNumberic(priceRefund), click: $root.detail.bind($data, 254, 3)" href="javascript:;"></a>
+                                            </td>
+                                            <th data-bind="text: formatNumberic(priceDeposit + priceRefund), click: $root.detail.bind($data, -1, 3)" class="text-right bg-danger">
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <!-- ko if: tabs().length > 0 -->
+                                <div>
+                                    <ul data-bind="foreach: tabs" class="nav nav-tabs" role="tablist">
+                                        <li data-bind="css: isActive() ? 'active' : ''" role="presentation">
+                                            <a data-bind="text: tabTitle, attr: { href: '#' + tabId}, click: $parent.activeTab" href="#home" aria-controls="home" role="tab" data-toggle="tab"></a>
+                                        </li>
+                                    </ul>
+                                    <div data-bind="foreach: tabs" class="tab-content">
+
+                                        <!-- ko if: isActive -->
+                                        <div data-bind="css: isActive() ? 'tab-pane active' : 'tab-pane', attr: { id: tabId }" role="tabpanel" class="tab-pane">
+                                        <div>
+                                        <div class="row">
+                                            <div class="col-sm-12 mt15">
+                                                <button data-bind="click: $parent.ExportDebit0" class="btn btn-sm btn-success pull-right"><i class="fa fa-file-excel-o"></i> Export report</button>
+                                            </div>
+                                        </div>
+                                        <div class="row mt15">
+                                            <div class="col-sm-12">
+                                                <!-- ko if: templateId() === 0-->
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center w50" rowspan="2">#</th>
+                                                        <th class="text-center" rowspan="2">Code order</th>
+                                                        <th class="text-center" rowspan="2">Customer name</th>
+                                                        <th class="text-center" rowspan="2">Phone</th>
+                                                        <th class="text-center" rowspan="2">Email</th>
+                                                        <th class="text-center" rowspan="2">Status</th>
+                                                        <th colspan="2" class="text-center">
+                                                            <span data-bind="text: serviceName" class="text-center"></span> (Baht)
+                                                        </th>
+                                                        <th class="text-center" rowspan="2">Total</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="text-center">Expected revenue</th>
+                                                        <th class="text-center">Receivables</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody data-bind="foreach: items">
+                                                    <tr>
+                                                        <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(id, code); }" href="javascript:;"><span data-bind="text: ReturnCode(code)"></span></a>
+                                                        </td>
+                                                        <td data-bind="text: customerName"></td>
+                                                        <td data-bind="text: customerPhone"></td>
+                                                        <td data-bind="text: customerEmail"></td>
+                                                        <td class="text-center">
+                                                            <!-- ko if: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.deposit[status].Name, css: window.statusApp.deposit[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.order[status].Name, css: window.statusApp.order[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <!-- ko if: $parent.serviceId() === @((byte)OrderServices.Other) 
+                                                                ||  $parent.serviceId() === @((byte)OrderServices.OutSideShipping) 
+                                                                || $parent.serviceId() === @((byte)OrderServices.Packing)
+                                                                || $parent.serviceId() === @((byte)OrderServices.InSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Storaged) -->
+                                                            <a data-bind="text: formatNumberic($data['type1_service_'+ $parent.serviceId()]), click: $root.showPackage.bind($data, $data['packages_type1_service_' + $parent.serviceId()])" href="javascript:;"></a>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: $parent.serviceId() === @((byte)OrderServices.Other)
+                                                                ||  $parent.serviceId() === @((byte)OrderServices.OutSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Packing)
+                                                                || $parent.serviceId() === @((byte)OrderServices.InSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Storaged) -->
+                                                            <span data-bind="text: formatNumberic($data['type1_service_'+ $parent.serviceId()])"></span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <!-- ko if: $parent.serviceId() === @((byte)OrderServices.Other)
+                                                                ||  $parent.serviceId() === @((byte)OrderServices.OutSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Packing)
+                                                                || $parent.serviceId() === @((byte)OrderServices.InSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Storaged) -->
+                                                            <a data-bind="text: formatNumberic($data['type2_service_'+ $parent.serviceId()]), click: $root.showPackage.bind($data, $data['packages_type2_service_' + $parent.serviceId()])" href="javascript:;"></a>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: $parent.serviceId() === @((byte)OrderServices.Other)
+                                                                ||  $parent.serviceId() === @((byte)OrderServices.OutSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Packing)
+                                                                || $parent.serviceId() === @((byte)OrderServices.InSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Storaged) -->
+                                                            <span data-bind="text: formatNumberic($data['type2_service_'+ $parent.serviceId()])"></span>
+                                                            <!-- /ko -->
+                                                            
+                                                        </td>
+                                                        <td data-bind="text: formatNumberic($data['type1_service_'+ $parent.serviceId()] + $data['type2_service_'+ $parent.serviceId()])" class="text-right"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                                <!-- ko if: templateId() === 1 -->
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center">Code orders</th>
+                                                        <th class="text-center">Customer name</th>
+                                                        <th class="text-center">Email</th>
+                                                        <th class="text-center">Status</th>
+                                                        <!-- ko foreach: services -->
+                                                        <th data-bind="text: serviceName" class="text-center"></th>
+                                                        <!-- /ko -->
+                                                        <th class="text-center">Total</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody data-bind="foreach: items">
+                                                    <tr>
+                                                        <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(id, code); }" href="javascript:;"><span data-bind="text: ReturnCode(code)"></span></a>
+                                                        </td>
+                                                        <td data-bind="text: customerName"></td>
+                                                        <td data-bind="text: customerEmail"></td>
+                                                        <td class="text-center">
+                                                            <!-- ko if: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.deposit[status].Name, css: window.statusApp.deposit[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.order[status].Name, css: window.statusApp.order[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                        <!-- ko foreach: $parent.services -->
+                                                        <td data-bind="text: formatNumberic($parent['service_'+ $data.serviceId])" class="text-right"></td>
+                                                        <!-- /ko -->
+                                                        <td data-bind="text: formatNumberic(totalService)" class="text-right"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                                <!-- ko if: templateId() === 2 -->
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center">Code orders</th>
+                                                        <th class="text-center">Customer name</th>
+                                                        <th class="text-center">Email</th>
+                                                        <th class="text-center">Status</th>
+                                                        <th></th>
+                                                        <!-- ko foreach: services -->
+                                                        <th data-bind="text: serviceName" class="text-center"></th>
+                                                        <!-- /ko -->
+                                                        <th class="text-center">Total</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody data-bind="foreach: items">
+                                                    <tr>
+                                                        <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center" rowspan="2"></td>
+                                                        <td rowspan="2" class="text-center">
+                                                            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(id, code); }" href="javascript:;"><span data-bind="text: ReturnCode(code)"></span></a>
+                                                        </td>
+                                                        <td data-bind="text: customerName" rowspan="2"></td>
+                                                        <td data-bind="text: customerEmail" rowspan="2"></td>
+                                                        <td class="text-center" rowspan="2">
+                                                            <!-- ko if: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.deposit[status].Name, css: window.statusApp.deposit[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.order[status].Name, css: window.statusApp.order[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                        <td class="text-right">Expected revenue</td>
+                                                        <!-- ko foreach: $parent.services -->
+                                                        <td data-bind="text: formatNumberic($parent['type1_service_'+ $data.serviceId])" class="text-right"></td>
+                                                        <!-- /ko -->
+                                                        <td data-bind="text: formatNumberic(type1_totalService)" class="text-right"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-right">Receivables</td>
+                                                        <!-- ko foreach: $parent.services -->
+                                                        <td data-bind="text: formatNumberic($parent['type2_service_'+ $data.serviceId])" class="text-right"></td>
+                                                        <!-- /ko -->
+                                                        <td data-bind="text: formatNumberic(type2_totalService)" class="text-right"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                                <!-- ko if: templateId() === 3 || templateId() === 4 -->
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center">Code orders</th>
+                                                        <th class="text-center">Customer name</th>
+                                                        <th class="text-center">Email</th>
+                                                        <th class="text-center">Status</th>
+                                                        <th class="text-center"><span data-bind="text: serviceName"></span> (Baht)</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody data-bind="foreach: items">
+                                                    <tr>
+                                                        <td data-bind="text: ($parent.currentPage()-1)* $parent.recordPerPage() + $index()+1" class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(id, code); }" href="javascript:;"><span data-bind="text: ReturnCode(code)"></span></a>
+                                                        </td>
+                                                        <td data-bind="text: customerName"></td>
+                                                        <td data-bind="text: customerEmail"></td>
+                                                        <td class="text-center">
+                                                            <!-- ko if: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.deposit[status].Name, css: window.statusApp.deposit[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: type == @((byte) OrderType.Deposit)-->
+                                                            <span data-bind="text: window.statusApp.order[status].Name, css: window.statusApp.order[status].Class" class="label label-info"></span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <!-- ko if: $parent.serviceId() === @((byte)OrderServices.Other)
+                                                               ||  $parent.serviceId() === @((byte)OrderServices.OutSideShipping)
+                                                               || $parent.serviceId() === @((byte)OrderServices.Packing)
+                                                               || $parent.serviceId() === @((byte)OrderServices.InSideShipping)
+                                                               || $parent.serviceId() === @((byte)OrderServices.Storaged) -->
+                                                            <a data-bind="text: formatNumberic($data['service_'+ $parent.serviceId()]), click: $root.showPackage.bind($data, $data['packages_service_' + $parent.serviceId()])" href="javascript:;"></a>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: $parent.serviceId() === @((byte)OrderServices.Other)
+                                                                ||  $parent.serviceId() === @((byte)OrderServices.OutSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Packing)
+                                                                || $parent.serviceId() === @((byte)OrderServices.InSideShipping)
+                                                                || $parent.serviceId() === @((byte)OrderServices.Storaged) -->
+                                                            <span data-bind="text: formatNumberic($data['service_'+ $parent.serviceId()])"></span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                            </div>
+                                        </div>
+                                        <div class="row mb15">
+                                            <div class="col-sm-6">
+                                                <div data-bind="attr: {id: 'sumary_'+ tabId}" id="sumary" class="henry-paging mt5"></div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div data-bind="attr: {id: 'pager_'+ tabId}" id="pagerPackage"></div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.content -->
+        </div>
+    </div>
+</section>
+
+@Html.Partial("~/Views/Partial/Order/_OrderDepositDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderDetail.cshtml")
+@Html.Partial("~/Views/Partial/Order/_OrderCommerceDetail.cshtml")
+@Html.Partial("_Packages")
+
+@section Scripts{
+    <script src="/Scripts/common/status.@cultureJs"></script>
+    <script src="/Scripts/viewmodels/package/packageDetailModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/order/depositDetailViewModel.js"></script>
+    <script src="/Scripts/viewmodels/order/orderCommerceDetailViewModel.js"></script>
+    <script src="~/Scripts/viewmodels/DebitReport/debitReportModelView.js"></script>
+}
+
+@using (Html.BeginScriptBlock())
+{
+    <script id="packagesTemplate" type="text/template">
+    </script>
+}

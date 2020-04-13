@@ -1,0 +1,69 @@
+﻿@model Library.DbContext.Entities.Shop
+@{
+    ViewBag.Title = "List of shop orders ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("Index","Shop")">Shop administration</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Shop information</h3>
+        </div>
+        <!-- form start -->
+        <form class="form-horizontal">
+            <div class="box-body">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="FundName" class="col-sm-2 control-label">Shop name</label>
+                        <div class="col-sm-8 col-md-5 col-lg-4">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "ShopName", @onblur = "CheckName()" })
+                            <input type="hidden" id="txtCheckName" value="0" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="FundName" class="col-sm-2 control-label">Website</label>
+                        <div class="col-sm-8 col-md-5 col-lg-4">
+                            @Html.TextBoxFor(m => m.Website, new { @class = "form-control", @placeholder = "company.domain.com" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="FundName" class="col-sm-2 control-label">Url</label>
+                        <div class="col-sm-8 col-md-5 col-lg-4">
+                            @Html.TextBoxFor(m => m.Url, new { @class = "form-control", @placeholder = "http://company.domain.com" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="FundName" class="col-sm-2 control-label">branch</label>
+                        <div class="col-sm-8 col-md-5 col-lg-4">
+                            @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">List of orders</h3>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

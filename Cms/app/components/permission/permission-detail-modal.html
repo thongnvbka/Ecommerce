@@ -1,0 +1,70 @@
+﻿<div id="permission-detail-modal" class="modal fade modal-dialog modal-p70" tabindex="-1">
+    <!--<div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title"><i class="fa fa-lock"></i> Detail permissions "<b>{{permission?.name}}</b>"</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-inline mb15">
+            <!--<div class="from-group">
+
+            </div>-->
+            <div class="form-group">
+                <div class="input-group">
+                    <input [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" placeholder="search" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"><i class="{{isSearch ? 'fa fa-spinner fa-pulse' : 'fa fa-search'}}"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="pull-right">
+                <div class="form-group">
+                    <a (click)="permissionPageModal.show(pageIds)" class="btn btn-primary" href="javascript:;"><i class="fa fa-plus"></i> Add permissions</a>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Page name</th>
+                    <th *ngFor="let a of actions" class="text-center w50">{{a.name}}</th>
+                    <th class="text-center w50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <template [ngIf]="pages.length > 0">
+                    <template ngFor let-p [ngForOf]="pages | search: keyword">
+                        <tr *ngIf="p.firstRecord" class="success">
+                            <td colspan="11">{{p.pathName}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{p.pageName}}</td>
+                            <td *ngFor="let a of actions" class="text-center">
+                                <a *ngIf="p.hasOwnProperty('action_'+a.id)" (click)="update(p, a.id)" class="font-checkbox" href="javascript:;">
+                                    <i [class]="p['action_'+a.id] ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a (click)="delete(p)" class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-times fa fa-white"></i> Delete</a>
+                            </td>
+                        </tr>
+                    </template>
+                </template>
+                <tr *ngIf="pages.length === 0">
+                    <td class="text-center" colspan="10">
+                        <div class="alert alert-info m0">No data</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<pager [totalRecord]="totalRecord" [recordPerPage]="recordPerPage" [recordName]="'Trang'" (pageClick)="search($event)"></pager>-->
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> Close</button>
+    </div>
+</div>
+<!--</div>
+</div>-->
+<permission-page-modal (afterHideModal)="search()" [permission]="permission" #permissionPageModal></permission-page-modal>

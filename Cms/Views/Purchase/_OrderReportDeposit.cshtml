@@ -1,0 +1,63 @@
+﻿<script type="text/html" id="reportDeposit">
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Total (CNY) bargain be with Shop of the day.</h3>
+            <div class="box-tools pull-right">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-default pull-right" id="daterange-btnDepositday">
+                        <span>
+                            <i class="fa fa-calendar"></i> Create date
+                        </span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+                <button data-bind="click: ExcelMoneyReportBargainday" class="btn btn-xs btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pad">
+                        <div id="userDepositDay" style="min-width: 100px; height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Total (CNY) bargain be with Shop in the days.</h3>
+            <div class="box-tools pull-right">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-default pull-right" id="daterange-btnDepositAllday">
+                        <span>
+                            <i class="fa fa-calendar"></i> Create date
+                        </span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+                <button data-bind="click: ExcelMoneyReportBargainAllday" class="btn btn-xs btn-success"><i class="fa fa-file-excel-o"></i> Export report</button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pad">
+                        <div id="userDepositAllDay" style="min-width: 100px; height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>

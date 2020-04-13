@@ -1,0 +1,258 @@
+﻿<div id="CustomerByStaffAddOrEdit" class="modal fade modal-dialog modal-p70" role="dialog" tabindex="-1" data-backdrop="static">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 data-bind="text: titleCustomer" class="modal-title"></h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <!-- /.col -->
+            <div class="col-xs-5">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <img class="profile-user-img img-responsive img-circle" src="/Content/dist/img/user2-160x160.jpg" alt="User profile picture">
+                        <h3 class="profile-username text-center" data-bind="text: customerModel().Nickname"></h3>
+                        <p class="text-muted text-center"><span class="label label-danger" data-bind="text: customerModel().LevelName()"></span></p>
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Customer ID :</b>
+                                <a class="pull-right" data-bind="text:  customerModel().Code()"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <b> Balances</b>
+                                <input class="text-right form-control decimal" data-bind="value: customerModel().BalanceAvalible" type="text" disabled>
+                                @*<a class="pull-right" data-bind="text: formatNumberic(customerModel().BalanceAvalible(), 'N2') +' đ'"></a>*@
+                            </li>
+                            <li class="list-group-item">
+                                <b> Amount Spent</b>
+                                <input class="text-right form-control decimal" data-bind="value: customerModel().Balance" type="text" disabled>
+                                @*<a class="pull-right" data-bind="text: formatNumberic(customerModel().Balance(), 'N2') +' đ'"></a>*@
+                            </li>
+                            <li class="list-group-item">
+                                <b class="text-red"> Unit price of consignment(Baht) </b>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                    <input class="text-right form-control decimal" data-bind="value: customerModel().DepositPrice" type="text" required>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                @*<div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Nhân viên kinh doanh phụ trách</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Nhân viên: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <select class="form-control select-view" style="width: 100%;"
+                                            data-bind="options: listUser, optionsText: 'Text', optionsValue: 'Value', value: customerModel().UserId"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>*@
+            </div>
+            <div class="col-xs-7">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Account</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" id="addCustomer">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">system: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <select class="form-control select-view" style="width: 100%;"
+                                            data-bind="options: listSystem, optionsText: 'Text',optionsValue: 'Value', value: customerModel().SystemId"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Nickname: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <input data-bind="value: customerModel().Nickname" type="text" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label" email>Email: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <input data-bind="value: customerModel().Email" type="email" class="form-control" email>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Password: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-key"></i>
+                                        </div>
+                                        <input data-bind="value: customerModel().Password" type="password" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Status :<span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <select class="form-control select-view" style="width: 100%;"
+                                            data-bind="options: listStatus, optionsText: 'Text',optionsValue: 'Value', value: customerModel().Status"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Level Vip: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <select class="form-control select-view" style="width: 100%;"
+                                            data-bind="options: listVip, optionsText: 'Text',optionsValue: 'Value', value: customerModel().LevelId" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Warehouse reception </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Warehouse: <span class="color-red">(*)</span></label>
+                                <div class="col-sm-9">
+                                    <select class="form-control input-lg select-view" style="width: 100%;" data-bind="options: listWarehouse, optionsText: 'Text', optionsValue: 'Value', value: customerModel().WarehouseId"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Table row -->
+        <div class="row importwarehouse">
+            <div class="col-md-12">
+                <!-- Horizontal Form -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">User Details</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" id="inforCustomer">
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Full name: <span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <input data-bind="value: customerModel().FullName" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Birthday: <span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        @*<a data-bind="click: btnCalendar" class="btn btn-default">
+                                                <input type="text" class="form-control pull-right report-date" id="reportDate">
+                                                <i class="fa fa-calendar"></i>
+                                            </a>*@
+                                        <input data-bind="value: customerModel().Birthday" type="text" class="form-control birthday">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Sex: <span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select-view" style="width: 100%;"
+                                                data-bind="options: listSexCustomer, optionsText: 'Text', optionsValue: 'Value', value: customerModel().GenderId"></select>
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Province/ City:<span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select-view" style="width: 100%;"
+                                                data-bind="options: listProvince, optionsText: 'Text', optionsValue: 'Value', value: ProvinceId"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Trousers/District:<span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select-view" style="width: 100%;"
+                                                data-bind="options: listDistrict, optionsText: 'Text', optionsValue: 'Value', value: DistrictId"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Village/ Phoenix:<span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select-view" style="width: 100%;"
+                                                data-bind="options: listWard, optionsText: 'Text', optionsValue: 'Value', value: WardId"></select>
+                                    </div>
+                                </div>*@
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Phone :<span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <input min="1" data-bind="value: customerModel().Phone" type="number" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Address :<span class="color-red">(*)</span></label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="2" data-bind="value: customerModel().Address" type="text" placeholder="Enter ..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Account holder</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" data-bind="value: customerModel().CardName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Account number</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" data-bind="value: customerModel().CardId">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Bank</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" data-bind="value: customerModel().CardBank">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Bank branch</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" data-bind="value: customerModel().CardBranch">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" id="btnThem2" data-bind="click: btnCreateOrEditCustomerByStaff"><i class="fa fa-plus"></i> Confirm</a>
+        <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
+    </div>
+</div>
+

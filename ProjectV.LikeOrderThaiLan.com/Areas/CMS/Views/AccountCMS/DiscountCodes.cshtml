@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "DiscountCodes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="kabao">
+                <ul class="kabao-nav">
+                    <li data-id="kaquan" class="lete-active">Chi tiết phiếu giảm giá</li>
+                </ul>
+                <div class="kabao-kaquan kabao-box">
+                    <div class="kabao-kaquan-msg">
+                        <span>Tổng số： <a>2</a> phiếu giảm giá，</span>
+                        <span>Trị giá： <a>20.2</a> NDT</span>
+                        <span>Đã sử dụng： <a>0</a> phiếu</span>
+                        <p>Phiếu giảm giá có thể được sử dụng để thanh toán số tiền được khấu trừ do, sử dụng giới hạn cho mỗi giao dịch, không rút tiền mặt, tặng.</p>
+                    </div>
+                    <table border="0" cellspacing="" cellpadding="">
+                        <tbody>
+                            <tr>
+                                <th>Tên phiếu giảm giá</th>
+                                <th>Mệnh giá(NDT)</th>
+                                <th>Số lượng(phiếu)</th>
+                                <th>Lượng mau tối thiểu</th>
+                                <th>Hiệu lực</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Người dùng đăng ký mới
+                                </td>
+                                <td>
+                                    <span>10.10</span>
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>0.00</td>
+                                <td>
+                                    <p>Bắt đầu：2016-09-26</p>
+                                    <p>Kết thúc：2016-11-30</p>
+                                </td>
+                                <td>Không dùng đến</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Người dùng đăng ký mới
+                                </td>
+                                <td>
+                                    <span>10.10</span>
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>0.00</td>
+                                <td>
+                                    <p>Bắt đầu：2016-09-26</p>
+                                    <p>Kết thúc：2016-11-30</p>
+                                </td>
+                                <td>Không dùng đến</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form name="selectPageForm" action="/user.php" method="get">
+                        <div class="zichan-chongzhi-history-btn">
+
+                            <p>
+                                <span id="total_num2">Tổng số 2 bản ghi</span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

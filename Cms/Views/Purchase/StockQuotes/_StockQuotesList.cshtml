@@ -1,0 +1,61 @@
+﻿@{
+    var status = (byte) SourceStatus.WaitProcess;
+}
+<script type="text/html" id="stock-quotes-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: stockQuotesViewModel.showModalDialog.bind($data, Id)" href="javascript:;"><strong data-bind="text: 'SOU' + Code"></strong></a>
+        </td>
+        <td class="text-center">
+            <!-- ko if: moment(new Date()).diff(moment(CreateDate), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(CreateDate).locale('vi').startOf().fromNow()" class=""></span>
+            <!-- /ko -->
+            <!-- ko ifnot: moment(new Date()).diff(moment(CreateDate), 'days') < 2 -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(CreateDate).locale('vi').format('L LTS')" class=""></span>
+            <!-- /ko -->
+        </td>
+        <td class="text-center">
+            <span style="display:inline-block">
+                <i class="fa fa-envelope-o w20 text-blue" data-toggle="tooltip" data-placement="right" title="" data-original-title="Customer email"></i>&nbsp;<span data-bind="text: CustomerEmail"></span>
+            </span>
+        </td>
+        <!-- ko if: $parent.active() != 'stock-quotes-new' -->
+        @if (UserState.Type != 0)
+        {
+            <td class="text-center">
+                <span style="display:inline-block"><i class="fa fa-info-circle"></i>&nbsp;<span data-bind="text: UserFullName"></span></span>
+            </td>
+        }
+        <!-- /ko -->
+        <td class="text-center">
+            <span data-bind="text: statusApp.source[Status].Name, css: statusApp.source[Status].Class"></span>
+        </td>
+        <td>
+            <!-- ko if: Chat == 0 -->
+            <a data-bind="click: $parent.showChatOrder" href="javascript:;" class="label label-success"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with the customer"></i></a>
+            <!-- /ko -->
+            <!-- ko ifnot: Chat == 0 -->
+            <a data-bind="click: $parent.showChatOrder" href="javascript:;" class="label label-warning"><i class="fa fa-comment" data-toggle="tooltip" data-placement="right" title="" data-original-title="Chat with the customer"></i></a>
+            <!-- /ko -->
+        </td>
+        <td class="text-center">
+            @if (UserState.Type > 0)
+            {
+                <!-- ko if: Status == @status -->
+                <a data-bind="click: $parent.assignedOrder" href="javscript:;" class="btn btn-success btn-xs" title="Assign to staff"><i class="fa fa-user-plus"></i></a>
+                <!-- /ko -->
+            }
+            @if (CheckPermision(EnumAction.Update, EnumPage.StockQuotes, EnumPage.StockQuotesNew))
+            {
+                <!-- ko if: Status > @status -->
+                <a data-bind="click: stockQuotesAddOrEditViewModel.showModalDialog.bind($data, Id)" href="javscript:;" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i> @Resource.Phanquyen_View</a>
+                <!-- /ko -->
+            }
+            @if (CheckPermision(EnumAction.Delete, EnumPage.StockQuotes, EnumPage.StockQuotesNew))
+            {
+                <a data-bind="click: $parent.orderClose" href="javscript:;" class="btn btn-sm btn-danger btn-xs"><i class="fa fa-trash"></i> Cancel </a>
+            }
+        </td>
+    </tr>
+</script>

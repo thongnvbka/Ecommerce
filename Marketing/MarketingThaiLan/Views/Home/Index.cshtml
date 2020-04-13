@@ -1,0 +1,223 @@
+﻿ 
+@{
+    ViewBag.Title = "หน้าแรก";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @Html.Partial("_Header")
+}
+@section styles
+{
+    <link href="~/Content/default.min.css" rel="stylesheet" />
+}
+<div id="index-banner" class="index-banner has-background">
+    <div class="container">
+        <div class="text-banner">
+            <h1>พื้นฐานช่วยเหลือการขายสินค้าออนไลน์</h1>
+            <hr class="visible-xs" />
+            <a class="btn-registration" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">ลองใช้ฟรี</a>
+        </div>
+        <img src="/Content/images/newindex/hero-arrow.svg" class="index-mouse" />
+    </div>
+</div>
+<div class="bw-help">
+    <div class="container">
+        <h2 class="wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s">Eziwebshop ช่วยคุณขายสินค้างายขึ้น</h2>
+        <p class="sub-title wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s">ทางเราจะช่วยให้คุณขายสินค้าผ่านหลายช่องทาง หลายพื้นฐาน</p>
+        <hr class="horizontal-line wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s" />
+        <div class="row wow fadeIn" data-wow-duration="4" data-wow-delay="0.5s">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="first-col">
+                    <a class="image-container" href="@Url.Action("DesignWebsite","Marketing")">
+                        <img alt="thiết kế website bán hàng" title="thiết kế website bán hàng" src="/Content/images/newindex/Web.svg" />
+                    </a>
+                    <p>
+                        <a href="@Url.Action("DesignWebsite","Marketing")">ออกแบบเว็บไซต์ขายสินค้า</a>
+                    </p>
+                </div>
+            </div>
+            <hr class="visible-xs" />
+            <div class="col-md-2 col-sm-2 hidden-xs">
+                <div class="vertical-line"></div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="second-col">
+                    <a class="image-container" href="@Url.Action("Index","Marketing")">
+                        <img alt="bán hàng trên facebook" title="bán hàng trên facebook" src="/Content/images/newindex/Facebook.svg" />
+                    </a>
+                    <p>
+                        <a href="@Url.Action("Index","Marketing")">ขายสินค้าบนFacebook</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <img class="arrow-bottom visible-xs" src="/Content/images/newindex/arrow-down-1.png" />
+        <div class="first-arrow-down hidden-xs"></div>
+    </div>
+</div>
+<div class="design-website">
+    <h2 class="wow fadeIn" data-wow-duration="4" data-wow-delay="0.5s">ออกแบบเว็บไซต์ภายใน 1 นาที</h2>
+    <p class="sub-title wow fadeIn" data-wow-duration="4" data-wow-delay="0.5s">ทำให้งานมีประสิทธิภาพกับเครื่องมือค้นหาGoogle - ช่วยเหลือ  SEO</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 hidden-xs hidden-sm hidden-md first-col">
+                <img src="/Content/images/newindex/ipad.png" class="wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s" height="615" />
+            </div>
+            <div class="col-lg-8 col-sm-12 col-md-12 col-xs-12 second-col">
+                <ul>
+                    <li class="first-li wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s">
+                        <p>
+                            <a href="/" target="_blank">อินเตอร์เฟซสวยงาม</a>
+                        </p>
+                        <hr />
+                        <span>เกื่อบ  2000 อินเตอร์เฟซได้ออกแบบอย่างสวยงามและมีความเชี่ยวช่าญ  Eziwebshopเป็นความเลือกที่ดีที่สุดสำหรับกว่า 30 ทางด้านธุรกิจต่างๆ</span>
+                    </li>
+                    <li class="second-li wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s">
+                        <p>
+                            <a href="/" target="_blank">ฟังก์ชันไม่จำกัด</a>
+                        </p>
+                        <hr />
+                        <span>สต็อกแอพ (App) ของEziwebshop จะช่วยคุณในตลอดเวลาขายสินค้า ตั้งแต่Marketing, โฆษณา จัดการเรื่องขายสินค้าและถึงงานบริการลูกค้า</span>
+                    </li>
+                    <li class="third-li wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s">
+                        <p>
+                            <a href="@Url.Action("MarketingSeo","Home")" target="_blank">กำหนดลักษณะSEO ให้มีประสิทธิภาพ</a>
+                        </p>
+                        <hr />
+                        <span>เว็บไซต์ Eziwebshop ได้ทำให้มีประสิทธิภาพเพื่อได้ขึ้นระดับที่เครื่องมือค้นหา เหมือน Google.ทำให้แบรนด์ของคุณขึ้นระดับที่  Google อย่างรวดเร็ว</span>
+                    </li>
+                    <li class="fourth-li wow fadeIn" data-wow-duration="3" data-wow-delay="0.5s">
+                        <p>
+                            <a href="@Url.Action("Help","Home")" target="_blank">เซื่อมต่อบริการช่วยเหลือ</a>
+                        </p>
+                        <hr />
+                        <span>Eziwebshop จะช่วยคุณเซื่อมต่อกับหลายบริษัทช่วยเหลือการทำธุรกิจออนไลน์ เหมือน ขนส่งสินค้า ชำระออนไลน์ ให้คำปรึกษาMarketing ถ่ายรูปภาพสินค้า</span>
+                    </li>
+                </ul>
+                <a class="btn-registration" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">ลองใช้เว็บไซต์ฟรี<i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                <img class="index-mouse" src="/Content/images/newindex/arrow-blue.png" style="display: none;" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="new-index-comments">
+    <div class="container">
+        <h2 class="wow fadeIn" data-wow-duration="4" data-wow-delay="0.5s">ลูกค้าพูดถึงEziwebshop</h2>
+        <p class="sub-title wow fadeIn" data-wow-duration="4" data-wow-delay="0.5s">ความพึงพอใจของลูกค้าเป็นความสำเร็จที่ยิ่งใหญ่ที่สุดของทางเรา</p>
+        <div class="row row-item wow fadeIn" data-wow-duration="4" data-wow-delay="0.5s">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-lg-push-5 col-md-push-5 col-sm-push-5 second-col">
+                <img src="/Content/images/newindex/kangaroo-image.png" class="cursor-pointer" />
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 col-lg-pull-7 col-md-pull-7 col-sm-pull-7 first-col">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                   
+                        <div class="swiper-slide kangaroo-slide">
+                            <div class="item-comment">
+                                <img class="quote" src="/Content/images/newindex/open-quote.png" />
+                                <p class="comment">
+                                    เป็นคู่ค้าที่ใช้บริการของ Eziwebshopมานาม ผมได้เห็นถึงความเป็นมืออาชีพและความกระตือรือร้นของบริษัทEziwebshop
+                                    ขอให้ Eziwebshopจะพัฒนาอย่างยิ่งใหญ่ต่อไป
+                                </p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-4 col-xs-4">
+                                        <img class="customer-image" src="/Content/images/newindex/kangaroo-customer.png" />
+                                    </div>
+                                    <div class="col-md-9 col-sm-8 col-xs-8">
+                                        <p class="customer-name">คุณวริศรา รุ่งเรืองวัฒนา</p>
+                                        <p class="website">
+                                            <a href="/" rel="nofollow" target="_blank"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide gento-slide">
+                            <div class="item-comment">
+                                <img class="quote" src="/Content/images/newindex/open-quote.png" />
+                                <p class="comment">
+                                    เว็บไซต์Eziwebshopใช้งานง่ายๆ ถึงแม้ว่าตัวเองไม่ใช่คนมีมืออาชีพแต่ก็ยังจัดการเว็บของตัวเองได้
+                                </p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-4 col-xs-4">
+                                        <img class="customer-image" src="/Content/images/newindex/gento-customer.png" />
+                                    </div>
+                                    <div class="col-md-9 col-sm-8 col-xs-8">
+                                        <p class="customer-name">คุณนิติพงศ์ เลาหวิศิษฎ์</p>
+                                        <p class="website">
+                                            <a href="/" rel="nofollow" target="_blank"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="horizontal" />
+                    <div class="swiper-button-prev">
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <div class="swiper-button-next">
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <a class="button-webthamkhao" href="#">เว็บไซต์ของลุกค้าอื่นๆ</a>
+        <img class="arrow-bottom visible-xs" src="/Content/images/newindex/arrow-down-2.png" />
+        <div class="second-arrow-down hidden-xs"></div>
+    </div>
+</div>
+
+
+ 
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+            <span>
+                สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            @*<a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Đăng ký ngay</a>*@
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+<script>
+    var commentSwiper = new Swiper('.new-index-comments .swiper-container', {
+        autoplayDisableOnInteraction: false,
+        slidesPerView: 1,
+        grabCursor: true,
+        nextButton: '.new-index-comments .swiper-button-next',
+        prevButton: '.new-index-comments .swiper-button-prev',
+        loop: true,
+        paginationClickable: true,
+        autoplay : 5000,
+        onSlideChangeStart: function (swiper) {
+            //if ($('.bee-slide').hasClass('swiper-slide-active')) {
+            //    $('.new-index-comments .cursor-pointer').attr('src', '/Content/images/newindex/bee-image.png');
+            //}
+            //else
+                if ($('.kangaroo-slide').hasClass('swiper-slide-active')) {
+                 $('.new-index-comments .cursor-pointer').attr('src', '/Content/images/newindex/kangaroo-image.png');
+                //$('.new-index-comments .cursor-pointer').attr('src', '/Content/images/newindex/gento-image.png');
+            }
+            else {
+                $('.new-index-comments .cursor-pointer').attr('src', '/Content/images/newindex/gento-image.png');
+            }
+        },
+    });
+
+</script>
+
+
+}

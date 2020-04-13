@@ -1,0 +1,168 @@
+﻿<error errorId="811de2cb-e19a-469a-8980-89c46e2fbb7b" application="/LM/W3SVC/3/ROOT" host="DESKTOP-C3Q6TEP" type="System.Web.HttpException" message="The controller for path '/Scripts/viewmodels/viewOrderTyperViewModel.js' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/Scripts/viewmodels/viewOrderTyperViewModel.js' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2017-04-03T02:44:31.8330484Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:application/javascript, */*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=9fYCXQgjm1iWNrKrwgZqtGskiTEDOx8xiFjTbDJqDc-o1D3aal1fBS2ITbk0GLwSEOXZwbCoDDqb2Q1Vg1CcZMpczpraqrQ2xFsVd-XDIik1; lang=vi-VN; .AspNet.ApplicationCookie=BQGq7oTx5MzpM2X_1Clz28TDiw16zBre2jiqGouXUiWva-cOaSQw8vQutmJUe3U7oR9gh_HMj6iS34ulyQbyTsKkw29qm_u-LLSXYgcHxMLX5Pb0ZKnuaZ38iP3ZRQ1pA34ENn-kx8Am3DfYIdJKZsUjFE4HSXkWX2yaJgRrd0kk2_YbX81_Cclm1PbDvvFNDpneqpcEi3Dmp9Q9ieM7Cll-bvr0B6yQYa0ZsZ1zsf_YFVNkjeI7JdYZ4uxgN8N9ZGTZTmDa1IdYYPZu4nVgC-6a_a942_Vm57EDTvtL2lfVdTDEzvwOiUd4PjvngfX6ueTQbBNAhzdxU1hyWGIlcZ7bheQRp7OfDJwqQ0CaDKrf5vpAUdm47NPhlXLi9114Rciu8DO--HP_QKMgQp0DUpAUw1Eho0-ZY61_aLlABSqpMoneNznxFeltKTgWBBInKFvpGmTj_GyA_eCy7gtIa9z8LUPjWHWsqVl3-aCdpp9nXSmKiEXtwGjb1LbRbpE2bqTFbPyNbVcq81Gs_-tuamL_dl1yLP9IEeysoP7ocULDXjDVgfaS73FLZaEc_Lfio7Q97jRqwFla5-pctoOseg&#xD;&#xA;HTTP_HOST:localhost:44314&#xD;&#xA;HTTP_REFERER:https://localhost:44314/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: application/javascript, */*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: __RequestVerificationToken=9fYCXQgjm1iWNrKrwgZqtGskiTEDOx8xiFjTbDJqDc-o1D3aal1fBS2ITbk0GLwSEOXZwbCoDDqb2Q1Vg1CcZMpczpraqrQ2xFsVd-XDIik1; lang=vi-VN; .AspNet.ApplicationCookie=BQGq7oTx5MzpM2X_1Clz28TDiw16zBre2jiqGouXUiWva-cOaSQw8vQutmJUe3U7oR9gh_HMj6iS34ulyQbyTsKkw29qm_u-LLSXYgcHxMLX5Pb0ZKnuaZ38iP3ZRQ1pA34ENn-kx8Am3DfYIdJKZsUjFE4HSXkWX2yaJgRrd0kk2_YbX81_Cclm1PbDvvFNDpneqpcEi3Dmp9Q9ieM7Cll-bvr0B6yQYa0ZsZ1zsf_YFVNkjeI7JdYZ4uxgN8N9ZGTZTmDa1IdYYPZu4nVgC-6a_a942_Vm57EDTvtL2lfVdTDEzvwOiUd4PjvngfX6ueTQbBNAhzdxU1hyWGIlcZ7bheQRp7OfDJwqQ0CaDKrf5vpAUdm47NPhlXLi9114Rciu8DO--HP_QKMgQp0DUpAUw1Eho0-ZY61_aLlABSqpMoneNznxFeltKTgWBBInKFvpGmTj_GyA_eCy7gtIa9z8LUPjWHWsqVl3-aCdpp9nXSmKiEXtwGjb1LbRbpE2bqTFbPyNbVcq81Gs_-tuamL_dl1yLP9IEeysoP7ocULDXjDVgfaS73FLZaEc_Lfio7Q97jRqwFla5-pctoOseg&#xD;&#xA;Host: localhost:44314&#xD;&#xA;Referer: https://localhost:44314/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/3/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\Finsoft\FinOrderTL\Cms\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="3" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/3" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Scripts/viewmodels/viewOrderTyperViewModel.js" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\Finsoft\FinOrderTL\Cms\Scripts\viewmodels\viewOrderTyperViewModel.js" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="56571" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Scripts/viewmodels/viewOrderTyperViewModel.js" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44314" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Scripts/viewmodels/viewOrderTyperViewModel.js" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/javascript, */*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=9fYCXQgjm1iWNrKrwgZqtGskiTEDOx8xiFjTbDJqDc-o1D3aal1fBS2ITbk0GLwSEOXZwbCoDDqb2Q1Vg1CcZMpczpraqrQ2xFsVd-XDIik1; lang=vi-VN; .AspNet.ApplicationCookie=BQGq7oTx5MzpM2X_1Clz28TDiw16zBre2jiqGouXUiWva-cOaSQw8vQutmJUe3U7oR9gh_HMj6iS34ulyQbyTsKkw29qm_u-LLSXYgcHxMLX5Pb0ZKnuaZ38iP3ZRQ1pA34ENn-kx8Am3DfYIdJKZsUjFE4HSXkWX2yaJgRrd0kk2_YbX81_Cclm1PbDvvFNDpneqpcEi3Dmp9Q9ieM7Cll-bvr0B6yQYa0ZsZ1zsf_YFVNkjeI7JdYZ4uxgN8N9ZGTZTmDa1IdYYPZu4nVgC-6a_a942_Vm57EDTvtL2lfVdTDEzvwOiUd4PjvngfX6ueTQbBNAhzdxU1hyWGIlcZ7bheQRp7OfDJwqQ0CaDKrf5vpAUdm47NPhlXLi9114Rciu8DO--HP_QKMgQp0DUpAUw1Eho0-ZY61_aLlABSqpMoneNznxFeltKTgWBBInKFvpGmTj_GyA_eCy7gtIa9z8LUPjWHWsqVl3-aCdpp9nXSmKiEXtwGjb1LbRbpE2bqTFbPyNbVcq81Gs_-tuamL_dl1yLP9IEeysoP7ocULDXjDVgfaS73FLZaEc_Lfio7Q97jRqwFla5-pctoOseg" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44314" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44314/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="9fYCXQgjm1iWNrKrwgZqtGskiTEDOx8xiFjTbDJqDc-o1D3aal1fBS2ITbk0GLwSEOXZwbCoDDqb2Q1Vg1CcZMpczpraqrQ2xFsVd-XDIik1" />
+    </item>
+    <item name="lang">
+      <value string="vi-VN" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="BQGq7oTx5MzpM2X_1Clz28TDiw16zBre2jiqGouXUiWva-cOaSQw8vQutmJUe3U7oR9gh_HMj6iS34ulyQbyTsKkw29qm_u-LLSXYgcHxMLX5Pb0ZKnuaZ38iP3ZRQ1pA34ENn-kx8Am3DfYIdJKZsUjFE4HSXkWX2yaJgRrd0kk2_YbX81_Cclm1PbDvvFNDpneqpcEi3Dmp9Q9ieM7Cll-bvr0B6yQYa0ZsZ1zsf_YFVNkjeI7JdYZ4uxgN8N9ZGTZTmDa1IdYYPZu4nVgC-6a_a942_Vm57EDTvtL2lfVdTDEzvwOiUd4PjvngfX6ueTQbBNAhzdxU1hyWGIlcZ7bheQRp7OfDJwqQ0CaDKrf5vpAUdm47NPhlXLi9114Rciu8DO--HP_QKMgQp0DUpAUw1Eho0-ZY61_aLlABSqpMoneNznxFeltKTgWBBInKFvpGmTj_GyA_eCy7gtIa9z8LUPjWHWsqVl3-aCdpp9nXSmKiEXtwGjb1LbRbpE2bqTFbPyNbVcq81Gs_-tuamL_dl1yLP9IEeysoP7ocULDXjDVgfaS73FLZaEc_Lfio7Q97jRqwFla5-pctoOseg" />
+    </item>
+  </cookies>
+</error>

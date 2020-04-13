@@ -1,0 +1,37 @@
+﻿<div id="permission-modal" class="modal fade modal-dialog modal-p70" tabindex="-1">
+    <!--<div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 *ngIf="isAdd" class="modal-title"><i class="fa fa-lock"></i> Add permission</h4>
+                <h4 *ngIf="!isAdd" class="modal-title"><i class="fa fa-lock"></i> Update permission "<b>{{permissionData.name.value}}</b>"</h4>
+            </div>
+            <form [formGroup]="permissionForm" (submit)="save()">
+                <div class="modal-body">
+                    <div>
+                        <!--<div class="form-login">
+                        <div class="errorHandler alert alert-danger no-display">
+                            <i class="fa fa-remove-sign"></i> Có một số dữ liệu không hợp lệ phía dưới
+                        </div>-->
+                        <div class="form-group">
+                            <label class="control-label">Permission name <span class="required">*</span></label>
+                            <input [formControl]="permissionData.name" class="form-control" type="text">
+                            <control-messages [control]="permissionData.name" [label]="'Tên'"></control-messages>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Description permission</label>
+                            <textarea [formControl]="permissionData.description" rows="5" class="form-control"></textarea>
+                            <control-messages [control]="permissionData.description" [label]="'Description'"></control-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="isSubmit || !permissionForm.valid" type="submit" class="btn btn-primary">
+                        <i [class]="isSubmit ? 'fa fa-spinner fa-pulse' : 'fa fa-save'" class=""></i> {{isAdd ? 'Add new' : 'Save'}}
+                    </button>
+                    <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> Close</button>
+                </div>
+            </form>
+        </div>
+    <!--</div>
+</div>-->

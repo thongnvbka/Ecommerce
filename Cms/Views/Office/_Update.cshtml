@@ -1,0 +1,144 @@
+﻿@model OfficeMeta
+
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+<div class="form-group">
+    <label for="ParentId" class="col-sm-2 control-label">Parent unit</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        <div id="office_tree"></div>
+        @Html.HiddenFor(x=> x.ParentId)
+        @Html.ValidationMessageFor(x => x.ParentId)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Code" class="col-sm-2 control-label">Code <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Code, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+        @Html.ValidationMessageFor(x => x.Code)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Code" class="col-sm-2 control-label">Country code<span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Culture, new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+        @Html.ValidationMessageFor(x => x.Culture)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Name <span class="color-red">*</span></label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+</div>
+<div class="form-group">
+    <label for="ShortName" class="col-sm-2 control-label">Short name</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextBoxFor(x => x.ShortName, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.ShortName)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Status</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.DropDownListFor(x => x.Status, new List<SelectListItem>()
+        {
+            new SelectItem() { Value = "0", Text = Resource.Moi , Selected = true},
+            new SelectItem() { Value = "1", Text = Resource.HienTai  },
+            new SelectItem() { Value = "2", Text = Resource.Cu }
+        }, new Dictionary<string, object>()
+        {
+            {"class", "form-control"}
+        })
+        @Html.ValidationMessageFor(x => x.Status)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Status" class="col-sm-2 control-label">Unit type</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.DropDownListFor(x => x.Type, new List<SelectListItem>()
+                {
+                    new SelectItem() { Value = "0", Text = "Normal", Selected = true},
+                    new SelectItem() { Value = "1", Text = "Warehouse" },
+                    new SelectItem() { Value = "2", Text = "HR" },
+                    new SelectItem() { Value = "3", Text = "Accountant" },
+                    new SelectItem() { Value = "4", Text = "Bussiness" },
+                    new SelectItem() { Value = "5", Text = "Customer care" },
+                     new SelectItem() { Value = "6", Text = "Order step" },
+                    new SelectItem() { Value = "7", Text = "Board of Directors" },
+                     new SelectItem() { Value = "8", Text = "Business consignment" }
+                }, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Type)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Describe</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextAreaFor(x => x.Description, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Description" class="col-sm-2 control-label">Address</label>
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        @Html.TextAreaFor(x => x.Address, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.Address)
+    </div>
+</div>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var officesTree = @Html.Raw(ViewBag.officeJsTree);
+        
+        $(function () {
+            $("#office_tree").dropdownjstree({
+                source: officesTree,
+                dropdownLabel: 'Choose upper level department ',
+                dropdownLabelClick: () => {
+                    $("#ParentId").val("");
+                },
+                selectedNode: '@(Model == null || Model.ParentId == null ? "" : Model.ParentId.ToString())',
+                selectNote: (node, selected) => {
+                    $("#ParentId").val(selected.selected[0]);
+                }//,
+                //ready: () => {
+                //    console.log("ready");
+                //}
+            });
+
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        });
+    </script>
+}

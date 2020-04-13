@@ -1,0 +1,216 @@
+﻿@model WalletMeta
+
+<div id="walletDetailModal" class="modal modal-dialog modal-lg fade" role="dialog">
+    <form data-bind="submit: save" id="walletForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <span>Package "#<b data-bind="text: 'B'+code()" style="color: red"></b>"</span>
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <small class="pull-right">created date: <span data-bind="text: moment(created()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Warehouse</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <!-- ko if: id() > 0 -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">staffs create:</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: userFullName"></span> - <span data-bind="text: userName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse creation :</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: createdWarehouseName"></span><br />
+                                                <span data-bind="text: createdWarehouseAddress"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse contain:</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: currentWarehouseName"></span><br />
+                                                <span data-bind="text: currentWarehouseAddress"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse will come.:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: targetWarehouseName"></div>
+                                            <div data-bind="text: targetWarehouseAddress"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Package Information</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Value bag:</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(totalValue(), 'N2')"></span> Baht</div>
+                                        </div>
+                                        <label class="col-sm-3 control-label">Weight:</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(totalWeight(), 'N2')"></span> kg</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Weight converted: </label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(totalConversionWeight(), 'N2')"></span> kg</div>
+                                        </div>
+                                        <label class="col-sm-3 control-label">Weight charged:</label>
+                                        <div class="col-sm-3">
+                                            <div class="form-control-static text-right"><span data-bind="text: formatNumberic(totalActualWeight(), 'N2')"></span> kg</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Status :</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: statesGroupId[''+ status()][0].name"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Goods note:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: note"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Package List</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <div class="col-xs-12 table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center w50">#</th>
+                                                    <th class="text-center w80">Package ID</th>
+                                                    <th class="text-center w80">Invoice </th>
+                                                    <th class="text-center w100">Transport code</th>
+                                                    <th class="text-center w150">Weight</th>
+                                                    <th class="text-center w150">Weight converted (kg)</th>
+                                                    <th class="text-center w150">Weight charged </th>
+                                                    @*<th class="text-center">Destination warehouse</th>*@
+                                                    <th class="text-center">Note</th>
+                                                    <th class="text-center w100">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <!-- ko if: items().length == 0 || isLoadingItems() -->
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="11" class="text-center">
+                                                        <!-- ko if: isLoadingItems() -->
+                                                        <i class="fa fa-spinner fa-pulse"></i> Loading...
+                                                        <!-- /ko -->
+                                                        <!-- ko if: items().length == 0 -->
+                                                       No package
+                                                        <!-- /ko -->
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: items().length == 0 -->
+                                            <tbody data-bind="template: {name: 'packageTemplate', foreach: items}"></tbody>
+                                            <!-- /ko -->
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Table row -->
+            <div class="row signature">
+                <div class="col-sm-3" align="center">
+                    <h5><strong>Creator</strong></h5>     
+                    <span class="description">(Sign and write full name)</span>
+                    <span data-bind="text: userFullName" class="name"></span>
+                </div>
+
+                <div class="col-sm-3" align="center">
+                    <h5><strong>Carrier</strong></h5>
+                    <span>(Ký, ghi rõ họ tên)</span>
+
+                </div>
+
+                <div class="col-sm-3" align="center">
+                    <h5><strong>Warehouse keeper</strong></h5>
+                    <span>(Sign and write full name)</span>
+                </div>
+
+                <div class="col-sm-3" align="center">
+                    <h5><strong>Accountant</strong></h5>
+                    <span>(Sign and write full name)</span>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var allWarehouse = @Html.Raw(ViewBag.AllWarehouses);
+        var hasUpdate = @Html.Raw(CheckPermision(EnumPage.Wallet, EnumAction.Update) ? "true": "false");
+    </script>
+    <script id="packageTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: $index()+1" class="text-center"></td>
+            <td class="text-center"><a data-bind="text: 'P'+packageCode, click: $parent.showDetailPackage.bind($data, packageId)" href="javascript:;"></a></td>
+            <td class="text-center"><a data-bind="text: ReturnCode(orderCode)" href="javascript:;"></a></td>
+            <td data-bind="text: transportCode" class="text-center"></td>
+            <td><div data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></div></td>
+            <td><div data-bind="text: formatNumberic(convertedWeight, 'N2')" class="text-right"></div></td>
+            <td><div data-bind="text: formatNumberic(actualWeight, 'N2')" class="text-right"></div></td>
+            <td><span data-bind="text: note"></span></td>
+            <td class="text-center">
+                <span data-bind="if: status == 1" class="label label-success">Normal</span>
+                <span data-bind="if: status == 0" class="label label-danger">Broken</span>
+            </td>
+        </tr>
+    </script>
+}

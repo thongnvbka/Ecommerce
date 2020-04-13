@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "System settings";
+}
+
+<section class="content-header">
+    <h1>
+        System settings
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">System settings</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div id="SettingToBindings" class="col-md-12">
+            @Html.AntiForgeryToken()
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li data-bind="css: mode() == @((byte)OfficeType.Order) ? 'active' : '', click: changeTab.bind($data, @((byte)OfficeType.Order))" class="active"><a href="#order" data-toggle="tab">Order notification</a></li>
+                    <li data-bind="css: mode() == @((byte)OfficeType.Deposit) ? 'active' : '', click: changeTab.bind($data, @((byte)OfficeType.Deposit))"><a href="#order" data-toggle="tab">Public notification</a></li>
+                    <li data-bind="css: mode() == @((byte)OfficeType.Accountancy) ? 'active' : '', click: changeTab.bind($data, @((byte)OfficeType.Accountancy))"><a href="#order" data-toggle="tab">Accounting notice</a></li>
+                    <li data-bind="css: mode() == @((byte)OfficeType.CustomerCare) ? 'active' : '', click: changeTab.bind($data, @((byte)OfficeType.CustomerCare))"><a href="#order" data-toggle="tab">Customer Care Notice</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="order">
+                        <!-- ko if: isLoading -->
+                        <div class="text-center">
+                            <i class="fa fa-spinner fa-pulse"></i>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko ifnot: isLoading -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb15">
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            
+                                            <div class="checkbox">
+                                                <label data-bind="click: changeIsFollow">
+                                                    <a class="font-checkbox" href="javascript:;">
+                                                        <i data-bind="attr: {class: isFollow() ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'}" class="clip-checkbox-unchecked-2"></i>
+                                                    </a> Just followers
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right">
+                                            <div class="form-group">
+                                                <button data-bind="click: addUser" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center w50">#</th>
+                                        <th class="text-center">Staff </th>
+                                        <th class="text-center w50">Notification?</th>
+                                        <th class="text-center w50"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: users">
+                                    <tr>
+                                        <td data-bind="text: $index()+1" class="text-center"></td>
+                                        <td>
+                                            <suggetion-staff-input-component params="{prefix: 'implementers_'+ getElementId(), userName: userName, fullName: userFullName, text: 'Select staff', callback: addUser}"></suggetion-staff-input-component>
+                                        </td>
+                                        <td class="text-center">
+                                            <a data-bind="click: changeIsNotify" class="font-checkbox" href="javascript:;">
+                                                <i data-bind="attr: {class: isNotify() ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2'}" class="clip-checkbox-unchecked-2"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center"><a data-bind="click: $parent.removeUser" class="btn btn-sm btn-danger" href="javascript:;" title="Delete "><i class="fa fa-times"></i> Delete</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <button data-bind="disable: isSubmit, click: save" class="btn btn-primary"><i data-bind="css: isSubmit() ? 'fa fa-spinner, fa-pulse' : 'fa fa-save'" class="fa fa-save"></i>Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</section>
+
+@using (Html.BeginScriptBlock())
+{
+    <script>
+        var officeTypeOrder = @((byte)OfficeType.Order);
+    </script>
+    <script src="/Scripts/viewmodels/SuggetionStaffInputComponent.js"></script>
+    <script src="/Scripts/viewmodels/settingModel.js"></script>
+}

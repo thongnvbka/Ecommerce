@@ -1,0 +1,417 @@
+﻿@model DispatcherMeta
+
+<div id="DispatcherAddModel" class="modal fade modal-dialog modal-lg"  tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+    <form data-bind="submit: save" id="dispatcherForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <!-- ko if: id() > 0 -->
+                        <span>Ticket dispatch "#<b data-bind="text: 'D'+code()" style="color: red"></b>"</span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: id() > 0 -->
+                        <span>Create Ticket dispatch </span>                       
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <!-- ko if: id() > 0-->
+                        <small class="pull-right">Create date: <span data-bind="text: moment(created()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">partner Warehouse</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <!-- ko if: id() > 0 -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Staff create:</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: userFullName"></span> - <span data-bind="text: userName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse created:</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span data-bind="text: fromWarehouseName"></span><br />
+                                                <span data-bind="text: fromWarehouseAddress"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <!-- ko if: id() <= 0 || id() > 0 &&  window.hasUpdateDispatcher -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">transport partner <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            @Html.DropDownListFor(x => x.TransportPartnerId, new List<SelectListItem>(), new Dictionary<string, object>()
+                                                    {
+                                                        {"class", "form-control"},
+                                                        {"data-bind", "value: transportPartnerId, options: transportPartners, optionsValue: 'id', optionsText: 'name', optionsCaption:'-- Select transport partner system --'"}
+                                                    })
+                                            @Html.ValidationMessageFor(model => model.TransportPartnerId)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Transport Method <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            @Html.DropDownListFor(x => x.TransportMethodId, new List<SelectListItem>(), new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: transportMethodId, options: transportMethods, optionsValue: 'id', optionsText: 'name', optionsCaption:'-- Select transport method --'"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.TransportMethodId)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse will come :</label>
+                                        <div class="col-sm-9">
+                                            @Html.DropDownListFor(x => x.ToWarehouseId, new List<SelectListItem>(), new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: toWarehouseId, options: allWarehouse, optionsValue: 'id', optionsText: 'name', optionsCaption:'-- Select destination warehouse system --'"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.ToWarehouseId)
+                                            <div data-bind="text: toWarehouseAddress"></div>
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group">
+                                        <label class="col-sm-3 control-label">Điểm trung chuyển:</label>
+                                        <div class="col-sm-9">
+                                            @Html.DropDownListFor(x => x.EntrepotId, new List<SelectListItem>(), new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: entrepotId, options: entrepots, optionsValue: 'id', optionsText: 'name', optionsCaption:'-- Chọn điểm trung chuyển --'"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.EntrepotId)
+                                        </div>
+                                    </div>*@
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Contact:</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(x => x.ContactName, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: contactName"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.ContactName)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Phone</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(x => x.ContactPhone, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: contactPhone"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.ContactPhone)
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <!-- ko if: id() > 0 &&  window.hasUpdateDispatcher == false -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">transport partner <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: transportPartnerName"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Transport Method <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: transportMethodName"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Warehouse will come :</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: toWarehouseName"></div>
+                                            <div data-bind="text: toWarehouseAddress"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Transfer station:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: entrepotName"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Contact:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: contactName"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Phone</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: contactPhone"></div>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Information ticket</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <!-- ko if: id() <= 0 || id() > 0 &&  window.hasUpdateDispatcher -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Form of payment <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            @Html.DropDownListFor(x => x.PriceType, new List<SelectListItem>(), new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: priceType, options: priceTypes, optionsValue: 'id', optionsText: 'name'"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.PriceType)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Cost (Currency)<span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(x => x.Price, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control text-right decimal"},
+                                                {"data-val", false},
+                                                {"data-bind", "value: price"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.Price)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"><span data-bind="text: priceType() == 0 ? 'Weight pegs Transport (kg)' : 'Volume locked transport (m3)'"></span><span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(x => x.Value, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control text-right decimal"},
+                                                {"data-val", false},
+                                                {"data-bind", "value: value"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.Value)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Status :</label>
+                                        <div class="col-sm-9">
+                                            @*@Html.DropDownListFor(x => x.Status, (List<SelectListItem>)ViewBag.StatesSelectListItem, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: status"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.Status)*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Note:</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextAreaFor(x => x.Note, new Dictionary<string, object>()
+                                            {
+                                                {"class", "form-control"},
+                                                {"data-bind", "value: note"},
+                                                {"rows", "2"}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.Note)
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <!-- ko if: id() > 0 &&  window.hasUpdateDispatcher == false -->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Form of payment <span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: priceTypeName"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Cost (Currency)<span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: formatNumberic(price())"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"><span data-bind="text: priceType() == 0 ? 'Weight pegs Transport (kg)' : 'Volume locked transport (m3)'"></span><span class="color-red">*</span>:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: formatNumberic(value())"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Status :</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: statesGroupId[''+ status()][0].name"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Note:</label>
+                                        <div class="col-sm-9">
+                                            <div data-bind="text: note"></div>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Shipment list</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body">
+                                    <!-- ko if: id() <= 0 || id() > 0 && window.hasUpdateDispatcher -->
+                                    <div class="row mb15">
+                                        <div class="col-sm-6 col-lg-4">
+                                            <div class="input-group">
+                                                <input placeholder="Search ..." id="suggetion" type="text" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button"><i class="fa fa-add"></i> Add more</button>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center w50">#</th>
+                                                        <th class="text-center w80">Package sack ID</th>
+                                                        <th class="text-center w150">Size</th>
+                                                        <th class="text-center w50">Package Number</th>
+                                                        <th class="text-center w150">Weight</th>
+                                                        <th class="text-center w150">Weight converted(kg)</th>
+                                                        <th class="text-center w150">Volume(m3)</th>
+                                                        <th data-bind="text: priceType() == 0 ? 'Weight pegs Transport (kg)' : 'Volume locked transport (kg)'" class="text-center w150"></th>
+                                                        <th class="text-center">Describe</th>
+                                                        <th class="text-center">Note</th>
+                                                        <th class="text-center w100">Status</th>
+                                                        <!-- ko if: id() <= 0 || id() > 0 &&  window.hasUpdateDispatcher -->
+                                                        <th class="text-center w50"></th>
+                                                        <!-- /ko -->
+                                                    </tr>
+                                                </thead>
+                                                <!-- ko if: items().length == 0 || isLoadingItems() -->
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="11" class="text-center">
+                                                            <!-- ko if: isLoadingItems() -->
+                                                            <i class="fa fa-spinner fa-pulse"></i> Loading...
+                                                            <!-- /ko -->
+                                                            <!-- ko if: !isLoadingItems() && items().length == 0 -->
+                                                            No Package
+                                                            <!-- /ko -->
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: items().length == 0 -->
+                                                <tbody data-bind="template: {name: 'walletTemplate', foreach: items}"></tbody>
+                                                <!-- /ko -->
+                                                <tfoot>
+                                                    <tr>
+                                                        <th colspan="3" class="text-right">Total:</th>
+                                                        <th data-bind="text: formatNumberic(totalPackageNo(), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(totalWeight(), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(totalWeightConverted(), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(totalVolume(), 'N2')" class="text-right"></th>
+                                                        <th data-bind="text: formatNumberic(totalValue(), 'N2')" class="text-right"></th>
+                                                        <th colspan="4"></th>
+                                                    </tr>
+                                                    </tfoot>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!-- ko if: id() <= 0 || id() > 0 && window.hasUpdateDispatcher -->
+            <button data-bind="disable: isLoading" class="btn btn-success" type="submit"><i data-bind="attr: {class: isLoading() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i> <span data-bind="text: id() > 0 ? 'Save' : 'Create ticket'"></span></button>
+            <!-- /ko -->
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+    </form>
+
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        var allWarehouse = @Html.Raw(ViewBag.AllWarehouses);
+        var transportMethods = @Html.Raw(ViewBag.TransportMethods);
+        var transportPartners = @Html.Raw(ViewBag.transportPartners);
+        var entrepots = @Html.Raw(ViewBag.Entrepots);
+        var hasUpdateDispatcher = @Html.Raw(CheckPermision(EnumPage.Dispatcher, EnumAction.Update) ? "true": "false");
+    </script>
+    <script id="walletTemplate" type="text/template">
+        <tr>
+            <td data-bind="text: $index()+1" class="text-center"></td>
+            <td class="text-center"><a data-bind="text: 'B'+ walletCode, click: $parent.showWalletDetail.bind($data, walletId)" href="javascript:;"></a></td>
+            <td data-bind="text: size"></td>
+            <td data-bind="text: formatNumberic(packageNo, 'N0')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(weight, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(weightConverted, 'N2')" class="text-right"></td>
+            <td data-bind="text: formatNumberic(volume, 'N2')" class="text-right"></td>totalValue
+            <td class="text-right">
+                <!-- ko if: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+                <input data-bind="value: value" type="text" class="form-control text-right decimal" />
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+                <span data-bind="text: formatNumberic(value, 'N2')"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-right">
+                <!-- ko if: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+                <textArea data-bind="value: description" class="form-control"></textArea>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+                <span data-bind="text: description"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-right">
+                <!-- ko if: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+                <textArea data-bind="value: note" class="form-control"></textArea>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+                <span data-bind="text: note"></span>
+                <!-- /ko -->
+            </td>
+            <td class="text-center">
+                <span data-bind="if: status == 0" class="label label-warning">Wait for receipt</span>
+                <span data-bind="if: status == 1" class="label label-info">transporting</span>
+                <span data-bind="if: status == 2" class="label label-success">Finished</span>
+            </td>
+            <!-- ko if: $parent.id() <= 0 || $parent.id() > 0 &&  window.hasUpdateDispatcher -->
+            <td class="text-center">
+                <a data-bind="click: $parent.removeItem" href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete  </a>
+            </td>
+            <!-- /ko -->
+        </tr>
+    </script>
+}

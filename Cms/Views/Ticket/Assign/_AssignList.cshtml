@@ -1,0 +1,68 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<script type="text/html" id="assign-list">
+    <tr data-bind="css: CssRead">
+        <td data-bind="text: (page-1)*pagesize + $index()+1 " class="text-center" > </td>
+        <td class="text-center" >
+            <a class="btn btn-success btn-xs" data-bind="click: $parent.checkCustomerCare" href="javscript:;">
+                <i class="fa fa-get-pocket" data-toggle="tooltip" data-placement="right" title="" data-original-title="Accept to process"></i>
+            </a>
+            @if (CheckPermision(EnumAction.Approvel, EnumPage.TicketAssign, EnumPage.TicketLast))
+            {
+                <a class="btn btn-primary btn-xs" data-bind="click: $parent.checkAssignCustomerCare" href="javscript:;">
+                    <i class="fa fa-user-plus" data-toggle="tooltip" data-placement="right" title="" data-original-title="Assign to staff"></i>
+                </a>
+            }
+        </td>
+       
+        <td class="text-center">
+            <ul class="tbl-list">
+                <li>
+                    <!-- ko if: OrderType == @order-->
+                    <a data-bind="click: function() {orderDetailViewModel.viewOrderDetail(OrderId); CheckRead();}, attr: { href: '/Ticket#' + ReturnCode(OrderCode) }" href="javascript:;">
+                        <span data-bind="text: ReturnCode(OrderCode)"></span>
+                    </a>
+                    <!-- /ko -->
+                    <!-- ko if: OrderType == @deposit-->
+                    <a data-bind="click: function() {depositDetailViewModel.showModalDialog(OrderId); CheckRead(); }, attr: { href: '/Ticket#' + ReturnCode(OrderCode) }" href="javascript:;">
+                        <span data-bind="text: ReturnCode(OrderCode)"></span>
+                    </a>
+                    <!-- /ko -->
+                    <p data-bind="text: UserName"></p>
+                </li>
+                <li>
+                    <a data-bind="click: function() { $parent.viewTicketDetail($data); CheckRead();}, attr: { href: '/Ticket/#TK' + Code }" href="javascript:;">
+                        <strong>
+                            <span data-bind="text: Code"></span>
+                        </strong>
+                    </a>
+                </li>
+            </ul>
+            
+        </td>
+        <td class="text-center" >
+            <span data-bind="text: statusApp.statusComplain[Status].Name,
+                  css: statusApp.statusComplain[Status].Class"></span>
+        </td>
+        <td class="mailbox-name" >
+            <span data-bind="click: CheckRead, editable: ContentInternal, editableOptions: {name: 'note', pk: Id, url: '', type: 'textarea', showbuttons: false, mode: 'inline', autotext: 'never', onblur: 'submit', emptytext: 'Not noted'}"></span>
+        </td>
+        @*<td data-bind="foreach: $parent.listTypeService(TypeService)">
+            <span data-bind="text: Name"></span><br />
+        </td>*@
+        <td class="mailbox-subject" >
+            <p data-bind="text: CustomerName"></p>
+            <p data-bind="text: CustomerEmail"></p>
+            <p data-bind="text: CustomerPhone"></p>
+            <p data-bind="text: CustomerWarehouseName"></p>
+            <p data-bind="text: SystemName"></p>
+            <i class="fa fa-info-circle" data-bind="event: { click: $parent.viewContent.bind($data, Content) , mouseout:$parent.hideDiv }"></i>
+        </td>
+        <td class="mailbox-date w-100" data-bind="text: moment(CreateDate).format('DD/MM/YYYY HH:mm')" ></td>
+        
+        
+    </tr>
+    
+</script>

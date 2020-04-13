@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "ฟังก์ชันเด่นๆ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+    <link href="~/Content/css/slide-theme.css" rel="stylesheet" />
+}
+ 
+<section class="tool-list">
+    <div class="container">
+        <div class="tool-list-mobile hidden-md hidden-sm hidden-lg invisible-xs">
+            <a href="javascript:void(0);" id="btn-toollist">Tính năng nổi bật</a>
+            <div class="tool-list-mobile-nav" id="mob-toollist-content" style="display: none;">
+                <ul class="list-unstyled">
+                    <li class="current"><a href="@Url.Action("SalientFeatures","Home")"><span>ฟังก์ชันเด่นๆ</span></a></li>
+                    <li class=""><a href="@Url.Action("SellBest","Home")"><span>เว็บไซต์ขายสินค้ายอดเยี่ยม</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerStore","Home")"><span>จัดการร้านค้า</span></a></li>
+                    <li class=""><a href="@Url.Action("CustomTheme","Home")"><span>การกำหนดลักษณะอินเตอร์เฟซ</span></a></li>
+                    <li class=""><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing &amp; SEO</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerProduct","Home")"><span>จัดการสินค้า</span></a></li>
+                    <li class=""><a href="@Url.Action("Security","Home")"><span>รักษาความปลอดภัยอย่างมันคง</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-list-content hidden-xs">
+            <div id="owl-tool" class="owl-carousel owl-theme">
+                <div class="items-tool current"><a href="@Url.Action("SalientFeatures","Home")"><span>ฟังก์ชันเด่นๆ</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("SellBest","Home")"><span>เว็บไซต์ขายสินค้ายอดเยี่ยม</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("ManagerStore","Home")"><span>จัดการร้านค้า</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("CustomTheme","Home")"><span>การกำหนดลักษณะอินเตอร์เฟซ</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing</span><br>&amp; SEO</a></div>
+                <div class="items-tool "><a href="@Url.Action("ManagerProduct","Home")"><span>จัดการสินค้า</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("Security","Home")"><span>รักษาความปลอดภัยอย่างมันคง</span></a></div>
+
+            </div>
+            <div class="customNavigation visible-sm-block">
+                <a class="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="tool-content">
+    <div class="container" style="opacity: 1; left:0;">
+        <div class="tool-content-title">
+            <h1>ฟังก์ชันเด่นๆของ Eziwebshop</h1>
+            <p>ทางเราช่วยเหลือให้การขายสินค้าของคุณงายขึ้นด้วยเว็บไซต์มีครบฟังก์ชันที่โดดเด่น.</p>
+        </div>
+        <div class="tool-content-info tool-page-3">
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-1.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>อัตโนมัติสร้างเว็บไซต์ขายสินค้าภายใน 1 นาที</h2>
+                        <p>เวลาและเงินเป็น 2 ประเด่นที่ใครๆก็อยากลงทุนให้มีผลมากที่สุด Eziwebshop ช่วยให้คุณทำได้ทั้งสองประเด่น : ออกแบบเว็บไซต์ขายสินค้าภายใน 1 นาที อัพเดทข้อมูลต่างๆเกี่ยวกับสินค้า แนะนำสินค้า วิธิติดต่อและเริ่มขายสินค้าใช้ฟรีๆฟังก์ชันทั้งหมดภายใน 3 เดือน. เมื่อคุณตัดสินใจใช้บริการ การลงทุนของคุณจะเป้นการลงทุนที่ดีที่สุด</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-2.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>การกำหนดลักษณะอินเตอร์เฟซShop<br>ตามความต้องกาารของตัวเอง</h2>
+                        <p>สต็อกอินเตอร์เฟซของ Eziwebshop มีหลักหลายประเภทและมีจำนวนมาก ได้รับการออกแบบจากผู้เชี่ยวชาญเก่งที่สุด และได้ออกแบบให้หลักหลายประเภทธุรกิจของคุณเว็บไซต์ของคุณจะสวยงามเสมอและโดดเด่น ทำให้ยอดขายของคุณเพิ่มขึ้นเร้วสุด</p>
+                        <a href="/Home/WarehouseInterface">ดูเพิ่มเติมสต็อกอินเตอร์เฟซ<i class="fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-3.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>การกำหนดลักษณะ Marketing & SEO</h2>
+                        <p>Eziwebshop ให้คุณสิทธิเพื่อกำหนดลักษณะคำหลัก ช่วยให้ลูกค้าของร้านค้าสามารถใช้เครื่องมือค้นหาต่างๆ (Google,..) หาได้สินค้าและบริการของคุณอย่างงายที่สุด</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img"><img src="~/Content/images/func/tab3-6.jpg" class="img-responsive"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>สั่งซื้อและชำระ<br>ปลอดภายและงายๆ</h2>
+                        <p>ด้วยEziwebshop คุณลูกค้าสามารถสั่งซื้อและชำระเงินงายๆและปลอดภาย ระบบบูรณาหลายวิธิชำระอีคอมเมิร์ซ ทำให้การธุรกรรมกลายเป็นเรื่องงายสุด</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+            <span>
+                สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $('.tool-list-mobile #btn-toollist').click(function() {
+            $('.tool-list-mobile #mob-toollist-content').slideToggle(200);
+            $(this).toggleClass('active');
+        });
+        $('.tool-list-mobile #mob-toollist-content, .tool-list-mobile #btn-toollist').click(function(e) { e.stopPropagation(); });
+        $(document).click(function() {
+            $('.tool-list-mobile #mob-toollist-content').hide();
+            $('.tool-list-mobile #btn-toollist').removeClass('active');
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function() {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function() {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0,
+                    left: '0'
+                }, 500, function() {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+            $(function () {
+                var owl = $("#owl-tool");
+                owl.owlCarousel({
+                    items: 7,
+                    itemsDesktop: [1000, 7],
+                    itemsDesktopSmall: [992, 5],
+                    itemsTablet: [768, 5],
+                    itemsMobile: false
+                });
+                $(".next").click(function () {
+                    owl.trigger('owl.next');
+                })
+                $(".prev").click(function () {
+                    owl.trigger('owl.prev');
+                });
+            });
+            $(function () {
+                $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                    $(this).delay(50);
+                    $(".tool-content .container").addClass('absh').animate({
+                        opacity: 1.0, left: '0'
+                    }, 500, function () {
+                        $(this).delay(10).removeClass('absh');
+                    });
+                });
+            });
+    </script>
+}

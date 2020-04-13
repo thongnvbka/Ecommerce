@@ -1,0 +1,243 @@
+﻿
+@{
+    ViewBag.Title = "Marketing & Seo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />
+
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $('.tool-list-mobile #btn-toollist').click(function () {
+            $('.tool-list-mobile #mob-toollist-content').slideToggle(200);
+            $(this).toggleClass('active');
+        });
+        $('.tool-list-mobile #mob-toollist-content, .tool-list-mobile #btn-toollist').click(function (e) { e.stopPropagation(); });
+        $(document).click(function () {
+            $('.tool-list-mobile #mob-toollist-content').hide();
+            $('.tool-list-mobile #btn-toollist').removeClass('active');
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0,
+                    left: '0'
+                }, 500, function () {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            var owl = $("#owl-tool");
+            owl.owlCarousel({
+                items: 7,
+                itemsDesktop: [1000, 7],
+                itemsDesktopSmall: [992, 5],
+                itemsTablet: [768, 5],
+                itemsMobile: false
+            });
+            $(".next").click(function () {
+                owl.trigger('owl.next');
+            })
+            $(".prev").click(function () {
+                owl.trigger('owl.prev');
+            });
+        });
+        $(function () {
+            $(".tool-content .container").addClass('absh').animate({ opacity: 0.0, left: '-100px' }, 100, function () {
+                $(this).delay(50);
+                $(".tool-content .container").addClass('absh').animate({
+                    opacity: 1.0, left: '0'
+                }, 500, function () {
+                    $(this).delay(10).removeClass('absh');
+                });
+            });
+        });
+    </script>
+}
+<section class="tool-list">
+    <div class="container">
+        <div class="tool-list-mobile hidden-md hidden-sm hidden-lg invisible-xs">
+            <a href="javascript:void(0);" id="btn-toollist">Tính năng nổi bật</a>
+            <div class="tool-list-mobile-nav" id="mob-toollist-content" style="display: none;">
+                <ul class="list-unstyled">
+                    <li class=""><a href="@Url.Action("SalientFeatures","Home")"><span>ฟังก์ชันเด่นๆ</span></a></li>
+                    <li class=""><a href="@Url.Action("SellBest","Home")"><span>เว็บไซต์ขายสินค้ายอดเยี่ยม</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerStore","Home")"><span>จัดการร้านค้า</span></a></li>
+                    <li class=""><a href="@Url.Action("CustomTheme","Home")"><span>การกำหนดลักษณะอินเตอร์เฟซ</span></a></li>
+                    <li class="current"><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing &amp; SEO</span></a></li>
+                    <li class=""><a href="@Url.Action("ManagerProduct","Home")"><span>จัดการสินค้า</span></a></li>
+                    <li class=""><a href="@Url.Action("Security","Home")"><span>รักษาความปลอดภัยอย่างมันคง</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-list-content hidden-xs">
+            <div id="owl-tool" class="owl-carousel owl-theme">
+                <div class="items-tool "><a href="@Url.Action("SalientFeatures","Home")"><span>ฟังก์ชันเด่นๆ</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("SellBest","Home")"><span>เว็บไซต์ขายสินค้ายอดเยี่ยม</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("ManagerStore","Home")"><span>จัดการร้านค้า</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("CustomTheme","Home")"><span>การกำหนดลักษณะอินเตอร์เฟซ</span></a></div>
+                <div class="items-tool current"><a href="@Url.Action("MarketingSeo","Home")"><span>Marketing</span><br>&amp; SEO</a></div>
+                <div class="items-tool "><a href="@Url.Action("ManagerProduct","Home")"><span>จัดการสินค้า</span></a></div>
+                <div class="items-tool "><a href="@Url.Action("Security","Home")"><span>รักษาความปลอดภัยอย่างมันคง</span></a></div>
+
+            </div>
+            <div class="customNavigation visible-sm-block">
+                <a class="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="tool-content">
+    <div class="container" style="opacity: 1; left:0;">
+        <div class="tool-content-title">
+            <h1>เครื่องมื่อ Marketing ได้มีผล</h1>
+            <p>เครื่องมื่อ Marketing ช่วยคุณโฆษณาสินค้า </p>
+            <p>จะเป็นเรื่องง่ายและมีผลสูง</p>
+        </div>
+        <div class="tool-content-info tool-page-1">
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-1.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>
+                            พื้นฐานมันคง<br> เพื่อให้เว็บไซต์ขึ้นระดับ
+                        </h2>
+                        <p>Eziwebshop ช่วยให้คุณสร้างพื้นฐานเพื่อให้เว็บไซต์ของคุณอยู่เป็นระดับสูงของเว็ยไซต์เครื่องมือค้าหา เหมื่อน  Google, Yahoo, Bing… ทำให้เว็บไซต์ของคุณมีผล การกำหนดลักษณะแทค (tag) : title, tag, describe, URL ของหน้า เพิ่ม แทค (tag) altให้รุปภาพทำให้เว็บไชต์มีพลต้ามกระทู้ SEO</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-2.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>
+                            ครบ<br>เครื่องมือช่วยเหลือ
+                        </h2>
+                        <p>การทำให้คำหลักของคุณขึ้นเป็นระดับต้นๆไม่ใช่เรื่องงายๆ แต่ก็ไม่ใช่คุณต้องเป็นผู้เชี่ยวชาญSEOถึงจะทำเรื่องนั้นได้ทางเราให้คุณครบเครื่องมือใช้ในการช่วยเว็บไซต์ของคุณขึ้นเป็นระดับต้นๆโดยตัวเองอย่างง่ายๆ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-3.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+                        <h2>
+                            อัตโนมัติ<br>สร้าง sitemap.xml
+                        </h2>
+                        <p>อัตโนมัติสร้าง ไฟล์sitemap.xml มี  : สินค้า กลุ่มสินค้า blog หน้าเนื้อหา</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-4.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+
+                        <h2>ประเมินสินค้า</h2>
+                        <p>สำหรับลูกค้า ไม่มีอะไรน่าเชื่อถือมากกว่าความคิดเห็นของลูกค้าที่เคยซื้อสินค้านี้แล้วด้วยความโดดเด่นของสินค้า คุณสามารถกระตุ้นให้ลูกค้าคอมเม้นประเมินผลให้แก่สินค้าของคุณ เรื่องนี้ก็จะช่วยงาน SEO มีผลมากขึ้น.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-5.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+
+                        <h2>Email marketing</h2>
+                        <p>การสะสมข้อมูลของลูกค้า ติดต่อ และ ดูแลลูกค้าประจำคืองานที่สำคัญมากสำหรับนักธุรกิจในการดึงใจลูกค้า Eziwebshop  ช่วยคุณส่งอิเมล์การตลาดผ่านบริการน่าเชื่อถือ เหมือน Mailchimp, Sendgrid... ช่วยให่คุณเข้าถึงกลุ่มลูกค้ามีประสิทธิภาพอย่างง่ายๆ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6 pull-right">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-6.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <div class="content-info">
+                        <h2>
+                            ขายสินค้าที่ Facebook
+                        </h2>
+                        <p>ในเมื่อคุณเป็นลูกค้าของ Eziwebshop แค่ทำไม่กี่ขั้นต้อน คุณจะได้มี สโตร์ (store) ของตัวเองบนที่Fanpageของคุณลูกค้าสามารถคอมเม้นที่Fanpageแล้วยังเข้าไปร้านค้าบนเว็บไซต์ของคุณอย่างงายๆ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row info">
+                <div class="col-md-6">
+                    <div class="info-img">
+                        <img src="/Content/images/func/tab1-7.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-info">
+
+                        <h2>
+                            โปรแกรม<br>โปรโมชั่น และ คูปอง
+                        </h2>
+                        <p>สำหรับลูกค้าส่วนใหญ่ เรื่องได้รับของขวัญหลังที่ซื้อสินค้าจะทำให้เขาชื้นใจและจำร้านค้าของคุณได้ เพราะฉะนั้น การมอบโปรโมชั่นต่างๆ รหัสคูปองจะเป็นการโฆษณาเอาใจลูกค้าที่ดีที่สุดและทำให้ลูกค้านั้นเป็นลูกค้าประจำของร้านค้า Eziwebshop ให้คุณเครื่องมือช่วยเหลือตั้งค่าและดูแลจัดการโปรแกรมโปรฌมชั่น ทำให้งานได้รวดเร็วและสดวก</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="index-registration quick-registration new-registration">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 bottom-registration text-center">
+            <h3 class="text-large text-center">ทำยังไงให้เพิ่มยอดขายได้ ?</h3>
+            <span>
+                สมัครรับเว็บไซต์ขายสินค้าฟรีตอนนี้
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            @*<a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" onclick="openCreateStorePopup(this);" href="javascript:;">Đăng ký ngay</a>*@
+            <a class="btn-registration banner-home-registration event-Bizweb-Free-Trial-form-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdKdRFC-CPzPXqXYC38397zBF98j8ER2C6IcU0vqhOnB62PIg/viewform">สมัครตอนนี้</a>
+        </div>
+    </div>
+</div>
+
+
+

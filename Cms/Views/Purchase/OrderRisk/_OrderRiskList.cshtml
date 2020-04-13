@@ -1,0 +1,37 @@
+﻿<script type="text/html" id="order-risk-list">
+    <tr data-bind="css: CssRead">
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            @if (CheckPermision(EnumAction.Update, EnumPage.OrderNoCodeOfLading))
+            {
+                <a data-bind="click: function() {orderTypeViewModel.showEditOrder(Id, Code); CheckRead();  }, attr: { href: '/Purchase/Order#' + ReturnCode(Code) }" class="btn btn-info btn-xs"  data-toggle="tooltip" data-placement="right" title="Order transaction" data-original-title="Order transaction"><i class="fa fa-edit"></i></a>
+            }
+        </td>
+        <td class="">
+            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(Id, Code); CheckRead();  }" href="javascript:;"><strong data-bind="text: ReturnCode(Code)"></strong></a>
+        </td>
+        <td class="">
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(LastUpdate).locale('vi').format('L LTS')" class=""></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: ContractCodeNo"></span>
+        </td>
+        <td class="">
+            <span style="display:inline-block">
+                <span class="text-bold" data-bind="text: CustomerName"></span><br />
+                <span data-bind="text: '(' + CustomerEmail + ')'"></span>
+            </span>
+        </td>
+        <td class="text-left">
+            <textarea data-bind="value: UserNote, click: CheckRead" class="auto-size" style="overflow-x: hidden !important; overflow-y: hidden !important; width: 100%;" rows="2"></textarea>
+        </td>
+        <td class="text-center">
+            <span style="display:inline-block">
+                <span data-bind="text: UserEmail"></span>
+            </span>
+        </td>
+        <td>
+            <span data-bind="text: Note"></span>
+        </td>
+    </tr>
+</script>

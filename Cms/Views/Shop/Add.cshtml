@@ -1,0 +1,135 @@
+﻿@model Library.DbContext.Entities.Shop
+@{
+    var title = "Shop information";
+    var command = "<i class=\"fa fa-save\"></i> Save";
+    if (Model != null)
+    {
+        if (Model.Id > 0)
+        {
+            title = "Update Shop information";
+        }
+        else
+        {
+            title = "Add shop";
+            command = "<i class=\"fa fa-plus\"></i> Add";
+        }
+    }
+    ViewBag.Title = title;
+}
+
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("Index","Shop")"> Shop manager</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Shop information</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm("AddItem", "Shop", FormMethod.Post, new { @class = "form-horizontal", @id = "addForm", enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.CategoryName)
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">Shop name <span class="color-red">*</span></label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Shop name", @onblur = "CheckName()" })
+                        <input type="hidden" id="txtCheckName" value="0" />
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">Website <span class="color-red">*</span></label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextBoxFor(m => m.Website, new { @class = "form-control", @placeholder = "company.domain.com"})
+                        @Html.ValidationMessageFor(m => m.Website)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">Url <span class="color-red">*</span></label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextBoxFor(m => m.Url, new { @class = "form-control", @placeholder = "http://company.domain.com" })
+                        @Html.ValidationMessageFor(m => m.Url)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">Branch <span class="color-red">*</span></label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.DropDownListFor(m => m.CategoryId, new SelectList((List<DropdownItem>)ViewBag.ListCategory, "Value", "Text"), new { @class = "form-control select-view" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">Link total system</label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextAreaFor(m => m.HashTag, new { @rows = "3", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.HashTag)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">Note</label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextAreaFor(m => m.Note, new { @rows = "3", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <a href="@Url.Action("Index", "Shop")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <a href="javascript: void(0);" class="btn btn-success pull-right" onclick="SubmitForm()"> @Html.Raw(command)</a>
+            </div>
+        }
+    </div>
+</section>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function SubmitForm() {
+            if ($('#txtCheckName').val() == "1") {
+                toastr.warning('Shop name already exists');
+                return false;
+            } else {
+                $('#CategoryName').val($("#CategoryId option:selected").text());
+                var result = $('#addForm').valid();
+                if (result) {
+                    $('#addForm').submit();
+                    return true;
+                }
+                return false;
+            }
+        }
+        function CheckName() {
+            if ($('#Name').val().trim().length > 0) {
+                $.ajax({
+                    url: '@Url.Action("CheckExistsName", "Shop")',
+                    type: 'GET',
+                    data: { "name": $('#Name').val(), "id": $('#Id').val() },
+                    success: function (data) {
+                        if (data == 1) {
+                            $('#txtCheckName').val("1");
+                            toastr.warning('Shop name already exists');
+                        }
+                        else {
+                            $('#txtCheckName').val("0");
+                        }
+                    }
+                });
+            }
+        }
+        $(document).ready(function () {
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+        })
+    </script>
+}

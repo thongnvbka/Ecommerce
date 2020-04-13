@@ -1,0 +1,169 @@
+﻿@model CustomerLevelMeta
+
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+
+<div class="form-group">
+    <label for="Name" class="col-sm-3 control-label">Customer level(<span class="color-red">*</span>):</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+</div>
+
+@*<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">Deleted:</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.CheckBoxFor(x => x.IsDelete, new Dictionary<string, object> {
+          {"type", "checkbox"},
+            })
+        @Html.ValidationMessageFor(x => x.IsDelete)
+    </div>
+</div>*@
+
+<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">Status:</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.CheckBoxFor(x => x.Status, new Dictionary<string, object> {
+          {"type", "checkbox"},
+            })
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">The first deposit amount:</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.StartMoney, "{0:#,###}", new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+
+        })
+        @Html.ValidationMessageFor(x => x.StartMoney)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">The amount to level up the customer:</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.EndMoney, "{0:#,###}", new Dictionary<string, object>
+        {
+            {"class", "form-control"}
+        })
+    </div>
+</div>
+
+@*<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">Time created:</label>
+
+    <div class="col-sm-8 col-md-6 col-lg-6"> 
+        <input name="CreateDate" id="datepicker" type="date"/>
+        @Html.ValidationMessageFor(x => x.CreateDate)
+    </div>
+</div>*@
+ 
+<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">Percentage preference:</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextBoxFor(x => x.PercentDeposit, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}, {"type", "number"},
+            {"max","100" },{"min","1" }
+
+        })
+        @Html.ValidationMessageFor(x => x.PercentDeposit)
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Description" class="col-sm-3 control-label">Describe</label>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+        @Html.TextAreaFor(x => x.Description, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="~/Scripts/jquery.formatCurrency-1.4.0.js"></script>
+    <script src="/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script> 
+    <script type="text/javascript">
+        function submitForm() {
+            $('#StartMoney').val($('#StartMoney').val().replace(/\,/g, '').replace(/\./g, ''));
+            $('#EndMoney').val($('#EndMoney').val().replace(/\,/g, '').replace(/\./g, ''));
+            $("#submitForm").submit();
+        }
+
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
+        });
+         
+        $(document).ready(function () {
+		// Format while typing & warn on decimals entered, no cents
+          $('#StartMoney,#EndMoney').blur(function () {
+                $(this).val($(this).val().replace(/\,/g, '').replace(/\./g, ''));
+                //$(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: 0, region: 'vi-VN' });
+            })
+            .keyup(function (e) {
+                var e = window.event || e;
+                var keyUnicode = e.charCode || e.keyCode;
+                if (e !== undefined) {
+                    switch (keyUnicode) {
+                    case 16:
+                        break; // Shift
+                    case 27:
+                        this.value = '';
+                        break; // Esc: clear entry
+                    case 35:
+                        break; // End
+                    case 36:
+                        break; // Home
+                    case 37:
+                        break; // cursor left
+                    case 38:
+                        break; // cursor up
+                    case 39:
+                        break; // cursor right
+                    case 40:
+                        break; // cursor down
+                    case 78:
+                        break; // N (Opera 9.63+ maps the "." from the number key section to the "N" key too!) (See: http://unixpapa.com/js/key.html search for ". Del")
+                    case 110:
+                        break; // . number block (Opera 9.63+ maps the "." from the number block to the "N" key (78) !!!)
+                    case 190:
+                        break; // .
+                    default:
+                        $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: -1, eventOnDecimalsEntered: true, region: 'vi-VN' });
+                    }
+                }
+            });
+		});
+      $('#StartMoney,#EndMoney').keydown(function (event) {
+        // Allow special chars + arrows
+        if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9
+            || event.keyCode == 27 || event.keyCode == 13
+            || (event.keyCode == 65 && event.ctrlKey == true)
+            || (event.keyCode >= 35 && event.keyCode <= 39)) {
+            return;
+        } else {
+            // If it's not a number stop the keypress
+            if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                event.preventDefault();
+            }
+        }
+    });
+    </script>
+
+}

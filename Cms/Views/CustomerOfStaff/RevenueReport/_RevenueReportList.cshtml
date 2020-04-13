@@ -1,0 +1,34 @@
+﻿@{
+    var order = (byte)OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+}
+<script type="text/html" id="revenue-report">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-left">
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(OrderFinishDate).locale('vi').startOf().fromNow()" class=""></span>
+        </td>
+        <td class="text-center">
+            <!-- ko if: OrderType == @order-->
+            <a data-bind="click: orderDetailViewModel.viewOrderDetail.bind($data, OrderId)" href="javascript:;">
+                <span data-bind="text: ReturnCode(OrderCode)"></span>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: OrderType == @deposit-->
+            <a data-bind="click: depositDetailViewModel.showModalDialog.bind($data, OrderId)" href="javascript:;">
+
+                <span data-bind="text: ReturnCode(OrderCode)"></span>
+
+            </a>
+            <!-- /ko -->
+            @*<a data-bind="click: $parent.viewCustomerDetailModal" href="javascript:;"><strong data-bind="text: OrderCode"></strong></a>*@
+        </td>
+        <td class="text-left" data-bind="text: UserFullName"></td>
+        <td class="text-left" data-bind="text: CustomerEmail"></td>
+        <td class="text-right" data-bind="text: formatNumberic(OrderTotalExchange, 'N2')"></td>
+        <td class="text-right" data-bind="text: formatNumberic(OrderTotalWeight, 'N2')"></td>
+        <td class="text-right" data-bind="text: formatNumberic(ServicePurchase, 'N2')"></td>
+        <td class="text-right" data-bind="text: formatNumberic(OrderBargain, 'N2')"></td>
+        <td class="text-right" data-bind="text: formatNumberic(OrderTotal, 'N2')"></td>
+    </tr>
+</script>

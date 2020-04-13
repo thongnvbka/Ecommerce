@@ -1,0 +1,50 @@
+﻿@using ProjectV.LikeOrderThaiLan.com.ViewEngine
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="car">
+    <div class="car-main">
+        <ul class="car-main-top">
+            <li class="car-main-top-name">
+                <input type="checkbox" name="" class="car_sel_all" value="" checked="checked"><label>  Chọn   </label>
+                <a class="delAll">  và xóa các hàng hóa được lựa chọn   </a>
+                <span>  tên thương mại  </span>
+            </li>
+            <li class="car-main-top-danjia">  Giá (nhân dân tệ)  </li>
+            <li class="car-main-top-sum">  Số lượng  </li>
+            <li class="car-main-top-yunfei">  Lô hàng trong nước  </li>
+            <li class="car-main-top-total">  Giá (nhân dân tệ)  </li>
+            <li class="car-main-top-action">  điều hành  </li>
+        </ul>
+        <div class="car-main-none">
+            <div class="car-main-none-box">
+                <img src="~/Content/images/icon-service/car_none.png" />
+                <span>
+                    <h1>  "Rất tiếc, giỏ mua hàng của bạn là trống rỗng, nhanh chóng làm điều đó!" Bạn có thể:  </h1>
+                    <p><a>  Bây giờ mua  </a></p>
+                    <p><a href="user.php">  Để nhìn vào trung tâm cá nhân  </a></p>
+                </span>
+            </div>
+        </div>
+        <div class="car-main-bottom">
+            <div class="car-main-bottom-all">
+                <input type="checkbox" name="" class="car_sel_all" value="" checked="checked"><label>  Chọn   </label>
+                <a class="delAll">  và xóa các hàng hóa được lựa chọn  </a> 
+            </div>
+            <div class="car-main-bottom-msg">
+                <p>  Hàng hóa được chọn   <span id="sum">  0  </span>   Jian  </p>
+                <p>
+                      Tổng số (trừ vận tải quốc tế):   <span>  ¥   </span>
+                    <a id="total">  0  </a>
+                </p>
+                <button id="jiesuan" title="Bạn cần kiểm tra em bé thanh toán" disabled="disabled" style="cursor: not-allowed; background-color: rgb(153, 153, 153);">  Thanh toán  </button>
+            </div>
+        </div>
+    </div>
+</section>

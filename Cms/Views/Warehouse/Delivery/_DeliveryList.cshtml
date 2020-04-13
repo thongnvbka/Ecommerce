@@ -1,0 +1,25 @@
+﻿<script type="text/html" id="delivery-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewDeliveryDetailModal" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center">
+            <i class="fa fa-clock-o"></i><span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+        </td>
+        <td class="text-center" data-bind="text: DeliveryName"></td>
+        <td class="text-center">
+            <a href="#"><strong data-bind="text: CustomerName"></strong></a>
+        </td>
+        <td class="text-center" data-bind="text: PackageNumber"></td>
+        <td class="text-center"><a href="#"><strong data-bind="text: UserFullName"></strong></a></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.delivery[Status].Name, css: statusApp.delivery[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <a href="#" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+            <a href="#" class="btn btn-sm btn-danger btn-xs"><i class="fa fa-trash"></i> Delete </a>
+        </td>
+    </tr>
+
+</script>

@@ -1,0 +1,93 @@
+﻿ 
+@model Library.DbContext.Entities.Notification
+
+@{
+    ViewBag.Title = Resource.Dashboard_NotificationAccountNew;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Areas/CMS/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/toastr.min.css" rel="stylesheet" />
+    @*<link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />*@
+
+    @*<style>
+            .btn-danger {
+                color: #fff !important;
+            }
+
+                .btn-danger > i {
+                    margin-right: 5px !important;
+                }
+        </style>*@
+
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    <div class="user-r">
+        <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <div class="user-r-main display-none" data-bind="css: isRending() === true? '' : 'display-none'">
+            <div data-bind="template: { name: templateId }">
+            </div>
+        </div>
+    </div>
+</section>
+<!--Popup delete-->
+<div id="delete-box" class="login zhezhao">
+    <div style="display: inline-block; vertical-align: middle;">
+        <div class="del-box">
+            <div class="del-box-top"> XÓA </div>
+            <div class="del-box-content"> Bạn có muốn xóa thông báo này? </div>
+            <div class="del-box-btn">
+                <button id="del_s" class="close-box"> Xóa </button><button id="del_c" class="close-box">Hủy </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--list thông báo-->
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_NotifiList.cshtml")
+<!--chi tieets notification-->
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_DetailNotitication.cshtml")
+<!--notification-->
+@Html.Partial("~/Areas/CMS/Views/AccountCMS/Notificommon/_Notification.cshtml")
+
+@section scripts{
+
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/messagerAddNewOrder.@cultureJs"></script>
+    @*//file js knockoutjs ViewModel*@
+    <script src="~/Areas/CMS/Scripts/models/notification/notidicationModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/notifi/notifiViewModel.js"></script>
+    @*<script>
+
+        $('a.delete-notification').click(function () {
+            //lấy giá trị thuộc tính href - chính là phần tử "#delete"
+            var loginBox = $(this).attr('href');
+            //cho hiện hộp đăng nhập trong 300ms
+            $(loginBox).fadeIn("slow");
+            // thêm phần tử id="over" vào cuối thẻ body
+            $('body').append('<div id="over"></div>');
+            $('#over').fadeIn(300);
+            return false;
+        });
+
+        // khi click đóng hộp thoại
+        $(document).on('click', "button.close-box, #over", function () {
+            $('#over, .login').fadeOut(300, function () {
+                $('#over').remove();
+            });
+            return false;
+        });
+    </script>*@
+
+}

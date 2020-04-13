@@ -1,0 +1,137 @@
+﻿<div id="orderDetailCountingModal" class="modal fade modal-dialog modal-p80" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-9">
+                <h2 class="order-header">
+                    <i class="fa fa-file-code-o"></i> Order code: <strong data-bind="text: ReturnCode(countingModel().OrderCode())" style="color: red"></strong>
+                </h2>
+            </div>
+            <div class="col-xs-3">
+                <h2 class="order-header">
+                    <small data-bind="text: 'Created Date: ' + moment(countingModel().Created()).format('DD/MM/YYYY')" class="pull-right"></small><br />
+                  
+                    <small class="pull-right"> Completed: --/--/----</small>
+                    
+                    <small data-bind="text: 'Updated date: ' + moment(countingModel().Updated()).format('DD/MM/YYYY')" class="pull-right"></small>
+                   
+                </h2>
+            </div>
+        </div>
+        <div class="row importwarehouse">
+            <div class="col-md-3">
+                <strong class="strong-title"> Customer Information </strong>
+                <div>
+                    
+                    <table class="table">
+                        <tr>
+                            <th><i class="fa fa-user"></i></th>
+                            <td>
+                                <span data-bind="text: countingModel().CustomerName"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-envelope-o"></i></th>
+                            <td data-bind="text: countingModel().CustomerEmail()"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="fa fa-phone"></i></th>
+                            <td data-bind="text: countingModel().CustomerPhone()"></td>
+                        </tr>
+                        
+                    </table>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <strong class="strong-title">Information person tally</strong>
+                <div>
+                  
+                    <table class="table">
+                        <tr>
+                            <th>Full name</th>
+                            <td data-bind="text: countingModel().UserFullName()"></td>
+                        </tr>
+                        <tr>
+                            <th>Department</th>
+                            <td data-bind="text: countingModel().OfficeName()"></td>
+                        </tr>
+                        <tr>
+                            <th>Warehouse</th>
+                            <td data-bind="text: countingModel().WarehouseName()"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <strong class="strong-title">Commodity information</strong>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Website</th>
+                            <td>
+                                <a href="javascript:;">
+                                    <strong data-bind="text: countingModel().WebsiteName()"></strong>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Shop</th>
+                            <td>
+                                <a data-bind="attr: { href: countingModel().ShopLink()}" target="_blank">
+                                    <strong data-bind="text: countingModel().ShopName()"></strong>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>The actual number</th>
+                            <td data-bind="text: countingModel().ProductNo()"></td>
+                        </tr>
+                        <tr>
+                            <th>Total money shop</th>
+                            <td data-bind="text: countingModel().TotalPriceShop() + ' ¥'"></td>
+                        </tr>
+                        <tr>
+                            <th>Total money shop (convert)</th>
+                            <td data-bind="text: countingModel().TotalExchangeShop() + ' VND'"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <strong class="strong-title">Information count tally wrong</strong>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Tally counts are wrong</th>
+                            <td data-bind="text: countingModel().QuantityLose()"></td>
+                        </tr>
+                        <tr>
+                            <th>Total money wrong</th>
+                            <td data-bind="text: countingModel().TotalPriceLose() + ' ¥'"></td>
+                        </tr>
+                        <tr>
+                            <th>Total money wrong (convert)</th>
+                            <td data-bind="text: countingModel().TotalExchangeLose() + ' VND'"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span><strong class="strong-title">Note:</strong></span>
+            </div>
+            <div class="col-xs-12" data-bind="text: countingModel().Note()">
+                
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    </div>
+</div>
+<style>
+    .detail-table tr {
+        border-bottom: 1px solid #D2D6DE;
+    }
+</style>

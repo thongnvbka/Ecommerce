@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title =Resource.Error_CreateAccount +" | LikeOrder.com";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@section styles
+{
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="forget-p">
+    <h1 class="text-center">@Resource.Error_CreateAccount</h1>
+    <div class="forget-p-yanzheng">
+        <img src="/Images/DeleteDeposit.png" atl="" width="100" style="margin-top: 10px;" alt="">
+        <p class="text-center" style="padding: 15px 0; font-size: 16px;">
+            @Resource.ErrorCreateAccount_LinkRequestTimeOut
+        </p>
+        <p class="text-center" style="padding: 15px 0; font-size: 14px;">@Resource.ErrorCreateAccount_Contact</p>
+    </div>
+    <div class="text-center back-to-home">
+        <a href="/@culture">@Resource.Home_Home </a>|<a href="@Url.Action("Login","Account")">@Resource.Home_Login</a>
+    </div>
+</section>

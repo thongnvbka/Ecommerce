@@ -1,0 +1,69 @@
+﻿@model PageInfor
+
+<div class="row mt15">
+    <div class="col-sm-6">
+        <div class="henry-paging mt5">
+            @if (Model.TotalPage == 0)
+            {
+                <span>There is not @(Model.Name) yet</span>
+            }
+            else
+            {
+                <span>Show <b>@((Model.CurrentPage - 1) * Model.PageSize + 1)</b> to <b>@(Model.TotalRecord <= ((Model.CurrentPage - 1) * Model.PageSize + Model.PageSize) ? Model.TotalRecord : (Model.CurrentPage - 1) * Model.PageSize + Model.PageSize)</b> of <b>@(Model.TotalRecord)</b> records @*@(Model.Name)*@</span>
+            }
+        </div>
+    </div>
+    <div class="col-sm-6">
+        @if (Model.TotalPage > 0)
+        {
+            <nav>
+                <ul class="pagination m0 pull-right">
+                    @if (Model.CurrentPage != 1)
+                    {
+                        <li>
+                            <a onclick="pagging(@(Model.CurrentPage -1))" href="javascript:;" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    }
+                    @if (Model.TotalSegment > 1 && Model.CurrentSement > 1)
+                    {
+                        <li>
+                            <span aria-label="Previous">
+                                <span aria-hidden="true">...</span>
+                            </span>
+                        </li>
+                    }
+                    @if (Model.TotalPage > 1)
+                    {
+                        for (int i = Model.MinPageInSegment; i <= Model.MaxPageInSegment; i++)
+                        {
+                            var activeClass = Model.CurrentPage == i ? "active" : "";
+                            if (i <= Model.TotalPage)
+                            {
+                                <li class="@activeClass"><a onclick="pagging(@i)" href="javascript:;">@i</a></li>
+                            }
+                        }
+                    }
+
+                    @if (Model.TotalSegment > 1 && Model.CurrentSement < Model.TotalSegment)
+                    {
+                        <li>
+                            <span aria-label="Next">
+                                <span aria-hidden="true">...</span>
+                            </span>
+                        </li>
+                    }
+                    @if (Model.CurrentPage != Model.TotalPage && Model.TotalPage > 0)
+                    {
+                        <li>
+                            <a onclick="pagging(@(Model.CurrentPage + 1))" href="javascript:;" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+</div>

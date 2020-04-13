@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = "Help";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @Html.Partial("_Header2")
+}
+@section styles
+ {
+    <link href="~/Content/css/style-help.css" rel="stylesheet" />
+    @*<link href="~/Content/css/default.min.vs1.3.3.css" rel="stylesheet" />*@
+    <link href="~/Content/css-marketing/style.min-help.css" rel="stylesheet" />
+}
+
+
+
+<div class="hotro-pagebody register-pagebody login-pagebody ktttht-pagebody home-pagebody">
+    <!-- PAGEBODY START -->
+
+    <div class="banner">
+        <!-- BANNER START -->
+        <div class="container">
+            <h1 class="title1">Trung tâm trợ giúp khách hàng</h1>
+            <form action="tickets.html" method="get" id="ticketSearchForm" novalidate="novalidate">
+                <div class="search hidden-xs">
+                    <input type="text" class="txtSearch" placeholder="Nhập câu hỏi hoặc chủ đề bạn muốn tìm kiếm" name="q">
+                    <button type="button" class="button btn-registration" onclick="quicksearch();">
+                        <span>Tìm kiếm</span>
+                    </button>
+                </div>
+                <div class="search-mobile hidden-sm hidden-md hidden-lg">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="txtSearch" placeholder="Nhập câu hỏi hoặc chủ đề bạn muốn tìm kiếm" name="q">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <button type="button" class="button btn-registration " onclick="quicksearch();">
+                                <span>Tìm kiếm</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!-- END BANNER -->
+
+    <div class="content">
+        <!-- CONTENT START -->
+        <div class="container">
+
+            <div class="index-wrapper row">
+                <div class="basic-guide container text-center">
+                    <div class="clearfix">
+                        <!-- Slider main container -->
+                        <div class="swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <a href="https://docs.bizweb.vn/5-buoc-hoan-thien-website.html" target="_blank">
+                                        <i class="icon-guide step"></i>
+                                        <span>5 bước <br> hoàn thiện website</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="https://docs.bizweb.vn/manual.html" target="_blank">
+                                        <i class="icon-guide manual"></i>
+                                        <span>Hướng dẫn <br>sử dụng website</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://support.bizweb.vn/documents/Cam%20nang%20huong%20dan%20su%20dung%20Bizweb%20Sky.pdf" target="_blank">
+                                        <i class="icon-guide document"></i>
+                                        <span>Tải xuống <br> tài liệu hướng dẫn</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://blog.bizweb.vn/" target="_blank">
+                                        <i class="icon-guide sale"></i>
+                                        <span>Kinh nghiệm <br> kinh doanh online</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev visible-xs-block"></div>
+                            <div class="swiper-button-next visible-xs-block"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq container">
+                    <h2><i class="icon-faq"></i> <a href="https://docs.bizweb.vn/faq.html" target="_blank">Một số câu hỏi thường gặp</a></h2>
+                    <div class="faq-list-item row">
+                        <div class="clearfix">
+                            <div class="faq-item col-sm-6 col-xs-12">
+                                <div class="question"><span class="circle">1</span><a href="https://docs.bizweb.vn/bizweb-se-hoan-thien-va-ban-giao-website-cho-toi-trong-bao-lau-259.html" target="_blank">Bizweb sẽ hoàn thiện và bàn giao website cho tôi trong bao lâu?</a></div>
+                            </div>
+                            <div class="faq-item col-sm-6 col-xs-12">
+                                <div class="question"><span class="circle">2  </span><a href="https://docs.bizweb.vn/toi-co-the-nang-cap-goi-dich-vu-cua-minh-khi-dang-su-dung-dich-vu-khong-260.html" target="_blank">Tôi có thể nâng cấp gói dịch vụ của mình khi đang sử dụng dịch vụ không?</a></div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="faq-item col-sm-6 col-xs-12 col-md-6">
+                                <div class="question"><span class="circle">3</span><a href="https://docs.bizweb.vn/lam-sao-de-dang-nhap-vao-quan-tri-website-khi-dang-ky-dung-thu-xong-271.html" target="_blank">Làm sao để đăng nhập vào quản trị website khi đăng ký dùng thử xong?</a></div>
+                            </div>
+                            <div class="faq-item col-sm-6 col-xs-12 col-md-6">
+                                <div class="question"><span class="circle">4 </span><a href="https://docs.bizweb.vn/toi-phai-tra-nhung-chi-phi-nao-va-thanh-toan-theo-thang-hay-theo-nam-272.html" target="_blank">Tôi phải trả những chi phí nào và thanh toán theo tháng hay theo năm?</a></div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="faq-item col-sm-6 col-xs-12 col-md-6">
+                                <div><span class="circle">5</span><a href="https://docs.bizweb.vn/toi-co-duoc-dung-thu-mien-phi-15-ngay-khong-273.html" target="-_blank">Tôi có được dùng thử miễn phí 15 ngày không?</a></div>
+                            </div>
+                            <div class="faq-item col-sm-6 col-xs-12 col-md-6">
+                                <div class="question"><span class="circle">6 </span><a href="https://docs.bizweb.vn/lam-the-nao-de-website-cua-toi-chay-tren-ten-mien-rieng-206.html" target="_blank">Làm sao để website của tôi chạy trên tên miền riêng?</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-guide container">
+                    <h2><i class="icon-video"></i><a target="_blank" href="https://docs.bizweb.vn/video-guide.html"> Video hướng dẫn</a></h2>
+                    <div class="video-list-items row">
+                        <div class="col-xs-12 col-sm-7 col-md-6">
+                            <div class="first-video">
+                                <a href="https://docs.bizweb.vn/them-danh-muc-bai-viet-201.html" target="_blank">
+                                    <img src="/Content/images/img-video-1.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-5 col-md-6">
+                            <div class="other-video clearfix">
+                                <a href="https://docs.bizweb.vn/cai-dat-ung-dung-bizcare-252.html" target="_blank">
+                                    <img src="/Content/images/img-video-2.jpg">
+                                    <span>Cài đặt ứng dụng Bizcare</span>
+                                </a>
+                            </div>
+                            <div class="other-video clearfix">
+                                <a href="https://docs.bizweb.vn/huong-dan-cai-dat-ung-dung-248.html" target="_blank">
+                                    <img src="/Content/images/img-video-3.jpg">
+                                    <span>Hướng dẫn cài đặt ứng dụng với Bizweb</span>
+                                </a>
+                            </div>
+                            <div class="other-video clearfix">
+                                <a href="https://docs.bizweb.vn/quan-ly-file-loc-tim-kiem-va-xoa-file-245.html" target="_blank">
+                                    <img src="/Content/images/img-video-4.jpg">
+                                    <span>Quản lý file, lọc và tìm kiếm file</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="manual-guide container">
+                    <h2><i class="icon-manual"></i><a href="https://docs.bizweb.vn/manual.html" target="_blank">Hướng dẫn sử dụng</a></h2>
+                    <div class="manual-items text-center">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-15">
+                                <div class="guide-type-item">
+                                    <i class="icon-myshop"></i>
+                                    <h4>Cửa hàng của tôi</h4>
+                                    <ul>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-183.html">Trang quản trị</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-4.html">Đơn hàng</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-2.html">Sản phẩm</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-6.html">Danh mục sản phẩm</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-31.html">Khách hàng</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-42.html">Khuyến mại</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-15">
+                                <div class="guide-type-item">
+                                    <i class="icon-content"></i>
+                                    <h4>Quản lý nội dung</h4>
+                                    <ul>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-53.html">Trang nội dung</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/them-bai-viet-vao-blog-49.html">Blog</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/them-mot-link-vao-menu-79.html">Menu</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-185.html">Giao diện</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-65.html">Quản lý file</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-15">
+                                <div class="guide-type-item">
+                                    <i class="icon-setting"></i>
+                                    <h4>Cấu hình website</h4>
+                                    <ul>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-62.html">Cấu hình chung</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-76.html">Thông báo</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-89.html">Thanh toán</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-96.html">Vận chuyển</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-100.html">Tên miền</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-26.html">Tài khoản</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-15">
+                                <div class="guide-type-item">
+                                    <i class="icon-custom"></i>
+                                    <h4>Tùy biến website</h4>
+                                    <ul>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-189.html">Ứng dụng</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a href="#">Tùy chỉnh website </a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/bizweb-giup-tang-luong-truy-cap-va-doanh-thu-cho-shop-online-385.html">SEO</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-15">
+                                <div class="guide-type-item">
+                                    <i class="icon-other"></i>
+                                    <h4>Các hướng dẫn khác</h4>
+                                    <ul>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-ve-bizweb-vn-266.html">Tổng quan về Bizweb</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/hinh-thuc-thanh-toan-154.html">Thanh toán dịch vụ</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/quy-dinh-su-dung-87.html">Quy định &amp; chính sách</a></li>
+                                        <li class="seperate"><i class="fa fa-circle-thin"></i></li>
+                                        <li><a target="_blank" href="https://docs.bizweb.vn/gioi-thieu-256.html">Đăng ký website TMĐT với Bộ Công thương</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="support-contact container">
+                    <h2>
+                        <i class="icon-support-contact"></i>
+                        <span>Liên hệ để được Bizweb hỗ trợ</span>
+                    </h2>
+                    <p class="text-center">Khi cần trợ giúp từ Bizweb, bạn có thể Gửi yêu cầu bằng cách tạo hỗ trợ mới hoặc liên hệ với Bizweb qua Email, số điện thoại để được hỗ trợ giải đáp. Khi cần kiểm tra toàn bộ lịch sử quá trình tiếp nhận và phản hồi bạn hãy chọn Kiểm tra tình trạng hỗ trợ.</p>
+                    <div class="support-info row text-center">
+                        <div class="support-type col-xs-12 col-sm-4 col-md-4">
+                            <i class="icon-create-support"></i>
+                            <span>Gửi yêu cầu hỗ trợ</span>
+                            <a class="button btn-registration" href="/createticket.html">Tạo hỗ trợ mới</a>
+                        </div>
+                        <div class="support-type col-xs-12 col-sm-4 col-md-4">
+                            <i class="icon-check-support"></i>
+                            <span>Kiểm tra tình trạng hỗ trợ</span>
+                            <a class="button btn-registration" href="/checkticket.html">Kiểm tra tình trạng</a>
+                        </div>
+                        <div class="support-type col-xs-12 col-sm-4 col-md-4">
+                            <i class="icon-contact-phone"></i>
+                            <span>Liên hệ với Bizweb</span>
+                            <p>
+                                Email: support@bizweb.vn <br>
+                                Tổng đài hỗ trợ khách hàng <span class="contact-phone">1900 6750</span><br>
+                                Hỗ trợ các ngày trong tuần từ thứ 2 đến Chủ nhật
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

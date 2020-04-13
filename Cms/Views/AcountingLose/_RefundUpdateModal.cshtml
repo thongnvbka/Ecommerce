@@ -1,0 +1,263 @@
+﻿<div id="refundUpdateModal" class="modal fade modal-dialog modal-lg"  tabindex="-1" data-backdrop="static" role="dialog">
+    <form data-bind="submit: save" id="refundUpdateForm">
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="order-header">
+                        <i class="fa fa-file-text-o"></i>
+                        <!-- ko if: id() > 0 -->
+                        <span><span data-bind="text: mode() == 0 ? 'REFUND TRACKING' : 'GOODS RETURN TRACKING'"></span> "#<b data-bind="text: 'R'+code()" style="color: red"></b>"</span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: id() > 0 -->
+                        <span data-bind="text: mode() == 0 ? 'CREATE REFUND TRACKING FORM' : 'CREATE GOOD RETURN TRACKING FORM'"></span>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="order-header">
+                        <!-- ko if: id() > 0-->
+                        <small class="pull-right">Created Date: <span data-bind="text: moment(created()).format('DD/MM/YYYY')" class="font-green"></span></small>
+                        <!-- /ko -->
+                    </h2>
+                </div>
+            </div>
+            <!-- info row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <div>
+                                                <h4 class="form-section mt0 mb10 bold500 border-green">Create</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Created by staff:</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: createUserFullName"></span> - <span data-bind="text: createUserName"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Unit:</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: createOfficeName"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">  Time :</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: created().format('DD/MM/YYYY HH:mm')"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div>
+                                                <h4 class="form-section mt0 mb10 bold500 border-green">Process</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Process:</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: updateUserFullName"></span> - <span data-bind="text: updateUserName"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Unit:</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: updateOfficeName"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">  Time :</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <!-- ko if: updateUserFullName() -->
+                                                        <span data-bind="text: updated().format('DD/MM/YYYY HH:mm')"></span>
+                                                        <!-- /ko -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div>
+                                                <h4 class="form-section mt0 mb10 bold500 border-green">Form information</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span data-bind="text: mode() == 0 ? 'Amount refunded' : 'Shipping fees(CYN)'"></span>:</label>
+                                                <div class="col-sm-3">
+                                                    <div class="form-control-static">
+                                                        <!-- ko if: id() <= 0 -->
+                                                        <input data-bind="value: amountActual" class="form-control decimal text-right"/>
+                                                        <!-- /ko -->
+                                                        <!-- ko ifnot: id() <= 0 -->
+                                                        <span data-bind="text: formatNumberic(amountActual(), 'N2')"></span>
+                                                        <!-- /ko -->
+                                                    </div>
+                                                </div>
+                                                <label class="col-sm-3 control-label"><span data-bind="text: mode() == 0 ? 'Total amount refunded ' : 'Total cost of goods sold'"></span>:</label>
+                                                <div class="col-sm-3">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: formatNumberic(amount(), 'N2')"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- ko if: mode() == 0 -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Refund:</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-control-static">
+                                                        <span data-bind="text: formatNumberic(percent(), 'N2')"></span> (%)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /ko -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Note:</label>
+                                                <div class="col-sm-9">
+                                                    <!-- ko if: id() <= 0 -->
+                                                    <textarea data-bind="value: note" class="form-control"></textarea>
+                                                    <!-- /ko -->
+                                                    <!-- ko ifnot: id() <= 0 -->
+                                                    <span data-bind="text: note"></span>
+                                                    <!-- /ko -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form">
+                        <div class="form-horizontal">
+                            <h4 class="form-section mt0 mb10 bold500 border-green">Product list</h4>
+                            <div class="form-horizontal">
+                                <div class="box-body ">
+                                    @*<!-- ko if: id() <= 0 || window.hasUpdateWallet -->
+    <div class="row">
+        <div class="col-sm-6 col-lg-4 mb15">
+            <div class="input-group">
+                <input placeholder="@Resource.Packaging_TimKienHang ..." id="suggetion" type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button"><i class="fa fa-add"></i> Add packageHang</button>
+                </span>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+    <!-- /ko -->*@
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">#</th>
+                                                        <th class="text-center"><i class="fa fa-image"></i>Image</th>
+                                                        <th class="text-center"><i class="fa fa-cube"></i> Product name</th>
+                                                        <th class="text-center"><i class="fa fa-exclamation-circle"></i>Property</th>
+                                                        <th class="text-center"><i class="fa fa-cube"></i> Wrong type</th>
+                                                        <th class="text-center" style="color: blue"><i class="fa fa-cubes"></i>Ordered number</th>
+                                                        <th class="text-center" style="color: blue"><i class="fa fa-money"></i> Price (CNY)</th>
+                                                        <th class="text-center" style="color: red"><i class="fa fa-money"></i> Deviation</th>
+                                                        <th class="text-center" style="color: red"><i class="fa fa-cubes"></i> Deviation value (CNY)</th>
+                                                        <th class="text-center"><i class="fa fa-file"></i> Note</th>
+                                                        <!-- ko if: id() <= 0 -->
+                                                        <th class="text-center w50"></th>
+                                                        <!-- /ko -->
+                                                    </tr>
+                                                </thead>
+
+                                                <!-- ko if: isLoading() || items().length == 0 -->
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="11" class="text-center">
+                                                            <!-- ko if: isLoading() -->
+                                                            <span><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> Loading data...</span>
+                                                            <!-- /ko -->
+                                                            <!-- ko if: isLoading() == false && items().length == 0 -->
+                                                            <span>@*Không có yêu cầu nào*@No request</span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <!-- /ko -->
+                                                <!-- ko ifnot: isLoading() || items().length == 0 -->
+                                                <tbody data-bind="foreach: items">
+                                                    <tr>
+                                                        <td data-bind="text: $index()+1" class="text-center"></td>
+                                                        <td class="text-center">
+                                                            <img data-bind="attr: { src: image}" style="width: 40px; height: 40px;" alt="Product image">
+                                                        </td>
+                                                        <td>
+                                                            <a data-bind="text: name, attr: { href: link}" target="_blank"></a><br>
+                                                        </td>
+                                                        <!-- ko if: properties !== '' -->
+                                                        <td data-bind="foreach: JSON.parse(properties)">
+                                                            <span data-bind="text: Label"></span>: <span data-bind="text: Text">
+                                                            </span><br>
+                                                        </td>
+                                                        <!-- /ko -->
+                                                        <!-- ko ifnot: properties !== '' -->
+                                                        <td></td>
+                                                        <!-- /ko -->
+                                                        <td class="text-center">
+                                                            <!-- ko if: mode == 0 -->
+                                                            <span class="label label-danger">Product missing</span>
+                                                            <!-- /ko -->
+                                                            <!-- ko ifnot: mode == 0 -->
+                                                            <span class="label label-warning">Wrong product</span>
+                                                            <!-- /ko -->
+                                                        </td>
+                                                        <td data-bind="text: formatNumberic(quantity)" class="text-right"></td>
+                                                        <td data-bind="text: formatNumberic(price, 'N2')" class="text-right"></td>
+                                                        <td data-bind="text: formatNumberic(quantityLose)" class="text-right"></td>
+                                                        <td data-bind="text: formatNumberic(totalPriceLose, 'N2')" class="text-right"></td>
+                                                        <td data-bind="text: notePrivate"></td>
+                                                        <!-- ko if: $parent.id() <= 0 -->
+                                                        <td>
+                                                            <a data-bind="click: $parent.remove" class="btn btn-sm btn-danger" href="javascript:;">Delete </a>
+                                                        </td>
+                                                        <!-- /ko -->
+                                                    </tr>
+                                                </tbody>
+                                                <!-- /ko -->
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="modal-footer">
+        <!-- ko if: id() <= 0 -->
+        <button data-bind="disable: isSubmit" class="btn btn-success" type="submit">
+            <i data-bind="attr: {class: isSubmit() ? 'fa fa-spinner fa-pulse' : 'fa fa-save'}" class="fa fa-save"></i>
+            <span data-bind="text: id() > 0 ? 'Save' : mode() == 0 ? 'Create refund tracking form' : 'Create goods return tracking form'"></span>
+        </button>
+        <!-- /ko -->
+        <a class="btn btn-default" data-dismiss="modal">Close</a>
+    </div>
+    </form>
+
+</div>

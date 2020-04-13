@@ -1,0 +1,172 @@
+﻿@model Library.DbContext.Entities.CustomerLevel
+@{
+    var title = "Information level vip";
+    var command = "<i class=\"fa fa-save\"></i>Save";
+    if (Model != null)
+    {
+        if (Model.Id > 0)
+        {
+            title = "Update Information level vip";
+        }
+        else
+        {
+            title = "Add new level vip";
+            command = "<i class=\"fa fa-plus\"></i>Add new";
+        }
+    }
+    ViewBag.Title = title;
+}
+
+<section class="content-header">
+    <h1>
+        Level Management Vip
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("Index","CustomerLevel")">Level Management Vip</a></li>
+        <li class="active">@title</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Information level vip</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm("AddItem", "CustomerLevel", FormMethod.Post, new { @class = "form-horizontal", @id = "addForm", enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.Id)
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">Level <span class="color-red">*</span></label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Level", @onblur = "CheckName()" })
+                        <input type="hidden" id="txtCheckName" value="0" />
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-8 col-md-5 col-lg-4 checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Status) Active
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FundName" class="col-sm-2 control-label">The amount of money<span class="color-red">*</span></label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextBoxFor(m => m.TotalMoney, "{0:#,###}", new { @class = "form-control", @placeholder = "The amount of money" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">Note</label>
+                    <div class="col-sm-8 col-md-5 col-lg-4">
+                        @Html.TextAreaFor(m => m.Description, new { @rows = "3", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <a href="@Url.Action("Index", "CustomerLevel")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to list</a>
+                <a href="javascript: void(0);" class="btn btn-success pull-right" onclick="SubmitForm()"> @Html.Raw(command)</a>
+            </div>
+        }
+    </div>
+</section>
+@using (Html.BeginScriptBlock())
+{
+    <script type="text/javascript">
+        function SubmitForm() {
+            if ($('#txtCheckName').val() == "1") {
+                toastr.warning('Name of this level has already existed');
+                return false;
+            } else {
+                $('#TotalMoney').val($('#TotalMoney').val().replace(/\,/g, '').replace(/\./g, ''));
+                var result = $('#addForm').valid();
+                if (result) {
+                    $('#addForm').submit();
+                    return true;
+                }
+                return false;
+            }
+        }
+        function CheckName() {
+            if ($('#Name').val().trim().length > 0) {
+                $.ajax({
+                    url: '@Url.Action("CheckExistsName", "CustomerLevel")',
+                    type: 'GET',
+                    data: { "name": $('#Name').val(), "id": $('#Id').val() },
+                    success: function (data) {
+                        if (data == 1) {
+                            $('#txtCheckName').val("1");
+                            toastr.warning('Name of this level has already existed');
+                        }
+                        else {
+                            $('#txtCheckName').val("0");
+                        }
+                    }
+                });
+            }
+        }
+        $('#TotalMoney').keydown(function (event) {
+            // Allow special chars + arrows
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9
+                || event.keyCode == 27 || event.keyCode == 13
+                || (event.keyCode == 65 && event.ctrlKey == true)
+                || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            } else {
+                // If it's not a number stop the keypress
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        });
+        $(document).ready(function () {
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+            $('#TotalMoney').blur(function () {
+            $(this).val($(this).val().replace(/\,/g, '').replace(/\./g, ''));
+            $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: 0, region: 'vi-VN' });
+        })
+            .keyup(function (e) {
+                var e = window.event || e;
+                var keyUnicode = e.charCode || e.keyCode;
+                if (e !== undefined) {
+                    switch (keyUnicode) {
+                        case 16:
+                            break; // Shift
+                        case 27:
+                            this.value = '';
+                            break; // Esc: clear entry
+                        case 35:
+                            break; // End
+                        case 36:
+                            break; // Home
+                        case 37:
+                            break; // cursor left
+                        case 38:
+                            break; // cursor up
+                        case 39:
+                            break; // cursor right
+                        case 40:
+                            break; // cursor down
+                        case 78:
+                            break; // N (Opera 9.63+ maps the "." from the number key section to the "N" key too!) (See: http://unixpapa.com/js/key.html search for ". Del")
+                        case 110:
+                            break; // . number block (Opera 9.63+ maps the "." from the number block to the "N" key (78) !!!)
+                        case 190:
+                            break; // .
+                        default:
+                            $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: -1, eventOnDecimalsEntered: true, region: 'vi-VN' });
+                    }
+                }
+            });
+        })
+    </script>
+}

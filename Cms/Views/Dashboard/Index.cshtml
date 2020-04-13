@@ -1,0 +1,451 @@
+﻿@section pagespecific{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Scripts/viewmodels/dashboard/dashboardViewModel.js"></script>
+}
+
+<section class="content-header">
+    <h1>
+        @*Thống kê chung trong ngày*@General daily accounting
+    </h1>
+    <ol class="breadcrumb">
+        <button type="button" class="btn btn-default pull-right" id="daterange-btndashboard">
+            <span>
+                <i class="fa fa-calendar"></i>Start Date
+            </span>
+            <i class="fa fa-caret-down"></i>
+        </button>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content" id="dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">User account statistics on the system</h3>
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header text-red" data-bind="text: formatNumberic(totalCustomer(), 'N2')"></h3>
+                                <span class="description-text text-bold">Official client account</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header text-green" data-bind="text: formatNumberic(totalPotentialCustomer(), 'N2')"></h3>
+                                <span class="description-text text-bold">Lead account</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header text-blue" data-bind="text: formatNumberic(totalStaff(), 'N2')"></h3>
+                                <span class="description-text text-bold">Current Staff account</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">STATISTICS OF FINANCIAL ACTIVITIES OF VIETNAM FUND (IN DAY)</h3>
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalFundBillVNAddOfDay(), 'N2')"></h3>
+                                <span class="description-text">charge (Baht)</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalFundBillVNMinusOfDay(), 'N2')"></h3>
+                                <span class="description-text">subtract (Baht)</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalRechargeBillAddOfDay(), 'N2')"></h3>
+                                <span class="description-text">Recharge e-wallet</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalRechargeBillMinusOfDay(), 'N2')"></h3>
+                                <span class="description-text">Withdraw e-wallet </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">FINANCIAL STATISTICS OF CHINA FUND (IN DAY)</h3>
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalFundBillCNAddOfDay(), 'N2')"></h3>
+                                <span class="description-text">Recharge fund(CNY)</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalFundBillCNMinusOfDay(), 'N2')"></h3>
+                                <span class="description-text">Subtract funds (CNY)</span>
+                            </div>
+                        </div>
+                        @*<div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <h3 class="description-header" data-bind="text: formatNumberic(Globalize.parseFloat(totalRechargeBillAddOfDay()), 'N2')"></h3>
+                                    <span class="description-text">Nạp tiền ví điện tử khách</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block">
+                                    <h3 class="description-header" data-bind="text: formatNumberic(Globalize.parseFloat(totalRechargeBillMinusOfDay()), 'N2')"></h3>
+                                    <span class="description-text">Withdraw customer e-wallet </span>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">ALIPAY FUND OPERATING ACTIVITIES (DAY)</h3>
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalFundBillALPAddOfDay(), 'N2')"></h3>
+                                <span class="description-text">Recharge fund (ALP)</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(totalFundBillALPMinusOfDay(), 'N2')"></h3>
+                                <span class="description-text">Subtract funds (ALP)</span>
+                            </div>
+                        </div>
+                        @*<div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <h3 class="description-header" data-bind="text: formatNumberic(Globalize.parseFloat(totalRechargeBillAddOfDay()), 'N2')"></h3>
+                                    <span class="description-text">Nạp tiền ví điện tử khách</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block">
+                                    <h3 class="description-header" data-bind="text: formatNumberic(Globalize.parseFloat(totalRechargeBillMinusOfDay()), 'N2')"></h3>
+                                    <span class="description-text">Withdraw customer e-wallet </span>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">SHIPPING PROCEDURE ORDER DATE IN DAY</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-body no-padding">
+                                <div id="order" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-7">
+                            <div id="nhanvien_order" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedRevenueOrder(), 'N2')"></h3>
+                                <span class="description-text">ESTIMATED REVENUE BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedProfitOrder(), 'N2')"></h3>
+                                <span class="description-text">PROPOSED PROFIT BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">DEALING WITH COMMERCIAL DAILY APPLICATIONS</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-body no-padding">
+                                <div id="commerce" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-7">
+                            <div id="nhanvien_commerce" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedRevenueOrder(), 'N2')"></h3>
+                                <span class="description-text">ESTIMATED REVENUE BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedProfitOrder(), 'N2')"></h3>
+                                <span class="description-text">PROPOSED PROFIT BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">DEALING WITH SIGNING CARDS IN DAY</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-body no-padding">
+                                <div id="deposit" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-7">
+                            <div id="nhanvien_deposit" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedRevenueDeposit(), 'N2')"></h3>
+                                <span class="description-text">ESTIMATED REVENUE BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedProfitDeposit(), 'N2')"></h3>
+                                <span class="description-text">PROPOSED PROFIT BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">THE DEALING OF DAILY HANDLING APPLICATIONS DURING THE DAY</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-body no-padding">
+                                <div id="sourcing" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-7">
+                            <div id="nhanvien_sourcing" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedRevenueSourcing(), 'N2')"></h3>
+                                <span class="description-text">ESTIMATED REVENUE BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="description-block border-right">
+                                <h3 class="description-header" data-bind="text: formatNumberic(expectedProfitSourcing(), 'N2')"></h3>
+                                <span class="description-text">PROPOSED PROFIT BY ORDER</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Warehouse status (in day)</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                @*<div class="box-body no-padding">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="pad">
+                                    <div id="order" style="min-width: 15%; height: 18%; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="pad">
+                                    <div id="deposit" style="min-width: 15%; height: 18%; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="pad">
+                                    <div id="sourcing" style="min-width: 15%; height: 18%; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">CUSTOMER CARE SITUATION BY DAY</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-body no-padding">
+                                <div id="ticket" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div id="nhanvien_ticket" style="min-width: 120px; height: 6%; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

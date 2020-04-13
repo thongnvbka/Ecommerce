@@ -1,0 +1,101 @@
+﻿@model CustomerNewPassMeta
+
+@{
+    ViewBag.Title = Resource.NewPass_InputNewPass;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+@section styles
+{
+    <style>
+        .error-mess > span {
+            color: #dd2727;
+            font-weight: bold;
+        }
+
+        .field-validation-error {
+            text-align: center;
+            margin-left: 110px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+}
+
+<section class="forget-p">
+
+    @if (ViewBag.Status == "1")
+    {
+        <div class="rs" style="text-align: center">
+            <img src="/Content/images/login/tick_green.png" width="70" alt="" />
+        </div>
+        <h1 style="text-align: center;">@ViewBag.Mess</h1>
+        @Html.AntiForgeryToken()
+
+        <div style="text-align: center; padding: 10px 0;font-size: 14px">
+            <a href="/@culture">@Resource.Home_Home</a> | <a href="@Url.Action("Login", "Account")">@Resource.Home_Login</a>
+        </div>
+    }
+    else
+    {
+        <h1 class="text-center">
+            @Resource.NewPass_InputNewPass
+        </h1>
+        <form action="@Url.Action("NewPass", "Account")" method="post" class="form-horizontal">
+            <div class="forget-p-shezhi">
+                <img src="~/Content/images/login/forget_shezhi.png" alt="" />
+                <div class="forget-p-shezhi-box">
+                    <div class="forget-p-shezhi-box-l">
+                        <img src="~/Content/images/login/tick_green.png" width="90" height="90" alt="" />
+                    </div>
+                    <div class="forget-p-shezhi-box-r">
+                        @Html.Raw(Resource.NewPass_Note)
+
+                        <p>
+                            @Resource.NewPass_NoteContent
+                        </p>
+                    </div>
+                </div>
+                <div class="forget-p-shezhi-input">
+                    <h1 style="text-align: center; color: red">@ViewBag.Mess</h1>
+                    <p class="error-mess">
+                        <label>
+                            @Resource.ChangePass_PassNew:
+                        </label>
+                        @Html.PasswordFor(x => x.Password, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control form-control-solid placeholder-no-fix"},
+                            {"placeholder", Resource.ChangePass_PassNew},
+                            {"type", "password"},
+                            {"autocomplete","off" },
+                        })
+                        <br />
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </p>
+                    <p class="error-mess">
+                        <label>
+                            @Resource.Home_PassAgain :
+                        </label>
+                        @Html.PasswordFor(x => x.ConfirmPassword, new Dictionary<string, object>()
+                        {
+                            {"class", "form-control form-control-solid placeholder-no-fix"},
+                            {"placeholder", Resource.Home_PassAgain},
+                            {"type", "password"},
+                            {"autocomplete","off" },
+                        })
+                        <br />
+                        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                        <input type="hidden" name="Email" id="Email" value="@Model.Email" />
+                    </p>
+                    <button type="submit" class="btn btn-login-form" style="width: 200px;">
+                        @Resource.NewPass_ChangePass
+                    </button>
+                </div>
+            </div>
+        </form>
+    }
+</section>

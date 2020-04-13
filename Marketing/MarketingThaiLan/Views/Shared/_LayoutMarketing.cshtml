@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>Eziwebshop-Đăng ký nhận miễn phí website Shop bán hàng</title>
+
+    <!-- font injector -->
+    <link type="text/css" rel="stylesheet" media="screen, print"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,100italic,300italic,400italic,500,500italic,700,700italic,900,900italic" />
+     
+    <link href="~/Content/css-marketing/css-marketing.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/css-marketing/style.vs-marketing.css" rel="stylesheet" media="screen"/>
+
+    <script src="~/Content/js/script.js"></script>
+
+    <script src="~/Content/js/default.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" id="mobile-viewport">
+    <script type="text/javascript" class="instapage-noscrap">var ijQuery = jQuery.noConflict(true);</script>
+    <link rel="shortcut icon" href="/eziweb.ico" type="image/x-icon" />
+    @RenderSection("styles",false)
+
+    @*<script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-92003907-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>*@
+
+</head>
+
+<body class="new_mobile">
+    <div id="i-page" class="page page2 ">
+        <div class="page-block" id="page-block-icgmcyo5yv9xox7q4tr8dunmi">
+            <div class="color-overlay"></div>
+            <div class="border-holder">
+                <div class="block-inner">
+                    <div class="page-element widget-container page-element-type-image widget-image " id="element-708">
+                        <div class="contents">
+                            <a href="/" style="width: 100%; height: 100%;" target="_blank">
+                                <img src="~/Content/images/theme/logo_color.png" style="height: 100%; width: 100%; margin-top: 0;" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="page-element widget-container page-element-type-headline widget-headline " id="element-58222">
+                        <div class="contents">
+                            <h1>
+                                <p style="text-align: center;">
+                                    <font color="#1c232b"><a href="@Url.Action("SellOnFaceBook","Marketing")" rel="null" type="url" id="link-s8tqqbzli2pdvtiwg2mlsor" class="url-link" target="_blank">ขายบน Facebook</a></font>
+                                </p>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="page-element widget-container page-element-type-headline widget-headline " id="element-583">
+                        <div class="contents"><h1><p style="text-align: center;  "><a href="@Url.Action("PriceList","Home")" rel="nul" type="url" id="link-fh4xdn91tdn57gdgpqirx80k9" class="url-link" target="_blank"><font color="#1c232b">อัตราค่าใช้จ่าย</font></a></p></h1></div>
+                    </div>
+
+                    <div class="page-element widget-container page-element-type-headline widget-headline " id="element-582">
+                        <div class="contents">
+                            <h1>
+                                <p style="text-align: center;">
+                                    <font color="#1c232b"><a href="@Url.Action("DesignWebsite","Marketing")" rel="null" type="url" id="link-s8tqqbzli2pdvtiwg2mlsor" class="url-link" target="_blank">ออกแบบเว็บไชต์ขายสินค้า</a></font>
+                                </p>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="page-element widget-container page-element-type-headline widget-headline " id="element-584">
+                        <div class="contents">
+                            <h1>
+                                <p style="text-align: center;">
+                                    <a href="@Url.Action("WarehouseInterface","Home")" rel="null" type="url" id="link-iev55udu1yx64oii8vvdyrpb9" class="url-link" target="_blank"><font color="#1c232b">อินเตอร์เฟซ</font></a>
+                                </p>
+                            </h1>
+                        </div>
+                    </div>
+
+                    @*<div class="page-element widget-container page-element-type-image widget-image "
+                         id="element-710">
+                        <div class="contents">
+                            <img src="~/Content/image-marketing/landingpage/11517738-0-logo-zcom-01.png"
+                                 style="height: 100%; width: 100%; margin-top: 0px;"
+                                 alt="" />
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+
+
+        @Html.Partial("_FooterMarketing")
+    </div>
+    @RenderSection("scripts", false)
+</body>
+</html>

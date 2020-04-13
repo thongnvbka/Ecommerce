@@ -1,0 +1,326 @@
+﻿@{
+    ViewBag.Title = "Claim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Claim/_ClaimList.cshtml")
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="jifen rs">
+                <ul class="jifen-nav">
+                    <li data-id="mingxi" class="lete-active"> @Resource.Dashboard_Payment </li>
+                </ul>
+                <div class="zy-main-content-msg-r rs" style="width: 100%; border-bottom: 1px solid #eee;">
+                    <div class="zy-main-content-msg-r-box">
+                        <div class="zy-main-content-msg-r-l">
+
+                            @Resource.RequestsPayment_AmountMoney (<span class="red-color"> * </span>) :
+                        </div>
+                        <div class="zy-main-content-msg-r-r">
+                            <input type="text" name="AdvanceMoney" id="AdvanceMoney" value=""
+                                   placeholder="@Resource.RequestsPayment_AmountMoney" style="float: left;" onchange="CheckMoney()" autocomplete="off">
+                            <p style="float: left; width: 400px; margin-left: 15px;">
+                                (@Resource.RequestsPayment_MoneyMax @string.Format("{0:#,###}", ViewBag.BalanceAvalible) @Resource.Currency )
+                            </p>
+                        </div>
+                    </div>
+                    <div class="zy-main-content-msg-r-box">
+                        <div class="zy-main-content-msg-r-l">
+
+                            @Resource.RequestsPayment_Name (<span class="red-color"> * </span>) :
+                        </div>
+                        <div class="zy-main-content-msg-r-r">
+                            <input type="text" name="CardName" id="CardName" value="" placeholder="@Resource.RequestsPayment_GiveName"  autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="zy-main-content-msg-r-box">
+                        <div class="zy-main-content-msg-r-l">
+
+                            @Resource.RequestsPayment_CardId (<span class="red-color"> * </span>) :
+                        </div>
+                        <div class="zy-main-content-msg-r-r">
+                            <input type="text" name="CardId" id="CardId" value="" placeholder="@Resource.RequestsPayment_BankId" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="zy-main-content-msg-r-box">
+                        <div class="zy-main-content-msg-r-l">
+
+                            @Resource.RequestsPayment_Bank (<span class="red-color"> * </span>) :
+                        </div>
+                        <div class="zy-main-content-msg-r-r">
+                            <input type="text" name="CardBank" id="CardBank" value="" placeholder="@Resource.RequestsPayment_BranchBank"  autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="zy-main-content-msg-r-box" style="margin-bottom: 20px;">
+                        <div class="zy-main-content-msg-r-l">
+                            &nbsp;
+                        </div>
+                        <div class="zy-main-content-msg-r-r">
+                            <button id="btnCommand" style="width: 120px;"> @Resource.Dashboard_Payment </button><span id="tip_msg"></span>
+                        </div>
+                    </div>
+
+                    <div class="zy-main-content-msg-r-box" style="margin-bottom: 20px;">
+                        @Html.Raw(Resource.RequestsPayment_Note)
+                    </div>
+                </div>
+                <div class="jifen-mingxi jifen-box rs" style="padding-right: 15px; box-sizing: border-box;">
+
+                    <table border="1" cellspacing="1" cellpadding="1">
+                        <thead>
+                        <tr>
+                            <th> @Resource.RequestsPayment_CreateDate</th>
+                            <th> @Resource.Account_InforAccountHolders</th>
+                            <th> @Resource.Account_InforCardNumber</th>
+                            <th> @Resource.RequestsPayment_AmountRequest</th>
+                            <th> @Resource.Order_Status </th>
+                            <th> @Resource.Note </th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: 'ListClaim', foreach: listData }"></tbody>
+
+                        <tfoot data-bind="if: listData().length == 0" class="dingdan-content-non">
+                        <tr>
+                            <td colspan="6">@Resource.RequestsPayment_NoData</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <form class="rs">
+                        <div data-bind="if: listData().length > 0" class="mg-t-15 rs">
+                            <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                            <ul class="pagination pagination-sm no-margin pull-right">
+                                <li data-bind="if: pageStart">
+                                    <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                </li>
+                                <li data-bind="if: pageNext">
+                                    <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <!-- ko foreach: listPage -->
+                                <li data-bind="css: Page === page ? 'active' :''  ">
+                                    <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                </li>
+                                <!-- /ko -->
+                                <li data-bind="if: pagePrev">
+                                    <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <li data-bind="if: pageEnd">
+                                    <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="dialog_deposit_ok" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>@Resource.Home_Notification</h2>
+        </div>
+        <div class="modal-body">
+            <p>
+                <input type="password" name="Password" id="Password" placeholder="@Resource.Claim_PassLogin"  class="form-control form-control-solid placeholder-no-fix"  autocomplete="off" />
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default huy" data-dismiss="modal">@Resource.Order_OperationDestroy</button>
+            <button type="button" class="btn btn-success" id="btnConfirmDepositOk" style="background: #4CAF50; color: #fff;">OK</button>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Areas/CMS/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.formatCurrency-1.4.0.js"></script>
+    @*//thu vien substring*@
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    @*//thu vien alert delete*@
+    <script src="~/Areas/CMS/Scripts/sweetalert2.min.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.js"></script>
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    @*//file js knockoutjs ViewModel*@
+
+    <script src="~/Areas/CMS/Scripts/models/recharge/drawItemModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/recharge/drawViewModel.js"></script>
+    @*//thu vien ajax*@
+    <script src="~/Areas/CMS/Scripts/toastr.min.js"></script>
+    <script type="text/javascript">
+        function DepositOkConfig() {
+            $.ajax({
+                url: '/' + window.culture + '/Cms/AccountCMS/CheckPass',
+                type: 'Get',
+                data: { 'pass': $('#dialog_deposit_ok #Password').val() },
+                success: function (data) {
+                    if (data == 1) {
+                        $('#AdvanceMoney').val($('#AdvanceMoney').val().replace(/\,/g, '').replace(/\./g, ''));
+                        SaveAdvance();
+                    } else {
+                        toastr.error("Mật khẩu bạn nhập không đúng. Bạn vui lòng nhập lại!");
+                    }
+                }
+            });
+        }
+
+        function SaveAdvance() {
+            var obj = {
+                AdvanceMoney: $('#AdvanceMoney').val(),
+                CardName: $('#CardName').val(),
+                CardId: $('#CardId').val(),
+                CardBank: $('#CardBank').val()
+            };
+            $.ajax({
+                url: '/' + window.culture + '/Cms/AccountCMS/SaveAdvance',
+                type: 'POST',
+                data: obj,
+                success: function (data) {
+                    if (data == 1) {
+                        $('#dialog_deposit_ok').modal('toggle');
+                        toastr.success("Tạo yêu cầu rút tiền thành công. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất");
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+
+        function CheckMoney(event, str) {
+            var a = event.charCode;
+            var tmpAdvanceMoney = str.value + String.fromCharCode(a);
+            var tmpMoney = parseInt(tmpAdvanceMoney.replace(/\,/g, '').replace(/\./g, ''));
+            var tmpAva = parseInt('@ViewBag.BalanceAvalible');
+            if (tmpMoney > tmpAva) {
+                event.preventDefault();
+            }
+        }
+
+        function SetKeyNumber() {
+
+            $('#AdvanceMoney').keydown(function (event) {
+                // Allow special chars + arrows
+                if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9
+                    || event.keyCode == 27 || event.keyCode == 13
+                    || (event.keyCode == 65 && event.ctrlKey === true)
+                    || (event.keyCode >= 35 && event.keyCode <= 39)) {
+
+                    return;
+                } else {
+                    // If it's not a number stop the keypress
+                    if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                        event.preventDefault();
+                    }
+                }
+            });
+
+        }
+
+        function ShowMessagerDeposit() {
+            var error = 0;
+            if ($('#AdvanceMoney').val().trim().length == 0) {
+                toastr.error("Bạn vui lòng nhập số tiền muốn rút");
+                error = 1;
+            }
+            if ($('#CardName').val().trim().length == "0") {
+                toastr.error("Bạn vui lòng nhập chủ tài khoản");
+                error = 1;
+            }
+            if ($('#CardId').val().trim().length == 0) {
+                toastr.error("Bạn vui lòng nhập số tài khoản");
+                error = 1;
+            }
+            if ($('#CardBank').val().trim().length == "0") {
+                toastr.error("Bạn vui lòng nhập tên ngân hàng");
+                error = 1;
+            }
+            if (error == 1) {
+                return false;
+            } else {
+                $('#dialog_deposit_ok').modal('show');
+                return true;
+            }
+        }
+
+        $(document).ready(function () {
+            var modal = document.getElementById('dialog_deposit_ok');
+            var span = document.getElementsByClassName("close")[0];
+            var buttonX = document.getElementsByClassName("huy")[0];
+            buttonX.onclick = function () {
+                modal.style.display = "none";
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+
+            SetKeyNumber();
+            $('#btnConfirmDepositOk').click(function () {
+                DepositOkConfig();
+            })
+            $('#btnCommand').click(function () {
+                ShowMessagerDeposit();
+            });
+            $('#AdvanceMoney').blur(function () {
+                $(this).val($(this).val().replace(/\,/g, '').replace(/\./g, ''));
+                $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: 0, region: 'vi-VN' });
+            })
+                .keyup(function (e) {
+                    var e = window.event || e;
+                    var keyUnicode = e.charCode || e.keyCode;
+                    if (e !== undefined) {
+                        switch (keyUnicode) {
+                            case 16:
+                                break; // Shift
+                            case 27:
+                                this.value = '';
+                                break; // Esc: clear entry
+                            case 35:
+                                break; // End
+                            case 36:
+                                break; // Home
+                            case 37:
+                                break; // cursor left
+                            case 38:
+                                break; // cursor up
+                            case 39:
+                                break; // cursor right
+                            case 40:
+                                break; // cursor down
+                            case 78:
+                                break; // N (Opera 9.63+ maps the "." from the number key section to the "N" key too!) (See: http://unixpapa.com/js/key.html search for ". Del")
+                            case 110:
+                                break; // . number block (Opera 9.63+ maps the "." from the number block to the "N" key (78) !!!)
+                            case 190:
+                                break; // .
+                            default:
+                                $(this).formatCurrency({ colorize: true, negativeFormat: '-%s%n', roundToDecimalPlace: -1, eventOnDecimalsEntered: true, region: 'vi-VN' });
+                        }
+                    }
+                });
+        });
+    </script>
+
+}

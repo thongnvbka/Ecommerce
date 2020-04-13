@@ -1,0 +1,25 @@
+﻿<script type="text/html" id="wallet-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="text-center">
+            <a data-bind="click: $parent.viewWalletDetailModal" href="javascript:;"><strong data-bind="text: Code"></strong></a>
+        </td>
+        <td class="text-center"><i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+        <td class="text-center">
+            <span class="label label-default" data-bind="text: statusApp.expectedtransport[TransportMethod].Name, css: statusApp.expectedtransport[TransportMethod].Class"></span>
+        </td>
+        <td class="text-center" data-bind="text: TotalValue"></td>
+        <th class="text-center" data-bind="text: CurrentWarehouseName"></th>
+        <td class="text-center"><strong data-bind="text: TotalPackage"></strong></td>
+        <td class="text-center" data-bind="text: TotalWeight"></td>
+        <td class="text-center" data-bind="text: TotalVolume"></td>
+        <td class="text-center">
+            <span data-bind="text: statusApp.wallet[Status].Name, css: statusApp.wallet[Status].Class"></span>
+        </td>
+        <td class="text-center">
+            <a href="#" class="btn btn-sm btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+            <a href="#" class="btn btn-sm btn-danger btn-xs"><i class="fa fa-trash"></i> Delete </a>
+        </td>
+    </tr>
+
+</script>

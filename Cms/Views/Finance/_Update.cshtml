@@ -1,0 +1,341 @@
+﻿@model FinanceFundData
+@using Library.ViewModels.Items;
+@{
+    var list = ViewBag.user as List<SelectListItem>;
+    var listPer = (List<UserPermistionItem>)ViewBag.ListPermistion;
+    var listCurrence = ViewBag.ListCurrency as List<SelectListItem>;
+}
+<link href="~/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+<div class="form-group">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2">
+        @Html.ValidationSummary(true)
+    </div>
+</div>
+@Html.HiddenFor(x => x.Id)
+<div class="hidden">
+    @Html.TextBoxFor(x => x.ParentId, new { @Value = "0" })
+    @Html.TextBoxFor(x => x.ParentName, new { @Value = "" })
+    @Html.TextBoxFor(x => x.IdPath)
+    @Html.TextBoxFor(x => x.NamePath)
+
+</div>
+<div class="col-ms-6 col-md-6 col-lg-6">
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Fund name <span class="color-red">*</span></label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Amount of money<span class="color-red">*</span></label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextBoxFor(x => x.Balance, new Dictionary<string, object>
+                {
+                    {"class", "form-control"},{"type","text"}
+                })
+            @Html.ValidationMessageFor(x => x.Balance)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Currency <span class="color-red">*</span></label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+
+            @Html.DropDownListFor(x => x.Currency, listCurrence, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+            @Html.ValidationMessageFor(x => x.Currency)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Status" class="col-sm-3 col-md-3 col-lg-3 control-label">Father fund</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div id="financefund_tree"></div>
+            @Html.ValidationMessageFor(x => x.ParentId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Manager <span class="color-red">*</span></label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+
+            @Html.DropDownListFor(x => x.UserId, list, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+            @Html.ValidationMessageFor(x => x.UserId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Status" class="col-sm-3 col-md-3 col-lg-3 control-label">Status</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.DropDownListFor(x => x.Status, new List<SelectListItem>()
+                {
+                    new SelectItem() { Value = "0", Text = "Active", Selected = true},
+                    new SelectItem() { Value = "1", Text = "Stop operations" }
+            }, new Dictionary<string, object>()
+                {
+                    {"class", "form-control"},{"id","select_status"}
+                })
+            @Html.ValidationMessageFor(x => x.Status)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description" class="col-sm-3 col-md-3 col-lg-3 control-label">Describe</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextAreaFor(x => x.Description, new Dictionary<string, object>
+        {
+            {"class", "form-control"},
+            {"rows", "5"}
+        })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Account representative</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextBoxFor(x => x.CardName, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Account number</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextBoxFor(x => x.CardId, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Bank</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextBoxFor(x => x.CardBank, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Name" class="col-sm-3 col-md-3 col-lg-3 control-label">Bank branch</label>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            @Html.TextBoxFor(x => x.CardBranch, new Dictionary<string, object>
+                {
+                    {"class", "form-control"}
+                })
+        </div>
+    </div>
+</div>
+<div class="col-ms-6 col-md-6 col-lg-6">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <select class="form-control user-search" style="width: 70%; float: left;"></select> 
+            <input type="hidden" value="0" id="hfUserId"/>            
+            <button type="button" class="btn btn-success" onclick="AddUser()"><i class="fa fa-plus"></i> Add</button>
+        </div>
+        <div class="col-sm-12" id="list-permistion">
+            @Html.Partial("/Views/Finance/_ListPermistion.cshtml", listPer)
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript">
+        function SetKeyNumber() {
+            $('#Balance').keydown(function (event) {
+                // Allow special chars + arrows
+                if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9
+                    || event.keyCode == 27 || event.keyCode == 13
+                    || (event.keyCode == 65 && event.ctrlKey == true)
+                    || (event.keyCode >= 35 && event.keyCode <= 39 || event.keyCode == 110)) {
+                    return;
+                } else {
+                    // If it's not a number stop the keypress
+                    if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 110) {
+                        event.preventDefault();
+                    }
+                }
+            });
+        }
+        function DeleteUser(id, text) {
+            swal({
+                title: 'Are you sure to delete this item?',
+                text: 'User "' + text + '"',
+                type: 'warning',
+                showCancelButton: true,
+                //confirmButtonColor: '#3085d6',
+                //cancelButtonColor: '#d33',
+               cancelButtonText: 'Cancel',
+                confirmButtonText: 'Delete'
+            })
+            .then(function () {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("AddUserPermistion", "Finance")',
+                    data: { userId: id, isDelete: 1 },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            $('#list-permistion').html(data);
+                        }
+                    }
+                });
+            }, function () { });
+            
+        }
+        function AddUser() {
+            var tmpUserId = $('#hfUserId').val();
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("AddUserPermistion", "Finance")',
+                data: { userId: parseInt(tmpUserId), isDelete: 0 },
+                success: function (data) {
+                    if (data.length > 0) {
+                        $('#list-permistion').html(data);
+                    }
+                }
+            });
+        }
+        $(function () {
+            $(".user-search")
+            .select2({
+                ajax: {
+                    url: "User/GetUserSearch",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            keyword: params.term,
+                            page: params.page
+                        };
+                    },
+                    processResults: function (data, params) {
+                        params.page = params.page || 1;
+
+                        return {
+                            results: data.items,
+                            pagination: {
+                                more: (params.page * 10) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                escapeMarkup: function (markup) { return markup; },
+                minimumInputLength: 1,
+                templateResult: function (repo) {
+                    if (repo.loading) return repo.text;
+                    var markup = "<div class='select2-result-repository clearfix'>\
+                                    <div class='pull-left'>\
+                                        <img class='w-40 mr10 mt5' src='/images/" + repo.avatar + "_50x50_1'/>\
+                                    </div>\
+                                    <div class='pull-left'>\
+                                        <div>\
+                                            <b>" + repo.text + "</b><br/>\
+                                            <i class='fa fa-envelope-o'></i> " + repo.email + "<br/>\
+                                            <i class='fa fa-phone'></i> " + repo.phone + "<br />\
+                                        </div>\
+                                    </div>\
+                                    <div class='clear-fix'></div>\
+                                </div>";
+                    return markup;
+                },
+                templateSelection: function (repo) {
+                    $('#hfUserId').val(repo.id);
+                    return repo.text;
+                },
+                placeholder: "Add user role",
+                allowClear: true,
+                language: 'en'
+            });
+            $("#financefund_tree").dropdownjstree({
+                source: financeFundJsTree,
+                dropdownLabel: 'Fund management',
+                dropdownLabelClick: () => {
+                    $('#ParentId').val(0);
+                    $('#ParentName').val('');
+                },
+                selectedNode: '@(Model == null || Model.ParentId == 0 ? "" : Model.ParentId.ToString())',
+                selectNote: (node, selected) => {
+                    $('#ParentId').val(selected.node.id);
+                    $('#ParentName').val(selected.node.text);
+                }
+            });
+
+            //$('select').select2({
+            //    //minimumResultsForSearch: -1
+            //});
+            //$('#select_status').select2({
+            //    //minimumResultsForSearch: 0
+            //});
+
+            $('.hash-tag').tagsinput();
+
+            @if (TempData["Msg"] != null) {
+                <text>toastr.success('@Html.Raw(TempData["Msg"])');</text>
+            }
+
+            SetKeyNumber();
+            $('#Balance').blur(function () {
+                $(this).val($(this).val().replace(/\,/g, ''));
+                var tmpVal = $(this).val();
+                var tmpArr = tmpVal.split('.');
+                if (tmpArr.length > 2) {
+                    $(this).val('');
+                }
+            }).keyup(function (e) {
+                var e = window.event || e;
+                var keyUnicode = e.charCode || e.keyCode;
+                if (e !== undefined) {
+                    switch (keyUnicode) {
+                        case 16:
+                            break; // Shift
+                        case 27:
+                            this.value = '';
+                            break; // Esc: clear entry
+                        case 35:
+                            break; // End
+                        case 36:
+                            break; // Home
+                        case 37:
+                            break; // cursor left
+                        case 38:
+                            break; // cursor up
+                        case 39:
+                            break; // cursor right
+                        case 40:
+                            break; // cursor down
+                        case 78:
+                            break; // N (Opera 9.63+ maps the "." from the number key section to the "N" key too!) (See: http://unixpapa.com/js/key.html search for ". Del")
+                        case 110:
+                            break; // . number block (Opera 9.63+ maps the "." from the number block to the "N" key (78) !!!)
+                        default:
+                            var tmpVal = $(this).val();
+                            var tmpArr = tmpVal.split('.');
+                            if (tmpArr.length > 2) {
+                                $(this).val('');
+                            }
+                    }
+                }
+            });
+            $("#Balance").rules("remove", "number");
+        });
+
+        function submitForm() {
+            $('#Balance').val($('#Balance').val().replace(/\./g, ','));
+            $("#Balance").rules("remove", "number");
+            $("#submitForm").submit();
+        }
+    </script>
+}
+

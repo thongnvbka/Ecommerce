@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "Liabilitie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <div class="user-r-main display-none" data-bind="css: isRending() === true? '' : 'display-none'">
+            <div class="dingdan">
+                <ul class="zichan-nav" id="buyOrder">
+                    <li data-id="zijin" class="lete-active"> @Resource.Liabilities_List</li>
+                </ul>
+
+                <div class="dingdan-top">
+                    <div class="search-time">
+                        <div class="text-time">
+                            <p>@Resource.Order_TimeCreateOrder</p>
+                        </div>
+                        <div class="check-time">
+                            <a href="javascript:void(0)" class="btn btn-default" data-bind="click: searchAllTime">@Resource.Order_StatusAll</a>
+                        </div>
+                        <div class="search-calender">
+                            <div class="date-start">
+                                <span>@Resource.From:</span><input type="text" id="date_timepicker_start" data-bind="value: StartSearch" placeholder="20/10/2016"  autocomplete="off" /> <i class="fa fa-calendar"></i>
+                            </div>
+                            <div class="date-end">
+                                <span>@Resource.To : </span><input type="text" id="date_timepicker_end" data-bind="value: FinishSearch" placeholder="20/10/2016"  autocomplete="off" /> <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zichan-zijin zichan-box rs" style="border-top: 2px solid #e1e1e1;">
+                    <form class="rs mg-bottom-20">
+                        <div data-bind="if: listAll().length > 0" class="mg-t-15 rs paegging-infor">
+                            <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                            <ul class="pagination no-margin pull-right">
+                                <li data-bind="if: pageStart">
+                                    <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                </li>
+                                <li data-bind="if: pageNext">
+                                    <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <!-- ko foreach: listPage -->
+                                <li data-bind="css: Page === page ? 'active' :''  ">
+                                    <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                </li>
+                                <!-- /ko -->
+                                <li data-bind="if: pagePrev">
+                                    <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <li data-bind="if: pageEnd">
+                                    <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                    <table class="table table-product" id="dt_basic" border="1" cellpadding="1" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 20px;"></th>
+                                <th style="min-width: 20px;">#</th>
+                                <th> @Resource.Liabilities_CodeLiabilities </th>
+                                <th> @Resource.Order_Exhibition </th>
+                                <th> @Resource.Liabilities_DayTrading </th>
+                                <th> @Resource.Liabilities_AmountMoney (@Resource.Currency) </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: 'debitList', foreach: listAll }"></tbody>
+                        <tfoot data-bind="if: listAll().length == 0" class="dingdan-content-non">
+                            <tr>
+                                <td colspan="8">@Resource.RequestsPayment_NoData</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <form class="rs mg-bottom-20">
+                        <div data-bind="if: listAll().length > 0" class="mg-t-15 rs">
+                            <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                            <ul class="pagination no-margin pull-right">
+                                <li data-bind="if: pageStart">
+                                    <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                </li>
+                                <li data-bind="if: pageNext">
+                                    <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <!-- ko foreach: listPage -->
+                                <li data-bind="css: Page === page ? 'active' :''  ">
+                                    <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                </li>
+                                <!-- /ko -->
+                                <li data-bind="if: pagePrev">
+                                    <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                </li>
+                                <li data-bind="if: pageEnd">
+                                    <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/Content/js/jquery.datetimepicker.full.js"></script>
+    <script src="~/Content/js/datetime-piker.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    <script src="~/Areas/CMS/Scripts/common/status.js"></script>
+    <script src="~/Scripts/lodash.min.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.js"></script>
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    @*//bin*@
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Debit/_DebitList.cshtml")
+    <script src="~/Areas/CMS/Scripts/viewmodels/debit/debitViewModel.js"></script>
+
+}

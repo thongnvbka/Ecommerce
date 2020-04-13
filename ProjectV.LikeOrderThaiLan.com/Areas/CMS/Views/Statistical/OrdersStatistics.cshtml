@@ -1,0 +1,99 @@
+﻿
+@using System.Globalization
+@model Library.ViewModels.Items.CustomerInforItem
+@{
+    ViewBag.Title = Resource.Static_Order;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        @*<div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+            <span class="sr-only">Loading...</span>
+        </div>*@
+        @*<div class="user-r-main rs loading-acc" data-bind="css: isRending() === true? '' : 'display-none'">*@
+            <div class="user-r-main rs">
+                <div class="tab-static" id="tabDash">
+                    <ul class="nav-tabs tab">
+                        <li>
+                            <a href="javascript:void(0)" class="tablinks" data-bind="click:  function() {viewDashboardModal(0)}" id="defaultOpen">
+                                7 @Resource.Dashboard_Day
+                            </a>
+                        </li>
+                        <li><a href="javascript:void(0)" class="tablinks" data-bind="click: function() {viewDashboardModal(1)}">@Resource.Dashboard_LastMonth</a></li>
+                        <li><a href="javascript:void(0)" class="tablinks" data-bind="click: function() {viewDashboardModal(2)}">3 @Resource.Dashboard_Month</a></li>
+                    </ul>
+                    <div id="sevenDay" class="tabcontent" style="display:block;">
+                        <div class="row statisticsFS" data-bind="template: { name: 'report-index', data: dashboardModel }">
+                        </div>
+                        <div class="rs info-vip-customer">
+
+                            <h5 class="uppercase">
+                                @Resource.Dashboard_InfoVIP
+                            </h5>
+                            <br>
+                            @if (Model != null)
+                            {
+                                <div class="col-lg-3 left-static">
+                                    <p class="text-center p-name mg-top-20">
+                                        <span data-toggle="tooltip" title="" data-original-title="@CustomerState.FullName">
+                                            @CustomerState.FullName
+                                        </span>
+                                    </p>
+                                    <p class="text-center p-vip mg-top-none">
+                                        @Model.LevelName
+                                    </p>
+                                    <p class="text-center p-pice  mg-top-none">
+                                        <span class="red-color" data-toggle="tooltip" title="" data-original-title="Tiền trong tài khoản">
+                                            @Resource.Dashboard_Surplus: @string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:#,###}", Model.BalanceAvalible) @Resource.Currency
+                                        </span>
+                                    </p>
+                                    <hr class="mg-top-10" style="height: 2px; background: green; margin-top: 10px;">
+                                    <p></p>
+                                    <p class="text-center mg-top-20">
+                                        @Resource.Dashboard_ProgressLevel:
+                                    </p><div class="progress mg-t-15" style="border-radius: 0;">
+                                        <input type="range" min="0" max="@string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:###0}", Model.MaxMoney)"
+                                               value="@string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:###0}", Model.BalanceAvalible)" disabled data-rangeslider style="width: 100%;">
+                                    </div>
+                                    <p></p>
+                                    <hr class="mg-top-10" style="height:2px; background:green;margin-top:30px !important">
+                                    <p class="text-center mg-top-20">
+                                        @Resource.Dashboard_LevelNext :
+                                    </p>
+                                    <div class="text-center p-pice">
+                                        @string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:#,###}", (Model.StartNext - Model.Balance - 1 > 0 ? (Model.StartNext - Model.Balance - 1) : 0)) @Resource.Currency
+                                    </div>
+                                    <p></p>
+                                    <div class="clearfix"></div>
+                                </div>
+                            }
+
+                            <div class="col-lg-9 right-static">
+                                @Html.Partial("~/Areas/CMS/Views/AccountCMS/Index/IndexTableVip_" + culture + ".cshtml")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+@section scripts{
+    <script src="~/Content/js/tab.js"></script>
+    @*//thu vien knockout*@
+    <script src="~/Areas/CMS/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.debug.js"></script>
+    <script src="~/Areas/CMS/Scripts/knockout.mapping-latest.js"></script>
+    @Html.Partial("~/Areas/CMS/Views/AccountCMS/Dashboard/_report.cshtml")
+    <script src="~/Areas/CMS/Scripts/models/dashboard/dashboardModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/dashboard/dashboardViewModel.js"></script>
+}

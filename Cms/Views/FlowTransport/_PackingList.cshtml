@@ -1,0 +1,224 @@
+﻿<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">List of goods transfer</h3>
+
+        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add new</button>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <div class="tabbable page-tabs">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#all-tasks" data-toggle="tab">All<span class="label label-danger">100</span></a></li>
+                <li><a href="#active" data-toggle="tab">Warehouse TQ<span class="label label-primary">5</span></a></li>
+                <li><a href="#closed" data-toggle="tab">Noi Bai Warehouse<span class="label label-primary">30</span></a></li>
+                <li><a href="#" data-toggle="tab">Đội Cấn warehouse <span class="label label-primary">5</span></a></li>
+                <li><a href="#" data-toggle="tab">Cảm Hội warehouse<span class="label label-primary">5</span></a></li>
+            </ul>
+            <div class="tab-content">
+                <!-- First tab -->
+                <div class="tab-pane active fade in" id="all-tasks">
+                    <!-- Tasks table -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Code PackingList</th>
+                                    <th class="text-center">Tên PackingList</th>
+                                    <th class="text-center" style="color: red">Number of package(s)</th>
+                                    <th class="text-center">Time starts</th>
+                                    <th class="text-center">Time expected to finish</th>
+                                    <th class="text-center">Source - Destination</th>
+                                    <th class="text-center">Shipping status</th>
+                                    <th class="text-center">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>PKG010012012</strong></a><br />
+                                        <span class="badge bg-danger">02/08/2016 12:00AM</span>
+                                    </td>
+                                    <td class="text-center">Warehouse transfer Đội Cấn</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>05</strong></a>
+                                    </td>
+                                    <td class="text-center">--/--/---- --:--:--</td>
+                                    <td class="text-center">--/--/---- --:--:--</td>
+                                    <td>
+                                        <span>From: <strong>Warehouse TQ</strong></span><br />
+                                        <span>To: <strong>Noi Bai Warehouse</strong></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="label label-primary">Newly created</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>PKG010012013</strong></a><br />
+                                        <span class="badge bg-danger">02/08/2016 12:00AM</span>
+                                    </td>
+                                    <td class="text-center">Warehouse transfer Đội Cấn</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>03</strong></a>
+                                    </td>
+                                    <td class="text-center">02/08/2016 12:00AM</td>
+                                    <td class="text-center">02/08/2016 12:00AM</td>
+                                    <td>
+                                        <span>From: <strong>Warehouse TQ</strong></span><br />
+                                        <span>To: <strong>Noi Bai Warehouse</strong></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong>Returned: 02/03 lawsuit</strong><br />
+                                        <span class="label label-danger">Already on target</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete  </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>PKG010012014</strong></a><br />
+                                        <span class="badge bg-danger">02/08/2016 12:00AM</span>
+                                    </td>
+                                    <td class="text-center">Shipping on Đội Cấn warehouse </td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>12</strong></a>
+                                    </td>
+                                    <td class="text-center">02/08/2016 12:00AM</td>
+                                    <td class="text-center">02/08/2016 12:00AM</td>
+                                    <td>
+                                        <span>From: <strong>Warehouse TQ</strong></span><br />
+                                        <span>To: <strong>Noi Bai Warehouse</strong></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong>Returned: 12/12 lawsuit</strong><br />
+                                        <span class="label label-success">Already on target</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete  </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tasks table -->
+                </div>
+                <!-- /first tab -->
+                <!-- Second tab -->
+                <div class="tab-pane fade" id="active">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Code TK</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Account </th>
+                                    <th class="text-center">Select System</th>
+                                    <th class="text-center">Personal information</th>
+                                    <th>More information</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="pull-right">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>PKG010012012</strong></a><br />
+                                        <span class="badge bg-green">VIP 3</span>
+                                    </td>
+                                    <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+                                    <td class="text-center">hanoibanhcuon</td>
+                                    <td class="text-center">nhaphangtrungquoc.com</td>
+                                    <td>
+                                        <span>Full name: Nguyễn Văn An</span><br />
+                                        <span>Phone : 010291929122</span><br />
+                                        <span>Email: nguyenvanan@gmail.com</span>
+                                    </td>
+                                    <td>
+                                        <span>Innitiated date: 02/08/2016</span><br />
+                                        <span>Ngày cập nhật: 02/08/2016</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="label label-success">Opening</span>
+                                    </td>
+                                    <td class="pull-right">
+                                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete  </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tasks table -->
+                </div>
+                <!-- /second tab -->
+                <!-- Third tab -->
+                <div class="tab-pane fade" id="closed">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Code TK</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Account </th>
+                                    <th class="text-center">Select System</th>
+                                    <th class="text-center">Personal information</th>
+                                    <th>More information</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="pull-right">Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">
+                                        <a href="#"><strong>PKG010012012</strong></a><br />
+                                        <span class="badge bg-green">VIP 3</span>
+                                    </td>
+                                    <td class="text-center"><img alt="Avatar" style="width: 50px;" ng-reflect-src="/Content/dist/img/user2-160x160.jpg" src="/Content/dist/img/user2-160x160.jpg"></td>
+                                    <td class="text-center">hanoibanhcuon</td>
+                                    <td class="text-center">nhaphangtrungquoc.com</td>
+                                    <td>
+                                        <span>Full name: Nguyễn Văn An</span><br />
+                                        <span>Phone : 010291929122</span><br />
+                                        <span>Email: nguyenvanan@gmail.com</span>
+                                    </td>
+                                    <td>
+                                        <span>Innitiated date: 02/08/2016</span><br />
+                                        <span>Ngày cập nhật: 02/08/2016</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="label label-success">Opening</span>
+                                    </td>
+                                    <td class="pull-right">
+                                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete  </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tasks table -->
+                </div>
+                <!-- /third tab -->
+            </div>
+        </div>
+        <!-- /page tabs -->
+    </div>
+    <!-- /.box-body -->
+</div>
+

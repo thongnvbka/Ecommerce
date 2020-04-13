@@ -1,0 +1,65 @@
+﻿@model  Common.Items.ModelView<Library.DbContext.Results.ProductResult, Library.ViewModels.ProductViewModel>
+<div class="box-body table-responsive no-padding">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="text-center w-40">#</th>
+                <th class="text-center w-100">Product code</th>
+                <th class="text-center w-120">Categories</th>
+                <th class="text-center w-150"> Product name</th>
+                <th class="text-center w-200">Product Link</th>
+                <th class="text-center w-100">Image</th>
+                <th class="text-center w-250">Property</th>
+                <th class="text-center w-150">Quantity </th>
+                <th class="text-center w-150">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Items.Any())
+            {
+                <tr>
+                    <td colspan="10" class="text-center">There are no records</td>
+                </tr>
+            }
+            else
+            {
+                var idx = 1;
+
+                foreach (var m in Model.Items)
+                {
+                    var delimited = "";
+                    <tr>
+                        <td class="text-center w-50">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.TotalRecord + idx)</td>
+                        <td class="text-center">
+                            <a href="#"><strong>@m.Id</strong></a>
+                        </td>
+                        <td>@m.CategoryName</td>
+                        <td>@m.Name</td>
+                        <td>
+                            <a href="@m.Link">@m.Link</a>
+                        </td>
+                        <td class="text-center">
+                            @foreach (var item in m.Images)
+                            {
+                                <img alt="@m.Name" style="width: 50px; padding:5px;" src="@item">
+                            }
+                        </td>
+                        <td>
+                            @foreach (var item in m.Properties)
+                            {
+                                @Html.Raw(delimited + item)
+                                delimited = ", ";
+                            }
+                        </td>
+                        <td class="text-right">@m.Quantity.ToString("N0")</td>
+                        <td>
+                            Created date: @m.Created<br />
+                            Ngày đặt gần nhất: @m.LastUpdate
+                        </td>
+                    </tr>
+                    idx += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>

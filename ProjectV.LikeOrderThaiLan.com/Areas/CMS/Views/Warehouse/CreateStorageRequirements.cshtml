@@ -1,0 +1,331 @@
+﻿@{
+    ViewBag.Title = "CreateStorageRequirements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<section class="zy-main">
+    @Html.Partial("~/Views/Partial/_Toolbar.cshtml")
+
+    <div class="user-r">
+        <div class="user-r-main">
+            <div class="dingdan">
+                <div class="user-r-main-l-faq step-by-step-storage">
+                    <ul class="user-r-main-l-faq-nav clearFix" id="clicktabTicket">
+                        <li class="tablinks" onclick="createSaveStorage(event, 'selectProduct')" id="defaultOpen"><a>1. Chọn sản phẩm</a> <span></span></li>
+                        <li class="tablinks" onclick="createSaveStorage(event, 'selectStorage')"><a>2. Chọn kho</a> <span></span></li>
+                        <li class="tablinks" onclick="createSaveStorage(event, 'packing')"><a>3. Đóng gói</a> <span></span></li>
+                        <li class="tablinks" onclick="createSaveStorage(event, 'delivery')"><a>4. Giao hàng</a> <span></span></li>
+                    </ul>
+
+                    <div id="selectProduct" class="user-r-main-l-faq-msg clearFix tabcontent">
+                        <div class="content-1">
+                            <h3>Bước 1: Danh sách các sản phẩm cần nhập/xuất kho</h3>
+                            <p>
+                                <lable>
+                                    <strong>Hướng dẫn:</strong> &nbsp;Quý khách nhập tên hoặc mã sản phẩm cần nhập kho sau đó ấn vào nút 'Thêm sản phẩm' để
+                                    chọn sản phẩm cần nhập kho, rồi nhập số lượng chính xác sản phẩm cần nhập vào kho của BoxMe.
+                                    Xem hướng dẫn nhập kho chi tiết
+                                </lable>
+                                <a class="color-a" href="" target="_blank">tại đây</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="input-search-code-order">
+                                    <input placeholder="Nhập tên hoặc mã sản phẩm " autocomplete="off">
+                                </div>
+                                <div class="button-search" style="margin-left:-20px">
+                                    <button type="button" class="btn btn-info m-b-xs ng-scope" ng-click="changeSKU1()">Thêm sản phẩm</button>
+                                </div>
+                                <div class="lst-product zichan-zijin zichan-box">
+                                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Hình ảnh</th>
+                                                <th>Mã sản phẩm</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Số lượng</th>
+                                                <th>Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center v-middle hidden-md hidden-sm hidden-xs ng-binding">1</td>
+                                                <td class="text-center v-middle">
+                                                    <img width="50" src="http://cloud.boxme.vn/static/media/photo/f62e25f6-02cb-4014-a09b-fc8ec52a4795-23c50c32-273a-4d9e-802f-f30150cfe3b8.jpg">
+                                                </td>
+                                                <td class="text-center">BCU-972</td>
+                                                <td class="text-center">
+                                                    <span>Bút cảm ứng iPhone Touch Stylus</span>
+                                                </td>
+                                                <td class="text-center v-middle">
+
+                                                    <input type="number" min="1" maxlength="4" value="1" class="input-number-product" autocomplete="off">
+                                                </td>
+
+                                                <td class="text-center ">
+                                                    <a href="" class="btn btn-uncheck">Bỏ chọn sản phẩm</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <p class="footer-table-product">Quý khách đang chọn 1 BSIN, 1 sản phẩm</p>
+                                <div class="btn-next">
+                                    <button class="btn next" onclick="next1()">Tiếp tục</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="selectStorage" class="user-r-main-l-faq-msg clearFix tabcontent">
+                        <div class="content-1">
+                            <h3>Bước 2: Chọn kho và hình thức nhập hàng BoxMe</h3>
+                            <h4 style="margin-top:25px">1. Địa chỉ gửi và nhận hàng?</h4>
+                            <div class="shipment_bb clearfix">
+                                <p>1.2 Chọn kho hàng Boxme mà quý khách muốn nhập hàng tới</p>
+                                <div class="form-group clearfix">
+                                    <div class="storage-save">
+                                        <select class="form-control  ">
+                                            <option value="3987">Bạch Đằng - HCM</option>
+                                            <option value="3988">Hải Châu - Đà Nẵng</option>
+                                            <option value="3986">Vĩnh Lộc - HCM</option>
+                                            <option value="3984">Quang Minh - Hà Nội</option>
+                                            <option value="3985">An Khánh - Hà Nội</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="note">
+                                    Nếu quý khách chưa chọn kho hàng Boxme muốn sử dụng, quý khách vào cấu hình ngay
+                                    <a href="" style="color: #428bca;">tại đây</a>
+                                </p>
+                                <p>1.3 Chọn địa chỉ kho hàng/cửa hàng lấy hàng</p>
+                                <div class="form-group">
+                                    <div class="storage-save">
+                                        <select class="form-control">
+                                            <option value="3990">Shop 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <h3>2. Hình thức nhập kho?</h3>
+
+                                <div class="shipment_bb clearfix">
+                                    <div class="shipment_cp">
+                                        <p>Quý khách có thể chọn một trong các hình thức vận chuyển hàng tới kho của BoxMe dưới đây</p>
+
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" checked id="shipByWeb" name="ship" value="1"> Vận chuyển qua đối tác giao hàng của BoxMe.vn (nên sử dụng)
+                                            </label>
+                                        </div>
+                                        <div class="show-ship-by-web">
+
+                                            <div style="margin:10px 0px 10px 0px;">
+                                                <p style="padding-bottom:10px;">
+                                                    Đối tác của chúng tôi sẽ tới địa chỉ kho hàng của quý khách nhận hàng vào giao hàng đến kho Boxme.<br>
+                                                    Đặc biệt: Boxme sẽ miễn phí vận chuyển đơn hàng nhập kho trong nội thành, với các khu vực khác tính phí theo bảng giá vận chuyển của Shipchung.vn.
+                                                </p>
+
+                                                <div style="width: 68%;" class="alert alert-warning alert-dismissable">
+                                                    <strong>Lưu ý: bạn nên chọn dịch vụ vận tải để tiết kiệm chi phí với hàng trên 100kg.</strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="select-ship">
+                                                    <select style="min-width: 280px;" class="form-control">
+                                                        <option value="2">Chuyển phát nhanh</option>
+                                                        <option value="1">Chuyển phát tiết kiệm</option>
+                                                        <option value="5">Vận tải</option>
+                                                    </select>
+                                                </div>
+                                                <br />
+                                                <div class="table-price-ship">
+                                                    <h3>Phí vận chuyển dự tính</h3>
+                                                    <hr style="margin: 10px 0px -4px 0px;" />
+                                                    <table class="total-price">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Thời gian giao hàng dự kiến</td>
+                                                                <td class="text-right25">
+                                                                    <a ng-if="dateblance>=1"> 6 - 7</a>  ngày
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tổng khối lượng</td>
+                                                                <td class="text-right25">
+
+                                                                    <input type="text" maxlength="9" /> gram
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="ng-hide">
+                                                                <td class="text-left">Khối lượng quy đổi (Theo kích thước)</td>
+                                                                <td class="text-right25">
+                                                                    <lable style="color:#9a9a9a;"> 0 kg</lable>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Phí vận chuyển tạm tính</td>
+                                                                <td class="text-right25"> <lable style="color:#993333;">20,000</lable>  vnđ</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Giảm giá</td>
+                                                                <td class="text-right25"> <lable style="color:#993333;">0</lable>  vnđ</td>
+                                                            </tr>
+                                                            <tr style="border-top:1px solid #e1e1e1;">
+                                                                <td>Tổng phí vận chuyển</td>
+                                                                <td class="text-right25">  <lable style="color:#993333;">20,000</lable>  vnđ</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="partent">
+                                                    <p>Đối tác vận chuyển</p>
+                                                    <div style="width:135px;border: 2px solid #edf1f2;margin-top:30px;">
+                                                        <img width="100%" ng-src="http://wms.boxme.vn/img/kerry.jpg" src="http://wms.boxme.vn/img/kerry.jpg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custummer_shipment">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" id="shipByMe" name="ship" value="2">Tôi tự chuyển hàng đến kho
+                                            </label>
+                                        </div>
+                                        <div class="show-ship-by-me">
+                                            <div style="margin:10px 0px 0px 0px;">
+                                                <p style="padding-bottom:10px;">
+                                                    Quý khách tự giao hàng  hoặc thuê ngoài đối tác vận chuyển để chuyển hàng tới kho BoxMe<br>
+                                                    Chúng tôi sẽ gửi hướng dẫn cho quý khách các nhập kho
+                                                </p>
+                                            </div>
+
+                                            <input type="text" id="date_timepicker_start" placeholder="20/10/2016" /> <i class="fa fa-calendar"></i>
+
+                                            <p style="padding-bottom:10px;margin-top:10px;">
+                                                Làm thế nào để chúng tôi có thể theo dõi hành trình nhập kho vận đơn của quý khách
+                                            </p>
+                                            <input type="text" style="min-width: 250px;" placeholder="Nhập mã vận đơn của hãng vận chuyễn" /><br />
+
+                                            <select style="min-width: 250px;">
+                                                <option value="undefined">Chọn hãng vận chuyển</option>
+                                                <option value="Viettel Post">Viettel Post</option>
+                                                <option value="Bưu điện (VNP)">Bưu điện (VNP)</option>
+                                                <option value="Giaohangnhanh">Giaohangnhanh</option>
+                                                <option value="123giao">123giao</option>
+                                                <option value="Netco Express">Netco Express</option>
+                                                <option value="Giao Hàng Tiết Kiệm">Giao Hàng Tiết Kiệm</option>
+                                                <option value="ShipChung">ShipChung</option>
+                                                <option value="Bưu điện (EMS)">Bưu điện (EMS)</option>
+                                                <option value="Goldtimes">Goldtimes</option>
+                                                <option value="CityPost">CityPost</option>
+                                                <option value="Kerry Express">Kerry Express</option>
+                                                <option value="Boxme Fulfillment">Boxme Fulfillment</option>
+                                                <option value="Ninjavan">Ninjavan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn-next">
+                                <button class="btn next" onclick="next2()">Tiếp tục</button>
+                                <button class="btn " onclick="prv1()">Quay lại</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="packing" class="user-r-main-l-faq-msg clearFix tabcontent">
+                        <div class="content-1">
+                            <h3> Bước 3: Dán nhãn &amp; chuẩn bị đóng gói hàng hóa BX112336DD59 <!-- Bước 3: Dán nhãn & chuẩn bị đóng gói hàng hóa {{step3.shipment.RequestCode}} --></h3>
+                            <h4>Chuẩn bị hàng hoá</h4>
+
+                            <div class="shipment_bb">
+                                <p class="mg-t-15  mg-bt-10"><strong>Bước 1:</strong> In bảng kê danh sách hàng để chuẩn bị xuất kho, tối thiểu 2 bản</p>
+                                <div>
+                                    <a class="btn print-info-product">
+                                        <i class="fa fa-print"></i>&nbsp;In bảng kê
+                                    </a>
+                                </div>
+                                <p class="mg-t-15"><strong>Bước 2:</strong> Lấy đúng &amp; đủ số lượng hàng hoá đã tạo theo theo bảng kê dưới đây.</p>
+                                <div class="col-lg-12 list-data">
+                                    <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                        in
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Hình ảnh</th>
+                                                <th>Mã sản phẩm</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Số lượng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="product in step3.products" class="ng-scope">
+                                                <td>1</td>
+                                                <td><img width="64" height="50" ng-src="http://cloud.boxme.vn/static/media/photo/f62e25f6-02cb-4014-a09b-fc8ec52a4795-23c50c32-273a-4d9e-802f-f30150cfe3b8.jpg" src="http://cloud.boxme.vn/static/media/photo/f62e25f6-02cb-4014-a09b-fc8ec52a4795-23c50c32-273a-4d9e-802f-f30150cfe3b8.jpg"></td>
+                                                <td>BCU-972</td>
+                                                <td>Bút cảm ứng iPhone Touch Stylus</td>
+                                                <td>1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mg-t-10 rs">Trong trường hợp số lượng hàng đã thay đổi, quý khách vui lòng chỉnh sửa lại bảng kê này tại bước 1 hoặc tạo mới bảng kê khác.</p>
+                                <p class="mg-t-10 rs"><strong>Bước 3:</strong> Đặt 1 bản kê này vào trong thùng hộp/gói hàng vừa đóng gói (đặt ở trên cùng)</p>
+                            </div>
+                        </div>
+                        <div class="btn-next">
+                            <button class="btn next" onclick="next3()">Tiếp tục</button>
+                            <button class="btn" onclick="prv2()">Quay lại</button>
+                        </div>
+                    </div>
+                    <div id="delivery" class="user-r-main-l-faq-msg clearFix tabcontent">
+                        <div class="content-1">
+                            <h3>Bước 4: Chuẩn bị giao kiện hàng BX112336DD59 </h3>
+                            <h4>Tạo mã vận đơn</h4>
+                            <div class="shipment_bb">
+                                <p class="mg-bt-10">1. Nếu quý khách đã chuẩn bị hàng hoá sẵn sàng  hãy ấn vào nút bên dưới để tạo vận đơn giao hàng</p>
+                                <a class="btn print-info-product mg-bt-10">
+                                    <i class="fa fa-truck"></i>&nbsp;Tạo mã vận đơn
+                                </a>
+                                <p class="mg-bt-10"> 2.  Quý khách đã tạo mã vận đơn  thành công, quý khách hãy ấn vào nút bên dưới để in phiếu gửi vận đơn nhập hàng vào kho.</p>
+
+                                <a class="btn print-info-product">
+                                    <i class="icon-printer"></i>&nbsp;In phiếu gửi
+                                </a>
+                            </div>
+
+                            <div class="shipment_bb mg-t-10">
+                                <p class="mg-t-15">Sau khi tạo mã vận đơn quý khách hãy dán phiếu gửi đã in ở trên lên kiện hàng, trường hợp không có máy in, quý khách có thể viết giấy dán lên kiện hàng các thông tin như sau:</p>
+                                <p>- Mã nhập kho:343543</p>
+                                <p>- Địa chỉ: Shop 1 - Shop 1 </p>
+                                <p>- Số điện thoại: 09123456789</p>
+                                <p>- Số kiện / Tổng số kiện (Ví dụ: Quý khách có 3 kiện/thùng hàng thì viết trên các kiện hàng lần lượt là 1/3, 2/3, 3/3</p>
+                                <p><b>Lưu ý quan trọng: Khi giao hàng quý khách cần ký nhận với bưu tá và giữ lại 1 bản phiếu gửi </b></p>
+                            </div>
+                        </div>
+
+                        <div class="btn-next">
+                            <button class="btn next">Hoàn thành</button>
+                            <button class="btn" onclick="prv3()">Quay lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+
+    <script src="~/Content/js/tab.js"></script>
+    <script src="~/Content/js/tab-content.js"></script>
+
+}

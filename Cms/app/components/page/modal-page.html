@@ -1,0 +1,105 @@
+﻿<!-- full width -->
+<div id="modal-page" class="modal fade modal-dialog modal-p70" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <!--<div id="modal-page" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" tabindex="-1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title"><i class="fa fa-file-text-o"></i> {{isAdd ? 'Add new page' : 'Update page'}}</h4>
+    </div>
+    <form [formGroup]="pageForm" (submit)="save()">
+        <div class="modal-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        Id <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3 input-container">
+                        <input [formControl]="pageData.id" class="form-control" type="number">
+                        <control-messages [control]="pageData.id" [label]="'Id page'"></control-messages>
+                    </div>
+                    <label class="col-sm-2 control-label">
+                        Page name <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-4 input-container">
+                        <input *ngIf="!isResetting" [formControl]="pageData.name" class="form-control" type="text">
+                        <control-messages [control]="pageData.name" [label]="'Page name'"></control-messages>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        App select <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3 input-container">
+                        <select [formControl]="pageData.appId" #app (change)="changeApp(app.value)" class="form-control">
+                            <option *ngFor="let app of apps" value="{{app.id}}">{{app.name}}</option>
+                        </select>
+                        <control-messages [control]="pageData.appId" [label]="'App of page'"></control-messages>
+                    </div>
+                    <label class="col-sm-2 control-label">
+                        Module select <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-4 input-container">
+                        <select [formControl]="pageData.moduleId" class="form-control">
+                            <option *ngFor="let m of modulesbyeAppId" value="{{m.id}}">{{m.name}}</option>
+                        </select>
+                        <control-messages [control]="pageData.moduleId" [label]="'Module of page'"></control-messages>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        url <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3 input-container">
+                        <input [formControl]="pageData.url" class="form-control" type="text">
+                        <control-messages [control]="pageData.url" [label]="'Url page'"></control-messages>
+                    </div>
+                    <label class="col-sm-1 control-label">
+                        Icon
+                    </label>
+                    <div class="col-sm-2 input-container">
+                        <input [formControl]="pageData.icon" class="form-control" type="text">
+                        <control-messages [control]="pageData.icon" [label]="'Icon'"></control-messages>
+                    </div>
+                    <label class="col-sm-1 control-label">
+                        Display order
+                    </label>
+                    <div class="col-sm-2 input-container">
+                        <input [formControl]="pageData.orderNo" class="form-control" type="number">
+                        <control-messages [control]="pageData.orderNo" [label]="'Display order'"></control-messages>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-7 control-label">
+                        Allow display on menu?
+                    </label>
+                    <div class="col-sm-3 input-container">
+                        <a (click)="pageData.showInMenu = !pageData.showInMenu" class="font-checkbox" href="javascript:;">
+                            <i [class]="pageData.showInMenu ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2' "></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div *ngFor="let role of pageData.roleActions" class="col-sm-4 mb10">
+                        <label class="col-sm-6 control-label">
+                            {{role.name}}
+                        </label>
+                        <div class="col-sm-6 input-container">
+                            <a (click)="role.checked = !role.checked" class="font-checkbox" href="javascript:;">
+                                <i [class]="role.checked ? 'clip-checkbox-checked' : 'clip-checkbox-unchecked-2' "></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button [disabled]="isSubmit || !pageForm.valid" type="submit" class="btn btn-primary">
+                <i [class]="isSubmit ? 'fa fa-spinner fa-pulse' : 'fa fa-save'" class=""></i> {{isAdd ? 'Add new' : 'Save'}}
+            </button>
+            <button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-times"></i> Close</button>
+        </div>
+    </form>
+</div>
+<!--</div>
+</div>-->

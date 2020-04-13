@@ -1,0 +1,651 @@
+﻿@{
+    ViewBag.Title = Resource.DetailDeposit_Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //dich vu hang khong
+    //byte tmpFastDelivery = (byte)Common.Emums.OrderServices.FastDelivery;
+    //dich vu dong kien
+    byte tmpBaled = (byte)Common.Emums.OrderServices.Packing;
+    //phi phat sinh
+    byte tmpOther = (byte)Common.Emums.OrderServices.Other;
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    var cultureJs = string.Format("{0}.js", culture);
+}
+@section styles{
+    <link href="~/Areas/CMS/css/styleView.css" rel="stylesheet" />
+    <link href="~/Areas/CMS/css/custom.css" rel="stylesheet" />
+    
+}
+@section Header{
+    @Html.Partial("~/Views/Partial/_Header.cshtml")
+}
+<div id="contentTabDetailOrder">
+
+    <div data-bind="css: isRending() === true? 'display-none' : ''" class="rs loading-acc">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw red-color"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <section class="zy-main" data-bind="css: isRending() === true? '' : 'display-none'" style="padding-top: 5px;">
+        <ul class="zy-main-top menu-top-detail-order" id="topTabDetailOrder" style="margin-bottom: 0 !important;">
+            <li class="dg-caigourucang infor-order-detail tablinks lete-active tablinks" onclick="tabDetailDepositOrder(event, 'inforDeposit')" id="defaultOpen">
+                <span></span>
+                <a href="javascript:;" style="text-transform: none"> @Resource.Product_InforOrder </a>
+                <label></label>
+            </li>
+            <li class="dg-guojiyunfei infor-order-detail tablinks kienhang" onclick="tabDetailDepositOrder(event, 'dealDeposit')">
+                <i class="fa fa-money" aria-hidden="true"></i>
+                <a href="javascript:;"> @Resource.DetaiOrder_Excharge </a>
+                <label></label>
+            </li>
+
+            <li class="dg-caigourucang infor-order-detail tablinks kienhang " onclick="tabDetailDepositOrder(event, 'packageDeposit')">
+                <i class="fa fa-ticket"></i> 
+                <a href="javascript:;">@Resource.Dashboard_ManagementPackage</a>
+                <label></label>
+            </li>
+
+            <li class="dg-tijiao tablinks infor-order-detail tablinks" onclick="tabDetailDepositOrder(event, 'ticketDeposit')">
+                <span></span>
+                <a href="javascript:;">@Resource.DetaiOrder_Ticket </a>
+            </li>
+
+            <!-- ko if: (depositDetail().Status() <= 3) -->
+            <li class="dg-caigourucang tablinks lete-delete tablinks delete-order-detail" id="huy" style="float: right !important" data-bind="click: depositPopupModel.showMessagerCancel.bind($data,depositDetail().Id(),10, 0)">
+                <i class="fa fa-trash"></i>
+                <a> @Resource.Cancel_Order </a>
+            </li>
+            <!-- /ko -->
+            <!-- ko if: (depositDetail().Status() >= 4) -->
+            <!-- ko if: (isComplain() == 0) -->
+            <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/CreateTicket/' + depositDetail().Id()}" target="_blank">
+                <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important; background: #fd7f00 !important;border: 1px solid #fd7f00 !important">
+                    <i class="fa fa-ticket"></i>
+                    <p class="ticket-more">@Resource.DetaiOrder_Ticket </p>
+                </li>
+            </a>
+            <!-- /ko -->
+            <!-- ko if: (isComplain() != 0) -->
+            <a data-bind="attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket/' + isComplain()}" target="_blank">
+                <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important; background: #fd7f00 !important;border: 1px solid #fd7f00 !important">
+                    <i class="fa fa-ticket"></i>
+                    <p class="ticket-more">@Resource.DetaiOrder_Ticket </p>
+                </li>
+            </a>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: (depositDetail().Status() == 3) -->
+            <li class="dg-caigourucang tablinks lete-advancepayment tablinks  delete-order-detail" style="float: right !important" data-bind="click: depositPopupModel.showMessagerCancel.bind($data,depositDetail().Id(), 4, 1)">
+                <i class="fa fa-pencil-square-o"></i>
+                <a href="#"> @Resource.DetailDeposit_CreateOrderKD</a>
+            </li>
+            <!-- /ko -->
+        </ul>
+        <div class="zy-main-content">
+            <div class="zy-main-content-msg" id="inforOrder">
+                <div class="zy-main-content-msg-l" style="border-right: 1px solid rgb(241, 241, 241); float:right;border-left:1px solid #f1f1f1;float: right !important">
+                    <p style="margin-left: 0 !important; padding-left: 15px; margin-bottom: 20px; padding-top: 15px;">
+                    @Resource.Product_InforOrder
+                        <span style="text-align: right;">
+                            <strong> @Resource.Home_ExchangeRate: 1¥ =</strong>
+                            <span data-bind="text: formatNumbericCN(depositDetail().ExchangeRate(), 'N2')"></span>
+                        </span>
+                    </p>
+                    <span>  @Resource.DetaiOrder_CodeOrder : <span data-bind="text: 'DEP' + depositDetail().Code()" class="red-color bold" style="font-size: 14px !important;    padding-left: 5px !important;box-sizing: border-box;"></span> </span><!--ma don hang order-->
+                    <span class="excharge" style="padding-left: 0; margin-right: 15px;">
+                        <strong>  @Resource.Order_Status:</strong>
+                        <label data-bind="text: statusApp.depositView[depositDetail().Status()].Name, css: statusApp.depositView[depositDetail().Status()].Class" class="label label-warning"></label>
+                    </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span>@Resource.RequestsPayment_CreateDate: <span data-bind="text: moment(depositDetail().CreateDate()).format('DD/MM/YYYY hh:mm:ss')"></span>  </span><!--ngay tao-->
+
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span> @Resource.DetailDeposit_StorageSendOD: <span data-bind="text: depositDetail().WarehouseName" class="red-color bold"></span>  </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <span>  @Resource.DetailDeposit_StorageGiveOD: <span data-bind="text: depositDetail().WarehouseDeliveryName" class="red-color bold"></span>  </span>
+                    <div class="zy-main-content-msg-l-hr"></div>
+                    <div class="rs">
+                        <div id="tab3" class="borderbox totalmoneyorder rs">
+                            <p style="margin-left: 0 !important; padding-left: 15px;"> @Resource.DetaiOrder_Bill </p>
+                            <div class="progress" style="height: 2px; width: 92%; margin-left: 15px;">
+                                <span class="progress-bar" style="width: 40%;"></span>
+                            </div>
+
+                            <div class="full-border rs">
+                                <div class="total-tariff"> 
+
+                                    <div style="clear: both"></div>
+                                    <div class="rs" data-bind="foreach: listOrderService">
+                                        <!-- ko if: ServiceId == 2 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong data-bind="text: ServiceName + ':'"></strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        @*<!-- ko if: ServiceId == 3 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong>Phí vận chuyển TQ</strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->*@
+                                        <!-- ko if: ServiceId == 4 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong>@Resource.DetaiOrder_TransportTQVN</strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        <!-- ko if: ServiceId == 5 -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong>@Resource.DetaiOrder_TransportVN</strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                        <!-- ko if: ServiceId == @tmpOther -->
+                                        <div class="money-order">
+                                            <ul>
+                                                <li><strong>@Resource.DetaiOrder_Incurred <b id="service-other" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b></strong></li>
+                                            </ul>
+                                        </div>
+                                        <div class="infor-money-order">
+                                            <div class="rs">
+                                                <ul>
+                                                    <li>
+                                                        <!-- ko if: Checked -->
+                                                        <span class="order-price" data-bind="text: TotalPrice === undefined ? '--' : formatNumbericCN(TotalPrice, 'N0')"></span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                        <!-- ko if: !Checked -->
+                                                        <span class="order-price">--</span> (@Resource.Currency)
+                                                        <!-- /ko -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zy-main-content-msg-l-hr rs"></div>
+                    <div id="allAccounting" class="rs">
+                        <p style="margin-left: 0 !important; padding-left: 15px;"> @Resource.DetaiOrder_Total </p>
+                        <div class="progress" style="height: 2px; width: 92%; margin-left: 15px;">
+                            <span class="progress-bar" style="width: 40%;"></span>
+                        </div>
+                        <div class="rs" style="padding-left: 15px; padding-top: 15px;">
+                            <p class="rs">
+                                <strong class="left-total">
+                                    @Resource.DetaiOrder_TotalPriceOrder:&nbsp;&nbsp;
+                                </strong>
+                                <strong class="right-total">
+                                    <span class="order-accounting" data-bind="text: formatNumbericCN(depositDetail().Total(), 'N0')"></span> (@Resource.Currency)
+                                </strong>
+                            </p>
+                            <p class="rs">
+                                <strong class="left-total">@Resource.Order_StatusPaid:</strong>
+                                <strong class="right-total">
+                                    <span class="order-payment" data-bind="text: formatNumbericCN(depositDetail().TotalPayed(), 'N0')">
+                                    </span> (@Resource.Currency)
+                                </strong>
+                            </p>
+                            <p class="rs">
+                                <!-- ko if: (depositDetail().Debt()) >= 0 -->
+                                <strong class="left-total">
+                                    @Resource.Order_Missing:&nbsp;&nbsp;
+                                </strong>
+                                <strong class="right-total">
+                                    <span class="order-missing" data-bind="text: formatNumbericCN(depositDetail().Debt(), 'N0')"></span> (@Resource.Currency)
+                                </strong>
+                                <!-- /ko -->
+                                <!-- ko if: (depositDetail().Debt()) < 0 -->
+                                <strong class="left-total">
+                                    @Resource.DetaiOrder_CompanyReturn:&nbsp;&nbsp;
+                                </strong>
+                                <strong class="right-total">
+                                    <span class="order-missing" data-bind="text: formatNumbericCN(Math.abs(depositDetail().Debt()), 'N0')"></span> (@Resource.Currency)
+                                </strong>
+                                <!-- /ko -->
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="chatModal" class="x rs" style="display: table;position: static;float: left; margin-top: 20px;">
+                        @Html.Partial("~/Areas/CMS/Views/Chat/_Chat.cshtml")
+                    </div>
+                </div>
+
+                <div class="zy-main-content-msg-r tabcontent" id="inforDeposit">
+                    <div class="service-order rs" style="width: 100%;">
+                        <div class="rs">
+                            <p style="margin-left: 0 !important;">
+                                @Resource.DetaiOrder_ServiceOrder
+                            </p>
+                            <div class="progress" style="height: 2px; width: 70%">
+                                <span class="progress-bar" style="width: 50%;"></span>
+                            </div>
+                            <!-- ko if: depositDetail().Status() < @((byte) Common.Emums.DepositStatus.InWarehouse) -->
+                            <div class="service" data-bind="foreach: listOrderService">
+                                <!-- ko if: (ServiceId == @tmpBaled) -->
+                                <label class="rs" style="width: 40%;">
+                                    <input type="checkbox" class="icheck check" data-bind="checked: Checked, event: { change: $root.updateService }">
+                                    <span class="inline-block" data-bind="text: ServiceName"></span>
+                                </label>
+                                <!-- /ko -->
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if: depositDetail().Status() >= @((byte) Common.Emums.DepositStatus.InWarehouse) -->
+                            <div class="service" data-bind="foreach: listOrderService">
+                                <!-- ko if: (ServiceId == @tmpBaled) -->
+                                <label class="rs" style="width: 40%;">
+                                    <input type="checkbox" class="icheck check" data-bind="checked: Checked" disabled="disabled">
+                                    <span class="inline-block" data-bind="text: ServiceName"></span>
+                                </label>
+                                <!-- /ko -->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <div class="rs" style="border-top: 1px solid #ddd;">
+                        <div class="infor-customer" style="width: 50%;">
+                            <div class="rs">
+                                <p style="margin-left: 0 !important;">
+                                    @Resource.DetailDeposit_InforContact
+                                </p>
+                                <div class="progress" style="height: 2px; width: 70%">
+                                    <span class="progress-bar" style="width: 50%;"></span>
+                                </div>
+                                <div class="inforct rs">
+                                    <p class="">
+                                        @Resource.RequestsPayment_Name:&nbsp;<span class="bold" data-bind="text: depositDetail().CustomerName">Nguyễn Huyền Nhung</span>
+                                    </p>
+                                    <p class="">
+                                        @Resource.Home_RegisterNumber:&nbsp;<span class="bold" data-bind="text: depositDetail().CustomerPhone">0913579829</span>
+                                    </p>
+                                    <p class="">
+                                         @Resource.Home_Address:&nbsp;<span class="bold" data-bind="text: depositDetail().CustomerAddress">Số 3 Nguyễn Ngọc Khang, Ba Đình, TP.Hà Nội.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infor-customer" style="width: 50%;">
+                            <div class="rs">
+                                <p style="margin-left: 0 !important;">
+                                    @Resource.DetaiOrder_InforOrder
+                                </p>
+                                <div class="progress" style="height: 2px; width: 70%">
+                                    <span class="progress-bar" style="width: 50%;"></span>
+                                </div>
+                                <div class="inforct rs">
+                                    <p class="">
+                                        @Resource.RequestsPayment_Name:&nbsp;<span class="bold" data-bind="text: depositDetail().ContactName">Nguyễn Huyền Nhung</span>
+                                    </p>
+                                    <p class="">
+                                        @Resource.Home_RegisterNumber:&nbsp;<span class="bold" data-bind="text: depositDetail().ContactPhone">0913579829</span>
+                                    </p>
+                                    <p class="">
+                                         @Resource.Home_Address:&nbsp;<span class="bold" data-bind="text: depositDetail().ContactAddress">Số 3 Nguyễn Ngọc Khang, Ba Đình, TP.Hà Nội.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-detail-deposit rs" style="border-top: 1px solid #ddd;">
+                        <div class="rs">
+                            <p style="margin-left: 0 !important;">
+                                @Resource.DetaiOrder_NoteOrder
+                            </p>
+                            <div class="progress" style="height: 2px; width: 70%">
+                                <span class="progress-bar" style="width: 50%;"></span>
+                            </div>
+                            <div class="rs text-note">
+                                <!-- ko if: depositDetail().Status() < @((byte) Common.Emums.DepositStatus.InWarehouse) -->
+                                <textarea cols="20" data-bind="value: depositDetail().Note, valueUpdate: 'blur', event: { blur: updateNote}" name="OrderDetailItem.Note" rows="3" style="width: 100%;"></textarea>
+                                <!-- /ko -->
+                                <!-- ko if: depositDetail().Status() >= @((byte) Common.Emums.DepositStatus.InWarehouse) -->
+                                <textarea cols="20" data-bind="value: depositDetail().Note, valueUpdate: 'blur'"  name="OrderDetailItem.Note" rows="3" style="width: 100%;" disabled="disabled"></textarea>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 150px;"> @Resource.Product_Product</th>
+                                        <th>  @Resource.Package_Weight </th>
+                                        <th>  @Resource.Package_Size </th>
+                                        <th>  @Resource.Deposit_NumberPackage </th>
+                                        <th> @Resource.DetailDeposit_CodeVD </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: listProductDetail">
+                                    <tr>
+                                        <td>
+                                            <!-- ko if: Image !== null -->
+                                            <img data-bind="attr:{src: Image}" alt="..." class="margin" width="70" height="70">
+                                            <!-- /ko -->
+                                            @*<a href="javascript:;" data-bind="attr: { href:Link }" class="code-order rs">Link</a>*@
+                                        </td>
+                                        <td>
+                                            <span class="rs number-product" data-bind="text: Weight"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: Size"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: PacketNumber"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: ListCode"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="rs back-to-list">
+                            <a href="@Url.Action("DepositOrder", "Order")" class="btn"><i class="fa fa-arrow-left"></i> @Resource.TransactionHistory_ComeBack</a>
+                        </div>
+                        <div class="zichan-msg rs" style="box-sizing: border-box;  margin-bottom: 10px;">
+                          @Html.Raw(Resource.DetailDeposit_PackageContent)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zy-main-content-msg-r tabcontent" id="dealDeposit">
+                    <div class="content-package rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellspacing="1" cellpadding="1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>@Resource.Code_Transition</th>
+                                        <th> @Resource.TransactionHistory_Time </th>
+                                        <th class="text-left"> @Resource.TransactionHistory_Content </th>
+                                        <th class="text-right"> @Resource.TransactionHistory_Value </th>
+                                        <th class="text-right"> @Resource.Dashboard_Surplus </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: recharge">
+                                    <tr>
+                                        <td data-bind="text: $index()+1"> </td>
+                                        <td data-bind="text: Code"></td>
+                                        <td data-bind="text: moment(Created).format('DD/MM/YYYY   hh:mm:ss')"></td>
+
+                                        <td data-bind="text: TreasureName" class="td-text-left"></td>
+                                        <!-- ko if:Type==1 -->
+                                        <td class="red-color  td-text-money"> - <span data-bind="text:formatNumberic(Math.round(CurrencyFluctuations),'N4')"></span> </td>
+                                        <!-- /ko -->
+                                        <!-- ko if:Type==0 -->
+                                        <td class="green-color  td-text-money"> + <span data-bind="text:formatNumberic(Math.round(CurrencyFluctuations),'N4')"></span></td>
+                                        <!-- /ko -->
+                                        <!-- ko if:Type==0 -->
+                                        <td class="green-color td-text-money"><i class="fa fa-sort-asc"></i> <span data-bind="text:formatNumberic(Math.round(CurencyEnd),'N4')"></span></td>
+                                        <!-- /ko -->
+                                        <!-- ko if:Type==1 -->
+                                        <td class="red-color td-text-money"><i class="fa fa-caret-down"></i> <span data-bind="text:formatNumberic(Math.round(CurencyEnd),'N4')"></span></td>
+                                        <!-- /ko -->
+                                    </tr>
+                                </tbody>
+
+                                <tfoot data-bind="if: recharge().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="6">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="zy-main-content-msg-r tabcontent" id="packageDeposit">
+                    <div class="content-package rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30px !important"> # </th>
+                                        <th class="w-200"> @Resource.DetaiOrder_CodePackage </th>
+                                        <th> @Resource.Package_Weight</th>
+                                        <th> @Resource.Product_Amount (@Resource.Product_Amount) </th>
+                                        <th> @Resource.Package_Storage </th>
+                                        <th> @Resource.Order_Status </th>
+                                        <td style="width: 60px !important">#</td>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: {data: orderPackage, afterRender: renderedPackageHandler}">
+                                    <tr>
+                                        <td data-bind="text: $index() + 1"></td>
+                                        <td>
+                                            <div class="rs content-code">
+                                                <span style="width: 100%;">
+                                                    <!-- ko if: IsGross == 1 -->
+                                                    <span class="code-order rs"><a data-bind="text: 'P' + Code"></a> 
+                                                    </span>
+                                                    <!-- /ko -->
+                                                    <!-- ko if: IsGross > 1 -->
+                                                    @*<span class="code-order rs"><a data-bind="text: 'P' + Code + '(đóng chung)'"></a>*@
+                                                    <span class="code-order rs"><a data-bind="text: 'P' + Code + '(แพคเกจที่นำแสดงโดย)'"></a>
+                                                        <b data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer" data-bind="attr: {id:'package-wallet-' + Id}">&nbsp;(?)</b> 
+                                                    </span>
+                                                    <!-- /ko -->
+                                                    @*<p class="rs" data-bind="text: moment(Created).format('DD/MM/YYYY   h:mm:ss')"></p>*@
+                                                    <span class="code-package-icon rs" title="@Resource.DetailDeposit_CodeVD">
+                                                        <i class="fa fa-truck" aria-hidden="true"></i> <span data-bind="text: TransportCode"></span>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: (Weight === undefined || Weight===null) ? '--' : formatNumbericCN(Weight, 'N2')"> </span> 
+                                            @*<b data-content="Cân nặng thực" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>*@ 
+                                            <b data-content="น้ำหนักจริง" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b><br />
+                                            <span data-bind="text: (WeightActual === undefined || WeightActual===null) ? '--' : formatNumbericCN(WeightActual, 'N2')"></span><b data-content="@Resource.DetailDeposit_WeightExcharge" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: (ActualMoney === undefined || ActualMoney===null) ? '--' : formatNumberic(Math.round(ActualMoney),'N4')"></span><b data-content="@Resource.DetailDeposit_MoneyExcharge" data-toggle="popover" data-html="true" data-trigger="hover" style="cursor:pointer">&nbsp;(?)</b>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text:CurrentWarehouseName"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: statusApp.orderPackageView[Status].Name"></span>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" data-toggle="popover" data-html="true" data-trigger="hover" class="package-history" data-bind="attr: {id:'package-history-' + Id}">@Resource.DetailDeposit_Detail</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot data-bind="if: orderPackage().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="7">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="zy-main-content-msg-r tabcontent" id="ticketDeposit">
+                    <div class="content-package rs list-products">
+                        <div class="zichan-zijin zichan-box rs">
+                            <table class="table table-product" border="1" cellpadding="1" cellspacing="1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30px !important"> # </th>
+                                        <th class="w-200"> @Resource.Ticket_Code </th>
+                                        <th class="w-250"> @Resource.Ticket_Content </th>
+                                        <th> @Resource.Ticket_EmployeeFeedback </th>
+                                        <th> @Resource.Order_Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: complains">
+                                    <tr>
+                                        <td data-bind="text: $index()+1"></td>
+                                        <td>
+                                            <div class="rs content-code">
+                                                <span>
+                                                    <span class="code-order rs">
+                                                        <a data-bind="text:Code, attr: {href: '/' + window.culture + '/CMS/Ticket/DetailTicket?ticketId=' + Id}" target="_blank">
+                                                        </a>
+                                                    </span>
+                                                    <p data-bind="text: moment(CreateDate).format('DD/MM/YYYY   hh:mm:ss')"></p>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="text-left p10" data-bind="text:Content"></td>
+                                        <td class="text-left p10" data-bind="text:LastReply"></td>
+                                        <td>
+                                            <label data-bind="text: statusApp.complainView[Status].Name, css: statusApp.complainView[Status].Class"></label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                                <tfoot data-bind="if: complains().length == 0" class="dingdan-content-non">
+                                    <tr>
+                                        <td colspan="6">@Resource.RequestsPayment_NoData</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.Partial("/Areas/CMS/Views/Order/deposit/_popup.cshtml")
+</div>
+@section scripts{
+    <script src="~/Scripts/lodash.js"></script>
+    <script src="~/Content/js/tab-content.js"></script>
+    <script src="~/Content/js/chat-box.js"></script>
+    @*//thu vien substring*@
+    <script src="~/Areas/CMS/Scripts/common/common.js"></script>
+    @*//thu vien format date*@
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.js"></script>
+    <script src="~/Areas/CMS/Scripts/moment-with-locales.min.js"></script>
+
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/deposit/depositPopupModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/models/order/depositDetail.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/chat/chatViewModel.js"></script>
+    <script src="~/Areas/CMS/Scripts/viewmodels/order/deposit/detailDepositViewModel.js"></script>
+    <script src="~/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    <script>
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+    <script>
+
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+
+        function tabDetailDepositOrder(evt, ticketName) {
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" lete-active", "");
+            }
+            document.getElementById(ticketName).style.display = "block";
+            evt.currentTarget.className += " lete-active";
+
+        }
+
+        document.getElementById("defaultOpen").click();
+    </script>
+    <script src="~/Scripts/jquery.sticky.js"></script>
+
+    <script>
+
+        $(window).load(function () {
+            $("#topTabDetailOrder").sticky({ topSpacing: 0 });
+        });
+    </script>
+}

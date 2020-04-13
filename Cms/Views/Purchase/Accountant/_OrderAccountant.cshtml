@@ -1,0 +1,288 @@
+﻿<script type="text/html" id="accountantOrder">
+    <div data-bind="with: accountantOrderViewModel">
+        <div class="box box-primary">
+            <form role="form">
+                <div class="box-body">
+                    <div class="row">
+                        <section class="col-md-3 form-group">
+                            <label>Search </label>
+                            <i class="fa fa-question-circle tooltips big-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="You can do searches under Code orders, contract code, Lading code"></i>
+                            <input data-bind="value: keyword" class="form-control" placeholder=" orders Code, contract code, Lading code" type="text">
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label>Select System</label>
+                            <select class="form-control select-view" style="width: 100%;" data-bind="options: listSystem, optionsText: 'Text', optionsValue: 'Value', value: systemId"></select>
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label>Status</label>
+                            <select class="form-control select-view" style="width: 100%;" data-bind="options: listStatus, optionsText: 'Text', optionsValue: 'Value', value: status"></select>
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label>Customer</label>
+                            <select data-bind="value: customerId" class="form-control customer-search" style="width: 100%;"></select>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col-md-3 form-group">
+                            <label>Staff</label>
+                            <select data-bind="value: userId" class="form-control user-search" style="width: 100%;"></select>
+                        </section>
+                        <section class="col-md-3 form-group">
+                            <label> Order date </label>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                    <span>
+                                        <i class="fa fa-calendar"></i>Start Date
+                                    </span>
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                            </div>
+                        </section>
+                        <div class="col-md-12">
+                            <button data-bind="click: clickSearch" type="button" class="btn btn-danger search-list"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" id="body-table">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">List of contracts pending payment</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <div class="row">
+                                        <div @*class="col-sm-4 col-xs-6"*@>
+                                            <div class="description-block border-right">
+                                                <h3 class="description-header text-green decimal" data-bind="text: formatNumberic(totalPrice(), 'N2')"></h3>
+                                                <span class="description-text text-bold">Sum money (CNY)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="tabbable page-tabs">
+                            <ul data-bind="foreach : listSystemRender" class="nav nav-tabs">
+                                <li data-bind="css: Class">
+                                    <a data-bind="attr: { href: '#tab' + Value, id: 'nav-tab' + Value}, click: function(){ $parent.clickTab(Value)}" data-toggle="tab">
+                                        <span data-bind="text: Text"></span>
+                                        <span data-bind="text: Total, css: ClassChild" class="label"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active fade in" id="all-tasks">
+                                    <div class="box-body table-responsive no-padding">
+                                        <div data-bind="css: isRending() == true? 'display-none' : ''">
+                                            <div class="spinner">
+                                                <div class="rect1"></div>
+                                                <div class="rect2"></div>
+                                                <div class="rect3"></div>
+                                                <div class="rect4"></div>
+                                                <div class="rect5"></div>
+                                            </div>
+                                        </div>
+                                        <div data-bind="css: isRending() == true? '' : 'display-none'" class="display-none">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+
+                                                    <tr>
+                                                        <th class="text-center w-35">#</th>
+                                                        <th class="text-left w-100"><i class="fa fa-ticket"></i> Code order</th>
+                                                        <th class="text-left w-100"><i class="fa fa-barcode"></i> Contract code</th>
+                                                        <th class="text-right w-100"><i class="fa fa-money"></i> Value (CNY)</th>
+                                                        <th class="text-left w-150"><i class="fa fa-calendar"></i>Processing time</th>
+                                                        <th class="text-right w-200"><i class="fa fa-user"></i> Processing staff</th>
+                                                        <th class="text-center w-120"><i class="fa fa-thumb-tack"></i> Status</th>
+                                                        <th class="text-left w-200"><i class="fa fa-hand-pointer-o"></i> Action </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody data-bind="template: { name: 'accountant-list', foreach: listOrder }"></tbody>
+                                                <tfoot data-bind="if: listOrder().length == 0">
+                                                    <tr>
+                                                        @if (UserState.Type != 0)
+                                                        {
+                                                            <td colspan="11">No contract was found for payment</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td colspan="10">No contract was found for payment</td>
+                                                        }
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div data-bind="if: listOrder().length > 0" class="mt15 mb100">
+                                        <div data-bind="html: pageTitle" class="pull-left"></div>
+
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li data-bind="if: pageStart">
+                                                <a data-bind="click: function(){ setPage({Page: 1})}" href="javascript:;"><i class="fa fa-angle-double-left"></i></a>
+                                            </li>
+                                            <li data-bind="if: pageNext">
+                                                <a data-bind="click: function(){ setPage({Page: (page - 3) < 1 ? 1 : (page - 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <!-- ko foreach: listPage -->
+                                            <li data-bind="css: Page == page ? 'active' :''  ">
+                                                <a data-bind="text: Page, click: $parent.setPage" href="javascript:;"></a>
+                                            </li>
+                                            <!-- /ko -->
+                                            <li data-bind="if: pagePrev">
+                                                <a data-bind="click: function(){ setPage({Page: (page + 3) > pageTotal ? pageTotal: (page + 3) })}" href="javascript:;">...</a>
+                                            </li>
+                                            <li data-bind="if: pageEnd">
+                                                <a data-bind="click: function(){ setPage({Page: pageTotal})}" href="javascript:;"><i class="fa fa-angle-double-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="moneyFundAddOrEditOrder" class="modal fade modal-dialog modal-p50" tabindex="-1" data-backdrop="static" role="dialog">
+            <div class="modal-body">
+                <section class="importwarehouse" style="border-bottom: 0">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="page-header">
+                                <strong>CREATING SUBTOTAL SUBTOTAL BONUS FUNDS</strong>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Information type object<span class="color-red">(*)</span></h3>
+                                </div>
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Full name :</th>
+                                                                <td data-bind="text: subjectName">1191116</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Email:</th>
+                                                                <td data-bind="text: subjectEmail">Vũ Minh Tú</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Phone:</th>
+                                                                <td data-bind="text: subjectPhone">Vũ Minh Tú</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Address :</th>
+                                                                <td data-bind="text: subjectAddress" class="col-md-8">Vũ Minh Tú</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Select transaction execution fund <span class="color-red">(*)</span></h3>
+                                </div>
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <div id="financeFund_order_tree"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Bank:</th>
+                                                                <td data-bind="text: financeFundNameBank"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Account number:</th>
+                                                                <td data-bind="text: financeFundBankAccountNumber"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Representative:</th>
+                                                                <td data-bind="text: financeFundUserFullName"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Email:</th>
+                                                                <td data-bind="text: financeFundUserEmail"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-danger">
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label text-bold">Amount: <span class="color-red">(*)</span></label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <input disabled="disabled" type="text" class="form-control" data-bind="value: currencyFluctuations">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Note:</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="col-sm-9 form-control" rows="4" placeholder="Remittance note ..." data-bind="note"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger" data-bind="click: paymentContractCode" href="javascript:;"><i class="fa fa-check"></i> Confirm</a>
+                <a class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Close</a>
+            </div>
+        </div>
+    </div>
+</script>

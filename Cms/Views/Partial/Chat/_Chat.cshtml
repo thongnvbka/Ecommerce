@@ -1,0 +1,268 @@
+﻿@{
+    var text = (byte)CommentType.Text;
+    var image = (byte)CommentType.Image;
+}
+<style>
+    .fixscollbar {
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        min-height: 50px !important;
+    }
+</style>
+
+<div id="chatModal" class="modal fade modal-dialog modal-p40" tabindex="-1" @*data-backdrop="static"*@ role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-danger"><b>Chat order: <span data-bind="text: orderCode"></span></b></h4>
+    </div>
+    <div class="modal-body">
+        <div class="direct-chat direct-chat-primary">
+            <div class="box-body">
+                <div data-bind="if: listChat().length == 0">
+                    <span>There is no content to exchange</span>
+                </div>
+                <div data-bind="foreach: { data: listChat, afterRender: renderedHandler}" class="direct-chat-messages divBoxChat">
+                    <!-- ko if: CustomerId > 0 -->
+                    <div class="direct-chat-msg">
+                        <div class="direct-chat-info clearfix">
+                            <span data-bind="text: CustomerName" class="direct-chat-name pull-left"></span>
+                            <span data-bind="text: moment(CreateDate).locale('vi').format('L LTS')" class="direct-chat-timestamp pull-right"></span>
+                        </div>
+                        <div class="direct-chat-img">
+                            <i class="fa fa-user fa-3x text-muted"></i>
+                        </div>
+                        <div class="direct-chat-text">
+                            <!-- ko foreach: ListObj -->
+                            <!-- ko if: CommentType == @text -->
+                            <span data-bind="text: Description"></span><br />
+                            <!-- /ko -->
+                            <!-- ko if: CommentType == @image -->
+                            <img alt="" data-bind="attr: { src: Description }" style="height: 80px;" class="chatImg" onclick="showImgChat(this)"><br />
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: UserId > 0 -->
+                    <div class="direct-chat-msg right">
+                        <div class="direct-chat-info clearfix">
+                            <span data-bind="text: UserName" class="direct-chat-name pull-right"></span>
+                            <span data-bind="text: moment(CreateDate).locale('vi').format('L LTS')" class="direct-chat-timestamp pull-left"></span>
+                        </div>
+                        <div class="direct-chat-img">
+                            <i class="fa fa-user fa-3x text-light-blue"></i>
+                        </div>
+                        <div class="direct-chat-text">
+                            <!-- ko foreach: ListObj -->
+                            <!-- ko if: CommentType == @text -->
+                            <span data-bind="text: Description"></span><br />
+                            <!-- /ko -->
+                            <!-- ko if: CommentType == @image -->
+                            <img alt="" data-bind="attr: { src: Description }" style="height: 80px;" class="chatImg" onclick="showImgChat(this)"><br />
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div style="display: table;">
+                <form data-bind="submit: submit">
+                    <div class="col-xs-11 p5">
+                        <div class="input-group">
+                            <textarea id="textareaChat" data-bind="value: text, valueUpdate:'afterkeydown' , event: { 'keyup': checkKeyUpEnter }" onkeypress="onKeyChange(this);" type="text" name="message" placeholder="Enter the content ..." class="form-control fixscollbar"></textarea>
+                            <span class="input-group-btn" style="vertical-align: top !important;">
+                                <button data-bind="enable: isSend" type="submit" class="btn btn-primary">
+                                    <!-- ko if: isSend()-->
+                                    <i class="fa fa-send"></i>
+                                    <!-- /ko -->
+                                    <!-- ko if: !isSend()-->
+                                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                    <!-- /ko -->
+                                  Send
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 p5">
+                        <div class="media-body">
+                            <div class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage">
+                                <span class="btn btn-primary btn-file btn-flat">
+                                    <!-- ko if: isUpload()-->
+                                    <i class="fa fa-file-image-o"></i>
+                                    <!-- /ko -->
+                                    <!-- ko if: !isUpload()-->
+                                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                    <!-- /ko -->
+                                    <input class="flieuploadImg" name="" type="file">
+                                </span>
+                                <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+
+<div id="imgShowView">
+    <div id="showImgModal" class="modal">
+        <span class="close" onclick="document.getElementById('showImgModal').style.display = 'none'">&times;</span>
+        <img class="modal-content" id="imgShow" alt="">
+        <div id="caption"></div>
+    </div>
+</div>
+
+<script id="temDivBoxChat" type="text/html">
+    <div class="direct-chat direct-chat-primary" style="border: 1px solid #e5e5e5; padding: 5px;">
+        <div class="box-body">
+            <div data-bind="if: listChat().length == 0">
+                <span>There is no content to exchange</span>
+            </div>
+            <div data-bind="foreach: { data: listChat, afterRender: renderedHandler}" class="direct-chat-messages divBoxChat">
+                <!-- ko if: CustomerId > 0 -->
+                <div class="direct-chat-msg">
+                    <div class="direct-chat-info clearfix">
+                        <span data-bind="text: CustomerName" class="direct-chat-name pull-left"></span>
+                        <span data-bind="text: moment(CreateDate).locale('vi').format('L LTS')" class="direct-chat-timestamp pull-right"></span>
+                    </div>
+                    <div class="direct-chat-img">
+                        <i class="fa fa-user fa-3x text-muted"></i>
+                    </div>
+                    <div class="direct-chat-text">
+                        <!-- ko foreach: ListObj -->
+                        <!-- ko if: CommentType == @text -->
+                        <span data-bind="text: Description"></span><br />
+                        <!-- /ko -->                      
+                        <!-- ko if: CommentType == @image -->
+                        <img alt="" data-bind="attr: { src: Description }" style="height: 80px;" class="chatImg" onclick="showImgChat(this)"><br />
+                        <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: UserId > 0 -->
+                <div class="direct-chat-msg right">
+                    <div class="direct-chat-info clearfix">
+                        <span data-bind="text: UserName" class="direct-chat-name pull-right"></span>
+                        <span data-bind="text: moment(CreateDate).locale('vi').format('L LTS')" class="direct-chat-timestamp pull-left"></span>
+                    </div>
+                    <div class="direct-chat-img">
+                        <i class="fa fa-user fa-3x text-light-blue"></i>
+                    </div>
+                    <div class="direct-chat-text">
+                        <!-- ko foreach: ListObj -->
+                        <!-- ko if: CommentType == @text -->
+                        <span data-bind="text: Description"></span><br />
+                        <!-- /ko -->                      
+                        <!-- ko if: CommentType == @image -->
+                        <img alt="" data-bind="attr: { src: Description }" style="height: 80px;" class="chatImg" onclick="showImgChat(this)"><br />
+                        <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div style="display: table; width: 100%">
+            <form data-bind="submit: submit">
+                <div class="col-xs-12 p5">
+                    <div class="input-group">
+                        <textarea id="textareaChatView" data-bind="value: text, valueUpdate:'afterkeydown', event: { 'keyup': checkKeyUpEnter }"  onkeypress="onKeyChange(this);" type="text" name="message" placeholder="Enter the content ..." class="form-control fixscollbar"></textarea>
+                        <span class="input-group-btn" style="vertical-align: top !important;">
+                            <button data-bind="enable: isSend" type="submit" class="btn btn-primary btn-flat">
+                                <!-- ko if: isSend()-->
+                                <i class="fa fa-send"></i>
+                                <!-- /ko -->
+                                <!-- ko if: !isSend()-->
+                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                <!-- /ko -->
+                              Send
+                            </button>
+                            <span class="fileinput fileinput-new" data-provides="fileinput" data-bind="click: addImage" style="margin-left: 5px">
+                                <span class="btn btn-primary btn-file btn-flat">
+                                    <!-- ko if: isUpload()-->
+                                    <i class="fa fa-file-image-o"></i>
+                                    <!-- /ko -->
+                                    <!-- ko if: !isUpload()-->
+                                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                    <!-- /ko -->
+                                    <input class="flieuploadImg" name="" type="file">
+                                </span>
+                                <a class="close fileinput-exists" data-dismiss="fileinput" href="javascript:;"> </a>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+
+
+@using (Html.BeginScriptBlock())
+{
+    <script src="/Content/plugins/jQueryFileUpload/vendor/jquery.ui.widget.js"></script>
+    <script src="/Content/plugins/jQueryFileUpload/jquery.iframe-transport.js"></script>
+    <script src="/Content/plugins/jQueryFileUpload/jquery.fileupload.js"></script>
+    <script>
+
+        setInterval(function () {
+            var textarea = document.getElementById("textareaChat");
+            if (textarea) {
+                textarea.style.cssText = 'height:auto;';
+                textarea.style.cssText = 'height:' + textarea.scrollHeight + 'px';
+            }
+
+            var textareaShow = document.getElementById("textareaChatView");
+            if (textareaShow) {
+                textareaShow.style.cssText = 'height:auto;';
+                textareaShow.style.cssText = 'height:' + textareaShow.scrollHeight + 'px';
+            }
+        }, 0);
+
+        function onKeyChange(input) {
+            var key = window.event.keyCode;
+
+            if (key == 10) {
+                $(input).val(function (i, val) {
+                    return val + "\n";
+                });
+            }
+            else {
+                if (key == 13) {
+                    window.event.preventDefault();
+                }
+            }
+        }
+
+        function showImgChat(img) {
+            // Get the modal
+            var modal = document.getElementById('showImgModal');
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            //var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("imgShow");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            img.onclick();
+        }
+    </script>
+}

@@ -1,0 +1,44 @@
+﻿@{
+    var order = (byte) OrderType.Order;
+    var deposit = (byte)OrderType.Deposit;
+    var commerce = (byte)OrderType.Commerce;
+    var source = (byte)OrderType.Source;
+}
+
+<script type="text/html" id="order-success-list">
+    <tr>
+        <td data-bind="text: (page-1)*pagesize + $index()+1" class="text-center"></td>
+        <td class="">
+            <a data-bind="click: function() {orderTypeViewModel.showViewOrder(Id, Code); }" href="javascript:;"><strong data-bind="text: ReturnCode(Code)"></strong></a>
+        </td>
+        <td class="text-center">
+            <!-- ko if: Type == @deposit -->
+            <span data-bind="text: statusApp.deposit[Status].Name, css: statusApp.deposit[Status].Class"></span><br />
+            <!-- /ko -->
+            <!-- ko ifnot: Type == @deposit -->
+            <span data-bind="text: statusApp.order[Status].Name, css: statusApp.order[Status].Class"></span><br />
+            <!-- /ko -->
+            <i class="fa fa-clock-o"></i> <span data-bind="text: moment(Created).locale('vi').startOf().fromNow()" class=""></span>
+        </td>
+        <td class="text-center">
+            <span data-bind="text: ComplainCount"></span>
+        </td>
+        <td class="">
+            <span style="display:inline-block">
+                <span class="text-bold" data-bind="text: CustomerName"></span><br />
+                <span data-bind="text: '(' + CustomerEmail + ')'"></span>
+            </span>
+        </td>
+        <td class="text-center">
+            <span style="display:inline-block">
+                <span data-bind="text: UserEmail"></span>
+            </span>
+        </td>
+        <td class="text-center">
+            @if (CheckPermision(EnumAction.Update, EnumPage.OrderSuccess))
+            {
+                <a data-bind="click: $parent.orderFinish" class="btn btn-info btn-xs"><i class="fa fa-check-circle-o"></i> Complete</a>
+            }
+        </td>
+    </tr>
+</script>

@@ -1,0 +1,58 @@
+﻿@model  Common.Items.ModelView<Library.DbContext.Entities.Shop, TitleFilterViewModel>
+@using System.Globalization
+<div class="box-body table-responsive no-padding">
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="w-40"> </th>
+                <th class="text-center w-150">Shop name</th>
+                <th class="text-center w-120">Website</th>
+                <th class="text-center w-120">Branch</th>
+                <th class="text-center w-150">Note</th>
+                <th class="text-center w-120">Updated date</th>
+                <th class="text-center w-100">Admin</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Items.Count <= 0)
+            {
+            <tr class="text-center">
+                <td colspan="7" class="text-center">There are no records</td>
+            </tr>
+            }
+            else
+            {
+                var idx = 1;
+                foreach (var item in Model.Items)
+                {
+            <tr>
+                <td class="text-center">@((Model.PageInfo.CurrentPage - 1) * Model.PageInfo.TotalRecord + idx)</td>
+                <td>
+                    <input type="hidden" class="item-id" value="@item.Id" />
+                    <a target="_blank" href="@Url.Action("Detail", "Shop", new { @id = item.Id })">@item.Name</a>
+                </td>
+                <td class="text-center">@item.Website</td>
+                <td>
+                    @item.CategoryName
+                </td>
+                <td class="text-center">
+                    @item.Note
+                </td>
+                <td class="text-center">@string.Format("{0:dd/MM/yyyy}", item.CreateDate)</td>
+                <td class="text-center">
+                    <a href="@Url.Action("Edit", "Shop", new { @id = item.Id })" class="btn btn-sm btn-primary" title="Edit">Change</a>
+                    <a href="javascript:void(0)" onclick="GetShopDetail('@item.Id')" class="btn btn-sm btn-success" title="Detail">Detail</a>
+                </td>
+            </tr>
+                    idx += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="box-header">
+    @Html.Partial("_Paging", Model.PageInfo)
+</div>
+
+<!-- /.box-body -->

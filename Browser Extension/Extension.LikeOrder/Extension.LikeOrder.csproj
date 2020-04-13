@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{4A681E40-7D8B-4F08-9220-F79C38D05102}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap-theme-pro.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\content.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\popup.css" />
+    <Content Include="css\tbe.css" />
+    <Content Include="dist_gdtq\winter_cart_all.js" />
+    <Content Include="dist_gdtq\winter_cart_all.min.js" />
+    <Content Include="dist_gdtq\winter_cart_new_all.js" />
+    <Content Include="dist_gdtq\winter_cart_new_all.min.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="images\icon_likeorder_256x256.png" />
+    <Content Include="images\arrow-icon.png" />
+    <Content Include="images\extention_icon.png" />
+    <Content Include="images\icon_likeorder_128.png" />
+    <Content Include="images\icon_likeorder_128x128.png" />
+    <Content Include="images\icon_likeorder_200.png" />
+    <Content Include="images\icon_likeorder_200x200.png" />
+    <Content Include="images\icon_likeorder_32x32.png" />
+    <Content Include="images\icon_likeorder_64x64.png" />
+    <Content Include="images\logo_likeorder_262x79.png" />
+    <Content Include="images\icon_likeorder_16x16.png" />
+    <Content Include="images\logo_likeorder_home.png" />
+    <Content Include="images\logo_likeorder.png" />
+    <Content Include="scripts\jquery.js" />
+    <Content Include="scripts\jqueryui.js" />
+    <Content Include="scripts\lodash.js" />
+    <Content Include="scripts\popup.js" />
+    <Content Include="scripts\popup-vi.js" />
+    <Content Include="scripts\rules.js" />
+    <Content Include="script_gdtq\angular-cookies.js" />
+    <Content Include="script_gdtq\angular-sanitize.js" />
+    <Content Include="script_gdtq\angular.min.js" />
+    <Content Include="script_gdtq\jquery.cookie.js" />
+    <Content Include="script_gdtq\winter_cart_angular.js" />
+    <Content Include="script_gdtq\winter_shop_angular1.js" />
+    <Content Include="script_gdtq\winter_shop_cart.js" />
+    <Content Include="script_gdtq\winter_shop_jquery1.js" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="manifest.json" />
+    <Content Include="package.json" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Extension.MuaHangTrungGian</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1728</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1728/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>
